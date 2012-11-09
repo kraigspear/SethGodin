@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SGViewController : UIViewController
+@interface SGRSSSelectionViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *upButton;
+@property (weak, nonatomic) IBOutlet UIButton *downButton;
 
 @end

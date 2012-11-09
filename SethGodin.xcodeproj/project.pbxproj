@@ -18,7 +18,7 @@
 		A9D684FE164CFE8D007A9ADA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D684FD164CFE8D007A9ADA /* Default-568h@2x.png */; };
 		A9D68501164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */; };
 		A9D68504164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */; };
-		A9D68507164CFE8D007A9ADA /* SGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68506164CFE8D007A9ADA /* SGViewController.m */; };
+		A9D68507164CFE8D007A9ADA /* SGRSSSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68506164CFE8D007A9ADA /* SGRSSSelectionViewController.m */; };
 		A9D68522164D006A007A9ADA /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68510164D006A007A9ADA /* AFHTTPClient.m */; };
 		A9D68523164D006A007A9ADA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68512164D006A007A9ADA /* AFHTTPRequestOperation.m */; };
 		A9D68524164D006A007A9ADA /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68514164D006A007A9ADA /* AFImageRequestOperation.m */; };
@@ -34,6 +34,8 @@
 		A9D6853E164D041B007A9ADA /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68536164D041B007A9ADA /* DDXMLElement.m */; };
 		A9D6853F164D041B007A9ADA /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68538164D041B007A9ADA /* DDXMLNode.m */; };
 		A9D6854D164D0578007A9ADA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D6854C164D0578007A9ADA /* libxml2.dylib */; };
+		A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */; };
+		A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +54,8 @@
 		A9D684FD164CFE8D007A9ADA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A9D68500164CFE8D007A9ADA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		A9D68503164CFE8D007A9ADA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		A9D68505164CFE8D007A9ADA /* SGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGViewController.h; sourceTree = "<group>"; };
-		A9D68506164CFE8D007A9ADA /* SGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGViewController.m; sourceTree = "<group>"; };
+		A9D68505164CFE8D007A9ADA /* SGRSSSelectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGRSSSelectionViewController.h; sourceTree = "<group>"; };
+		A9D68506164CFE8D007A9ADA /* SGRSSSelectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGRSSSelectionViewController.m; sourceTree = "<group>"; };
 		A9D6850F164D006A007A9ADA /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		A9D68510164D006A007A9ADA /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		A9D68511164D006A007A9ADA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -85,8 +87,11 @@
 		A9D68537164D041B007A9ADA /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
 		A9D68538164D041B007A9ADA /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
 		A9D6853A164D041B007A9ADA /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
-		A9D68540164D0474007A9ADA /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		A9D6854C164D0578007A9ADA /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		A9D68550164D0DC6007A9ADA /* UIImage+BBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+BBlock.h"; sourceTree = "<group>"; };
+		A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BBlock.m"; sourceTree = "<group>"; };
+		A9D68552164D0DE3007A9ADA /* UIImage+RSSSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSSSelection.h"; sourceTree = "<group>"; };
+		A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSSSelection.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +112,7 @@
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
-				A9D6854C164D0578007A9ADA /* libxml2.dylib */,
-				A9D68540164D0474007A9ADA /* libxml2.2.dylib */,
+				A9D6854F164D0DBD007A9ADA /* General */,
 				A9D6850D164D005D007A9ADA /* 3RD Party */,
 				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D684E6164CFE8D007A9ADA /* Frameworks */,
@@ -127,6 +131,7 @@
 		A9D684E6164CFE8D007A9ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9D6854C164D0578007A9ADA /* libxml2.dylib */,
 				A9D684E7164CFE8D007A9ADA /* UIKit.framework */,
 				A9D684E9164CFE8D007A9ADA /* Foundation.framework */,
 				A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */,
@@ -137,12 +142,11 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
+				A9D6854E164D0D47007A9ADA /* RSSSelection */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
 				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
 				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
 				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
-				A9D68505164CFE8D007A9ADA /* SGViewController.h */,
-				A9D68506164CFE8D007A9ADA /* SGViewController.m */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
 			);
 			path = SethGodin;
@@ -240,6 +244,26 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
+		A9D6854E164D0D47007A9ADA /* RSSSelection */ = {
+			isa = PBXGroup;
+			children = (
+				A9D68505164CFE8D007A9ADA /* SGRSSSelectionViewController.h */,
+				A9D68506164CFE8D007A9ADA /* SGRSSSelectionViewController.m */,
+				A9D68552164D0DE3007A9ADA /* UIImage+RSSSelection.h */,
+				A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */,
+			);
+			name = RSSSelection;
+			sourceTree = "<group>";
+		};
+		A9D6854F164D0DBD007A9ADA /* General */ = {
+			isa = PBXGroup;
+			children = (
+				A9D68550164D0DC6007A9ADA /* UIImage+BBlock.h */,
+				A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -310,12 +334,13 @@
 			files = (
 				A9D684F4164CFE8D007A9ADA /* main.m in Sources */,
 				A9D684F8164CFE8D007A9ADA /* SGAppDelegate.m in Sources */,
-				A9D68507164CFE8D007A9ADA /* SGViewController.m in Sources */,
+				A9D68507164CFE8D007A9ADA /* SGRSSSelectionViewController.m in Sources */,
 				A9D68522164D006A007A9ADA /* AFHTTPClient.m in Sources */,
 				A9D68523164D006A007A9ADA /* AFHTTPRequestOperation.m in Sources */,
 				A9D68524164D006A007A9ADA /* AFImageRequestOperation.m in Sources */,
 				A9D68525164D006A007A9ADA /* AFJSONRequestOperation.m in Sources */,
 				A9D68526164D006A007A9ADA /* AFNetworkActivityIndicatorManager.m in Sources */,
+				A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */,
 				A9D68527164D006A007A9ADA /* AFPropertyListRequestOperation.m in Sources */,
 				A9D68528164D006A007A9ADA /* AFURLConnectionOperation.m in Sources */,
 				A9D68529164D006A007A9ADA /* AFXMLRequestOperation.m in Sources */,
@@ -325,6 +350,7 @@
 				A9D6853D164D041B007A9ADA /* DDXMLDocument.m in Sources */,
 				A9D6853E164D041B007A9ADA /* DDXMLElement.m in Sources */,
 				A9D6853F164D041B007A9ADA /* DDXMLNode.m in Sources */,
+				A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

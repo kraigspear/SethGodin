@@ -6,18 +6,21 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGViewController.h"
+#import "SGRSSSelectionViewController.h"
+#import "UIImage+RSSSelection.h"
 
-@interface SGViewController ()
+@interface SGRSSSelectionViewController ()
 
 @end
 
-@implementation SGViewController
+@implementation SGRSSSelectionViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[self.upButton setImage:[UIImage upButton] forState:UIControlStateNormal];
+    [self.downButton setImage:[UIImage downButton] forState:UIControlStateNormal];
+    
 }
 
 - (void)didReceiveMemoryWarning
