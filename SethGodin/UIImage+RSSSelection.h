@@ -12,5 +12,9 @@
 
 + (UIImage*) upButton;
 + (UIImage*) downButton;
++ (UIImage*) titleBar;
++ (UIImage*) searchButton;
++ (UIImage*) menuButton;
+
 
 @end

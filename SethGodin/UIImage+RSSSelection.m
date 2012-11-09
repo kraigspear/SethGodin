@@ -69,4 +69,92 @@
             }];
 }
 
++ (UIImage*) titleBar
+{
+    return [UIImage imageWithIdentifier:@"titleBar" forSize:CGSizeMake(320,44) andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                UIColor* color4 = [yellow colorWithAlphaComponent: 0.03];
+                
+                //// Abstracted Attributes
+                NSString* textContent = @"SETH GODIN";
+                
+                
+                //// Rectangle Drawing
+                UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 44)];
+                [color4 setFill];
+                [rectanglePath fill];
+                
+                
+                //// Text Drawing
+                CGRect textRect = CGRectMake(0, 7, 320, 30);
+                [yellow setFill];
+                [textContent drawInRect: textRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 26] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                
+                
+
+            }];
+}
+
++ (UIImage*) searchButton
+{
+    return [UIImage imageWithIdentifier:@"searchButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                
+                //// Bezier 3 Drawing
+                UIBezierPath* bezier3Path = [UIBezierPath bezierPath];
+                [bezier3Path moveToPoint: CGPointMake(33.97, 31.77)];
+                [bezier3Path addLineToPoint: CGPointMake(28.13, 26.05)];
+                [bezier3Path addCurveToPoint: CGPointMake(27.91, 25.88) controlPoint1: CGPointMake(28.06, 25.98) controlPoint2: CGPointMake(27.99, 25.93)];
+                [bezier3Path addCurveToPoint: CGPointMake(29.48, 20.73) controlPoint1: CGPointMake(28.9, 24.39) controlPoint2: CGPointMake(29.48, 22.63)];
+                [bezier3Path addCurveToPoint: CGPointMake(19.82, 11.26) controlPoint1: CGPointMake(29.48, 15.5) controlPoint2: CGPointMake(25.15, 11.26)];
+                [bezier3Path addCurveToPoint: CGPointMake(10.16, 20.73) controlPoint1: CGPointMake(14.48, 11.26) controlPoint2: CGPointMake(10.16, 15.5)];
+                [bezier3Path addCurveToPoint: CGPointMake(19.82, 30.19) controlPoint1: CGPointMake(10.16, 25.95) controlPoint2: CGPointMake(14.49, 30.19)];
+                [bezier3Path addCurveToPoint: CGPointMake(25.08, 28.66) controlPoint1: CGPointMake(21.76, 30.19) controlPoint2: CGPointMake(23.56, 29.62)];
+                [bezier3Path addCurveToPoint: CGPointMake(25.25, 28.87) controlPoint1: CGPointMake(25.13, 28.73) controlPoint2: CGPointMake(25.19, 28.8)];
+                [bezier3Path addLineToPoint: CGPointMake(31.09, 34.59)];
+                [bezier3Path addCurveToPoint: CGPointMake(32.53, 35.17) controlPoint1: CGPointMake(31.49, 34.98) controlPoint2: CGPointMake(32.01, 35.17)];
+                [bezier3Path addCurveToPoint: CGPointMake(33.97, 34.59) controlPoint1: CGPointMake(33.05, 35.17) controlPoint2: CGPointMake(33.57, 34.98)];
+                [bezier3Path addCurveToPoint: CGPointMake(33.97, 31.77) controlPoint1: CGPointMake(34.76, 33.81) controlPoint2: CGPointMake(34.76, 32.55)];
+                [bezier3Path closePath];
+                [bezier3Path moveToPoint: CGPointMake(19.82, 27.2)];
+                [bezier3Path addCurveToPoint: CGPointMake(13.21, 20.73) controlPoint1: CGPointMake(16.18, 27.2) controlPoint2: CGPointMake(13.21, 24.3)];
+                [bezier3Path addCurveToPoint: CGPointMake(19.82, 14.25) controlPoint1: CGPointMake(13.21, 17.16) controlPoint2: CGPointMake(16.18, 14.25)];
+                [bezier3Path addCurveToPoint: CGPointMake(26.43, 20.73) controlPoint1: CGPointMake(23.46, 14.25) controlPoint2: CGPointMake(26.43, 17.16)];
+                [bezier3Path addCurveToPoint: CGPointMake(19.82, 27.2) controlPoint1: CGPointMake(26.43, 24.3) controlPoint2: CGPointMake(23.46, 27.2)];
+                [bezier3Path closePath];
+                [yellow setFill];
+                [bezier3Path fill];
+            }];
+}
+
++ (UIImage*) menuButton
+{
+    return [UIImage imageWithIdentifier:@"menuButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                
+                //// Rectangle 12 Drawing
+                UIBezierPath* rectangle12Path = [UIBezierPath bezierPathWithRect: CGRectMake(9.5, 14, 25, 3)];
+                [yellow setFill];
+                [rectangle12Path fill];
+                
+                
+                //// Rectangle 13 Drawing
+                UIBezierPath* rectangle13Path = [UIBezierPath bezierPathWithRect: CGRectMake(9.5, 21, 25, 3)];
+                [yellow setFill];
+                [rectangle13Path fill];
+                
+                
+                //// Rectangle 14 Drawing
+                UIBezierPath* rectangle14Path = [UIBezierPath bezierPathWithRect: CGRectMake(9.5, 28, 25, 3)];
+                [yellow setFill];
+                [rectangle14Path fill];
+            }];
+}
+
 @end
