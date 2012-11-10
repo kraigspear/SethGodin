@@ -483,6 +483,7 @@
 				A9D6850C164CFE8D007A9ADA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

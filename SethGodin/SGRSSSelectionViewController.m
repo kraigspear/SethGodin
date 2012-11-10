@@ -33,20 +33,58 @@
     _dateFormatter.dateStyle =  NSDateFormatterMediumStyle;
     
     
+    
+    
 }
+
 
 - (void) viewDidLayoutSubviews
 {
     UIColor* buttonColor = [UIColor colorWithRed: 0.751 green: 0.703 blue: 0.608 alpha: 1];
     
-    UIImage *button1Image = [UIImage rssItemButtonForColor:buttonColor
-                                                   andSize:self.rssItem1Button.frame.size
-                                                     title:@"bla bla bla"
-                                                    shared:1000
-                                                    forDate:[NSDate date]
-                                                    formatDateWith:_dateFormatter];
+    if(self.rssItem1Button.frame.size.width > 0 && self.rssItem1Button.frame.size.height > 0)
+    {
+        
+        
+        UIImage *button1Image = [UIImage rssItemButtonForColor:buttonColor
+                                                       andSize:self.rssItem1Button.frame.size
+                                                         title:@"button1"
+                                                        shared:1000
+                                                       forDate:[NSDate date]
+                                                formatDateWith:_dateFormatter];
+        
+        [self.rssItem1Button setImage:button1Image forState:UIControlStateNormal];
+    }
     
-    [self.rssItem1Button setImage:button1Image forState:UIControlStateNormal];
+    if(self.rssItem2Button.frame.size.width > 0 && self.rssItem2Button.frame.size.height > 0)
+    {
+        UIColor* buttonColor2 = [buttonColor colorWithAlphaComponent: 0.8];
+        
+        UIImage *button1Image = [UIImage rssItemButtonForColor:buttonColor2
+                                                       andSize:self.rssItem2Button.frame.size
+                                                         title:@"button2"
+                                                        shared:1000
+                                                       forDate:[NSDate date]
+                                                formatDateWith:_dateFormatter];
+        
+        [self.rssItem2Button setImage:button1Image forState:UIControlStateNormal];
+    }
+    
+    if(self.rssItem3Button.frame.size.width > 0 && self.rssItem3Button.frame.size.height > 0)
+    {
+        UIColor* buttonColor3 = [buttonColor colorWithAlphaComponent: 0.6];
+        
+        UIImage *button1Image = [UIImage rssItemButtonForColor:buttonColor3
+                                                       andSize:self.rssItem3Button.frame.size
+                                                         title:@"button3"
+                                                        shared:1000
+                                                       forDate:[NSDate date]
+                                                formatDateWith:_dateFormatter];
+        
+        [self.rssItem3Button setImage:button1Image forState:UIControlStateNormal];
+    }
+
+
 }
 
 - (void)didReceiveMemoryWarning

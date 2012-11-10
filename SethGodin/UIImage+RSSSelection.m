@@ -165,6 +165,7 @@
              formatDateWith:(NSDateFormatter*) inFormatter
 {
     //CGRect outerFrame = CGRectMake(0, 0, inSize.width, inSize.height);
+    //UIColor* buttonColor = inColor;
     /*
         NSString* titleTextContent = inTitle;
         NSString* shareTextContent = [NSString stringWithFormat:@"%d", inShare];
@@ -173,7 +174,7 @@
     return [UIImage imageForSize:inSize withDrawingBlock:^
     {
         //// Color Declarations
-        UIColor* buttonColor = [UIColor colorWithRed: 0.751 green: 0.703 blue: 0.608 alpha: 1];
+        UIColor* buttonColor = inColor;
         CGFloat buttonColorRGBA[4];
         [buttonColor getRed: &buttonColorRGBA[0] green: &buttonColorRGBA[1] blue: &buttonColorRGBA[2] alpha: &buttonColorRGBA[3]];
         

@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *rssItem1Button;
+@property (weak, nonatomic) IBOutlet UIButton *rssItem2Button;
+@property (weak, nonatomic) IBOutlet UIButton *rssItem3Button;
 
 @end
