@@ -157,4 +157,91 @@
             }];
 }
 
++ (UIImage*) rssItemButtonForColor:(UIColor*) inColor
+             andSize:(CGSize) inSize
+             title:(NSString*) inTitle
+             shared:(NSUInteger) inShare
+             forDate:(NSDate*) inDate
+             formatDateWith:(NSDateFormatter*) inFormatter
+{
+    //CGRect outerFrame = CGRectMake(0, 0, inSize.width, inSize.height);
+    /*
+        NSString* titleTextContent = inTitle;
+        NSString* shareTextContent = [NSString stringWithFormat:@"%d", inShare];
+        NSString* dateTextContent =  [inFormatter stringFromDate:inDate];
+     */
+    return [UIImage imageForSize:inSize withDrawingBlock:^
+    {
+        //// Color Declarations
+        UIColor* buttonColor = [UIColor colorWithRed: 0.751 green: 0.703 blue: 0.608 alpha: 1];
+        CGFloat buttonColorRGBA[4];
+        [buttonColor getRed: &buttonColorRGBA[0] green: &buttonColorRGBA[1] blue: &buttonColorRGBA[2] alpha: &buttonColorRGBA[3]];
+        
+        UIColor* color15 = [UIColor colorWithRed: (buttonColorRGBA[0] * 0.85) green: (buttonColorRGBA[1] * 0.85) blue: (buttonColorRGBA[2] * 0.85) alpha: (buttonColorRGBA[3] * 0.85 + 0.15)];
+        
+        //// Frames
+        CGRect outerFrame = CGRectMake(0, 0, inSize.width, inSize.height);
+        
+        //// Subframes
+        CGRect arrowFrame = CGRectMake(CGRectGetMinX(outerFrame) + CGRectGetWidth(outerFrame) - 311, CGRectGetMinY(outerFrame) + floor((CGRectGetHeight(outerFrame) - 20) * 0.87500 + 0.5), 27, 20);
+        
+        
+        //// Abstracted Attributes
+        NSString* titleTextContent = inTitle;
+        NSString* shareTextContent = [NSString stringWithFormat:@"%d", inShare];
+        NSString* dateTextContent =  [inFormatter stringFromDate:inDate];
+        
+        
+        //// buttonRect Drawing
+        UIBezierPath* buttonRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(outerFrame) + floor(CGRectGetWidth(outerFrame) * 0.00000 + 0.5), CGRectGetMinY(outerFrame) + floor(CGRectGetHeight(outerFrame) * 0.00000 + 0.5), floor(CGRectGetWidth(outerFrame) * 1.00000 + 0.5) - floor(CGRectGetWidth(outerFrame) * 0.00000 + 0.5), floor(CGRectGetHeight(outerFrame) * 1.00000 + 0.5) - floor(CGRectGetHeight(outerFrame) * 0.00000 + 0.5))];
+        [buttonColor setFill];
+        [buttonRectPath fill];
+        
+        
+        //// titleText Drawing
+        CGRect titleTextRect = CGRectMake(CGRectGetMinX(outerFrame) + 7, CGRectGetMinY(outerFrame) + 10, 291, 84);
+        [[UIColor whiteColor] setFill];
+        [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 23.5] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+        
+        
+        //// Bezier Drawing
+        UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+        [bezierPath moveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.30807 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.05)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.34959 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 9.64) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.31908 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.58) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.33293 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 9.11)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.40981 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 11.05) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.36626 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 10.16) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.38633 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 10.63)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.48715 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 12.11) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.43329 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 11.48) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.45593 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 11.83)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.59460 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 12.61) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.51838 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 12.39) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.55420 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 12.55)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.59460 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 17.27)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.90200 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 10.08)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.59460 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 3)];
+        [bezierPath addLineToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.59460 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.14)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.55407 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.11) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.58437 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.14) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.57087 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.13)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.49798 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 7.95) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.53726 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.09) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.51857 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.04)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.43775 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 7.54) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.47738 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 7.86) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.46045 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 7.72)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.37085 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 6.78) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.41506 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 7.36) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.39275 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 7.11)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.30905 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 5.62) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.34893 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 6.46) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.32833 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 6.1)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.25926 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 3.84) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.28976 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 5.13) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.27316 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 4.54)];
+        [bezierPath addCurveToPoint: CGPointMake(CGRectGetMinX(arrowFrame) + 0.30807 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 8.05) controlPoint1: CGPointMake(CGRectGetMinX(arrowFrame) + 0.26582 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 5.41) controlPoint2: CGPointMake(CGRectGetMinX(arrowFrame) + 0.28209 * CGRectGetWidth(arrowFrame), CGRectGetMaxY(arrowFrame) - 6.79)];
+        [bezierPath closePath];
+        [color15 setFill];
+        [bezierPath fill];
+        
+        
+        //// shareText Drawing
+        CGRect shareTextRect = CGRectMake(CGRectGetMinX(outerFrame) + CGRectGetWidth(outerFrame) - 281, CGRectGetMinY(outerFrame) + floor((CGRectGetHeight(outerFrame) - 22) * 0.88182 + 0.5), 65, 22);
+        [color15 setFill];
+        [shareTextContent drawInRect: shareTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBold" size: 15] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+        
+        
+        //// dateText Drawing
+        CGRect dateTextRect = CGRectMake(CGRectGetMinX(outerFrame) + 104, CGRectGetMinY(outerFrame) + floor((CGRectGetHeight(outerFrame) - 21) * 0.86486 + 0.5), 194, 21);
+        [color15 setFill];
+        [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBold" size: 15] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentRight];
+        
+        
+    }];
+    
+   
+}
+
 @end

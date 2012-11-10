@@ -9,12 +9,12 @@
             <objects>
                 <viewController id="2" customClass="SGRSSSelectionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WY6-CC-BtK" userLabel="rightButton">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="164" id="m23-SB-oiu"/>
+                                    <constraint firstAttribute="width" constant="164" id="LUX-Ke-zRK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -27,7 +27,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZT-T8-auV" userLabel="leftButton">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="109" id="eHn-ey-K4P"/>
+                                    <constraint firstAttribute="height" constant="109" type="user" id="eHn-ey-K4P"/>
                                     <constraint firstAttribute="width" constant="157" id="jPr-8f-cSq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -70,12 +70,31 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="PCi-2L-PIS" firstAttribute="top" secondItem="jx5-Rh-jM4" secondAttribute="top" type="default" id="0em-EC-ACd"/>
                                     <constraint firstAttribute="trailing" secondItem="iYW-2i-4Sh" secondAttribute="trailing" type="user" id="5L9-lk-7D2"/>
-                                    <constraint firstItem="PCi-2L-PIS" firstAttribute="bottom" secondItem="jx5-Rh-jM4" secondAttribute="bottom" type="default" id="BxC-WJ-Ydf"/>
+                                    <constraint firstItem="PCi-2L-PIS" firstAttribute="top" secondItem="jx5-Rh-jM4" secondAttribute="top" constant="12" id="9jx-lT-gAs"/>
                                     <constraint firstItem="PCi-2L-PIS" firstAttribute="leading" secondItem="jx5-Rh-jM4" secondAttribute="leading" type="default" id="CHU-V9-PE1"/>
-                                    <constraint firstItem="iYW-2i-4Sh" firstAttribute="top" secondItem="jx5-Rh-jM4" secondAttribute="top" type="default" id="CxT-HK-K52"/>
-                                    <constraint firstItem="iYW-2i-4Sh" firstAttribute="bottom" secondItem="jx5-Rh-jM4" secondAttribute="bottom" type="default" id="Kcm-bq-bt0"/>
+                                    <constraint firstItem="iYW-2i-4Sh" firstAttribute="top" secondItem="PCi-2L-PIS" secondAttribute="top" type="default" id="Pmk-bU-gFv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gru-7C-ZqN" userLabel="buttonView">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-i9-a9M" userLabel="button1">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4Ak-i9-a9M" firstAttribute="leading" secondItem="Gru-7C-ZqN" secondAttribute="leading" type="default" id="6o5-gO-bLN"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Ak-i9-a9M" secondAttribute="bottom" constant="207" type="user" id="QAv-Ib-7cz"/>
+                                    <constraint firstItem="4Ak-i9-a9M" firstAttribute="top" secondItem="Gru-7C-ZqN" secondAttribute="top" type="user" id="oQi-Nb-PF1"/>
+                                    <constraint firstItem="4Ak-i9-a9M" firstAttribute="trailing" secondItem="Gru-7C-ZqN" secondAttribute="trailing" type="default" id="u7y-5T-MmA"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -83,11 +102,16 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="wZT-T8-auV" secondAttribute="bottom" type="user" id="0bB-7P-JLz"/>
                             <constraint firstItem="WY6-CC-BtK" firstAttribute="top" secondItem="wZT-T8-auV" secondAttribute="top" type="default" id="1F2-Lh-PqV"/>
-                            <constraint firstAttribute="bottom" secondItem="jx5-Rh-jM4" secondAttribute="bottom" constant="504" id="CC1-j3-Ovb"/>
+                            <constraint firstItem="Gru-7C-ZqN" firstAttribute="top" secondItem="jx5-Rh-jM4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5gD-oS-dVG"/>
+                            <constraint firstItem="Gru-7C-ZqN" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="J1J-u0-qNh"/>
+                            <constraint firstItem="Gru-7C-ZqN" firstAttribute="top" secondItem="3" secondAttribute="top" constant="49" type="user" id="P6T-YE-AqG"/>
+                            <constraint firstItem="Gru-7C-ZqN" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="XSX-2p-MEK"/>
                             <constraint firstItem="jx5-Rh-jM4" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="emV-lo-jA9"/>
                             <constraint firstItem="jx5-Rh-jM4" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="gEC-cM-jN2"/>
+                            <constraint firstItem="wZT-T8-auV" firstAttribute="top" secondItem="Gru-7C-ZqN" secondAttribute="bottom" constant="-10" type="user" id="j9W-MX-7qC"/>
                             <constraint firstItem="WY6-CC-BtK" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="jaJ-Zd-6Bg"/>
                             <constraint firstItem="WY6-CC-BtK" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="kMT-H6-yAq"/>
+                            <constraint firstItem="Gru-7C-ZqN" firstAttribute="top" secondItem="3" secondAttribute="top" priority="337" constant="46" type="user" id="mRT-kc-NU5"/>
                             <constraint firstItem="jx5-Rh-jM4" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="oen-EP-ZMW"/>
                             <constraint firstItem="wZT-T8-auV" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="wD8-9Z-u4b"/>
                         </constraints>
@@ -104,9 +128,25 @@
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SGRSSSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGRSSSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="downButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rssItem1Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="upButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

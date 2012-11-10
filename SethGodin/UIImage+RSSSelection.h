@@ -16,5 +16,11 @@
 + (UIImage*) searchButton;
 + (UIImage*) menuButton;
 
++ (UIImage*) rssItemButtonForColor:(UIColor*) inColor
+                           andSize:(CGSize) inSize
+                             title:(NSString*) inTitle
+                            shared:(NSUInteger) inShare
+                           forDate:(NSDate*) inDate
+                    formatDateWith:(NSDateFormatter*) inFormatter;
 
 @end

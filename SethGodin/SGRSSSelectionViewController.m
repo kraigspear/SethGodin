@@ -14,6 +14,10 @@
 @end
 
 @implementation SGRSSSelectionViewController
+{
+@private
+    NSDateFormatter *_dateFormatter;
+}
 
 - (void)viewDidLoad
 {
@@ -25,6 +29,24 @@
     [self.searchButton setImage:[UIImage searchButton] forState:UIControlStateNormal];
     [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
     
+    _dateFormatter           = [[NSDateFormatter alloc] init];
+    _dateFormatter.dateStyle =  NSDateFormatterMediumStyle;
+    
+    
+}
+
+- (void) viewDidLayoutSubviews
+{
+    UIColor* buttonColor = [UIColor colorWithRed: 0.751 green: 0.703 blue: 0.608 alpha: 1];
+    
+    UIImage *button1Image = [UIImage rssItemButtonForColor:buttonColor
+                                                   andSize:self.rssItem1Button.frame.size
+                                                     title:@"bla bla bla"
+                                                    shared:1000
+                                                    forDate:[NSDate date]
+                                                    formatDateWith:_dateFormatter];
+    
+    [self.rssItem1Button setImage:button1Image forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
