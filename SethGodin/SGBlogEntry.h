@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSString *content;
 @property (nonatomic, readonly) NSString *itemID;
 @property (nonatomic, readonly) NSString *urlStr;
+@property (nonatomic, assign)   NSUInteger shareCount;
 
 - (id) initWithDisplayName:(NSString*) inDisplayName
                 publishedOn:(NSDate*) inDate

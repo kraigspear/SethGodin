@@ -22,6 +22,10 @@
     NSArray *_blogItems;
     SGBlogContentGetter *_contentGetter;
     NSUInteger _pageNumber;
+    
+    SGBlogEntry *_entry1;
+    SGBlogEntry *_entry2;
+    SGBlogEntry *_entry3;
 }
 
 - (void)viewDidLoad
@@ -63,43 +67,62 @@
 {
     NSUInteger startAt = _pageNumber * 3;
     
-    SGBlogEntry *entry1 = [_blogItems objectAtIndex:startAt];
-    SGBlogEntry *entry2 = [_blogItems objectAtIndex:startAt+1];
-    SGBlogEntry *entry3 = [_blogItems objectAtIndex:startAt+2];
+    [_entry1 removeObserver:self forKeyPath:@"shareCount"];
+    [_entry2 removeObserver:self forKeyPath:@"shareCount"];
+    [_entry3 removeObserver:self forKeyPath:@"shareCount"];
     
+    _entry1 = [_blogItems objectAtIndex:startAt];
+    _entry2 = [_blogItems objectAtIndex:startAt+1];
+    _entry3 = [_blogItems objectAtIndex:startAt+2];
+    
+    [_entry1 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
+    [_entry2 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
+    [_entry3 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self updateButtonForEntry:_entry1];
+    [self updateButtonForEntry:_entry2];
+    [self updateButtonForEntry:_entry3];
+    
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"shareCount"])
+    {
+        [self updateButtonForEntry:object];
+    }
+}
+
+- (void) updateButtonForEntry:(SGBlogEntry*) inEntry
+{
     UIColor* buttonColor = [UIColor colorWithRed: 0.751 green: 0.703 blue: 0.608 alpha: 1];
-    
-    UIImage *button1Image = [UIImage rssItemButtonForColor:buttonColor
-                                                   andSize:self.rssItem1Button.frame.size
-                                                     title:entry1.displayName
-                                                    shared:1000
-                                                   forDate:entry1.datePublished
+    if(inEntry == _entry1)
+    {
+        [self updateButtonImage:inEntry forButton:_rssItem1Button withColor:buttonColor];
+    }
+    else if(inEntry == _entry2)
+    {
+        UIColor* buttonColor2 = [buttonColor colorWithAlphaComponent: 0.8];
+        [self updateButtonImage:inEntry forButton:_rssItem2Button withColor:buttonColor2];
+    }
+    else if(inEntry == _entry3)
+    {
+        UIColor* buttonColor3 = [buttonColor colorWithAlphaComponent: 0.6];
+        [self updateButtonImage:inEntry forButton:_rssItem3Button withColor:buttonColor3];
+    }
+
+}
+
+- (void) updateButtonImage:(SGBlogEntry*) inEntry forButton:(UIButton*) inButton withColor:(UIColor*) inColor
+{
+    UIImage *buttonImage = [UIImage rssItemButtonForColor:inColor
+                                                   andSize:inButton.frame.size
+                                                     title:inEntry.displayName
+                                                    shared:inEntry.shareCount
+                                                   forDate:inEntry.datePublished
                                             formatDateWith:_dateFormatter];
     
-    
-    [self.rssItem1Button setImage:button1Image forState:UIControlStateNormal];
-    
-    UIColor* buttonColor2 = [buttonColor colorWithAlphaComponent: 0.8];
-    
-    UIImage *button2Image = [UIImage rssItemButtonForColor:buttonColor2
-                                                   andSize:self.rssItem2Button.frame.size
-                                                     title:entry2.displayName
-                                                    shared:1000
-                                                   forDate:entry2.datePublished
-                                            formatDateWith:_dateFormatter];
-    
-    [self.rssItem2Button setImage:button2Image forState:UIControlStateNormal];
-    
-    UIColor* buttonColor3 = [buttonColor colorWithAlphaComponent: 0.6];
-    
-    UIImage *button3Image = [UIImage rssItemButtonForColor:buttonColor3
-                                                   andSize:self.rssItem3Button.frame.size
-                                                     title:entry3.displayName
-                                                    shared:1000
-                                                   forDate:entry3.datePublished
-                                            formatDateWith:_dateFormatter];
-    
-    [self.rssItem3Button setImage:button3Image forState:UIControlStateNormal];
+    [inButton setImage:buttonImage forState:UIControlStateNormal];
     
 }
 
