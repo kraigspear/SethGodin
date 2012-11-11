@@ -10,6 +10,8 @@
 #import "UIImage+RSSSelection.h"
 #import "SGBlogContentGetter.h"
 #import "SGBlogEntry.h"
+#import "SGPostViewController.h"
+#import "SGAppDelegate.h"
 
 @interface SGRSSSelectionViewController ()
 
@@ -18,7 +20,6 @@
 @implementation SGRSSSelectionViewController
 {
 @private
-    NSDateFormatter *_dateFormatter;
     NSArray *_blogItems;
     SGBlogContentGetter *_contentGetter;
     NSUInteger _pageNumber;
@@ -26,6 +27,8 @@
     SGBlogEntry *_entry1;
     SGBlogEntry *_entry2;
     SGBlogEntry *_entry3;
+    
+    __weak SGBlogEntry *_blogEntry;
 }
 
 - (void)viewDidLoad
@@ -42,25 +45,38 @@
     [self.searchButton setImage:[UIImage searchButton] forState:UIControlStateNormal];
     [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
     
-    _dateFormatter           = [[NSDateFormatter alloc] init];
-    _dateFormatter.dateStyle =  NSDateFormatterMediumStyle;
-    
     _pageNumber = 0;
+    
+    [self loadLatestFeedData];
+    
+    if(&UIApplicationWillEnterForegroundNotification != nil)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForegrond) name:UIApplicationWillEnterForegroundNotification object:nil];
+    }
     
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void) appEnteredForegrond
 {
-    [super viewWillAppear:animated];
+    [self loadLatestFeedData];
+}
+
+- (void) viewDidLayoutSubviews
+{
     
+}
+
+- (void) loadLatestFeedData
+{
     [_contentGetter requestLatestBlocksuccess:^(NSArray *inItems)
-    {
-        _blogItems = inItems;
-        [self updateButtons];
-    } failed:^(NSError *inError)
-    {
-        
-    }];
+     {
+         _pageNumber = 0;
+         _blogItems = inItems;
+         [self updateButtons];
+     } failed:^(NSError *inError)
+     {
+         
+     }];
 }
 
 - (void) updateButtons
@@ -84,6 +100,28 @@
     [self updateButtonForEntry:_entry3];
     
 }
+
+#pragma mark -
+#pragma mark button actions
+
+- (IBAction)button1Action:(id)sender
+{
+    _blogEntry = _entry1;
+    [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
+}
+
+- (IBAction)button2Action:(id)sender
+{
+    _blogEntry = _entry2;
+    [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
+}
+
+- (IBAction)button3Action:(id)sender
+{
+    _blogEntry = _entry3;
+    [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
+}
+
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -115,12 +153,16 @@
 
 - (void) updateButtonImage:(SGBlogEntry*) inEntry forButton:(UIButton*) inButton withColor:(UIColor*) inColor
 {
+    
+    SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
+    
+    
     UIImage *buttonImage = [UIImage rssItemButtonForColor:inColor
                                                    andSize:inButton.frame.size
                                                      title:inEntry.displayName
                                                     shared:inEntry.shareCount
                                                    forDate:inEntry.datePublished
-                                            formatDateWith:_dateFormatter];
+                                            formatDateWith:appDelegate.dateformatter];
     
     [inButton setImage:buttonImage forState:UIControlStateNormal];
     
@@ -137,6 +179,15 @@
 {
     _pageNumber++;
     [self updateButtons];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"viewPostSeque"])
+    {
+        SGPostViewController *postVC = segue.destinationViewController;
+        postVC.blogEntry = _blogEntry;
+    }
 }
 
 

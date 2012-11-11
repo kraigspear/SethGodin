@@ -94,7 +94,6 @@
 {
      NSString *urlStr = [NSString stringWithFormat:@"http://graph.facebook.com/?id=%@", inEntry.urlStr];
     
-     NSLog(@"share URL = %@", urlStr);
      NSURL *url = [NSURL URLWithString:urlStr];
      NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -103,18 +102,10 @@
      {
          NSDictionary *dict = (NSDictionary*) JSON;
          
-         for(NSString *akey in dict.allKeys)
-         {
-             NSLog(@"key = %@", akey);
-         }
          
          NSString *facebookShared = [[dict objectForKey:@"shares"] stringValue];
          
-         NSLog(@"facebookShared %@", facebookShared);
          inEntry.shareCount += [facebookShared integerValue];
-         
-         
-         
      } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
      {
          

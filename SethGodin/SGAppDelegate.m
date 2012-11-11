@@ -9,10 +9,20 @@
 #import "SGAppDelegate.h"
 
 @implementation SGAppDelegate
+{
+@private
+    NSDateFormatter *_dateformatter;
+}
+
+- (NSDateFormatter*) dateformatter
+{
+    return _dateformatter;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    _dateformatter           = [[NSDateFormatter alloc] init];
+    _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     return YES;
 }
 							
