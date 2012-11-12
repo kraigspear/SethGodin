@@ -8,7 +8,7 @@
 
 #import "SGPostViewController.h"
 #import "UIImage+RSSSelection.h"
-#import "UIImage+Buttons.h"
+#import "UIImage+General.h"
 #import "UIImage+BBlock.h"
 #import "SGBlogEntry.h"
 #import "SGAppDelegate.h"

@@ -69,33 +69,6 @@
             }];
 }
 
-+ (UIImage*) titleBar
-{
-    return [UIImage imageWithIdentifier:@"titleBar" forSize:CGSizeMake(320,44) andDrawingBlock:^
-            {
-                //// Color Declarations
-                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
-                UIColor* color4 = [yellow colorWithAlphaComponent: 0.03];
-                
-                //// Abstracted Attributes
-                NSString* textContent = @"SETH GODIN";
-                
-                
-                //// Rectangle Drawing
-                UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 44)];
-                [color4 setFill];
-                [rectanglePath fill];
-                
-                
-                //// Text Drawing
-                CGRect textRect = CGRectMake(0, 7, 320, 30);
-                [yellow setFill];
-                [textContent drawInRect: textRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 26] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
-                
-                
-
-            }];
-}
 
 + (UIImage*) searchButton
 {

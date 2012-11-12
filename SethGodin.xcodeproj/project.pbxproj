@@ -10,11 +10,12 @@
 		A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009C8164EEDC200779F84 /* SGBlogEntry.m */; };
 		A91009CC164EF31B00779F84 /* SGBlogContentGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009CB164EF31B00779F84 /* SGBlogContentGetter.m */; };
 		A91009D41650084F00779F84 /* SGPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009D31650084F00779F84 /* SGPostViewController.m */; };
-		A91009D71650231500779F84 /* UIImage+Buttons.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009D61650231500779F84 /* UIImage+Buttons.m */; };
+		A91009D71650231500779F84 /* UIImage+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009D61650231500779F84 /* UIImage+General.m */; };
 		A91009D9165030D600779F84 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91009D8165030D600779F84 /* CoreText.framework */; };
 		A9100A4B165037A600779F84 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9100A4A165037A600779F84 /* ImageIO.framework */; };
 		A9100A4D165037B100779F84 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9100A4C165037B100779F84 /* QuartzCore.framework */; };
 		A9100A4F165044DD00779F84 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9100A4E165044DD00779F84 /* SystemConfiguration.framework */; };
+		A9100A541650F9EF00779F84 /* SGMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A531650F9EF00779F84 /* SGMenuViewController.m */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -53,12 +54,15 @@
 		A91009CB164EF31B00779F84 /* SGBlogContentGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogContentGetter.m; sourceTree = "<group>"; };
 		A91009D21650084F00779F84 /* SGPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPostViewController.h; sourceTree = "<group>"; };
 		A91009D31650084F00779F84 /* SGPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPostViewController.m; sourceTree = "<group>"; };
-		A91009D51650231500779F84 /* UIImage+Buttons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Buttons.h"; path = "SethGodin/UIImage+Buttons.h"; sourceTree = "<group>"; };
-		A91009D61650231500779F84 /* UIImage+Buttons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Buttons.m"; path = "SethGodin/UIImage+Buttons.m"; sourceTree = "<group>"; };
+		A91009D51650231500779F84 /* UIImage+General.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+General.h"; path = "SethGodin/UIImage+General.h"; sourceTree = "<group>"; };
+		A91009D61650231500779F84 /* UIImage+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+General.m"; path = "SethGodin/UIImage+General.m"; sourceTree = "<group>"; };
 		A91009D8165030D600779F84 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		A9100A4A165037A600779F84 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		A9100A4C165037B100779F84 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A9100A4E165044DD00779F84 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A9100A521650F9EF00779F84 /* SGMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMenuViewController.h; sourceTree = "<group>"; };
+		A9100A531650F9EF00779F84 /* SGMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMenuViewController.m; sourceTree = "<group>"; };
+		A9100A551650FC5700779F84 /* BlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BlockTypes.h; path = SethGodin/BlockTypes.h; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SethGodin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -153,12 +157,21 @@
 			name = PostView;
 			sourceTree = "<group>";
 		};
+		A9100A511650F9D800779F84 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				A9100A521650F9EF00779F84 /* SGMenuViewController.h */,
+				A9100A531650F9EF00779F84 /* SGMenuViewController.m */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
+				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D6854F164D0DBD007A9ADA /* General */,
 				A9D6850D164D005D007A9ADA /* 3RD Party */,
-				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D684E6164CFE8D007A9ADA /* Frameworks */,
 				A9D684E4164CFE8D007A9ADA /* Products */,
 			);
@@ -191,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				A9D6854E164D0D47007A9ADA /* RSSSelection */,
+				A9100A511650F9D800779F84 /* Menu */,
 				A91009D11650083200779F84 /* PostView */,
 				A91009C6164EED9C00779F84 /* Model */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
@@ -310,8 +324,9 @@
 			children = (
 				A9D68550164D0DC6007A9ADA /* UIImage+BBlock.h */,
 				A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */,
-				A91009D51650231500779F84 /* UIImage+Buttons.h */,
-				A91009D61650231500779F84 /* UIImage+Buttons.m */,
+				A91009D51650231500779F84 /* UIImage+General.h */,
+				A91009D61650231500779F84 /* UIImage+General.m */,
+				A9100A551650FC5700779F84 /* BlockTypes.h */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -406,7 +421,8 @@
 				A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */,
 				A91009CC164EF31B00779F84 /* SGBlogContentGetter.m in Sources */,
 				A91009D41650084F00779F84 /* SGPostViewController.m in Sources */,
-				A91009D71650231500779F84 /* UIImage+Buttons.m in Sources */,
+				A91009D71650231500779F84 /* UIImage+General.m in Sources */,
+				A9100A541650F9EF00779F84 /* SGMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

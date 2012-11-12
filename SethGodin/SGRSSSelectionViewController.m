@@ -12,6 +12,8 @@
 #import "SGBlogEntry.h"
 #import "SGPostViewController.h"
 #import "SGAppDelegate.h"
+#import "UIImage+General.h"
+#import "SGMenuViewController.h"
 
 @interface SGRSSSelectionViewController ()
 
@@ -29,7 +31,12 @@
     SGBlogEntry *_entry3;
     
     __weak SGBlogEntry *_blogEntry;
+    
+    SGMenuViewController *_menuViewController;
 }
+
+#pragma mark -
+#pragma mark general
 
 - (void)viewDidLoad
 {
@@ -56,53 +63,99 @@
     
 }
 
-- (void) appEnteredForegrond
+
+
+- (void)didReceiveMemoryWarning
 {
-    [self loadLatestFeedData];
+    [super didReceiveMemoryWarning];
+    _contentGetter = nil;
 }
 
-- (void) viewDidLayoutSubviews
+
+#pragma mark -
+#pragma mark segue
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if([segue.identifier isEqualToString:@"viewPostSeque"])
+    {
+        SGPostViewController *postVC = segue.destinationViewController;
+        postVC.blogEntry = _blogEntry;
+    }
+}
+
+
+
+
+#pragma mark -
+#pragma mark menu
+
+- (IBAction)menuAction:(id)sender
+{
+    [self showMenu];
+}
+
+- (void) showMenu
+{
+    _menuViewController = (SGMenuViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"menu"];
+    
+    [self addChildViewController:_menuViewController];
+    
+    UIView *menuView = _menuViewController.view;
+    
+    CGRect menuFrame = menuView.frame;
+    menuFrame.origin.y = -menuFrame.size.height;
+    
+    menuView.frame = menuFrame;
+    
+    [self.view addSubview:menuView];
+    
+    __weak SGRSSSelectionViewController *weakSelf = self;
+    
+    _menuViewController.close = ^
+    {
+        SGRSSSelectionViewController *strongSelf = weakSelf;
+        
+        if(strongSelf)
+        {
+            [strongSelf closeMenu];
+        }
+        
+    };
+    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    {
+        menuView.frame = CGRectMake(0, 0, menuFrame.size.width, menuFrame.size.height);
+    }
+    } completion:^(BOOL finished)
+    {
+        
+    }];
     
 }
 
-- (void) loadLatestFeedData
+- (void) closeMenu
 {
-    [_contentGetter requestLatestBlocksuccess:^(NSArray *inItems)
-     {
-         _pageNumber = 0;
-         _blogItems = inItems;
-         [self updateButtons];
-     } failed:^(NSError *inError)
-     {
-         
-     }];
-}
-
-- (void) updateButtons
-{
-    NSUInteger startAt = _pageNumber * 3;
+    CGRect menuFrame = _menuViewController.view.frame;
+    menuFrame.origin.y = -menuFrame.size.height;
     
-    [_entry1 removeObserver:self forKeyPath:@"shareCount"];
-    [_entry2 removeObserver:self forKeyPath:@"shareCount"];
-    [_entry3 removeObserver:self forKeyPath:@"shareCount"];
-    
-    _entry1 = [_blogItems objectAtIndex:startAt];
-    _entry2 = [_blogItems objectAtIndex:startAt+1];
-    _entry3 = [_blogItems objectAtIndex:startAt+2];
-    
-    [_entry1 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
-    [_entry2 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
-    [_entry3 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self updateButtonForEntry:_entry1];
-    [self updateButtonForEntry:_entry2];
-    [self updateButtonForEntry:_entry3];
-    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    {
+        _menuViewController.view.frame = menuFrame;
+    }
+    } completion:^(BOOL finished)
+    {
+        if(finished)
+        {
+            [_menuViewController.view removeFromSuperview];
+            [_menuViewController removeFromParentViewController];
+            _menuViewController = nil;
+        }
+    }];
 }
 
 #pragma mark -
-#pragma mark button actions
+#pragma mark entry selection actions
 
 - (IBAction)button1Action:(id)sender
 {
@@ -122,6 +175,28 @@
     [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
 }
 
+#pragma mark -
+#pragma mark feed loading
+
+- (void) appEnteredForegrond
+{
+    [self loadLatestFeedData];
+}
+
+- (void) loadLatestFeedData
+{
+    if(!_contentGetter) _contentGetter = [[SGBlogContentGetter alloc] init];
+    
+    [_contentGetter requestLatestBlocksuccess:^(NSArray *inItems)
+     {
+         _pageNumber = 0;
+         _blogItems = inItems;
+         [self updateButtons];
+     } failed:^(NSError *inError)
+     {
+         
+     }];
+}
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -169,6 +244,32 @@
 }
 
 
+#pragma mark -
+#pragma mark navigation buttons
+
+- (void) updateButtons
+{
+    NSUInteger startAt = _pageNumber * 3;
+    
+    [_entry1 removeObserver:self forKeyPath:@"shareCount"];
+    [_entry2 removeObserver:self forKeyPath:@"shareCount"];
+    [_entry3 removeObserver:self forKeyPath:@"shareCount"];
+    
+    _entry1 = [_blogItems objectAtIndex:startAt];
+    _entry2 = [_blogItems objectAtIndex:startAt+1];
+    _entry3 = [_blogItems objectAtIndex:startAt+2];
+    
+    [_entry1 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
+    [_entry2 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
+    [_entry3 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self updateButtonForEntry:_entry1];
+    [self updateButtonForEntry:_entry2];
+    [self updateButtonForEntry:_entry3];
+    
+}
+
+
 - (IBAction)previousButton:(id)sender
 {
     NSInteger newPageNumber = _pageNumber - 1;
@@ -196,20 +297,7 @@
     
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:@"viewPostSeque"])
-    {
-        SGPostViewController *postVC = segue.destinationViewController;
-        postVC.blogEntry = _blogEntry;
-    }
-}
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

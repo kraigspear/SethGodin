@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (Buttons)
+@interface UIImage (General)
 
 + (UIImage*) backButton;
++ (UIImage*) titleBar;
++ (UIImage*) closeButton;
 
 @end
