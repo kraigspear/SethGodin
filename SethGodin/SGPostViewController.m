@@ -21,7 +21,17 @@
     [super viewDidLoad];
     self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBar]];
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
-    
+    for (UIView* subView in self.webView.subviews)
+    {
+        if ([subView isKindOfClass:[UIScrollView class]]) {
+            for (UIView* shadowView in [subView subviews])
+            {
+                if ([shadowView isKindOfClass:[UIImageView class]]) {
+                    [shadowView setHidden:YES];
+                }
+            }
+        }
+    }
 }
 
 - (IBAction)backAction:(id)sender
@@ -32,7 +42,17 @@
 - (void) viewDidLayoutSubviews
 {
     self.titleView.backgroundColor = [UIColor colorWithPatternImage:[self titleImage]];
-    [self.textView setValue: self.blogEntry.content forKey:@"contentToHTMLString"];
+    
+    NSString *htmlWithStyle = [NSString stringWithFormat:@"<html> \n"
+                                   "<head> \n"
+                                   "<style type=\"text/css\"> \n"
+                                   "body {font-family: \"%@\"; font-size: %@;}\n"
+                                   "</style> \n"
+                                   "</head> \n"
+                                   "<body>%@</body> \n"
+                                   "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
+    
+    [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
 }
 
 - (UIImage*) titleImage

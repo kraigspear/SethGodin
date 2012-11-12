@@ -171,14 +171,29 @@
 
 - (IBAction)previousButton:(id)sender
 {
-    _pageNumber--;
-    [self updateButtons];
+    NSInteger newPageNumber = _pageNumber - 1;
+    
+    if(newPageNumber >= 0)
+    {
+        _pageNumber = newPageNumber;
+        [self updateButtons];
+    }
+    
 }
 
 - (IBAction)nextButton:(id)sender
 {
-    _pageNumber++;
-    [self updateButtons];
+    NSUInteger newPageNumber = _pageNumber + 1;
+    NSUInteger startAt = newPageNumber * 3;
+    
+    NSUInteger lastItem = startAt + 3;
+    
+    if(lastItem <= (_blogItems.count - 1))
+    {
+        _pageNumber = newPageNumber;
+        [self updateButtons];
+    }
+    
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

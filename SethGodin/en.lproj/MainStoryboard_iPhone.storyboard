@@ -225,32 +225,30 @@
                                     <constraint firstAttribute="height" constant="132" type="user" id="EWR-5W-EAX"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZX-Vf-cHg">
+                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhM-ij-3pw">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99215686274509807" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="oZX-Vf-cHg" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3Bq-md-T2E"/>
+                            <constraint firstItem="BhM-ij-3pw" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EDZ-36-7nd"/>
                             <constraint firstItem="3VA-GR-4p1" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="ONo-aU-bIZ"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="VlQ-Qo-7cN"/>
                             <constraint firstItem="3VA-GR-4p1" firstAttribute="top" secondItem="cXb-Vt-HXm" secondAttribute="bottom" type="user" id="Wro-Ap-vDo"/>
-                            <constraint firstItem="oZX-Vf-cHg" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dj8-RA-3rw"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="top" secondItem="sIn-qm-l11" secondAttribute="top" type="user" id="htX-ou-UuV"/>
                             <constraint firstItem="3VA-GR-4p1" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="jUP-C9-tnX"/>
-                            <constraint firstAttribute="bottom" secondItem="oZX-Vf-cHg" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="ngY-ws-RVt"/>
+                            <constraint firstItem="BhM-ij-3pw" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ley-fM-K2N"/>
+                            <constraint firstAttribute="trailing" secondItem="BhM-ij-3pw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ri9-CD-2fK"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="t4F-OP-EGR"/>
-                            <constraint firstItem="oZX-Vf-cHg" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="yGb-L7-aMd"/>
+                            <constraint firstAttribute="bottom" secondItem="BhM-ij-3pw" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="wHW-rv-KTG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vqd-Ob-zfs"/>
                     <connections>
                         <outlet property="backButton" destination="eCp-0o-257" id="lnY-Hu-qgB"/>
-                        <outlet property="textView" destination="oZX-Vf-cHg" id="5Kc-MZ-lin"/>
                         <outlet property="titleView" destination="3VA-GR-4p1" id="0EI-Wo-CCG"/>
                         <outlet property="topView" destination="cXb-Vt-HXm" id="rVs-Ns-bXR"/>
+                        <outlet property="webView" destination="BhM-ij-3pw" id="f8P-L1-Z9A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uhk-IZ-6eH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -277,39 +275,6 @@
             <point key="canvasLocation" x="426" y="141"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SGPostViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGPostViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backAction:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="titleView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SGRSSSelectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGRSSSelectionViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="button1Action:"/>
-                <relationship kind="action" name="button2Action:"/>
-                <relationship kind="action" name="button3Action:"/>
-                <relationship kind="action" name="nextButton:"/>
-                <relationship kind="action" name="previousButton:"/>
-                <relationship kind="outlet" name="downButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rssItem1Button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rssItem2Button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rssItem3Button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="searchButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="upButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

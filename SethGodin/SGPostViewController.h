@@ -17,6 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 
 @property (nonatomic, strong) SGBlogEntry *blogEntry;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
