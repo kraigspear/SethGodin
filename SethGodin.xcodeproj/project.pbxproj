@@ -190,9 +190,9 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
+				A9D6854E164D0D47007A9ADA /* RSSSelection */,
 				A91009D11650083200779F84 /* PostView */,
 				A91009C6164EED9C00779F84 /* Model */,
-				A9D6854E164D0D47007A9ADA /* RSSSelection */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
 				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
 				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
