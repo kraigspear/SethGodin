@@ -38,15 +38,21 @@
                                     <constraint firstItem="PKE-MZ-eHl" firstAttribute="centerY" secondItem="8PK-Ri-3NT" secondAttribute="centerY" type="default" id="l6S-uG-FdV"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owK-Sb-sWY"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8PK-Ri-3NT" firstAttribute="top" secondItem="zf3-MJ-MUt" secondAttribute="top" type="user" id="0kI-ry-80s"/>
+                            <constraint firstItem="owK-Sb-sWY" firstAttribute="top" secondItem="8PK-Ri-3NT" secondAttribute="bottom" type="user" id="6tL-bZ-wEf"/>
                             <constraint firstItem="8PK-Ri-3NT" firstAttribute="trailing" secondItem="zf3-MJ-MUt" secondAttribute="trailing" type="default" id="IT3-Yl-wip"/>
+                            <constraint firstItem="owK-Sb-sWY" firstAttribute="trailing" secondItem="zf3-MJ-MUt" secondAttribute="trailing" type="default" id="Tez-uU-gB3"/>
                             <constraint firstItem="8PK-Ri-3NT" firstAttribute="leading" secondItem="zf3-MJ-MUt" secondAttribute="leading" type="default" id="r4v-zV-g1P"/>
+                            <constraint firstItem="owK-Sb-sWY" firstAttribute="leading" secondItem="zf3-MJ-MUt" secondAttribute="leading" type="default" id="sXi-df-Bdl"/>
+                            <constraint firstItem="owK-Sb-sWY" firstAttribute="bottom" secondItem="zf3-MJ-MUt" secondAttribute="bottom" type="default" id="tU8-17-Yf8"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="owK-Sb-sWY" id="Pqt-79-iSb"/>
                         <outlet property="closeButton" destination="PKE-MZ-eHl" id="b9t-fo-M7M"/>
                         <outlet property="titleBar" destination="8PK-Ri-3NT" id="KgF-VK-PK0"/>
                     </connections>

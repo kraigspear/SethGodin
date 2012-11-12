@@ -8,7 +8,7 @@
 
 #import "SGMenuViewController.h"
 #import "UIImage+General.h"
-
+#import "UIImage+Menu.h"
 
 @implementation SGMenuViewController
 
@@ -17,6 +17,11 @@
     [super viewDidLoad];
     self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBar]];
     [self.closeButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    self.backgroundImageView.image = [UIImage backgroundImageForSize:self.backgroundImageView.frame.size];
 }
 
 - (IBAction)closeAction:(id)sender

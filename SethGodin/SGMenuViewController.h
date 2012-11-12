@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
 @property (nonatomic, copy) BasicBlock close;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @end
