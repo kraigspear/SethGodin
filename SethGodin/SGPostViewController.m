@@ -12,9 +12,15 @@
 #import "UIImage+BBlock.h"
 #import "SGBlogEntry.h"
 #import "SGAppDelegate.h"
+#import "SGFavorites.h"
 
 
 @implementation SGPostViewController
+{
+@private
+    SGFavorites *_favorites;
+    BOOL _entryFavorite;
+}
 
 - (void) viewDidLoad
 {
@@ -32,6 +38,23 @@
             }
         }
     }
+    
+    [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
+    
+    _favorites = [SGFavorites loadFavorites];
+    
+    _entryFavorite = [_favorites containsBlogEntry:self.blogEntry];
+    
+    [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
+    [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];
+    
+    [self updateButtonSelected];
+    
+}
+
+- (void) updateButtonSelected
+{
+    self.favoritesButton.selected = _entryFavorite;
 }
 
 - (IBAction)backAction:(id)sender
@@ -87,13 +110,45 @@
         CGRect dateTextRect = CGRectMake(17, 97, 222, 35);
         [[UIColor whiteColor] setFill];
         [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 15] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
-        
-        
-
     }];
 }
 
 
+
+- (IBAction)favoritesAction:(id)sender
+{
+    if(_entryFavorite)
+    {
+        [_favorites removeBlogEntry:self.blogEntry];
+    }
+    else
+    {
+        [_favorites addBlogEntry:self.blogEntry];
+    }
+
+    _entryFavorite = [_favorites containsBlogEntry:self.blogEntry];
+    [self updateButtonSelected];
+    
+}
+
+- (IBAction)shareAction:(id)sender
+{ 
+    
+    NSURL *url = [NSURL URLWithString:self.blogEntry.urlStr];
+    
+    NSString *textToShare = [[self.blogEntry.summary substringToIndex:50] stringByAppendingString:@"..."];
+    
+    NSArray *shareItems = @[@"SETH GODIN Blog", self.blogEntry.displayName, textToShare, url];
+    
+    UIActivityViewController *activityViewController =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:shareItems
+     applicationActivities:nil];
+    
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
+    
+}
 
 
 @end

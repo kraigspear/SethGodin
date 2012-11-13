@@ -18,5 +18,10 @@
 
 @property (nonatomic, strong) SGBlogEntry *blogEntry;
 
+@property (weak, nonatomic) IBOutlet UIButton *favoritesButton;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+
+
 @end

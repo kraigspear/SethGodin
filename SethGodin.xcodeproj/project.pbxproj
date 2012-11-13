@@ -17,6 +17,7 @@
 		A9100A4F165044DD00779F84 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9100A4E165044DD00779F84 /* SystemConfiguration.framework */; };
 		A9100A541650F9EF00779F84 /* SGMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A531650F9EF00779F84 /* SGMenuViewController.m */; };
 		A9100A5816510AD500779F84 /* UIImage+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A5716510AD500779F84 /* UIImage+Menu.m */; };
+		A9100A5B165247C200779F84 /* SGFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A5A165247C200779F84 /* SGFavorites.m */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -66,6 +67,8 @@
 		A9100A551650FC5700779F84 /* BlockTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BlockTypes.h; path = SethGodin/BlockTypes.h; sourceTree = "<group>"; };
 		A9100A5616510AD500779F84 /* UIImage+Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Menu.h"; sourceTree = "<group>"; };
 		A9100A5716510AD500779F84 /* UIImage+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Menu.m"; sourceTree = "<group>"; };
+		A9100A59165247C200779F84 /* SGFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavorites.h; sourceTree = "<group>"; };
+		A9100A5A165247C200779F84 /* SGFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavorites.m; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SethGodin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -147,6 +150,8 @@
 				A91009C8164EEDC200779F84 /* SGBlogEntry.m */,
 				A91009CA164EF31B00779F84 /* SGBlogContentGetter.h */,
 				A91009CB164EF31B00779F84 /* SGBlogContentGetter.m */,
+				A9100A59165247C200779F84 /* SGFavorites.h */,
+				A9100A5A165247C200779F84 /* SGFavorites.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -208,14 +213,14 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
+				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
+				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
 				A9D6854E164D0D47007A9ADA /* RSSSelection */,
-				A9100A511650F9D800779F84 /* Menu */,
 				A91009D11650083200779F84 /* PostView */,
+				A9100A511650F9D800779F84 /* Menu */,
 				A91009C6164EED9C00779F84 /* Model */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
 				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
-				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
-				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
 			);
 			path = SethGodin;
@@ -429,6 +434,7 @@
 				A91009D71650231500779F84 /* UIImage+General.m in Sources */,
 				A9100A541650F9EF00779F84 /* SGMenuViewController.m in Sources */,
 				A9100A5816510AD500779F84 /* UIImage+Menu.m in Sources */,
+				A9100A5B165247C200779F84 /* SGFavorites.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

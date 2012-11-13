@@ -118,5 +118,94 @@
             }];
 }
 
++ (UIImage*) favoritesButton:(BOOL) isSelcted
+{
+    NSString *identifier = [NSString stringWithFormat:@"favoritesButton%d", isSelcted];
+    
+    return [UIImage imageWithIdentifier:identifier forSize:CGSizeMake(44,44) andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* color0 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
+                UIColor* color8 = [color0 colorWithAlphaComponent: 0.3];
+                
+                //// Bezier 5 Drawing
+                UIBezierPath* bezier5Path = [UIBezierPath bezierPath];
+                [bezier5Path moveToPoint: CGPointMake(22.39, 35.79)];
+                [bezier5Path addCurveToPoint: CGPointMake(28.87, 10) controlPoint1: CGPointMake(46.8, 19.81) controlPoint2: CGPointMake(33.83, 10)];
+                [bezier5Path addCurveToPoint: CGPointMake(22.39, 13.81) controlPoint1: CGPointMake(23.91, 10) controlPoint2: CGPointMake(22.39, 13.81)];
+                [bezier5Path addCurveToPoint: CGPointMake(15.9, 10) controlPoint1: CGPointMake(22.39, 13.81) controlPoint2: CGPointMake(20.86, 10)];
+                [bezier5Path addCurveToPoint: CGPointMake(22.39, 35.79) controlPoint1: CGPointMake(10.94, 10) controlPoint2: CGPointMake(-2.03, 19.81)];
+                [bezier5Path closePath];
+                
+                if(isSelcted)
+                {
+                    [color0 setFill];
+                }
+                else
+                {
+                    [color8 setFill];
+                }
+                
+                [bezier5Path fill];
+
+            }];
+}
+
++ (UIImage*) shareButton
+{
+    return [UIImage imageWithIdentifier:@"shareButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                
+                //// Group
+                {
+                    //// Bezier Drawing
+                    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+                    [bezierPath moveToPoint: CGPointMake(14.57, 21.47)];
+                    [bezierPath addCurveToPoint: CGPointMake(16.2, 19.34) controlPoint1: CGPointMake(15, 20.75) controlPoint2: CGPointMake(15.55, 20.04)];
+                    [bezierPath addCurveToPoint: CGPointMake(18.57, 17.44) controlPoint1: CGPointMake(16.86, 18.64) controlPoint2: CGPointMake(17.65, 18)];
+                    [bezierPath addCurveToPoint: CGPointMake(21.61, 16.03) controlPoint1: CGPointMake(19.49, 16.87) controlPoint2: CGPointMake(20.38, 16.4)];
+                    [bezierPath addCurveToPoint: CGPointMake(25.83, 15.35) controlPoint1: CGPointMake(22.84, 15.65) controlPoint2: CGPointMake(24.25, 15.42)];
+                    [bezierPath addLineToPoint: CGPointMake(25.83, 9.1)];
+                    [bezierPath addLineToPoint: CGPointMake(37.92, 18.75)];
+                    [bezierPath addLineToPoint: CGPointMake(25.83, 28.24)];
+                    [bezierPath addLineToPoint: CGPointMake(25.83, 21.35)];
+                    [bezierPath addCurveToPoint: CGPointMake(24.24, 21.38) controlPoint1: CGPointMake(25.43, 21.35) controlPoint2: CGPointMake(24.9, 21.36)];
+                    [bezierPath addCurveToPoint: CGPointMake(22.04, 21.61) controlPoint1: CGPointMake(23.58, 21.41) controlPoint2: CGPointMake(22.85, 21.48)];
+                    [bezierPath addCurveToPoint: CGPointMake(19.67, 22.15) controlPoint1: CGPointMake(21.23, 21.73) controlPoint2: CGPointMake(20.56, 21.91)];
+                    [bezierPath addCurveToPoint: CGPointMake(17.04, 23.17) controlPoint1: CGPointMake(18.78, 22.4) controlPoint2: CGPointMake(17.9, 22.73)];
+                    [bezierPath addCurveToPoint: CGPointMake(14.61, 24.73) controlPoint1: CGPointMake(16.18, 23.6) controlPoint2: CGPointMake(15.37, 24.08)];
+                    [bezierPath addCurveToPoint: CGPointMake(12.65, 27.12) controlPoint1: CGPointMake(13.85, 25.38) controlPoint2: CGPointMake(13.2, 26.18)];
+                    [bezierPath addCurveToPoint: CGPointMake(14.57, 21.47) controlPoint1: CGPointMake(12.91, 25) controlPoint2: CGPointMake(13.55, 23.16)];
+                    [bezierPath closePath];
+                    [yellow setFill];
+                    [bezierPath fill];
+                    
+                    
+                    //// Bezier 2 Drawing
+                    UIBezierPath* bezier2Path = [UIBezierPath bezierPath];
+                    [bezier2Path moveToPoint: CGPointMake(30.23, 29.21)];
+                    [bezier2Path addLineToPoint: CGPointMake(30.23, 31.62)];
+                    [bezier2Path addLineToPoint: CGPointMake(9.36, 31.62)];
+                    [bezier2Path addLineToPoint: CGPointMake(9.36, 16.99)];
+                    [bezier2Path addLineToPoint: CGPointMake(13.27, 16.99)];
+                    [bezier2Path addCurveToPoint: CGPointMake(13.82, 15.88) controlPoint1: CGPointMake(13.38, 16.57) controlPoint2: CGPointMake(13.54, 16.18)];
+                    [bezier2Path addCurveToPoint: CGPointMake(15.04, 14.73) controlPoint1: CGPointMake(14.19, 15.48) controlPoint2: CGPointMake(14.61, 15.1)];
+                    [bezier2Path addLineToPoint: CGPointMake(7.16, 14.73)];
+                    [bezier2Path addLineToPoint: CGPointMake(7.16, 33.87)];
+                    [bezier2Path addLineToPoint: CGPointMake(32.42, 33.87)];
+                    [bezier2Path addLineToPoint: CGPointMake(32.42, 27.62)];
+                    [bezier2Path addLineToPoint: CGPointMake(30.23, 29.21)];
+                    [bezier2Path closePath];
+                    [yellow setFill];
+                    [bezier2Path fill];
+                }
+                
+                
+
+            }];
+}
+
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SGBlogEntry : NSObject
+@interface SGBlogEntry : NSObject <NSCoding>
 
 @property (nonatomic, readonly) NSString *displayName;
 @property (nonatomic, readonly) NSDate   *datePublished;

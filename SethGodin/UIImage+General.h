@@ -13,5 +13,7 @@
 + (UIImage*) backButton;
 + (UIImage*) titleBar;
 + (UIImage*) closeButton;
++ (UIImage*) favoritesButton:(BOOL) isSelcted;
++ (UIImage*) shareButton;
 
 @end
