@@ -374,12 +374,22 @@
 
 - (void) stopLoadingAnimation
 {
-    [_spinnerLayer removeAllAnimations];
-    [_spinnerLayer removeFromSuperlayer];
-    _spinnerLayer = nil;
-    
-    [_loadingBackgroundLayer removeFromSuperlayer];
-    _loadingBackgroundLayer = nil;
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationCurveEaseOut animations:^
+     {
+         _loadingBackgroundLayer.opacity = 0;
+     }
+    completion:^(BOOL finished)
+    {
+        if(finished)
+        {
+            [_spinnerLayer removeAllAnimations];
+            [_spinnerLayer removeFromSuperlayer];
+            _spinnerLayer = nil;
+            
+            [_loadingBackgroundLayer removeFromSuperlayer];
+            _loadingBackgroundLayer = nil;
+        }
+    }];
 }
 
 

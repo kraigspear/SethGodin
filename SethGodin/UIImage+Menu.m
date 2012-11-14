@@ -27,9 +27,34 @@
                 UIBezierPath* bgRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * 0.00000 + 0.5), CGRectGetMinY(frame) + floor(CGRectGetHeight(frame) * 0.00000 + 0.5), floor(CGRectGetWidth(frame) * 1.00000 + 0.5) - floor(CGRectGetWidth(frame) * 0.00000 + 0.5), floor(CGRectGetHeight(frame) * 1.00000 + 0.5) - floor(CGRectGetHeight(frame) * 0.00000 + 0.5))];
                 [yellow setFill];
                 [bgRectPath fill];
-                
-                
+            }];
+}
 
+
++ (UIImage*) menuImageWithText:(NSString*) menuText isUpgrade:(BOOL) inIsUpgrade
+{
+    NSString *menuID = [NSString stringWithFormat:@"menuImageWithText%@%d", menuText, inIsUpgrade];
+    return [UIImage imageWithIdentifier:menuID forSize:CGSizeMake(320, 84) andDrawingBlock:^
+            {
+                
+                //// Abstracted Attributes
+                NSString* titleTextContent = menuText;
+                NSString* upgradeTextContent = @" (upgrade)";
+                
+                
+                //// titleText Drawing
+                CGRect titleTextRect = CGRectMake(18, 0, 291, 84);
+                [[UIColor whiteColor] setFill];
+                [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 25] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+                
+                
+                //// upgradeText Drawing
+                if(inIsUpgrade)
+                {
+                    CGRect upgradeTextRect = CGRectMake(191, 4, 142, 97);
+                    [[UIColor whiteColor] setFill];
+                    [upgradeTextContent drawInRect: upgradeTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont buttonFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+                }
             }];
 }
 

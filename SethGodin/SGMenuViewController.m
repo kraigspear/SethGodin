@@ -17,11 +17,26 @@
     [super viewDidLoad];
     self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBar]];
     [self.closeButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
+    
+    UIImage *booksImage   = [UIImage menuImageWithText:@"Books By Seth Godin" isUpgrade:NO];
+    UIImage *allPostImage = [UIImage menuImageWithText:@"All Blog Posts" isUpgrade:NO];
+    
+    UIImage *favoritesImage = [UIImage menuImageWithText:@"Favorite Post" isUpgrade:YES];
+    UIImage *archivesImage  = [UIImage menuImageWithText:@"Archives"      isUpgrade:YES];
+    
+    [self.booksBySethButton setImage:booksImage forState:UIControlStateNormal];
+    [self.allPostButton     setImage:allPostImage forState:UIControlStateNormal];
+
+    
+    [self.favoritePostMenuButton setImage:favoritesImage forState:UIControlStateNormal];
+    [self.archivesButton         setImage:archivesImage forState:UIControlStateNormal];
+    
+    
 }
 
 - (void) viewDidLayoutSubviews
 {
-    self.backgroundImageView.image = [UIImage backgroundImageForSize:self.backgroundImageView.frame.size];
+    self.buttonView.backgroundColor = [UIColor colorWithPatternImage:[UIImage backgroundImageForSize:self.buttonView.frame.size]];
 }
 
 - (IBAction)closeAction:(id)sender

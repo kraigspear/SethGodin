@@ -15,6 +15,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
 @property (nonatomic, copy) BasicBlock close;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+@property (weak, nonatomic) IBOutlet UIView *buttonView;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *favoritePostMenuButton;
+@property (weak, nonatomic) IBOutlet UIButton *archivesButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *booksBySethButton;
+@property (weak, nonatomic) IBOutlet UIButton *allPostButton;
 
 @end

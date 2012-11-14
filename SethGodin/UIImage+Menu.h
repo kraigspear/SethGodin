@@ -11,6 +11,6 @@
 @interface UIImage (Menu)
 
 + (UIImage*) backgroundImageForSize:(CGSize) inSize;
-
++ (UIImage*) menuImageWithText:(NSString*) menuText isUpgrade:(BOOL) inIsUpgrade;
 
 @end
