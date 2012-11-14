@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *rssItem1Button;
 @property (weak, nonatomic) IBOutlet UIButton *rssItem2Button;
 @property (weak, nonatomic) IBOutlet UIButton *rssItem3Button;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundLoading;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonViewToTopViewConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *buttonViewToLeftButtonViewConstraint;

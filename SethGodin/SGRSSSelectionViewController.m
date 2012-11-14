@@ -36,6 +36,7 @@
     SGMenuViewController *_menuViewController;
     
     CALayer          *_spinnerLayer;
+    CALayer          *_loadingBackgroundLayer;
 }
 
 #pragma mark -
@@ -331,7 +332,24 @@
 
 - (void) startLoadingAnimation
 {
-    self.backgroundLoading.hidden = NO;
+    
+    UIImage *loadingBackgroundImage = [UIImage imageNamed:@"load_bg.png"];
+    UIImage *loadingTextImage       = [UIImage imageNamed:@"load_text.png"];
+    
+    CALayer *loadingTextLayer = [CALayer layer];
+    loadingTextLayer.contents = (id) loadingTextImage.CGImage;
+    
+    CGFloat loadingTextX = (self.view.frame.size.width / 2) - (loadingTextImage.size.width / 2);
+        
+    loadingTextLayer.frame = CGRectMake(loadingTextX, 25, loadingTextImage.size.width, loadingTextImage.size.height);
+    
+    _loadingBackgroundLayer = [CALayer layer];
+    _loadingBackgroundLayer.contents = (id) loadingBackgroundImage.CGImage;
+    _loadingBackgroundLayer.frame = CGRectMake(0, 0, loadingBackgroundImage.size.width, loadingBackgroundImage.size.height);
+    
+    [_loadingBackgroundLayer addSublayer:loadingTextLayer];
+    
+    [self.view.layer addSublayer:_loadingBackgroundLayer];
     
     _spinnerLayer = [CALayer layer];
     
@@ -343,7 +361,7 @@
     
     _spinnerLayer.frame = CGRectMake(215, 180, spinnerImage.size.width, spinnerImage.size.height);
     
-    [self.backgroundLoading.layer addSublayer:_spinnerLayer];
+    [_loadingBackgroundLayer addSublayer:_spinnerLayer];
     
     CABasicAnimation *spinnerAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     spinnerAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
@@ -359,8 +377,9 @@
     [_spinnerLayer removeAllAnimations];
     [_spinnerLayer removeFromSuperlayer];
     _spinnerLayer = nil;
-    self.backgroundLoading.hidden = YES;
     
+    [_loadingBackgroundLayer removeFromSuperlayer];
+    _loadingBackgroundLayer = nil;
 }
 
 
