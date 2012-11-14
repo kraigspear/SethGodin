@@ -46,6 +46,11 @@
     [super viewDidLoad];
     
     
+    self.buttonViewToTopViewConstraint.constant -= 500;
+    
+    [self.view removeConstraint:self.buttonViewToLeftButtonViewConstraint];
+    [self.view layoutSubviews];
+    
     _contentGetter = [[SGBlogContentGetter alloc] init];
     
 	[self.upButton setImage:[UIImage upButton] forState:UIControlStateNormal];
@@ -199,7 +204,22 @@
          _blogItems = inItems;
          [self updateButtons];
          [self stopLoadingAnimation];
+         [self animateButtonsComingDown];
      } failed:^(NSError *inError)
+     {
+         
+     }];
+}
+
+- (void) animateButtonsComingDown
+{
+    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+     {
+         self.buttonViewToTopViewConstraint.constant += 500;
+         [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
+         [self.view layoutSubviews];
+     }
+     completion:^(BOOL finished)
      {
          
      }];
@@ -274,6 +294,7 @@
     [self updateButtonForEntry:_entry1];
     [self updateButtonForEntry:_entry2];
     [self updateButtonForEntry:_entry3];
+    
     
 }
 

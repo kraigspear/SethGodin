@@ -226,6 +226,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="zJe-5h-iYN"/>
                     <connections>
+                        <outlet property="buttonViewToLeftButtonViewConstraint" destination="JoK-9y-4Th" id="eGH-Vu-Uq5"/>
+                        <outlet property="buttonViewToTopViewConstraint" destination="ASp-yc-TXc" id="aUz-fM-H5P"/>
                         <outlet property="downButton" destination="WY6-CC-BtK" id="jXp-Iy-R29"/>
                         <outlet property="menuButton" destination="iYW-2i-4Sh" id="knR-DY-CFh"/>
                         <outlet property="rssItem1Button" destination="fVZ-hx-t4G" id="1zo-tT-z51"/>
@@ -409,6 +411,8 @@
                 <relationship kind="action" name="nextButton:"/>
                 <relationship kind="action" name="previousButton:"/>
                 <relationship kind="outlet" name="backgroundLoading" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="buttonViewToLeftButtonViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="downButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="rssItem1Button" candidateClass="UIButton"/>
