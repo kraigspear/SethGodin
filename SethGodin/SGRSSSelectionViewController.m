@@ -14,6 +14,7 @@
 #import "SGAppDelegate.h"
 #import "UIImage+General.h"
 #import "SGMenuViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SGRSSSelectionViewController ()
 
@@ -33,6 +34,8 @@
     __weak SGBlogEntry *_blogEntry;
     
     SGMenuViewController *_menuViewController;
+    
+    CALayer          *_spinnerLayer;
 }
 
 #pragma mark -
@@ -185,6 +188,9 @@
 
 - (void) loadLatestFeedData
 {
+    
+    [self startLoadingAnimation];
+    
     if(!_contentGetter) _contentGetter = [[SGBlogContentGetter alloc] init];
     
     [_contentGetter requestLatestBlocksuccess:^(NSArray *inItems)
@@ -192,11 +198,13 @@
          _pageNumber = 0;
          _blogItems = inItems;
          [self updateButtons];
+         [self stopLoadingAnimation];
      } failed:^(NSError *inError)
      {
          
      }];
 }
+
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -294,6 +302,43 @@
         _pageNumber = newPageNumber;
         [self updateButtons];
     }
+    
+}
+
+#pragma mark -
+#pragma mark animation
+
+- (void) startLoadingAnimation
+{
+    self.backgroundLoading.hidden = NO;
+    
+    _spinnerLayer = [CALayer layer];
+    
+    UIImage *spinnerImage = [UIImage imageNamed:@"load_spinner.png"];
+    
+    _spinnerLayer.anchorPoint = CGPointMake(.5, .5);
+    
+    _spinnerLayer.contents = (id) spinnerImage.CGImage;
+    
+    _spinnerLayer.frame = CGRectMake(215, 180, spinnerImage.size.width, spinnerImage.size.height);
+    
+    [self.backgroundLoading.layer addSublayer:_spinnerLayer];
+    
+    CABasicAnimation *spinnerAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    spinnerAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    spinnerAnimation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+    spinnerAnimation.duration = 1;             // this might be too fast
+    spinnerAnimation.repeatCount = HUGE_VALF;     // HUGE_VALF is defined in math.h so import it
+    [_spinnerLayer addAnimation:spinnerAnimation forKey:@"rotation"];
+    
+}
+
+- (void) stopLoadingAnimation
+{
+    [_spinnerLayer removeAllAnimations];
+    [_spinnerLayer removeFromSuperlayer];
+    _spinnerLayer = nil;
+    self.backgroundLoading.hidden = YES;
     
 }
 
