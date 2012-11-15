@@ -24,6 +24,8 @@
 		A9100A681653200700779F84 /* load_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A9100A671653200700779F84 /* load_bg.png */; };
 		A9100A6B1653A1B400779F84 /* load_text.png in Resources */ = {isa = PBXBuildFile; fileRef = A9100A691653A1B400779F84 /* load_text.png */; };
 		A9100A6C1653A1B400779F84 /* load_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9100A6A1653A1B400779F84 /* load_text@2x.png */; };
+		A9100A701654EF1D00779F84 /* SGArvhiveSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A6F1654EF1D00779F84 /* SGArvhiveSelectionViewController.m */; };
+		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -81,6 +83,10 @@
 		A9100A671653200700779F84 /* load_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = load_bg.png; sourceTree = "<group>"; };
 		A9100A691653A1B400779F84 /* load_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = load_text.png; sourceTree = "<group>"; };
 		A9100A6A1653A1B400779F84 /* load_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "load_text@2x.png"; sourceTree = "<group>"; };
+		A9100A6E1654EF1D00779F84 /* SGArvhiveSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGArvhiveSelectionViewController.h; sourceTree = "<group>"; };
+		A9100A6F1654EF1D00779F84 /* SGArvhiveSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGArvhiveSelectionViewController.m; sourceTree = "<group>"; };
+		A9100A711654FF5E00779F84 /* NSDate+General.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+General.h"; path = "SethGodin/NSDate+General.h"; sourceTree = "<group>"; };
+		A9100A721654FF5E00779F84 /* NSDate+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+General.m"; path = "SethGodin/NSDate+General.m"; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SethGodin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -180,6 +186,7 @@
 		A9100A511650F9D800779F84 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				A9100A6D1654EE5100779F84 /* ArchiveSelection */,
 				A9100A521650F9EF00779F84 /* SGMenuViewController.h */,
 				A9100A531650F9EF00779F84 /* SGMenuViewController.m */,
 				A9100A5616510AD500779F84 /* UIImage+Menu.h */,
@@ -199,6 +206,15 @@
 				A9100A6116531E6300779F84 /* load_bg@2x.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		A9100A6D1654EE5100779F84 /* ArchiveSelection */ = {
+			isa = PBXGroup;
+			children = (
+				A9100A6E1654EF1D00779F84 /* SGArvhiveSelectionViewController.h */,
+				A9100A6F1654EF1D00779F84 /* SGArvhiveSelectionViewController.m */,
+			);
+			name = ArchiveSelection;
 			sourceTree = "<group>";
 		};
 		A9D684D8164CFE8D007A9ADA = {
@@ -363,6 +379,8 @@
 				A91009D51650231500779F84 /* UIImage+General.h */,
 				A91009D61650231500779F84 /* UIImage+General.m */,
 				A9100A551650FC5700779F84 /* BlockTypes.h */,
+				A9100A711654FF5E00779F84 /* NSDate+General.h */,
+				A9100A721654FF5E00779F84 /* NSDate+General.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -467,6 +485,8 @@
 				A9100A541650F9EF00779F84 /* SGMenuViewController.m in Sources */,
 				A9100A5816510AD500779F84 /* UIImage+Menu.m in Sources */,
 				A9100A5B165247C200779F84 /* SGFavorites.m in Sources */,
+				A9100A701654EF1D00779F84 /* SGArvhiveSelectionViewController.m in Sources */,
+				A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

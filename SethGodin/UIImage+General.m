@@ -90,16 +90,18 @@
 }
 
 
-+ (UIImage*) titleBar
++ (UIImage*) titleBarWithTitle:(NSString*) inTitle
 {
-    return [UIImage imageWithIdentifier:@"titleBar" forSize:CGSizeMake(320,44) andDrawingBlock:^
+    NSString *identifier = [NSString stringWithFormat:@"titleBarWithTitle%@", inTitle];
+    
+    return [UIImage imageWithIdentifier:identifier forSize:CGSizeMake(320,44) andDrawingBlock:^
             {
                 //// Color Declarations
                 UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
                 UIColor* color4 = [yellow colorWithAlphaComponent: 0.03];
                 
                 //// Abstracted Attributes
-                NSString* textContent = @"SETH GODIN";
+                NSString* textContent = inTitle;
                 
                 
                 //// Rectangle Drawing
@@ -204,6 +206,39 @@
                 
                 
 
+            }];
+}
+
++ (UIImage*) leftArrow
+{
+    return [UIImage imageWithIdentifier:@"leftArrow" forSize:CGSizeMake(44,44) andDrawingBlock:^
+            {
+                //// Bezier 5 Drawing
+                UIBezierPath* bezier5Path = [UIBezierPath bezierPath];
+                [bezier5Path moveToPoint: CGPointMake(30, 38.5)];
+                [bezier5Path addLineToPoint: CGPointMake(30, 6.5)];
+                [bezier5Path addLineToPoint: CGPointMake(7.5, 20.5)];
+                [bezier5Path addLineToPoint: CGPointMake(30, 38.5)];
+                [bezier5Path closePath];
+                [[UIColor whiteColor] setFill];
+                [bezier5Path fill];
+            }];
+}
+
++ (UIImage*) rightArrow
+{
+    return [UIImage imageWithIdentifier:@"rightArrow" forSize:CGSizeMake(44,44) andDrawingBlock:^
+            {
+                
+                //// Bezier Drawing
+                UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+                [bezierPath moveToPoint: CGPointMake(12.5, 5.5)];
+                [bezierPath addLineToPoint: CGPointMake(12.5, 37.5)];
+                [bezierPath addLineToPoint: CGPointMake(35, 23.5)];
+                [bezierPath addLineToPoint: CGPointMake(12.5, 5.5)];
+                [bezierPath closePath];
+                [[UIColor whiteColor] setFill];
+                [bezierPath fill];
             }];
 }
 

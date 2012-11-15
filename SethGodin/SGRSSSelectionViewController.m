@@ -37,6 +37,8 @@
     
     CALayer          *_spinnerLayer;
     CALayer          *_loadingBackgroundLayer;
+    
+    NSInteger buttonTopContant;
 }
 
 #pragma mark -
@@ -46,8 +48,9 @@
 {
     [super viewDidLoad];
     
+    buttonTopContant = self.buttonViewToLeftButtonViewConstraint.constant - 500;
     
-    self.buttonViewToTopViewConstraint.constant -= 500;
+    
     
     [self.view removeConstraint:self.buttonViewToLeftButtonViewConstraint];
     [self.view layoutSubviews];
@@ -56,7 +59,7 @@
     
 	[self.upButton setImage:[UIImage upButton] forState:UIControlStateNormal];
     [self.downButton setImage:[UIImage downButton] forState:UIControlStateNormal];
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBar]];
+    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Seth Godin"]];
     
     [self.searchButton setImage:[UIImage searchButton] forState:UIControlStateNormal];
     [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
@@ -332,6 +335,8 @@
 
 - (void) startLoadingAnimation
 {
+    self.buttonViewToTopViewConstraint.constant = buttonTopContant;
+    [self.view layoutSubviews];
     
     UIImage *loadingBackgroundImage = [UIImage imageNamed:@"load_bg.png"];
     UIImage *loadingTextImage       = [UIImage imageNamed:@"load_text.png"];

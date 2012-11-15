@@ -11,9 +11,11 @@
 @interface UIImage (General)
 
 + (UIImage*) backButton;
-+ (UIImage*) titleBar;
++ (UIImage*) titleBarWithTitle:(NSString*) inTitle;
 + (UIImage*) closeButton;
 + (UIImage*) favoritesButton:(BOOL) isSelcted;
 + (UIImage*) shareButton;
++ (UIImage*) leftArrow;
++ (UIImage*) rightArrow;
 
 @end

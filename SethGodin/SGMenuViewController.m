@@ -15,7 +15,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBar]];
+    self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Seth Godin"]];
     [self.closeButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
     
     UIImage *booksImage   = [UIImage menuImageWithText:@"Books By Seth Godin" isUpgrade:NO];

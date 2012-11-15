@@ -25,7 +25,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBar]];
+    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Seth Godin"]];
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     for (UIView* subView in self.webView.subviews)
     {
