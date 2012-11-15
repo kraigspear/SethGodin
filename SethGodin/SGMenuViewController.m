@@ -27,10 +27,9 @@
     [self.booksBySethButton setImage:booksImage forState:UIControlStateNormal];
     [self.allPostButton     setImage:allPostImage forState:UIControlStateNormal];
 
-    
-    [self.favoritePostMenuButton setImage:favoritesImage forState:UIControlStateNormal];
+    [self.favoritesButton setImage:favoritesImage forState:UIControlStateNormal];
     [self.archivesButton         setImage:archivesImage forState:UIControlStateNormal];
-    
+    [self.alreadyUpgradedButton setImage:[UIImage alreadyUpgraded] forState:UIControlStateNormal];
     
 }
 

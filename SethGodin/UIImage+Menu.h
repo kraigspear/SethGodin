@@ -12,5 +12,6 @@
 
 + (UIImage*) backgroundImageForSize:(CGSize) inSize;
 + (UIImage*) menuImageWithText:(NSString*) menuText isUpgrade:(BOOL) inIsUpgrade;
++ (UIImage*) alreadyUpgraded;
 
 @end

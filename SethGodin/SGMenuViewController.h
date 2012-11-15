@@ -19,10 +19,11 @@
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 
 
-@property (weak, nonatomic) IBOutlet UIButton *favoritePostMenuButton;
 @property (weak, nonatomic) IBOutlet UIButton *archivesButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *booksBySethButton;
 @property (weak, nonatomic) IBOutlet UIButton *allPostButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoritesButton;
+@property (weak, nonatomic) IBOutlet UIButton *alreadyUpgradedButton;
 
 @end

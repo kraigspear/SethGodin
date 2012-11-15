@@ -58,5 +58,24 @@
             }];
 }
 
++ (UIImage*) alreadyUpgraded
+{
+    return [UIImage imageWithIdentifier:@"alreadyUpgraded" forSize:CGSizeMake(320, 44) andDrawingBlock:^
+            {
+                
+                //// Abstracted Attributes
+                NSString* buttonTextContent = @"Already Upgraded?";
+                
+                
+                //// buttonText Drawing
+                CGRect buttonTextRect = CGRectMake(0, 0, 320, 44);
+                [[UIColor whiteColor] setFill];
+                [buttonTextContent drawInRect: buttonTextRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: [UIFont buttonFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                
+                
+
+            }];
+}
+
 
 @end
