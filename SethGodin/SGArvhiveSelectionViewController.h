@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "BlockTypes.h"
+
 @interface SGArvhiveSelectionViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -25,5 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *leftArrowMonthButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightArrowMonthButton;
+
+@property (nonatomic, copy)
 
 @end

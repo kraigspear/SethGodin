@@ -114,7 +114,7 @@ const NSUInteger MIN_YEAR = 2002;
 
 - (IBAction)goAction:(id)sender
 {
-    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

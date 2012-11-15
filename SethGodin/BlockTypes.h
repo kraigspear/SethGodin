@@ -10,7 +10,7 @@
 #define SethGodin_BlockTypes_h
 
 
-typedef void (^BasicBlock)(void);
+typedef void (^BasicBlock) (void);
 
 
 #endif
