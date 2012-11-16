@@ -11,6 +11,7 @@
 
 
 typedef void (^BasicBlock) (void);
+typedef void (^BoolBlock)  (BOOL);
 
 
 #endif

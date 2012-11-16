@@ -6,15 +6,16 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGArvhiveSelectionViewController.h"
+#import "SGArchiveSelectionViewController.h"
 #import "UIImage+General.h"
 #import "NSDate+General.h"
+#import "SGNotifications.h"
 
-@interface SGArvhiveSelectionViewController ()
+@interface SGArchiveSelectionViewController ()
 
 @end
 
-@implementation SGArvhiveSelectionViewController
+@implementation SGArchiveSelectionViewController
 {
 @private
     NSUInteger _currentYear;
@@ -114,7 +115,9 @@ const NSUInteger MIN_YEAR = 2002;
 
 - (IBAction)goAction:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    SGFeedSelection *feedSelection = [SGFeedSelection selectionForMonth:self.month andYear:self.year];
+    [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

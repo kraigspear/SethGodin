@@ -124,13 +124,13 @@
     
     __weak SGRSSSelectionViewController *weakSelf = self;
     
-    _menuViewController.close = ^
+    _menuViewController.close = ^(BOOL shouldAnimate)
     {
         SGRSSSelectionViewController *strongSelf = weakSelf;
         
         if(strongSelf)
         {
-            [strongSelf closeMenu];
+            [strongSelf closeMenuWithAnimation:shouldAnimate];
         }
         
     };
@@ -146,24 +146,42 @@
     
 }
 
-- (void) closeMenu
+- (void) closeMenuWithAnimation:(BOOL) inAnimate
+{
+    if(inAnimate)
+    {
+        [self animateCloseMenu];
+    }
+    else
+    {
+        [self removeMenuController];
+    }
+}
+
+- (void) animateCloseMenu
 {
     CGRect menuFrame = _menuViewController.view.frame;
     menuFrame.origin.y = -menuFrame.size.height;
     
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-    {
-        _menuViewController.view.frame = menuFrame;
-    }
-    } completion:^(BOOL finished)
-    {
-        if(finished)
         {
-            [_menuViewController.view removeFromSuperview];
-            [_menuViewController removeFromParentViewController];
-            _menuViewController = nil;
+            _menuViewController.view.frame = menuFrame;
         }
-    }];
+    } completion:^(BOOL finished)
+     {
+         if(finished)
+         {
+             [self removeMenuController];
+         }
+     }];
+
+}
+
+- (void) removeMenuController
+{
+    [_menuViewController.view removeFromSuperview];
+    [_menuViewController removeFromParentViewController];
+    _menuViewController = nil;
 }
 
 #pragma mark -

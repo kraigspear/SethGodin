@@ -9,8 +9,14 @@
 #import "SGMenuViewController.h"
 #import "UIImage+General.h"
 #import "UIImage+Menu.h"
+#import "SGArchiveSelectionViewController.h"
+#import "SGNotifications.h"
 
 @implementation SGMenuViewController
+{
+@private
+    id _feedSelectionNotification;
+}
 
 - (void) viewDidLoad
 {
@@ -31,6 +37,11 @@
     [self.archivesButton         setImage:archivesImage forState:UIControlStateNormal];
     [self.alreadyUpgradedButton setImage:[UIImage alreadyUpgraded] forState:UIControlStateNormal];
     
+    _feedSelectionNotification = [[SGNotifications sharedInstance] observeFeedSelectionWithNotification:^(NSNotification * note)
+    {
+        [self closeMenuWithAnimation:NO];
+    }];
+    
 }
 
 - (void) viewDidLayoutSubviews
@@ -40,8 +51,14 @@
 
 - (IBAction)closeAction:(id)sender
 {
-    self.close();
+    [self closeMenuWithAnimation:YES];
 }
 
+- (void) closeMenuWithAnimation:(BOOL) inShouldAnimate
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:_feedSelectionNotification];
+    _feedSelectionNotification = nil;
+    self.close(inShouldAnimate);
+}
 
 @end
