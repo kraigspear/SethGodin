@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009C8164EEDC200779F84 /* SGBlogEntry.m */; };
-		A91009CC164EF31B00779F84 /* SGBlogContentGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009CB164EF31B00779F84 /* SGBlogContentGetter.m */; };
+		A91009CC164EF31B00779F84 /* SGCurrentContentGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009CB164EF31B00779F84 /* SGCurrentContentGetter.m */; };
 		A91009D41650084F00779F84 /* SGPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009D31650084F00779F84 /* SGPostViewController.m */; };
 		A91009D71650231500779F84 /* UIImage+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009D61650231500779F84 /* UIImage+General.m */; };
 		A91009D9165030D600779F84 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91009D8165030D600779F84 /* CoreText.framework */; };
@@ -28,6 +28,8 @@
 		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
 		A97E880B16563CD800777A82 /* SGNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880A16563CD800777A82 /* SGNotifications.m */; };
+		A97E880F1656465D00777A82 /* SGConentGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880E1656465D00777A82 /* SGConentGetter.m */; };
+		A97E8812165646BC00777A82 /* SGArchiveContentGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E8811165646BC00777A82 /* SGArchiveContentGetter.m */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -39,7 +41,7 @@
 		A9D684FE164CFE8D007A9ADA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D684FD164CFE8D007A9ADA /* Default-568h@2x.png */; };
 		A9D68501164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */; };
 		A9D68504164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */; };
-		A9D68507164CFE8D007A9ADA /* SGRSSSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68506164CFE8D007A9ADA /* SGRSSSelectionViewController.m */; };
+		A9D68507164CFE8D007A9ADA /* SGFeedItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68506164CFE8D007A9ADA /* SGFeedItemsViewController.m */; };
 		A9D68522164D006A007A9ADA /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68510164D006A007A9ADA /* AFHTTPClient.m */; };
 		A9D68523164D006A007A9ADA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68512164D006A007A9ADA /* AFHTTPRequestOperation.m */; };
 		A9D68524164D006A007A9ADA /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68514164D006A007A9ADA /* AFImageRequestOperation.m */; };
@@ -62,8 +64,8 @@
 /* Begin PBXFileReference section */
 		A91009C7164EEDC200779F84 /* SGBlogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntry.h; sourceTree = "<group>"; };
 		A91009C8164EEDC200779F84 /* SGBlogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntry.m; sourceTree = "<group>"; };
-		A91009CA164EF31B00779F84 /* SGBlogContentGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogContentGetter.h; sourceTree = "<group>"; };
-		A91009CB164EF31B00779F84 /* SGBlogContentGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogContentGetter.m; sourceTree = "<group>"; };
+		A91009CA164EF31B00779F84 /* SGCurrentContentGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCurrentContentGetter.h; sourceTree = "<group>"; };
+		A91009CB164EF31B00779F84 /* SGCurrentContentGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGCurrentContentGetter.m; sourceTree = "<group>"; };
 		A91009D21650084F00779F84 /* SGPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPostViewController.h; sourceTree = "<group>"; };
 		A91009D31650084F00779F84 /* SGPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPostViewController.m; sourceTree = "<group>"; };
 		A91009D51650231500779F84 /* UIImage+General.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+General.h"; path = "SethGodin/UIImage+General.h"; sourceTree = "<group>"; };
@@ -93,6 +95,10 @@
 		A9100A751656394600779F84 /* SGFeedSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFeedSelection.m; sourceTree = "<group>"; };
 		A97E880916563CD800777A82 /* SGNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNotifications.h; sourceTree = "<group>"; };
 		A97E880A16563CD800777A82 /* SGNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNotifications.m; sourceTree = "<group>"; };
+		A97E880D1656465D00777A82 /* SGConentGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGConentGetter.h; sourceTree = "<group>"; };
+		A97E880E1656465D00777A82 /* SGConentGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGConentGetter.m; sourceTree = "<group>"; };
+		A97E8810165646BC00777A82 /* SGArchiveContentGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGArchiveContentGetter.h; sourceTree = "<group>"; };
+		A97E8811165646BC00777A82 /* SGArchiveContentGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGArchiveContentGetter.m; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SethGodin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -108,8 +114,8 @@
 		A9D684FD164CFE8D007A9ADA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A9D68500164CFE8D007A9ADA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		A9D68503164CFE8D007A9ADA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		A9D68505164CFE8D007A9ADA /* SGRSSSelectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGRSSSelectionViewController.h; sourceTree = "<group>"; };
-		A9D68506164CFE8D007A9ADA /* SGRSSSelectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGRSSSelectionViewController.m; sourceTree = "<group>"; };
+		A9D68505164CFE8D007A9ADA /* SGFeedItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGFeedItemsViewController.h; sourceTree = "<group>"; };
+		A9D68506164CFE8D007A9ADA /* SGFeedItemsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGFeedItemsViewController.m; sourceTree = "<group>"; };
 		A9D6850F164D006A007A9ADA /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		A9D68510164D006A007A9ADA /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		A9D68511164D006A007A9ADA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -170,12 +176,11 @@
 		A91009C6164EED9C00779F84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A97E880C1656461D00777A82 /* ContentGetters */,
 				A9100A741656394600779F84 /* SGFeedSelection.h */,
 				A9100A751656394600779F84 /* SGFeedSelection.m */,
 				A91009C7164EEDC200779F84 /* SGBlogEntry.h */,
 				A91009C8164EEDC200779F84 /* SGBlogEntry.m */,
-				A91009CA164EF31B00779F84 /* SGBlogContentGetter.h */,
-				A91009CB164EF31B00779F84 /* SGBlogContentGetter.m */,
 				A9100A59165247C200779F84 /* SGFavorites.h */,
 				A9100A5A165247C200779F84 /* SGFavorites.m */,
 				A97E880916563CD800777A82 /* SGNotifications.h */,
@@ -227,12 +232,25 @@
 			name = ArchiveSelection;
 			sourceTree = "<group>";
 		};
+		A97E880C1656461D00777A82 /* ContentGetters */ = {
+			isa = PBXGroup;
+			children = (
+				A91009CA164EF31B00779F84 /* SGCurrentContentGetter.h */,
+				A91009CB164EF31B00779F84 /* SGCurrentContentGetter.m */,
+				A97E880D1656465D00777A82 /* SGConentGetter.h */,
+				A97E880E1656465D00777A82 /* SGConentGetter.m */,
+				A97E8810165646BC00777A82 /* SGArchiveContentGetter.h */,
+				A97E8811165646BC00777A82 /* SGArchiveContentGetter.m */,
+			);
+			name = ContentGetters;
+			sourceTree = "<group>";
+		};
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
-				A9100A6016531E5800779F84 /* Resources */,
 				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D6854F164D0DBD007A9ADA /* General */,
+				A9100A6016531E5800779F84 /* Resources */,
 				A9D6850D164D005D007A9ADA /* 3RD Party */,
 				A9D684E6164CFE8D007A9ADA /* Frameworks */,
 				A9D684E4164CFE8D007A9ADA /* Products */,
@@ -267,7 +285,7 @@
 			children = (
 				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
 				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
-				A9D6854E164D0D47007A9ADA /* RSSSelection */,
+				A9D6854E164D0D47007A9ADA /* FeedItems */,
 				A91009D11650083200779F84 /* PostView */,
 				A9100A511650F9D800779F84 /* Menu */,
 				A91009C6164EED9C00779F84 /* Model */,
@@ -370,15 +388,15 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
-		A9D6854E164D0D47007A9ADA /* RSSSelection */ = {
+		A9D6854E164D0D47007A9ADA /* FeedItems */ = {
 			isa = PBXGroup;
 			children = (
-				A9D68505164CFE8D007A9ADA /* SGRSSSelectionViewController.h */,
-				A9D68506164CFE8D007A9ADA /* SGRSSSelectionViewController.m */,
+				A9D68505164CFE8D007A9ADA /* SGFeedItemsViewController.h */,
+				A9D68506164CFE8D007A9ADA /* SGFeedItemsViewController.m */,
 				A9D68552164D0DE3007A9ADA /* UIImage+RSSSelection.h */,
 				A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */,
 			);
-			name = RSSSelection;
+			name = FeedItems;
 			sourceTree = "<group>";
 		};
 		A9D6854F164D0DBD007A9ADA /* General */ = {
@@ -471,7 +489,7 @@
 			files = (
 				A9D684F4164CFE8D007A9ADA /* main.m in Sources */,
 				A9D684F8164CFE8D007A9ADA /* SGAppDelegate.m in Sources */,
-				A9D68507164CFE8D007A9ADA /* SGRSSSelectionViewController.m in Sources */,
+				A9D68507164CFE8D007A9ADA /* SGFeedItemsViewController.m in Sources */,
 				A9D68522164D006A007A9ADA /* AFHTTPClient.m in Sources */,
 				A9D68523164D006A007A9ADA /* AFHTTPRequestOperation.m in Sources */,
 				A9D68524164D006A007A9ADA /* AFImageRequestOperation.m in Sources */,
@@ -489,7 +507,7 @@
 				A9D6853F164D041B007A9ADA /* DDXMLNode.m in Sources */,
 				A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */,
 				A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */,
-				A91009CC164EF31B00779F84 /* SGBlogContentGetter.m in Sources */,
+				A91009CC164EF31B00779F84 /* SGCurrentContentGetter.m in Sources */,
 				A91009D41650084F00779F84 /* SGPostViewController.m in Sources */,
 				A91009D71650231500779F84 /* UIImage+General.m in Sources */,
 				A9100A541650F9EF00779F84 /* SGMenuViewController.m in Sources */,
@@ -499,6 +517,8 @@
 				A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */,
 				A9100A761656394600779F84 /* SGFeedSelection.m in Sources */,
 				A97E880B16563CD800777A82 /* SGNotifications.m in Sources */,
+				A97E880F1656465D00777A82 /* SGConentGetter.m in Sources */,
+				A97E8812165646BC00777A82 /* SGArchiveContentGetter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,32 +6,18 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGBlogContentGetter.h"
+#import "SGCurrentContentGetter.h"
 #import "SGBlogEntry.h"
 #import "AFNetworking.h"
 
 
 //http://profile.typepad.com/sethgodin/activity.json
 
-@implementation SGBlogContentGetter
+@implementation SGCurrentContentGetter
 {
 @private
-    NSDateFormatter *_dateFormatter;
+    
 }
-
-- (id) init
-{
-    self = [super init];
-    
-    NSLocale *enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-    
-    _dateFormatter = [[NSDateFormatter alloc] init];
-    _dateFormatter.locale = enUS;
-    [_dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    
-    return self;
-}
-
 
 - (void) requestLatestBlocksuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
 {
@@ -66,7 +52,7 @@
     for(NSDictionary *itemDict in items)
     {
         NSString *dateStr = [[itemDict objectForKey:@"published"] substringToIndex:10];
-        NSDate *datePublished = [_dateFormatter dateFromString:dateStr];
+        NSDate *datePublished = [self dateFromString:dateStr];
         
         NSDictionary *objDict = [itemDict objectForKey:@"object"];
         NSString *summary = [objDict objectForKey:@"summary"];

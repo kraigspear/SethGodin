@@ -1,8 +1,8 @@
 //
-//  SGBlogContentGetter.h
+//  SGConentGetter.h
 //  SethGodin
 //
-//  Created by Kraig Spear on 11/10/12.
+//  Created by Kraig Spear on 11/16/12.
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
@@ -11,8 +11,12 @@
 typedef void (^BlogContentSuccess)(NSArray*);
 typedef void (^BlogContentFailed)(NSError*);
 
-@interface SGBlogContentGetter : NSObject
+@interface SGConentGetter : NSObject
 
 - (void) requestLatestBlocksuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError;
+
+
+- (NSDate*) dateFromString:(NSString*) inDateStr;
+
 
 @end

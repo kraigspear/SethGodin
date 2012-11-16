@@ -6,25 +6,32 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGRSSSelectionViewController.h"
+#import "SGFeedItemsViewController.h"
 #import "UIImage+RSSSelection.h"
-#import "SGBlogContentGetter.h"
+
 #import "SGBlogEntry.h"
 #import "SGPostViewController.h"
 #import "SGAppDelegate.h"
 #import "UIImage+General.h"
 #import "SGMenuViewController.h"
+#import "SGNotifications.h"
+#import "SGFeedSelection.h"
+
+#import "SGConentGetter.h"
+#import "SGCurrentContentGetter.h"
+#import "SGArchiveContentGetter.h"
+
 #import <QuartzCore/QuartzCore.h>
 
-@interface SGRSSSelectionViewController ()
+@interface SGFeedItemsViewController ()
 
 @end
 
-@implementation SGRSSSelectionViewController
+@implementation SGFeedItemsViewController
 {
 @private
     NSArray *_blogItems;
-    SGBlogContentGetter *_contentGetter;
+    SGConentGetter *_contentGetter;
     NSUInteger _pageNumber;
     
     SGBlogEntry *_entry1;
@@ -32,6 +39,8 @@
     SGBlogEntry *_entry3;
     
     __weak SGBlogEntry *_blogEntry;
+    
+    SGFeedSelection *_feedSelection;
     
     SGMenuViewController *_menuViewController;
     
@@ -48,14 +57,14 @@
 {
     [super viewDidLoad];
     
+    _feedSelection = [SGFeedSelection selectionAsCurrent];
+    
     buttonTopContant = self.buttonViewToLeftButtonViewConstraint.constant - 500;
-    
-    
     
     [self.view removeConstraint:self.buttonViewToLeftButtonViewConstraint];
     [self.view layoutSubviews];
     
-    _contentGetter = [[SGBlogContentGetter alloc] init];
+    _contentGetter = [[SGCurrentContentGetter alloc] init];
     
 	[self.upButton setImage:[UIImage upButton] forState:UIControlStateNormal];
     [self.downButton setImage:[UIImage downButton] forState:UIControlStateNormal];
@@ -73,8 +82,13 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForegrond) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
     
+    [[SGNotifications sharedInstance] observeFeedSelectionWithNotification:^(NSNotification *note)
+    {
+        _feedSelection = (SGFeedSelection*) note.object;
+        [self loadLatestFeedData];
+    }];
+    
 }
-
 
 
 - (void)didReceiveMemoryWarning
@@ -122,11 +136,11 @@
     
     [self.view addSubview:menuView];
     
-    __weak SGRSSSelectionViewController *weakSelf = self;
+    __weak SGFeedItemsViewController *weakSelf = self;
     
     _menuViewController.close = ^(BOOL shouldAnimate)
     {
-        SGRSSSelectionViewController *strongSelf = weakSelf;
+        SGFeedItemsViewController *strongSelf = weakSelf;
         
         if(strongSelf)
         {
@@ -213,12 +227,24 @@
     [self loadLatestFeedData];
 }
 
+
 - (void) loadLatestFeedData
 {
     
     [self startLoadingAnimation];
     
-    if(!_contentGetter) _contentGetter = [[SGBlogContentGetter alloc] init];
+    switch (_feedSelection.feedType)
+    {
+        case kCurrent:
+            _contentGetter = [[SGCurrentContentGetter alloc] init];
+            break;
+        case kArchive:
+            _contentGetter = [[SGArchiveContentGetter alloc] initWithMonth:_feedSelection.month andYear:_feedSelection.year];
+            break;
+        default:
+            _contentGetter = [[SGCurrentContentGetter alloc] init];
+            break;
+    }
     
     [_contentGetter requestLatestBlocksuccess:^(NSArray *inItems)
      {
@@ -232,6 +258,8 @@
          
      }];
 }
+
+
 
 - (void) animateButtonsComingDown
 {

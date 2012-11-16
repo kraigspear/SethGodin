@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SGRSSSelectionViewController : UIViewController
+@interface SGFeedItemsViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UIButton *upButton;
 @property (weak, nonatomic) IBOutlet UIButton *downButton;
 @property (weak, nonatomic) IBOutlet UIView *topView;
