@@ -347,9 +347,19 @@
     
     [self updateButtonsToEmtpy];
     
+    
     [_entry1 removeObserver:self forKeyPath:@"shareCount"];
     [_entry2 removeObserver:self forKeyPath:@"shareCount"];
     [_entry3 removeObserver:self forKeyPath:@"shareCount"];
+    
+    _entry1 = nil;
+    _entry2 = nil;
+    _entry3 = nil;
+    
+    if(_blogItems.count == 0)
+    {
+        return;
+    }
     
     _entry1 = [_blogItems safeObjectAtIndex:startAt];
     _entry2 = [_blogItems safeObjectAtIndex:startAt+1];
@@ -367,8 +377,10 @@
 
 - (void) updateButtonsToEmtpy
 {
+    UIImage *img1 = [UIImage rssItemButtonForColor:[UIColor firstButtonColor] andSize:self.rssItem2Button.frame.size];
     UIImage *img2 = [UIImage rssItemButtonForColor:[UIColor secondButtonColor] andSize:self.rssItem2Button.frame.size];
     UIImage *img3 = [UIImage rssItemButtonForColor:[UIColor thirdButtonColor] andSize:self.rssItem3Button.frame.size];
+    [self.rssItem1Button setImage:img1 forState:UIControlStateNormal];
     [self.rssItem2Button setImage:img2 forState:UIControlStateNormal];
     [self.rssItem3Button setImage:img3 forState:UIControlStateNormal];
 }
