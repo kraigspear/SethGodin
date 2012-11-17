@@ -41,7 +41,8 @@ const NSUInteger MIN_YEAR = 2002;
     
     _dateFormatter = [[NSDateFormatter alloc] init];
     
-    _currentYear = [[NSDate date] year];
+    _currentYear  = [[NSDate date] year];
+    self.month = [[NSDate date] month] - 1;
     
     self.year = _currentYear;
 	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"ARCHIVES"]];
@@ -52,6 +53,7 @@ const NSUInteger MIN_YEAR = 2002;
     
     [self.leftArrowMonthButton setImage:[UIImage leftArrow] forState:UIControlStateNormal];
     [self.rightArrowMonthButton setImage:[UIImage rightArrow] forState:UIControlStateNormal];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,16 +70,24 @@ const NSUInteger MIN_YEAR = 2002;
 - (IBAction)yearBackAction:(id)sender
 {
     NSUInteger previousYear = self.year - 1;
-    if(previousYear >= MIN_YEAR)
+    
+    if(previousYear < MIN_YEAR)
     {
-        self.year = previousYear;
+        previousYear = [[NSDate date] year];
     }
+    
+    self.year = previousYear;
 }
 
 - (IBAction)yearForwardButton:(id)sender
 {
     NSUInteger nextYear = self.year + 1;
-    if(nextYear <= _currentYear)
+    
+    if(nextYear > _currentYear)
+    {
+        nextYear = MIN_YEAR;
+    }
+
     self.year = nextYear;
 }
 
@@ -96,19 +106,23 @@ const NSUInteger MIN_YEAR = 2002;
 - (IBAction)monthBackAction:(id)sender
 {
     NSInteger previousMonth = self.month - 1;
-    if(previousMonth >= 0)
+    if(previousMonth < 0)
     {
-        self.month = previousMonth;
+        previousMonth = 11;
     }
+    self.month = previousMonth;
 }
 
 - (IBAction)monthForwaredAction:(id)sender
 {
     NSUInteger nextMonth = self.month + 1;
-    if(nextMonth <= 12)
+    
+    if(nextMonth >= 12)
     {
-        self.month = nextMonth;
+        nextMonth = 0;
     }
+    
+    self.month = nextMonth;
 }
 
 
