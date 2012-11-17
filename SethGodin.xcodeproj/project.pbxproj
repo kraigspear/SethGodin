@@ -33,6 +33,8 @@
 		A97E88151657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88141657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m */; };
 		A97E88211657C73400777A82 /* SGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88201657C73400777A82 /* SGWebViewController.m */; };
 		A97E88241657CD9300777A82 /* EPZToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88231657CD7100777A82 /* EPZToolBar.m */; };
+		A97E88271657D63200777A82 /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88261657D63200777A82 /* NSArray+Util.m */; };
+		A97E882A1657EF6100777A82 /* UIColor+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88291657EF6100777A82 /* UIColor+General.m */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -108,6 +110,10 @@
 		A97E88201657C73400777A82 /* SGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGWebViewController.m; path = SethGodin/SGWebViewController.m; sourceTree = "<group>"; };
 		A97E88221657CD7100777A82 /* EPZToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPZToolBar.h; sourceTree = "<group>"; };
 		A97E88231657CD7100777A82 /* EPZToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EPZToolBar.m; sourceTree = "<group>"; };
+		A97E88251657D63200777A82 /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Util.h"; path = "SethGodin/NSArray+Util.h"; sourceTree = "<group>"; };
+		A97E88261657D63200777A82 /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Util.m"; path = "SethGodin/NSArray+Util.m"; sourceTree = "<group>"; };
+		A97E88281657EF6100777A82 /* UIColor+General.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+General.h"; path = "SethGodin/UIColor+General.h"; sourceTree = "<group>"; };
+		A97E88291657EF6100777A82 /* UIColor+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+General.m"; path = "SethGodin/UIColor+General.m"; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SethGodin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -433,6 +439,10 @@
 				A9100A551650FC5700779F84 /* BlockTypes.h */,
 				A9100A711654FF5E00779F84 /* NSDate+General.h */,
 				A9100A721654FF5E00779F84 /* NSDate+General.m */,
+				A97E88251657D63200777A82 /* NSArray+Util.h */,
+				A97E88261657D63200777A82 /* NSArray+Util.m */,
+				A97E88281657EF6100777A82 /* UIColor+General.h */,
+				A97E88291657EF6100777A82 /* UIColor+General.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -546,6 +556,8 @@
 				A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */,
 				A97E88151657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m in Sources */,
 				A97E88211657C73400777A82 /* SGWebViewController.m in Sources */,
+				A97E88271657D63200777A82 /* NSArray+Util.m in Sources */,
+				A97E882A1657EF6100777A82 /* UIColor+General.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

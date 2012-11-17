@@ -22,4 +22,6 @@
                            forDate:(NSDate*) inDate
                     formatDateWith:(NSDateFormatter*) inFormatter;
 
++ (UIImage*) rssItemButtonForColor:(UIColor*) inColor andSize:(CGSize) inSize;
+
 @end

@@ -20,6 +20,8 @@
 #import "SGBlogItemsGetter.h"
 #import "SGCurrentBlogItemsGetter.h"
 #import "SGArchiveBlogItemsGetter.h"
+#import "NSArray+Util.h"
+#import "UIColor+General.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -209,12 +211,14 @@
 
 - (IBAction)button2Action:(id)sender
 {
+    if(!_entry2) return;
     _blogEntry = _entry2;
     [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
 }
 
 - (IBAction)button3Action:(id)sender
 {
+    if(!_entry3) return;
     _blogEntry = _entry3;
     [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
 }
@@ -264,19 +268,7 @@
 
 
 
-- (void) animateButtonsComingDown
-{
-    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
-     {
-         self.buttonViewToTopViewConstraint.constant += 500;
-         [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
-         [self.view layoutSubviews];
-     }
-     completion:^(BOOL finished)
-     {
-         
-     }];
-}
+
 
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -287,24 +279,23 @@
     }
 }
 
-- (void) updateButtonForEntry:(SGBlogEntry*) inEntry
-{
-    UIColor* buttonColor = [UIColor colorWithRed: 0.751 green: 0.703 blue: 0.608 alpha: 1];
-    if(inEntry == _entry1)
-    {
-        [self updateButtonImage:inEntry forButton:_rssItem1Button withColor:buttonColor];
-    }
-    else if(inEntry == _entry2)
-    {
-        UIColor* buttonColor2 = [buttonColor colorWithAlphaComponent: 0.8];
-        [self updateButtonImage:inEntry forButton:_rssItem2Button withColor:buttonColor2];
-    }
-    else if(inEntry == _entry3)
-    {
-        UIColor* buttonColor3 = [buttonColor colorWithAlphaComponent: 0.6];
-        [self updateButtonImage:inEntry forButton:_rssItem3Button withColor:buttonColor3];
-    }
 
+
+#pragma mark -
+#pragma mark update buttons
+
+- (void) animateButtonsComingDown
+{
+    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+     {
+         self.buttonViewToTopViewConstraint.constant += 500;
+         [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
+         [self.view layoutSubviews];
+     }
+                     completion:^(BOOL finished)
+     {
+         
+     }];
 }
 
 - (void) updateButtonImage:(SGBlogEntry*) inEntry forButton:(UIButton*) inButton withColor:(UIColor*) inColor
@@ -312,45 +303,78 @@
     
     SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
     
+    UIImage *buttonImage;
     
-    UIImage *buttonImage = [UIImage rssItemButtonForColor:inColor
-                                                   andSize:inButton.frame.size
-                                                     title:inEntry.title
-                                                    shared:inEntry.shareCount
-                                                   forDate:inEntry.datePublished
-                                            formatDateWith:appDelegate.dateFormatterLongStyle];
+    if(inEntry)
+    {
+        buttonImage = [UIImage rssItemButtonForColor:inColor
+                                             andSize:inButton.frame.size
+                                               title:inEntry.title
+                                              shared:inEntry.shareCount
+                                             forDate:inEntry.datePublished
+                                      formatDateWith:appDelegate.dateFormatterLongStyle];
+    }
+    
     
     [inButton setImage:buttonImage forState:UIControlStateNormal];
     
 }
 
 
-#pragma mark -
-#pragma mark navigation buttons
+- (void) updateButtonForEntry:(SGBlogEntry*) inEntry
+{
+    if(!inEntry) return;
+    
+    if(inEntry == _entry1)
+    {
+        [self updateButtonImage:inEntry forButton:_rssItem1Button withColor:[UIColor firstButtonColor]];
+    }
+    else if(inEntry == _entry2)
+    {
+        [self updateButtonImage:inEntry forButton:_rssItem2Button withColor:[UIColor secondButtonColor]];
+    }
+    else if(inEntry == _entry3)
+    {
+        [self updateButtonImage:inEntry forButton:_rssItem3Button withColor:[UIColor thirdButtonColor]];
+    }
+    
+}
+
 
 - (void) updateButtons
 {
     NSUInteger startAt = _pageNumber * 3;
     
+    [self updateButtonsToEmtpy];
+    
     [_entry1 removeObserver:self forKeyPath:@"shareCount"];
     [_entry2 removeObserver:self forKeyPath:@"shareCount"];
     [_entry3 removeObserver:self forKeyPath:@"shareCount"];
     
-    _entry1 = [_blogItems objectAtIndex:startAt];
-    _entry2 = [_blogItems objectAtIndex:startAt+1];
-    _entry3 = [_blogItems objectAtIndex:startAt+2];
+    _entry1 = [_blogItems safeObjectAtIndex:startAt];
+    _entry2 = [_blogItems safeObjectAtIndex:startAt+1];
+    _entry3 = [_blogItems safeObjectAtIndex:startAt+2];
     
     [_entry1 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
     [_entry2 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
     [_entry3 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
     
-    [self updateButtonForEntry:_entry1];
-    [self updateButtonForEntry:_entry2];
-    [self updateButtonForEntry:_entry3];
-    
+    if(_entry1) [self updateButtonForEntry:_entry1];
+    if(_entry2) [self updateButtonForEntry:_entry2];
+    if(_entry3) [self updateButtonForEntry:_entry3];
     
 }
 
+- (void) updateButtonsToEmtpy
+{
+    UIImage *img2 = [UIImage rssItemButtonForColor:[UIColor secondButtonColor] andSize:self.rssItem2Button.frame.size];
+    UIImage *img3 = [UIImage rssItemButtonForColor:[UIColor thirdButtonColor] andSize:self.rssItem3Button.frame.size];
+    [self.rssItem2Button setImage:img2 forState:UIControlStateNormal];
+    [self.rssItem3Button setImage:img3 forState:UIControlStateNormal];
+}
+
+#pragma mark -
+#pragma mark navigation buttons
 
 - (IBAction)previousButton:(id)sender
 {
@@ -369,9 +393,9 @@
     NSUInteger newPageNumber = _pageNumber + 1;
     NSUInteger startAt = newPageNumber * 3;
     
-    NSUInteger lastItem = startAt + 3;
+    SGBlogEntry *startEntry = [_blogItems safeObjectAtIndex:startAt];
     
-    if(lastItem <= (_blogItems.count - 1))
+    if(startEntry != nil)
     {
         _pageNumber = newPageNumber;
         [self updateButtons];

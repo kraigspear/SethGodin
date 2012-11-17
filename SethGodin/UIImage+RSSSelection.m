@@ -130,6 +130,29 @@
             }];
 }
 
++ (UIImage*) rssItemButtonForColor:(UIColor*) inColor andSize:(CGSize) inSize
+{
+    CGFloat r,g,b,a;
+    [inColor getRed:&r green:&g blue:&b alpha:&a];
+    
+    NSString *identifier = [NSString stringWithFormat:@"%f%f%f%f%f%f", r, g, b,a, inSize.width, inSize.height];
+    
+    return [UIImage imageWithIdentifier:identifier forSize:inSize andDrawingBlock:^
+    {
+        //// Color Declarations
+        UIColor* buttonColor = inColor;
+        
+        //// Frames
+        CGRect outerFrame = CGRectMake(0, 0, 320, 132);
+        
+        
+        //// buttonRect Drawing
+        UIBezierPath* buttonRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(outerFrame) + floor(CGRectGetWidth(outerFrame) * 0.00000 + 0.5), CGRectGetMinY(outerFrame) + floor(CGRectGetHeight(outerFrame) * 0.00000 + 0.5), floor(CGRectGetWidth(outerFrame) * 1.00000 + 0.5) - floor(CGRectGetWidth(outerFrame) * 0.00000 + 0.5), floor(CGRectGetHeight(outerFrame) * 1.00000 + 0.5) - floor(CGRectGetHeight(outerFrame) * 0.00000 + 0.5))];
+        [buttonColor setFill];
+        [buttonRectPath fill];
+    }];
+}
+
 + (UIImage*) rssItemButtonForColor:(UIColor*) inColor
              andSize:(CGSize) inSize
              title:(NSString*) inTitle
