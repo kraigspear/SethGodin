@@ -6,20 +6,20 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGCurrentContentGetter.h"
+#import "SGCurrentBlogItemsGetter.h"
 #import "SGBlogEntry.h"
 #import "AFNetworking.h"
 
 
 //http://profile.typepad.com/sethgodin/activity.json
 
-@implementation SGCurrentContentGetter
+@implementation SGCurrentBlogItemsGetter
 {
 @private
     
 }
 
-- (void) requestLatestBlocksuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
+- (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
 {
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -61,7 +61,7 @@
         NSString *itemID      = [objDict objectForKey:@"id"];
         NSString *urlStr      = [objDict objectForKey:@"url"];
 
-        SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithDisplayName:displayName
+        SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithTitle:displayName
                                                               publishedOn:datePublished
                                                               summary:summary
                                                               content:content

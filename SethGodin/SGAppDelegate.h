@@ -10,9 +10,16 @@
 
 @interface SGAppDelegate : UIResponder <UIApplicationDelegate>
 
+/**
+ Main window
+ */
 @property (strong, nonatomic) UIWindow *window;
 
-- (NSDateFormatter*) dateformatter;
+/**
+ A long dateformatter that can be used throughout the App.
+ @return NSDateFormatter set to long format
+ */
+- (NSDateFormatter*) dateFormatterLongStyle;
 
 
 @end

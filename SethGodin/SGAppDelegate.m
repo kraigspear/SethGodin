@@ -14,7 +14,7 @@
     NSDateFormatter *_dateformatter;
 }
 
-- (NSDateFormatter*) dateformatter
+- (NSDateFormatter*) dateFormatterLongStyle
 {
     return _dateformatter;
 }

@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGArchiveContentGetter.h"
+#import "SGArchiveBlogItemsGetter.h"
 #import "AFJSONRequestOperation.h"
 #import "SGBlogEntry.h"
 
-@implementation SGArchiveContentGetter
+@implementation SGArchiveBlogItemsGetter
 {
 @private
     NSUInteger _year;
@@ -30,7 +30,7 @@
     return self;
 }
 
-- (void) requestLatestBlocksuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
+- (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
 {
     NSString *monthYear = [NSString stringWithFormat:@"%d-%02d", _year, _month];
     
@@ -76,7 +76,7 @@
         NSString *itemID        = [dict objectForKey:@"urlId"];
         NSString *urlStr        = [dict objectForKey:@"permalinkUrl"];
         
-        SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithDisplayName:displayName
+        SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithTitle:displayName
                                                               publishedOn:datePublished
                                                                   summary:summary
                                                                   content:content

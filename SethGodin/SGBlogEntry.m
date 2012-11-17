@@ -17,7 +17,7 @@ NSString * const KEY_CONTENT      = @"content";
 NSString * const KEY_ID           = @"id";
 NSString * const KEY_URL          = @"url";
 
-- (id) initWithDisplayName:(NSString*) inDisplayName
+- (id) initWithTitle:(NSString*) inDisplayName
                publishedOn:(NSDate*) inDate
                    summary:(NSString*) inSummary
                    content:(NSString*) inContent
@@ -26,7 +26,7 @@ NSString * const KEY_URL          = @"url";
 {
     self = [super init];
     
-    _displayName   = inDisplayName;
+    _title   = inDisplayName;
     _datePublished = inDate;
     _summary       = inSummary;
     _content       = inContent;
@@ -43,7 +43,7 @@ NSString * const KEY_URL          = @"url";
 {
     self = [self init];
     
-    _displayName   = [aDecoder decodeObjectForKey:KEY_DISPLAY_NAME];
+    _title  = [aDecoder decodeObjectForKey:KEY_DISPLAY_NAME];
     _datePublished = [aDecoder decodeObjectForKey:KEY_DATE];
     _summary       = [aDecoder decodeObjectForKey:KEY_SUMMARY];
     _content       = [aDecoder decodeObjectForKey:KEY_CONTENT];
@@ -55,7 +55,7 @@ NSString * const KEY_URL          = @"url";
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.displayName forKey:KEY_DISPLAY_NAME];
+    [aCoder encodeObject:self.title forKey:KEY_DISPLAY_NAME];
     [aCoder encodeObject:self.datePublished forKey:KEY_DATE];
     [aCoder encodeObject:self.summary forKey:KEY_SUMMARY];
     [aCoder encodeObject:self.content forKey:KEY_CONTENT];
@@ -66,7 +66,7 @@ NSString * const KEY_URL          = @"url";
 
 - (NSString*) description
 {
-    return self.displayName;
+    return self.title;
 }
 
 - (BOOL) isEqual:(id) other

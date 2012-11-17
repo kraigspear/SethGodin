@@ -17,9 +17,9 @@
 #import "SGNotifications.h"
 #import "SGFeedSelection.h"
 
-#import "SGConentGetter.h"
-#import "SGCurrentContentGetter.h"
-#import "SGArchiveContentGetter.h"
+#import "SGBlogItemsGetter.h"
+#import "SGCurrentBlogItemsGetter.h"
+#import "SGArchiveBlogItemsGetter.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -31,7 +31,7 @@
 {
 @private
     NSArray *_blogItems;
-    SGConentGetter *_contentGetter;
+    SGBlogItemsGetter *_contentGetter;
     NSUInteger _pageNumber;
     
     SGBlogEntry *_entry1;
@@ -64,7 +64,7 @@
     [self.view removeConstraint:self.buttonViewToLeftButtonViewConstraint];
     [self.view layoutSubviews];
     
-    _contentGetter = [[SGCurrentContentGetter alloc] init];
+    _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
     
 	[self.upButton setImage:[UIImage upButton] forState:UIControlStateNormal];
     [self.downButton setImage:[UIImage downButton] forState:UIControlStateNormal];
@@ -236,17 +236,17 @@
     switch (_feedSelection.feedType)
     {
         case kCurrent:
-            _contentGetter = [[SGCurrentContentGetter alloc] init];
+            _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
             break;
         case kArchive:
-            _contentGetter = [[SGArchiveContentGetter alloc] initWithMonth:_feedSelection.month andYear:_feedSelection.year];
+            _contentGetter = [[SGArchiveBlogItemsGetter alloc] initWithMonth:_feedSelection.month andYear:_feedSelection.year];
             break;
         default:
-            _contentGetter = [[SGCurrentContentGetter alloc] init];
+            _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
             break;
     }
     
-    [_contentGetter requestLatestBlocksuccess:^(NSArray *inItems)
+    [_contentGetter requestItemssuccess:^(NSArray *inItems)
      {
          _pageNumber = 0;
          _blogItems = inItems;
@@ -312,10 +312,10 @@
     
     UIImage *buttonImage = [UIImage rssItemButtonForColor:inColor
                                                    andSize:inButton.frame.size
-                                                     title:inEntry.displayName
+                                                     title:inEntry.title
                                                     shared:inEntry.shareCount
                                                    forDate:inEntry.datePublished
-                                            formatDateWith:appDelegate.dateformatter];
+                                            formatDateWith:appDelegate.dateFormatterLongStyle];
     
     [inButton setImage:buttonImage forState:UIControlStateNormal];
     

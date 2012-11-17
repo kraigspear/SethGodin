@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SGConentGetter.h"
+#import "SGBlogItemsGetter.h"
 
 
-@interface SGCurrentContentGetter : SGConentGetter
+@interface SGCurrentBlogItemsGetter : SGBlogItemsGetter
 
 
 @end

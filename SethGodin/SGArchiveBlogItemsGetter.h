@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SGConentGetter.h"
+#import "SGBlogItemsGetter.h"
 
-@interface SGArchiveContentGetter : SGConentGetter
+@interface SGArchiveBlogItemsGetter : SGBlogItemsGetter
 
 - (id) initWithMonth:(NSUInteger) inMonth andYear:(NSUInteger) inYear;
 

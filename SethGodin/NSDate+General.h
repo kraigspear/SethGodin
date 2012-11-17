@@ -8,9 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+ Generic date functions that don't apply to a specifc task.
+ */
 @interface NSDate (General)
 
+/**
+ The year value for this date
+ @return Year for this date
+ */
 - (NSUInteger) year;
+
+/**
+ Month value for this date
+ @return The month for this date
+ */
 - (NSUInteger) month;
 
 @end

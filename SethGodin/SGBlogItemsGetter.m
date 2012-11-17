@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGConentGetter.h"
+#import "SGBlogItemsGetter.h"
 
 
 
-@implementation SGConentGetter
+@implementation SGBlogItemsGetter
 {
 @private
     NSDateFormatter *_dateFormatter;
@@ -32,7 +32,7 @@
     
 }
 
-- (void) requestLatestBlocksuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
+- (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
 {
     
 }

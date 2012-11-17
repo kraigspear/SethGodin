@@ -90,8 +90,8 @@
         
         SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
         //// Abstracted Attributes
-        NSString* titleTextContent = self.blogEntry.displayName;
-        NSString* dateTextContent =  [appDelegate.dateformatter stringFromDate:self.blogEntry.datePublished];
+        NSString* titleTextContent = self.blogEntry.title;
+        NSString* dateTextContent =  [appDelegate.dateFormatterLongStyle stringFromDate:self.blogEntry.datePublished];
         
         
         //// backRect Drawing
@@ -138,7 +138,7 @@
     
     NSString *textToShare = [[self.blogEntry.summary substringToIndex:50] stringByAppendingString:@"..."];
     
-    NSArray *shareItems = @[@"SETH GODIN Blog", self.blogEntry.displayName, textToShare, url];
+    NSArray *shareItems = @[@"SETH GODIN Blog", self.blogEntry.title, textToShare, url];
     
     UIActivityViewController *activityViewController =
     [[UIActivityViewController alloc]
