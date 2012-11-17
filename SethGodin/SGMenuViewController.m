@@ -69,4 +69,11 @@
     [self closeMenuWithAnimation:YES];
 }
 
+- (IBAction)favoritesAction:(id)sender
+{
+    SGFeedSelection *feedSelection = [SGFeedSelection selectionAsFavorites];
+    [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
+    [self closeMenuWithAnimation:YES];
+}
+
 @end

@@ -265,12 +265,12 @@
 				A97E88201657C73400777A82 /* SGWebViewController.m */,
 			);
 			name = WebView;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
-				A97E881E1657C71100777A82 /* WebView */,
 				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D6854F164D0DBD007A9ADA /* General */,
 				A9100A6016531E5800779F84 /* Resources */,
@@ -311,6 +311,7 @@
 				A9D6854E164D0D47007A9ADA /* FeedItems */,
 				A91009D11650083200779F84 /* PostView */,
 				A9100A511650F9D800779F84 /* Menu */,
+				A97E881E1657C71100777A82 /* WebView */,
 				A91009C6164EED9C00779F84 /* Model */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
 				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,

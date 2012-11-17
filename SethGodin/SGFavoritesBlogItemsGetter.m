@@ -7,7 +7,21 @@
 //
 
 #import "SGFavoritesBlogItemsGetter.h"
+#import "SGFavorites.h"
+#import "SGBlogEntry.h"
 
 @implementation SGFavoritesBlogItemsGetter
+
+- (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
+{
+    SGFavorites *favorites = [SGFavorites loadFavorites];
+    
+    for(SGBlogEntry *blogEntry in favorites.favorites)
+    {
+        [self updateShareCountForBlogEntry:blogEntry];
+    }
+    
+    inSuccess(favorites.favorites);
+}
 
 @end

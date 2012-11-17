@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SGBlogItemsGetter.h"
 
-@interface SGFavoritesBlogItemsGetter : NSObject
+@interface SGFavoritesBlogItemsGetter : SGBlogItemsGetter
+
+
 
 @end

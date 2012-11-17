@@ -16,7 +16,7 @@
 #import "SGMenuViewController.h"
 #import "SGNotifications.h"
 #import "SGFeedSelection.h"
-
+#import "SGFavoritesBlogItemsGetter.h"
 #import "SGBlogItemsGetter.h"
 #import "SGCurrentBlogItemsGetter.h"
 #import "SGArchiveBlogItemsGetter.h"
@@ -240,6 +240,9 @@
             break;
         case kArchive:
             _contentGetter = [[SGArchiveBlogItemsGetter alloc] initWithMonth:_feedSelection.month andYear:_feedSelection.year];
+            break;
+        case kFavorites:
+            _contentGetter = [[SGFavoritesBlogItemsGetter alloc] init];
             break;
         default:
             _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
