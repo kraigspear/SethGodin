@@ -10,7 +10,7 @@
 
 @class SGBlogEntry;
 
-@interface SGPostViewController : UIViewController
+@interface SGPostViewController : UIViewController <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;

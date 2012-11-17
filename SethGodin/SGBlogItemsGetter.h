@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SGBlogEntry;
+
 typedef void (^BlogContentSuccess)(NSArray*);
 typedef void (^BlogContentFailed)(NSError*);
 
@@ -32,6 +34,12 @@ typedef void (^BlogContentFailed)(NSError*);
  @param inDateStr The string to convert to a date.
  */
 - (NSDate*) dateFromString:(NSString*) inDateStr;
+
+/**
+ Updates the share count for a blog entry.
+ @param inEntry The entry to update teh count for.
+ */
+- (void) updateShareCountForBlogEntry:(SGBlogEntry*) inEntry;
 
 
 @end

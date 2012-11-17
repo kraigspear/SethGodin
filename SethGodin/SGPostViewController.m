@@ -13,6 +13,7 @@
 #import "SGBlogEntry.h"
 #import "SGAppDelegate.h"
 #import "SGFavorites.h"
+#import "SGWebViewController.h"
 
 
 @implementation SGPostViewController
@@ -25,7 +26,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Seth Godin"]];
+    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     for (UIView* subView in self.webView.subviews)
     {
@@ -148,6 +149,26 @@
     
     [self presentViewController:activityViewController animated:YES completion:nil];
     
+}
+
+
+#pragma mark -
+#pragma mark UIWebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+
+    if(![[[request.URL description] substringToIndex:4] isEqualToString:@"http"])
+    {
+        return YES;
+    }
+    
+    SGWebViewController *vc = (SGWebViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"webView"];
+    
+    [vc navigateToURL:request.URL];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+    
+    return NO;
 }
 
 

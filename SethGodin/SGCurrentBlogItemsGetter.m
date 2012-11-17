@@ -76,29 +76,6 @@
     return blogEntires;
 }
 
-- (void) updateShareCountForBlogEntry:(SGBlogEntry*) inEntry
-{
-     NSString *urlStr = [NSString stringWithFormat:@"http://graph.facebook.com/?id=%@", inEntry.urlStr];
-    
-     NSURL *url = [NSURL URLWithString:urlStr];
-     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-     {
-         NSDictionary *dict = (NSDictionary*) JSON;
-         
-         
-         NSString *facebookShared = [[dict objectForKey:@"shares"] stringValue];
-         
-         inEntry.shareCount += [facebookShared integerValue];
-     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
-     {
-         
-     }];
-    
-     [operation start];
-}
 
 
 @end

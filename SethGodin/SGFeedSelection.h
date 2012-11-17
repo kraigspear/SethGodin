@@ -9,10 +9,22 @@
 #import <Foundation/Foundation.h>
 
 
+/**
+ The different types of feed selection
+ */
 typedef enum _feedType
 {
+    /**
+     Select the current feed
+     */
     kCurrent,
+    /**
+     Selects an archive
+     */
     kArchive,
+    /**
+     Selects favorites
+     */
     kFavorites
 } kfeedType;
 

@@ -21,7 +21,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Seth Godin"]];
+    self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
     [self.closeButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
     
     UIImage *booksImage   = [UIImage menuImageWithText:@"Books By Seth Godin" isUpgrade:NO];
@@ -59,6 +59,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:_feedSelectionNotification];
     _feedSelectionNotification = nil;
     self.close(inShouldAnimate);
+}
+
+
+- (IBAction)currentPostAction:(id)sender
+{
+    SGFeedSelection *feedSelection = [SGFeedSelection selectionAsCurrent];
+    [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
+    [self closeMenuWithAnimation:YES];
 }
 
 @end

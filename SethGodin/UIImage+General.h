@@ -17,5 +17,7 @@
 + (UIImage*) shareButton;
 + (UIImage*) leftArrow;
 + (UIImage*) rightArrow;
++ (UIImage*) previousButton;
++ (UIImage*) nextButton;
 
 @end

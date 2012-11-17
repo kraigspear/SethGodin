@@ -31,6 +31,8 @@
 		A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880E1656465D00777A82 /* SGBlogItemsGetter.m */; };
 		A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E8811165646BC00777A82 /* SGArchiveBlogItemsGetter.m */; };
 		A97E88151657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88141657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m */; };
+		A97E88211657C73400777A82 /* SGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88201657C73400777A82 /* SGWebViewController.m */; };
+		A97E88241657CD9300777A82 /* EPZToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88231657CD7100777A82 /* EPZToolBar.m */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -102,6 +104,10 @@
 		A97E8811165646BC00777A82 /* SGArchiveBlogItemsGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGArchiveBlogItemsGetter.m; sourceTree = "<group>"; };
 		A97E88131657AA2F00777A82 /* SGFavoritesBlogItemsGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesBlogItemsGetter.h; sourceTree = "<group>"; };
 		A97E88141657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesBlogItemsGetter.m; sourceTree = "<group>"; };
+		A97E881F1657C73400777A82 /* SGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGWebViewController.h; path = SethGodin/SGWebViewController.h; sourceTree = "<group>"; };
+		A97E88201657C73400777A82 /* SGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGWebViewController.m; path = SethGodin/SGWebViewController.m; sourceTree = "<group>"; };
+		A97E88221657CD7100777A82 /* EPZToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPZToolBar.h; sourceTree = "<group>"; };
+		A97E88231657CD7100777A82 /* EPZToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EPZToolBar.m; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SethGodin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -250,9 +256,21 @@
 			name = ContentGetters;
 			sourceTree = "<group>";
 		};
+		A97E881E1657C71100777A82 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				A97E88221657CD7100777A82 /* EPZToolBar.h */,
+				A97E88231657CD7100777A82 /* EPZToolBar.m */,
+				A97E881F1657C73400777A82 /* SGWebViewController.h */,
+				A97E88201657C73400777A82 /* SGWebViewController.m */,
+			);
+			name = WebView;
+			sourceTree = "<group>";
+		};
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
+				A97E881E1657C71100777A82 /* WebView */,
 				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D6854F164D0DBD007A9ADA /* General */,
 				A9100A6016531E5800779F84 /* Resources */,
@@ -497,6 +515,7 @@
 				A9D68507164CFE8D007A9ADA /* SGFeedItemsViewController.m in Sources */,
 				A9D68522164D006A007A9ADA /* AFHTTPClient.m in Sources */,
 				A9D68523164D006A007A9ADA /* AFHTTPRequestOperation.m in Sources */,
+				A97E88241657CD9300777A82 /* EPZToolBar.m in Sources */,
 				A9D68524164D006A007A9ADA /* AFImageRequestOperation.m in Sources */,
 				A9D68525164D006A007A9ADA /* AFJSONRequestOperation.m in Sources */,
 				A9D68526164D006A007A9ADA /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -525,6 +544,7 @@
 				A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */,
 				A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */,
 				A97E88151657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m in Sources */,
+				A97E88211657C73400777A82 /* SGWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

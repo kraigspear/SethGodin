@@ -45,8 +45,9 @@
 
 /**
  How many times this entry has been shared.
+ This is atomic due to multiple threads could update at the same time.
  */
-@property (nonatomic, assign)   NSUInteger shareCount;
+@property (atomic, assign)   NSUInteger shareCount;
 
 
 /**

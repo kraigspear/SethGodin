@@ -83,7 +83,7 @@
                                                                    itemID:itemID
        
                                                                   fromURL:urlStr];
-        
+        [self updateShareCountForBlogEntry:blogEntry];
         [blogEntires addObject:blogEntry];
     }
     

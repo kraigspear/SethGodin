@@ -242,5 +242,44 @@
             }];
 }
 
++ (UIImage*) previousButton
+{
+    return [UIImage imageWithIdentifier:@"previous" forSize:CGSizeMake(12, 20) andDrawingBlock:^
+            {
+                
+                
+                //// Bezier Drawing
+                UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+                [bezierPath moveToPoint: CGPointMake(10.5, 1.5)];
+                [bezierPath addLineToPoint: CGPointMake(0.5, 10.5)];
+                [bezierPath addLineToPoint: CGPointMake(10.5, 19.5)];
+                [bezierPath addLineToPoint: CGPointMake(10.5, 1.5)];
+                [bezierPath closePath];
+                [[UIColor whiteColor] setFill];
+                [bezierPath fill];
+                
+            }];
+}
+
++ (UIImage*) nextButton
+{
+    return [UIImage imageWithIdentifier:@"next" forSize:CGSizeMake(12, 20) andDrawingBlock:^
+            {
+                
+                
+                //// Bezier 2 Drawing
+                UIBezierPath* bezier2Path = [UIBezierPath bezierPath];
+                [bezier2Path moveToPoint: CGPointMake(0.5, 19.5)];
+                [bezier2Path addLineToPoint: CGPointMake(10.5, 10.5)];
+                [bezier2Path addLineToPoint: CGPointMake(0.5, 1.5)];
+                [bezier2Path addLineToPoint: CGPointMake(0.5, 19.5)];
+                [bezier2Path closePath];
+                [[UIColor whiteColor] setFill];
+                [bezier2Path fill];
+            }];
+}
+
+
+
 
 @end
