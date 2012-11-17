@@ -41,5 +41,10 @@ typedef void (^BlogContentFailed)(NSError*);
  */
 - (void) updateShareCountForBlogEntry:(SGBlogEntry*) inEntry;
 
+/**
+ Turns JSON to SGBlogItems
+ */
+- (NSArray*) blockItemsForDictionary:(NSDictionary*) inDictionary;
+
 
 @end

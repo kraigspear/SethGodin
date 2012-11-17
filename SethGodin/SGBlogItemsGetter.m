@@ -101,6 +101,37 @@
     
 }
 
+- (NSArray*) blockItemsForDictionary:(NSDictionary*) inDictionary
+{
+    NSArray *items = [inDictionary objectForKey:@"entries"];
+    
+    NSMutableArray *blogEntires = [NSMutableArray arrayWithCapacity:items.count];
+    
+    for(NSDictionary *dict in items)
+    {
+        NSString *displayName   = [dict objectForKey:@"title"];
+        NSString *dateStr       = [dict objectForKey:@"published"];
+        NSDate   *datePublished = [self dateFromString:dateStr];
+        NSString *summary       = [dict objectForKey:@"excerpt"];
+        NSString *content       = [dict objectForKey:@"renderedContent"];
+        NSString *itemID        = [dict objectForKey:@"urlId"];
+        NSString *urlStr        = [dict objectForKey:@"permalinkUrl"];
+        
+        SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithTitle:displayName
+                                                        publishedOn:datePublished
+                                                            summary:summary
+                                                            content:content
+                                                             itemID:itemID
+                                  
+                                                            fromURL:urlStr];
+        [self updateShareCountForBlogEntry:blogEntry];
+        [blogEntires addObject:blogEntry];
+    }
+    
+    return blogEntires;
+}
+
+
 
 
 @end

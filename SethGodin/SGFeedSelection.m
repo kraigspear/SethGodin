@@ -36,6 +36,21 @@
     return self;
 }
 
+- (id) initWithSearchText:(NSString*) inSearchText
+{
+    self = [self init];
+
+    self.feedType = kSearch;
+    self.searchText = inSearchText;    
+    
+    return self;
+}
+
++ (SGFeedSelection*) selectionAsSearch:(NSString*) inSearchText
+{
+    return [[SGFeedSelection alloc] initWithSearchText:inSearchText];
+}
+
 + (SGFeedSelection*) selectionForMonth:(NSUInteger) inMonth andYear:(NSUInteger) inYear
 {
     return [[SGFeedSelection alloc] initAsArchiveForMonth:inMonth andYear:inYear];

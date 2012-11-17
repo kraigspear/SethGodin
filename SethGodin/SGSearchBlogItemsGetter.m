@@ -1,45 +1,37 @@
 //
-//  SGArchiveContentGetter.m
+//  SGSearchBlogItemsGetter.m
 //  SethGodin
 //
-//  Created by Kraig Spear on 11/16/12.
+//  Created by Kraig Spear on 11/17/12.
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGArchiveBlogItemsGetter.h"
+#import "SGSearchBlogItemsGetter.h"
 #import "AFJSONRequestOperation.h"
 #import "SGBlogEntry.h"
 
-@implementation SGArchiveBlogItemsGetter
+@implementation SGSearchBlogItemsGetter
 {
 @private
-    NSUInteger _year;
-    NSUInteger _month;
+    NSString *_searchText;
 }
 
-- (id) initWithMonth:(NSUInteger) inMonth andYear:(NSUInteger) inYear
+- (id) initWithSearchText:(NSString*) inSearchText
 {
     self = [self init];
     
-    if(self)
-    {
-        _month = inMonth;
-        _year  = inYear;
-    }
+    _searchText = inSearchText;
     
     return self;
 }
 
 - (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
 {
-    NSString *monthYear = [NSString stringWithFormat:@"%d-%02d", _year, _month];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"http://api.typepad.com/blogs/6a00d83451b31569e200d8341c521b53ef/post-assets/@published/@by-month/%@.json?max-results=31", monthYear];
-    
-    NSLog(@"urlStr = %@", urlStr);
+    NSString *urlStr = [NSString stringWithFormat:@"http://api.typepad.com/assets.json?q=title:%@&filter.author=6p00d83451b31569e2", _searchText];
     
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
                                          {
@@ -58,6 +50,7 @@
                                              inError(error);
                                          }];
     [operation start];
+
 }
 
 

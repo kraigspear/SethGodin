@@ -22,6 +22,7 @@
 #import "SGArchiveBlogItemsGetter.h"
 #import "NSArray+Util.h"
 #import "UIColor+General.h"
+#import "SGSearchBlogItemsGetter.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -49,7 +50,7 @@
     CALayer          *_spinnerLayer;
     CALayer          *_loadingBackgroundLayer;
     
-    NSInteger buttonTopContant;
+    NSInteger   buttonTopContant;
 }
 
 #pragma mark -
@@ -60,6 +61,9 @@
     [super viewDidLoad];
     
     _feedSelection = [SGFeedSelection selectionAsCurrent];
+    
+    self.searchTextField.borderStyle = UITextBorderStyleNone;
+    self.searchTextField.returnKeyType = UIReturnKeySearch;
     
     buttonTopContant = self.buttonViewToLeftButtonViewConstraint.constant - 500;
     
@@ -120,7 +124,14 @@
 
 - (IBAction)menuAction:(id)sender
 {
-    [self showMenu];
+    if(!self.searchTextField.hidden)
+    {
+        [self closeSearchView];
+    }
+    else
+    {
+        [self showMenu];
+    }
 }
 
 - (void) showMenu
@@ -247,6 +258,9 @@
             break;
         case kFavorites:
             _contentGetter = [[SGFavoritesBlogItemsGetter alloc] init];
+            break;
+        case kSearch:
+            _contentGetter = [[SGSearchBlogItemsGetter alloc] initWithSearchText:_feedSelection.searchText];
             break;
         default:
             _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
@@ -482,7 +496,54 @@
     }];
 }
 
+#pragma mark -
+#pragma mark searching
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self searchBlogFor:textField.text];
+    return [textField resignFirstResponder];
+}
+
+- (void) searchBlogFor:(NSString*) inText
+{
+    SGFeedSelection *feedSelection = [SGFeedSelection selectionAsSearch:inText];
+    [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
+    [self closeSearchView];
+}
+
+- (void) closeSearchView
+{
+   [self.searchTextField resignFirstResponder];
+   self.searchTextField.hidden = YES;
+   self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
+   [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
+   [self fadeToolbarAnimation];
+}
+
+- (IBAction)searchAction:(id)sender
+{
+    if(!self.searchTextField.hidden) return;
+    
+    self.searchTextField.hidden = NO;
+    
+    [self.menuButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
+    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@""]];
+    [self.searchTextField becomeFirstResponder];
+    [self fadeToolbarAnimation];
+}
+
+- (void) fadeToolbarAnimation
+{
+    CATransition *animation = [CATransition animation];
+	animation.delegate = self;
+	animation.duration = .25f;
+	animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+	animation.type = kCATransitionFade;
+    
+	[self.topView exchangeSubviewAtIndex:0 withSubviewAtIndex:0];
+	[self.topView.layer addAnimation:animation forKey:@"animation"];
+}
 
 
 @end

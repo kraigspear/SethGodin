@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SGFeedItemsViewController : UIViewController
+@interface SGFeedItemsViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *upButton;
 @property (weak, nonatomic) IBOutlet UIButton *downButton;
@@ -23,5 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonViewToTopViewConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *buttonViewToLeftButtonViewConstraint;
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 
 @end

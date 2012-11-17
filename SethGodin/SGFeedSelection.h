@@ -25,7 +25,11 @@ typedef enum _feedType
     /**
      Selects favorites
      */
-    kFavorites
+    kFavorites,
+    /**
+     Search results
+     */
+    kSearch
 } kfeedType;
 
 @interface SGFeedSelection : NSObject
@@ -36,9 +40,12 @@ typedef enum _feedType
 + (SGFeedSelection*) selectionForMonth:(NSUInteger) inMonth andYear:(NSUInteger) inYear;
 + (SGFeedSelection*) selectionAsCurrent;
 + (SGFeedSelection*) selectionAsFavorites;
++ (SGFeedSelection*) selectionAsSearch:(NSString*) inSearchText;
 
 @property (nonatomic, assign) kfeedType feedType;
 @property (nonatomic, assign) NSUInteger month;
 @property (nonatomic, assign) NSUInteger year;
+@property (nonatomic, strong) NSString  *searchText;
+
 
 @end
