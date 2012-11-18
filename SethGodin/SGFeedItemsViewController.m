@@ -58,6 +58,10 @@
     
     BlockAlertView *_blockAlertView;
     
+    NSUInteger _pageNumberHold;
+    NSArray    *_itemsHold;
+    NSString   *_title;
+    
 }
 
 #pragma mark -
@@ -66,6 +70,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _title = @"SETH GODIN";
     
     _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:self.buttonViewToTopViewConstraint];
     
@@ -83,7 +89,7 @@
     
 	[self.upButton setImage:[UIImage upButton] forState:UIControlStateNormal];
     [self.downButton setImage:[UIImage downButton] forState:UIControlStateNormal];
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
+    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
     
     [self.searchButton setImage:[UIImage searchButton] forState:UIControlStateNormal];
     [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
@@ -477,18 +483,30 @@
 
 - (void) searchBlogFor:(NSString*) inText
 {
+    if(!_itemsHold)
+    {
+        _itemsHold = _blogItems;
+        _pageNumberHold = _pageNumber;
+    }
+    
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsSearch:inText];
     [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
-    [self closeSearchView];
+    [self.searchTextField resignFirstResponder];
 }
 
 - (void) closeSearchView
 {
    [self.searchTextField resignFirstResponder];
    self.searchTextField.hidden = YES;
-   self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
+   self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
    [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
    [self fadeToolbarAnimation];
+    
+    _blogItems = _itemsHold;
+    _itemsHold = nil;
+    _pageNumber = _pageNumberHold;
+    
+    [self updateButtons];
 }
 
 - (IBAction)searchAction:(id)sender
