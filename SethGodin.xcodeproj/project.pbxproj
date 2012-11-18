@@ -390,11 +390,11 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
-				A97E882E165843FA00777A82 /* BookPurchase */,
 				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
 				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
 				A9D6854E164D0D47007A9ADA /* FeedItems */,
 				A91009D11650083200779F84 /* PostView */,
+				A97E882E165843FA00777A82 /* BookPurchase */,
 				A9100A511650F9D800779F84 /* Menu */,
 				A97E881E1657C71100777A82 /* WebView */,
 				A91009C6164EED9C00779F84 /* Model */,
