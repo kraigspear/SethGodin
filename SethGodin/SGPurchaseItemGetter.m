@@ -37,7 +37,7 @@
 
 - (void) latestItems:(ArrayBlock) inSuccess failed:(ErrorBlock) inFailed
 {
-    NSString *iTunesURL = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth+Godin&country=US&media=ebook";
+    NSString *iTunesURL = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth+Godin&country=US&media=ebook&lang=en_us";
     
     NSURL *url = [NSURL URLWithString:iTunesURL];
     

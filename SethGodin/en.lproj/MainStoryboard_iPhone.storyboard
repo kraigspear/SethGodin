@@ -80,17 +80,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ajt-B9-9cx">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="fMC-ex-EwJ" id="pwc-lp-A8Y"/>
                                     <outlet property="delegate" destination="fMC-ex-EwJ" id="eoK-46-i1E"/>
@@ -99,11 +89,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Aa1-yz-2H6" firstAttribute="leading" secondItem="OYd-go-EdC" secondAttribute="leading" type="default" id="35o-jh-jJz"/>
+                            <constraint firstItem="Aa1-yz-2H6" firstAttribute="leading" secondItem="OYd-go-EdC" secondAttribute="leading" type="user" id="35o-jh-jJz"/>
                             <constraint firstItem="Fdg-eU-jDt" firstAttribute="bottom" secondItem="OYd-go-EdC" secondAttribute="bottom" type="default" id="Dfi-6l-krr"/>
                             <constraint firstItem="Fdg-eU-jDt" firstAttribute="leading" secondItem="OYd-go-EdC" secondAttribute="leading" type="default" id="DsX-RX-ady"/>
                             <constraint firstItem="Fdg-eU-jDt" firstAttribute="top" secondItem="OYd-go-EdC" secondAttribute="top" type="default" id="YL9-O1-Vtl"/>
-                            <constraint firstItem="Aa1-yz-2H6" firstAttribute="trailing" secondItem="OYd-go-EdC" secondAttribute="trailing" type="default" id="eVT-Fa-KXo"/>
+                            <constraint firstItem="Aa1-yz-2H6" firstAttribute="trailing" secondItem="OYd-go-EdC" secondAttribute="trailing" type="user" id="eVT-Fa-KXo"/>
                             <constraint firstItem="Fdg-eU-jDt" firstAttribute="trailing" secondItem="OYd-go-EdC" secondAttribute="trailing" type="default" id="iIE-hd-Pcc"/>
                             <constraint firstAttribute="bottom" secondItem="Aa1-yz-2H6" secondAttribute="bottom" type="user" id="wCu-tM-GFD"/>
                         </constraints>
@@ -112,6 +102,9 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="Fdg-eU-jDt" id="fNl-8i-m24"/>
                         <outlet property="collectionView" destination="Aa1-yz-2H6" id="xTP-Wn-eW0"/>
+                        <outlet property="collectionViewToBottom" destination="wCu-tM-GFD" id="jLO-GU-G4H"/>
+                        <outlet property="collectionViewToLeading" destination="35o-jh-jJz" id="kQm-Qb-vD4"/>
+                        <outlet property="collectionViewToTrailing" destination="eVT-Fa-KXo" id="Jjv-4i-PMD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpN-mY-DUP" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -76,6 +76,7 @@
 		A9D6854D164D0578007A9ADA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D6854C164D0578007A9ADA /* libxml2.dylib */; };
 		A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */; };
 		A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D8385516596E9300A79669 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -202,6 +203,7 @@
 		A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BBlock.m"; sourceTree = "<group>"; };
 		A9D68552164D0DE3007A9ADA /* UIImage+RSSSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSSSelection.h"; sourceTree = "<group>"; };
 		A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSSSelection.m"; sourceTree = "<group>"; };
+		A9D8385516596E9300A79669 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */,
 				A9100A4F165044DD00779F84 /* SystemConfiguration.framework in Frameworks */,
 				A9100A4D165037B100779F84 /* QuartzCore.framework in Frameworks */,
 				A9100A4B165037A600779F84 /* ImageIO.framework in Frameworks */,
@@ -348,6 +351,7 @@
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
+				A9D8385516596E9300A79669 /* StoreKit.framework */,
 				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D6854F164D0DBD007A9ADA /* General */,
 				A9100A6016531E5800779F84 /* Resources */,

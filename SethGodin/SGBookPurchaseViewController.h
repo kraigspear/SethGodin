@@ -7,11 +7,15 @@
 //
 
 #import "SGBlogItemsGetter.h"
+#import <StoreKit/StoreKit.h>
 
-@interface SGBookPurchaseViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface SGBookPurchaseViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, SKStoreProductViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToTrailing;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToLeading;
 
 @end

@@ -12,6 +12,8 @@
 #import "BlockTypes.h"
 #import "BlockAlertView.h"
 #import "SGBookCellView.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @implementation SGBookPurchaseViewController
 {
@@ -20,6 +22,7 @@
     SGPurchaseItemGetter   *_purchaseItemGetter;
     BlockAlertView *_alertView;
     NSArray *_items;
+    SKStoreProductViewController *_storeProductViewController;
 }
 
 NSString * const ReuseIdentifier = @"bookCell";
@@ -27,6 +30,11 @@ NSString * const ReuseIdentifier = @"bookCell";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.collectionViewToTrailing.constant = 320;
+    self.collectionViewToLeading.constant = 320;
+    [self.view layoutSubviews];
+    
     
     UINib *cellNib = [UINib nibWithNibName:@"BookCellView" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:ReuseIdentifier];
@@ -41,6 +49,18 @@ NSString * const ReuseIdentifier = @"bookCell";
     {
         _items = latestItems;
         [self.collectionView reloadData];
+        [self.view layoutSubviews];
+        
+        [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+        {
+            self.collectionViewToTrailing.constant = 0;
+            self.collectionViewToLeading.constant = 0;
+            [self.view layoutSubviews];
+        } completion:^(BOOL completed)
+        {
+        }];
+         
+        
     } failed:^(NSError *error)
     {
         [self showError:error];
@@ -100,12 +120,38 @@ NSString * const ReuseIdentifier = @"bookCell";
     return 0;
 }
 
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    return UIEdgeInsetsMake(1, 1, 1, 1);
-//}
-//
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    SGPurchaseItem *itemToPurchase = [_items objectAtIndex:indexPath.row];
+    
+    _storeProductViewController = [[SKStoreProductViewController alloc] init];
+    _storeProductViewController.delegate = self;
+    
+    NSNumber *productNumber = [NSNumber numberWithInteger:itemToPurchase.trackID];
+    
+    NSDictionary *vcParam = @{SKStoreProductParameterITunesItemIdentifier : productNumber};
+    
+    [_storeProductViewController loadProductWithParameters:vcParam completionBlock:^(BOOL result, NSError *error)
+    {
+        if(result && error == nil)
+        {
+            [self presentViewController:_storeProductViewController animated:YES completion:nil];
+        }
+    }];
+    
+}
 
+
+#pragma mark -
+#pragma mark SKStoreProductViewControllerDelegate
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:^
+    {
+        _storeProductViewController = nil;
+    }];
+}
 
 
 
