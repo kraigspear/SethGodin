@@ -23,6 +23,8 @@
 #import "NSArray+Util.h"
 #import "UIColor+General.h"
 #import "SGSearchBlogItemsGetter.h"
+#import "SGLoadingAnimation.h"
+#import "BlockAlertView.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -51,6 +53,11 @@
     CALayer          *_loadingBackgroundLayer;
     
     NSInteger   buttonTopContant;
+    
+    SGLoadingAnimation *_loadingAnimation;
+    
+    BlockAlertView *_blockAlertView;
+    
 }
 
 #pragma mark -
@@ -59,6 +66,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:self.buttonViewToTopViewConstraint];
     
     _feedSelection = [SGFeedSelection selectionAsCurrent];
     
@@ -276,12 +285,27 @@
          [self animateButtonsComingDown];
      } failed:^(NSError *inError)
      {
-         
+         [self stopLoadingAnimation];
+         [self showError:inError];
      }];
 }
 
 
-
+- (void) showError:(NSError*) inError
+{
+    _blockAlertView = [BlockAlertView alertWithTitle:@"Error" message:inError.localizedDescription];
+    
+    __weak SGFeedItemsViewController *weakSelf = self;
+    
+    [_blockAlertView setCancelButtonWithTitle:@"Ok" block:^
+     {
+         SGFeedItemsViewController *strongSelf = weakSelf;
+         if(strongSelf)
+         {
+             strongSelf->_blockAlertView = nil;
+         }
+     }];
+}
 
 
 
@@ -434,66 +458,12 @@
 
 - (void) startLoadingAnimation
 {
-    self.buttonViewToTopViewConstraint.constant = buttonTopContant;
-    [self.view layoutSubviews];
-    
-    UIImage *loadingBackgroundImage = [UIImage imageNamed:@"load_bg.png"];
-    UIImage *loadingTextImage       = [UIImage imageNamed:@"load_text.png"];
-    
-    CALayer *loadingTextLayer = [CALayer layer];
-    loadingTextLayer.contents = (id) loadingTextImage.CGImage;
-    
-    CGFloat loadingTextX = (self.view.frame.size.width / 2) - (loadingTextImage.size.width / 2);
-        
-    loadingTextLayer.frame = CGRectMake(loadingTextX, 25, loadingTextImage.size.width, loadingTextImage.size.height);
-    
-    _loadingBackgroundLayer = [CALayer layer];
-    _loadingBackgroundLayer.contents = (id) loadingBackgroundImage.CGImage;
-    _loadingBackgroundLayer.frame = CGRectMake(0, 0, loadingBackgroundImage.size.width, loadingBackgroundImage.size.height);
-    
-    [_loadingBackgroundLayer addSublayer:loadingTextLayer];
-    
-    [self.view.layer addSublayer:_loadingBackgroundLayer];
-    
-    _spinnerLayer = [CALayer layer];
-    
-    UIImage *spinnerImage = [UIImage imageNamed:@"load_spinner.png"];
-    
-    _spinnerLayer.anchorPoint = CGPointMake(.5, .5);
-    
-    _spinnerLayer.contents = (id) spinnerImage.CGImage;
-    
-    _spinnerLayer.frame = CGRectMake(215, 180, spinnerImage.size.width, spinnerImage.size.height);
-    
-    [_loadingBackgroundLayer addSublayer:_spinnerLayer];
-    
-    CABasicAnimation *spinnerAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    spinnerAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
-    spinnerAnimation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-    spinnerAnimation.duration = 1;             // this might be too fast
-    spinnerAnimation.repeatCount = HUGE_VALF;     // HUGE_VALF is defined in math.h so import it
-    [_spinnerLayer addAnimation:spinnerAnimation forKey:@"rotation"];
-    
+    [_loadingAnimation startLoadingAnimation];
 }
 
 - (void) stopLoadingAnimation
 {
-    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationCurveEaseOut animations:^
-     {
-         _loadingBackgroundLayer.opacity = 0;
-     }
-    completion:^(BOOL finished)
-    {
-        if(finished)
-        {
-            [_spinnerLayer removeAllAnimations];
-            [_spinnerLayer removeFromSuperlayer];
-            _spinnerLayer = nil;
-            
-            [_loadingBackgroundLayer removeFromSuperlayer];
-            _loadingBackgroundLayer = nil;
-        }
-    }];
+    [_loadingAnimation stopLoadingAnimation];
 }
 
 #pragma mark -

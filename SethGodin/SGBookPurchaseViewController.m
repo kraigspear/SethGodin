@@ -12,6 +12,7 @@
 #import "BlockTypes.h"
 #import "BlockAlertView.h"
 #import "SGBookCellView.h"
+#import "SGLoadingAnimation.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -23,6 +24,7 @@
     BlockAlertView *_alertView;
     NSArray *_items;
     SKStoreProductViewController *_storeProductViewController;
+    SGLoadingAnimation *_loadingAnimation;
 }
 
 NSString * const ReuseIdentifier = @"bookCell";
@@ -31,6 +33,8 @@ NSString * const ReuseIdentifier = @"bookCell";
 {
     [super viewDidLoad];
     
+    
+    _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:nil];
     self.collectionViewToTrailing.constant = 320;
     self.collectionViewToLeading.constant = 320;
     [self.view layoutSubviews];
@@ -45,6 +49,7 @@ NSString * const ReuseIdentifier = @"bookCell";
     _tapGesture.numberOfTapsRequired = 1;
     [self.backgroundImageView addGestureRecognizer:_tapGesture];
     
+    [_loadingAnimation startLoadingAnimation];
     [_purchaseItemGetter latestItems:^(NSArray *latestItems)
     {
         _items = latestItems;
@@ -53,11 +58,13 @@ NSString * const ReuseIdentifier = @"bookCell";
         
         [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
         {
+            [_loadingAnimation stopLoadingAnimation];
             self.collectionViewToTrailing.constant = 0;
             self.collectionViewToLeading.constant = 0;
             [self.view layoutSubviews];
         } completion:^(BOOL completed)
         {
+            
         }];
          
         

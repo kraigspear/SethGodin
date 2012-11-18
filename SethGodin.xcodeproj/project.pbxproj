@@ -77,6 +77,7 @@
 		A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */; };
 		A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D8385516596E9300A79669 /* StoreKit.framework */; };
+		A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D838591659853F00A79669 /* SGLoadingAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -204,6 +205,8 @@
 		A9D68552164D0DE3007A9ADA /* UIImage+RSSSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RSSSelection.h"; sourceTree = "<group>"; };
 		A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RSSSelection.m"; sourceTree = "<group>"; };
 		A9D8385516596E9300A79669 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A9D838581659853E00A79669 /* SGLoadingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoadingAnimation.h; sourceTree = "<group>"; };
+		A9D838591659853F00A79669 /* SGLoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadingAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,7 +354,6 @@
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
-				A9D8385516596E9300A79669 /* StoreKit.framework */,
 				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D6854F164D0DBD007A9ADA /* General */,
 				A9100A6016531E5800779F84 /* Resources */,
@@ -372,6 +374,7 @@
 		A9D684E6164CFE8D007A9ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9D8385516596E9300A79669 /* StoreKit.framework */,
 				A9100A4E165044DD00779F84 /* SystemConfiguration.framework */,
 				A9100A4A165037A600779F84 /* ImageIO.framework */,
 				A9100A4C165037B100779F84 /* QuartzCore.framework */,
@@ -398,6 +401,8 @@
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
 				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
+				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
+				A9D838591659853F00A79669 /* SGLoadingAnimation.m */,
 			);
 			path = SethGodin;
 			sourceTree = "<group>";
@@ -649,6 +654,7 @@
 				A97E885416591C0100777A82 /* BlockBackground.m in Sources */,
 				A97E885516591C0100777A82 /* BlockTextPromptAlertView.m in Sources */,
 				A97E88591659212100777A82 /* SGBookCellView.m in Sources */,
+				A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

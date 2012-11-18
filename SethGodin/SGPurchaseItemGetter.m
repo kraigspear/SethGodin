@@ -37,9 +37,16 @@
 
 - (void) latestItems:(ArrayBlock) inSuccess failed:(ErrorBlock) inFailed
 {
-    NSString *iTunesURL = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth+Godin&country=US&media=ebook&lang=en_us";
+    NSLocale *locale = [NSLocale currentLocale];
     
-    NSURL *url = [NSURL URLWithString:iTunesURL];
+    NSString *langCode = [locale objectForKey:NSLocaleLanguageCode];
+    NSString *countryCode = [locale objectForKey:NSLocaleCountryCode];
+
+    NSString *country = [NSString stringWithFormat:@"%@_%@", langCode, countryCode];
+    
+    NSString *iTunesURLBase = [NSString stringWithFormat:@"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth+Godin&country=US&media=ebook&lang=%@", country];
+    
+    NSURL *url = [NSURL URLWithString:iTunesURLBase];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
