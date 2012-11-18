@@ -12,7 +12,7 @@
 
 @implementation SGFavoritesBlogItemsGetter
 
-- (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
+- (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
 {
     SGFavorites *favorites = [SGFavorites loadFavorites];
     

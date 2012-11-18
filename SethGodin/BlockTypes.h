@@ -12,6 +12,8 @@
 
 typedef void (^BasicBlock) (void);
 typedef void (^BoolBlock)  (BOOL);
+typedef void (^ArrayBlock)(NSArray*);
+typedef void (^ErrorBlock)(NSError*);
 
 
 #endif

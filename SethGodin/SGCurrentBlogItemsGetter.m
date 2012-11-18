@@ -19,7 +19,7 @@
     
 }
 
-- (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
+- (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
 {
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

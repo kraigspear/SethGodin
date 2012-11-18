@@ -33,7 +33,7 @@
     
 }
 
-- (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError
+- (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
 {
     
 }

@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BlockTypes.h"
 
 @class SGBlogEntry;
 
-typedef void (^BlogContentSuccess)(NSArray*);
-typedef void (^BlogContentFailed)(NSError*);
+
 
 /**
  Responsible for getting blog items.
@@ -26,7 +26,7 @@ typedef void (^BlogContentFailed)(NSError*);
  @param inSuccess block to receive the items
  @param inError if there was an error getting items
  */
-- (void) requestItemssuccess:(BlogContentSuccess) inSuccess failed:(BlogContentFailed) inError;
+- (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError;
 
 /**
  Provides a date from a string that was supplited by typepad

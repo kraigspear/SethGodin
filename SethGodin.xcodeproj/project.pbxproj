@@ -36,6 +36,17 @@
 		A97E88271657D63200777A82 /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88261657D63200777A82 /* NSArray+Util.m */; };
 		A97E882A1657EF6100777A82 /* UIColor+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88291657EF6100777A82 /* UIColor+General.m */; };
 		A97E882D16581F0C00777A82 /* SGSearchBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E882C16581F0B00777A82 /* SGSearchBlogItemsGetter.m */; };
+		A97E88311658441E00777A82 /* SGBookPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88301658441E00777A82 /* SGBookPurchaseViewController.m */; };
+		A97E88351658459600777A82 /* booksbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A97E88341658459600777A82 /* booksbg@2x.png */; };
+		A97E883B1658464F00777A82 /* BookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97E883A1658464F00777A82 /* BookCellView.xib */; };
+		A97E883E1658F83E00777A82 /* SGPurchaseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E883D1658F83D00777A82 /* SGPurchaseItem.m */; };
+		A97E88411659056D00777A82 /* SGPurchaseItemGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88401659056C00777A82 /* SGPurchaseItemGetter.m */; };
+		A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884316590C7200777A82 /* NSDictionary-Expanded.m */; };
+		A97E885216591C0100777A82 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884B16591C0100777A82 /* BlockActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A97E885316591C0100777A82 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884D16591C0100777A82 /* BlockAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A97E885416591C0100777A82 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884F16591C0100777A82 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A97E885516591C0100777A82 /* BlockTextPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E885116591C0100777A82 /* BlockTextPromptAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -64,7 +75,7 @@
 		A9D6853F164D041B007A9ADA /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68538164D041B007A9ADA /* DDXMLNode.m */; };
 		A9D6854D164D0578007A9ADA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D6854C164D0578007A9ADA /* libxml2.dylib */; };
 		A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */; };
-		A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */; };
+		A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +128,27 @@
 		A97E88291657EF6100777A82 /* UIColor+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+General.m"; path = "SethGodin/UIColor+General.m"; sourceTree = "<group>"; };
 		A97E882B16581F0B00777A82 /* SGSearchBlogItemsGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSearchBlogItemsGetter.h; sourceTree = "<group>"; };
 		A97E882C16581F0B00777A82 /* SGSearchBlogItemsGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSearchBlogItemsGetter.m; sourceTree = "<group>"; };
+		A97E882F1658441E00777A82 /* SGBookPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBookPurchaseViewController.h; sourceTree = "<group>"; };
+		A97E88301658441E00777A82 /* SGBookPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBookPurchaseViewController.m; sourceTree = "<group>"; };
+		A97E88341658459600777A82 /* booksbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "booksbg@2x.png"; sourceTree = "<group>"; };
+		A97E883A1658464F00777A82 /* BookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookCellView.xib; sourceTree = "<group>"; };
+		A97E883C1658F83D00777A82 /* SGPurchaseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPurchaseItem.h; sourceTree = "<group>"; };
+		A97E883D1658F83D00777A82 /* SGPurchaseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPurchaseItem.m; sourceTree = "<group>"; };
+		A97E883F1659056C00777A82 /* SGPurchaseItemGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPurchaseItemGetter.h; sourceTree = "<group>"; };
+		A97E88401659056C00777A82 /* SGPurchaseItemGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPurchaseItemGetter.m; sourceTree = "<group>"; };
+		A97E884216590C7200777A82 /* NSDictionary-Expanded.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary-Expanded.h"; sourceTree = "<group>"; };
+		A97E884316590C7200777A82 /* NSDictionary-Expanded.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary-Expanded.m"; sourceTree = "<group>"; };
+		A97E884A16591C0100777A82 /* BlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActionSheet.h; sourceTree = "<group>"; };
+		A97E884B16591C0100777A82 /* BlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActionSheet.m; sourceTree = "<group>"; };
+		A97E884C16591C0100777A82 /* BlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAlertView.h; sourceTree = "<group>"; };
+		A97E884D16591C0100777A82 /* BlockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockAlertView.m; sourceTree = "<group>"; };
+		A97E884E16591C0100777A82 /* BlockBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockBackground.h; sourceTree = "<group>"; };
+		A97E884F16591C0100777A82 /* BlockBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockBackground.m; sourceTree = "<group>"; };
+		A97E885016591C0100777A82 /* BlockTextPromptAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTextPromptAlertView.h; sourceTree = "<group>"; };
+		A97E885116591C0100777A82 /* BlockTextPromptAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTextPromptAlertView.m; sourceTree = "<group>"; };
+		A97E885616591CAD00777A82 /* BlockUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockUI.h; sourceTree = "<group>"; };
+		A97E88571659212100777A82 /* SGBookCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBookCellView.h; sourceTree = "<group>"; };
+		A97E88581659212100777A82 /* SGBookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBookCellView.m; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SethGodin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -203,6 +235,10 @@
 				A9100A5A165247C200779F84 /* SGFavorites.m */,
 				A97E880916563CD800777A82 /* SGNotifications.h */,
 				A97E880A16563CD800777A82 /* SGNotifications.m */,
+				A97E883C1658F83D00777A82 /* SGPurchaseItem.h */,
+				A97E883D1658F83D00777A82 /* SGPurchaseItem.m */,
+				A97E883F1659056C00777A82 /* SGPurchaseItemGetter.h */,
+				A97E88401659056C00777A82 /* SGPurchaseItemGetter.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -231,6 +267,7 @@
 		A9100A6016531E5800779F84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A97E88341658459600777A82 /* booksbg@2x.png */,
 				A9100A691653A1B400779F84 /* load_text.png */,
 				A9100A6A1653A1B400779F84 /* load_text@2x.png */,
 				A9100A671653200700779F84 /* load_bg.png */,
@@ -279,6 +316,35 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		A97E882E165843FA00777A82 /* BookPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				A97E882F1658441E00777A82 /* SGBookPurchaseViewController.h */,
+				A97E88301658441E00777A82 /* SGBookPurchaseViewController.m */,
+				A97E883A1658464F00777A82 /* BookCellView.xib */,
+				A97E88571659212100777A82 /* SGBookCellView.h */,
+				A97E88581659212100777A82 /* SGBookCellView.m */,
+			);
+			name = BookPurchase;
+			sourceTree = "<group>";
+		};
+		A97E884916591C0100777A82 /* BlockAlerts */ = {
+			isa = PBXGroup;
+			children = (
+				A97E885616591CAD00777A82 /* BlockUI.h */,
+				A97E884A16591C0100777A82 /* BlockActionSheet.h */,
+				A97E884B16591C0100777A82 /* BlockActionSheet.m */,
+				A97E884C16591C0100777A82 /* BlockAlertView.h */,
+				A97E884D16591C0100777A82 /* BlockAlertView.m */,
+				A97E884E16591C0100777A82 /* BlockBackground.h */,
+				A97E884F16591C0100777A82 /* BlockBackground.m */,
+				A97E885016591C0100777A82 /* BlockTextPromptAlertView.h */,
+				A97E885116591C0100777A82 /* BlockTextPromptAlertView.m */,
+			);
+			name = BlockAlerts;
+			path = ToAddToYourProjects;
+			sourceTree = "<group>";
+		};
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +383,7 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
+				A97E882E165843FA00777A82 /* BookPurchase */,
 				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
 				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
 				A9D6854E164D0D47007A9ADA /* FeedItems */,
@@ -348,6 +415,7 @@
 		A9D6850D164D005D007A9ADA /* 3RD Party */ = {
 			isa = PBXGroup;
 			children = (
+				A97E884916591C0100777A82 /* BlockAlerts */,
 				A9D6852B164D041B007A9ADA /* KissXML */,
 				A9D6850E164D006A007A9ADA /* AFNetworking */,
 			);
@@ -437,6 +505,8 @@
 		A9D6854F164D0DBD007A9ADA /* General */ = {
 			isa = PBXGroup;
 			children = (
+				A97E884216590C7200777A82 /* NSDictionary-Expanded.h */,
+				A97E884316590C7200777A82 /* NSDictionary-Expanded.m */,
 				A9D68550164D0DC6007A9ADA /* UIImage+BBlock.h */,
 				A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */,
 				A91009D51650231500779F84 /* UIImage+General.h */,
@@ -516,6 +586,8 @@
 				A9100A681653200700779F84 /* load_bg.png in Resources */,
 				A9100A6B1653A1B400779F84 /* load_text.png in Resources */,
 				A9100A6C1653A1B400779F84 /* load_text@2x.png in Resources */,
+				A97E88351658459600777A82 /* booksbg@2x.png in Resources */,
+				A97E883B1658464F00777A82 /* BookCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +604,7 @@
 				A9D68522164D006A007A9ADA /* AFHTTPClient.m in Sources */,
 				A9D68523164D006A007A9ADA /* AFHTTPRequestOperation.m in Sources */,
 				A97E88241657CD9300777A82 /* EPZToolBar.m in Sources */,
+				A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */,
 				A9D68524164D006A007A9ADA /* AFImageRequestOperation.m in Sources */,
 				A9D68525164D006A007A9ADA /* AFJSONRequestOperation.m in Sources */,
 				A9D68526164D006A007A9ADA /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -564,6 +637,14 @@
 				A97E88271657D63200777A82 /* NSArray+Util.m in Sources */,
 				A97E882A1657EF6100777A82 /* UIColor+General.m in Sources */,
 				A97E882D16581F0C00777A82 /* SGSearchBlogItemsGetter.m in Sources */,
+				A97E88311658441E00777A82 /* SGBookPurchaseViewController.m in Sources */,
+				A97E883E1658F83E00777A82 /* SGPurchaseItem.m in Sources */,
+				A97E88411659056D00777A82 /* SGPurchaseItemGetter.m in Sources */,
+				A97E885216591C0100777A82 /* BlockActionSheet.m in Sources */,
+				A97E885316591C0100777A82 /* BlockAlertView.m in Sources */,
+				A97E885416591C0100777A82 /* BlockBackground.m in Sources */,
+				A97E885516591C0100777A82 /* BlockTextPromptAlertView.m in Sources */,
+				A97E88591659212100777A82 /* SGBookCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,4 +12,5 @@
 
 - (id) initWithSearchText:(NSString*) inSearchText;
 
+
 @end
