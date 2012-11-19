@@ -33,7 +33,7 @@ NSString * const ReuseIdentifier = @"bookCell";
 {
     [super viewDidLoad];
     
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage defaultTitleBarImage]];
+    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"BOOKS"]];
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
     _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:nil];

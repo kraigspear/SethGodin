@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
     
-    self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
+    self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"MENU"]];
     
     [self.closeButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
     

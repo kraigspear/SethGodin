@@ -267,20 +267,31 @@
     {
         case kCurrent:
             _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
+            _title = @"SETH GODIN";
+            self.topView.backgroundColor =[UIColor colorWithPatternImage:[UIImage defaultTitleBarImage]];
             break;
         case kArchive:
             _contentGetter = [[SGArchiveBlogItemsGetter alloc] initWithMonth:_feedSelection.month andYear:_feedSelection.year];
+            
+            _title = [self monthYearString];
+            self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
+            
             break;
         case kFavorites:
             _contentGetter = [[SGFavoritesBlogItemsGetter alloc] init];
+            _title = @"FAVORITES";
+             self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
             break;
         case kSearch:
             _contentGetter = [[SGSearchBlogItemsGetter alloc] initWithSearchText:_feedSelection.searchText];
             break;
         default:
+             _title = @"SETH GODIN";
             _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
+            self.topView.backgroundColor =[UIColor colorWithPatternImage:[UIImage defaultTitleBarImage]];
             break;
     }
+    
     
     [_contentGetter requestItemssuccess:^(NSArray *inItems)
      {
@@ -296,6 +307,14 @@
      }];
 }
 
+- (NSString*) monthYearString
+{
+    SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
+    
+    NSString *monthStr = [appDelegate.dateFormatterLongStyle.monthSymbols objectAtIndex:_feedSelection.month - 1];
+    
+    return [NSString stringWithFormat:@"%@, %d", monthStr, _feedSelection.year];
+}
 
 - (void) showError:(NSError*) inError
 {
@@ -490,7 +509,9 @@
 {
    [self.searchTextField resignFirstResponder];
    self.searchTextField.hidden = YES;
+    
    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
+    
    [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
    [self fadeToolbarAnimation];
     
