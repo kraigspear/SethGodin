@@ -389,9 +389,6 @@
 {
     NSUInteger startAt = _pageNumber * 3;
     
-    [self updateButtonsToEmtpy];
-    
-    
     [_entry1 removeObserver:self forKeyPath:@"shareCount"];
     [_entry2 removeObserver:self forKeyPath:@"shareCount"];
     [_entry3 removeObserver:self forKeyPath:@"shareCount"];
@@ -417,17 +414,12 @@
     if(_entry2) [self updateButtonForEntry:_entry2];
     if(_entry3) [self updateButtonForEntry:_entry3];
     
+    self.rssItem1Button.hidden = !_entry1;
+    self.rssItem2Button.hidden = !_entry2;
+    self.rssItem3Button.hidden = !_entry3;
+    
 }
 
-- (void) updateButtonsToEmtpy
-{
-    UIImage *img1 = [UIImage rssItemButtonForColor:[UIColor firstButtonColor] andSize:self.rssItem2Button.frame.size];
-    UIImage *img2 = [UIImage rssItemButtonForColor:[UIColor secondButtonColor] andSize:self.rssItem2Button.frame.size];
-    UIImage *img3 = [UIImage rssItemButtonForColor:[UIColor thirdButtonColor] andSize:self.rssItem3Button.frame.size];
-    [self.rssItem1Button setImage:img1 forState:UIControlStateNormal];
-    [self.rssItem2Button setImage:img2 forState:UIControlStateNormal];
-    [self.rssItem3Button setImage:img3 forState:UIControlStateNormal];
-}
 
 #pragma mark -
 #pragma mark navigation buttons
@@ -502,9 +494,13 @@
    [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
    [self fadeToolbarAnimation];
     
-    _blogItems = _itemsHold;
+    if(_itemsHold)
+    {
+        _blogItems = _itemsHold;
+        _pageNumber = _pageNumberHold;
+    }
+    
     _itemsHold = nil;
-    _pageNumber = _pageNumberHold;
     
     [self updateButtons];
 }
