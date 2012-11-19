@@ -30,4 +30,14 @@
  */
 - (void) stopLoadingAnimation;
 
+/**
+ Start spinner animation
+ */
+- (void) startSpinner;
+
+/**
+ Stop spinner animation
+ */
+- (void) stopSpinner;
+
 @end

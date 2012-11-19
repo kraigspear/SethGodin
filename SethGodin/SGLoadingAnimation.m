@@ -59,8 +59,16 @@
     
     [_loadingBackgroundLayer addSublayer:loadingTextLayer];
     
+    [self startSpinner];
+    
     [_view.layer addSublayer:_loadingBackgroundLayer];
     
+   
+    
+}
+
+- (void) startSpinner
+{
     _spinnerLayer = [CALayer layer];
     
     UIImage *spinnerImage = [UIImage imageNamed:@"load_spinner.png"];
@@ -69,9 +77,24 @@
     
     _spinnerLayer.contents = (id) spinnerImage.CGImage;
     
-    _spinnerLayer.frame = CGRectMake(215, 180, spinnerImage.size.width, spinnerImage.size.height);
+    if(_loadingBackgroundLayer)
+    {
+        _spinnerLayer.frame = CGRectMake(215, 180, spinnerImage.size.width, spinnerImage.size.height);
+    }
+    else
+    {
+        _spinnerLayer.frame = CGRectMake(215, 20, spinnerImage.size.width, spinnerImage.size.height);
+    }
     
-    [_loadingBackgroundLayer addSublayer:_spinnerLayer];
+    
+    if(_loadingBackgroundLayer)
+    {
+        [_loadingBackgroundLayer addSublayer:_spinnerLayer];
+    }
+    else
+    {
+        [_view.layer addSublayer:_spinnerLayer];
+    }
     
     CABasicAnimation *spinnerAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     spinnerAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
@@ -79,7 +102,13 @@
     spinnerAnimation.duration = 1;             // this might be too fast
     spinnerAnimation.repeatCount = HUGE_VALF;     // HUGE_VALF is defined in math.h so import it
     [_spinnerLayer addAnimation:spinnerAnimation forKey:@"rotation"];
-    
+}
+
+- (void) stopSpinner
+{
+    [_spinnerLayer removeAllAnimations];
+    [_spinnerLayer removeFromSuperlayer];
+    _spinnerLayer = nil;
 }
 
 - (void) stopLoadingAnimation
@@ -92,10 +121,7 @@
      {
          if(finished)
          {
-             [_spinnerLayer removeAllAnimations];
-             [_spinnerLayer removeFromSuperlayer];
-             _spinnerLayer = nil;
-             
+             [self stopSpinner];
              [_loadingBackgroundLayer removeFromSuperlayer];
              _loadingBackgroundLayer = nil;
          }

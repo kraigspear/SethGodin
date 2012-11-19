@@ -131,6 +131,8 @@ NSString * const ReuseIdentifier = @"bookCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [_loadingAnimation startSpinner];
+    
     SGPurchaseItem *itemToPurchase = [_items objectAtIndex:indexPath.row];
     
     _storeProductViewController = [[SKStoreProductViewController alloc] init];
@@ -144,7 +146,10 @@ NSString * const ReuseIdentifier = @"bookCell";
     {
         if(result && error == nil)
         {
-            [self presentViewController:_storeProductViewController animated:YES completion:nil];
+            [self presentViewController:_storeProductViewController animated:YES completion:^
+            {
+                [_loadingAnimation stopSpinner];
+            }];
         }
     }];
     
