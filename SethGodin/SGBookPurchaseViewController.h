@@ -17,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToTrailing;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToLeading;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @end

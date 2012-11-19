@@ -13,13 +13,13 @@
 #import "BlockAlertView.h"
 #import "SGBookCellView.h"
 #import "SGLoadingAnimation.h"
+#import "UIImage+General.h"
 #import <QuartzCore/QuartzCore.h>
 
 
 @implementation SGBookPurchaseViewController
 {
 @private
-    UITapGestureRecognizer *_tapGesture;
     SGPurchaseItemGetter   *_purchaseItemGetter;
     BlockAlertView *_alertView;
     NSArray *_items;
@@ -33,6 +33,8 @@ NSString * const ReuseIdentifier = @"bookCell";
 {
     [super viewDidLoad];
     
+    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage defaultTitleBarImage]];
+    [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
     _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:nil];
     self.collectionViewToTrailing.constant = 320;
@@ -44,10 +46,6 @@ NSString * const ReuseIdentifier = @"bookCell";
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:ReuseIdentifier];
     
     _purchaseItemGetter = [[SGPurchaseItemGetter alloc] init];
-    
-    _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTap:)];
-    _tapGesture.numberOfTapsRequired = 1;
-    [self.backgroundImageView addGestureRecognizer:_tapGesture];
     
     [_loadingAnimation startLoadingAnimation];
     [_purchaseItemGetter latestItems:^(NSArray *latestItems)
@@ -91,10 +89,11 @@ NSString * const ReuseIdentifier = @"bookCell";
     }];
 }
 
-- (void) imageViewTap:(id) sender
+- (IBAction)backAction:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 #pragma mark -
 #pragma mark UICollectionView
@@ -119,7 +118,10 @@ NSString * const ReuseIdentifier = @"bookCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(106.666666667, 200);
+    //size = 298x450 = 152
+    //return CGSizeMake(106.666666667, 200);
+    // 149 : 225
+    return CGSizeMake(132, 200);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section

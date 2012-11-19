@@ -19,5 +19,6 @@
 + (UIImage*) rightArrow;
 + (UIImage*) previousButton;
 + (UIImage*) nextButton;
++ (UIImage*) defaultTitleBarImage;
 
 @end

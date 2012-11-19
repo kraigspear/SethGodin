@@ -96,6 +96,9 @@
         
         imageURL = [imageURL stringByReplacingOccurrencesOfString:@".100x100-75.jpg" withString:@".450x450-75.jpg"];
         
+       // NSLog(@"imageURL = %@", imageURL);
+        //size = 298x450 = 152
+        
         SGPurchaseItem *purchaseItem = [[SGPurchaseItem alloc] initWithTitle:title artest:artistID releasedOn:releasedOn trackId:trackID imageURL:imageURL];
         
         [items addObject:purchaseItem];

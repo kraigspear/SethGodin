@@ -89,6 +89,10 @@
             }];
 }
 
++ (UIImage*) defaultTitleBarImage
+{
+    return [UIImage titleBarWithTitle:@"SETH GODIN"];
+}
 
 + (UIImage*) titleBarWithTitle:(NSString*) inTitle
 {
