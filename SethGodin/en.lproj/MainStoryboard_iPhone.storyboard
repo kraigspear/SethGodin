@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QP5-Ou-OHH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QP5-Ou-OHH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -776,6 +776,9 @@
                             </view>
                             <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhM-ij-3pw">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="372" id="FG1-f8-lBS"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="ZDt-iZ-e0h" id="JTV-Tx-duX"/>
                                 </connections>
@@ -783,16 +786,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="BhM-ij-3pw" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EDZ-36-7nd"/>
                             <constraint firstItem="3VA-GR-4p1" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="ONo-aU-bIZ"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="VlQ-Qo-7cN"/>
                             <constraint firstItem="3VA-GR-4p1" firstAttribute="top" secondItem="cXb-Vt-HXm" secondAttribute="bottom" type="user" id="Wro-Ap-vDo"/>
+                            <constraint firstItem="BhM-ij-3pw" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="cmT-Dd-sOK"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="top" secondItem="sIn-qm-l11" secondAttribute="top" type="user" id="htX-ou-UuV"/>
                             <constraint firstItem="3VA-GR-4p1" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="jUP-C9-tnX"/>
-                            <constraint firstItem="BhM-ij-3pw" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ley-fM-K2N"/>
-                            <constraint firstAttribute="trailing" secondItem="BhM-ij-3pw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ri9-CD-2fK"/>
+                            <constraint firstItem="BhM-ij-3pw" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="mOF-fi-LD8"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="t4F-OP-EGR"/>
-                            <constraint firstAttribute="bottom" secondItem="BhM-ij-3pw" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="wHW-rv-KTG"/>
+                            <constraint firstItem="BhM-ij-3pw" firstAttribute="bottom" secondItem="sIn-qm-l11" secondAttribute="bottom" type="default" id="yvO-Px-sbp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vqd-Ob-zfs"/>
@@ -842,6 +844,12 @@
         <class className="SGArchiveSelectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGArchiveSelectionViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="goAction:"/>
+                <relationship kind="action" name="monthBackAction:"/>
+                <relationship kind="action" name="monthForwaredAction:"/>
+                <relationship kind="action" name="yearBackAction:"/>
+                <relationship kind="action" name="yearForwardButton:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="leftArrowMonth" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="leftArrowMonthButton" candidateClass="UIButton"/>
@@ -870,7 +878,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGFeedItemsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="button1Action:"/>
+                <relationship kind="action" name="button2Action:"/>
+                <relationship kind="action" name="button3Action:"/>
+                <relationship kind="action" name="menuAction:"/>
                 <relationship kind="action" name="nextButton:"/>
+                <relationship kind="action" name="previousButton:"/>
                 <relationship kind="action" name="searchAction:"/>
                 <relationship kind="outlet" name="buttonViewToLeftButtonViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
@@ -888,6 +900,9 @@
         <class className="SGMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMenuViewController.h"/>
             <relationships>
+                <relationship kind="action" name="closeAction:"/>
+                <relationship kind="action" name="currentPostAction:"/>
+                <relationship kind="action" name="favoritesAction:"/>
                 <relationship kind="outlet" name="allPostButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="alreadyUpgradedButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="archivesButton" candidateClass="UIButton"/>
