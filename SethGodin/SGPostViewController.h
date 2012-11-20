@@ -23,5 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
+@property (nonatomic, strong) UIColor *postHeaderColor;
+
 
 @end

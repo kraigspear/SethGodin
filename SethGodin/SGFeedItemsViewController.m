@@ -128,6 +128,7 @@
     {
         SGPostViewController *postVC = segue.destinationViewController;
         postVC.blogEntry = _blogEntry;
+        postVC.postHeaderColor = [UIColor firstButtonColor];
     }
 }
 
@@ -254,8 +255,12 @@
 
 - (void) appEnteredForegrond
 {
+    if(_menuViewController) return;
+    if(self.navigationController.visibleViewController != self) return;
     [self loadLatestFeedData];
 }
+
+
 
 
 - (void) loadLatestFeedData

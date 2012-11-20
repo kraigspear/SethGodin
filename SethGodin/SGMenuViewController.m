@@ -29,8 +29,8 @@
     UIImage *booksImage   = [UIImage menuImageWithText:@"Books By Seth Godin" isUpgrade:NO];
     UIImage *allPostImage = [UIImage menuImageWithText:@"All Blog Posts" isUpgrade:NO];
     
-    UIImage *favoritesImage = [UIImage menuImageWithText:@"Favorite Post" isUpgrade:YES];
-    UIImage *archivesImage  = [UIImage menuImageWithText:@"Archives"      isUpgrade:YES];
+    UIImage *favoritesImage = [UIImage menuImageWithText:@"Favorites" isUpgrade:NO];
+    UIImage *archivesImage  = [UIImage menuImageWithText:@"Archives"      isUpgrade:NO];
     
     [self.booksBySethButton setImage:booksImage forState:UIControlStateNormal];
     [self.allPostButton     setImage:allPostImage forState:UIControlStateNormal];

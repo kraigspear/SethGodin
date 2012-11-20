@@ -88,7 +88,6 @@
     return [UIImage imageForSize:self.titleView.frame.size withDrawingBlock:^
     {
         //// Color Declarations
-        UIColor* tan = [UIColor colorWithRed: 0.729 green: 0.718 blue: 0.652 alpha: 1];
         
         SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
         //// Abstracted Attributes
@@ -98,7 +97,7 @@
         
         //// backRect Drawing
         UIBezierPath* backRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 132)];
-        [tan setFill];
+        [self.postHeaderColor setFill];
         [backRectPath fill];
         
         
