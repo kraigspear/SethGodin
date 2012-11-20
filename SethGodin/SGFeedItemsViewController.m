@@ -313,7 +313,7 @@
 {
     SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
     
-    NSString *monthStr = [appDelegate.dateFormatterLongStyle.monthSymbols objectAtIndex:_feedSelection.month - 1];
+    NSString *monthStr = [appDelegate.dateFormatterLongStyle.shortMonthSymbols objectAtIndex:_feedSelection.month - 1];
     
     return [NSString stringWithFormat:@"%@, %d", monthStr, _feedSelection.year];
 }
