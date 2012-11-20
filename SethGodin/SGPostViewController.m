@@ -72,6 +72,7 @@
                                    "<head> \n"
                                    "<style type=\"text/css\"> \n"
                                    "body {font-family: \"%@\"; font-size: %@;}\n"
+                                   "img, object {max-width:100%%; }\n"
                                    "</style> \n"
                                    "</head> \n"
                                    "<body>%@</body> \n"

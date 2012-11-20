@@ -260,9 +260,6 @@
     [self loadLatestFeedData];
 }
 
-
-
-
 - (void) loadLatestFeedData
 {
     
