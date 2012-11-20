@@ -115,7 +115,7 @@
         NSString *summary       = [dict objectForKey:@"excerpt"];
         NSString *content       = [dict objectForKey:@"renderedContent"];
         NSString *itemID        = [dict objectForKey:@"urlId"];
-        NSString *urlStr        = [dict objectForKey:@"permalinkUrl"];
+        NSString *urlStr        = [dict objectForKey:@"shortUrl"];
         
         SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithTitle:displayName
                                                         publishedOn:datePublished

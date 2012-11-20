@@ -15,6 +15,7 @@
 #import "SGFavorites.h"
 #import "SGWebViewController.h"
 #import "NSString+Util.h"
+#import "AFNetworking.h"
 
 
 @implementation SGPostViewController
@@ -137,11 +138,9 @@
 - (IBAction)shareAction:(id)sender
 { 
     
-    NSURL *url = [NSURL URLWithString:self.blogEntry.urlStr];
+    NSURL *url = [NSURL URLWithString:[self urlStringForPost]];
     
-    NSString *textToShare = [[self.blogEntry.summary substringToIndex:50] stringByAppendingString:@"..."];
-    
-    NSArray *shareItems = @[@"SETH GODIN Blog", self.blogEntry.title, textToShare, url];
+    NSArray *shareItems = @[self.blogEntry.title, @"Seth Godin's Blog", url];
     
     UIActivityViewController *activityViewController =
     [[UIActivityViewController alloc]
@@ -150,6 +149,26 @@
     
     
     [self presentViewController:activityViewController animated:YES completion:nil];
+    
+}
+
+- (NSString*) urlStringForPost
+{
+    return self.blogEntry.urlStr;
+//    if([self.blogEntry.urlStr rangeOfString:@"sethgodin.typepad.com"].length == 0)
+//    {
+//        return self.blogEntry.urlStr;
+//    }
+    
+  /* NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://tinyurl.com/api-create.php?url=%@", self.blogEntry.urlStr]];
+    
+   NSURLRequest *request = [ NSURLRequest requestWithURL:url
+                                              cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                          timeoutInterval:3 ];
+    
+   AFHTTPRequestOperation *operation = [
+   */
+    
     
 }
 

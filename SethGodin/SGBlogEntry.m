@@ -17,12 +17,13 @@ NSString * const KEY_CONTENT      = @"content";
 NSString * const KEY_ID           = @"id";
 NSString * const KEY_URL          = @"url";
 
+
 - (id) initWithTitle:(NSString*) inDisplayName
                publishedOn:(NSDate*) inDate
                    summary:(NSString*) inSummary
                    content:(NSString*) inContent
                     itemID:(NSString *)inID
-                    fromURL:(NSString*) inUrlStr;
+                    fromURL:(NSString*) inUrlStr
 {
     self = [super init];
     
