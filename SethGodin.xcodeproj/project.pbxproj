@@ -47,6 +47,7 @@
 		A97E885416591C0100777A82 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884F16591C0100777A82 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A97E885516591C0100777A82 /* BlockTextPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E885116591C0100777A82 /* BlockTextPromptAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
+		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -151,6 +152,8 @@
 		A97E885616591CAD00777A82 /* BlockUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockUI.h; sourceTree = "<group>"; };
 		A97E88571659212100777A82 /* SGBookCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBookCellView.h; sourceTree = "<group>"; };
 		A97E88581659212100777A82 /* SGBookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBookCellView.m; sourceTree = "<group>"; };
+		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
+		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SethGodin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -527,6 +530,8 @@
 				A97E88261657D63200777A82 /* NSArray+Util.m */,
 				A97E88281657EF6100777A82 /* UIColor+General.h */,
 				A97E88291657EF6100777A82 /* UIColor+General.m */,
+				A98ABCA4165B88EA00919F8F /* NSString+Util.h */,
+				A98ABCA5165B88EA00919F8F /* NSString+Util.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -655,6 +660,7 @@
 				A97E885516591C0100777A82 /* BlockTextPromptAlertView.m in Sources */,
 				A97E88591659212100777A82 /* SGBookCellView.m in Sources */,
 				A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */,
+				A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

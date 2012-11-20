@@ -14,6 +14,7 @@
 #import "SGAppDelegate.h"
 #import "SGFavorites.h"
 #import "SGWebViewController.h"
+#import "NSString+Util.h"
 
 
 @implementation SGPostViewController
@@ -104,17 +105,18 @@
         //// titleText Drawing
         CGRect titleTextRect = CGRectMake(15, 17, 291, 84);
         [[UIColor whiteColor] setFill];
-        [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 26] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+        
+        UIFont *drawWithFont = [titleTextContent fontThatWillFitUsingFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 26] insideRect:titleTextRect];
+        
+        [titleTextContent drawInRect: titleTextRect withFont: drawWithFont lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
         
         
         //// dateText Drawing
-        CGRect dateTextRect = CGRectMake(17, 97, 222, 35);
+        CGRect dateTextRect = CGRectMake(17, 100, 222, 35);
         [[UIColor whiteColor] setFill];
-        [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 15] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+        [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 15] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
     }];
 }
-
-
 
 - (IBAction)favoritesAction:(id)sender
 {
