@@ -126,11 +126,13 @@
 
 - (void) selectArchives
 {
+    _upgradeArchive = NO;
     [self performSegueWithIdentifier:@"archivesSegue" sender:self];
 }
 
 - (void) showUpradeView
 {
+    _upgradeFavorites = NO;
     [self performSegueWithIdentifier:@"menuToUpgrade" sender:self];
 }
 
