@@ -16,6 +16,7 @@
 #import "SGWebViewController.h"
 #import "NSString+Util.h"
 #import "AFNetworking.h"
+#import "BlockTypes.h"
 
 
 @implementation SGPostViewController
@@ -139,37 +140,53 @@
 - (IBAction)shareAction:(id)sender
 { 
     
-    NSURL *url = [NSURL URLWithString:[self urlStringForPost]];
+    [self urlStringForPost:^(NSString *urlStr)
+    {
+        NSURL *url = [NSURL URLWithString:urlStr];
+        
+        NSString *shareText = [NSString stringWithFormat:@"%@ - Seth Godin's Blog", self.blogEntry.title];
+        NSArray  *shareItems = @[shareText, url];
+        
+        UIActivityViewController *activityViewController =
+        [[UIActivityViewController alloc]
+         initWithActivityItems:shareItems
+         applicationActivities:nil];
+        
+        
+        [self presentViewController:activityViewController animated:YES completion:nil];
+    }];
     
-    NSArray *shareItems = @[self.blogEntry.title, @"Seth Godin's Blog", url];
-    
-    UIActivityViewController *activityViewController =
-    [[UIActivityViewController alloc]
-     initWithActivityItems:shareItems
-     applicationActivities:nil];
-    
-    
-    [self presentViewController:activityViewController animated:YES completion:nil];
     
 }
 
-- (NSString*) urlStringForPost
+- (void) urlStringForPost:(StringBlock) inBlock
 {
-    return self.blogEntry.urlStr;
-//    if([self.blogEntry.urlStr rangeOfString:@"sethgodin.typepad.com"].length == 0)
-//    {
-//        return self.blogEntry.urlStr;
-//    }
+
+    if([self.blogEntry.urlStr rangeOfString:@"sethgodin.typepad.com"].length == 0)
+    {
+        inBlock(self.blogEntry.urlStr);
+        return;
+    }
     
-  /* NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://tinyurl.com/api-create.php?url=%@", self.blogEntry.urlStr]];
+   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://tinyurl.com/api-create.php?url=%@", self.blogEntry.urlStr]];
     
    NSURLRequest *request = [ NSURLRequest requestWithURL:url
                                               cachePolicy:NSURLRequestReloadIgnoringCacheData
                                           timeoutInterval:3 ];
     
-   AFHTTPRequestOperation *operation = [
-   */
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        inBlock(responseStr);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        NSLog(@"Error getting tiny url %@", error);
+        inBlock(self.blogEntry.urlStr);
+    }];
+    
+    [operation start];
     
 }
 
