@@ -11,11 +11,14 @@
 #import "UIImage+Menu.h"
 #import "SGArchiveSelectionViewController.h"
 #import "SGNotifications.h"
+#import "SGUserDefaults.h"
 
 @implementation SGMenuViewController
 {
 @private
     id _feedSelectionNotification;
+    BOOL _upgradeArchive;
+    BOOL _upgradeFavorites;
 }
 
 - (void) viewDidLoad
@@ -26,8 +29,8 @@
     
     [self.closeButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
     
-    UIImage *booksImage   = [UIImage menuImageWithText:@"Books By Seth Godin" isUpgrade:NO];
-    UIImage *allPostImage = [UIImage menuImageWithText:@"All Blog Posts" isUpgrade:NO];
+    UIImage *booksImage   = [UIImage menuImageWithText:@"Books" isUpgrade:NO];
+    UIImage *allPostImage = [UIImage menuImageWithText:@"Latest" isUpgrade:NO];
     
     UIImage *favoritesImage = [UIImage menuImageWithText:@"Favorites" isUpgrade:NO];
     UIImage *archivesImage  = [UIImage menuImageWithText:@"Archives"      isUpgrade:NO];
@@ -37,13 +40,32 @@
 
     [self.favoritesButton setImage:favoritesImage forState:UIControlStateNormal];
     [self.archivesButton         setImage:archivesImage forState:UIControlStateNormal];
-    [self.alreadyUpgradedButton setImage:[UIImage alreadyUpgraded] forState:UIControlStateNormal];
     
     _feedSelectionNotification = [[SGNotifications sharedInstance] observeFeedSelectionWithNotification:^(NSNotification * note)
     {
         [self closeMenuWithAnimation:NO];
     }];
     
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(_upgradeFavorites)
+    {
+        if([[SGUserDefaults sharedInstance] isUpgraded])
+        {
+            [self selectFavorites];
+        }
+    }
+    
+    if(_upgradeArchive)
+    {
+        if([[SGUserDefaults sharedInstance] isUpgraded])
+        {
+            [self selectArchives];
+        }
+    }
 }
 
 - (void) viewDidLayoutSubviews
@@ -71,11 +93,45 @@
     [self closeMenuWithAnimation:YES];
 }
 
+- (IBAction)archivesAction:(id)sender
+{
+    _upgradeArchive = YES;
+    [self showUpradeView];
+}
+
 - (IBAction)favoritesAction:(id)sender
+{
+    _upgradeFavorites = YES;
+    [self showUpradeView];
+    return;
+    
+    if([SGUserDefaults sharedInstance].isUpgraded)
+    {
+        [self selectFavorites];
+    }
+    else
+    {
+        _upgradeFavorites = YES;
+        [self showUpradeView];
+    }
+    
+}
+
+- (void) selectFavorites
 {
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsFavorites];
     [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
     [self closeMenuWithAnimation:YES];
+}
+
+- (void) selectArchives
+{
+    [self performSegueWithIdentifier:@"archivesSegue" sender:self];
+}
+
+- (void) showUpradeView
+{
+    [self performSegueWithIdentifier:@"menuToUpgrade" sender:self];
 }
 
 @end

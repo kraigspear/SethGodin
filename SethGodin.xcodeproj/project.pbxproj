@@ -30,6 +30,10 @@
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
 		A95EA3FE165C8DC800A58FB4 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FC165C8DC800A58FB4 /* books@2x.png */; };
+		A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */; };
+		A95EA405165CDDC700A58FB4 /* SGUpdradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */; };
+		A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */; };
+		A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */; };
 		A97E880B16563CD800777A82 /* SGNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880A16563CD800777A82 /* SGNotifications.m */; };
 		A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880E1656465D00777A82 /* SGBlogItemsGetter.m */; };
 		A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E8811165646BC00777A82 /* SGArchiveBlogItemsGetter.m */; };
@@ -119,6 +123,14 @@
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
 		A95EA3FC165C8DC800A58FB4 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
+		A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGUSerDefaults.h; path = SethGodin/SGUSerDefaults.h; sourceTree = "<group>"; };
+		A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGUSerDefaults.m; path = SethGodin/SGUSerDefaults.m; sourceTree = "<group>"; };
+		A95EA403165CDDC700A58FB4 /* SGUpdradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUpdradeViewController.h; sourceTree = "<group>"; };
+		A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUpdradeViewController.m; sourceTree = "<group>"; };
+		A95EA406165CE19500A58FB4 /* UIImage+Upgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Upgrade.h"; sourceTree = "<group>"; };
+		A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Upgrade.m"; sourceTree = "<group>"; };
+		A95EA409165CE75400A58FB4 /* SGUpgradedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUpgradedViewController.h; sourceTree = "<group>"; };
+		A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUpgradedViewController.m; sourceTree = "<group>"; };
 		A97E880916563CD800777A82 /* SGNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNotifications.h; sourceTree = "<group>"; };
 		A97E880A16563CD800777A82 /* SGNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNotifications.m; sourceTree = "<group>"; };
 		A97E880D1656465D00777A82 /* SGBlogItemsGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogItemsGetter.h; sourceTree = "<group>"; };
@@ -270,6 +282,7 @@
 		A9100A511650F9D800779F84 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				A95EA402165CDD8D00A58FB4 /* UpgradeView */,
 				A9100A6D1654EE5100779F84 /* ArchiveSelection */,
 				A9100A521650F9EF00779F84 /* SGMenuViewController.h */,
 				A9100A531650F9EF00779F84 /* SGMenuViewController.m */,
@@ -303,6 +316,19 @@
 				A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */,
 			);
 			name = ArchiveSelection;
+			sourceTree = "<group>";
+		};
+		A95EA402165CDD8D00A58FB4 /* UpgradeView */ = {
+			isa = PBXGroup;
+			children = (
+				A95EA403165CDDC700A58FB4 /* SGUpdradeViewController.h */,
+				A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */,
+				A95EA406165CE19500A58FB4 /* UIImage+Upgrade.h */,
+				A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */,
+				A95EA409165CE75400A58FB4 /* SGUpgradedViewController.h */,
+				A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */,
+			);
+			name = UpgradeView;
 			sourceTree = "<group>";
 		};
 		A97E880C1656461D00777A82 /* ContentGetters */ = {
@@ -406,8 +432,8 @@
 				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
 				A9D6854E164D0D47007A9ADA /* FeedItems */,
 				A91009D11650083200779F84 /* PostView */,
-				A97E882E165843FA00777A82 /* BookPurchase */,
 				A9100A511650F9D800779F84 /* Menu */,
+				A97E882E165843FA00777A82 /* BookPurchase */,
 				A97E881E1657C71100777A82 /* WebView */,
 				A91009C6164EED9C00779F84 /* Model */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
@@ -541,6 +567,8 @@
 				A97E88291657EF6100777A82 /* UIColor+General.m */,
 				A98ABCA4165B88EA00919F8F /* NSString+Util.h */,
 				A98ABCA5165B88EA00919F8F /* NSString+Util.m */,
+				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
+				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -673,6 +701,10 @@
 				A97E88591659212100777A82 /* SGBookCellView.m in Sources */,
 				A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */,
 				A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */,
+				A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */,
+				A95EA405165CDDC700A58FB4 /* SGUpdradeViewController.m in Sources */,
+				A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */,
+				A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
