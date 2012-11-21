@@ -27,6 +27,9 @@
 		A9100A701654EF1D00779F84 /* SGArchiveSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */; };
 		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
+		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
+		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
+		A95EA3FE165C8DC800A58FB4 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FC165C8DC800A58FB4 /* books@2x.png */; };
 		A97E880B16563CD800777A82 /* SGNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880A16563CD800777A82 /* SGNotifications.m */; };
 		A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880E1656465D00777A82 /* SGBlogItemsGetter.m */; };
 		A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E8811165646BC00777A82 /* SGArchiveBlogItemsGetter.m */; };
@@ -113,6 +116,9 @@
 		A9100A721654FF5E00779F84 /* NSDate+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+General.m"; path = "SethGodin/NSDate+General.m"; sourceTree = "<group>"; };
 		A9100A741656394600779F84 /* SGFeedSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFeedSelection.h; sourceTree = "<group>"; };
 		A9100A751656394600779F84 /* SGFeedSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFeedSelection.m; sourceTree = "<group>"; };
+		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
+		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
+		A95EA3FC165C8DC800A58FB4 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
 		A97E880916563CD800777A82 /* SGNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNotifications.h; sourceTree = "<group>"; };
 		A97E880A16563CD800777A82 /* SGNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNotifications.m; sourceTree = "<group>"; };
 		A97E880D1656465D00777A82 /* SGBlogItemsGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogItemsGetter.h; sourceTree = "<group>"; };
@@ -276,6 +282,9 @@
 		A9100A6016531E5800779F84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A95EA3FB165C8DC800A58FB4 /* books.png */,
+				A95EA3FC165C8DC800A58FB4 /* books@2x.png */,
+				A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */,
 				A97E88341658459600777A82 /* booksbg@2x.png */,
 				A9100A691653A1B400779F84 /* load_text.png */,
 				A9100A6A1653A1B400779F84 /* load_text@2x.png */,
@@ -602,6 +611,9 @@
 				A9100A6C1653A1B400779F84 /* load_text@2x.png in Resources */,
 				A97E88351658459600777A82 /* booksbg@2x.png in Resources */,
 				A97E883B1658464F00777A82 /* BookCellView.xib in Resources */,
+				A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */,
+				A95EA3FD165C8DC800A58FB4 /* books.png in Resources */,
+				A95EA3FE165C8DC800A58FB4 /* books@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

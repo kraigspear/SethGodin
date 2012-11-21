@@ -37,6 +37,16 @@
 
 - (void) latestItems:(ArrayBlock) inSuccess failed:(ErrorBlock) inFailed
 {
+    NSString *cacheFile = [self cacheFile];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if([fileManager fileExistsAtPath:cacheFile])
+    {
+        NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:cacheFile];
+        inSuccess(items);
+    }
+    
     NSLocale *locale = [NSLocale currentLocale];
     
     NSString *langCode = [locale objectForKey:NSLocaleLanguageCode];
@@ -59,6 +69,8 @@
                                              {
                                                  NSArray *items = [self itemsForDictionary:dict];
                                                  
+                                                 [NSKeyedArchiver archiveRootObject:items toFile:cacheFile];
+                                                 
                                                  dispatch_async(dispatch_get_main_queue(), ^
                                                  {
                                                      inSuccess(items);
@@ -72,6 +84,13 @@
                                          }];
     [operation start];
     
+}
+
+- (NSString*) cacheFile
+{
+    NSArray *documentDirectories =
+	NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    return [[documentDirectories objectAtIndex:0] stringByAppendingPathComponent:@"storeitems.dat"];
 }
 
 - (NSArray*) itemsForDictionary:(NSDictionary*) inDict

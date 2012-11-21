@@ -41,7 +41,6 @@ NSString * const ReuseIdentifier = @"bookCell";
     self.collectionViewToLeading.constant = 320;
     [self.view layoutSubviews];
     
-    
     UINib *cellNib = [UINib nibWithNibName:@"BookCellView" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:ReuseIdentifier];
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QP5-Ou-OHH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QP5-Ou-OHH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -68,8 +68,8 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" image="booksbg@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fdg-eU-jDt" userLabel="backgroundImageView"/>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aa1-yz-2H6">
+                            <imageView contentMode="scaleToFill" image="books-568h@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fdg-eU-jDt" userLabel="backgroundImageView"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aa1-yz-2H6">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="199" id="orO-Ca-C0y"/>
@@ -124,7 +124,7 @@
                             <constraint firstItem="GUm-oe-kW3" firstAttribute="leading" secondItem="OYd-go-EdC" secondAttribute="leading" type="default" id="Zl4-m0-X2W"/>
                             <constraint firstItem="GUm-oe-kW3" firstAttribute="trailing" secondItem="OYd-go-EdC" secondAttribute="trailing" type="default" id="aAE-OO-RWY"/>
                             <constraint firstItem="Aa1-yz-2H6" firstAttribute="trailing" secondItem="OYd-go-EdC" secondAttribute="trailing" type="user" id="eVT-Fa-KXo"/>
-                            <constraint firstItem="Fdg-eU-jDt" firstAttribute="trailing" secondItem="OYd-go-EdC" secondAttribute="trailing" type="default" id="iIE-hd-Pcc"/>
+                            <constraint firstItem="Fdg-eU-jDt" firstAttribute="trailing" secondItem="OYd-go-EdC" secondAttribute="trailing" type="default" id="veR-TE-qta"/>
                             <constraint firstAttribute="bottom" secondItem="Aa1-yz-2H6" secondAttribute="bottom" type="user" id="wCu-tM-GFD"/>
                         </constraints>
                     </view>
@@ -832,7 +832,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="booksbg@2x.png" width="640" height="1096"/>
+        <image name="books-568h@2x.png" width="640" height="1136"/>
     </resources>
     <classes>
         <class className="EPZToolBar" superclassName="UIToolbar">
