@@ -201,11 +201,16 @@
         return YES;
     }
     
-    SGWebViewController *vc = (SGWebViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"webView"];
+    SGAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    [vc navigateToURL:request.URL];
-    
-    [self presentViewController:vc animated:YES completion:nil];
+    if(appDelegate.isNetworkAvailable)
+    {
+        SGWebViewController *vc = (SGWebViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"webView"];
+        
+        [vc navigateToURL:request.URL];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+    }
     
     return NO;
 }

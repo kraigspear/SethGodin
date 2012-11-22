@@ -74,6 +74,9 @@
 {
     _isNetworkingAvailable = toValue;
     
+    SGAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.isNetworkAvailable = toValue;
+    
     [[SGNotifications sharedInstance] postNetworkAvailable:toValue];
     
     self.searchButton.enabled = _isNetworkingAvailable;
