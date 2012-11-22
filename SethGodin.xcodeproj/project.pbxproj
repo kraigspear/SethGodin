@@ -27,6 +27,7 @@
 		A9100A701654EF1D00779F84 /* SGArchiveSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */; };
 		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
+		A925BE8A165E3A5500C3B79D /* NSFileManager+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
 		A95EA3FE165C8DC800A58FB4 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FC165C8DC800A58FB4 /* books@2x.png */; };
@@ -121,6 +122,8 @@
 		A9100A721654FF5E00779F84 /* NSDate+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+General.m"; path = "SethGodin/NSDate+General.m"; sourceTree = "<group>"; };
 		A9100A741656394600779F84 /* SGFeedSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFeedSelection.h; sourceTree = "<group>"; };
 		A9100A751656394600779F84 /* SGFeedSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFeedSelection.m; sourceTree = "<group>"; };
+		A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Util.h"; path = "SethGodin/NSFileManager+Util.h"; sourceTree = "<group>"; };
+		A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Util.m"; path = "SethGodin/NSFileManager+Util.m"; sourceTree = "<group>"; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
 		A95EA3FC165C8DC800A58FB4 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
@@ -572,6 +575,8 @@
 				A98ABCA5165B88EA00919F8F /* NSString+Util.m */,
 				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
 				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
+				A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */,
+				A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -709,6 +714,7 @@
 				A95EA405165CDDC700A58FB4 /* SGUpdradeViewController.m in Sources */,
 				A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */,
 				A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */,
+				A925BE8A165E3A5500C3B79D /* NSFileManager+Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

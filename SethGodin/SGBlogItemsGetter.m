@@ -9,6 +9,7 @@
 #import "SGBlogItemsGetter.h"
 #import "SGBlogEntry.h"
 #import "AFJSONRequestOperation.h"
+#import "NSFileManager+Util.h"
 
 
 @implementation SGBlogItemsGetter
@@ -17,6 +18,8 @@
     NSDateFormatter *_dateFormatter;
 }
 
+#pragma mark -
+#pragma mark general 
 - (id) init
 {
     self = [super init];
@@ -33,9 +36,14 @@
     
 }
 
+//Abstract. Should be extened by inherited classes.
 - (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
 {
-    
+    NSArray *cacheItems = self.cachedItems;
+    if(cacheItems.count >= 1)
+    {
+        inSuccess(cacheItems);
+    }
 }
 
 - (NSDate*) dateFromString:(NSString*) inDateStr
@@ -43,6 +51,17 @@
     NSString *dateStr      = [inDateStr substringToIndex:10];
     NSDate *dateFromFormat = [_dateFormatter dateFromString:dateStr];
     return dateFromFormat;
+}
+
+#pragma mark -
+#pragma mark share counts.
+
+- (void) updateShareCountsForEntries:(NSArray*) inItems
+{
+    for(SGBlogEntry *entry in inItems)
+    {
+        [self updateShareCountForBlogEntry:entry];
+    }
 }
 
 - (void) updateShareCountForBlogEntry:(SGBlogEntry*) inEntry
@@ -101,7 +120,10 @@
     
 }
 
-- (NSArray*) blockItemsForDictionary:(NSDictionary*) inDictionary
+#pragma mark -
+#pragma mark parsing
+
+- (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary
 {
     NSArray *items = [inDictionary objectForKey:@"entries"];
     
@@ -128,10 +150,49 @@
         [blogEntires addObject:blogEntry];
     }
     
+    dispatch_async(dispatch_get_global_queue(0, 0), ^
+    {
+        self.cachedItems = blogEntires;
+    });
+    
     return blogEntires;
 }
 
+#pragma mark -
+#pragma mark cache
 
+- (BOOL) cacheAvailable
+{
+    return ![[self cacheKey] isEqualToString:@""];
+}
 
+- (NSString*) cacheKey
+{
+    return @"";
+}
+
+- (NSArray*) cachedItems
+{
+    if(![self cacheAvailable]) return [NSArray array];
+    
+    NSString *cacheFile = [self cacheFile];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if(![fileManager fileExistsAtPath:[self cacheFile]]) [NSArray array];
+    
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:cacheFile];
+}
+
+- (void) setCachedItems:(NSArray*) inItems
+{
+    if(![self cacheAvailable]) return;
+    [NSKeyedArchiver archiveRootObject:inItems toFile:[self cacheFile]];
+}
+
+- (NSString*) cacheFile
+{
+    return [NSFileManager cachePathWithFile:[self cacheKey]];
+}
 
 @end

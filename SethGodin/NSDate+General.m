@@ -34,4 +34,23 @@ static NSCalendar *_calendar;
     return comps.month;
 }
 
+- (BOOL) isToday
+{
+	return [self isSameDayAs:[NSDate date]];
+}
+
+- (BOOL)isSameDayAs:(NSDate*)anotherDate
+{
+    NSCalendar *calendar = [NSDate currentCalendar];
+    
+	NSDateComponents* components1 = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self];
+	NSDateComponents* components2 = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:anotherDate];
+    
+    if(components1.month != components2.month) return NO;
+    if(components1.day   != components2.day)     return NO;
+    if(components1.year  != components2.year)   return NO;
+    
+    return YES;
+}
+
 @end

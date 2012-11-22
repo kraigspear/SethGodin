@@ -36,6 +36,12 @@
 - (NSDate*) dateFromString:(NSString*) inDateStr;
 
 /**
+ Update share counts for all BlogEntries in an array
+ @param inItems Array of blog items
+ */
+- (void) updateShareCountsForEntries:(NSArray*) inItems;
+
+/**
  Updates the share count for a blog entry.
  @param inEntry The entry to update teh count for.
  */
@@ -44,7 +50,25 @@
 /**
  Turns JSON to SGBlogItems
  */
-- (NSArray*) blockItemsForDictionary:(NSDictionary*) inDictionary;
+- (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary;
 
+/**
+ key used to distinguinsh cache items. 
+ If empty then items are not cached.
+ @return key used to distinguish keys.
+ */
+- (NSString*) cacheKey;
+
+/**
+ Get cached items
+ @return cahced items
+ */
+- (NSArray*) cachedItems;
+
+/**
+ Saves the items to the cache.
+ @param inItems Items to save to the cache
+ */
+- (void) setCachedItems:(NSArray*) inItems;
 
 @end

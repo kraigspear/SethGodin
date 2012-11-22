@@ -9,6 +9,7 @@
 #import "SGCurrentBlogItemsGetter.h"
 #import "SGBlogEntry.h"
 #import "AFNetworking.h"
+#import "NSDate+General.h"
 
 
 //http://profile.typepad.com/sethgodin/activity.json
@@ -21,6 +22,18 @@
 
 - (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
 {
+    NSArray *cacheItems = self.cachedItems;
+    
+    if(![self isNeedToLoadForToday:cacheItems])
+    {
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           [self updateShareCountsForEntries:cacheItems];
+                           inSuccess(cacheItems);
+                       });
+        return;
+    }
+    
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -29,7 +42,8 @@
          
          dispatch_async(dispatch_get_global_queue(0, 0), ^
                         {
-                             NSArray *items = [self blockItemsForDictionary:JSON];
+                             NSArray *items = [self itemsFromDictionary:JSON];
+                             self.cachedItems = items;
                              dispatch_async(dispatch_get_main_queue(), ^
                                            {
                                                inSuccess(items);
@@ -43,7 +57,7 @@
     [operation start];
 }
 
-- (NSArray*) blockItemsForDictionary:(NSDictionary*) inDictionary
+- (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary
 {
     NSArray *items = [inDictionary objectForKey:@"items"];
     
@@ -76,6 +90,20 @@
     return blogEntires;
 }
 
+#pragma mark -
+#pragma mark caching
+
+- (NSString*) cacheKey
+{
+    return @"currentBlogItems";
+}
+
+- (BOOL) isNeedToLoadForToday:(NSArray*) inItems
+{
+    if(inItems.count < 1) return YES;
+    SGBlogEntry *firstItem = [inItems objectAtIndex:0];
+    return !(firstItem.datePublished.isToday);
+}
 
 
 @end

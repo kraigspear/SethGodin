@@ -46,7 +46,7 @@
                                              
                                              dispatch_async(dispatch_get_global_queue(0, 0), ^
                                                             {
-                                                                NSArray *items = [self blockItemsForDictionary:JSON];
+                                                                NSArray *items = [self itemsFromDictionary:JSON];
                                                                 dispatch_async(dispatch_get_main_queue(), ^
                                                                                {
                                                                                    inSuccess(items);

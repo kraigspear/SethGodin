@@ -26,4 +26,17 @@
  */
 - (NSUInteger) month;
 
+/**
+ Is this day today?
+ @return Yes if today
+ */
+- (BOOL) isToday;
+
+/**
+ Is this date the same day as anotherDate
+ @param anotherDate The day to compare to.
+ @return Yes if the same day as antoherDate
+ */
+- (BOOL)isSameDayAs:(NSDate*)anotherDate;
+
 @end
