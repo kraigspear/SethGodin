@@ -14,6 +14,7 @@ typedef void (^NotificationBlock) (NSNotification*);
 @interface SGNotifications : NSObject
 
 extern NSString * const NOTIFICATION_FEED_SELECTION;
+extern NSString * const NOTIFICATION_NETWORK_AVAILABLE;
 
 /**
  Shared instance
@@ -31,5 +32,16 @@ extern NSString * const NOTIFICATION_FEED_SELECTION;
  Observe Feed selection changing
  */
 - (id) observeFeedSelectionWithNotification:(NotificationBlock) inBlock;
+
+/**
+ Observe network available
+ */
+- (id) observeNetworkAvailableWithNotification:(NotificationBlock) inBlock;
+
+/**
+ Post that the network availablity has changed.
+ @param isAvailable Yes is available
+ */
+- (void) postNetworkAvailable:(BOOL) isAvailable;
 
 @end

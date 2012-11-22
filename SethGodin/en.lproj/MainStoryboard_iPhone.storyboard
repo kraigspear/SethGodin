@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QP5-Ou-OHH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="QP5-Ou-OHH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -14,6 +14,9 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zav-aO-CpU">
                                 <color key="backgroundColor" red="0.21777519870000001" green="0.53341679580000001" blue="0.74360205560000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6mQ-Fn-JHg" id="3TK-XR-IET"/>
+                                </connections>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oi2-mD-cUa" customClass="EPZToolBar">
                                 <items>
@@ -37,6 +40,7 @@
                                 </items>
                                 <color key="tintColor" red="0.70980392156862748" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="jL9-jn-JH0"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -44,12 +48,15 @@
                             <constraint firstItem="oi2-mD-cUa" firstAttribute="trailing" secondItem="m8b-bg-vXh" secondAttribute="trailing" type="default" id="32K-HP-AQs"/>
                             <constraint firstItem="Zav-aO-CpU" firstAttribute="trailing" secondItem="m8b-bg-vXh" secondAttribute="trailing" type="default" id="DRG-D9-lny"/>
                             <constraint firstItem="oi2-mD-cUa" firstAttribute="top" secondItem="Zav-aO-CpU" secondAttribute="bottom" type="default" id="K0T-mQ-2lD"/>
+                            <constraint firstItem="jL9-jn-JH0" firstAttribute="centerX" secondItem="oi2-mD-cUa" secondAttribute="centerX" type="default" id="Wzb-EN-XIF"/>
                             <constraint firstItem="oi2-mD-cUa" firstAttribute="leading" secondItem="m8b-bg-vXh" secondAttribute="leading" type="default" id="izj-mr-XlN"/>
+                            <constraint firstItem="jL9-jn-JH0" firstAttribute="centerY" secondItem="oi2-mD-cUa" secondAttribute="centerY" type="default" id="jhd-NY-nCb"/>
                             <constraint firstItem="oi2-mD-cUa" firstAttribute="bottom" secondItem="m8b-bg-vXh" secondAttribute="bottom" type="default" id="qe0-6T-QCx"/>
                             <constraint firstItem="Zav-aO-CpU" firstAttribute="top" secondItem="m8b-bg-vXh" secondAttribute="top" type="default" id="yia-VP-LlK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndiacator" destination="jL9-jn-JH0" id="2sS-Ab-djb"/>
                         <outlet property="nextButton" destination="hAm-Fn-wg3" id="ZVT-p7-DTE"/>
                         <outlet property="previousButton" destination="QW4-7F-fyz" id="Gvw-h3-j2g"/>
                         <outlet property="view" destination="m8b-bg-vXh" id="QXu-xL-7Lq"/>
@@ -790,7 +797,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.95294117647058818" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="I6R-Mi-dXV" firstAttribute="leading" secondItem="RUk-Ql-d5P" secondAttribute="leading" type="default" id="712-tj-BpP"/>
                                     <constraint firstItem="sEf-Fj-mf2" firstAttribute="trailing" secondItem="RUk-Ql-d5P" secondAttribute="trailing" type="default" id="7H7-xA-C7d"/>
@@ -821,6 +828,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zJe-5h-iYN"/>
                     <connections>
+                        <outlet property="buttonView" destination="RUk-Ql-d5P" id="uwS-gT-UvY"/>
                         <outlet property="buttonViewToLeftButtonViewConstraint" destination="JoK-9y-4Th" id="eGH-Vu-Uq5"/>
                         <outlet property="buttonViewToTopViewConstraint" destination="ASp-yc-TXc" id="aUz-fM-H5P"/>
                         <outlet property="downButton" destination="WY6-CC-BtK" id="jXp-Iy-R29"/>
@@ -1008,6 +1016,7 @@
         <class className="SGBookPurchaseViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBookPurchaseViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
@@ -1020,6 +1029,14 @@
         <class className="SGFeedItemsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGFeedItemsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="button1Action:"/>
+                <relationship kind="action" name="button2Action:"/>
+                <relationship kind="action" name="button3Action:"/>
+                <relationship kind="action" name="menuAction:"/>
+                <relationship kind="action" name="nextButton:"/>
+                <relationship kind="action" name="previousButton:"/>
+                <relationship kind="action" name="searchAction:"/>
+                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="buttonViewToLeftButtonViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="downButton" candidateClass="UIButton"/>
@@ -1036,6 +1053,10 @@
         <class className="SGMenuViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMenuViewController.h"/>
             <relationships>
+                <relationship kind="action" name="archivesAction:"/>
+                <relationship kind="action" name="closeAction:"/>
+                <relationship kind="action" name="currentPostAction:"/>
+                <relationship kind="action" name="favoritesAction:"/>
                 <relationship kind="outlet" name="allPostButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="archivesButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="booksBySethButton" candidateClass="UIButton"/>
@@ -1048,6 +1069,9 @@
         <class className="SGPostViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGPostViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="favoritesAction:"/>
+                <relationship kind="action" name="shareAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
@@ -1059,6 +1083,8 @@
         <class className="SGUpdradeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpdradeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="upgradeAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
@@ -1068,12 +1094,14 @@
         <class className="SGUpgradedViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpgradedViewController.h"/>
             <relationships>
+                <relationship kind="action" name="thankYouAction:"/>
                 <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SGWebViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGWebViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
                 <relationship kind="outlet" name="activityIndiacator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="nextButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="previousButton" candidateClass="UIBarButtonItem"/>
@@ -1082,6 +1110,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -245,4 +245,35 @@
    
 }
 
++ (UIImage*) nonetworkConnectionForRect:(CGSize) inSize
+{
+    return [UIImage imageForSize:inSize withDrawingBlock:^
+     {
+         //// Color Declarations
+         UIColor* lightGreen = [UIColor colorWithRed: 0.678 green: 0.796 blue: 0.364 alpha: 1];
+         
+         //// Frames
+         CGRect frame = CGRectMake(0, 0, inSize.width, inSize.height);
+         
+         
+         //// Abstracted Attributes
+         NSString* messageTextContent = @"Please connect to the internet. Once you've done this, we'll do some fancy technical stuff so you can read offline.";
+         
+         
+         //// innerRect Drawing
+         UIBezierPath* innerRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * -0.00313 + 0.5), CGRectGetMinY(frame) + floor(CGRectGetHeight(frame) * 0.00000 + 0.5), floor(CGRectGetWidth(frame) * 1.00000 + 0.5) - floor(CGRectGetWidth(frame) * -0.00313 + 0.5), floor(CGRectGetHeight(frame) * 1.00208 + 0.5) - floor(CGRectGetHeight(frame) * 0.00000 + 0.5))];
+         [lightGreen setFill];
+         [innerRectPath fill];
+         
+         
+         //// messageText Drawing
+         CGRect messageTextRect = CGRectMake(CGRectGetMinX(frame) + CGRectGetWidth(frame) - 291, CGRectGetMinY(frame) + CGRectGetHeight(frame) - 351, 262, 222);
+         [[UIColor whiteColor] setFill];
+         [messageTextContent drawInRect: messageTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 22.5] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+         
+         
+
+     }];
+}
+
 @end

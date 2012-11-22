@@ -81,8 +81,6 @@
                                    "<body>%@</body> \n"
                                    "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
     
-    NSLog(@"%@", htmlWithStyle);
-    
     [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
 }
 

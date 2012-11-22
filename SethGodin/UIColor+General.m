@@ -27,6 +27,9 @@
     return [buttonColor colorWithAlphaComponent: 0.6];
 }
 
-
++ (UIColor*) itemsBackgroundColor
+{
+    return [UIColor whiteColor];
+}
 
 @end

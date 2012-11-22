@@ -27,5 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *allPostButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoritesButton;
 
+@property (nonatomic, assign) BOOL isNetworkAvailable;
+
 
 @end

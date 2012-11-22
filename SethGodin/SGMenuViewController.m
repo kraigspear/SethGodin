@@ -17,6 +17,7 @@
 {
 @private
     id _feedSelectionNotification;
+    id _networkAvailableNotification;
     BOOL _upgradeArchive;
     BOOL _upgradeFavorites;
 }
@@ -46,6 +47,15 @@
         [self closeMenuWithAnimation:NO];
     }];
     
+    _networkAvailableNotification = [[SGNotifications sharedInstance] observeNetworkAvailableWithNotification:^(NSNotification *note)
+    {
+        self.isNetworkAvailable = [note.object boolValue];
+        self.archivesButton.enabled = self.isNetworkAvailable;
+        self.booksBySethButton.enabled = self.isNetworkAvailable;
+    }];
+    
+    self.archivesButton.enabled = self.isNetworkAvailable;
+    self.booksBySethButton.enabled = self.isNetworkAvailable;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -81,7 +91,9 @@
 - (void) closeMenuWithAnimation:(BOOL) inShouldAnimate
 {
     [[NSNotificationCenter defaultCenter] removeObserver:_feedSelectionNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:_networkAvailableNotification];
     _feedSelectionNotification = nil;
+    _networkAvailableNotification = nil;
     self.close(inShouldAnimate);
 }
 

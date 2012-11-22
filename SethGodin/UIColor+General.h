@@ -13,5 +13,6 @@
 + (UIColor*) firstButtonColor;
 + (UIColor*) secondButtonColor;
 + (UIColor*) thirdButtonColor;
++ (UIColor*) itemsBackgroundColor;
 
 @end

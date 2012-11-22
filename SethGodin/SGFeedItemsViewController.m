@@ -25,7 +25,9 @@
 #import "SGSearchBlogItemsGetter.h"
 #import "SGLoadingAnimation.h"
 #import "BlockAlertView.h"
+#import "UIColor+General.h"
 
+#import "AFHTTPClient.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface SGFeedItemsViewController ()
@@ -62,6 +64,19 @@
     NSArray    *_itemsHold;
     NSString   *_title;
     
+    AFHTTPClient *_httpClient;
+    
+    CALayer *_messageLayer;
+    
+}
+
+- (void) setIsNetworkingAvailable:(BOOL) toValue
+{
+    _isNetworkingAvailable = toValue;
+    
+    [[SGNotifications sharedInstance] postNetworkAvailable:toValue];
+    
+    self.searchButton.enabled = _isNetworkingAvailable;
 }
 
 #pragma mark -
@@ -96,8 +111,6 @@
     
     _pageNumber = 0;
     
-    [self loadLatestFeedData];
-    
     if(&UIApplicationWillEnterForegroundNotification != nil)
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForegrond) name:UIApplicationWillEnterForegroundNotification object:nil];
@@ -109,7 +122,24 @@
         [self loadLatestFeedData];
     }];
     
+    
+    _httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://profile.typepad.com"]];
+    
+    __weak SGFeedItemsViewController *weakSelf = self;
+    
+    [_httpClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
+    {
+        SGFeedItemsViewController *strongSelf = weakSelf;
+        if(strongSelf)
+        {
+            strongSelf.isNetworkingAvailable = (status == AFNetworkReachabilityStatusReachableViaWWAN) || (status == AFNetworkReachabilityStatusReachableViaWiFi);
+            
+            [strongSelf loadLatestFeedData];
+        }
+        NSLog(@"status = %d", status);
+    }];
 }
+
 
 
 - (void)didReceiveMemoryWarning
@@ -132,9 +162,6 @@
     }
 }
 
-
-
-
 #pragma mark -
 #pragma mark menu
 
@@ -153,6 +180,7 @@
 - (void) showMenu
 {
     _menuViewController = (SGMenuViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"menu"];
+    _menuViewController.isNetworkAvailable = self.isNetworkingAvailable;
     
     [self addChildViewController:_menuViewController];
     
@@ -263,6 +291,7 @@
 - (void) loadLatestFeedData
 {
     
+    
     [self startLoadingAnimation];
     
     switch (_feedSelection.feedType)
@@ -295,18 +324,49 @@
     }
     
     
+    if(!self.isNetworkingAvailable)
+    {
+        [self stopLoadingAnimation];
+        
+        NSArray *cacheItems = _contentGetter.cachedItems;
+        if(cacheItems.count < 1)
+        {
+            [self showNoNetwork];
+        }
+        else
+        {
+            [self updateBlogItems:cacheItems];
+        }
+        
+        return;
+    }
+    
+    if(_messageLayer)
+    {
+        [_messageLayer removeFromSuperlayer];
+        _messageLayer = nil;
+    }
+    
+    
+    
     [_contentGetter requestItemssuccess:^(NSArray *inItems)
      {
-         _pageNumber = 0;
-         _blogItems = inItems;
-         [self updateButtons];
-         [self stopLoadingAnimation];
-         [self animateButtonsComingDown];
+         [self updateBlogItems:inItems];
      } failed:^(NSError *inError)
      {
          [self stopLoadingAnimation];
          [self showError:inError];
      }];
+}
+
+- (void) updateBlogItems:(NSArray*) inBlogItems
+{
+    self.buttonView.backgroundColor = [UIColor itemsBackgroundColor];
+    _pageNumber = 0;
+    _blogItems = inBlogItems;
+    [self updateButtons];
+    [self stopLoadingAnimation];
+    [self animateButtonsComingDown];
 }
 
 - (NSString*) monthYearString
@@ -357,7 +417,7 @@
          [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
          [self.view layoutSubviews];
      }
-                     completion:^(BOOL finished)
+     completion:^(BOOL finished)
      {
          
      }];
@@ -550,6 +610,26 @@
     
 	[self.topView exchangeSubviewAtIndex:0 withSubviewAtIndex:0];
 	[self.topView.layer addAnimation:animation forKey:@"animation"];
+}
+
+#pragma mark -
+#pragma mark user messages
+
+- (void) showNoNetwork
+{
+    [_messageLayer removeFromSuperlayer];
+    
+    CGFloat h = self.view.frame.size.height - self.topView.frame.size.height;
+    CGFloat w = self.view.frame.size.width;
+    
+    UIImage *messageImage = [UIImage nonetworkConnectionForRect:CGSizeMake(w, h)];
+    
+    _messageLayer = [CALayer layer];
+    _messageLayer.contents = (id) messageImage.CGImage;
+    
+    _messageLayer.frame = CGRectMake(0, self.topView.frame.size.height, w, h);
+    [self.view.layer addSublayer:_messageLayer];
+    
 }
 
 
