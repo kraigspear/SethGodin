@@ -172,6 +172,7 @@
 {
     if(!self.searchTextField.hidden)
     {
+        [self hideMessage];
         [self closeSearchView];
     }
     else
@@ -350,8 +351,6 @@
         _messageLayer = nil;
     }
     
-    
-    
     [_contentGetter requestItemssuccess:^(NSArray *inItems)
      {
          [self updateBlogItems:inItems];
@@ -364,12 +363,24 @@
 
 - (void) updateBlogItems:(NSArray*) inBlogItems
 {
+    
     self.buttonView.backgroundColor = [UIColor itemsBackgroundColor];
     _pageNumber = 0;
     _blogItems = inBlogItems;
-    [self updateButtons];
+    
     [self stopLoadingAnimation];
-    [self animateButtonsComingDown];
+    
+    if(inBlogItems.count == 0 && _feedSelection.feedType == kSearch)
+    {
+        [self showNoSearchResults];
+        [self updateButtons];
+        [self animateButtonsComingDown];
+    }
+    else
+    {
+        [self updateButtons];
+        [self animateButtonsComingDown];
+    }
 }
 
 - (NSString*) monthYearString
@@ -414,16 +425,23 @@
 
 - (void) animateButtonsComingDown
 {
-    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
-     {
-         self.buttonViewToTopViewConstraint.constant += 500;
-         [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
-         [self.view layoutSubviews];
-     }
-     completion:^(BOOL finished)
-     {
-         
-     }];
+    
+    if(_blogItems.count > 0)
+    {
+        [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+         {
+             self.buttonViewToTopViewConstraint.constant += 500;
+             [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
+             [self.view layoutSubviews];
+         }
+         completion:nil];
+    }
+    else
+    {
+        self.buttonViewToTopViewConstraint.constant += 500;
+        [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
+        [self.view layoutSubviews];
+    }
 }
 
 - (void) updateButtonImage:(SGBlogEntry*) inEntry forButton:(UIButton*) inButton withColor:(UIColor*) inColor
@@ -620,19 +638,35 @@
 
 - (void) showNoNetwork
 {
+    [self showWarningMessage:@"Please connect to the internet. Once you've done this, we'll do some fancy technical stuff so you can read offline."];
+}
+
+- (void) showNoSearchResults
+{
+    [self showWarningMessage:@"Hmm, your search didn't return any results."];
+}
+
+- (void) hideMessage
+{
+    if(!_messageLayer) return;
+    [_messageLayer removeFromSuperlayer];
+    _messageLayer = nil;
+}
+
+- (void) showWarningMessage:(NSString*) inMessage
+{
     [_messageLayer removeFromSuperlayer];
     
     CGFloat h = self.view.frame.size.height - self.topView.frame.size.height;
     CGFloat w = self.view.frame.size.width;
     
-    UIImage *messageImage = [UIImage nonetworkConnectionForRect:CGSizeMake(w, h)];
+    UIImage *messageImage = [UIImage warningMessage:inMessage forSize:CGSizeMake(w, h)];
     
     _messageLayer = [CALayer layer];
     _messageLayer.contents = (id) messageImage.CGImage;
     
     _messageLayer.frame = CGRectMake(0, self.topView.frame.size.height, w, h);
     [self.view.layer addSublayer:_messageLayer];
-    
 }
 
 

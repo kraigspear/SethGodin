@@ -24,6 +24,6 @@
 
 + (UIImage*) rssItemButtonForColor:(UIColor*) inColor andSize:(CGSize) inSize;
 
-+ (UIImage*) nonetworkConnectionForRect:(CGSize) inSize;
++ (UIImage*) warningMessage:(NSString*) inMessage forSize:(CGSize) inSize;
 
 @end

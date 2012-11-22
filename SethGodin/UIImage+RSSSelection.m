@@ -245,7 +245,8 @@
    
 }
 
-+ (UIImage*) nonetworkConnectionForRect:(CGSize) inSize
+
++ (UIImage*) warningMessage:(NSString*) inMessage forSize:(CGSize) inSize
 {
     return [UIImage imageForSize:inSize withDrawingBlock:^
      {
@@ -257,8 +258,7 @@
          
          
          //// Abstracted Attributes
-         NSString* messageTextContent = @"Please connect to the internet. Once you've done this, we'll do some fancy technical stuff so you can read offline.";
-         
+         NSString* messageTextContent = inMessage;
          
          //// innerRect Drawing
          UIBezierPath* innerRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * -0.00313 + 0.5), CGRectGetMinY(frame) + floor(CGRectGetHeight(frame) * 0.00000 + 0.5), floor(CGRectGetWidth(frame) * 1.00000 + 0.5) - floor(CGRectGetWidth(frame) * -0.00313 + 0.5), floor(CGRectGetHeight(frame) * 1.00208 + 0.5) - floor(CGRectGetHeight(frame) * 0.00000 + 0.5))];
