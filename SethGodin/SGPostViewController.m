@@ -70,16 +70,18 @@
 {
     self.titleView.backgroundColor = [UIColor colorWithPatternImage:[self titleImage]];
     
-    NSString *htmlWithStyle = [NSString stringWithFormat:@"<html> \n"
-                                   "<head> \n"
+    NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
+                                   "<head> <meta charset='utf-8'> \n"
                                    "<style type=\"text/css\"> \n"
                                    "body {font-family: \"%@\"; font-size: %@; margin: 20px;  }\n"
                                    "img, object {max-width:100%%; }\n"
-                                   "a {text-decoration: none; color: #FFD500; font-weight: bold;}  \n"
+                                   "a {text-decoration: none; color: #FF9900; font-weight: bold;}  \n"
                                    "</style> \n"
                                    "</head> \n"
                                    "<body>%@</body> \n"
                                    "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
+    
+    NSLog(@"%@", htmlWithStyle);
     
     [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
 }

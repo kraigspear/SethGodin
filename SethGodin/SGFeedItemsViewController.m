@@ -315,7 +315,7 @@
     
     NSString *monthStr = [appDelegate.dateFormatterLongStyle.shortMonthSymbols objectAtIndex:_feedSelection.month - 1];
     
-    return [NSString stringWithFormat:@"%@, %d", monthStr, _feedSelection.year];
+    return [NSString stringWithFormat:@"%@ %d", [monthStr uppercaseString], _feedSelection.year];
 }
 
 - (void) showError:(NSError*) inError

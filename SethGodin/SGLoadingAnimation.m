@@ -71,10 +71,20 @@
 {
     _spinnerLayer = [CALayer layer];
     
-    UIImage *spinnerImage = [UIImage imageNamed:@"load_spinner.png"];
+    UIImage *spinnerImage;
+    
+    if(_loadingBackgroundLayer)
+    {
+        spinnerImage = [UIImage imageNamed:@"load_spinner.png"];
+    }
+    else
+    {
+        spinnerImage = [UIImage imageNamed:@"smallspinner.png"];
+    }
+    
     
     _spinnerLayer.anchorPoint = CGPointMake(.5, .5);
-    
+
     _spinnerLayer.contents = (id) spinnerImage.CGImage;
     
     if(_loadingBackgroundLayer)
@@ -83,7 +93,7 @@
     }
     else
     {
-        _spinnerLayer.frame = CGRectMake(215, 20, spinnerImage.size.width, spinnerImage.size.height);
+        _spinnerLayer.frame = CGRectMake(255, 60, spinnerImage.size.width, spinnerImage.size.height);
     }
     
     

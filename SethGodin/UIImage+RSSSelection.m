@@ -163,6 +163,7 @@
     //CGRect outerFrame = CGRectMake(0, 0, inSize.width, inSize.height);
     //UIColor* buttonColor = inColor;
     /*
+        UIColor* buttonColor = inColor; 
         NSString* titleTextContent = inTitle;
         NSString* shareTextContent = [NSString stringWithFormat:@"%d", inShare];
         NSString* dateTextContent =  [inFormatter stringFromDate:inDate];
@@ -186,7 +187,7 @@
         //// Abstracted Attributes
         NSString* titleTextContent = inTitle;
         NSString* shareTextContent = [NSString stringWithFormat:@"%d", inShare];
-        NSString* dateTextContent =  [inFormatter stringFromDate:inDate];
+        NSString* dateTextContent = [inFormatter stringFromDate:inDate];
         
         
         //// buttonRect Drawing
@@ -196,9 +197,9 @@
         
         
         //// titleText Drawing
-        CGRect titleTextRect = CGRectMake(CGRectGetMinX(outerFrame) + 7, CGRectGetMinY(outerFrame) + 10, 291, 84);
+        CGRect titleTextRect = CGRectMake(CGRectGetMinX(outerFrame) + 16, CGRectGetMinY(outerFrame) + 10, 282, 84);
         [[UIColor whiteColor] setFill];
-        [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 23.5] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+        [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 21.5] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
         
         
         //// Bezier Drawing
@@ -234,6 +235,9 @@
         CGRect dateTextRect = CGRectMake(CGRectGetMinX(outerFrame) + 104, CGRectGetMinY(outerFrame) + floor((CGRectGetHeight(outerFrame) - 21) * 0.86486 + 0.5), 194, 21);
         [color15 setFill];
         [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBold" size: 15] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentRight];
+        
+        
+
         
         
     }];

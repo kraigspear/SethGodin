@@ -45,7 +45,7 @@
                 //// titleText Drawing
                 CGRect titleTextRect = CGRectMake(18, 0, 291, 84);
                 [[UIColor whiteColor] setFill];
-                [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 25] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+                [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 32] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
                 
                 
                 //// upgradeText Drawing
