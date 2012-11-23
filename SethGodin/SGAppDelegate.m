@@ -8,6 +8,7 @@
 
 #import "SGAppDelegate.h"
 #import "Flurry.h"
+#import "SGInAppPurchase.h"
 
 @implementation SGAppDelegate
 {
@@ -25,6 +26,9 @@
     [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
+    
+    [SGInAppPurchase sharedInstance];
+    
     return YES;
 }
 							

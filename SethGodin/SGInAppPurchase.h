@@ -31,4 +31,9 @@
  */
 - (void) purchaseUpgrade;
 
+/**
+ shared instance
+ */
++ (id) sharedInstance;
+
 @end

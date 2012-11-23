@@ -12,7 +12,7 @@
 
 + (SGLogger*) sharedInstance;
 - (void) logAskToPurchaseFrom:(NSString*) inFrom;
-- (void) logPurchasedFrom:(NSString*) inFrom;
+- (void) logPurchased;
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "SGLogger.h"
 #import "Flurry.h"
+#import <sys/utsname.h>
 
 @implementation SGLogger
 
@@ -31,10 +32,16 @@
     [Flurry logEvent:@"AskToPurchase" withParameters:dict];
 }
 
-- (void) logPurchasedFrom:(NSString*) inFrom
+- (void) logPurchased
 {
-    NSDictionary *dict = @{@"From" : inFrom};
-    [Flurry logEvent:@"Purchased" withParameters:dict];
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *deviceName = [NSString stringWithCString:systemInfo.machine
+                                           encoding:NSUTF8StringEncoding];
+    
+    NSDictionary *deviceDictionary = @{@"device" : deviceName};
+    
+    [Flurry logEvent:@"Purchased" withParameters:deviceDictionary];
 }
 
 

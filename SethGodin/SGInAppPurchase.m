@@ -9,6 +9,7 @@
 #import "SGInAppPurchase.h"
 #import "SGUSerDefaults.h"
 #import "Flurry.h"
+#import "SGLogger.h"
 #import <sys/utsname.h>
 
 @implementation SGInAppPurchase
@@ -19,6 +20,21 @@
 }
 
 NSString * const PRODUCT_ID = @"com.andersonspear.sethsblog.upgrade";
+
++ (id) sharedInstance
+{
+	static SGInAppPurchase *instance;
+    
+    static dispatch_once_t pred;
+    
+    dispatch_once(&pred, ^
+                  {
+                      instance = [[SGInAppPurchase alloc] init];
+                  });
+    
+    return instance;
+}
+
 
 - (id) init
 {
@@ -146,6 +162,7 @@ NSString * const PRODUCT_ID = @"com.andersonspear.sethsblog.upgrade";
                 break;
             case SKPaymentTransactionStateFailed:
                 NSLog(@"SKPaymentTransactionStateFailed %@", trans.error);
+                [[SKPaymentQueue defaultQueue] finishTransaction:trans];
                 [self.delegate didFailWithError:trans.error];
                 break;
             case SKPaymentTransactionStatePurchasing:
@@ -163,26 +180,9 @@ NSString * const PRODUCT_ID = @"com.andersonspear.sethsblog.upgrade";
     SGUserDefaults.sharedInstance.isUpgraded = YES;
     [self.delegate purchaseCompleteWithID:transAction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction:transAction];
+    [[SGLogger sharedInstance] logPurchased];
 }
 
-- (void) updateFlurryPurchaedForTransaction:(SKPaymentTransaction*) inTransaction
-{
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    
-    NSString *deviceName = [NSString stringWithCString:systemInfo.machine
-                                              encoding:NSUTF8StringEncoding];
-    
-    NSArray *items = [NSArray arrayWithObjects:deviceName,
-                      inTransaction.payment.productIdentifier,
-                      nil];
-    
-    NSArray *keys = [NSArray arrayWithObjects:@"device",  @"product", nil];
-    NSDictionary *dict = [NSDictionary dictionaryWithObjects:items forKeys:keys];
-    
-    [Flurry logEvent:@"upgraded" withParameters:dict];
-    
-}
 
 
 

@@ -55,7 +55,7 @@
 
 - (IBAction)upgradeAction:(id)sender
 {
-    _inappPurchase = [[SGInAppPurchase alloc] init];
+    _inappPurchase = [SGInAppPurchase sharedInstance];
     _inappPurchase.delegate = self;
     [_inappPurchase purchaseUpgrade];
 }
