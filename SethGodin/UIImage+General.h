@@ -21,4 +21,6 @@
 + (UIImage*) nextButton;
 + (UIImage*) defaultTitleBarImage;
 
++ (UIImage*) titleBarWithTitle:(NSString*) inTitle usingBackgroundColor:(UIColor*) inColor;
+
 @end

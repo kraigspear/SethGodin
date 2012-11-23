@@ -28,6 +28,8 @@
 		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
 		A925BE8A165E3A5500C3B79D /* NSFileManager+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */; };
+		A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */; };
+		A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A93BA40B165F89ED003AD9AA /* libFlurry.a */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
 		A95EA3FE165C8DC800A58FB4 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FC165C8DC800A58FB4 /* books@2x.png */; };
@@ -124,6 +126,10 @@
 		A9100A751656394600779F84 /* SGFeedSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFeedSelection.m; sourceTree = "<group>"; };
 		A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Util.h"; path = "SethGodin/NSFileManager+Util.h"; sourceTree = "<group>"; };
 		A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Util.m"; path = "SethGodin/NSFileManager+Util.m"; sourceTree = "<group>"; };
+		A93BA3FB165F800F003AD9AA /* SGInAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGInAppPurchase.h; sourceTree = "<group>"; };
+		A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGInAppPurchase.m; sourceTree = "<group>"; };
+		A93BA40A165F89ED003AD9AA /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		A93BA40B165F89ED003AD9AA /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
 		A95EA3FC165C8DC800A58FB4 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
@@ -244,6 +250,7 @@
 				A9100A4F165044DD00779F84 /* SystemConfiguration.framework in Frameworks */,
 				A9100A4D165037B100779F84 /* QuartzCore.framework in Frameworks */,
 				A9100A4B165037A600779F84 /* ImageIO.framework in Frameworks */,
+				A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */,
 				A91009D9165030D600779F84 /* CoreText.framework in Frameworks */,
 				A9D6854D164D0578007A9ADA /* libxml2.dylib in Frameworks */,
 				A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */,
@@ -271,6 +278,8 @@
 				A97E883D1658F83D00777A82 /* SGPurchaseItem.m */,
 				A97E883F1659056C00777A82 /* SGPurchaseItemGetter.h */,
 				A97E88401659056C00777A82 /* SGPurchaseItemGetter.m */,
+				A93BA3FB165F800F003AD9AA /* SGInAppPurchase.h */,
+				A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -322,6 +331,15 @@
 				A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */,
 			);
 			name = ArchiveSelection;
+			sourceTree = "<group>";
+		};
+		A93BA409165F89DD003AD9AA /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				A93BA40A165F89ED003AD9AA /* Flurry.h */,
+				A93BA40B165F89ED003AD9AA /* libFlurry.a */,
+			);
+			name = Flurry;
 			sourceTree = "<group>";
 		};
 		A95EA402165CDD8D00A58FB4 /* UpgradeView */ = {
@@ -468,6 +486,7 @@
 		A9D6850D164D005D007A9ADA /* 3RD Party */ = {
 			isa = PBXGroup;
 			children = (
+				A93BA409165F89DD003AD9AA /* Flurry */,
 				A97E884916591C0100777A82 /* BlockAlerts */,
 				A9D6852B164D041B007A9ADA /* KissXML */,
 				A9D6850E164D006A007A9ADA /* AFNetworking */,
@@ -715,6 +734,7 @@
 				A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */,
 				A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */,
 				A925BE8A165E3A5500C3B79D /* NSFileManager+Util.m in Sources */,
+				A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,6 +830,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -823,6 +847,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";

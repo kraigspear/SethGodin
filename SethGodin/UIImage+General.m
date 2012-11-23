@@ -96,28 +96,46 @@
 
 + (UIImage*) titleBarWithTitle:(NSString*) inTitle
 {
-    NSString *identifier = [NSString stringWithFormat:@"titleBarWithTitle%@", inTitle];
+    UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+    UIColor* bgColor = [yellow colorWithAlphaComponent: 0.03];
+    return [self titleBarWithTitle:inTitle usingBackgroundColor:bgColor];
+}
+
+
++ (UIImage*) titleBarWithTitle:(NSString*) inTitle usingBackgroundColor:(UIColor*) inColor
+{
+    
+    float r, g, b, a;
+    
+    [inColor getRed:&r green:&g blue:&b alpha:&a];
+    
+    NSString *identifier = [NSString stringWithFormat:@"titleBarWithTitleColor%@%f%f%f%f", inTitle, r, g, b, a];
     
     return [UIImage imageWithIdentifier:identifier forSize:CGSizeMake(320,44) andDrawingBlock:^
             {
                 //// Color Declarations
                 UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
-                UIColor* color4 = [yellow colorWithAlphaComponent: 0.03];
+                UIColor* bgColor = inColor;
                 
                 //// Abstracted Attributes
-                NSString* textContent = inTitle;
+                NSString* titleTextContent = inTitle;
+                
+                //// bgRect Drawing
+                UIBezierPath* bgRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 44)];
+                [bgColor setFill];
+                [bgRectPath fill];
                 
                 
-                //// Rectangle Drawing
-                UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 44)];
-                [color4 setFill];
-                [rectanglePath fill];
-                
-                
-                //// Text Drawing
-                CGRect textRect = CGRectMake(0, 7, 320, 30);
+                //// titleText Drawing
+                CGRect titleTextRect = CGRectMake(0, 7, 320, 30);
                 [yellow setFill];
-                [textContent drawInRect: textRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 26] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 26] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                
+                
+
+                
+                
+
                 
                 
                 

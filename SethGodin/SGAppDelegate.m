@@ -7,6 +7,7 @@
 //
 
 #import "SGAppDelegate.h"
+#import "Flurry.h"
 
 @implementation SGAppDelegate
 {
@@ -21,6 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     return YES;
