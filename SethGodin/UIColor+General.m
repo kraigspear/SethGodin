@@ -12,19 +12,33 @@
 
 + (UIColor*) firstButtonColor
 {
-    return [UIColor colorWithRed: 0.751 green: 0.703 blue: 0.608 alpha: 1];
+    static UIColor *firstColor;
+    if(firstColor) return firstColor;
+    firstColor = [UIColor colorWithHexString:@"b2a589"];
+    return firstColor;
 }
 
 + (UIColor*) secondButtonColor
 {
-    UIColor *buttonColor = [UIColor firstButtonColor];
-    return [buttonColor colorWithAlphaComponent: 0.8];
+    static UIColor *secondColor;
+    if(secondColor) return secondColor;
+    secondColor = [UIColor colorWithHexString:@"c1b69e"];
+    return secondColor;
 }
 
 + (UIColor*) thirdButtonColor
 {
-    UIColor *buttonColor = [UIColor firstButtonColor];
-    return [buttonColor colorWithAlphaComponent: 0.6];
+    static UIColor *thirdColor;
+    if(thirdColor) return thirdColor;
+    thirdColor = [UIColor colorWithHexString:@"d1c8b4"];
+    return thirdColor;
+}
+
++ (UIColor*) titlebarBackgroundColor
+{
+    UIColor* yellow =  [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+    UIColor* bgColor = [yellow colorWithAlphaComponent: 0.03];
+    return bgColor;
 }
 
 + (UIColor*) itemsBackgroundColor
@@ -32,4 +46,23 @@
     return [UIColor whiteColor];
 }
 
++ (UIColor *)colorWithHexString:(NSString *)stringToConvert
+{
+	NSScanner *scanner = [NSScanner scannerWithString:stringToConvert];
+	unsigned hexNum;
+	if (![scanner scanHexInt:&hexNum]) return nil;
+	return [UIColor colorWithRGBHex:hexNum];
+}
+
++ (UIColor *)colorWithRGBHex:(UInt32)hex
+{
+	int r = (hex >> 16) & 0xFF;
+	int g = (hex >> 8) & 0xFF;
+	int b = (hex) & 0xFF;
+	
+	return [UIColor colorWithRed:r / 255.0f
+						   green:g / 255.0f
+							blue:b / 255.0f
+						   alpha:1.0f];
+}
 @end

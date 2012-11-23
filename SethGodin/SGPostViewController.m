@@ -8,6 +8,7 @@
 
 #import "SGPostViewController.h"
 #import "UIImage+RSSSelection.h"
+#import "UIColor+General.h"
 #import "UIImage+General.h"
 #import "UIImage+BBlock.h"
 #import "SGBlogEntry.h"
@@ -17,7 +18,6 @@
 #import "NSString+Util.h"
 #import "AFNetworking.h"
 #import "BlockTypes.h"
-
 
 @implementation SGPostViewController
 {
@@ -31,6 +31,9 @@
     [super viewDidLoad];
     self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.984 blue:0.937 alpha:1];
+    
     for (UIView* subView in self.webView.subviews)
     {
         if ([subView isKindOfClass:[UIScrollView class]]) {

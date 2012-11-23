@@ -14,5 +14,7 @@
 + (UIColor*) secondButtonColor;
 + (UIColor*) thirdButtonColor;
 + (UIColor*) itemsBackgroundColor;
++ (UIColor*) colorWithHexString:(NSString *)stringToConvert;
++ (UIColor*) titlebarBackgroundColor;
 
 @end
