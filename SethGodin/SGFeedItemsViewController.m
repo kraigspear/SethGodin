@@ -327,6 +327,11 @@
             break;
     }
     
+    if(_messageLayer)
+    {
+        [_messageLayer removeFromSuperlayer];
+        _messageLayer = nil;
+    }
 
     if(_feedSelection.feedType == kCurrent)
     {
@@ -346,12 +351,6 @@
             
             return;
         }
-    }
-    
-    if(_messageLayer)
-    {
-        [_messageLayer removeFromSuperlayer];
-        _messageLayer = nil;
     }
     
     [_contentGetter requestItemssuccess:^(NSArray *inItems)
