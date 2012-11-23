@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "BlockTypes.h"
 
 @interface SGArchiveSelectionViewController : UIViewController

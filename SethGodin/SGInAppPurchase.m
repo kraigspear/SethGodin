@@ -18,6 +18,8 @@
     NSString *_productID;
 }
 
+NSString * const PRODUCT_ID = @"com.andersonspear.sethsblog.upgrade";
+
 - (id) init
 {
     self = [super init];
@@ -31,7 +33,7 @@
 
 - (void) loadProducts
 {
-    NSArray *productIdentifiers = @[@"com.andersonspear.sethsblog.upgrade"];
+    NSArray *productIdentifiers = @[PRODUCT_ID];
     
     NSSet *identifierSet = [NSSet setWithArray:productIdentifiers];
     
@@ -41,8 +43,10 @@
     [request start];
 }
 
-
-
+- (void) purchaseUpgrade
+{
+    [self purchaseProduct:PRODUCT_ID];
+}
 
 - (void) purchaseProduct:(NSString*) inProduct
 {

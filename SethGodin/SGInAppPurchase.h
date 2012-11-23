@@ -21,7 +21,14 @@
  */
 @interface SGInAppPurchase : NSObject <SKPaymentTransactionObserver, SKProductsRequestDelegate>
 
-
+/**
+ Delegate to notifiy caller of events.
+ */
 @property (nonatomic, weak) id<SGInAppPurchaseDelegate> delegate;
+
+/**
+ Purchase the upgrade
+ */
+- (void) purchaseUpgrade;
 
 @end

@@ -10,12 +10,18 @@
 #import "UIImage+General.h"
 #import "UIImage+Upgrade.h"
 #import "SGUSerDefaults.h"
+#import "Flurry.h"
 
 @interface SGUpdradeViewController ()
 
 @end
 
 @implementation SGUpdradeViewController
+{
+@private
+    UIAlertView *_alertView;
+    SGInAppPurchase *_inappPurchase;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,12 +49,47 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _inappPurchase = nil;
+    _alertView = nil;
 }
+
 - (IBAction)upgradeAction:(id)sender
 {
-    [[SGUserDefaults sharedInstance] setIsUpgraded:YES];
-    [self performSegueWithIdentifier:@"upgradeToUpgradedSegue" sender:self];
+    _inappPurchase = [[SGInAppPurchase alloc] init];
+    _inappPurchase.delegate = self;
+    [_inappPurchase purchaseUpgrade];
 }
+
+#pragma mark -
+#pragma mark SGInAppPurchaseDelegate
+
+
+- (void) purchaseCompleteWithID:(NSString*)inId
+{
+    [Flurry logEvent:@"Purchased"];
+    [SGUserDefaults sharedInstance].isUpgraded = YES;
+    _inappPurchase = nil;
+    [self performSegueWithIdentifier:@"upgradeToUpgradedSegue" sender:nil];
+}
+
+- (void) didFailWithError:(NSError*) inError
+{
+    _alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:inError.localizedDescription delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    
+    _alertView.delegate = self;
+    
+    [_alertView show];
+    
+    [Flurry logError:@"Purchase" message:@"Purchase failed" error:inError];
+    
+    _inappPurchase = nil;
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    _alertView = nil;
+}
+
 
 @end

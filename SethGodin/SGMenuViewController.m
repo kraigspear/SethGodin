@@ -107,8 +107,7 @@
 
 - (IBAction)archivesAction:(id)sender
 {
-    _upgradeArchive = YES;
-    [self showUpradeView];
+    [self selectArchives];
 }
 
 - (IBAction)favoritesAction:(id)sender

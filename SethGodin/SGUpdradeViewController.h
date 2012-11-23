@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BlockTypes.h"
+#import "SGInAppPurchase.h"
 
-@interface SGUpdradeViewController : UIViewController
+@interface SGUpdradeViewController : UIViewController <SGInAppPurchaseDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 
@@ -17,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
 @property (weak, nonatomic) IBOutlet UIButton *upgradeButton;
+
+
 @end

@@ -7,9 +7,13 @@
 //
 
 #import "SGArchiveSelectionViewController.h"
+#import "SGUpdradeViewController.h"
 #import "UIImage+General.h"
 #import "NSDate+General.h"
 #import "SGNotifications.h"
+#import "SGUSerDefaults.h"
+#import "SGLogger.h"
+#import "Flurry.h"
 
 @interface SGArchiveSelectionViewController ()
 
@@ -21,6 +25,7 @@
     NSUInteger _currentYear;
     NSUInteger _currentMonth;
     NSDateFormatter *_dateFormatter;
+    
 }
 
 const NSUInteger MIN_YEAR = 2002;
@@ -129,10 +134,35 @@ const NSUInteger MIN_YEAR = 2002;
 
 - (IBAction)goAction:(id)sender
 {
+    if([SGUserDefaults sharedInstance].isUpgraded)
+    {
+        [self selectFeed];
+    }
+    else
+    {
+        [self askToPurchase];
+    }
+}
+
+- (void) selectFeed
+{
     //Add one to month. Months are 1 based.
     SGFeedSelection *feedSelection = [SGFeedSelection selectionForMonth:self.month + 1 andYear:self.year];
     [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void) askToPurchase
+{
+    [[SGLogger sharedInstance] logAskToPurchaseFrom:@"Archive"];
+    SGUpdradeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"askToUpgradd"];
+    
+    
+    
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
 
 @end
