@@ -89,6 +89,11 @@ NSString * const PRODUCT_ID = @"com.andersonspear.sethsblog.upgrade";
     
 }
 
+- (void) restorePurchases
+{
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
 - (SKProduct*) productForID:(NSString*) inID
 {
     SKProduct *product;

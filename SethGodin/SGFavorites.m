@@ -94,4 +94,6 @@ NSString * const KEY_FAVORITES = @"favorites";
     return [_favorites containsObject:inEntry];
 }
 
+ 
+
 @end

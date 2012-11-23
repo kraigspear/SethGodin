@@ -11,6 +11,8 @@
 #import "SGBlogEntry.h"
 
 @implementation SGFavoritesBlogItemsGetter
+{
+}
 
 - (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
 {
@@ -21,7 +23,13 @@
         [self updateShareCountForBlogEntry:blogEntry];
     }
     
+
     inSuccess(favorites.favorites);
+}
+
+- (NSArray*) cachedItems
+{
+    return [SGFavorites loadFavorites];
 }
 
 @end

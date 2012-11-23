@@ -327,22 +327,25 @@
             break;
     }
     
-    
-    if(!self.isNetworkingAvailable)
+
+    if(_feedSelection.feedType == kCurrent)
     {
-        [self stopLoadingAnimation];
-        
-        NSArray *cacheItems = _contentGetter.cachedItems;
-        if(cacheItems.count < 1)
+        if(!self.isNetworkingAvailable)
         {
-            [self showNoNetwork];
+            [self stopLoadingAnimation];
+            
+            NSArray *cacheItems = _contentGetter.cachedItems;
+            if(cacheItems.count < 1)
+            {
+                [self showNoNetwork];
+            }
+            else
+            {
+                [self updateBlogItems:cacheItems];
+            }
+            
+            return;
         }
-        else
-        {
-            [self updateBlogItems:cacheItems];
-        }
-        
-        return;
     }
     
     if(_messageLayer)

@@ -32,6 +32,11 @@
 - (void) purchaseUpgrade;
 
 /**
+ Restore purchase(s)
+ */
+- (void) restorePurchases;
+
+/**
  shared instance
  */
 + (id) sharedInstance;

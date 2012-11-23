@@ -103,5 +103,11 @@
     _alertView = nil;
 }
 
+- (IBAction)alreadyUpgradedAction:(id)sender
+{
+    _inappPurchase = [SGInAppPurchase sharedInstance];
+    _inappPurchase.delegate = self;
+    [_inappPurchase restorePurchases];
+}
 
 @end
