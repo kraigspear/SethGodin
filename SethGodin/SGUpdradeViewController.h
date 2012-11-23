@@ -20,5 +20,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *upgradeButton;
 
+/**
+ Where to popback if the user purchases the upgrade
+ */
+@property (weak, nonatomic) UIViewController *popbackViewController;
 
 @end

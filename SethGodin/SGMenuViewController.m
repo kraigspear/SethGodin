@@ -10,6 +10,7 @@
 #import "UIImage+General.h"
 #import "UIImage+Menu.h"
 #import "SGArchiveSelectionViewController.h"
+#import "SGUpdradeViewController.h"
 #import "SGNotifications.h"
 #import "SGUserDefaults.h"
 
@@ -18,9 +19,9 @@
 @private
     id _feedSelectionNotification;
     id _networkAvailableNotification;
-    BOOL _upgradeArchive;
-    BOOL _upgradeFavorites;
 }
+
+NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 
 - (void) viewDidLoad
 {
@@ -58,26 +59,6 @@
     self.booksBySethButton.enabled = self.isNetworkAvailable;
 }
 
-- (void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if(_upgradeFavorites)
-    {
-        if([[SGUserDefaults sharedInstance] isUpgraded])
-        {
-            [self selectFavorites];
-        }
-    }
-    
-    if(_upgradeArchive)
-    {
-        if([[SGUserDefaults sharedInstance] isUpgraded])
-        {
-            [self selectArchives];
-        }
-    }
-}
-
 - (void) viewDidLayoutSubviews
 {
     self.buttonView.backgroundColor = [UIColor colorWithPatternImage:[UIImage backgroundImageForSize:self.buttonView.frame.size]];
@@ -112,9 +93,6 @@
 
 - (IBAction)favoritesAction:(id)sender
 {
-    _upgradeFavorites = YES;
-    [self showUpradeView];
-    return;
     
     if([SGUserDefaults sharedInstance].isUpgraded)
     {
@@ -122,7 +100,6 @@
     }
     else
     {
-        _upgradeFavorites = YES;
         [self showUpradeView];
     }
     
@@ -137,14 +114,25 @@
 
 - (void) selectArchives
 {
-    _upgradeArchive = NO;
     [self performSegueWithIdentifier:@"archivesSegue" sender:self];
 }
 
 - (void) showUpradeView
 {
-    _upgradeFavorites = NO;
-    [self performSegueWithIdentifier:@"menuToUpgrade" sender:self];
+    [self performSegueWithIdentifier:SEGUE_MENU_TO_UPGRADE sender:self];
 }
+
+#pragma mark -
+#pragma mark segue
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:SEGUE_MENU_TO_UPGRADE])
+    {
+        SGUpdradeViewController *vc = segue.destinationViewController;
+        vc.popbackViewController = self;
+    }
+}
+
 
 @end

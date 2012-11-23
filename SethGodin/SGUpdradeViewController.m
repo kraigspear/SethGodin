@@ -10,6 +10,7 @@
 #import "UIImage+General.h"
 #import "UIImage+Upgrade.h"
 #import "SGUSerDefaults.h"
+#import "SGUpgradedViewController.h"
 #import "Flurry.h"
 
 @interface SGUpdradeViewController ()
@@ -39,6 +40,17 @@
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     self.backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage upgradeBackground]];
     [self.upgradeButton setImage:[UIImage upgradeButton] forState:UIControlStateNormal];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    
+    if([SGUserDefaults sharedInstance].isUpgraded)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 - (IBAction)backAction:(id)sender

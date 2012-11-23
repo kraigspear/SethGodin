@@ -156,12 +156,8 @@ const NSUInteger MIN_YEAR = 2002;
 {
     [[SGLogger sharedInstance] logAskToPurchaseFrom:@"Archive"];
     SGUpdradeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"askToUpgradd"];
-    
-    
-    
-    
+    vc.popbackViewController = self;
     [self.navigationController pushViewController:vc animated:YES];
-    
 }
 
 

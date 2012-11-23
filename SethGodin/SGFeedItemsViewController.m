@@ -370,17 +370,24 @@
     
     [self stopLoadingAnimation];
     
-    if(inBlogItems.count == 0 && _feedSelection.feedType == kSearch)
+    if(inBlogItems.count == 0)
     {
-        [self showNoSearchResults];
-        [self updateButtons];
-        [self animateButtonsComingDown];
+        if(_feedSelection.feedType == kSearch)
+        {
+            [self showNoSearchResults];
+        }
+        else if(_feedSelection.feedType == kFavorites)
+        {
+            [self showNoFavorites];
+        }
+        else if(_feedSelection.feedType == kArchive)
+        {
+            [self showNoArchives];
+        }
     }
-    else
-    {
-        [self updateButtons];
-        [self animateButtonsComingDown];
-    }
+    
+    [self updateButtons];
+    [self animateButtonsComingDown];
 }
 
 - (NSString*) monthYearString
@@ -392,21 +399,6 @@
     return [NSString stringWithFormat:@"%@ %d", [monthStr uppercaseString], _feedSelection.year];
 }
 
-- (void) showError:(NSError*) inError
-{
-    _blockAlertView = [BlockAlertView alertWithTitle:@"Error" message:inError.localizedDescription];
-    
-    __weak SGFeedItemsViewController *weakSelf = self;
-    
-    [_blockAlertView setCancelButtonWithTitle:@"Ok" block:^
-     {
-         SGFeedItemsViewController *strongSelf = weakSelf;
-         if(strongSelf)
-         {
-             strongSelf->_blockAlertView = nil;
-         }
-     }];
-}
 
 
 
@@ -423,26 +415,6 @@
 #pragma mark -
 #pragma mark update buttons
 
-- (void) animateButtonsComingDown
-{
-    
-    if(_blogItems.count > 0)
-    {
-        [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
-         {
-             self.buttonViewToTopViewConstraint.constant += 500;
-             [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
-             [self.view layoutSubviews];
-         }
-         completion:nil];
-    }
-    else
-    {
-        self.buttonViewToTopViewConstraint.constant += 500;
-        [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
-        [self.view layoutSubviews];
-    }
-}
 
 - (void) updateButtonImage:(SGBlogEntry*) inEntry forButton:(UIButton*) inButton withColor:(UIColor*) inColor
 {
@@ -566,6 +538,40 @@
     [_loadingAnimation stopLoadingAnimation];
 }
 
+- (void) fadeToolbarAnimation
+{
+    CATransition *animation = [CATransition animation];
+	animation.delegate = self;
+	animation.duration = .25f;
+	animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+	animation.type = kCATransitionFade;
+    
+	[self.topView exchangeSubviewAtIndex:0 withSubviewAtIndex:0];
+	[self.topView.layer addAnimation:animation forKey:@"animation"];
+}
+
+- (void) animateButtonsComingDown
+{
+    
+    if(_blogItems.count > 0)
+    {
+        [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+         {
+             self.buttonViewToTopViewConstraint.constant += 500;
+             [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
+             [self.view layoutSubviews];
+         }
+                         completion:nil];
+    }
+    else
+    {
+        self.buttonViewToTopViewConstraint.constant += 500;
+        [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
+        [self.view layoutSubviews];
+    }
+}
+
+
 #pragma mark -
 #pragma mark searching
 
@@ -603,6 +609,13 @@
         _blogItems = _itemsHold;
         _pageNumber = _pageNumberHold;
     }
+    else
+    {
+        //Maybe there wasn't any data before the search.
+        //need to show something, so go back to current data.
+        _feedSelection.feedType = kCurrent;
+        [self loadLatestFeedData];
+    }
     
     _itemsHold = nil;
     
@@ -621,20 +634,26 @@
     [self fadeToolbarAnimation];
 }
 
-- (void) fadeToolbarAnimation
-{
-    CATransition *animation = [CATransition animation];
-	animation.delegate = self;
-	animation.duration = .25f;
-	animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-	animation.type = kCATransitionFade;
-    
-	[self.topView exchangeSubviewAtIndex:0 withSubviewAtIndex:0];
-	[self.topView.layer addAnimation:animation forKey:@"animation"];
-}
 
 #pragma mark -
 #pragma mark user messages
+
+- (void) showError:(NSError*) inError
+{
+    _blockAlertView = [BlockAlertView alertWithTitle:@"Error" message:inError.localizedDescription];
+    
+    __weak SGFeedItemsViewController *weakSelf = self;
+    
+    [_blockAlertView setCancelButtonWithTitle:@"Ok" block:^
+     {
+         SGFeedItemsViewController *strongSelf = weakSelf;
+         if(strongSelf)
+         {
+             strongSelf->_blockAlertView = nil;
+         }
+     }];
+}
+
 
 - (void) showNoNetwork
 {
@@ -644,6 +663,17 @@
 - (void) showNoSearchResults
 {
     [self showWarningMessage:@"Hmm, your search didn't return any results."];
+}
+
+- (void) showNoFavorites
+{
+   [self showWarningMessage:@"No favorites yet? Tap the hart in any post to mark as a favorite."];  
+}
+
+- (void) showNoArchives
+{
+    NSString *message = [NSString stringWithFormat:@"Hmm, there doesn't seem to be any archived post for %@", [self monthYearString]];
+    [self showWarningMessage:message];
 }
 
 - (void) hideMessage
@@ -668,6 +698,5 @@
     _messageLayer.frame = CGRectMake(0, self.topView.frame.size.height, w, h);
     [self.view.layer addSublayer:_messageLayer];
 }
-
 
 @end
