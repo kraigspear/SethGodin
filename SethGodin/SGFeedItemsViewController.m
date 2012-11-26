@@ -669,7 +669,7 @@
 
 - (void) showNoFavorites
 {
-   [self showWarningMessage:@"No favorites yet? Tap the hart in any post to mark as a favorite."];  
+   [self showWarningMessage:@"No favorites yet? Tap the heart in any post to mark as a favorite."];  
 }
 
 - (void) showNoArchives
