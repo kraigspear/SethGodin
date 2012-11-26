@@ -82,12 +82,19 @@
     self.searchButton.enabled = _isNetworkingAvailable;
 }
 
+-  (void) viewDidLayoutSubviews
+{
+    [self updateButtonSizes];
+}
+
 #pragma mark -
 #pragma mark general
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     
     _title = @"SETH GODIN";
     
@@ -102,6 +109,8 @@
     
     [self.view removeConstraint:self.buttonViewToLeftButtonViewConstraint];
     [self.view layoutSubviews];
+    
+    
     
     _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
     
@@ -142,8 +151,6 @@
         NSLog(@"status = %d", status);
     }];
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -496,6 +503,20 @@
     
 }
 
+- (void) updateButtonSizes
+{
+    NSUInteger numberOfButtons = 3;
+    
+    NSLog(@"h = %f", self.buttonView.frame.size.height);
+    
+    CGFloat buttonHeight = 132;
+    
+    self.button1HeightConstraint.constant = buttonHeight;
+    self.button2HeightConstraint.constant = buttonHeight;
+    self.button3HeightConstraint.constant = buttonHeight;
+    
+}
+
 
 #pragma mark -
 #pragma mark navigation buttons
@@ -700,5 +721,7 @@
     _messageLayer.frame = CGRectMake(0, self.topView.frame.size.height, w, h);
     [self.view.layer addSublayer:_messageLayer];
 }
+
+
 
 @end

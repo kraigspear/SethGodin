@@ -27,5 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 
 @property (nonatomic, assign) BOOL isNetworkingAvailable;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *button1HeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *button2HeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *button3HeightConstraint;
 
 @end

@@ -753,7 +753,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVZ-hx-t4G" userLabel="button1">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="132" id="hOE-sG-dPD"/>
+                                            <constraint firstAttribute="height" constant="132" type="user" id="hOE-sG-dPD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
@@ -769,7 +769,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6R-Mi-dXV" userLabel="button2">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="132" id="E8b-x4-sj1"/>
+                                            <constraint firstAttribute="height" constant="132" type="user" id="E8b-x4-sj1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
@@ -785,7 +785,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEf-Fj-mf2" userLabel="button3">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="132" id="5fg-kX-VSm"/>
+                                            <constraint firstAttribute="height" constant="132" type="user" id="5fg-kX-VSm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
@@ -831,6 +831,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="zJe-5h-iYN"/>
                     <connections>
+                        <outlet property="button1HeightConstraint" destination="hOE-sG-dPD" id="GcS-cn-R6r"/>
+                        <outlet property="button2HeightConstraint" destination="E8b-x4-sj1" id="vvn-RP-hSA"/>
+                        <outlet property="button3HeightConstraint" destination="5fg-kX-VSm" id="BYv-iT-Qs2"/>
                         <outlet property="buttonView" destination="RUk-Ql-d5P" id="uwS-gT-UvY"/>
                         <outlet property="buttonViewToLeftButtonViewConstraint" destination="JoK-9y-4Th" id="eGH-Vu-Uq5"/>
                         <outlet property="buttonViewToTopViewConstraint" destination="ASp-yc-TXc" id="aUz-fM-H5P"/>
