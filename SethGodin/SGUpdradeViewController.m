@@ -38,8 +38,15 @@
     [super viewDidLoad];
 	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@""]];
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
-    self.backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage upgradeBackground]];
     [self.upgradeButton setImage:[UIImage upgradeButton] forState:UIControlStateNormal];
+}
+
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage upgradeBackgroundForSize:self.view.frame.size]];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated

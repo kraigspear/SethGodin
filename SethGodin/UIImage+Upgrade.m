@@ -12,9 +12,10 @@
 
 @implementation UIImage (Upgrade)
 
-+ (UIImage*) upgradeBackground
++ (UIImage*) upgradeBackgroundForSize:(CGSize) inSize
 {
-    return [UIImage imageWithIdentifier:@"upgradeBackground" forSize:CGSizeMake(325,508) andDrawingBlock:^
+    
+    return [UIImage imageForSize:inSize withDrawingBlock:^
     {
         //// Color Declarations
         UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
@@ -23,24 +24,24 @@
         
         UIColor* color = [UIColor colorWithHue: 0.1 saturation: yellowHSBA[1] brightness: yellowHSBA[2] alpha: yellowHSBA[3]];
         
+        //// Frames
+        CGRect backgroundFrame = CGRectMake(0, 0, inSize.width, inSize.height);
+        
+        
         //// Abstracted Attributes
-        NSString* text5Content = @"Upgrade to access Seth Godin's entire blog archive and your favorite posts.";
+        NSString* upgradetextContent = @"Upgrade to access Seth Godin's entire blog archive and your favorite posts.";
         
         
-        //// Rectangle 7 Drawing
-        UIBezierPath* rectangle7Path = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 325, 508)];
+        //// bacgroundRect Drawing
+        UIBezierPath* bacgroundRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(backgroundFrame) + floor(CGRectGetWidth(backgroundFrame) * 0.00000 + 0.5), CGRectGetMinY(backgroundFrame) + floor(CGRectGetHeight(backgroundFrame) * 0.00000 + 0.5), floor(CGRectGetWidth(backgroundFrame) * 1.00000 + 0.5) - floor(CGRectGetWidth(backgroundFrame) * 0.00000 + 0.5), floor(CGRectGetHeight(backgroundFrame) * 1.00000 + 0.5) - floor(CGRectGetHeight(backgroundFrame) * 0.00000 + 0.5))];
         [color setFill];
-        [rectangle7Path fill];
+        [bacgroundRectPath fill];
         
         
-        //// Text 5 Drawing
-        CGRect text5Rect = CGRectMake(18, 105, 276, 147);
+        //// upgradetext Drawing
+        CGRect upgradetextRect = CGRectMake(CGRectGetMinX(backgroundFrame) + CGRectGetWidth(backgroundFrame) - 300, CGRectGetMinY(backgroundFrame) + floor((CGRectGetHeight(backgroundFrame) - 147) * 0.29558 + 0.5), 276, 147);
         [[UIColor whiteColor] setFill];
-        [text5Content drawInRect: text5Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 25] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
-        
-        
-
-
+        [upgradetextContent drawInRect: upgradetextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 25] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
     }];
 }
 

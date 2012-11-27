@@ -10,7 +10,7 @@
 
 @interface UIImage (Upgrade)
 
-+ (UIImage*) upgradeBackground;
++ (UIImage*) upgradeBackgroundForSize:(CGSize) inSize;
 + (UIImage*) upgradeButton;
 + (UIImage*) thankYouButton;
 
