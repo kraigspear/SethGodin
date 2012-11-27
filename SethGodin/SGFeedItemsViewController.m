@@ -505,15 +505,37 @@
 
 - (void) updateButtonSizes
 {
-    NSUInteger numberOfButtons = 3;
     
-    NSLog(@"h = %f", self.buttonView.frame.size.height);
+    NSLog(@"h = %f", self.view.frame.size.height);
     
-    CGFloat buttonHeight = 132;
+    CGFloat bottomButtonHeight;
+    CGFloat postButtonHeight;
+    const CGFloat IPHONE_4_INCH = 548;
     
-    self.button1HeightConstraint.constant = buttonHeight;
-    self.button2HeightConstraint.constant = buttonHeight;
-    self.button3HeightConstraint.constant = buttonHeight;
+    if(self.view.frame.size.height >= IPHONE_4_INCH)
+    {
+        //4 inch
+        bottomButtonHeight = 109;
+        postButtonHeight = 132;
+    }
+    else
+    {
+        //3.5
+        bottomButtonHeight = 87;
+        postButtonHeight = 110;
+    }
+    
+    self.button1HeightConstraint.constant = postButtonHeight;
+    self.button2HeightConstraint.constant = postButtonHeight;
+    self.button3HeightConstraint.constant = postButtonHeight;
+    
+    //self.leftButtonHeightConstraint.constant = bottomButtonHeight;
+    
+    //CGFloat buttonViewHeight = self.view.frame.size.height / buttonViewSizePct;
+    
+    self.leftButtonHeightConstraint.constant = bottomButtonHeight;
+    
+    [self.view layoutSubviews];
     
 }
 
