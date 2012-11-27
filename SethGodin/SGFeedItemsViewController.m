@@ -529,10 +529,6 @@
     self.button2HeightConstraint.constant = postButtonHeight;
     self.button3HeightConstraint.constant = postButtonHeight;
     
-    //self.leftButtonHeightConstraint.constant = bottomButtonHeight;
-    
-    //CGFloat buttonViewHeight = self.view.frame.size.height / buttonViewSizePct;
-    
     self.leftButtonHeightConstraint.constant = bottomButtonHeight;
     
     [self.view layoutSubviews];
