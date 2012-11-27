@@ -94,8 +94,6 @@
 {
     [super viewDidLoad];
     
-    
-    
     _title = @"SETH GODIN";
     
     _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:self.buttonViewToTopViewConstraint];
@@ -109,8 +107,6 @@
     
     [self.view removeConstraint:self.buttonViewToLeftButtonViewConstraint];
     [self.view layoutSubviews];
-    
-    
     
     _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
     
@@ -128,12 +124,14 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForegrond) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    
     [[SGNotifications sharedInstance] observeFeedSelectionWithNotification:^(NSNotification *note)
     {
         _feedSelection = (SGFeedSelection*) note.object;
         [self loadLatestFeedData];
     }];
-    
     
     _httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://profile.typepad.com"]];
     
@@ -294,9 +292,17 @@
 
 - (void) appEnteredForegrond
 {
-    if(_menuViewController) return;
-    if(self.navigationController.visibleViewController != self) return;
-    [self loadLatestFeedData];
+    [self stopLoadingAnimation];
+    
+    if(self.isViewLoaded && self.view.window)
+    {
+        [self loadLatestFeedData];
+    }
+}
+
+- (void) appEnteredBackground
+{
+    NSLog(@"appEnteredBackground");
 }
 
 - (void) loadLatestFeedData
