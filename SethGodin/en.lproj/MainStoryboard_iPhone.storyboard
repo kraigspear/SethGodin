@@ -339,7 +339,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNt-KX-0Z4" userLabel="leftArrowYear">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="73" id="Bkm-EF-anN"/>
-                                                    <constraint firstAttribute="height" constant="44" id="KLk-hZ-9ZT"/>
+                                                    <constraint firstAttribute="height" constant="44" type="user" id="KLk-hZ-9ZT"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal">
@@ -423,7 +423,7 @@
                                             <constraint firstItem="ANm-pN-wXS" firstAttribute="centerY" secondItem="3mY-i2-j0I" secondAttribute="centerY" type="user" id="P4u-gI-wYx"/>
                                             <constraint firstItem="3mY-i2-j0I" firstAttribute="leading" secondItem="W8r-w6-LCT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="PDs-xj-Rya"/>
                                             <constraint firstItem="ANm-pN-wXS" firstAttribute="top" secondItem="y7G-Mx-t3R" secondAttribute="top" type="user" id="PVh-27-o88"/>
-                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="top" secondItem="W8r-w6-LCT" secondAttribute="top" constant="43" id="XuM-a2-eCe"/>
+                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="top" secondItem="W8r-w6-LCT" secondAttribute="top" constant="43" type="user" id="XuM-a2-eCe"/>
                                             <constraint firstItem="CNt-KX-0Z4" firstAttribute="top" secondItem="rYb-Ue-QAO" secondAttribute="top" type="user" id="Zba-zd-Mb4"/>
                                             <constraint firstItem="CNt-KX-0Z4" firstAttribute="centerY" secondItem="37i-ah-KUG" secondAttribute="centerY" type="user" id="a5a-aY-OWi"/>
                                             <constraint firstAttribute="trailing" secondItem="rYb-Ue-QAO" secondAttribute="trailing" constant="5" type="user" id="bWW-Os-8L8"/>
@@ -433,14 +433,14 @@
                                             <constraint firstItem="CNt-KX-0Z4" firstAttribute="centerY" secondItem="37i-ah-KUG" secondAttribute="centerY" type="user" id="mqQ-Nw-OJC"/>
                                             <constraint firstItem="ANm-pN-wXS" firstAttribute="centerY" secondItem="3mY-i2-j0I" secondAttribute="centerY" type="user" id="n35-46-7lf"/>
                                             <constraint firstItem="y7G-Mx-t3R" firstAttribute="leading" secondItem="rYb-Ue-QAO" secondAttribute="leading" type="default" id="oS5-rk-H9z"/>
-                                            <constraint firstAttribute="bottom" secondItem="ANm-pN-wXS" secondAttribute="bottom" constant="62" id="q13-Fi-Ki2"/>
+                                            <constraint firstAttribute="bottom" secondItem="ANm-pN-wXS" secondAttribute="bottom" constant="62" type="user" id="q13-Fi-Ki2"/>
                                             <constraint firstAttribute="trailing" secondItem="3mY-i2-j0I" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vGB-fa-6P2"/>
                                             <constraint firstItem="CNt-KX-0Z4" firstAttribute="leading" secondItem="W8r-w6-LCT" secondAttribute="leading" constant="5" type="user" id="vRp-wq-Del"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvq-gR-lt8" userLabel="goButton">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="242" id="O7c-ZQ-t9L"/>
+                                            <constraint firstAttribute="height" constant="242" type="user" id="O7c-ZQ-t9L"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="130"/>
                                         <state key="normal" title="GO">
@@ -457,12 +457,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="W8r-w6-LCT" firstAttribute="bottom" secondItem="efG-Ql-Gr2" secondAttribute="bottom" type="default" id="0H4-wN-LVf"/>
+                                    <constraint firstItem="W8r-w6-LCT" firstAttribute="bottom" secondItem="efG-Ql-Gr2" secondAttribute="bottom" type="user" id="0H4-wN-LVf"/>
                                     <constraint firstItem="Mvq-gR-lt8" firstAttribute="trailing" secondItem="efG-Ql-Gr2" secondAttribute="trailing" type="default" id="90d-Qe-bdf"/>
-                                    <constraint firstItem="Mvq-gR-lt8" firstAttribute="top" secondItem="efG-Ql-Gr2" secondAttribute="top" type="default" id="I3Q-Ck-8pl"/>
+                                    <constraint firstItem="Mvq-gR-lt8" firstAttribute="top" secondItem="efG-Ql-Gr2" secondAttribute="top" type="user" id="I3Q-Ck-8pl"/>
                                     <constraint firstItem="W8r-w6-LCT" firstAttribute="trailing" secondItem="efG-Ql-Gr2" secondAttribute="trailing" type="default" id="MZK-5g-rWd"/>
                                     <constraint firstItem="W8r-w6-LCT" firstAttribute="leading" secondItem="efG-Ql-Gr2" secondAttribute="leading" type="default" id="XMQ-iX-8qN"/>
-                                    <constraint firstItem="W8r-w6-LCT" firstAttribute="top" secondItem="Mvq-gR-lt8" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="pKX-Em-Sqh"/>
+                                    <constraint firstItem="W8r-w6-LCT" firstAttribute="top" secondItem="Mvq-gR-lt8" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="pKX-Em-Sqh"/>
                                     <constraint firstItem="Mvq-gR-lt8" firstAttribute="leading" secondItem="efG-Ql-Gr2" secondAttribute="leading" type="default" id="pX9-B5-dTm"/>
                                 </constraints>
                             </view>
@@ -474,8 +474,8 @@
                             <constraint firstItem="GgB-KT-NN0" firstAttribute="trailing" secondItem="Ddi-ra-QsX" secondAttribute="trailing" type="default" id="NA6-yq-euo"/>
                             <constraint firstItem="efG-Ql-Gr2" firstAttribute="top" secondItem="GgB-KT-NN0" secondAttribute="bottom" type="user" id="eJa-yx-l0g"/>
                             <constraint firstItem="efG-Ql-Gr2" firstAttribute="trailing" secondItem="Ddi-ra-QsX" secondAttribute="trailing" type="default" id="jsM-O9-E1O"/>
-                            <constraint firstItem="GgB-KT-NN0" firstAttribute="top" secondItem="Ddi-ra-QsX" secondAttribute="top" type="default" id="ne9-tH-Ghq"/>
-                            <constraint firstItem="efG-Ql-Gr2" firstAttribute="bottom" secondItem="Ddi-ra-QsX" secondAttribute="bottom" type="default" id="z8E-VL-gVh"/>
+                            <constraint firstItem="GgB-KT-NN0" firstAttribute="top" secondItem="Ddi-ra-QsX" secondAttribute="top" type="user" id="ne9-tH-Ghq"/>
+                            <constraint firstItem="efG-Ql-Gr2" firstAttribute="bottom" secondItem="Ddi-ra-QsX" secondAttribute="bottom" type="user" id="z8E-VL-gVh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xbw-7F-jgs"/>
@@ -483,7 +483,9 @@
                         <outlet property="backButton" destination="VdS-7o-Lme" id="YYt-kj-FZh"/>
                         <outlet property="leftArrowMonth" destination="3mY-i2-j0I" id="LAY-jW-nRy"/>
                         <outlet property="leftArrowMonthButton" destination="ANm-pN-wXS" id="63Y-r7-T23"/>
+                        <outlet property="leftArrowMonthToBottomConstraint" destination="q13-Fi-Ki2" id="vhq-lS-3lE"/>
                         <outlet property="leftArrowYearButton" destination="CNt-KX-0Z4" id="JkY-8V-2bX"/>
+                        <outlet property="leftArrowYearToTopConstraint" destination="XuM-a2-eCe" id="uKR-Sw-sON"/>
                         <outlet property="monthLabel" destination="3mY-i2-j0I" id="2G3-ge-qBo"/>
                         <outlet property="rightArrowMonthButton" destination="y7G-Mx-t3R" id="nnY-wa-qxC"/>
                         <outlet property="rightArrowYearButton" destination="rYb-Ue-QAO" id="7xO-tC-STU"/>

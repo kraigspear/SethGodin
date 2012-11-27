@@ -61,6 +61,24 @@ const NSUInteger MIN_YEAR = 2002;
     
 }
 
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if(self.view.frame.size.height >= 548)
+    {
+        self.leftArrowYearToTopConstraint.constant = 43;
+        self.leftArrowMonthToBottomConstraint.constant = 63;
+    }
+    else
+    {
+        self.leftArrowYearToTopConstraint.constant = 15;
+        self.leftArrowMonthToBottomConstraint.constant = 13;
+    }
+    
+    [self.view layoutSubviews];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

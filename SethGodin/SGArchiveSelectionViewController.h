@@ -28,4 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftArrowMonthButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightArrowMonthButton;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftArrowYearToTopConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftArrowMonthToBottomConstraint;
 @end
