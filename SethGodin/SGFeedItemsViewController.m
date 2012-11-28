@@ -296,7 +296,12 @@
     
     if(self.isViewLoaded && self.view.window)
     {
-        [self loadLatestFeedData];
+        //It's not worth refreshing a search, archive ext...
+        //only the current feed might change between app sessions.
+        if(_feedSelection.feedType == kCurrent)
+        {
+            [self loadLatestFeedData];
+        }
     }
 }
 
