@@ -37,7 +37,8 @@
     NSString *urlStr = [NSString stringWithFormat:@"http://api.typepad.com/blogs/6a00d83451b31569e200d8341c521b53ef/post-assets/@published/@by-month/%@.json?max-results=31", monthYear];
     
     NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:0 timeoutInterval:5];
+    
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
                                          {

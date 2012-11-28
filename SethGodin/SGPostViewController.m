@@ -175,7 +175,7 @@
     
    NSURLRequest *request = [ NSURLRequest requestWithURL:url
                                               cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                          timeoutInterval:3 ];
+                                          timeoutInterval:5 ];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     

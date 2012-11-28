@@ -35,7 +35,8 @@
     }
     
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
     
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request

@@ -35,7 +35,7 @@
     NSLog(@"search URL = %@", urlStr);
     
     NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
