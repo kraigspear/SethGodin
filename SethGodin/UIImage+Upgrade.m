@@ -39,9 +39,15 @@
         
         
         //// upgradetext Drawing
-        CGRect upgradetextRect = CGRectMake(CGRectGetMinX(backgroundFrame) + CGRectGetWidth(backgroundFrame) - 300, CGRectGetMinY(backgroundFrame) + floor((CGRectGetHeight(backgroundFrame) - 147) * 0.29558 + 0.5), 276, 147);
+        CGRect upgradetextRect = CGRectMake(CGRectGetMinX(backgroundFrame) + CGRectGetWidth(backgroundFrame) - 300, CGRectGetMinY(backgroundFrame) + floor((CGRectGetHeight(backgroundFrame) - 460) * 0.51020 + 0.5), 276, 460);
         [[UIColor whiteColor] setFill];
         [upgradetextContent drawInRect: upgradetextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 25] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+        
+        
+
+        
+        
+
     }];
 }
 

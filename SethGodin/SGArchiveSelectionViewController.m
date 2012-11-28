@@ -65,15 +65,15 @@ const NSUInteger MIN_YEAR = 2002;
 {
     [super viewDidLayoutSubviews];
     
-    if(self.view.frame.size.height >= 548)
+    if(IS_IPHONE5)
     {
         self.leftArrowYearToTopConstraint.constant = 43;
         self.leftArrowMonthToBottomConstraint.constant = 63;
     }
     else
     {
-        self.leftArrowYearToTopConstraint.constant = 15;
-        self.leftArrowMonthToBottomConstraint.constant = 13;
+       // self.leftArrowYearToTopConstraint.constant = 15;
+       // self.leftArrowMonthToBottomConstraint.constant = 13;
     }
     
     [self.view layoutSubviews];

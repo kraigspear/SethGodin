@@ -9,7 +9,7 @@
             <objects>
                 <viewController storyboardIdentifier="webView" id="6mQ-Fn-JHg" customClass="SGWebViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m8b-bg-vXh">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zav-aO-CpU">
@@ -72,7 +72,7 @@
             <objects>
                 <viewController id="fMC-ex-EwJ" customClass="SGBookPurchaseViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OYd-go-EdC">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fdg-eU-jDt" userLabel="backgroundImageView">
@@ -158,7 +158,7 @@
             <objects>
                 <viewController storyboardIdentifier="menu" id="svJ-Ls-5dq" customClass="SGMenuViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zf3-MJ-MUt">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PK-Ri-3NT" userLabel="topView">
@@ -303,7 +303,7 @@
             <objects>
                 <viewController id="WiB-db-0vb" customClass="SGArchiveSelectionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ddi-ra-QsX">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgB-KT-NN0" userLabel="topView">
@@ -414,6 +414,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="254" type="user" id="2YI-Qu-se3"/>
                                             <constraint firstItem="37i-ah-KUG" firstAttribute="leading" secondItem="W8r-w6-LCT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3Hd-mB-qNp"/>
                                             <constraint firstItem="CNt-KX-0Z4" firstAttribute="centerY" secondItem="rYb-Ue-QAO" secondAttribute="centerY" type="user" id="8kY-VY-H4m"/>
                                             <constraint firstItem="ANm-pN-wXS" firstAttribute="leading" secondItem="CNt-KX-0Z4" secondAttribute="leading" type="default" id="8wP-wP-tOu"/>
@@ -439,9 +440,6 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvq-gR-lt8" userLabel="goButton">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="242" type="user" id="O7c-ZQ-t9L"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="130"/>
                                         <state key="normal" title="GO">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -457,12 +455,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="W8r-w6-LCT" firstAttribute="bottom" secondItem="efG-Ql-Gr2" secondAttribute="bottom" type="user" id="0H4-wN-LVf"/>
                                     <constraint firstItem="Mvq-gR-lt8" firstAttribute="trailing" secondItem="efG-Ql-Gr2" secondAttribute="trailing" type="default" id="90d-Qe-bdf"/>
+                                    <constraint firstItem="W8r-w6-LCT" firstAttribute="bottom" secondItem="efG-Ql-Gr2" secondAttribute="bottom" type="default" id="BIz-kl-JpF"/>
                                     <constraint firstItem="Mvq-gR-lt8" firstAttribute="top" secondItem="efG-Ql-Gr2" secondAttribute="top" type="user" id="I3Q-Ck-8pl"/>
                                     <constraint firstItem="W8r-w6-LCT" firstAttribute="trailing" secondItem="efG-Ql-Gr2" secondAttribute="trailing" type="default" id="MZK-5g-rWd"/>
                                     <constraint firstItem="W8r-w6-LCT" firstAttribute="leading" secondItem="efG-Ql-Gr2" secondAttribute="leading" type="default" id="XMQ-iX-8qN"/>
-                                    <constraint firstItem="W8r-w6-LCT" firstAttribute="top" secondItem="Mvq-gR-lt8" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="pKX-Em-Sqh"/>
+                                    <constraint firstItem="W8r-w6-LCT" firstAttribute="top" secondItem="Mvq-gR-lt8" secondAttribute="bottom" type="user" id="evD-Cb-xLO"/>
                                     <constraint firstItem="Mvq-gR-lt8" firstAttribute="leading" secondItem="efG-Ql-Gr2" secondAttribute="leading" type="default" id="pX9-B5-dTm"/>
                                 </constraints>
                             </view>
@@ -502,7 +500,7 @@
             <objects>
                 <viewController storyboardIdentifier="askToUpgradd" id="TXy-ey-Qqf" customClass="SGUpdradeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8lo-WS-Zws">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRp-PT-r3o" userLabel="topView">
@@ -567,13 +565,24 @@
                                             <action selector="alreadyUpgradedAction:" destination="TXy-ey-Qqf" eventType="touchUpInside" id="e4f-Vc-Iq3"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upgrade to access Seth Godin's entire blog archive and your favorite posts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="276" translatesAutoresizingMaskIntoConstraints="NO" id="8LJ-nA-WtI" userLabel="upgradeLabel">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="276" id="7tW-fW-Xif"/>
+                                            <constraint firstAttribute="height" constant="127" type="user" id="eCW-SQ-du7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="8LJ-nA-WtI" firstAttribute="leading" secondItem="Zpo-K2-B64" secondAttribute="leading" constant="25" id="7aw-hW-YFJ"/>
                                     <constraint firstItem="Oi8-7P-HZC" firstAttribute="leading" secondItem="Zpo-K2-B64" secondAttribute="leading" type="default" id="ADe-QZ-1FZ"/>
-                                    <constraint firstItem="cbb-ay-f3i" firstAttribute="top" secondItem="Zpo-K2-B64" secondAttribute="top" constant="258" type="user" id="BVt-WU-QKJ"/>
                                     <constraint firstItem="Oi8-7P-HZC" firstAttribute="trailing" secondItem="Zpo-K2-B64" secondAttribute="trailing" type="default" id="C6G-Dq-JPe"/>
+                                    <constraint firstItem="8LJ-nA-WtI" firstAttribute="top" secondItem="Zpo-K2-B64" secondAttribute="top" constant="100" type="user" id="G82-yT-5ou"/>
                                     <constraint firstItem="Oi8-7P-HZC" firstAttribute="bottom" secondItem="Zpo-K2-B64" secondAttribute="bottom" type="default" id="VW2-rb-cJY"/>
+                                    <constraint firstItem="cbb-ay-f3i" firstAttribute="top" secondItem="8LJ-nA-WtI" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="vV0-id-OHJ"/>
                                     <constraint firstAttribute="centerX" secondItem="cbb-ay-f3i" secondAttribute="centerX" type="user" id="zwy-eh-kYB"/>
                                 </constraints>
                             </view>
@@ -608,7 +617,7 @@
             <objects>
                 <viewController id="Iu9-52-ldD" customClass="SGUpgradedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R0f-d4-W4B">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Awesome! You're officially upgraded." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="276" translatesAutoresizingMaskIntoConstraints="NO" id="DQ7-fV-EWB">
@@ -661,7 +670,7 @@
             <objects>
                 <viewController id="2" customClass="SGFeedItemsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WY6-CC-BtK" userLabel="rightButton">
@@ -861,7 +870,7 @@
             <objects>
                 <viewController id="ZDt-iZ-e0h" customClass="SGPostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sIn-qm-l11">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXb-Vt-HXm" userLabel="topView">
@@ -990,9 +999,133 @@
             <point key="canvasLocation" x="426" y="141"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="EPZToolBar" superclassName="UIToolbar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EPZToolBar.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SGArchiveSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGArchiveSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowMonth" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="leftArrowMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowMonthToBottomConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="leftArrowYearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowYearToTopConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rightArrowMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightArrowYearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="yearLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SGBookPurchaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBookPurchaseViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="collectionViewToBottom" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="collectionViewToLeading" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="collectionViewToTrailing" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SGFeedItemsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGFeedItemsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="button1Action:"/>
+                <relationship kind="action" name="button2Action:"/>
+                <relationship kind="action" name="button3Action:"/>
+                <relationship kind="action" name="menuAction:"/>
+                <relationship kind="action" name="nextButton:"/>
+                <relationship kind="action" name="previousButton:"/>
+                <relationship kind="action" name="searchAction:"/>
+                <relationship kind="outlet" name="button1HeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="button2HeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="button3HeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="buttonViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="buttonViewToLeftButtonViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="downButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftButtonHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rssItem1Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rssItem2Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rssItem3Button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="upButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SGMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="allPostButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="archivesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="booksBySethButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleBar" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SGPostViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGPostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="shareAction:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SGUpdradeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpdradeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="alreadyUpgradedAction:"/>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="upgradeAction:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="upgradeButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SGUpgradedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpgradedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SGWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGWebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndiacator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="previousButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

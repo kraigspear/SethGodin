@@ -44,9 +44,6 @@
 - (void) viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
-    self.backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage upgradeBackgroundForSize:self.view.frame.size]];
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated
