@@ -48,7 +48,6 @@
 		A97E882A1657EF6100777A82 /* UIColor+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88291657EF6100777A82 /* UIColor+General.m */; };
 		A97E882D16581F0C00777A82 /* SGSearchBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E882C16581F0B00777A82 /* SGSearchBlogItemsGetter.m */; };
 		A97E88311658441E00777A82 /* SGBookPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88301658441E00777A82 /* SGBookPurchaseViewController.m */; };
-		A97E88351658459600777A82 /* booksbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A97E88341658459600777A82 /* booksbg@2x.png */; };
 		A97E883B1658464F00777A82 /* BookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A97E883A1658464F00777A82 /* BookCellView.xib */; };
 		A97E883E1658F83E00777A82 /* SGPurchaseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E883D1658F83D00777A82 /* SGPurchaseItem.m */; };
 		A97E88411659056D00777A82 /* SGPurchaseItemGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88401659056C00777A82 /* SGPurchaseItemGetter.m */; };
@@ -164,7 +163,6 @@
 		A97E882C16581F0B00777A82 /* SGSearchBlogItemsGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSearchBlogItemsGetter.m; sourceTree = "<group>"; };
 		A97E882F1658441E00777A82 /* SGBookPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBookPurchaseViewController.h; sourceTree = "<group>"; };
 		A97E88301658441E00777A82 /* SGBookPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBookPurchaseViewController.m; sourceTree = "<group>"; };
-		A97E88341658459600777A82 /* booksbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "booksbg@2x.png"; sourceTree = "<group>"; };
 		A97E883A1658464F00777A82 /* BookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookCellView.xib; sourceTree = "<group>"; };
 		A97E883C1658F83D00777A82 /* SGPurchaseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPurchaseItem.h; sourceTree = "<group>"; };
 		A97E883D1658F83D00777A82 /* SGPurchaseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPurchaseItem.m; sourceTree = "<group>"; };
@@ -318,7 +316,6 @@
 				A95EA3FB165C8DC800A58FB4 /* books.png */,
 				A95EA3FC165C8DC800A58FB4 /* books@2x.png */,
 				A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */,
-				A97E88341658459600777A82 /* booksbg@2x.png */,
 				A9100A691653A1B400779F84 /* load_text.png */,
 				A9100A6A1653A1B400779F84 /* load_text@2x.png */,
 				A9100A671653200700779F84 /* load_bg.png */,
@@ -669,7 +666,6 @@
 				A9100A681653200700779F84 /* load_bg.png in Resources */,
 				A9100A6B1653A1B400779F84 /* load_text.png in Resources */,
 				A9100A6C1653A1B400779F84 /* load_text@2x.png in Resources */,
-				A97E88351658459600777A82 /* booksbg@2x.png in Resources */,
 				A97E883B1658464F00777A82 /* BookCellView.xib in Resources */,
 				A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */,
 				A95EA3FD165C8DC800A58FB4 /* books.png in Resources */,

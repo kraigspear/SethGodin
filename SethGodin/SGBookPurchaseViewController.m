@@ -34,7 +34,16 @@ NSString * const ReuseIdentifier = @"bookCell";
     [super viewDidLoad];
     
     self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"BOOKS" usingBackgroundColor:[UIColor whiteColor]]];
-                                    
+    
+    if(IS_IPHONE5)
+    {
+        self.backgroundImageView.image = [UIImage imageNamed:@"books-568h@2x.png"];
+    }
+    else
+    {
+        self.backgroundImageView.image = [UIImage imageNamed:@"books@2x.png"];
+    }
+        
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
     _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:nil];

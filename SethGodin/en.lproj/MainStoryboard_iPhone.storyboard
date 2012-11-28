@@ -75,7 +75,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" image="books-568h@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fdg-eU-jDt" userLabel="backgroundImageView">
+                            <imageView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fdg-eU-jDt" userLabel="backgroundImageView">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="572" id="tZe-A1-kqg"/>
                                 </constraints>
@@ -990,9 +990,6 @@
             <point key="canvasLocation" x="426" y="141"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="books-568h@2x.png" width="640" height="1136"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

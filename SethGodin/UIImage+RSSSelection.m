@@ -269,9 +269,11 @@
          //// messageText Drawing
          CGRect messageTextRect = CGRectMake(CGRectGetMinX(frame) + CGRectGetWidth(frame) - 291, CGRectGetMinY(frame) + CGRectGetHeight(frame) - 351, 262, 222);
          [[UIColor whiteColor] setFill];
-         [messageTextContent drawInRect: messageTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 22.5] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
          
+         NSMutableParagraphStyle* style = [[NSMutableParagraphStyle alloc] init];
+         [style setAlignment: NSTextAlignmentCenter];
          
+         [messageTextContent drawInRect:messageTextRect withFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 22.5] lineBreakMode: NSLineBreakByClipping alignment:NSTextAlignmentCenter];
 
      }];
 }
