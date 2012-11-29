@@ -24,14 +24,16 @@
 {
     NSArray *cacheItems = self.cachedItems;
     
-    if(![self isNeedToLoadForToday:cacheItems])
+    if(cacheItems)
     {
-        dispatch_async(dispatch_get_main_queue(), ^
-                       {
-                           [self updateShareCountsForEntries:cacheItems];
-                           inSuccess(cacheItems);
-                       });
-        return;
+        if(cacheItems.count > 0)
+        {
+            [self updateShareCountsForEntries:cacheItems];
+            dispatch_async(dispatch_get_main_queue(), ^
+                           {
+                               inSuccess(cacheItems);
+                           });
+        }
     }
     
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
@@ -42,15 +44,30 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
      {
-         
          dispatch_async(dispatch_get_global_queue(0, 0), ^
                         {
                              NSArray *items = [self itemsFromDictionary:JSON];
-                             self.cachedItems = items;
-                             dispatch_async(dispatch_get_main_queue(), ^
-                                           {
-                                               inSuccess(items);
-                                           });
+                            
+                             BOOL isDataFresh = YES;
+                            
+                             if(items.count > 0 && cacheItems.count > 0)
+                             {
+                                 SGBlogEntry *entry1 = [items objectAtIndex:0];
+                                 SGBlogEntry *entry2 = [cacheItems objectAtIndex:0];
+                                 if([entry1 isEqual:entry2])
+                                 {
+                                     isDataFresh = NO;
+                                 }
+                             }
+                            
+                             if(isDataFresh)
+                             {
+                                 self.cachedItems = items;
+                                 dispatch_async(dispatch_get_main_queue(), ^
+                                                {
+                                                    inSuccess(items);
+                                                });
+                             }
                         });
          
      } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
@@ -99,13 +116,6 @@
 - (NSString*) cacheKey
 {
     return @"currentBlogItems";
-}
-
-- (BOOL) isNeedToLoadForToday:(NSArray*) inItems
-{
-    if(inItems.count < 1) return YES;
-    SGBlogEntry *firstItem = [inItems objectAtIndex:0];
-    return !(firstItem.datePublished.isToday);
 }
 
 
