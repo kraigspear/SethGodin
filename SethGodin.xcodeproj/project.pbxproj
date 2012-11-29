@@ -194,7 +194,7 @@
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
 		A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallspinner@2x.png"; sourceTree = "<group>"; };
-		A9D684E3164CFE8D007A9ADA /* SethGodin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SethGodin.app; path = "Seth Godin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9D684E3164CFE8D007A9ADA /* Seth Godin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -451,7 +451,7 @@
 		A9D684E4164CFE8D007A9ADA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A9D684E3164CFE8D007A9ADA /* SethGodin.app */,
+				A9D684E3164CFE8D007A9ADA /* Seth Godin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -643,7 +643,7 @@
 			);
 			name = "Seth Godin";
 			productName = SethGodin;
-			productReference = A9D684E3164CFE8D007A9ADA /* SethGodin.app */;
+			productReference = A9D684E3164CFE8D007A9ADA /* Seth Godin.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -873,6 +873,7 @@
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -890,6 +891,7 @@
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

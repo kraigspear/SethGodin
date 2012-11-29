@@ -649,10 +649,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.67843137254901964" green="0.792156862745098" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="dyM-TS-e0D" secondAttribute="centerY" type="user" id="4RT-tQ-xvV"/>
                             <constraint firstAttribute="centerX" secondItem="dyM-TS-e0D" secondAttribute="centerX" type="user" id="A42-ba-Egv"/>
-                            <constraint firstItem="DQ7-fV-EWB" firstAttribute="top" secondItem="R0f-d4-W4B" secondAttribute="top" constant="50" id="K6k-7C-NmQ"/>
-                            <constraint firstAttribute="centerY" secondItem="dyM-TS-e0D" secondAttribute="centerY" type="user" id="bWK-th-EWN"/>
                             <constraint firstAttribute="centerX" secondItem="DQ7-fV-EWB" secondAttribute="centerX" type="user" id="mC1-TU-VEj"/>
+                            <constraint firstItem="dyM-TS-e0D" firstAttribute="top" secondItem="DQ7-fV-EWB" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xpG-RY-CdG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O7d-l7-nvH"/>
@@ -1085,9 +1085,6 @@
         <class className="SGUpdradeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpdradeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="alreadyUpgradedAction:"/>
-                <relationship kind="action" name="backAction:"/>
-                <relationship kind="action" name="upgradeAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
@@ -1111,9 +1108,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
