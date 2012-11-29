@@ -60,7 +60,7 @@
                                  }
                              }
                             
-                             if(isDataFresh)
+                            // if(isDataFresh)
                              {
                                  self.cachedItems = items;
                                  dispatch_async(dispatch_get_main_queue(), ^

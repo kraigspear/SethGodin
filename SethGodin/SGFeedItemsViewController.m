@@ -616,6 +616,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) animateButtonsComingDown
 {
+
+    if(self.buttonView.frame.origin.y > 0) return; //Already in the down position.
     
     if(_blogItems.count > 0)
     {
@@ -641,15 +643,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    //if(textField.text.length >= 3)
-    {
-        [self searchBlogFor:textField.text];
-        return [textField resignFirstResponder];
-    }
-//    else
-//    {
-//        return NO;
-//    }
+    [self searchBlogFor:textField.text];
+    return [textField resignFirstResponder];
 }
 
 - (void) searchBlogFor:(NSString*) inText
