@@ -37,11 +37,11 @@ NSString * const ReuseIdentifier = @"bookCell";
     
     if(IS_IPHONE5)
     {
-        self.backgroundImageView.image = [UIImage imageNamed:@"books-568h@2x.png"];
+        self.backgroundImageView.image = [UIImage imageNamed:@"books-568h.png"];
     }
     else
     {
-        self.backgroundImageView.image = [UIImage imageNamed:@"books@2x.png"];
+        self.backgroundImageView.image = [UIImage imageNamed:@"books-iphone4.png"];
     }
         
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];

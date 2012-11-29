@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A90FF88F1667B0730087193F /* books-iphone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90FF88E1667B0730087193F /* books-iphone4@2x.png */; };
 		A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009C8164EEDC200779F84 /* SGBlogEntry.m */; };
 		A91009CC164EF31B00779F84 /* SGCurrentBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009CB164EF31B00779F84 /* SGCurrentBlogItemsGetter.m */; };
 		A91009D41650084F00779F84 /* SGPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009D31650084F00779F84 /* SGPostViewController.m */; };
@@ -33,11 +34,14 @@
 		A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA40E165F8D65003AD9AA /* SGLogger.m */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
-		A95EA3FE165C8DC800A58FB4 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FC165C8DC800A58FB4 /* books@2x.png */; };
 		A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */; };
 		A95EA405165CDDC700A58FB4 /* SGUpdradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */; };
 		A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */; };
 		A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */; };
+		A9712AA01667B2EE00BAFCD9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */; };
+		A9712AA31667B2F900BAFCD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA21667B2F900BAFCD9 /* Default@2x.png */; };
+		A9712AA51667B78400BAFCD9 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA41667B78400BAFCD9 /* books@2x.png */; };
+		A9712AA71667BB9B00BAFCD9 /* books-iphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA61667BB9B00BAFCD9 /* books-iphone4.png */; };
 		A974FBF71667532C00B29748 /* SGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A974FBF61667532C00B29748 /* SGAlertView.m */; };
 		A974FC0F16676ED200B29748 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC0E16676ED200B29748 /* Icon@2x.png */; };
 		A974FC1116676EDD00B29748 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC1016676EDD00B29748 /* Icon.png */; };
@@ -98,6 +102,8 @@
 
 /* Begin PBXFileReference section */
 		A905B15D166627FB0092F3D0 /* SethGodin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SethGodin.entitlements; sourceTree = "<group>"; };
+		A90FF88B1667AF5C0087193F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A90FF88E1667B0730087193F /* books-iphone4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-iphone4@2x.png"; sourceTree = "<group>"; };
 		A91009C7164EEDC200779F84 /* SGBlogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntry.h; sourceTree = "<group>"; };
 		A91009C8164EEDC200779F84 /* SGBlogEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntry.m; sourceTree = "<group>"; };
 		A91009CA164EF31B00779F84 /* SGCurrentBlogItemsGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCurrentBlogItemsGetter.h; sourceTree = "<group>"; };
@@ -139,7 +145,6 @@
 		A93BA40E165F8D65003AD9AA /* SGLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLogger.m; sourceTree = "<group>"; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
-		A95EA3FC165C8DC800A58FB4 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
 		A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGUSerDefaults.h; path = SethGodin/SGUSerDefaults.h; sourceTree = "<group>"; };
 		A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGUSerDefaults.m; path = SethGodin/SGUSerDefaults.m; sourceTree = "<group>"; };
 		A95EA403165CDDC700A58FB4 /* SGUpdradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUpdradeViewController.h; sourceTree = "<group>"; };
@@ -148,6 +153,10 @@
 		A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Upgrade.m"; sourceTree = "<group>"; };
 		A95EA409165CE75400A58FB4 /* SGUpgradedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUpgradedViewController.h; sourceTree = "<group>"; };
 		A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUpgradedViewController.m; sourceTree = "<group>"; };
+		A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A9712AA21667B2F900BAFCD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A9712AA41667B78400BAFCD9 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
+		A9712AA61667BB9B00BAFCD9 /* books-iphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-iphone4.png"; sourceTree = "<group>"; };
 		A974FBF51667532C00B29748 /* SGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGAlertView.h; path = SethGodin/SGAlertView.h; sourceTree = "<group>"; };
 		A974FBF61667532C00B29748 /* SGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGAlertView.m; path = SethGodin/SGAlertView.m; sourceTree = "<group>"; };
 		A974FC0E16676ED200B29748 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -322,9 +331,11 @@
 		A9100A6016531E5800779F84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A9712AA61667BB9B00BAFCD9 /* books-iphone4.png */,
+				A9712AA41667B78400BAFCD9 /* books@2x.png */,
+				A90FF88E1667B0730087193F /* books-iphone4@2x.png */,
 				A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */,
 				A95EA3FB165C8DC800A58FB4 /* books.png */,
-				A95EA3FC165C8DC800A58FB4 /* books@2x.png */,
 				A9100A671653200700779F84 /* load_bg.png */,
 				A9100A6116531E6300779F84 /* load_bg@2x.png */,
 				A9100A6316531FEE00779F84 /* load_spinner.png */,
@@ -436,6 +447,9 @@
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
+				A9712AA21667B2F900BAFCD9 /* Default@2x.png */,
+				A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */,
+				A90FF88B1667AF5C0087193F /* Default.png */,
 				A974FC1016676EDD00B29748 /* Icon.png */,
 				A974FC0E16676ED200B29748 /* Icon@2x.png */,
 				A974FBFC16676DEB00B29748 /* Icons */,
@@ -693,11 +707,15 @@
 				A97E883B1658464F00777A82 /* BookCellView.xib in Resources */,
 				A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */,
 				A95EA3FD165C8DC800A58FB4 /* books.png in Resources */,
-				A95EA3FE165C8DC800A58FB4 /* books@2x.png in Resources */,
 				A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */,
 				A974FC0F16676ED200B29748 /* Icon@2x.png in Resources */,
 				A974FC1116676EDD00B29748 /* Icon.png in Resources */,
 				A974FC1316676F3000B29748 /* smallspinner.png in Resources */,
+				A90FF88F1667B0730087193F /* books-iphone4@2x.png in Resources */,
+				A9712AA01667B2EE00BAFCD9 /* Default-568h@2x.png in Resources */,
+				A9712AA31667B2F900BAFCD9 /* Default@2x.png in Resources */,
+				A9712AA51667B78400BAFCD9 /* books@2x.png in Resources */,
+				A9712AA71667BB9B00BAFCD9 /* books-iphone4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
