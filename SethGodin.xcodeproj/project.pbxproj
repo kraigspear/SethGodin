@@ -607,9 +607,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A9D684E2164CFE8D007A9ADA /* SethGodin */ = {
+		A9D684E2164CFE8D007A9ADA /* Seth Godin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "SethGodin" */;
+			buildConfigurationList = A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "Seth Godin" */;
 			buildPhases = (
 				A9D684DF164CFE8D007A9ADA /* Sources */,
 				A9D684E0164CFE8D007A9ADA /* Frameworks */,
@@ -619,7 +619,7 @@
 			);
 			dependencies = (
 			);
-			name = SethGodin;
+			name = "Seth Godin";
 			productName = SethGodin;
 			productReference = A9D684E3164CFE8D007A9ADA /* SethGodin.app */;
 			productType = "com.apple.product-type.application";
@@ -646,7 +646,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A9D684E2164CFE8D007A9ADA /* SethGodin */,
+				A9D684E2164CFE8D007A9ADA /* Seth Godin */,
 			);
 		};
 /* End PBXProject section */
@@ -880,7 +880,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "SethGodin" */ = {
+		A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "Seth Godin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A9D6850B164CFE8D007A9ADA /* Debug */,
