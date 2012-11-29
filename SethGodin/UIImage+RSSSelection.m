@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+RSSSelection.h"
-
+#import "NSString+Util.h"
 #import "UIImage+BBlock.h"
 
 @implementation UIImage (RSSSelection)
@@ -199,7 +199,11 @@
         //// titleText Drawing
         CGRect titleTextRect = CGRectMake(CGRectGetMinX(outerFrame) + 16, CGRectGetMinY(outerFrame) + 10, 282, 84);
         [[UIColor whiteColor] setFill];
-        [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 21.5] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+        
+        CGRect smallerRect = CGRectInset(titleTextRect, 0, 5);
+        UIFont *textFont = [titleTextContent fontThatWillFitUsingFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 21.5] insideRect:smallerRect];
+        
+        [titleTextContent drawInRect: titleTextRect withFont: textFont lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
         
         
         //// Bezier Drawing

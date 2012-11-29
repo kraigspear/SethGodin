@@ -38,6 +38,7 @@
 		A95EA405165CDDC700A58FB4 /* SGUpdradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */; };
 		A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */; };
 		A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */; };
+		A974FBF71667532C00B29748 /* SGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A974FBF61667532C00B29748 /* SGAlertView.m */; };
 		A97E880B16563CD800777A82 /* SGNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880A16563CD800777A82 /* SGNotifications.m */; };
 		A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880E1656465D00777A82 /* SGBlogItemsGetter.m */; };
 		A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E8811165646BC00777A82 /* SGArchiveBlogItemsGetter.m */; };
@@ -144,6 +145,8 @@
 		A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Upgrade.m"; sourceTree = "<group>"; };
 		A95EA409165CE75400A58FB4 /* SGUpgradedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUpgradedViewController.h; sourceTree = "<group>"; };
 		A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUpgradedViewController.m; sourceTree = "<group>"; };
+		A974FBF51667532C00B29748 /* SGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGAlertView.h; path = SethGodin/SGAlertView.h; sourceTree = "<group>"; };
+		A974FBF61667532C00B29748 /* SGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGAlertView.m; path = SethGodin/SGAlertView.m; sourceTree = "<group>"; };
 		A97E880916563CD800777A82 /* SGNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNotifications.h; sourceTree = "<group>"; };
 		A97E880A16563CD800777A82 /* SGNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNotifications.m; sourceTree = "<group>"; };
 		A97E880D1656465D00777A82 /* SGBlogItemsGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogItemsGetter.h; sourceTree = "<group>"; };
@@ -600,6 +603,8 @@
 				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
 				A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */,
 				A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */,
+				A974FBF51667532C00B29748 /* SGAlertView.h */,
+				A974FBF61667532C00B29748 /* SGAlertView.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -739,6 +744,7 @@
 				A925BE8A165E3A5500C3B79D /* NSFileManager+Util.m in Sources */,
 				A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */,
 				A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */,
+				A974FBF71667532C00B29748 /* SGAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

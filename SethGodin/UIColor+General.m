@@ -43,7 +43,7 @@
 
 + (UIColor*) itemsBackgroundColor
 {
-    return [UIColor whiteColor];
+    return [UIColor colorWithHexString:@"fff9db"];
 }
 
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert

@@ -27,6 +27,9 @@
 #import "BlockAlertView.h"
 #import "UIColor+General.h"
 
+#import "SGAlertView.h"
+#import "Flurry.h"
+
 #import "AFHTTPClient.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -58,8 +61,6 @@
     
     SGLoadingAnimation *_loadingAnimation;
     
-    BlockAlertView *_blockAlertView;
-    
     NSUInteger _pageNumberHold;
     NSArray    *_itemsHold;
     NSString   *_title;
@@ -68,7 +69,11 @@
     
     CALayer *_messageLayer;
     
+    SGAlertView *_alertView;
+    
 }
+
+NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) setIsNetworkingAvailable:(BOOL) toValue
 {
@@ -162,7 +167,12 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"viewPostSeque"])
+    if(self.searchTextField.isFirstResponder)
+    {
+         [self closeSearchView];
+    }
+    
+    if([segue.identifier isEqualToString:SEGUE_TO_POST])
     {
         SGPostViewController *postVC = segue.destinationViewController;
         postVC.blogEntry = _blogEntry;
@@ -270,21 +280,21 @@
 - (IBAction)button1Action:(id)sender
 {
     _blogEntry = _entry1;
-    [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
+    [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
 }
 
 - (IBAction)button2Action:(id)sender
 {
     if(!_entry2) return;
     _blogEntry = _entry2;
-    [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
+    [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
 }
 
 - (IBAction)button3Action:(id)sender
 {
     if(!_entry3) return;
     _blogEntry = _entry3;
-    [self performSegueWithIdentifier:@"viewPostSeque" sender:nil];
+    [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
 }
 
 #pragma mark -
@@ -376,8 +386,10 @@
          [self updateBlogItems:inItems];
      } failed:^(NSError *inError)
      {
-         [self stopLoadingAnimation];
-         [self showError:inError];
+         NSString *errorMessage = [NSString stringWithFormat:@"Error for feedselection %@", _feedSelection];
+         NSLog(@"Error getting data %@", errorMessage);
+         [Flurry logError:@"Content Getter Error" message:errorMessage error:inError];
+         [self updateBlogItems:[NSArray array]];
      }];
 }
 
@@ -604,6 +616,8 @@
 
 - (void) animateButtonsComingDown
 {
+
+    if(self.buttonView.frame.origin.y > 0) return; //Already in the down position.
     
     if(_blogItems.count > 0)
     {
@@ -690,21 +704,7 @@
 #pragma mark -
 #pragma mark user messages
 
-- (void) showError:(NSError*) inError
-{
-    _blockAlertView = [BlockAlertView alertWithTitle:@"Error" message:inError.localizedDescription];
-    
-    __weak SGFeedItemsViewController *weakSelf = self;
-    
-    [_blockAlertView setCancelButtonWithTitle:@"Ok" block:^
-     {
-         SGFeedItemsViewController *strongSelf = weakSelf;
-         if(strongSelf)
-         {
-             strongSelf->_blockAlertView = nil;
-         }
-     }];
-}
+
 
 
 - (void) showNoNetwork
