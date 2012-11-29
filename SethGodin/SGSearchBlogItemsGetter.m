@@ -9,6 +9,7 @@
 #import "SGSearchBlogItemsGetter.h"
 #import "AFJSONRequestOperation.h"
 #import "SGBlogEntry.h"
+#import "Flurry.h"
 
 @implementation SGSearchBlogItemsGetter
 {
@@ -44,15 +45,27 @@
                                              dispatch_async(dispatch_get_global_queue(0, 0), ^
                                                             {
                                                                 NSArray *items = [self itemsFromDictionary:JSON];
+                                                                
+                                                                NSDictionary *params = @{@"SearchText" : _searchText,
+                                                                                @"Results" : [NSNumber numberWithInt:items.count]};
+                                                                
+                                                                [Flurry logEvent:@"Search" withParameters:params];
+                                                                
                                                                 dispatch_async(dispatch_get_main_queue(), ^
                                                                                {
+                                                                                   NSLog(@"search found %d items", items.count);
                                                                                    inSuccess(items);
                                                                                });
                                                             });
                                              
                                          } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
                                          {
-                                             inError(error);
+                                             [Flurry logError:@"SearchError" message:[NSString stringWithFormat:@"error searching for %@", _searchText] error:error];
+                                             
+                                             dispatch_async(dispatch_get_main_queue(), ^
+                                                            {
+                                                                inError(error);
+                                                            });
                                          }];
     [operation start];
 

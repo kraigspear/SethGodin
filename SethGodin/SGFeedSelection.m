@@ -66,6 +66,32 @@
     return [[SGFeedSelection alloc] initWithType:kFavorites];
 }
 
+- (NSString*) feedTypeAsString
+{
+    switch (_feedType)
+    {
+        case kArchive:
+            return @"Archive";
+            break;
+        case kFavorites:
+            return @"favorites";
+            break;
+        case kCurrent:
+            return @"Current";
+            break;
+        case kSearch:
+            return @"Search";
+            break;
+        default:
+            return @"Unknown type";
+            break;
+    }
+}
+
+- (NSString*) description
+{
+    return [NSString stringWithFormat:@"FeedType: %@ month: %d year %d search:%@", [self feedTypeAsString], self.month, self.year, self.searchText];
+}
 
 
 @end
