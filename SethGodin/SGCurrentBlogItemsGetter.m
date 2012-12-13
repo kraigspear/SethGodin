@@ -28,6 +28,8 @@
     {
         if(cacheItems.count > 0)
         {
+            SGBlogEntry *blogEntry = [cacheItems objectAtIndex:0];
+            NSLog(@"%@", blogEntry.content);
             [self updateShareCountsForEntries:cacheItems];
             dispatch_async(dispatch_get_main_queue(), ^
                            {
@@ -38,7 +40,7 @@
     
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:TIMEOUT];
     
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -48,26 +50,11 @@
                         {
                              NSArray *items = [self itemsFromDictionary:JSON];
                             
-                             BOOL isDataFresh = YES;
-                            
-                             if(items.count > 0 && cacheItems.count > 0)
-                             {
-                                 SGBlogEntry *entry1 = [items objectAtIndex:0];
-                                 SGBlogEntry *entry2 = [cacheItems objectAtIndex:0];
-                                 if([entry1 isEqual:entry2])
-                                 {
-                                     isDataFresh = NO;
-                                 }
-                             }
-                            
-                            // if(isDataFresh)
-                             {
-                                 self.cachedItems = items;
+                              self.cachedItems = items;
                                  dispatch_async(dispatch_get_main_queue(), ^
                                                 {
                                                     inSuccess(items);
                                                 });
-                             }
                         });
          
      } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
