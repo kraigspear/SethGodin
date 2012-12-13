@@ -53,4 +53,23 @@ static NSCalendar *_calendar;
     return YES;
 }
 
+- (NSInteger) numberOfMinutesSince:(NSDate*) otherDate
+{
+	NSCalendar *sysCalendar = [NSDate currentCalendar];
+	
+	unsigned int unitFlags = NSMinuteCalendarUnit | NSSecondCalendarUnit;
+	
+	NSLog(@"self = %@ otherDate = %@ calendar = %@", self, otherDate, sysCalendar);
+	
+	NSDateComponents *breakdownInfo = [sysCalendar components:unitFlags fromDate:self  toDate:otherDate options:0];
+	
+	return [breakdownInfo minute];
+    
+}
+
+- (NSInteger) numberOfMinutesSince
+{
+    return [self numberOfMinutesSince:[NSDate date]];
+}
+
 @end

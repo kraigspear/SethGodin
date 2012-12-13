@@ -26,6 +26,7 @@
 #import "SGLoadingAnimation.h"
 #import "BlockAlertView.h"
 #import "UIColor+General.h"
+#import "NSDate+General.h"
 
 #import "SGAlertView.h"
 #import "Flurry.h"
@@ -70,6 +71,8 @@
     CALayer *_messageLayer;
     
     SGAlertView *_alertView;
+    
+    NSDate *_lastDateLeftView;
     
 }
 
@@ -155,6 +158,23 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     }];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if(_lastDateLeftView)
+    {
+       if([_lastDateLeftView numberOfMinutesSince] > 30)
+       {
+           [self loadLatestFeedData];
+       }
+       else
+       {
+           _lastDateLeftView = nil;
+       }
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -174,6 +194,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     if([segue.identifier isEqualToString:SEGUE_TO_POST])
     {
+        _lastDateLeftView = [NSDate date];
         SGPostViewController *postVC = segue.destinationViewController;
         postVC.blogEntry = _blogEntry;
         postVC.postHeaderColor = [UIColor firstButtonColor];
@@ -323,7 +344,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 - (void) loadLatestFeedData
 {
     
-    
     [self startLoadingAnimation];
     
     switch (_feedSelection.feedType)
@@ -383,6 +403,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     [_contentGetter requestItemssuccess:^(NSArray *inItems)
      {
+         _lastDateLeftView = [NSDate date];
          [self updateBlogItems:inItems];
      } failed:^(NSError *inError)
      {

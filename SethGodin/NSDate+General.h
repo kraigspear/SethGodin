@@ -39,4 +39,14 @@
  */
 - (BOOL)isSameDayAs:(NSDate*)anotherDate;
 
+/**
+ Number of minutes since now
+ */
+- (NSInteger) numberOfMinutesSince;
+
+/**
+ Number of minutes since a date.
+ */
+- (NSInteger) numberOfMinutesSince:(NSDate*) otherDate;
+
 @end
