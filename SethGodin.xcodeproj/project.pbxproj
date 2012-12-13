@@ -29,6 +29,7 @@
 		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
 		A925BE8A165E3A5500C3B79D /* NSFileManager+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */; };
+		A933F83816796347004FE120 /* libCrittercism_v3_4_5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A933F837167962E6004FE120 /* libCrittercism_v3_4_5.a */; };
 		A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */; };
 		A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A93BA40B165F89ED003AD9AA /* libFlurry.a */; };
 		A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA40E165F8D65003AD9AA /* SGLogger.m */; };
@@ -137,6 +138,9 @@
 		A9100A751656394600779F84 /* SGFeedSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFeedSelection.m; sourceTree = "<group>"; };
 		A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Util.h"; path = "SethGodin/NSFileManager+Util.h"; sourceTree = "<group>"; };
 		A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Util.m"; path = "SethGodin/NSFileManager+Util.m"; sourceTree = "<group>"; };
+		A933F835167962E6004FE120 /* Crittercism.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		A933F836167962E6004FE120 /* CrittercismDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		A933F837167962E6004FE120 /* libCrittercism_v3_4_5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v3_4_5.a; sourceTree = "<group>"; };
 		A93BA3FB165F800F003AD9AA /* SGInAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGInAppPurchase.h; sourceTree = "<group>"; };
 		A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGInAppPurchase.m; sourceTree = "<group>"; };
 		A93BA40A165F89ED003AD9AA /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */,
 				A9100A4F165044DD00779F84 /* SystemConfiguration.framework in Frameworks */,
 				A9100A4D165037B100779F84 /* QuartzCore.framework in Frameworks */,
+				A933F83816796347004FE120 /* libCrittercism_v3_4_5.a in Frameworks */,
 				A9100A4B165037A600779F84 /* ImageIO.framework in Frameworks */,
 				A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */,
 				A91009D9165030D600779F84 /* CoreText.framework in Frameworks */,
@@ -355,6 +360,16 @@
 				A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */,
 			);
 			name = ArchiveSelection;
+			sourceTree = "<group>";
+		};
+		A933F833167962D2004FE120 /* Critterism */ = {
+			isa = PBXGroup;
+			children = (
+				A933F835167962E6004FE120 /* Crittercism.h */,
+				A933F836167962E6004FE120 /* CrittercismDelegate.h */,
+				A933F837167962E6004FE120 /* libCrittercism_v3_4_5.a */,
+			);
+			name = Critterism;
 			sourceTree = "<group>";
 		};
 		A93BA409165F89DD003AD9AA /* Flurry */ = {
@@ -524,6 +539,7 @@
 		A9D6850D164D005D007A9ADA /* 3RD Party */ = {
 			isa = PBXGroup;
 			children = (
+				A933F833167962D2004FE120 /* Critterism */,
 				A93BA409165F89DD003AD9AA /* Flurry */,
 				A97E884916591C0100777A82 /* BlockAlerts */,
 				A9D6852B164D041B007A9ADA /* KissXML */,
@@ -881,6 +897,8 @@
 		A9D6850B164CFE8D007A9ADA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
@@ -891,6 +909,8 @@
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CECEB8D3-318B-47AD-BD51-EB7BD15667E2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CECEB8D3-318B-47AD-BD51-EB7BD15667E2";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -899,6 +919,8 @@
 		A9D6850C164CFE8D007A9ADA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
@@ -909,6 +931,8 @@
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "CECEB8D3-318B-47AD-BD51-EB7BD15667E2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CECEB8D3-318B-47AD-BD51-EB7BD15667E2";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -9,6 +9,7 @@
 #import "SGAppDelegate.h"
 #import "Flurry.h"
 #import "SGInAppPurchase.h"
+#import "Crittercism.h"
 
 @implementation SGAppDelegate
 {
@@ -24,6 +25,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
+    [Crittercism enableWithAppID:@"50c92afd63d95269e3000002"];
     
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
