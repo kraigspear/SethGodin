@@ -389,7 +389,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
          NSString *errorMessage = [NSString stringWithFormat:@"Error for feedselection %@", _feedSelection];
          NSLog(@"Error getting data %@", errorMessage);
          [Flurry logError:@"Content Getter Error" message:errorMessage error:inError];
-         [self updateBlogItems:[NSArray array]];
+         
+         if(_feedSelection.feedType != kCurrent)
+         {
+             [self updateBlogItems:[NSArray array]];
+         }
      }];
 }
 
@@ -398,6 +402,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     self.buttonView.backgroundColor = [UIColor itemsBackgroundColor];
     _pageNumber = 0;
+    
     _blogItems = inBlogItems;
     
     [self stopLoadingAnimation];
