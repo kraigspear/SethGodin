@@ -109,10 +109,12 @@
         
         
         //// titleText Drawing
-        CGRect titleTextRect = CGRectMake(15, 17, 291, 84);
+        CGRect titleTextRect = CGRectMake(16, 10, 282, 84);
         [[UIColor whiteColor] setFill];
         
-        UIFont *drawWithFont = [titleTextContent fontThatWillFitUsingFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 26] insideRect:titleTextRect];
+        CGRect smallerRect = CGRectInset(titleTextRect, 0, 5);
+        UIFont *drawWithFont = [titleTextContent fontThatWillFitUsingFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 21.5] insideRect:smallerRect];
+        
         
         [titleTextContent drawInRect: titleTextRect withFont: drawWithFont lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
         
