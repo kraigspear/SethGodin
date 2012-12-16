@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A907DE37167B34E100CB9022 /* SGFavoritesDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */; };
 		A90FF88F1667B0730087193F /* books-iphone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90FF88E1667B0730087193F /* books-iphone4@2x.png */; };
 		A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009C8164EEDC200779F84 /* SGBlogEntry.m */; };
 		A91009CC164EF31B00779F84 /* SGCurrentBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009CB164EF31B00779F84 /* SGCurrentBlogItemsGetter.m */; };
@@ -103,6 +104,9 @@
 
 /* Begin PBXFileReference section */
 		A905B15D166627FB0092F3D0 /* SethGodin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SethGodin.entitlements; sourceTree = "<group>"; };
+		A907DE35167B34E100CB9022 /* SGFavoritesDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesDocument.h; sourceTree = "<group>"; };
+		A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesDocument.m; sourceTree = "<group>"; };
+		A907DE3A167B367B00CB9022 /* Seth Godin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Seth Godin.entitlements"; sourceTree = "<group>"; };
 		A90FF88B1667AF5C0087193F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A90FF88E1667B0730087193F /* books-iphone4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-iphone4@2x.png"; sourceTree = "<group>"; };
 		A91009C7164EEDC200779F84 /* SGBlogEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntry.h; sourceTree = "<group>"; };
@@ -287,9 +291,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A907DE39167B34E600CB9022 /* iCloud */ = {
+			isa = PBXGroup;
+			children = (
+				A907DE35167B34E100CB9022 /* SGFavoritesDocument.h */,
+				A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */,
+			);
+			name = iCloud;
+			sourceTree = "<group>";
+		};
 		A91009C6164EED9C00779F84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A907DE39167B34E600CB9022 /* iCloud */,
 				A97E880C1656461D00777A82 /* ContentGetters */,
 				A9100A741656394600779F84 /* SGFeedSelection.h */,
 				A9100A751656394600779F84 /* SGFeedSelection.m */,
@@ -462,6 +476,7 @@
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
+				A907DE3A167B367B00CB9022 /* Seth Godin.entitlements */,
 				A9712AA21667B2F900BAFCD9 /* Default@2x.png */,
 				A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */,
 				A90FF88B1667AF5C0087193F /* Default.png */,
@@ -799,6 +814,7 @@
 				A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */,
 				A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */,
 				A974FBF71667532C00B29748 /* SGAlertView.m in Sources */,
+				A907DE37167B34E100CB9022 /* SGFavoritesDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +913,7 @@
 		A9D6850B164CFE8D007A9ADA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Seth Godin.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -909,8 +926,8 @@
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CECEB8D3-318B-47AD-BD51-EB7BD15667E2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CECEB8D3-318B-47AD-BD51-EB7BD15667E2";
+				PROVISIONING_PROFILE = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -919,6 +936,7 @@
 		A9D6850C164CFE8D007A9ADA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Seth Godin.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -931,8 +949,8 @@
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CECEB8D3-318B-47AD-BD51-EB7BD15667E2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CECEB8D3-318B-47AD-BD51-EB7BD15667E2";
+				PROVISIONING_PROFILE = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

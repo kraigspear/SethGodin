@@ -12,6 +12,8 @@
 
 NSString * const NOTIFICATION_FEED_SELECTION    = @"feedSelection";
 NSString * const NOTIFICATION_NETWORK_AVAILABLE = @"networkAvailable";
+NSString * const 
+
 
 + (SGNotifications*) sharedInstance
 {
