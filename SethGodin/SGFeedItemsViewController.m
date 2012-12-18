@@ -85,7 +85,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     SGAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.isNetworkAvailable = toValue;
     
-    [[SGNotifications sharedInstance] postNetworkAvailable:toValue];
+    [SGNotifications postNetworkAvailable:toValue];
     
     self.searchButton.enabled = _isNetworkingAvailable;
 }
@@ -134,8 +134,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
-    
-    [[SGNotifications sharedInstance] observeFeedSelectionWithNotification:^(NSNotification *note)
+    [SGNotifications observeFeedSelectionWithNotification:^(NSNotification *note)
     {
         _feedSelection = (SGFeedSelection*) note.object;
         [self loadLatestFeedData];
@@ -682,7 +681,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     }
     
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsSearch:inText];
-    [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
+    [SGNotifications postFeedSelection:feedSelection];
     [self.searchTextField resignFirstResponder];
 }
 

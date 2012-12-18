@@ -18,6 +18,8 @@
 #import "NSString+Util.h"
 #import "AFNetworking.h"
 #import "BlockTypes.h"
+#import "SGFavoritesDocument.h"
+#import "SGFavoritesLoader.h"
 
 @implementation SGPostViewController
 {
@@ -48,7 +50,7 @@
     
     [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
     
-    _favorites = [SGFavorites loadFavorites];
+    _favorites = [SGFavoritesLoader sharedInstance].favoritesDoc.cloudData;
     
     _entryFavorite = [_favorites containsBlogEntry:self.blogEntry];
     
@@ -137,6 +139,8 @@
         [_favorites addBlogEntry:self.blogEntry];
     }
 
+    [[[SGFavoritesLoader sharedInstance] favoritesDoc] saveDocument];
+    
     _entryFavorite = [_favorites containsBlogEntry:self.blogEntry];
     [self updateButtonSelected];
     

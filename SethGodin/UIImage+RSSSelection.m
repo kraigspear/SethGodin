@@ -203,7 +203,7 @@
         CGRect smallerRect = CGRectInset(titleTextRect, 0, 5);
         UIFont *textFont = [titleTextContent fontThatWillFitUsingFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 21.5] insideRect:smallerRect];
         
-        [titleTextContent drawInRect: titleTextRect withFont: textFont lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+        [titleTextContent drawInRect: titleTextRect withFont: textFont lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentLeft];
         
         
         //// Bezier Drawing
@@ -232,13 +232,13 @@
         //// shareText Drawing
         CGRect shareTextRect = CGRectMake(CGRectGetMinX(outerFrame) + CGRectGetWidth(outerFrame) - 281, CGRectGetMinY(outerFrame) + floor((CGRectGetHeight(outerFrame) - 22) * 0.88182 + 0.5), 65, 22);
         [color15 setFill];
-        [shareTextContent drawInRect: shareTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBold" size: 15] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+        [shareTextContent drawInRect: shareTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBold" size: 15] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentLeft];
         
         
         //// dateText Drawing
         CGRect dateTextRect = CGRectMake(CGRectGetMinX(outerFrame) + 104, CGRectGetMinY(outerFrame) + floor((CGRectGetHeight(outerFrame) - 21) * 0.86486 + 0.5), 194, 21);
         [color15 setFill];
-        [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBold" size: 15] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentRight];
+        [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBold" size: 15] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentRight];
         
         
 

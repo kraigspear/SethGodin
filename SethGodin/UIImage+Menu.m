@@ -45,7 +45,7 @@
                 //// titleText Drawing
                 CGRect titleTextRect = CGRectMake(18, 0, 291, 84);
                 [[UIColor whiteColor] setFill];
-                [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 32] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+                [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 32] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentLeft];
                 
                 
                 //// upgradeText Drawing
@@ -53,7 +53,7 @@
                 {
                     CGRect upgradeTextRect = CGRectMake(191, 4, 142, 97);
                     [[UIColor whiteColor] setFill];
-                    [upgradeTextContent drawInRect: upgradeTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont buttonFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentLeft];
+                    [upgradeTextContent drawInRect: upgradeTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont buttonFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentLeft];
                 }
             }];
 }
@@ -70,7 +70,7 @@
                 //// buttonText Drawing
                 CGRect buttonTextRect = CGRectMake(0, 0, 320, 44);
                 [[UIColor whiteColor] setFill];
-                [buttonTextContent drawInRect: buttonTextRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: [UIFont buttonFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [buttonTextContent drawInRect: buttonTextRect withFont: [UIFont fontWithName: @"HelveticaNeue" size: [UIFont buttonFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentCenter];
                 
                 
 

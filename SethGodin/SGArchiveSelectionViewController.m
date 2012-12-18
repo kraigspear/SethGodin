@@ -166,7 +166,7 @@ const NSUInteger MIN_YEAR = 2002;
 {
     //Add one to month. Months are 1 based.
     SGFeedSelection *feedSelection = [SGFeedSelection selectionForMonth:self.month + 1 andYear:self.year];
-    [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
+    [SGNotifications postFeedSelection:feedSelection];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

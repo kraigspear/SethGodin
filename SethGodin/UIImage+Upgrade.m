@@ -41,7 +41,7 @@
         //// upgradetext Drawing
         CGRect upgradetextRect = CGRectMake(CGRectGetMinX(backgroundFrame) + CGRectGetWidth(backgroundFrame) - 300, CGRectGetMinY(backgroundFrame) + floor((CGRectGetHeight(backgroundFrame) - 460) * 0.51020 + 0.5), 276, 460);
         [[UIColor whiteColor] setFill];
-        [upgradetextContent drawInRect: upgradetextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 25] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+        [upgradetextContent drawInRect: upgradetextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: 25] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentCenter];
         
         
 
@@ -79,7 +79,7 @@
                 //// Text 2 Drawing
                 CGRect text2Rect = CGRectMake(6, 8, 296, 34);
                 [[UIColor whiteColor] setFill];
-                [text2Content drawInRect: text2Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 30] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text2Content drawInRect: text2Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 30] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentCenter];
             }];
 }
 
@@ -107,7 +107,7 @@
                 //// Text 2 Drawing
                 CGRect text2Rect = CGRectMake(4, 9, 295, 53);
                 [[UIColor whiteColor] setFill];
-                [text2Content drawInRect: text2Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 30] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text2Content drawInRect: text2Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 30] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentCenter];
 
             }];
 }

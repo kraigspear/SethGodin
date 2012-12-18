@@ -14,4 +14,9 @@
 
 @property (atomic, strong) SGFavorites *cloudData;
 
+/**
+ Save the document to the URL that has been set.
+ */
+- (void) saveDocument;
+
 @end

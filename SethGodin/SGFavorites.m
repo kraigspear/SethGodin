@@ -7,6 +7,7 @@
 //
 
 #import "SGFavorites.h"
+#import "SGFavoritesDocument.h"
 
 @implementation SGFavorites
 {
@@ -46,17 +47,17 @@ NSString * const KEY_FAVORITES = @"favorites";
     [aCoder encodeObject:_favorites forKey:KEY_FAVORITES];
 }
 
-
-- (void) saveFavorites
++ (BOOL) favoritesFileExist
 {
-    [NSKeyedArchiver archiveRootObject:self toFile:[SGFavorites filePathName]];
+    NSString *fileNamePath = [SGFavorites filePathName];
+    return [[NSFileManager defaultManager] fileExistsAtPath:fileNamePath];
 }
 
-+ (SGFavorites*) loadFavorites
++ (SGFavorites*) loadFavoritesNotUsingUIDocument
 {
     NSString *fileNamePath = [SGFavorites filePathName];
     
-    if([[NSFileManager defaultManager] fileExistsAtPath:fileNamePath])
+    if([SGFavorites favoritesFileExist])
     {
         return [NSKeyedUnarchiver unarchiveObjectWithFile:fileNamePath];
     }
@@ -80,13 +81,11 @@ NSString * const KEY_FAVORITES = @"favorites";
 {
     if([self containsBlogEntry:inEntry]) return;
     [_favorites insertObject:inEntry atIndex:0];
-    [self saveFavorites];
 }
 
 - (void) removeBlogEntry:(SGBlogEntry*) inEntry
 {
     [_favorites removeObject:inEntry];
-    [self saveFavorites];
 }
 
 - (BOOL) containsBlogEntry:(SGBlogEntry*) inEntry

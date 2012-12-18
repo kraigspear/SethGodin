@@ -37,18 +37,22 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     UIImage *favoritesImage = [UIImage menuImageWithText:@"Favorites" isUpgrade:NO];
     UIImage *archivesImage  = [UIImage menuImageWithText:@"Archives"      isUpgrade:NO];
     
+    UIImage *settingsButton = [UIImage menuImageWithText:@"Settings"      isUpgrade:NO];
+    
     [self.booksBySethButton setImage:booksImage forState:UIControlStateNormal];
     [self.allPostButton     setImage:allPostImage forState:UIControlStateNormal];
 
     [self.favoritesButton setImage:favoritesImage forState:UIControlStateNormal];
     [self.archivesButton         setImage:archivesImage forState:UIControlStateNormal];
     
-    _feedSelectionNotification = [[SGNotifications sharedInstance] observeFeedSelectionWithNotification:^(NSNotification * note)
+    [self.settingsButton setImage:settingsButton forState:UIControlStateNormal];
+    
+    _feedSelectionNotification = [SGNotifications observeFeedSelectionWithNotification:^(NSNotification * note)
     {
         [self closeMenuWithAnimation:NO];
     }];
     
-    _networkAvailableNotification = [[SGNotifications sharedInstance] observeNetworkAvailableWithNotification:^(NSNotification *note)
+    _networkAvailableNotification = [SGNotifications observeNetworkAvailableWithNotification:^(NSNotification *note)
     {
         self.isNetworkAvailable = [note.object boolValue];
         self.archivesButton.enabled = self.isNetworkAvailable;
@@ -82,7 +86,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 - (IBAction)currentPostAction:(id)sender
 {
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsCurrent];
-    [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
+    [SGNotifications postFeedSelection:feedSelection];
     [self closeMenuWithAnimation:YES];
 }
 
@@ -108,7 +112,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 - (void) selectFavorites
 {
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsFavorites];
-    [[SGNotifications sharedInstance] postFeedSelection:feedSelection];
+    [SGNotifications postFeedSelection:feedSelection];
     [self closeMenuWithAnimation:YES];
 }
 

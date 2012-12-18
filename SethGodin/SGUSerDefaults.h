@@ -23,5 +23,24 @@
  */
 - (void) setIsUpgraded:(BOOL) toValue;
 
+/**
+ Set to YES to use iCloud
+ */
+- (void) setUseICloud:(BOOL) toValue;
+
+/**
+ Yes or no to use iCloud
+ */
+- (BOOL) useICloud;
+
+/**
+ Have we moved the non-UIDocument over to UIDocument yet?
+ */
+- (BOOL) movedToUIDocument;
+
+/**
+ Update that we have moved the non-UIDocument over to UIDocument
+ */
+- (void) setMovedToUIDocument:(BOOL) toValue;
 
 @end

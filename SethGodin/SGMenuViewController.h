@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *booksBySethButton;
 @property (weak, nonatomic) IBOutlet UIButton *allPostButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoritesButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 @property (nonatomic, assign) BOOL isNetworkAvailable;
 

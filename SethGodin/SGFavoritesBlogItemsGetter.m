@@ -9,27 +9,33 @@
 #import "SGFavoritesBlogItemsGetter.h"
 #import "SGFavorites.h"
 #import "SGBlogEntry.h"
+#import "SGFavoritesLoader.h"
+#import "SGNotifications.h"
+#import "SGFavoritesDocument.h"
 
 @implementation SGFavoritesBlogItemsGetter
 {
+@private
+
 }
 
 - (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
 {
-    SGFavorites *favorites = [SGFavorites loadFavorites];
+    
+    SGFavorites *favorites = [SGFavoritesLoader sharedInstance].favoritesDoc.cloudData;
     
     for(SGBlogEntry *blogEntry in favorites.favorites)
     {
         [self updateShareCountForBlogEntry:blogEntry];
     }
-    
 
     inSuccess(favorites.favorites);
 }
 
+
 - (NSArray*) cachedItems
 {
-    return [SGFavorites loadFavorites];
+    return [SGFavoritesLoader sharedInstance].favoritesDoc.cloudData.favorites;
 }
 
 @end

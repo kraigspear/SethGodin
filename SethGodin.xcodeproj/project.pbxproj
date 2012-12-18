@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A90773E3167E327D00056C41 /* SGFavoritesLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A90773E2167E327D00056C41 /* SGFavoritesLoader.m */; };
+		A90773E8167E5DE700056C41 /* SGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A90773E7167E5DE700056C41 /* SGSettingsViewController.m */; };
+		A90773ED167F2B0700056C41 /* userDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A90773EC167F2B0700056C41 /* userDefaults.plist */; };
 		A907DE37167B34E100CB9022 /* SGFavoritesDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */; };
 		A90FF88F1667B0730087193F /* books-iphone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90FF88E1667B0730087193F /* books-iphone4@2x.png */; };
 		A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009C8164EEDC200779F84 /* SGBlogEntry.m */; };
@@ -104,6 +107,11 @@
 
 /* Begin PBXFileReference section */
 		A905B15D166627FB0092F3D0 /* SethGodin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SethGodin.entitlements; sourceTree = "<group>"; };
+		A90773E1167E327D00056C41 /* SGFavoritesLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesLoader.h; sourceTree = "<group>"; };
+		A90773E2167E327D00056C41 /* SGFavoritesLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesLoader.m; sourceTree = "<group>"; };
+		A90773E6167E5DE700056C41 /* SGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSettingsViewController.h; sourceTree = "<group>"; };
+		A90773E7167E5DE700056C41 /* SGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSettingsViewController.m; sourceTree = "<group>"; };
+		A90773EC167F2B0700056C41 /* userDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userDefaults.plist; sourceTree = "<group>"; };
 		A907DE35167B34E100CB9022 /* SGFavoritesDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesDocument.h; sourceTree = "<group>"; };
 		A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesDocument.m; sourceTree = "<group>"; };
 		A907DE3A167B367B00CB9022 /* Seth Godin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Seth Godin.entitlements"; sourceTree = "<group>"; };
@@ -153,8 +161,8 @@
 		A93BA40E165F8D65003AD9AA /* SGLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLogger.m; sourceTree = "<group>"; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
-		A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGUSerDefaults.h; path = SethGodin/SGUSerDefaults.h; sourceTree = "<group>"; };
-		A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGUSerDefaults.m; path = SethGodin/SGUSerDefaults.m; sourceTree = "<group>"; };
+		A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUSerDefaults.h; sourceTree = "<group>"; };
+		A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUSerDefaults.m; sourceTree = "<group>"; };
 		A95EA403165CDDC700A58FB4 /* SGUpdradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUpdradeViewController.h; sourceTree = "<group>"; };
 		A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUpdradeViewController.m; sourceTree = "<group>"; };
 		A95EA406165CE19500A58FB4 /* UIImage+Upgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Upgrade.h"; sourceTree = "<group>"; };
@@ -291,28 +299,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A907DE39167B34E600CB9022 /* iCloud */ = {
+		A90773E5167E5DD100056C41 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A90773E6167E5DE700056C41 /* SGSettingsViewController.h */,
+				A90773E7167E5DE700056C41 /* SGSettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		A907DE39167B34E600CB9022 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				A9100A59165247C200779F84 /* SGFavorites.h */,
+				A9100A5A165247C200779F84 /* SGFavorites.m */,
 				A907DE35167B34E100CB9022 /* SGFavoritesDocument.h */,
 				A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */,
+				A90773E1167E327D00056C41 /* SGFavoritesLoader.h */,
+				A90773E2167E327D00056C41 /* SGFavoritesLoader.m */,
 			);
-			name = iCloud;
+			name = Favorites;
 			sourceTree = "<group>";
 		};
 		A91009C6164EED9C00779F84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A907DE39167B34E600CB9022 /* iCloud */,
+				A907DE39167B34E600CB9022 /* Favorites */,
 				A97E880C1656461D00777A82 /* ContentGetters */,
 				A9100A741656394600779F84 /* SGFeedSelection.h */,
 				A9100A751656394600779F84 /* SGFeedSelection.m */,
 				A91009C7164EEDC200779F84 /* SGBlogEntry.h */,
 				A91009C8164EEDC200779F84 /* SGBlogEntry.m */,
-				A9100A59165247C200779F84 /* SGFavorites.h */,
-				A9100A5A165247C200779F84 /* SGFavorites.m */,
-				A97E880916563CD800777A82 /* SGNotifications.h */,
-				A97E880A16563CD800777A82 /* SGNotifications.m */,
 				A97E883C1658F83D00777A82 /* SGPurchaseItem.h */,
 				A97E883D1658F83D00777A82 /* SGPurchaseItem.m */,
 				A97E883F1659056C00777A82 /* SGPurchaseItemGetter.h */,
@@ -337,6 +354,7 @@
 		A9100A511650F9D800779F84 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				A90773E5167E5DD100056C41 /* Settings */,
 				A95EA402165CDD8D00A58FB4 /* UpgradeView */,
 				A9100A6D1654EE5100779F84 /* ArchiveSelection */,
 				A9100A521650F9EF00779F84 /* SGMenuViewController.h */,
@@ -363,6 +381,7 @@
 				A9100A6A1653A1B400779F84 /* load_text@2x.png */,
 				A974FC1216676F3000B29748 /* smallspinner.png */,
 				A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */,
+				A90773EC167F2B0700056C41 /* userDefaults.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -530,6 +549,10 @@
 				A91009C6164EED9C00779F84 /* Model */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
 				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
+				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
+				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
+				A97E880916563CD800777A82 /* SGNotifications.h */,
+				A97E880A16563CD800777A82 /* SGNotifications.m */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
 				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
 				A9D838591659853F00A79669 /* SGLoadingAnimation.m */,
@@ -646,27 +669,25 @@
 		A9D6854F164D0DBD007A9ADA /* General */ = {
 			isa = PBXGroup;
 			children = (
+				A9100A551650FC5700779F84 /* BlockTypes.h */,
+				A97E88251657D63200777A82 /* NSArray+Util.h */,
+				A97E88261657D63200777A82 /* NSArray+Util.m */,
+				A9100A711654FF5E00779F84 /* NSDate+General.h */,
+				A9100A721654FF5E00779F84 /* NSDate+General.m */,
 				A97E884216590C7200777A82 /* NSDictionary-Expanded.h */,
 				A97E884316590C7200777A82 /* NSDictionary-Expanded.m */,
+				A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */,
+				A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */,
+				A98ABCA4165B88EA00919F8F /* NSString+Util.h */,
+				A98ABCA5165B88EA00919F8F /* NSString+Util.m */,
+				A974FBF51667532C00B29748 /* SGAlertView.h */,
+				A974FBF61667532C00B29748 /* SGAlertView.m */,
+				A97E88281657EF6100777A82 /* UIColor+General.h */,
+				A97E88291657EF6100777A82 /* UIColor+General.m */,
 				A9D68550164D0DC6007A9ADA /* UIImage+BBlock.h */,
 				A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */,
 				A91009D51650231500779F84 /* UIImage+General.h */,
 				A91009D61650231500779F84 /* UIImage+General.m */,
-				A9100A551650FC5700779F84 /* BlockTypes.h */,
-				A9100A711654FF5E00779F84 /* NSDate+General.h */,
-				A9100A721654FF5E00779F84 /* NSDate+General.m */,
-				A97E88251657D63200777A82 /* NSArray+Util.h */,
-				A97E88261657D63200777A82 /* NSArray+Util.m */,
-				A97E88281657EF6100777A82 /* UIColor+General.h */,
-				A97E88291657EF6100777A82 /* UIColor+General.m */,
-				A98ABCA4165B88EA00919F8F /* NSString+Util.h */,
-				A98ABCA5165B88EA00919F8F /* NSString+Util.m */,
-				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
-				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
-				A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */,
-				A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */,
-				A974FBF51667532C00B29748 /* SGAlertView.h */,
-				A974FBF61667532C00B29748 /* SGAlertView.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -747,6 +768,7 @@
 				A9712AA31667B2F900BAFCD9 /* Default@2x.png in Resources */,
 				A9712AA51667B78400BAFCD9 /* books@2x.png in Resources */,
 				A9712AA71667BB9B00BAFCD9 /* books-iphone4.png in Resources */,
+				A90773ED167F2B0700056C41 /* userDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,6 +837,8 @@
 				A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */,
 				A974FBF71667532C00B29748 /* SGAlertView.m in Sources */,
 				A907DE37167B34E100CB9022 /* SGFavoritesDocument.m in Sources */,
+				A90773E3167E327D00056C41 /* SGFavoritesLoader.m in Sources */,
+				A90773E8167E5DE700056C41 /* SGSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

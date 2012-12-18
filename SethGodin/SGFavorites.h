@@ -20,12 +20,8 @@
 /**
  Load favorites from file
  */
-+ (SGFavorites*) loadFavorites;
++ (SGFavorites*) loadFavoritesNotUsingUIDocument;
 
-/**
- Save instance of favorites to file
- */
-- (void) saveFavorites;
 
 /**
  Add a blog entry to favorites
@@ -45,5 +41,10 @@
  @param inEntry Item to check.
  */
 - (BOOL) containsBlogEntry:(SGBlogEntry*) inEntry;
+
+/**
+ Yes if a saved favorite file exist.
+ */
++ (BOOL) favoritesFileExist;
 
 @end

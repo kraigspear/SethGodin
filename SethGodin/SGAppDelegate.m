@@ -10,6 +10,11 @@
 #import "Flurry.h"
 #import "SGInAppPurchase.h"
 #import "Crittercism.h"
+#import "SGUSerDefaults.h"
+#import "SGFavorites.h"
+#import "SGFavoritesLoader.h"
+#import "SGNotifications.h"
+#import "SGFavoritesDocument.h"
 
 @implementation SGAppDelegate
 {
@@ -31,6 +36,8 @@
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     
     [SGInAppPurchase sharedInstance];
+    
+    [self loadFavorites];
     
     return YES;
 }
@@ -60,6 +67,21 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void) loadFavorites
+{
+    
+    [SGNotifications observeFavoritesCreatedNotification:^(NSNotification *notification)
+    {
+        SGFavorites *favorites = [SGFavorites loadFavoritesNotUsingUIDocument];
+        [SGFavoritesLoader sharedInstance].favoritesDoc.cloudData = favorites;
+        [[SGFavoritesLoader sharedInstance].favoritesDoc saveDocument];
+        [[SGUserDefaults sharedInstance] setMovedToUIDocument:YES];
+    }];
+    
+    
+    [[SGFavoritesLoader sharedInstance] loadDocument];
 }
 
 @end
