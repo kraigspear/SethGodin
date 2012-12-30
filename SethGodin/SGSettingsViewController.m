@@ -41,7 +41,8 @@
 
 - (IBAction)useICloudAction:(id)sender
 {
-    [[SGUserDefaults sharedInstance] setUseICloud:self.useICloudSwitch.on];
+    BOOL useICloud = self.useICloudSwitch.on;
+    [[SGUserDefaults sharedInstance] setUseICloud:useICloud];
 }
 
 - (IBAction)backAction:(id)sender

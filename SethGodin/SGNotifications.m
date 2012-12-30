@@ -14,7 +14,7 @@ NSString * const NOTIFICATION_FEED_SELECTION    = @"feedSelection";
 NSString * const NOTIFICATION_NETWORK_AVAILABLE = @"networkAvailable";
 NSString * const NOTIFICATION_FAVORITES_UPDATED = @"favoritesUpdated";
 NSString * const NOTIFICATION_FAVORITES_CREATED = @"favoritesCreated";
-
+NSString * const NOTIFICATION_BUSY              = @"busy";
 
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 {
@@ -28,6 +28,15 @@ NSString * const NOTIFICATION_FAVORITES_CREATED = @"favoritesCreated";
     
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
+
++ (void) postBusy:(BOOL) isBusy
+{
+    NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_BUSY object:[NSNumber numberWithBool:isBusy]];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
+}
+
+
 
 + (void) postFavoritesUpdated
 {
@@ -49,6 +58,11 @@ NSString * const NOTIFICATION_FAVORITES_CREATED = @"favoritesCreated";
 + (id) observeNetworkAvailableWithNotification:(NotificationBlock) inBlock
 {
     return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_NETWORK_AVAILABLE object:nil queue:nil usingBlock:inBlock];
+}
+
++ (id) observeBusyWithNotification:(NotificationBlock) inBlock
+{
+    return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_BUSY object:nil queue:nil usingBlock:inBlock];
 }
 
 + (id) observeFavoritesUpdatedNotification:(NotificationBlock) inBlock

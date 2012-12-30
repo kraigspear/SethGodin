@@ -16,11 +16,7 @@ typedef void (^NotificationBlock) (NSNotification* notification);
 extern NSString * const NOTIFICATION_FEED_SELECTION;
 extern NSString * const NOTIFICATION_NETWORK_AVAILABLE;
 extern NSString * const NOTIFICATION_FAVORITES_UPDATED;
-
-/**
- Shared instance
- */
-+ (SGNotifications*) sharedInstance;
+extern NSString * const NOTIFICATION_BUSY;
 
 /**
  Post that a feed type was selected
@@ -50,10 +46,20 @@ extern NSString * const NOTIFICATION_FAVORITES_UPDATED;
 + (id) observeFavoritesCreatedNotification:(NotificationBlock) inBlock;
 
 /**
+ Observe that we are busy.
+ */
++ (id) observeBusyWithNotification:(NotificationBlock) inBlock;
+
+/**
  Post that the network availablity has changed.
  @param isAvailable Yes is available
  */
 + (void) postNetworkAvailable:(BOOL) isAvailable;
+
+/**
+ Post that we are busy or not.
+ */
++ (void) postBusy:(BOOL) isBusy;
 
 /**
  Favorites have been updated

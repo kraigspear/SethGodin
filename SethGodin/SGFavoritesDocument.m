@@ -10,6 +10,7 @@
 #import "SGNotifications.h"
 
 NSString * const KEY_CLOUD_DATA = @"cloudData";
+NSString * const kFILENAME = @"favorites.dox";
 
 @implementation SGFavoritesDocument
 
@@ -69,15 +70,64 @@ NSString * const KEY_CLOUD_DATA = @"cloudData";
 #pragma mark URL
 + (NSURL*) localURL
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [url URLByAppendingPathComponent:kFILENAME];
 }
 
-- (NSURL*) ubiquitousURL
++ (BOOL) localFileExist
 {
-    return [[[NSFileManager defaultManager]
-             URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"Documents"];
+    return [[SGFavoritesDocument localURL] checkResourceIsReachableAndReturnError:nil];
 }
 
++ (NSURL*) ubiquitousURL
+{
+    NSURL *ubig = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+    
+    NSURL *ubiqPackage = [[ubig
+                           URLByAppendingPathComponent:@"Documents"]
+                           URLByAppendingPathComponent:kFILENAME];
+    
+    return ubiqPackage;
+}
+
+
++ (void) moveLocalToiCloudSuccess:(BOOLBlock) success;
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                   {
+                       NSFileManager *fileManager = [NSFileManager defaultManager];
+                       NSError *error;
+                       
+                       if([fileManager setUbiquitous:YES itemAtURL:[SGFavoritesDocument localURL] destinationURL:[SGFavoritesDocument ubiquitousURL] error:&error])
+                       {
+                           success(YES);
+                           NSLog(@"Favorites moved to iCloud");
+                       }
+                       else
+                       {
+                           success(NO);
+                           NSLog(@"Error moving to iCloud %@", error.localizedDescription);
+                       }
+                   });
+}
+
++ (void) moveICloudToLocal
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                   {
+                       NSFileManager *fileManager = [NSFileManager defaultManager];
+                       NSError *error;
+
+                       if([fileManager setUbiquitous:NO itemAtURL:[SGFavoritesDocument ubiquitousURL] destinationURL:[SGFavoritesDocument localURL] error:&error])
+                       {
+                           NSLog(@"Favorites moved to iCloud");
+                       }
+                       else
+                       {
+                           NSLog(@"Error moving to iCloud %@", error.localizedDescription);
+                       }
+                   });
+}
 
 
 

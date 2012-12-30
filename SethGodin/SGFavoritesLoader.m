@@ -11,7 +11,7 @@
 #import "SGNotifications.h"
 #import "SGUSerDefaults.h"
 
-NSString * const kFILENAME = @"favorites.dox";
+
 
 @implementation SGFavoritesLoader
 {
@@ -42,10 +42,34 @@ NSString * const kFILENAME = @"favorites.dox";
     _currentToken = [[NSFileManager defaultManager]
                      ubiquityIdentityToken];
     
+    [[SGUserDefaults sharedInstance] addObserver:self forKeyPath:@"useICloud" options:NSKeyValueObservingOptionNew context:nil];
+    
     return self;
 }
 
-
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if(([keyPath isEqualToString:@"useICloud"]) && (object == [SGUserDefaults sharedInstance]))
+    {
+        BOOL useICloud = [[change objectForKey:NSKeyValueChangeNewKey] boolValue];
+        
+        if(useICloud)
+        {
+            [SGFavoritesDocument moveLocalToiCloudSuccess:^(BOOL success)
+            {
+                if(success)
+                {
+                    [self loadDocumentFromICloud];
+                }
+            }];
+        }
+        else
+        {
+            [SGFavoritesDocument moveICloudToLocal];
+        }
+        
+    }
+}
 
 - (BOOL) isICloud
 {
@@ -74,16 +98,11 @@ NSString * const kFILENAME = @"favorites.dox";
 - (void) loadDocumentLocally
 {
     
-    NSArray *documentDirectories =
-	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *docDir = [documentDirectories objectAtIndex:0];
-    
-    NSString *filePathAndName = [docDir stringByAppendingPathComponent:kFILENAME];
-    NSURL *localURL = [NSURL fileURLWithPath:filePathAndName];
+    NSURL *localURL = [SGFavoritesDocument localURL];
     
     self.favoritesDoc = [[SGFavoritesDocument alloc] initWithFileURL:localURL];
     
-    if(![[NSFileManager defaultManager] fileExistsAtPath:filePathAndName])
+    if(![SGFavoritesDocument localFileExist])
     {
         [self createNewFileLocally];
     }
@@ -154,9 +173,8 @@ NSString * const kFILENAME = @"favorites.dox";
 
 - (void) loadData:(NSMetadataQuery*) inQuery
 {
-    NSAssert(inQuery.resultCount <= 1, @"we found more than 1 file");
-
-    if(inQuery.resultCount == 1)
+    
+    if(inQuery.resultCount == 1)  //One file found on iCloud.
     {
         NSMetadataItem *item = [inQuery resultAtIndex:0];
         NSURL *url = [item valueForAttribute:NSMetadataItemURLKey];
@@ -164,7 +182,22 @@ NSString * const kFILENAME = @"favorites.dox";
     }
     else
     {
-        [self createANewFileOnICloud];
+        //We can't load from iCloud but we are trying to. If we do have a local file
+        //then we'll move it there and open it.
+        if([SGFavoritesDocument localFileExist])
+        {
+            [SGFavoritesDocument moveLocalToiCloudSuccess:^(BOOL success)
+            {
+                if(success)
+                {
+                    [self loadDocumentFromICloud];
+                }
+            }];
+        }
+        else
+        {
+            [self createANewFileOnICloud];
+        }
     }
 }
 

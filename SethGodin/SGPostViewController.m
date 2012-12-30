@@ -210,6 +210,14 @@
         return YES;
     }
     
+    NSString *urlStr = [request.URL absoluteString];
+    
+    if([urlStr rangeOfString:@"itunes.apple.com"].length > 0)
+    {
+        [[UIApplication sharedApplication] openURL:request.URL];
+        return NO;
+    }
+
     SGAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     if(appDelegate.isNetworkAvailable)
