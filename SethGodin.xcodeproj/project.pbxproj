@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A90773E3167E327D00056C41 /* SGFavoritesLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A90773E2167E327D00056C41 /* SGFavoritesLoader.m */; };
 		A90773E8167E5DE700056C41 /* SGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A90773E7167E5DE700056C41 /* SGSettingsViewController.m */; };
 		A90773ED167F2B0700056C41 /* userDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A90773EC167F2B0700056C41 /* userDefaults.plist */; };
-		A907DE37167B34E100CB9022 /* SGFavoritesDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */; };
 		A90FF88F1667B0730087193F /* books-iphone4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90FF88E1667B0730087193F /* books-iphone4@2x.png */; };
 		A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009C8164EEDC200779F84 /* SGBlogEntry.m */; };
 		A91009CC164EF31B00779F84 /* SGCurrentBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009CB164EF31B00779F84 /* SGCurrentBlogItemsGetter.m */; };
@@ -32,11 +30,12 @@
 		A9100A701654EF1D00779F84 /* SGArchiveSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */; };
 		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
-		A925BE8A165E3A5500C3B79D /* NSFileManager+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */; };
 		A933F83816796347004FE120 /* libCrittercism_v3_4_5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A933F837167962E6004FE120 /* libCrittercism_v3_4_5.a */; };
 		A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */; };
 		A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A93BA40B165F89ED003AD9AA /* libFlurry.a */; };
 		A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA40E165F8D65003AD9AA /* SGLogger.m */; };
+		A95B57231692270700026BD8 /* SethModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A95B57211692270700026BD8 /* SethModel.xcdatamodeld */; };
+		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
 		A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */; };
@@ -51,6 +50,7 @@
 		A974FC0F16676ED200B29748 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC0E16676ED200B29748 /* Icon@2x.png */; };
 		A974FC1116676EDD00B29748 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC1016676EDD00B29748 /* Icon.png */; };
 		A974FC1316676F3000B29748 /* smallspinner.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC1216676F3000B29748 /* smallspinner.png */; };
+		A9754CB216930C6C009E1D1F /* libSpearLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9754CB016930AF9009E1D1F /* libSpearLib.a */; };
 		A97E880B16563CD800777A82 /* SGNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880A16563CD800777A82 /* SGNotifications.m */; };
 		A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880E1656465D00777A82 /* SGBlogItemsGetter.m */; };
 		A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E8811165646BC00777A82 /* SGArchiveBlogItemsGetter.m */; };
@@ -105,15 +105,28 @@
 		A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D838591659853F00A79669 /* SGLoadingAnimation.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A9754CAF16930AF9009E1D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A969FCB51693092900413CC5;
+			remoteInfo = SpearLib;
+		};
+		A9754CB716930EF1009E1D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A969FCB41693092900413CC5;
+			remoteInfo = SpearLib;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		A905B15D166627FB0092F3D0 /* SethGodin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SethGodin.entitlements; sourceTree = "<group>"; };
-		A90773E1167E327D00056C41 /* SGFavoritesLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesLoader.h; sourceTree = "<group>"; };
-		A90773E2167E327D00056C41 /* SGFavoritesLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesLoader.m; sourceTree = "<group>"; };
 		A90773E6167E5DE700056C41 /* SGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSettingsViewController.h; sourceTree = "<group>"; };
 		A90773E7167E5DE700056C41 /* SGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSettingsViewController.m; sourceTree = "<group>"; };
 		A90773EC167F2B0700056C41 /* userDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userDefaults.plist; sourceTree = "<group>"; };
-		A907DE35167B34E100CB9022 /* SGFavoritesDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesDocument.h; sourceTree = "<group>"; };
-		A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesDocument.m; sourceTree = "<group>"; };
 		A907DE3A167B367B00CB9022 /* Seth Godin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Seth Godin.entitlements"; sourceTree = "<group>"; };
 		A90FF88B1667AF5C0087193F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A90FF88E1667B0730087193F /* books-iphone4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-iphone4@2x.png"; sourceTree = "<group>"; };
@@ -148,8 +161,6 @@
 		A9100A721654FF5E00779F84 /* NSDate+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+General.m"; path = "SethGodin/NSDate+General.m"; sourceTree = "<group>"; };
 		A9100A741656394600779F84 /* SGFeedSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFeedSelection.h; sourceTree = "<group>"; };
 		A9100A751656394600779F84 /* SGFeedSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFeedSelection.m; sourceTree = "<group>"; };
-		A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Util.h"; path = "SethGodin/NSFileManager+Util.h"; sourceTree = "<group>"; };
-		A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Util.m"; path = "SethGodin/NSFileManager+Util.m"; sourceTree = "<group>"; };
 		A933F835167962E6004FE120 /* Crittercism.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		A933F836167962E6004FE120 /* CrittercismDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		A933F837167962E6004FE120 /* libCrittercism_v3_4_5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v3_4_5.a; sourceTree = "<group>"; };
@@ -159,6 +170,8 @@
 		A93BA40B165F89ED003AD9AA /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		A93BA40D165F8D65003AD9AA /* SGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLogger.h; sourceTree = "<group>"; };
 		A93BA40E165F8D65003AD9AA /* SGLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLogger.m; sourceTree = "<group>"; };
+		A95B57221692270700026BD8 /* SethModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SethModel.xcdatamodel; sourceTree = "<group>"; };
+		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
 		A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUSerDefaults.h; sourceTree = "<group>"; };
@@ -178,6 +191,7 @@
 		A974FC0E16676ED200B29748 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A974FC1016676EDD00B29748 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A974FC1216676F3000B29748 /* smallspinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallspinner.png; sourceTree = "<group>"; };
+		A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SpearLib.xcodeproj; path = ../SpearLib/SpearLib.xcodeproj; sourceTree = "<group>"; };
 		A97E880916563CD800777A82 /* SGNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNotifications.h; sourceTree = "<group>"; };
 		A97E880A16563CD800777A82 /* SGNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNotifications.m; sourceTree = "<group>"; };
 		A97E880D1656465D00777A82 /* SGBlogItemsGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogItemsGetter.h; sourceTree = "<group>"; };
@@ -282,10 +296,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */,
 				A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */,
 				A9100A4F165044DD00779F84 /* SystemConfiguration.framework in Frameworks */,
 				A9100A4D165037B100779F84 /* QuartzCore.framework in Frameworks */,
 				A933F83816796347004FE120 /* libCrittercism_v3_4_5.a in Frameworks */,
+				A9754CB216930C6C009E1D1F /* libSpearLib.a in Frameworks */,
 				A9100A4B165037A600779F84 /* ImageIO.framework in Frameworks */,
 				A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */,
 				A91009D9165030D600779F84 /* CoreText.framework in Frameworks */,
@@ -313,10 +329,6 @@
 			children = (
 				A9100A59165247C200779F84 /* SGFavorites.h */,
 				A9100A5A165247C200779F84 /* SGFavorites.m */,
-				A907DE35167B34E100CB9022 /* SGFavoritesDocument.h */,
-				A907DE36167B34E100CB9022 /* SGFavoritesDocument.m */,
-				A90773E1167E327D00056C41 /* SGFavoritesLoader.h */,
-				A90773E2167E327D00056C41 /* SGFavoritesLoader.m */,
 			);
 			name = Favorites;
 			sourceTree = "<group>";
@@ -434,6 +446,14 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		A9754CA916930AF9009E1D1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9754CB016930AF9009E1D1F /* libSpearLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A97E880C1656461D00777A82 /* ContentGetters */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +515,7 @@
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
+				A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */,
 				A907DE3A167B367B00CB9022 /* Seth Godin.entitlements */,
 				A9712AA21667B2F900BAFCD9 /* Default@2x.png */,
 				A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */,
@@ -522,6 +543,7 @@
 		A9D684E6164CFE8D007A9ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A95B573016923C6A00026BD8 /* CoreData.framework */,
 				A9D8385516596E9300A79669 /* StoreKit.framework */,
 				A9100A4E165044DD00779F84 /* SystemConfiguration.framework */,
 				A9100A4A165037A600779F84 /* ImageIO.framework */,
@@ -556,6 +578,7 @@
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
 				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
 				A9D838591659853F00A79669 /* SGLoadingAnimation.m */,
+				A95B57211692270700026BD8 /* SethModel.xcdatamodeld */,
 			);
 			path = SethGodin;
 			sourceTree = "<group>";
@@ -676,8 +699,6 @@
 				A9100A721654FF5E00779F84 /* NSDate+General.m */,
 				A97E884216590C7200777A82 /* NSDictionary-Expanded.h */,
 				A97E884316590C7200777A82 /* NSDictionary-Expanded.m */,
-				A925BE88165E3A5500C3B79D /* NSFileManager+Util.h */,
-				A925BE89165E3A5500C3B79D /* NSFileManager+Util.m */,
 				A98ABCA4165B88EA00919F8F /* NSString+Util.h */,
 				A98ABCA5165B88EA00919F8F /* NSString+Util.m */,
 				A974FBF51667532C00B29748 /* SGAlertView.h */,
@@ -706,6 +727,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A9754CB816930EF1009E1D1F /* PBXTargetDependency */,
 			);
 			name = "Seth Godin";
 			productName = SethGodin;
@@ -732,12 +754,28 @@
 			mainGroup = A9D684D8164CFE8D007A9ADA;
 			productRefGroup = A9D684E4164CFE8D007A9ADA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A9754CA916930AF9009E1D1F /* Products */;
+					ProjectRef = A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A9D684E2164CFE8D007A9ADA /* Seth Godin */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A9754CB016930AF9009E1D1F /* libSpearLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSpearLib.a;
+			remoteRef = A9754CAF16930AF9009E1D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A9D684E1164CFE8D007A9ADA /* Resources */ = {
@@ -832,17 +870,23 @@
 				A95EA405165CDDC700A58FB4 /* SGUpdradeViewController.m in Sources */,
 				A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */,
 				A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */,
-				A925BE8A165E3A5500C3B79D /* NSFileManager+Util.m in Sources */,
 				A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */,
 				A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */,
 				A974FBF71667532C00B29748 /* SGAlertView.m in Sources */,
-				A907DE37167B34E100CB9022 /* SGFavoritesDocument.m in Sources */,
-				A90773E3167E327D00056C41 /* SGFavoritesLoader.m in Sources */,
 				A90773E8167E5DE700056C41 /* SGSettingsViewController.m in Sources */,
+				A95B57231692270700026BD8 /* SethModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A9754CB816930EF1009E1D1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SpearLib;
+			targetProxy = A9754CB716930EF1009E1D1F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A9D684F0164CFE8D007A9ADA /* InfoPlist.strings */ = {
@@ -895,7 +939,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"../SpearLib/SpearLib/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "149CA0D1-B749-482E-BC84-F7585AC132B5";
@@ -922,7 +969,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"../SpearLib/SpearLib/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "149CA0D1-B749-482E-BC84-F7585AC132B5";
@@ -948,7 +998,10 @@
 					"\"$(SRCROOT)\"",
 				);
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
@@ -971,7 +1024,10 @@
 					"\"$(SRCROOT)\"",
 				);
 				LINKER_DISPLAYS_MANGLED_NAMES = NO;
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
@@ -1002,6 +1058,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A95B57211692270700026BD8 /* SethModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A95B57221692270700026BD8 /* SethModel.xcdatamodel */,
+			);
+			currentVersion = A95B57221692270700026BD8 /* SethModel.xcdatamodel */;
+			path = SethModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A9D684DA164CFE8D007A9ADA /* Project object */;
 }

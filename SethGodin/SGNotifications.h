@@ -71,4 +71,6 @@ extern NSString * const NOTIFICATION_BUSY;
  */
 + (void) postFavoritesCreated;
 
++ (void) postErrorOccured:(NSError*) inError;
+
 @end

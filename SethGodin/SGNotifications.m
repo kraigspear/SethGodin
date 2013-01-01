@@ -15,6 +15,7 @@ NSString * const NOTIFICATION_NETWORK_AVAILABLE = @"networkAvailable";
 NSString * const NOTIFICATION_FAVORITES_UPDATED = @"favoritesUpdated";
 NSString * const NOTIFICATION_FAVORITES_CREATED = @"favoritesCreated";
 NSString * const NOTIFICATION_BUSY              = @"busy";
+NSString * const NOTIFICATION_ERROR             = @"errorOccured";
 
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 {
@@ -47,6 +48,12 @@ NSString * const NOTIFICATION_BUSY              = @"busy";
 + (void) postFavoritesCreated
 {
     NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_FAVORITES_CREATED object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
+}
+
++ (void) postErrorOccured:(NSError*) inError
+{
+    NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_ERROR object:inError];
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
 

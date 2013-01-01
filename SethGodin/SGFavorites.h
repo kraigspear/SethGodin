@@ -12,16 +12,12 @@
 
 @interface SGFavorites : NSObject <NSCoding>
 
++ (SGFavorites*) sharedInstance;
+- (void) loadFavorites;
 /**
  Array of SGBlogEntrys marked as favorites.
  */
 @property (nonatomic, strong) NSArray *favorites;
-
-/**
- Load favorites from file
- */
-+ (SGFavorites*) loadFavoritesNotUsingUIDocument;
-
 
 /**
  Add a blog entry to favorites

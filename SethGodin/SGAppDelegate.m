@@ -12,9 +12,8 @@
 #import "Crittercism.h"
 #import "SGUSerDefaults.h"
 #import "SGFavorites.h"
-#import "SGFavoritesLoader.h"
 #import "SGNotifications.h"
-#import "SGFavoritesDocument.h"
+
 
 @implementation SGAppDelegate
 {
@@ -71,17 +70,7 @@
 
 - (void) loadFavorites
 {
-    
-    [SGNotifications observeFavoritesCreatedNotification:^(NSNotification *notification)
-    {
-        SGFavorites *favorites = [SGFavorites loadFavoritesNotUsingUIDocument];
-        [SGFavoritesLoader sharedInstance].favoritesDoc.cloudData = favorites;
-        [[SGFavoritesLoader sharedInstance].favoritesDoc saveDocument];
-        [[SGUserDefaults sharedInstance] setMovedToUIDocument:YES];
-    }];
-    
-    
-    [[SGFavoritesLoader sharedInstance] loadDocument];
+    [[SGFavorites sharedInstance] loadFavorites];
 }
 
 @end
