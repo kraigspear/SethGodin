@@ -10,24 +10,28 @@
 #import "SGFavorites.h"
 #import "SGBlogEntry.h"
 #import "SGNotifications.h"
-
+#import "SGUSerDefaults.h"
+#import "SGFavoritesCoreData.h"
 
 @implementation SGFavoritesBlogItemsGetter
 {
 @private
-
+    
 }
 
 - (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
 {
     
     
+    
+    inSuccess(self.cachedItems);
+    
 }
 
 
 - (NSArray*) cachedItems
 {
-    return nil;
+    return [SGFavoritesCoreData allFavorites];
 }
 
 @end

@@ -74,37 +74,6 @@ NSString * const KEY_FAVORITES = @"favorites";
     [NSKeyedArchiver archiveRootObject:self toFile:[SGFavorites filePathName]];
 }
 
-- (void) loadFavorites
-{
-    NSManagedObjectContext *context = [self managedObjectContext];
-    NSFetchRequest *fetchRequest    = [[NSFetchRequest alloc] init];
-    
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Favorite" inManagedObjectContext:context];
-    
-    NSError *error;
-    fetchRequest.entity = entity;
-    NSArray *results = [context executeFetchRequest:fetchRequest error:&error];
-    
-    for(NSManagedObject *mangedObject in results)
-    {
-        NSLog(@"managedObject %@", mangedObject);
-    }
-    
-    
-  //  NSString *fileNamePath = [SGFavorites filePathName];
-    
-//    if([[NSFileManager defaultManager] fileExistsAtPath:fileNamePath])
-//    {
-//        return [NSKeyedUnarchiver unarchiveObjectWithFile:fileNamePath];
-//    }
-//    else
-//    {
-//        return [[SGFavorites alloc] init];
-//    }
-}
-
-
 
 + (NSString*) filePathName
 {
@@ -118,35 +87,7 @@ NSString * const KEY_FAVORITES = @"favorites";
 
 - (void) addBlogEntry:(SGBlogEntry *)inEntry
 {
-    if([self containsBlogEntry:inEntry]) return;
-    [_favorites insertObject:inEntry atIndex:0];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-                   {
-                       NSManagedObjectContext *context = [self managedObjectContext];
-                       
-                       NSManagedObject *managedFavorite = [NSEntityDescription insertNewObjectForEntityForName:@"Favorite" inManagedObjectContext:context];
-                       
-                       [managedFavorite setValue:inEntry.summary forKey:@"content"];
-                       [managedFavorite setValue:inEntry.title forKey:@"title"];
-                       [managedFavorite setValue:inEntry.datePublished forKey:@"date"];
-                       [managedFavorite setValue:inEntry.summary forKey:@"summary"];
-                       [managedFavorite setValue:inEntry.itemID forKey:@"id"];
-                       [managedFavorite setValue:inEntry.urlStr forKey:@"url"];
-                       
-                       NSError *error;
-                       if(![context save:&error])
-                       {
-                           NSLog(@"Error saving favorite %@", error.localizedDescription);
-                       }
-                       else
-                       {
-                           NSLog(@"saved!!!!");
-                       }
-
-                   });
-        
-    [self saveFavorites];
+   
 }
 
 - (void) removeBlogEntry:(SGBlogEntry*) inEntry

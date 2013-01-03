@@ -27,6 +27,9 @@
 #import "BlockAlertView.h"
 #import "UIColor+General.h"
 #import "NSDate+General.h"
+#import "SGUSerDefaults.h"
+#import "SGFavorites.h"
+
 
 #import "SGAlertView.h"
 #import "Flurry.h"
@@ -156,6 +159,9 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         NSLog(@"status = %d", status);
     }];
 }
+
+
+
 
 - (void) viewWillAppear:(BOOL)animated
 {

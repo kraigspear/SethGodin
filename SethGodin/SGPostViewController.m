@@ -48,7 +48,7 @@
     
     [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
     
-    //_favorites = [SGFavoritesLoader sharedInstance].favoritesDoc.cloudData;
+    _favorites = [SGFavorites sharedInstance];
     
     _entryFavorite = [_favorites containsBlogEntry:self.blogEntry];
     

@@ -49,6 +49,11 @@
  */
 @property (atomic, assign)   NSUInteger shareCount;
 
+/**
+ The core data managed object ID for this Blog Entry
+ This should only be assigned if this is a favorite, or something else that might be saved in CoreData
+ */
+@property (nonatomic, strong) NSManagedObjectID *managedObjectID;
 
 /**
  Required initilizer for this class. Most of the data is readonly, and is set here.

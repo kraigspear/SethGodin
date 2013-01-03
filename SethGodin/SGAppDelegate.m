@@ -13,7 +13,8 @@
 #import "SGUSerDefaults.h"
 #import "SGFavorites.h"
 #import "SGNotifications.h"
-
+#import "Favorite.h"
+#import "SGBlogEntry.h"
 
 @implementation SGAppDelegate
 {
@@ -31,14 +32,58 @@
     [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
     [Crittercism enableWithAppID:@"50c92afd63d95269e3000002"];
     
+    
+    if([NSFileManager isICloudEnabled])
+    {
+        [MagicalRecord setupCoreDataStackWithiCloudContainer:@"BLXEQ8692X.com.andersonspear.sethsgodinsblog" contentNameKey:@"sethfavorites" localStoreNamed:@"seth_local.sqllite" cloudStorePathComponent:@""];
+    }
+    else
+    {
+        [MagicalRecord setupCoreDataStackWithStoreNamed:@"SethGodin.sqllite"];
+    }
+    
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     
     [SGInAppPurchase sharedInstance];
     
-    [self loadFavorites];
     
     return YES;
+}
+
+- (void) exportFavoritesToCoreData
+{
+    if([[SGUserDefaults sharedInstance] movedToCoreData]) return;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                   {
+                       NSArray *favoritesToExport = [[SGFavorites sharedInstance] favorites];
+                       
+                       NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextForCurrentThread];
+                       
+                       for(SGBlogEntry *oldFavorite in favoritesToExport)
+                       {
+                           Favorite *favorite = [Favorite MR_createInContext:localContext];
+                           favorite.content = oldFavorite.content;
+                           favorite.date = oldFavorite.datePublished;
+                           favorite.displayName = oldFavorite.title;
+                           favorite.favoriteID = oldFavorite.itemID;
+                           favorite.summary = oldFavorite.summary;
+                           favorite.title = oldFavorite.title;
+                           favorite.url = oldFavorite.urlStr;
+                       }
+                       
+                       [localContext MR_saveNestedContextsErrorHandler:^(NSError *inError)
+                       {
+                           NSLog(@"Error moving favorites to CoreData %@ %@", inError, inError.userInfo);
+                           [Flurry logError:@"CoreDataMoveError" message:@"Error moving favorites to CoreData" error:inError];
+                       } completion:^
+                       {
+                           [Flurry logEvent:@"MovedToCoreData"];
+                           [[SGUserDefaults sharedInstance] setMovedToCoreData:YES];
+                       }];
+                       
+                   });
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -65,12 +110,9 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [MagicalRecord cleanUp];
 }
 
-- (void) loadFavorites
-{
-    [[SGFavorites sharedInstance] loadFavorites];
-}
+
 
 @end

@@ -76,13 +76,13 @@ NSString * const KEY_MOVED_TO_UIDOCUMENT = @"movedToUIDocument";
     return [defaults boolForKey:KEY_USE_ICLOUD];
 }
 
-- (BOOL) movedToUIDocument
+- (BOOL) movedToCoreData
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [defaults boolForKey:KEY_MOVED_TO_UIDOCUMENT];
 }
 
-- (void) setMovedToUIDocument:(BOOL) toValue
+- (void) setMovedToCoreData:(BOOL) toValue
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:toValue forKey:KEY_MOVED_TO_UIDOCUMENT];

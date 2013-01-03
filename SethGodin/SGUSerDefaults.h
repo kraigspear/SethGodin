@@ -36,11 +36,11 @@
 /**
  Have we moved the non-UIDocument over to UIDocument yet?
  */
-- (BOOL) movedToUIDocument;
+- (BOOL) movedToCoreData;
 
 /**
  Update that we have moved the non-UIDocument over to UIDocument
  */
-- (void) setMovedToUIDocument:(BOOL) toValue;
+- (void) setMovedToCoreData:(BOOL) toValue;
 
 @end
