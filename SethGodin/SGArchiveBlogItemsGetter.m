@@ -30,7 +30,7 @@
     return self;
 }
 
-- (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
+- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
 {
     NSString *monthYear = [NSString stringWithFormat:@"%d-%02d", _year, _month];
     

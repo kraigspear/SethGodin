@@ -66,7 +66,6 @@
                            Favorite *favorite = [Favorite MR_createInContext:localContext];
                            favorite.content = oldFavorite.content;
                            favorite.date = oldFavorite.datePublished;
-                           favorite.displayName = oldFavorite.title;
                            favorite.favoriteID = oldFavorite.itemID;
                            favorite.summary = oldFavorite.summary;
                            favorite.title = oldFavorite.title;

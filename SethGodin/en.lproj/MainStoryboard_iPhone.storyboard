@@ -763,10 +763,10 @@
             </objects>
             <point key="canvasLocation" x="1096" y="1570"/>
         </scene>
-        <!--Feed Items View Controller-->
+        <!--Blog Entries View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="SGFeedItemsViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="SGBlogEntriesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -963,10 +963,10 @@
             </objects>
             <point key="canvasLocation" x="952" y="141"/>
         </scene>
-        <!--Post View Controller-->
+        <!--Blog Entry View Controller-->
         <scene sceneID="oQ8-NA-QOx">
             <objects>
-                <viewController id="ZDt-iZ-e0h" customClass="SGPostViewController" sceneMemberID="viewController">
+                <viewController id="ZDt-iZ-e0h" customClass="SGBlogEntryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sIn-qm-l11">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

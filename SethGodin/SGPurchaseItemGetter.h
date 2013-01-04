@@ -18,6 +18,6 @@
 /**
  Gets the latest purchasable items.
  */
-- (void) latestItems:(ArrayBlock) inSuccess failed:(ErrorBlock) inFailed;
+- (void) latestItems:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inFailed;
 
 @end

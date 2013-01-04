@@ -27,7 +27,7 @@ NSString * const KEY_URL          = @"url";
 {
     self = [super init];
     
-    _title   = inDisplayName;
+    _title         = inDisplayName;
     _datePublished = inDate;
     _summary       = inSummary;
     _content       = inContent;

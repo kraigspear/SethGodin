@@ -26,7 +26,7 @@
  @param inSuccess block to receive the items
  @param inError if there was an error getting items
  */
-- (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError;
+- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError;
 
 /**
  Provides a date from a string that was supplited by typepad

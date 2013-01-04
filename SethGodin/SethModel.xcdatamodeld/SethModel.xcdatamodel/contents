@@ -3,13 +3,12 @@
     <entity name="Favorite" representedClassName="Favorite" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favoriteID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Favorite" positionX="-3600" positionY="-1818" width="128" height="148"/>
+        <element name="Favorite" positionX="-3600" positionY="-1818" width="128" height="133"/>
     </elements>
 </model>

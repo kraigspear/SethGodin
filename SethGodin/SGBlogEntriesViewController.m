@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGFeedItemsViewController.h"
+#import "SGBlogEntriesViewController.h"
 #import "UIImage+RSSSelection.h"
 
 #import "SGBlogEntry.h"
-#import "SGPostViewController.h"
+#import "SGBlogEntryViewController.h"
 #import "SGAppDelegate.h"
 #import "UIImage+General.h"
 #import "SGMenuViewController.h"
@@ -37,11 +37,11 @@
 #import "AFHTTPClient.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface SGFeedItemsViewController ()
+@interface SGBlogEntriesViewController ()
 
 @end
 
-@implementation SGFeedItemsViewController
+@implementation SGBlogEntriesViewController
 {
 @private
     NSArray *_blogItems;
@@ -145,11 +145,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     _httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://profile.typepad.com"]];
     
-    __weak SGFeedItemsViewController *weakSelf = self;
+    __weak SGBlogEntriesViewController *weakSelf = self;
     
     [_httpClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
     {
-        SGFeedItemsViewController *strongSelf = weakSelf;
+        SGBlogEntriesViewController *strongSelf = weakSelf;
         if(strongSelf)
         {
             strongSelf.isNetworkingAvailable = (status == AFNetworkReachabilityStatusReachableViaWWAN) || (status == AFNetworkReachabilityStatusReachableViaWiFi);
@@ -200,7 +200,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     if([segue.identifier isEqualToString:SEGUE_TO_POST])
     {
         _lastDateLeftView = [NSDate date];
-        SGPostViewController *postVC = segue.destinationViewController;
+        SGBlogEntryViewController *postVC = segue.destinationViewController;
         postVC.blogEntry = _blogEntry;
         postVC.postHeaderColor = [UIColor firstButtonColor];
     }
@@ -238,11 +238,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     [self.view addSubview:menuView];
     
-    __weak SGFeedItemsViewController *weakSelf = self;
+    __weak SGBlogEntriesViewController *weakSelf = self;
     
     _menuViewController.close = ^(BOOL shouldAnimate)
     {
-        SGFeedItemsViewController *strongSelf = weakSelf;
+        SGBlogEntriesViewController *strongSelf = weakSelf;
         
         if(strongSelf)
         {

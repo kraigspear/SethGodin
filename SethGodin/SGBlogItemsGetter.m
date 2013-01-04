@@ -37,7 +37,7 @@
 }
 
 //Abstract. Should be extened by inherited classes.
-- (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
+- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
 {
     NSArray *cacheItems = self.cachedItems;
     if(cacheItems.count >= 1)

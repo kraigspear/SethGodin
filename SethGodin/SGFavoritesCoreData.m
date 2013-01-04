@@ -36,5 +36,39 @@
     
 }
 
++ (void) addBlogEntryToFavorites:(SGBlogEntry*) inEntry
+{
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    Favorite *favorite = [Favorite MR_createInContext:localContext];
+    
+    favorite.content = inEntry.content;
+    favorite.date = inEntry.datePublished;
+    favorite.title = inEntry.title;
+    favorite.favoriteID = inEntry.itemID;
+    favorite.summary = inEntry.summary;
+    favorite.url = inEntry.urlStr;
+
+    [localContext MR_saveNestedContexts];
+}
+
++ (void) removeBlogEntryFromFavorites:(SGBlogEntry*) inEntry
+{
+    NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    
+    Favorite *favorite = [Favorite MR_findFirstByAttribute:@"url" withValue:inEntry.urlStr];
+    
+    [favorite MR_deleteInContext:localContext];
+    
+    [localContext MR_saveNestedContextsErrorHandler:^(NSError *error)
+    {
+        NSLog(@"error deleting Favorite %@ %@", error, error.userInfo);
+    }
+    completion:^
+    {
+        NSLog(@"Favorite deleted");
+    }];
+}
+
 
 @end

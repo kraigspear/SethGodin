@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *titleBar;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
-@property (nonatomic, copy) BoolBlock close;
+@property (nonatomic, copy) SWBoolBlock close;
 
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 

@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SGFeedItemsViewController : UIViewController <UITextFieldDelegate>
+
+/**
+ Shows a list of BlogEntries
+ Task
+ 1. Show blog entries for the current users selection
+    Example: Current, Favorite, Archives
+ 2. Allows selection of a BlogItem, which is then viewed in a SGBlogEntryViewController 
+ */
+@interface SGBlogEntriesViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *upButton;
 @property (weak, nonatomic) IBOutlet UIButton *downButton;

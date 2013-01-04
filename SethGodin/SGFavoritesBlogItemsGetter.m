@@ -19,13 +19,9 @@
     
 }
 
-- (void) requestItemssuccess:(ArrayBlock) inSuccess failed:(ErrorBlock) inError
+- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
 {
-    
-    
-    
     inSuccess(self.cachedItems);
-    
 }
 
 

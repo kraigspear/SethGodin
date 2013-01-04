@@ -12,6 +12,6 @@
 
 @interface SGAlertView : NSObject <UIAlertViewDelegate>
 
-- (void) showError:(NSError*) inError done:(BasicBlock) inDone;
+- (void) showError:(NSError*) inError done:(SWBasicBlock) inDone;
 
 @end

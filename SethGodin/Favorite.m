@@ -13,7 +13,6 @@
 
 @dynamic content;
 @dynamic date;
-@dynamic displayName;
 @dynamic favoriteID;
 @dynamic summary;
 @dynamic title;

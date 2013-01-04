@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "SGBlogEntry.h"
 #import "NSFileManager+Util.h"
+#import "Favorite.h"
 #import "SGNotifications.h"
 
 @implementation SGFavorites
@@ -87,7 +88,11 @@ NSString * const KEY_FAVORITES = @"favorites";
 
 - (void) addBlogEntry:(SGBlogEntry *)inEntry
 {
-   
+    
+    
+    
+    
+
 }
 
 - (void) removeBlogEntry:(SGBlogEntry*) inEntry

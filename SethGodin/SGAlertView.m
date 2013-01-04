@@ -12,11 +12,11 @@
 @implementation SGAlertView
 {
 @private
-    BasicBlock _doneBlock;
+    SWBasicBlock _doneBlock;
     UIAlertView *_alertView;
 }
 
-- (void) showError:(NSError*) inError done:(BasicBlock) inDone
+- (void) showError:(NSError*) inError done:(SWBasicBlock) inDone
 {
     _doneBlock = [inDone copy];
     

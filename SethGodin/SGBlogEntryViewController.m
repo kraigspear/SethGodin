@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGPostViewController.h"
+#import "SGBlogEntryViewController.h"
 #import "UIImage+RSSSelection.h"
 #import "UIColor+General.h"
 #import "UIImage+General.h"
@@ -19,7 +19,7 @@
 #import "AFNetworking.h"
 #import "BlockTypes.h"
 
-@implementation SGPostViewController
+@implementation SGBlogEntryViewController
 {
 @private
     SGFavorites *_favorites;
@@ -64,10 +64,7 @@
     self.favoritesButton.selected = _entryFavorite;
 }
 
-- (IBAction)backAction:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 - (void) viewDidLayoutSubviews
 {
@@ -126,6 +123,8 @@
     }];
 }
 
+#pragma mark -
+#pragma mark action handlers
 - (IBAction)favoritesAction:(id)sender
 {
     if(_entryFavorite)
@@ -166,37 +165,10 @@
     
 }
 
-- (void) urlStringForPost:(StringBlock) inBlock
+- (IBAction)backAction:(id)sender
 {
-
-    if([self.blogEntry.urlStr rangeOfString:@"sethgodin.typepad.com"].length == 0)
-    {
-        inBlock(self.blogEntry.urlStr);
-        return;
-    }
-    
-   NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://tinyurl.com/api-create.php?url=%@", self.blogEntry.urlStr]];
-    
-   NSURLRequest *request = [ NSURLRequest requestWithURL:url
-                                              cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                          timeoutInterval:5 ];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        inBlock(responseStr);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-    {
-        NSLog(@"Error getting tiny url %@", error);
-        inBlock(self.blogEntry.urlStr);
-    }];
-    
-    [operation start];
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 #pragma mark -
 #pragma mark UIWebViewDelegate
@@ -229,6 +201,41 @@
     
     return NO;
 }
+
+#pragma mark -
+
+- (void) urlStringForPost:(SWStringBlock) inBlock
+{
+    
+    if([self.blogEntry.urlStr rangeOfString:@"sethgodin.typepad.com"].length == 0)
+    {
+        inBlock(self.blogEntry.urlStr);
+        return;
+    }
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://tinyurl.com/api-create.php?url=%@", self.blogEntry.urlStr]];
+    
+    NSURLRequest *request = [ NSURLRequest requestWithURL:url
+                                              cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                          timeoutInterval:5 ];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+         inBlock(responseStr);
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         [Flurry logError:@"TinyURLError" message:@"Error getting url from TinyURL" error:error];
+         NSLog(@"Error getting tiny url %@", error);
+         inBlock(self.blogEntry.urlStr);
+     }];
+    
+    [operation start];
+    
+}
+
 
 
 @end

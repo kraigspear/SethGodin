@@ -8,8 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
+@class SGBlogEntry;
+
+/**
+ All database related task
+ */
 @interface SGFavoritesCoreData : NSObject
 
+/**
+ Gets an array of all Favorites
+ */
 + (NSArray*) allFavorites;
+
+/**
+ Remove a favorite
+ @param inEntry The favorite to remove
+ */
++ (void) removeBlogEntryFromFavorites:(SGBlogEntry*) inEntry;
+
+/**
+ Add a blog entry to favorites
+ @param inEntry The blog entry to add as a favorite
+ */
++ (void) addBlogEntryToFavorites:(SGBlogEntry*) inEntry;
 
 @end
