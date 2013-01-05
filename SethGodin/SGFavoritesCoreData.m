@@ -10,6 +10,7 @@
 #import "Favorite.h"
 #import "SGBlogEntry.h"
 
+
 @implementation SGFavoritesCoreData
 
 + (NSArray*) allFavorites
@@ -38,36 +39,62 @@
 
 + (void) addBlogEntryToFavorites:(SGBlogEntry*) inEntry
 {
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
-    
-    Favorite *favorite = [Favorite MR_createInContext:localContext];
-    
-    favorite.content = inEntry.content;
-    favorite.date = inEntry.datePublished;
-    favorite.title = inEntry.title;
-    favorite.favoriteID = inEntry.itemID;
-    favorite.summary = inEntry.summary;
-    favorite.url = inEntry.urlStr;
-
-    [localContext MR_saveNestedContexts];
+    [MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext)
+    {
+        Favorite *favorite = [Favorite MR_createInContext:localContext];
+        favorite.content = inEntry.content;
+        favorite.date = inEntry.datePublished;
+        favorite.title = inEntry.title;
+        favorite.favoriteID = inEntry.itemID;
+        favorite.summary = inEntry.summary;
+        favorite.url = inEntry.urlStr;
+    }];
 }
 
 + (void) removeBlogEntryFromFavorites:(SGBlogEntry*) inEntry
 {
-    NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextForCurrentThread];
-    
-    Favorite *favorite = [Favorite MR_findFirstByAttribute:@"url" withValue:inEntry.urlStr];
-    
-    [favorite MR_deleteInContext:localContext];
-    
-    [localContext MR_saveNestedContextsErrorHandler:^(NSError *error)
+    [MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext)
+     {
+         Favorite *favorite = [Favorite MR_findFirstByAttribute:@"favoriteID" withValue:inEntry.itemID inContext:localContext];
+         
+         [favorite MR_deleteInContext:localContext];
+         
+     }];
+}
+
++ (void) toggleBlogEntryAsAFavorite:(SGBlogEntry*) inEntry
+{
+     [MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext)
+     {
+         Favorite *favorite = [Favorite MR_findFirstByAttribute:@"favoriteID" withValue:inEntry.itemID inContext:localContext];
+         
+         if(favorite)
+         {
+             [favorite MR_deleteInContext:localContext];
+         }
+         else
+         {
+             [SGFavoritesCoreData addBlogEntryToFavorites:inEntry];
+         }
+         
+     }];
+}
+
++ (void) isBlogItemFavorite:(SGBlogEntry*) inBlogEntry success:(SWBoolBlock) inSuccess
+{
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        NSLog(@"error deleting Favorite %@ %@", error, error.userInfo);
-    }
-    completion:^
-    {
-        NSLog(@"Favorite deleted");
-    }];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"favoriteID == %@", inBlogEntry.itemID];
+        
+        NSInteger count = [[Favorite MR_numberOfEntitiesWithPredicate:predicate] integerValue];
+        
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            inSuccess(count > 0);
+        });
+        
+    });
 }
 
 

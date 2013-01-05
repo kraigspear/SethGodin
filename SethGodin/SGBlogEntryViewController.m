@@ -18,12 +18,11 @@
 #import "NSString+Util.h"
 #import "AFNetworking.h"
 #import "BlockTypes.h"
+#import "SGFavoritesCoreData.h"
 
 @implementation SGBlogEntryViewController
 {
 @private
-    SGFavorites *_favorites;
-    BOOL _entryFavorite;
 }
 
 - (void) viewDidLoad
@@ -47,10 +46,7 @@
     }
     
     [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
-    
-    _favorites = [SGFavorites sharedInstance];
-    
-    _entryFavorite = [_favorites containsBlogEntry:self.blogEntry];
+
     
     [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
     [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];
@@ -61,10 +57,11 @@
 
 - (void) updateButtonSelected
 {
-    self.favoritesButton.selected = _entryFavorite;
+    [SGFavoritesCoreData isBlogItemFavorite:self.blogEntry success:^(BOOL isFavorite)
+    {
+        self.favoritesButton.selected = isFavorite;
+    }];
 }
-
-
 
 - (void) viewDidLayoutSubviews
 {
@@ -127,20 +124,8 @@
 #pragma mark action handlers
 - (IBAction)favoritesAction:(id)sender
 {
-    if(_entryFavorite)
-    {
-        [_favorites removeBlogEntry:self.blogEntry];
-    }
-    else
-    {
-        [[SGFavorites sharedInstance] addBlogEntry:self.blogEntry];
-    }
-
-   // [[[SGFavoritesLoader sharedInstance] favoritesDoc] saveDocument];
-    
-    _entryFavorite = [_favorites containsBlogEntry:self.blogEntry];
-    [self updateButtonSelected];
-    
+    self.favoritesButton.selected = !self.favoritesButton.selected;
+    [SGFavoritesCoreData toggleBlogEntryAsAFavorite:self.blogEntry];
 }
 
 - (IBAction)shareAction:(id)sender

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BlockTypes.h"
 
 @class SGBlogEntry;
 
@@ -31,5 +32,18 @@
  @param inEntry The blog entry to add as a favorite
  */
 + (void) addBlogEntryToFavorites:(SGBlogEntry*) inEntry;
+
+/**
+ Toggle if a blog entry is a favorite or not.
+ @param inEntry The blog entry to toggle YES or NO.
+ */
++ (void) toggleBlogEntryAsAFavorite:(SGBlogEntry*) inEntry;
+
+/**
+ Find out if the Given BlogEntry is saved in favorites
+ @param inBlogEntry The blog entry to look for
+ @param inSuccess Block to call after the operation is complete
+ */
++ (void) isBlogItemFavorite:(SGBlogEntry*) inBlogEntry success:(SWBoolBlock) inSuccess;
 
 @end
