@@ -608,8 +608,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     CGFloat height = MAX(size.height, 44);
     
-    NSLog(@"height = %f", size.height);
-    
     return height + 60;
 }
 

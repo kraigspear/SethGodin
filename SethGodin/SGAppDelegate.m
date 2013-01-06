@@ -27,6 +27,11 @@
     return _dateformatter;
 }
 
++ (SGAppDelegate*) instance
+{
+    return (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];

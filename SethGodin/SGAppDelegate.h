@@ -22,6 +22,6 @@
  @return NSDateFormatter set to long format
  */
 - (NSDateFormatter*) dateFormatterLongStyle;
-
++ (SGAppDelegate*) instance;
 
 @end
