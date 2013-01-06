@@ -10,8 +10,11 @@
 
 @interface UIImage (RSSSelection)
 
-+ (UIImage*) upButton;
-+ (UIImage*) downButton;
+/**
+ Bottom of a blog entry table cell.
+ Share image and table cell divider.
+ */
++ (UIImage*) bottomTableCell;
 + (UIImage*) searchButton;
 + (UIImage*) menuButton;
 

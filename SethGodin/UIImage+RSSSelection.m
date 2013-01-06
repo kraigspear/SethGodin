@@ -12,70 +12,84 @@
 
 @implementation UIImage (RSSSelection)
 
-+ (UIImage*) upButton
++ (UIImage*) bottomTableCell
 {
-    return [UIImage imageWithIdentifier:@"upButton" forSize:CGSizeMake(157,109) andDrawingBlock:^
+    return [UIImage imageWithIdentifier:@"bottomTableCell" forSize:CGSizeMake(320,50) andDrawingBlock:^
             {
+                //// General Declarations
+                CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+                CGContextRef context = UIGraphicsGetCurrentContext();
+                
                 //// Color Declarations
+                UIColor* color21 = [UIColor colorWithRed: 1 green: 0.987 blue: 0.95 alpha: 1];
                 UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
-                CGFloat yellowRGBA[4];
-                [yellow getRed: &yellowRGBA[0] green: &yellowRGBA[1] blue: &yellowRGBA[2] alpha: &yellowRGBA[3]];
+                CGFloat yellowHSBA[4];
+                [yellow getHue: &yellowHSBA[0] saturation: &yellowHSBA[1] brightness: &yellowHSBA[2] alpha: &yellowHSBA[3]];
                 
-                UIColor* color12 = [UIColor colorWithRed: (yellowRGBA[0] * 0.9) green: (yellowRGBA[1] * 0.9) blue: (yellowRGBA[2] * 0.9) alpha: (yellowRGBA[3] * 0.9 + 0.1)];
+                UIColor* color = [UIColor colorWithHue: 0.1 saturation: yellowHSBA[1] brightness: yellowHSBA[2] alpha: yellowHSBA[3]];
                 
-                //// Rectangle 7 Drawing
-                UIBezierPath* rectangle7Path = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 157, 109)];
-                [color12 setFill];
-                [rectangle7Path fill];
+                //// Gradient Declarations
+                NSArray* gradientColors = [NSArray arrayWithObjects:
+                                           (id)color.CGColor,
+                                           (id)[UIColor colorWithRed: 1 green: 0.752 blue: 0 alpha: 1].CGColor,
+                                           (id)yellow.CGColor,
+                                           (id)yellow.CGColor,
+                                           (id)color.CGColor, nil];
+                CGFloat gradientLocations[] = {0, 0.11, 0.21, 0.78, 1};
+                CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradientColors, gradientLocations);
+                
+                //// Bezier Drawing
+                UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+                [bezierPath moveToPoint: CGPointMake(16.32, 14.95)];
+                [bezierPath addCurveToPoint: CGPointMake(17.44, 13.36) controlPoint1: CGPointMake(16.62, 14.42) controlPoint2: CGPointMake(16.99, 13.89)];
+                [bezierPath addCurveToPoint: CGPointMake(19.06, 11.95) controlPoint1: CGPointMake(17.89, 12.84) controlPoint2: CGPointMake(18.43, 12.37)];
+                [bezierPath addCurveToPoint: CGPointMake(21.15, 10.89) controlPoint1: CGPointMake(19.7, 11.52) controlPoint2: CGPointMake(20.31, 11.17)];
+                [bezierPath addCurveToPoint: CGPointMake(24.05, 10.39) controlPoint1: CGPointMake(22, 10.61) controlPoint2: CGPointMake(22.96, 10.45)];
+                [bezierPath addLineToPoint: CGPointMake(24.05, 5.73)];
+                [bezierPath addLineToPoint: CGPointMake(32.35, 12.92)];
+                [bezierPath addLineToPoint: CGPointMake(24.05, 20)];
+                [bezierPath addLineToPoint: CGPointMake(24.05, 14.86)];
+                [bezierPath addCurveToPoint: CGPointMake(22.96, 14.89) controlPoint1: CGPointMake(23.78, 14.86) controlPoint2: CGPointMake(23.41, 14.87)];
+                [bezierPath addCurveToPoint: CGPointMake(21.45, 15.05) controlPoint1: CGPointMake(22.51, 14.91) controlPoint2: CGPointMake(22, 14.96)];
+                [bezierPath addCurveToPoint: CGPointMake(19.82, 15.46) controlPoint1: CGPointMake(20.89, 15.14) controlPoint2: CGPointMake(20.43, 15.28)];
+                [bezierPath addCurveToPoint: CGPointMake(18.01, 16.22) controlPoint1: CGPointMake(19.21, 15.64) controlPoint2: CGPointMake(18.6, 15.89)];
+                [bezierPath addCurveToPoint: CGPointMake(16.34, 17.38) controlPoint1: CGPointMake(17.42, 16.54) controlPoint2: CGPointMake(16.86, 16.9)];
+                [bezierPath addCurveToPoint: CGPointMake(15, 19.16) controlPoint1: CGPointMake(15.82, 17.87) controlPoint2: CGPointMake(15.38, 18.46)];
+                [bezierPath addCurveToPoint: CGPointMake(16.32, 14.95) controlPoint1: CGPointMake(15.18, 17.59) controlPoint2: CGPointMake(15.62, 16.21)];
+                [bezierPath closePath];
+                [color21 setFill];
+                [bezierPath fill];
                 
                 
-                //// Bezier 5 Drawing
-                UIBezierPath* bezier5Path = [UIBezierPath bezierPath];
-                [bezier5Path moveToPoint: CGPointMake(62.75, 65.75)];
-                [bezier5Path addLineToPoint: CGPointMake(94.75, 65.75)];
-                [bezier5Path addLineToPoint: CGPointMake(78.75, 43.25)];
-                [bezier5Path addLineToPoint: CGPointMake(62.75, 65.75)];
-                [bezier5Path closePath];
-                [[UIColor whiteColor] setFill];
-                [bezier5Path fill];
+                //// Rectangle 4 Drawing
+                UIBezierPath* rectangle4Path = [UIBezierPath bezierPathWithRect: CGRectMake(0, 36, 320, 1)];
+                CGContextSaveGState(context);
+                [rectangle4Path addClip];
+                CGContextDrawLinearGradient(context, gradient,
+                                            CGPointMake(302.73, 56.07),
+                                            CGPointMake(16.46, 62.23),
+                                            kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+                CGContextRestoreGState(context);
+                
+                
+                //// Cleanup
+                CGGradientRelease(gradient);
+                CGColorSpaceRelease(colorSpace);
+                
+
+                
+
+                
 
             }];
 }
-
-+ (UIImage*) downButton
-{
-    return [UIImage imageWithIdentifier:@"downButton" forSize:CGSizeMake(164,109) andDrawingBlock:^
-            {
-                //// Color Declarations
-                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
-                
-                //// Rectangle 8 Drawing
-                UIBezierPath* rectangle8Path = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 164, 109)];
-                [yellow setFill];
-                [rectangle8Path fill];
-                
-                
-                //// Bezier 4 Drawing
-                UIBezierPath* bezier4Path = [UIBezierPath bezierPath];
-                [bezier4Path moveToPoint: CGPointMake(97.75, 43.25)];
-                [bezier4Path addLineToPoint: CGPointMake(65.75, 43.25)];
-                [bezier4Path addLineToPoint: CGPointMake(81.75, 65.75)];
-                [bezier4Path addLineToPoint: CGPointMake(97.75, 43.25)];
-                [bezier4Path closePath];
-                [[UIColor whiteColor] setFill];
-                [bezier4Path fill];
-                
-                
-            }];
-}
-
 
 + (UIImage*) searchButton
 {
     return [UIImage imageWithIdentifier:@"searchButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
             {
                 //// Color Declarations
-                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                UIColor* yellow = [UIColor whiteColor];
                 
                 //// Bezier 3 Drawing
                 UIBezierPath* bezier3Path = [UIBezierPath bezierPath];
@@ -109,7 +123,7 @@
     return [UIImage imageWithIdentifier:@"menuButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
             {
                 //// Color Declarations
-                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                UIColor* yellow = [UIColor whiteColor];
                 
                 //// Rectangle 12 Drawing
                 UIBezierPath* rectangle12Path = [UIBezierPath bezierPathWithRect: CGRectMake(9.5, 14, 25, 3)];

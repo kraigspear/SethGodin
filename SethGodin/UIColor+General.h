@@ -10,11 +10,9 @@
 
 @interface UIColor (General)
 
-+ (UIColor*) firstButtonColor;
-+ (UIColor*) secondButtonColor;
-+ (UIColor*) thirdButtonColor;
 + (UIColor*) itemsBackgroundColor;
 + (UIColor*) colorWithHexString:(NSString *)stringToConvert;
 + (UIColor*) titlebarBackgroundColor;
++ (UIColor*) tableCellBackgroundColor;
 
 @end

@@ -131,6 +131,8 @@
 		A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D8385516596E9300A79669 /* StoreKit.framework */; };
 		A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D838591659853F00A79669 /* SGLoadingAnimation.m */; };
+		A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F944311699C70800BBB6BE /* BlogEntryCell.xib */; };
+		A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,6 +376,9 @@
 		A9D8385516596E9300A79669 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A9D838581659853E00A79669 /* SGLoadingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoadingAnimation.h; sourceTree = "<group>"; };
 		A9D838591659853F00A79669 /* SGLoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadingAnimation.m; sourceTree = "<group>"; };
+		A9F944311699C70800BBB6BE /* BlogEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlogEntryCell.xib; sourceTree = "<group>"; };
+		A9F944331699CA5E00BBB6BE /* SGBlogEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryCell.h; sourceTree = "<group>"; };
+		A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -884,6 +889,9 @@
 				A9D68506164CFE8D007A9ADA /* SGBlogEntriesViewController.m */,
 				A9D68552164D0DE3007A9ADA /* UIImage+RSSSelection.h */,
 				A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */,
+				A9F944311699C70800BBB6BE /* BlogEntryCell.xib */,
+				A9F944331699CA5E00BBB6BE /* SGBlogEntryCell.h */,
+				A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */,
 			);
 			name = BlogEntries;
 			sourceTree = "<group>";
@@ -1005,6 +1013,7 @@
 				A9712AA51667B78400BAFCD9 /* books@2x.png in Resources */,
 				A9712AA71667BB9B00BAFCD9 /* books-iphone4.png in Resources */,
 				A90773ED167F2B0700056C41 /* userDefaults.plist in Resources */,
+				A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,6 +1110,7 @@
 				A9754D1016956EC0009E1D1F /* MagicalRecord.m in Sources */,
 				A9754D13169571C4009E1D1F /* Favorite.m in Sources */,
 				A9754D16169592E6009E1D1F /* SGFavoritesCoreData.m in Sources */,
+				A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

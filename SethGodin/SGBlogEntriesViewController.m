@@ -30,12 +30,14 @@
 #import "SGUSerDefaults.h"
 #import "SGFavorites.h"
 
-
+#import "SGBlogEntryCell.h"
 #import "SGAlertView.h"
 #import "Flurry.h"
 
 #import "AFHTTPClient.h"
 #import <QuartzCore/QuartzCore.h>
+
+#define BLOG_ENTRY_CELL @"blogEntryCell"
 
 @interface SGBlogEntriesViewController ()
 
@@ -46,11 +48,7 @@
 @private
     NSArray *_blogItems;
     SGBlogItemsGetter *_contentGetter;
-    NSUInteger _pageNumber;
     
-    SGBlogEntry *_entry1;
-    SGBlogEntry *_entry2;
-    SGBlogEntry *_entry3;
     
     __weak SGBlogEntry *_blogEntry;
     
@@ -77,6 +75,8 @@
     
     NSDate *_lastDateLeftView;
     
+    UIFont *_titleFont;
+    
 }
 
 NSString * const SEGUE_TO_POST = @"viewPostSeque";
@@ -93,10 +93,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     self.searchButton.enabled = _isNetworkingAvailable;
 }
 
--  (void) viewDidLayoutSubviews
-{
-    [self updateButtonSizes];
-}
 
 #pragma mark -
 #pragma mark general
@@ -104,6 +100,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
+    
+    UINib *cellNib = [UINib nibWithNibName:@"BlogEntryCell" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:BLOG_ENTRY_CELL];
     
     _title = @"SETH GODIN";
     
@@ -114,21 +115,12 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     self.searchTextField.borderStyle = UITextBorderStyleNone;
     self.searchTextField.returnKeyType = UIReturnKeySearch;
     
-    buttonTopContant = self.buttonViewToLeftButtonViewConstraint.constant - 500;
-    
-    [self.view removeConstraint:self.buttonViewToLeftButtonViewConstraint];
-    [self.view layoutSubviews];
-    
     _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
     
-	[self.upButton setImage:[UIImage upButton] forState:UIControlStateNormal];
-    [self.downButton setImage:[UIImage downButton] forState:UIControlStateNormal];
     self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
     
     [self.searchButton setImage:[UIImage searchButton] forState:UIControlStateNormal];
     [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
-    
-    _pageNumber = 0;
     
     if(&UIApplicationWillEnterForegroundNotification != nil)
     {
@@ -202,7 +194,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         _lastDateLeftView = [NSDate date];
         SGBlogEntryViewController *postVC = segue.destinationViewController;
         postVC.blogEntry = _blogEntry;
-        postVC.postHeaderColor = [UIColor firstButtonColor];
     }
 }
 
@@ -300,28 +291,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     _menuViewController = nil;
 }
 
-#pragma mark -
-#pragma mark entry selection actions
 
-- (IBAction)button1Action:(id)sender
-{
-    _blogEntry = _entry1;
-    [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
-}
 
-- (IBAction)button2Action:(id)sender
-{
-    if(!_entry2) return;
-    _blogEntry = _entry2;
-    [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
-}
-
-- (IBAction)button3Action:(id)sender
-{
-    if(!_entry3) return;
-    _blogEntry = _entry3;
-    [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
-}
 
 #pragma mark -
 #pragma mark feed loading
@@ -427,9 +398,10 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 {
     
     self.buttonView.backgroundColor = [UIColor itemsBackgroundColor];
-    _pageNumber = 0;
     
     _blogItems = inBlogItems;
+    
+    [self.tableView reloadData];
     
     [self stopLoadingAnimation];
     
@@ -449,7 +421,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         }
     }
     
-    [self updateButtons];
     [self animateButtonsComingDown];
 }
 
@@ -462,163 +433,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     return [NSString stringWithFormat:@"%@ %d", [monthStr uppercaseString], _feedSelection.year];
 }
 
-
-
-
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if([keyPath isEqualToString:@"shareCount"])
-    {
-        [self updateButtonForEntry:object];
-    }
-}
-
-
-
-#pragma mark -
-#pragma mark update buttons
-
-
-- (void) updateButtonImage:(SGBlogEntry*) inEntry forButton:(UIButton*) inButton withColor:(UIColor*) inColor
-{
-    
-    SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
-    
-    UIImage *buttonImage;
-    
-    if(inEntry)
-    {
-        buttonImage = [UIImage rssItemButtonForColor:inColor
-                                             andSize:inButton.frame.size
-                                               title:inEntry.title
-                                              shared:inEntry.shareCount
-                                             forDate:inEntry.datePublished
-                                      formatDateWith:appDelegate.dateFormatterLongStyle];
-    }
-    
-    
-    [inButton setImage:buttonImage forState:UIControlStateNormal];
-    
-}
-
-
-- (void) updateButtonForEntry:(SGBlogEntry*) inEntry
-{
-    if(!inEntry) return;
-    
-    if(inEntry == _entry1)
-    {
-        [self updateButtonImage:inEntry forButton:_rssItem1Button withColor:[UIColor firstButtonColor]];
-    }
-    else if(inEntry == _entry2)
-    {
-        [self updateButtonImage:inEntry forButton:_rssItem2Button withColor:[UIColor secondButtonColor]];
-    }
-    else if(inEntry == _entry3)
-    {
-        [self updateButtonImage:inEntry forButton:_rssItem3Button withColor:[UIColor thirdButtonColor]];
-    }
-    
-}
-
-
-- (void) updateButtons
-{
-    NSUInteger startAt = _pageNumber * 3;
-    
-    [_entry1 removeObserver:self forKeyPath:@"shareCount"];
-    [_entry2 removeObserver:self forKeyPath:@"shareCount"];
-    [_entry3 removeObserver:self forKeyPath:@"shareCount"];
-    
-    _entry1 = nil;
-    _entry2 = nil;
-    _entry3 = nil;
-    
-    if(_blogItems.count == 0)
-    {
-        return;
-    }
-    
-    _entry1 = [_blogItems safeObjectAtIndex:startAt];
-    _entry2 = [_blogItems safeObjectAtIndex:startAt+1];
-    _entry3 = [_blogItems safeObjectAtIndex:startAt+2];
-    
-    [_entry1 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
-    [_entry2 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
-    [_entry3 addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
-    
-    if(_entry1) [self updateButtonForEntry:_entry1];
-    if(_entry2) [self updateButtonForEntry:_entry2];
-    if(_entry3) [self updateButtonForEntry:_entry3];
-    
-    self.rssItem1Button.hidden = !_entry1;
-    self.rssItem2Button.hidden = !_entry2;
-    self.rssItem3Button.hidden = !_entry3;
-    
-}
-
-- (void) updateButtonSizes
-{
-    
-    NSLog(@"h = %f", self.view.frame.size.height);
-    
-    CGFloat bottomButtonHeight;
-    CGFloat postButtonHeight;
-    const CGFloat IPHONE_4_INCH = 548;
-    
-    if(self.view.frame.size.height >= IPHONE_4_INCH)
-    {
-        //4 inch
-        bottomButtonHeight = 109;
-        postButtonHeight = 132;
-    }
-    else
-    {
-        //3.5
-        bottomButtonHeight = 87;
-        postButtonHeight = 110;
-    }
-    
-    self.button1HeightConstraint.constant = postButtonHeight;
-    self.button2HeightConstraint.constant = postButtonHeight;
-    self.button3HeightConstraint.constant = postButtonHeight;
-    
-    self.leftButtonHeightConstraint.constant = bottomButtonHeight;
-    
-    [self.view layoutSubviews];
-    
-}
-
-
-#pragma mark -
-#pragma mark navigation buttons
-
-- (IBAction)previousButton:(id)sender
-{
-    NSInteger newPageNumber = _pageNumber - 1;
-    
-    if(newPageNumber >= 0)
-    {
-        _pageNumber = newPageNumber;
-        [self updateButtons];
-    }
-    
-}
-
-- (IBAction)nextButton:(id)sender
-{
-    NSUInteger newPageNumber = _pageNumber + 1;
-    NSUInteger startAt = newPageNumber * 3;
-    
-    SGBlogEntry *startEntry = [_blogItems safeObjectAtIndex:startAt];
-    
-    if(startEntry != nil)
-    {
-        _pageNumber = newPageNumber;
-        [self updateButtons];
-    }
-    
-}
 
 #pragma mark -
 #pragma mark animation
@@ -655,7 +469,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
          {
              self.buttonViewToTopViewConstraint.constant += 500;
-             [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
              [self.view layoutSubviews];
          }
                          completion:nil];
@@ -663,7 +476,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     else
     {
         self.buttonViewToTopViewConstraint.constant += 500;
-        [self.view addConstraint:self.buttonViewToLeftButtonViewConstraint];
         [self.view layoutSubviews];
     }
 }
@@ -683,7 +495,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     if(!_itemsHold)
     {
         _itemsHold = _blogItems;
-        _pageNumberHold = _pageNumber;
     }
     
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsSearch:inText];
@@ -704,7 +515,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     if(_itemsHold)
     {
         _blogItems = _itemsHold;
-        _pageNumber = _pageNumberHold;
     }
     else
     {
@@ -716,7 +526,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     _itemsHold = nil;
     
-    [self updateButtons];
+
 }
 
 - (IBAction)searchAction:(id)sender
@@ -782,6 +592,38 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     [self.view.layer addSublayer:_messageLayer];
 }
 
+#pragma mark -
+#pragma mark UITableViewDatasource
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _blogItems.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SGBlogEntry *blogEntry = _blogItems[indexPath.row];
+    
+    CGSize size = [blogEntry.title sizeWithFont:_titleFont constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    CGFloat height = MAX(size.height, 44);
+    
+    NSLog(@"height = %f", size.height);
+    
+    return height + 60;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    SGBlogEntryCell *cell = (SGBlogEntryCell*) [tableView dequeueReusableCellWithIdentifier:BLOG_ENTRY_CELL forIndexPath:indexPath];
+    
+    cell.blogEntry = _blogItems[indexPath.row];
+    
+    cell.backgroundColor = [UIColor redColor];
+    [cell layoutIfNeeded];
+    
+    return cell;
+}
 
 @end

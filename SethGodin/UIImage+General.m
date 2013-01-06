@@ -113,7 +113,7 @@
     return [UIImage imageWithIdentifier:identifier forSize:CGSizeMake(320,44) andDrawingBlock:^
             {
                 //// Color Declarations
-                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                UIColor* yellow = [UIColor whiteColor];
                 UIColor* bgColor = inColor;
                 
                 //// Abstracted Attributes
