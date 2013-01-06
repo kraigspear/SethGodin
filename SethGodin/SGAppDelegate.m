@@ -35,7 +35,25 @@
     
     if([NSFileManager isICloudEnabled])
     {
-        [MagicalRecord setupCoreDataStackWithiCloudContainer:@"BLXEQ8692X.com.andersonspear.sethsgodinsblog" contentNameKey:@"sethfavorites" localStoreNamed:@"seth_local.sqllite" cloudStorePathComponent:@""];
+        [MagicalRecord setupCoreDataStackWithiCloudContainer:@"BLXEQ8692X.com.andersonspear.sethsgodinsblog" localStoreNamed:@"sethfavorites"];
+        
+        
+        __block id iCloudSetupObserver = [[NSNotificationCenter defaultCenter] addObserverForName:kMagicalRecordPSCDidCompleteiCloudSetupNotification object:nil queue:nil usingBlock:^(NSNotification *note)
+        {
+            
+            [[NSNotificationCenter defaultCenter] removeObserver:iCloudSetupObserver];
+            iCloudSetupObserver = nil;
+            
+            if(![[SGUserDefaults sharedInstance] movedToCoreData])
+            {
+                int64_t delayInSeconds = 10.0;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+                               {
+                                   [self exportFavoritesToCoreData];
+                               });
+            }
+        }];
     }
     else
     {
@@ -57,6 +75,7 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                    {
+                       NSLog(@"exporing to iCloud");
                        NSArray *favoritesToExport = [[SGFavorites sharedInstance] favorites];
                        
                        NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextForCurrentThread];
@@ -70,6 +89,7 @@
                            favorite.summary = oldFavorite.summary;
                            favorite.title = oldFavorite.title;
                            favorite.url = oldFavorite.urlStr;
+                           NSLog(@"new favorite created");
                        }
                        
                        [localContext MR_saveNestedContextsErrorHandler:^(NSError *inError)
@@ -78,6 +98,7 @@
                            [Flurry logError:@"CoreDataMoveError" message:@"Error moving favorites to CoreData" error:inError];
                        } completion:^
                        {
+                           NSLog(@"iCloud export complete with no errors");
                            [Flurry logEvent:@"MovedToCoreData"];
                            [[SGUserDefaults sharedInstance] setMovedToCoreData:YES];
                        }];

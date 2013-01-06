@@ -37,6 +37,8 @@
     
 }
 
+
+
 + (void) addBlogEntryToFavorites:(SGBlogEntry*) inEntry
 {
     [MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext)
