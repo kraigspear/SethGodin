@@ -37,28 +37,30 @@
     [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
     [Crittercism enableWithAppID:@"50c92afd63d95269e3000002"];
     
-    
     if([NSFileManager isICloudEnabled])
     {
-        [MagicalRecord setupCoreDataStackWithiCloudContainer:@"BLXEQ8692X.com.andersonspear.sethsgodinsblog" localStoreNamed:@"sethfavorites"];
         
+        _isICloudSetup = YES;
         
-        __block id iCloudSetupObserver = [[NSNotificationCenter defaultCenter] addObserverForName:kMagicalRecordPSCDidCompleteiCloudSetupNotification object:nil queue:nil usingBlock:^(NSNotification *note)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
         {
-            
-            [[NSNotificationCenter defaultCenter] removeObserver:iCloudSetupObserver];
-            iCloudSetupObserver = nil;
-            
-            if(![[SGUserDefaults sharedInstance] movedToCoreData])
-            {
-                int64_t delayInSeconds = 10.0;
-                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-                dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-                               {
-                                   [self exportFavoritesToCoreData];
-                               });
-            }
-        }];
+            [MagicalRecord setupCoreDataStackWithiCloudContainer:@"BLXEQ8692X.com.andersonspear.sethsgodinsblog" contentNameKey:@"favorites" localStoreNamed:@"seth_local" cloudStorePathComponent:@"coredata" completion:^
+             {
+                 NSLog(@"icloud setup complete!!!!");
+                 [self willChangeValueForKey:@"isICloudSetup"];
+                 _isICloudSetup = NO;
+                 [self didChangeValueForKey:@"isICloudSetup"];
+                 
+                 int64_t delayInSeconds = 5.0;
+                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+                                {
+                                    [self exportFavoritesToCoreData];
+                                });
+                 
+             }];
+
+        });
     }
     else
     {
@@ -76,13 +78,15 @@
 
 - (void) exportFavoritesToCoreData
 {
-    if([[SGUserDefaults sharedInstance] movedToCoreData]) return;
+    if(self.isICloudSetup) return;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+               {
+                   NSLog(@"exporing to iCloud");
+                   NSArray *favoritesToExport = [[SGFavorites sharedInstance] favorites];
+                   
+                   if(favoritesToExport.count > 0)
                    {
-                       NSLog(@"exporing to iCloud");
-                       NSArray *favoritesToExport = [[SGFavorites sharedInstance] favorites];
-                       
                        NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextForCurrentThread];
                        
                        for(SGBlogEntry *oldFavorite in favoritesToExport)
@@ -98,17 +102,18 @@
                        }
                        
                        [localContext MR_saveNestedContextsErrorHandler:^(NSError *inError)
-                       {
-                           NSLog(@"Error moving favorites to CoreData %@ %@", inError, inError.userInfo);
-                           [Flurry logError:@"CoreDataMoveError" message:@"Error moving favorites to CoreData" error:inError];
-                       } completion:^
-                       {
-                           NSLog(@"iCloud export complete with no errors");
-                           [Flurry logEvent:@"MovedToCoreData"];
-                           [[SGUserDefaults sharedInstance] setMovedToCoreData:YES];
-                       }];
-                       
-                   });
+                        {
+                            NSLog(@"Error moving favorites to CoreData %@ %@", inError, inError.userInfo);
+                            [Flurry logError:@"CoreDataMoveError" message:@"Error moving favorites to CoreData" error:inError];
+                        } completion:^
+                        {
+                            [[SGFavorites sharedInstance] resetFavorites];
+                            NSLog(@"iCloud export complete with no errors");
+                            [Flurry logEvent:@"MovedToCoreData"];
+                            [[SGUserDefaults sharedInstance] setMovedToCoreData:YES];
+                        }];
+                   }
+               });
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -125,7 +130,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self exportFavoritesToCoreData];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

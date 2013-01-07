@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SGFeedSelection.h"
+#import "SGBlogEntry.h"
 
 typedef void (^NotificationBlock) (NSNotification* notification);
 
@@ -17,6 +18,7 @@ extern NSString * const NOTIFICATION_FEED_SELECTION;
 extern NSString * const NOTIFICATION_NETWORK_AVAILABLE;
 extern NSString * const NOTIFICATION_FAVORITES_UPDATED;
 extern NSString * const NOTIFICATION_BUSY;
+extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
 
 /**
  Post that a feed type was selected
@@ -24,6 +26,16 @@ extern NSString * const NOTIFICATION_BUSY;
  */
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 
+/**
+ Share count updated for this BlogEntry
+ @param inBlogEntry
+ */
++ (void) postShareCountUpdated:(SGBlogEntry*) inBlogEntry;
+
+/**
+ Observe that a share count has been updated
+ */
++ (id) observeShareCountUpdated:(NotificationBlock) inBlock;
 
 /**
  Observe Feed selection changing

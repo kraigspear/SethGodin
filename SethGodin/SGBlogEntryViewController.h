@@ -44,10 +44,6 @@
  */
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
-/**
- Color to use at the top of the view.
- */
-@property (nonatomic, strong) UIColor *postHeaderColor;
 
 
 @end

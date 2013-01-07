@@ -26,7 +26,10 @@
     return [UIColor colorWithHexString:@"fff9db"];
 }
 
-
++ (UIColor*) titlebarTextColor
+{
+    return [UIColor whiteColor];
+}
 
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert
 {

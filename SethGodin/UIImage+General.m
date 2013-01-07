@@ -17,7 +17,7 @@
     return [UIImage imageWithIdentifier:@"backButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
             {
                 //// Color Declarations
-                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                UIColor* yellow = [UIColor titlebarTextColor];
                 
                 //// Bezier 3 Drawing
                 UIBezierPath* bezier3Path = [UIBezierPath bezierPath];
@@ -179,7 +179,7 @@
     return [UIImage imageWithIdentifier:@"shareButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
             {
                 //// Color Declarations
-                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                UIColor* yellow = [UIColor titlebarTextColor];
                 
                 //// Group
                 {

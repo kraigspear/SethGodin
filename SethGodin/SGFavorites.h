@@ -39,8 +39,8 @@
 - (BOOL) containsBlogEntry:(SGBlogEntry*) inEntry;
 
 /**
- Yes if a saved favorite file exist.
+ Clear out favorites
  */
-+ (BOOL) favoritesFileExist;
+- (void) resetFavorites;
 
 @end

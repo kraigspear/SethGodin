@@ -10,7 +10,7 @@
 #import "SGBlogEntry.h"
 #import "AFJSONRequestOperation.h"
 #import "NSFileManager+Util.h"
-
+#import "SGNotifications.h"
 
 @implementation SGBlogItemsGetter
 {
@@ -86,6 +86,7 @@
                                              NSString *facebookShared = [[dict objectForKey:@"shares"] stringValue];
                                              
                                              inEntry.shareCount += [facebookShared integerValue];
+                                             [SGNotifications postShareCountUpdated:inEntry];
                                          } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
                                          {
                                              
@@ -111,6 +112,7 @@
                                              NSString *sharedStr = [[dict objectForKey:@"count"] stringValue];
                                              
                                              inEntry.shareCount += [sharedStr integerValue];
+                                             [SGNotifications postShareCountUpdated:inEntry];
                                          } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
                                          {
                                              

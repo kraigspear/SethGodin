@@ -98,7 +98,7 @@
         
         //// backRect Drawing
         UIBezierPath* backRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 132)];
-        [self.postHeaderColor setFill];
+        [[UIColor tableCellBackgroundColor] setFill];
         [backRectPath fill];
         
         

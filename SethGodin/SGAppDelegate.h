@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic, assign) BOOL isNetworkAvailable;
+@property (nonatomic, assign, readonly) BOOL isICloudSetup;
 
 /**
  A long dateformatter that can be used throughout the App.

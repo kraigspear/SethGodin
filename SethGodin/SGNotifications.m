@@ -16,10 +16,18 @@ NSString * const NOTIFICATION_FAVORITES_UPDATED = @"favoritesUpdated";
 NSString * const NOTIFICATION_FAVORITES_CREATED = @"favoritesCreated";
 NSString * const NOTIFICATION_BUSY              = @"busy";
 NSString * const NOTIFICATION_ERROR             = @"errorOccured";
+NSString * const NOTIFICATION_SHARE_COUNT_UPDATED = @"shareCountUpdated";
 
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 {
     NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_FEED_SELECTION object:inSelection];
+    [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
+}
+
++ (void) postShareCountUpdated:(SGBlogEntry*) inBlogEntry
+{
+    NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_SHARE_COUNT_UPDATED object:inBlogEntry];
+    
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
 
@@ -60,6 +68,11 @@ NSString * const NOTIFICATION_ERROR             = @"errorOccured";
 + (id) observeFeedSelectionWithNotification:(NotificationBlock) inBlock
 {
     return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_FEED_SELECTION object:nil queue:nil usingBlock:inBlock];
+}
+
++ (id) observeShareCountUpdated:(NotificationBlock) inBlock
+{
+    return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_SHARE_COUNT_UPDATED object:nil queue:nil usingBlock:inBlock];
 }
 
 + (id) observeNetworkAvailableWithNotification:(NotificationBlock) inBlock

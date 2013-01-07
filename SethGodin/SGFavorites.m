@@ -35,7 +35,14 @@ NSString * const KEY_FAVORITES = @"favorites";
     
     dispatch_once(&pred, ^
                   {
-                      instance = [[SGFavorites alloc] init];
+                      if([[NSFileManager defaultManager] fileExistsAtPath:[SGFavorites filePathName]])
+                      {
+                          instance = [NSKeyedUnarchiver unarchiveObjectWithFile:[SGFavorites filePathName]];
+                      }
+                      else
+                      {
+                          instance = [[SGFavorites alloc] init];
+                      }
                   });
     
     return instance;
@@ -54,6 +61,11 @@ NSString * const KEY_FAVORITES = @"favorites";
     return self;
 }
 
+- (void) resetFavorites
+{
+    [_favorites removeAllObjects];
+    [self saveFavorites];
+}
 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
@@ -88,11 +100,8 @@ NSString * const KEY_FAVORITES = @"favorites";
 
 - (void) addBlogEntry:(SGBlogEntry *)inEntry
 {
-    
-    
-    
-    
-
+    [_favorites addObject:inEntry];
+    [self saveFavorites];
 }
 
 - (void) removeBlogEntry:(SGBlogEntry*) inEntry
@@ -105,81 +114,5 @@ NSString * const KEY_FAVORITES = @"favorites";
 {
     return [_favorites containsObject:inEntry];
 }
-
-#pragma mark -
-#pragma mark iCloud core data
-
-- (NSManagedObjectContext *)managedObjectContext
-{
-    
-    if (_managedObjectContext != nil)
-    {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    
-    if (coordinator != nil)
-    {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator: coordinator];
-    }
-    
-    return _managedObjectContext;
-}
-
-
-- (NSManagedObjectModel *)managedObjectModel
-{
-    
-    if (_managedObjectModel != nil)
-    {
-        return _managedObjectModel;
-    }
-    
-    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-    return _managedObjectModel;
-}
-
-
-- (NSPersistentStoreCoordinator *) persistentStoreCoordinator
-{
-    
-    if (_persistentStoreCoordinator != nil)
-    {
-        return _persistentStoreCoordinator;
-    }
-    
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
-                                   initWithManagedObjectModel:[self managedObjectModel]];
-    
-    
-    NSURL *storeURL = [NSFileManager URLOfFileInDocumentPathWithFileName:@"favorites.sqllite"];
-    
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-          
-                                                   configuration:nil URL:storeURL options:nil error:&error])
-    {
-        [SGNotifications postErrorOccured:error];
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    }
-    
-    return _persistentStoreCoordinator;
-}
-
-
-- (NSURL *)applicationDocumentsDirectory
-{
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
-
-+ (NSString*) applicationDocumentsDirectoryString
-{
-    NSArray *documentDirectories =
-	NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	return [documentDirectories objectAtIndex:0];
-}
-
 
 @end

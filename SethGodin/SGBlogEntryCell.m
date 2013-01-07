@@ -11,8 +11,13 @@
 #import "UIImage+RSSSelection.h"
 #import "UIColor+General.h"
 #import "SGAppDelegate.h"
+#import "SGNotifications.h"
 
 @implementation SGBlogEntryCell
+{
+@private
+    id _shareCountUpdatedObserver;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -26,6 +31,17 @@
 - (void) awakeFromNib
 {
     [super awakeFromNib];
+    
+    _shareCountUpdatedObserver = [SGNotifications observeShareCountUpdated:^(NSNotification *notification)
+    {
+        SGBlogEntry *blogEntry = notification.object;
+        if(blogEntry == self.blogEntry)
+        {
+            [self updateShareCountLabel];
+        }
+    }];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.contentView.backgroundColor = [UIColor tableCellBackgroundColor];
     self.bottomImageView.image = [UIImage bottomTableCell];
 }
@@ -37,23 +53,8 @@
 
 - (void) setBlogEntry:(SGBlogEntry *) toEntry
 {
-    [_blogEntry removeObserver:self forKeyPath:@"shareCount"];
-    
-    [toEntry addObserver:self forKeyPath:@"shareCount" options:NSKeyValueObservingOptionNew context:nil];
-    
     _blogEntry = toEntry;
     [self populateCell];
-}
-
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if(object == _blogEntry)
-    {
-        if([keyPath isEqualToString:@"shareCount"])
-        {
-             self.shareCountLabel.text = [NSString stringWithFormat:@"%d",_blogEntry.shareCount];
-        }
-    }
 }
 
 - (void) populateCell
@@ -62,7 +63,18 @@
     
     self.postDateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:_blogEntry.datePublished];
     
-    self.shareCountLabel.text = [NSString stringWithFormat:@"%d",_blogEntry.shareCount];
+    [self updateShareCountLabel];
+}
+
+- (void) updateShareCountLabel
+{
+    self.shareCountLabel.text = [NSString stringWithFormat:@"%d", _blogEntry.shareCount];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:_shareCountUpdatedObserver];
+    _shareCountUpdatedObserver = nil;
 }
 
 @end
