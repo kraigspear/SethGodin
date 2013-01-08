@@ -10,13 +10,14 @@
 
 @implementation SGNotifications
 
-NSString * const NOTIFICATION_FEED_SELECTION    = @"feedSelection";
-NSString * const NOTIFICATION_NETWORK_AVAILABLE = @"networkAvailable";
-NSString * const NOTIFICATION_FAVORITES_UPDATED = @"favoritesUpdated";
-NSString * const NOTIFICATION_FAVORITES_CREATED = @"favoritesCreated";
-NSString * const NOTIFICATION_BUSY              = @"busy";
-NSString * const NOTIFICATION_ERROR             = @"errorOccured";
+NSString * const NOTIFICATION_FEED_SELECTION      = @"feedSelection";
+NSString * const NOTIFICATION_NETWORK_AVAILABLE   = @"networkAvailable";
+NSString * const NOTIFICATION_FAVORITES_UPDATED   = @"favoritesUpdated";
+NSString * const NOTIFICATION_FAVORITES_CREATED   = @"favoritesCreated";
+NSString * const NOTIFICATION_BUSY                = @"busy";
+NSString * const NOTIFICATION_ERROR               = @"errorOccured";
 NSString * const NOTIFICATION_SHARE_COUNT_UPDATED = @"shareCountUpdated";
+NSString * const NOTIFICATION_BLOG_ENTRY_SELECTED = @"blogEntrySelected";
 
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 {
@@ -27,6 +28,13 @@ NSString * const NOTIFICATION_SHARE_COUNT_UPDATED = @"shareCountUpdated";
 + (void) postShareCountUpdated:(SGBlogEntry*) inBlogEntry
 {
     NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_SHARE_COUNT_UPDATED object:inBlogEntry];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
+}
+
++ (void) postBlogEntrySelected:(SGBlogEntry*) inBlogEntry
+{
+    NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_BLOG_ENTRY_SELECTED object:inBlogEntry];
     
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
@@ -45,8 +53,6 @@ NSString * const NOTIFICATION_SHARE_COUNT_UPDATED = @"shareCountUpdated";
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
 
-
-
 + (void) postFavoritesUpdated
 {
     NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_FAVORITES_UPDATED object:nil];
@@ -63,6 +69,12 @@ NSString * const NOTIFICATION_SHARE_COUNT_UPDATED = @"shareCountUpdated";
 {
     NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_ERROR object:inError];
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
+}
+
+
++ (id) observeBlogEntrySelectedNotification:(NotificationBlock) inBlock
+{
+    return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_BLOG_ENTRY_SELECTED object:nil queue:nil usingBlock:inBlock];
 }
 
 + (id) observeFeedSelectionWithNotification:(NotificationBlock) inBlock

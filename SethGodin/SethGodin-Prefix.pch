@@ -17,6 +17,8 @@
     #import "CoreData+MagicalRecord.h"
     #import "NSFileManager+Util.h"
     #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+    #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     #define TIMEOUT 10
     #define DEV_BUILD
 #endif

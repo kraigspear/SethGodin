@@ -19,15 +19,27 @@
 #import "AFNetworking.h"
 #import "BlockTypes.h"
 #import "SGFavoritesCoreData.h"
+#import "SGNotifications.h"
 
 @implementation SGBlogEntryViewController
 {
 @private
+    id _blogEntrySelected;
 }
 
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    if(IS_IPAD)
+    {
+        _blogEntrySelected = [SGNotifications observeBlogEntrySelectedNotification:^(NSNotification *notification)
+        {
+            self.blogEntry = notification.object;
+            [self viewDidLayoutSubviews];
+        }];
+    }
+    
     self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
@@ -46,7 +58,6 @@
     }
     
     [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
-
     
     [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
     [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];

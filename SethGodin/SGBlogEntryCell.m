@@ -49,6 +49,8 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+    UIColor *textColor = selected ? [UIColor textColorSelected] : [UIColor titlebarTextColor];
+    self.blogTitleLabel.textColor = textColor;
 }
 
 - (void) setBlogEntry:(SGBlogEntry *) toEntry

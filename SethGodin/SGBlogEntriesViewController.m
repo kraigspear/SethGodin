@@ -648,7 +648,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     cell.blogEntry = _blogItems[indexPath.row];
     
-    cell.backgroundColor = [UIColor redColor];
     [cell layoutIfNeeded];
     
     return cell;
@@ -657,7 +656,14 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _blogEntry = _blogItems[indexPath.row];
-    [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
+    
+    if(IS_IPHONE)
+    {
+        [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
+    }
+
+    [SGNotifications postBlogEntrySelected:_blogEntry];
+
 }
 
 @end

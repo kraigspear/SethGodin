@@ -133,6 +133,7 @@
 		A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D838591659853F00A79669 /* SGLoadingAnimation.m */; };
 		A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F944311699C70800BBB6BE /* BlogEntryCell.xib */; };
 		A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */; };
+		A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94439169AD7B000BBB6BE /* SGMainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -379,6 +380,8 @@
 		A9F944311699C70800BBB6BE /* BlogEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlogEntryCell.xib; sourceTree = "<group>"; };
 		A9F944331699CA5E00BBB6BE /* SGBlogEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryCell.h; sourceTree = "<group>"; };
 		A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryCell.m; sourceTree = "<group>"; };
+		A9F94438169AD7B000BBB6BE /* SGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMainViewController.h; sourceTree = "<group>"; };
+		A9F94439169AD7B000BBB6BE /* SGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -650,9 +653,8 @@
 		A9754D231696E830009E1D1F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A9D6854E164D0D47007A9ADA /* BlogEntries */,
-				A91009D11650083200779F84 /* BlogEntry */,
-				A9100A511650F9D800779F84 /* Menu */,
+				A9F94437169AD77900BBB6BE /* iPad */,
+				A9F94436169AD76E00BBB6BE /* iPhone */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -919,6 +921,25 @@
 			name = General;
 			sourceTree = "<group>";
 		};
+		A9F94436169AD76E00BBB6BE /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				A9D6854E164D0D47007A9ADA /* BlogEntries */,
+				A91009D11650083200779F84 /* BlogEntry */,
+				A9100A511650F9D800779F84 /* Menu */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		A9F94437169AD77900BBB6BE /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				A9F94438169AD7B000BBB6BE /* SGMainViewController.h */,
+				A9F94439169AD7B000BBB6BE /* SGMainViewController.m */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1111,6 +1132,7 @@
 				A9754D13169571C4009E1D1F /* Favorite.m in Sources */,
 				A9754D16169592E6009E1D1F /* SGFavoritesCoreData.m in Sources */,
 				A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */,
+				A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,6 +1251,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1241,7 +1264,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1255,6 +1278,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1267,7 +1291,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "141FAB54-E3A0-4FF3-AF21-47BA3E2F7DC9";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

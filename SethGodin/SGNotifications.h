@@ -27,6 +27,12 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 
 /**
+ Post that a blog entry was selected.
+ @param inBlogEntry Entry that has been selected.
+ */
++ (void) postBlogEntrySelected:(SGBlogEntry*) inBlogEntry;
+
+/**
  Share count updated for this BlogEntry
  @param inBlogEntry
  */
@@ -36,6 +42,12 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
  Observe that a share count has been updated
  */
 + (id) observeShareCountUpdated:(NotificationBlock) inBlock;
+
+/**
+ Observe that a blog entry item has been selected
+ @param inBlock block to recive the message
+ */
++ (id) observeBlogEntrySelectedNotification:(NotificationBlock) inBlock;
 
 /**
  Observe Feed selection changing
