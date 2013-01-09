@@ -902,11 +902,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="eCp-0o-257" firstAttribute="centerY" secondItem="cXb-Vt-HXm" secondAttribute="centerY" type="default" id="9Kr-7r-7rs"/>
-                                    <constraint firstItem="eCp-0o-257" firstAttribute="top" secondItem="ZUd-qJ-oZh" secondAttribute="top" type="default" id="Ih5-UN-PlZ"/>
+                                    <constraint firstItem="ZUd-qJ-oZh" firstAttribute="top" secondItem="cXb-Vt-HXm" secondAttribute="top" type="default" id="3h0-Jl-Sev"/>
+                                    <constraint firstItem="ZUd-qJ-oZh" firstAttribute="bottom" secondItem="cXb-Vt-HXm" secondAttribute="bottom" type="default" id="7pY-pu-pmq"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZUd-qJ-oZh" secondAttribute="trailing" constant="10" id="ZZV-Ua-Sgi"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="odK-Yw-9IL"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZUd-qJ-oZh" secondAttribute="trailing" type="user" id="sck-Xp-Fam"/>
                                     <constraint firstItem="eCp-0o-257" firstAttribute="leading" secondItem="cXb-Vt-HXm" secondAttribute="leading" type="default" id="sdx-yh-iSr"/>
+                                    <constraint firstItem="ZUd-qJ-oZh" firstAttribute="centerY" secondItem="eCp-0o-257" secondAttribute="centerY" type="default" id="zkO-Y2-Jq6"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-GR-4p1" userLabel="titleView">

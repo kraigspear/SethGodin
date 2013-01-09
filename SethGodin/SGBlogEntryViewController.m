@@ -21,6 +21,7 @@
 #import "SGFavoritesCoreData.h"
 #import "SGNotifications.h"
 
+
 @implementation SGBlogEntryViewController
 {
 @private
@@ -115,7 +116,7 @@
                                    "</style> \n"
                                    "</head> \n"
                                    "<body>%@</body> \n"
-                                   "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
+                               "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
     
     [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
     

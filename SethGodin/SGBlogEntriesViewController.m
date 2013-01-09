@@ -115,13 +115,14 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     self.searchTextField.borderStyle = UITextBorderStyleNone;
     self.searchTextField.returnKeyType = UIReturnKeySearch;
+    self.searchTextField.textColor = [UIColor titlebarTextColor];
     
     _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
     
     self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
     
     [self.searchButton setImage:[UIImage searchButton] forState:UIControlStateNormal];
-    [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
+    [self.menuButton   setImage:[UIImage menuButton] forState:UIControlStateNormal];
     
     if(&UIApplicationWillEnterForegroundNotification != nil)
     {
@@ -432,11 +433,15 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     _blogItems = inBlogItems;
     
     [self.tableView reloadData];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     
-    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
-    
-    [self updateDetailForItemAtRow:0];
+    if(_blogItems.count >= 1)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        
+        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+        
+        [self updateDetailForItemAtRow:0];
+    }
     
     [self stopLoadingAnimation];
     
