@@ -44,6 +44,11 @@
  */
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *blogTitleLabel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelHeightConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleViewHeightConstraint;
 
 
 @end

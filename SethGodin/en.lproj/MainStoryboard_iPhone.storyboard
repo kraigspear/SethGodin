@@ -911,7 +911,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-GR-4p1" userLabel="titleView">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqR-X2-zbU">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqR-X2-zbU" userLabel="favoriteButton">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="Gab-lh-w1t"/>
                                             <constraint firstAttribute="height" constant="44" id="GqG-mn-jEc"/>
@@ -928,10 +928,21 @@
                                             <action selector="favoritesAction:" destination="ZDt-iZ-e0h" eventType="touchUpInside" id="ldG-pJ-wdL"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Tg0-UB-r8x" userLabel="titleLabel">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33" type="user" id="jZ5-wA-ocd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Tg0-UB-r8x" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="89o-eh-Zab"/>
                                     <constraint firstAttribute="height" constant="132" type="user" id="EWR-5W-EAX"/>
+                                    <constraint firstItem="Tg0-UB-r8x" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="top" type="default" id="JRX-kb-WMs"/>
+                                    <constraint firstItem="Tg0-UB-r8x" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iya-ZY-tBg"/>
                                     <constraint firstItem="PqR-X2-zbU" firstAttribute="bottom" secondItem="3VA-GR-4p1" secondAttribute="bottom" type="default" id="kXE-Ea-H51"/>
                                     <constraint firstAttribute="trailing" secondItem="PqR-X2-zbU" secondAttribute="trailing" constant="10" id="y2e-9e-RMd"/>
                                 </constraints>
@@ -960,9 +971,12 @@
                     <navigationItem key="navigationItem" id="Vqd-Ob-zfs"/>
                     <connections>
                         <outlet property="backButton" destination="eCp-0o-257" id="lnY-Hu-qgB"/>
+                        <outlet property="blogTitleLabel" destination="Tg0-UB-r8x" id="4J5-9D-MOS"/>
                         <outlet property="favoritesButton" destination="PqR-X2-zbU" id="dT0-tb-i1c"/>
                         <outlet property="shareButton" destination="ZUd-qJ-oZh" id="wUZ-th-UOy"/>
+                        <outlet property="titleLabelHeightConstraint" destination="jZ5-wA-ocd" id="gPc-Hh-2Cn"/>
                         <outlet property="titleView" destination="3VA-GR-4p1" id="0EI-Wo-CCG"/>
+                        <outlet property="titleViewHeightConstraint" destination="EWR-5W-EAX" id="IuY-nt-1Js"/>
                         <outlet property="topView" destination="cXb-Vt-HXm" id="rVs-Ns-bXR"/>
                         <outlet property="webView" destination="BhM-ij-3pw" id="f8P-L1-Z9A"/>
                     </connections>

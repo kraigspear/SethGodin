@@ -21,6 +21,14 @@
     return [UIColor colorWithRed:1.000 green:0.600 blue:0.000 alpha:1];
 }
 
++ (UIColor*) blogEntryTitleBackgroundColor
+{
+    if(IS_IPAD)
+        return [UIColor blackColor];
+    else
+        return [UIColor tableCellBackgroundColor];
+}
+
 + (UIColor*) itemsBackgroundColor
 {
     return [UIColor colorWithHexString:@"fff9db"];

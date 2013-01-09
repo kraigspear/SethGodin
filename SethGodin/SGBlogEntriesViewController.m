@@ -432,6 +432,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     _blogItems = inBlogItems;
     
     [self.tableView reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+    
+    [self updateDetailForItemAtRow:0];
     
     [self stopLoadingAnimation];
     
@@ -655,15 +660,19 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _blogEntry = _blogItems[indexPath.row];
+    [self updateDetailForItemAtRow:indexPath.row];
+}
+
+- (void) updateDetailForItemAtRow:(NSUInteger) inRow
+{
+    _blogEntry = _blogItems[inRow];
     
     if(IS_IPHONE)
     {
         [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
     }
-
+    
     [SGNotifications postBlogEntrySelected:_blogEntry];
-
 }
 
 @end

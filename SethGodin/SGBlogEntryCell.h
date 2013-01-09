@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *shareCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postDateLabel;
 
+
+
 @end

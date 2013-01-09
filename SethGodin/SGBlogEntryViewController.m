@@ -40,8 +40,19 @@
         }];
     }
     
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
-    [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+    self.blogTitleLabel.textColor   = [UIColor titlebarTextColor];
+    self.titleView.backgroundColor = [UIColor blogEntryTitleBackgroundColor];
+    
+    if(IS_IPHONE)
+    {
+        self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
+        [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+    }
+    else
+    {
+        self.topView.backgroundColor = [UIColor blackColor];
+    }
+    
     
     self.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.984 blue:0.937 alpha:1];
     
@@ -68,15 +79,32 @@
 
 - (void) updateButtonSelected
 {
-    [SGFavoritesCoreData isBlogItemFavorite:self.blogEntry success:^(BOOL isFavorite)
-    {
-        self.favoritesButton.selected = isFavorite;
-    }];
+//    [SGFavoritesCoreData isBlogItemFavorite:self.blogEntry success:^(BOOL isFavorite)
+//    {
+//        self.favoritesButton.selected = isFavorite;
+//    }];
 }
 
 - (void) viewDidLayoutSubviews
 {
-    self.titleView.backgroundColor = [UIColor colorWithPatternImage:[self titleImage]];
+    if(IS_IPHONE)
+    {
+        //self.titleView.backgroundColor = [UIColor colorWithPatternImage:[self titleImageiPhone]];
+    }
+    else
+    {
+        //self.titleView.backgroundColor = [UIColor colorWithPatternImage:[self titleImageiPad]];
+    }
+    
+    self.blogTitleLabel.text = self.blogEntry.title;
+
+    CGSize size = CGSizeMake(self.blogTitleLabel.frame.size.width, 1000);
+    size = [self.blogTitleLabel sizeThatFits:size];
+    
+    size.height += 25;
+    
+    self.titleLabelHeightConstraint.constant = size.height;
+    self.titleViewHeightConstraint.constant  = size.height + 25;
     
     NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
                                    "<head> <meta charset='utf-8'> \n"
@@ -90,13 +118,50 @@
                                    "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
     
     [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
+    
+    [self.view layoutIfNeeded];
 }
 
-- (UIImage*) titleImage
+- (UIImage*) titleImageiPad
 {
-    //NSString* titleTextContent = self.blogEntry.displayName;
-    //NSString* dateTextContent =  [appDelegate.dateformatter stringFromDate:self.blogEntry.datePublished];
+    return [UIImage imageForSize:self.titleView.frame.size withDrawingBlock:^
+            {
+                //// Color Declarations
+                
+                SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
+                //// Abstracted Attributes
+                NSString* titleTextContent = self.blogEntry.title;
+                NSString* dateTextContent =  [appDelegate.dateFormatterLongStyle stringFromDate:self.blogEntry.datePublished];
+                
+                
+                //// backRect Drawing
+                UIBezierPath* backRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 132)];
+                [[UIColor blackColor] setFill];
+                [backRectPath fill];
+                
+                
+                //// titleText Drawing
+                CGRect titleTextRect = CGRectMake(16, 10, self.view.frame.size.width, 84);
+                [[UIColor whiteColor] setFill];
+                
+                CGRect smallerRect = CGRectInset(titleTextRect, 0, 5);
+                UIFont *drawWithFont = [titleTextContent fontThatWillFitUsingFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 21.5] insideRect:smallerRect];
+                
+                
+                [titleTextContent drawInRect: titleTextRect withFont: drawWithFont lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
+                
+                
+                //// dateText Drawing
+                CGRect dateTextRect = CGRectMake(17, 100, 222, 35);
+                [[UIColor whiteColor] setFill];
+                [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 15] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
+            }];
 
+}
+
+- (UIImage*) titleImageiPhone
+{
+ 
     return [UIImage imageForSize:self.titleView.frame.size withDrawingBlock:^
     {
         //// Color Declarations
