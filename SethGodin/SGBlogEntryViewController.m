@@ -26,6 +26,8 @@
 {
 @private
     id _blogEntrySelected;
+    id _menuSelected;
+    __weak UIViewController *_menuController;
 }
 
 - (void) viewDidLoad
@@ -52,6 +54,10 @@
     else
     {
         self.topView.backgroundColor = [UIColor blackColor];
+        _menuSelected = [SGNotifications observeMenuSelectedNotification:^(NSNotification *notification)
+        {
+            [self showMenu];
+        }];
     }
     
     
@@ -298,6 +304,75 @@
     
 }
 
+#pragma mark -
+#pragma mark menu
 
+- (void) hideMenu
+{
+    [_menuController.view removeFromSuperview];
+    [_menuController removeFromParentViewController];
+    _menuController = nil;
+}
+
+//Show the menu. Only should be called if running on an iPad
+- (void) showMenu
+{
+    if(_menuController)
+    {
+        [self hideMenu];
+        return;
+    }
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"menu"];
+    _menuController = vc;
+    
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
+    
+    [vc.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    NSLayoutConstraint *topConstraint =
+	[NSLayoutConstraint
+     constraintWithItem:vc.view
+     attribute:NSLayoutAttributeTop
+     relatedBy:NSLayoutRelationEqual
+     toItem:self.topView
+     attribute:NSLayoutAttributeBottom
+     multiplier:1.0f
+     constant:0.0f];
+    
+    NSLayoutConstraint *heightConstraint =
+    [NSLayoutConstraint constraintWithItem:vc.view
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1.0f
+                                  constant:200.0f];
+    
+    NSLayoutConstraint *leadingConstraint =
+    [NSLayoutConstraint constraintWithItem:vc.view
+                                 attribute:NSLayoutAttributeLeading
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeLeading
+                                multiplier:1.0f
+                                  constant:0.0f];
+    
+    NSLayoutConstraint *trailingConstraint =
+    [NSLayoutConstraint constraintWithItem:vc.view
+                                 attribute:NSLayoutAttributeTrailing
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeTrailing
+                                multiplier:1.0f
+                                  constant:0.0f];
+    
+    [self.view addConstraints:@[topConstraint, heightConstraint, leadingConstraint, trailingConstraint]];
+    
+    [self.view layoutIfNeeded];
+}
 
 @end

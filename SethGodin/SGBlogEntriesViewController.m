@@ -244,7 +244,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     }
 }
 
-- (void) showMenu
+- (void) showMenuiPhone
 {
     _menuViewController = (SGMenuViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"menu"];
     _menuViewController.isNetworkAvailable = self.isNetworkingAvailable;
@@ -274,14 +274,31 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     };
     
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-    {
-        menuView.frame = CGRectMake(0, 0, menuFrame.size.width, menuFrame.size.height);
-    }
+        {
+            menuView.frame = CGRectMake(0, 0, menuFrame.size.width, menuFrame.size.height);
+        }
     } completion:^(BOOL finished)
+     {
+         
+     }];
+
+}
+
+- (void) showMenuiPad
+{
+    [SGNotifications postMenuSelectedNotification];
+}
+
+- (void) showMenu
+{
+    if(IS_IPHONE)
     {
-        
-    }];
-    
+        [self showMenuiPhone];
+    }
+    else
+    {
+        [self showMenuiPad];
+    }
 }
 
 - (void) closeMenuWithAnimation:(BOOL) inAnimate

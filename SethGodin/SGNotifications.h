@@ -39,6 +39,16 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
 + (void) postShareCountUpdated:(SGBlogEntry*) inBlogEntry;
 
 /**
+ Post that the menu button has been selected
+ */
++ (void) postMenuSelectedNotification;
+
+/**
+ Observe that the menu button has been selected
+ */
++ (id) observeMenuSelectedNotification:(NotificationBlock) inBlock;
+
+/**
  Observe that a share count has been updated
  */
 + (id) observeShareCountUpdated:(NotificationBlock) inBlock;

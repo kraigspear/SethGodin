@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrc-Lz-RxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2021" y="465"/>
+            <point key="canvasLocation" x="2175" y="163"/>
         </scene>
         <!--Book Purchase View Controller-->
         <scene sceneID="k2F-CN-U4x">
@@ -591,7 +591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Fs-dD-otW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1426" y="1203"/>
+            <point key="canvasLocation" x="1766" y="1469"/>
         </scene>
         <!--Updrade View Controller-->
         <scene sceneID="mN5-TD-ubT">

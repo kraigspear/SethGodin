@@ -18,6 +18,7 @@ NSString * const NOTIFICATION_BUSY                = @"busy";
 NSString * const NOTIFICATION_ERROR               = @"errorOccured";
 NSString * const NOTIFICATION_SHARE_COUNT_UPDATED = @"shareCountUpdated";
 NSString * const NOTIFICATION_BLOG_ENTRY_SELECTED = @"blogEntrySelected";
+NSString * const NOTIFICATION_MENU_SELECTED       = @"menuSelected";
 
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 {
@@ -31,6 +32,12 @@ NSString * const NOTIFICATION_BLOG_ENTRY_SELECTED = @"blogEntrySelected";
     
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
+
++ (void) postMenuSelectedNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_SELECTED object:nil];
+}
+
 
 + (void) postBlogEntrySelected:(SGBlogEntry*) inBlogEntry
 {
@@ -71,6 +78,10 @@ NSString * const NOTIFICATION_BLOG_ENTRY_SELECTED = @"blogEntrySelected";
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
 
++ (id) observeMenuSelectedNotification:(NotificationBlock) inBlock
+{
+    return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_MENU_SELECTED object:nil queue:nil usingBlock:inBlock];
+}
 
 + (id) observeBlogEntrySelectedNotification:(NotificationBlock) inBlock
 {
