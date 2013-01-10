@@ -14,6 +14,7 @@
 + (UIColor*) colorWithHexString:(NSString *)stringToConvert;
 + (UIColor*) titlebarBackgroundColor;
 + (UIColor*) tableCellBackgroundColor;
++ (UIColor*) menuBackgroundColor;
 
 + (UIColor*) blogEntryTitleBackgroundColor;
 + (UIColor*) titlebarTextColor;

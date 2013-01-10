@@ -52,6 +52,11 @@
 	return [UIColor colorWithRGBHex:hexNum];
 }
 
++ (UIColor*) menuBackgroundColor
+{
+    return [UIColor colorWithRed:0.980 green:0.851 blue:0.118 alpha:1];
+}
+
 + (UIColor *)colorWithRGBHex:(UInt32)hex
 {
 	int r = (hex >> 16) & 0xFF;

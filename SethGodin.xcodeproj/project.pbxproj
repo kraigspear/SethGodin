@@ -134,6 +134,7 @@
 		A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F944311699C70800BBB6BE /* BlogEntryCell.xib */; };
 		A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */; };
 		A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94439169AD7B000BBB6BE /* SGMainViewController.m */; };
+		A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,6 +383,8 @@
 		A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryCell.m; sourceTree = "<group>"; };
 		A9F94438169AD7B000BBB6BE /* SGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMainViewController.h; sourceTree = "<group>"; };
 		A9F94439169AD7B000BBB6BE /* SGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMainViewController.m; sourceTree = "<group>"; };
+		A9F94444169EB84300BBB6BE /* SGMenuController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMenuController_iPad.h; sourceTree = "<group>"; };
+		A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMenuController_iPad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -936,6 +939,8 @@
 			children = (
 				A9F94438169AD7B000BBB6BE /* SGMainViewController.h */,
 				A9F94439169AD7B000BBB6BE /* SGMainViewController.m */,
+				A9F94444169EB84300BBB6BE /* SGMenuController_iPad.h */,
+				A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -1133,6 +1138,7 @@
 				A9754D16169592E6009E1D1F /* SGFavoritesCoreData.m in Sources */,
 				A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */,
 				A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */,
+				A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
