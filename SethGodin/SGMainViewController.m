@@ -9,6 +9,9 @@
 #import "SGMainViewController.h"
 #import "SGBlogEntriesViewController.h"
 #import "SGBlogEntryViewController.h"
+#import "SGMenuController_iPad.h"
+
+#define MENU_HEIGHT 225
 
 @interface SGMainViewController ()
 
@@ -17,12 +20,14 @@
 @implementation SGMainViewController
 {
 @private
-    __weak UIViewController          *_menuController;
+    __weak SGMenuController_iPad     *_menuController;
     __weak UIViewController          *_blogEntriesViewController;
     __weak SGBlogEntryViewController *_blogEntryViewController;
     
     NSLayoutConstraint               *_bogEntryTopConstraintNoMenu;
     NSLayoutConstraint               *_blogEntryTopConstraitWithMenu;
+    
+    NSLayoutConstraint               *_menuTopConstraint;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -188,19 +193,28 @@
 
 - (void) showMenu
 {
-    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"menu"];
+    SGMenuController_iPad *vc = (SGMenuController_iPad*) [self.storyboard instantiateViewControllerWithIdentifier:@"menu"];
+    
     _menuController = vc;
+    
+    _menuController.closeSelected = ^
+    {
+        [self hideMenu];
+    };
     
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
     
     [self setupMenuViewConstraints];
+    [self.view layoutIfNeeded];
     
-   // [UIView animateWithDuration:1 animations:^
-  //  {
+    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseOut animations:^
+    {
+        _menuTopConstraint.constant = 0;
         [self.view layoutIfNeeded];
-   // }];
-    
+    }
+    completion:nil];
 }
 
 - (void) setupMenuViewConstraints
@@ -216,14 +230,14 @@
     
     NSAssert(_blogEntryViewController != nil, @"Can't setup the menu without BlogEntry, it's the parent");
     
-    NSLayoutConstraint *topConstraint =
+    _menuTopConstraint =
     [NSLayoutConstraint constraintWithItem:menuView
                         attribute:NSLayoutAttributeTop
                         relatedBy:NSLayoutRelationEqual
                         toItem:self.view
                         attribute:NSLayoutAttributeTop
                         multiplier:1
-                        constant:0];
+                        constant:-MENU_HEIGHT];
     
     NSLayoutConstraint *leadingConstraint =
     [NSLayoutConstraint constraintWithItem:menuView
@@ -244,7 +258,7 @@
                                   constant:0];
     
     NSLayoutConstraint *heightConstraint =
-    [NSLayoutConstraint constraintWithItem:menuView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:225];
+    [NSLayoutConstraint constraintWithItem:menuView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:MENU_HEIGHT];
     
     //Constriant to move down the blog entry view. The menu now becomes the top view.
     _blogEntryTopConstraitWithMenu =
@@ -260,18 +274,28 @@
     
     [self.view removeConstraint:_bogEntryTopConstraintNoMenu];
     
-    [self.view addConstraints:@[topConstraint, heightConstraint, leadingConstraint, trailingConstraint, _blogEntryTopConstraitWithMenu]];
+    [self.view addConstraints:@[_menuTopConstraint, heightConstraint, leadingConstraint, trailingConstraint, _blogEntryTopConstraitWithMenu]];
     
 }
 
 - (void) hideMenu
 {
-    [self.view removeConstraint:_blogEntryTopConstraitWithMenu];
-    [self.view addConstraint:_bogEntryTopConstraintNoMenu];
-    [_menuController.view removeFromSuperview];
-    [_menuController removeFromParentViewController];
-    _menuController = nil;
-    [self.view layoutIfNeeded];
+    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseOut animations:^
+     {
+         _menuTopConstraint.constant = -MENU_HEIGHT;
+         [self.view layoutIfNeeded];
+     }
+     completion:^(BOOL success)
+     {
+         [self.view removeConstraint:_blogEntryTopConstraitWithMenu];
+         [self.view addConstraint:_bogEntryTopConstraintNoMenu];
+         _menuController.closeSelected = nil;
+         [_menuController.view removeFromSuperview];
+         [_menuController removeFromParentViewController];
+         _menuController = nil;
+         [self.view layoutIfNeeded];
+     }];
 }
 
 

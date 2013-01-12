@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BlockTypes.h"
 
 @interface SGMenuController_iPad : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
+
+@property (nonatomic, copy) SWBasicBlock closeSelected;
 
 @end

@@ -40,6 +40,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="closeAction:" destination="orR-Ym-e3c" eventType="touchUpInside" id="BKA-g3-igr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.85098039215686272" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>

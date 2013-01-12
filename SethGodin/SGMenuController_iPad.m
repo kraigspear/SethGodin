@@ -248,6 +248,14 @@
 #pragma mark -
 #pragma mark actions
 
+- (IBAction)closeAction:(id)sender
+{
+    if(self.closeSelected)
+    {
+        self.closeSelected();
+    }
+}
+
 - (void) latestAction:(id) sender
 {
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsCurrent];
