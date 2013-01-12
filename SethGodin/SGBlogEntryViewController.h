@@ -46,9 +46,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *blogTitleLabel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelHeightConstraint;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleViewHeightConstraint;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLableToTopViewConstraint;
 
 @end

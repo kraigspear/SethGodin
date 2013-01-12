@@ -25,6 +25,7 @@
     __weak UIButton *_archiveButton;
     __weak UIButton *_favoritesButton;
     __weak UIButton *_booksButton;
+    NSArray *_buttons;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -183,6 +184,8 @@
     
     [self.view addConstraints:@[leadingConstraint, topConstraint,  heightConstriant]];
     
+    _buttons = @[_latestButton, _favoritesButton, _booksButton, _archiveButton];
+    
 }
 
 - (UIButton*) newButtonWithTitle:(NSString*) inTitle action:(SEL) inAction
@@ -258,21 +261,35 @@
     [self.delegate latestSelected:self];
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsCurrent];
     [SGNotifications postFeedSelection:feedSelection];
+    [self updateButtonTextColorForUnselected];
 }
 
 - (void) archiveAction:(id) sender
 {
     [self.delegate archiveSelected:self];
+    [self updateButtonTextColorForUnselected];
+    _archiveButton.titleLabel.textColor = [UIColor textColorSelected];
 }
 
 - (void) favoriatesAction:(id) sender
 {
-    
+    SGFeedSelection *feedSelection = [SGFeedSelection selectionAsFavorites];
+    [SGNotifications postFeedSelection:feedSelection];
+    [self updateButtonTextColorForUnselected];
+    _favoritesButton.titleLabel.textColor = [UIColor textColorSelected];
 }
 
 - (void) booksButton:(id) sender
 {
     
+}
+
+- (void) updateButtonTextColorForUnselected
+{
+    for(UIButton *button in _buttons)
+    {
+        button.titleLabel.textColor = [UIColor titlebarTextColor];
+    }
 }
 
 @end

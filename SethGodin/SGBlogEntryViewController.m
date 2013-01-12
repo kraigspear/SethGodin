@@ -74,38 +74,71 @@
     [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
     [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];
     
-    [self updateButtonSelected];
+
     
+    if(IS_IPHONE)
+    {
+        [self updateTitleForBlogEntry];
+        self.titleLableToTopViewConstraint.constant = -10;
+    }
+    else
+    {
+        self.titleLableToTopViewConstraint.constant = -50;
+    }
+    
+}
+
+- (void) updateTitleForBlogEntry
+{
+    CGSize size = CGSizeMake(290, 1000);
+    
+    CGFloat fontSize = IS_IPAD ? 35 : 24;
+    
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
+    self.blogTitleLabel.font = font;
+    
+    NSString *titleText = self.blogEntry.title;
+    self.blogTitleLabel.text = titleText;
+    CGSize labelSize = [titleText sizeWithFont:font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
+    
+    CGFloat height = labelSize.height + 50;
+    
+    NSLog(@"height = %f", height);
+    
+    self.titleViewHeightConstraint.constant = height;
+    
+    [self updateButtonSelected];
+
+}
+
+- (void) setBlogEntry:(SGBlogEntry *) toEntry
+{
+    _blogEntry = toEntry;
+    [self updateTitleForBlogEntry];
 }
 
 - (void) updateButtonSelected
 {
-//    [SGFavoritesCoreData isBlogItemFavorite:self.blogEntry success:^(BOOL isFavorite)
-//    {
-//        self.favoritesButton.selected = isFavorite;
-//    }];
+   [SGFavoritesCoreData isBlogItemFavorite:self.blogEntry success:^(BOOL isFavorite)
+   {
+        self.favoritesButton.selected = isFavorite;
+   }];
 }
 
 - (void) viewDidLayoutSubviews
 {
     if(IS_IPHONE)
     {
-        //self.titleView.backgroundColor = [UIColor colorWithPatternImage:[self titleImageiPhone]];
+        self.titleView.backgroundColor = [UIColor tableCellBackgroundColor];
     }
     else
     {
-        //self.titleView.backgroundColor = [UIColor colorWithPatternImage:[self titleImageiPad]];
+        self.titleView.backgroundColor = [UIColor blackColor];
     }
     
-    self.blogTitleLabel.text = self.blogEntry.title;
+   
 
-    CGSize size = CGSizeMake(self.blogTitleLabel.frame.size.width, 1000);
-    size = [self.blogTitleLabel sizeThatFits:size];
-    
-    size.height += 25;
-    
-    self.titleLabelHeightConstraint.constant = size.height;
-    self.titleViewHeightConstraint.constant  = size.height + 25;
+   
     
     NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
                                    "<head> <meta charset='utf-8'> \n"
@@ -121,80 +154,6 @@
     [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
     
     [self.view layoutIfNeeded];
-}
-
-- (UIImage*) titleImageiPad
-{
-    return [UIImage imageForSize:self.titleView.frame.size withDrawingBlock:^
-            {
-                //// Color Declarations
-                
-                SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
-                //// Abstracted Attributes
-                NSString* titleTextContent = self.blogEntry.title;
-                NSString* dateTextContent =  [appDelegate.dateFormatterLongStyle stringFromDate:self.blogEntry.datePublished];
-                
-                
-                //// backRect Drawing
-                UIBezierPath* backRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 132)];
-                [[UIColor blackColor] setFill];
-                [backRectPath fill];
-                
-                
-                //// titleText Drawing
-                CGRect titleTextRect = CGRectMake(16, 10, self.view.frame.size.width, 84);
-                [[UIColor whiteColor] setFill];
-                
-                CGRect smallerRect = CGRectInset(titleTextRect, 0, 5);
-                UIFont *drawWithFont = [titleTextContent fontThatWillFitUsingFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 21.5] insideRect:smallerRect];
-                
-                
-                [titleTextContent drawInRect: titleTextRect withFont: drawWithFont lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
-                
-                
-                //// dateText Drawing
-                CGRect dateTextRect = CGRectMake(17, 100, 222, 35);
-                [[UIColor whiteColor] setFill];
-                [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 15] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
-            }];
-
-}
-
-- (UIImage*) titleImageiPhone
-{
- 
-    return [UIImage imageForSize:self.titleView.frame.size withDrawingBlock:^
-    {
-        //// Color Declarations
-        
-        SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
-        //// Abstracted Attributes
-        NSString* titleTextContent = self.blogEntry.title;
-        NSString* dateTextContent =  [appDelegate.dateFormatterLongStyle stringFromDate:self.blogEntry.datePublished];
-        
-        
-        //// backRect Drawing
-        UIBezierPath* backRectPath = [UIBezierPath bezierPathWithRect: CGRectMake(0, 0, 320, 132)];
-        [[UIColor tableCellBackgroundColor] setFill];
-        [backRectPath fill];
-        
-        
-        //// titleText Drawing
-        CGRect titleTextRect = CGRectMake(16, 10, 282, 84);
-        [[UIColor whiteColor] setFill];
-        
-        CGRect smallerRect = CGRectInset(titleTextRect, 0, 5);
-        UIFont *drawWithFont = [titleTextContent fontThatWillFitUsingFont:[UIFont fontWithName: @"HelveticaNeue-Bold" size: 21.5] insideRect:smallerRect];
-        
-        
-        [titleTextContent drawInRect: titleTextRect withFont: drawWithFont lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
-        
-        
-        //// dateText Drawing
-        CGRect dateTextRect = CGRectMake(17, 100, 222, 35);
-        [[UIColor whiteColor] setFill];
-        [dateTextContent drawInRect: dateTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 15] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentLeft ];
-    }];
 }
 
 #pragma mark -
