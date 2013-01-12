@@ -297,9 +297,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) showMenu
 {
-    
-    
-    
     if(IS_IPHONE)
     {
         [self showMenuiPhone];
@@ -460,13 +457,16 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     [self.tableView reloadData];
     
-    if(_blogItems.count >= 1)
+    if(IS_IPAD)
     {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        
-        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
-        
-        [self updateDetailForItemAtRow:0];
+        if(_blogItems.count >= 1)
+        {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            
+            [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+            
+            [self updateDetailForItemAtRow:0];
+        }
     }
     
     [self stopLoadingAnimation];
