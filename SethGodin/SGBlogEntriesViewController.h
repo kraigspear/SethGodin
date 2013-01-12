@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BlockTypes.h"
 
 /**
  Shows a list of BlogEntries
@@ -30,6 +30,7 @@
 
 @property (nonatomic, assign) BOOL isNetworkingAvailable;
 
+@property (nonatomic, copy) SWBasicBlock menuSelected;
 
 
 @end

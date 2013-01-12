@@ -15,13 +15,15 @@
 
 @end
 
-#define BUTTON_WIDTH .45f
+#define BUTTON_WIDTH .35f
 #define BUTTON_HEIGHT .30f
 
 @implementation SGMenuController_iPad
 {
-    UIButton *latestButton;
-    UIButton *archiveButton;
+    __weak UIButton *_latestButton;
+    __weak UIButton *_archiveButton;
+    __weak UIButton *_favoritesButton;
+    __weak UIButton *_booksButton;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,14 +41,8 @@
 	self.view.backgroundColor = [UIColor menuBackgroundColor];
 
     //--  Latest
-    latestButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [latestButton setTitle:@"Latest" forState:UIControlStateNormal];
-    [self setButtonTextAttributes:latestButton];
-    latestButton.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [latestButton addTarget:self action:@selector(latestAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:latestButton];
+    UIButton *latestButton = [self newButtonWithTitle:@"Latest" action:@selector(latestAction:)];
+    _latestButton = latestButton;
     //--
     
     NSLayoutConstraint *topConstraint =
@@ -66,22 +62,19 @@
      relatedBy:NSLayoutRelationEqual
      toItem:self.view
      attribute:NSLayoutAttributeLeading
-     multiplier:1.0f
-     constant:20.0f];
+     multiplier:1
+     constant:20];
     
     NSLayoutConstraint *widthConstraint = [self widthConstriant:latestButton];
     NSLayoutConstraint *heightConstriant = [self heightConstriant:latestButton];
     
+    NSLayoutConstraint *trailingConstraint;
+    
     [self.view addConstraints:@[topConstraint, leadingConstraint, widthConstraint, heightConstriant]];
     
     //Archive button
-    
-    //--  Archives
-    archiveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [archiveButton setTitle:@"Archives" forState:UIControlStateNormal];
-    archiveButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self setButtonTextAttributes:archiveButton];
-    [self.view addSubview:archiveButton];
+    UIButton *archiveButton = [self newButtonWithTitle:@"Archives" action:@selector(archiveAction:)];
+    _archiveButton = archiveButton;
     
     topConstraint =
 	[NSLayoutConstraint
@@ -93,6 +86,16 @@
      multiplier:1.0f
      constant:0.0f];
     
+     trailingConstraint =
+      [NSLayoutConstraint
+      constraintWithItem:archiveButton
+      attribute:NSLayoutAttributeTrailing
+      relatedBy:NSLayoutRelationEqual
+      toItem:self.view
+      attribute:NSLayoutAttributeTrailing
+      multiplier:1
+      constant:-20];
+    
     leadingConstraint =
     [NSLayoutConstraint
      constraintWithItem:archiveButton
@@ -101,16 +104,127 @@
      toItem:latestButton
      attribute:NSLayoutAttributeTrailing
      multiplier:1.0f
-     constant:5.0f];
-    
-    widthConstraint = [self widthConstriant:archiveButton];
-    heightConstriant = [self heightConstriant:archiveButton];
-    
-    [self.view addConstraints:@[topConstraint, leadingConstraint, widthConstraint, heightConstriant]];
-    
-    //--
+     constant:20.0f];
     
     
+    widthConstraint = [NSLayoutConstraint
+                       constraintWithItem:archiveButton
+                       attribute:NSLayoutAttributeWidth
+                       relatedBy:NSLayoutRelationEqual
+                       toItem:latestButton
+                       attribute:NSLayoutAttributeWidth
+                       multiplier:1.0f
+                       constant:0.0f];
+    
+    
+    heightConstriant =
+    [NSLayoutConstraint
+     constraintWithItem:archiveButton
+     attribute:NSLayoutAttributeHeight
+     relatedBy:NSLayoutRelationEqual
+     toItem:latestButton
+     attribute:NSLayoutAttributeHeight
+     multiplier:1.0f
+     constant:0.0f];
+    
+    [self.view addConstraints:@[topConstraint, trailingConstraint, widthConstraint, heightConstriant]];
+    
+    //--favoritesButton
+    
+    UIButton *favoritesButton = [self newButtonWithTitle:@"Favorites" action:@selector(favoriatesAction:)];
+    _favoritesButton = favoritesButton;
+    
+    leadingConstraint =
+     [NSLayoutConstraint constraintWithItem:favoritesButton
+                                 attribute:NSLayoutAttributeLeading
+                                 relatedBy:NSLayoutRelationEqual
+                                 toItem:latestButton
+                                 attribute:NSLayoutAttributeLeading
+                                 multiplier:1
+                                 constant:0];
+    
+    topConstraint = [NSLayoutConstraint constraintWithItem:favoritesButton
+                                                 attribute:NSLayoutAttributeTop
+                                                 relatedBy:NSLayoutRelationEqual
+                                                    toItem:latestButton
+                                                 attribute:NSLayoutAttributeBottom
+                                                multiplier:1
+                                                  constant:5];
+    
+    heightConstriant = [NSLayoutConstraint constraintWithItem:favoritesButton
+                                                    attribute:NSLayoutAttributeHeight
+                                                    relatedBy:NSLayoutRelationEqual
+                                                       toItem:latestButton
+                                                    attribute:NSLayoutAttributeHeight
+                                                   multiplier:1
+                                                     constant:0];
+    
+    widthConstraint = [NSLayoutConstraint constraintWithItem:favoritesButton
+                                                    attribute:NSLayoutAttributeWidth
+                                                    relatedBy:NSLayoutRelationEqual
+                                                       toItem:latestButton
+                                                    attribute:NSLayoutAttributeWidth
+                                                   multiplier:1
+                                                     constant:0];
+
+    [self.view addConstraints:@[leadingConstraint, topConstraint, heightConstriant, widthConstraint]];
+    //-- books button
+    
+    UIButton *booksButton = [self newButtonWithTitle:@"Books" action:@selector(booksAction:)];
+    _booksButton = booksButton;
+    
+    leadingConstraint = [NSLayoutConstraint constraintWithItem:booksButton
+                                                     attribute:NSLayoutAttributeLeading
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:archiveButton
+                                                     attribute:NSLayoutAttributeLeading
+                                                    multiplier:1
+                                                      constant:0];
+    
+    topConstraint = [NSLayoutConstraint constraintWithItem:booksButton
+                                                 attribute:NSLayoutAttributeTop
+                                                 relatedBy:NSLayoutRelationEqual
+                                                    toItem:favoritesButton
+                                                 attribute:NSLayoutAttributeTop
+                                                multiplier:1
+                                                  constant:0];
+    
+    
+    widthConstraint = [NSLayoutConstraint constraintWithItem:booksButton
+                                                   attribute:NSLayoutAttributeWidth
+                                                   relatedBy:NSLayoutRelationEqual
+                                                      toItem:archiveButton
+                                                   attribute:NSLayoutAttributeWidth
+                                                  multiplier:1
+                                                    constant:0];
+    
+    heightConstriant = [NSLayoutConstraint constraintWithItem:booksButton
+                                                    attribute:NSLayoutAttributeHeight
+                                                    relatedBy:NSLayoutRelationEqual
+                                                       toItem:archiveButton
+                                                    attribute:NSLayoutAttributeHeight
+                                                   multiplier:1
+                                                     constant:0];
+    
+    [self.view addConstraints:@[leadingConstraint, topConstraint, widthConstraint, heightConstriant]];
+    
+}
+
+- (UIButton*) newButtonWithTitle:(NSString*) inTitle action:(SEL) inAction
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [button setTitle:inTitle forState:UIControlStateNormal];
+    [self setButtonTextAttributes:button];
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    //button.backgroundColor = [UIColor redColor];
+    
+    [button addTarget:self action:inAction forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:button];
+    
+    return button;
 }
 
 - (void) setButtonTextAttributes:(UIButton*) inButton
@@ -163,6 +277,21 @@
 {
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsCurrent];
     [SGNotifications postFeedSelection:feedSelection];
+}
+
+- (void) archiveAction:(id) sender
+{
+    [SGNotifications postArchiveSelected];
+}
+
+- (void) favoriatesAction:(id) sender
+{
+    
+}
+
+- (void) booksButton:(id) sender
+{
+    
 }
 
 @end

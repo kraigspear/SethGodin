@@ -233,6 +233,12 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (IBAction)menuAction:(id)sender
 {
+    
+    if(self.menuSelected)
+    {
+        self.menuSelected();
+    }
+    
     if(!self.searchTextField.hidden)
     {
         [self hideMessage];
@@ -274,13 +280,13 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     };
     
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-        {
-            menuView.frame = CGRectMake(0, 0, menuFrame.size.width, menuFrame.size.height);
-        }
+    {
+        menuView.frame = CGRectMake(0, 0, menuFrame.size.width, menuFrame.size.height);
+    }
     } completion:^(BOOL finished)
-     {
+    {
          
-     }];
+    }];
 
 }
 
@@ -291,6 +297,9 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) showMenu
 {
+    
+    
+    
     if(IS_IPHONE)
     {
         [self showMenuiPhone];

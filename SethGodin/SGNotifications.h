@@ -19,6 +19,7 @@ extern NSString * const NOTIFICATION_NETWORK_AVAILABLE;
 extern NSString * const NOTIFICATION_FAVORITES_UPDATED;
 extern NSString * const NOTIFICATION_BUSY;
 extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
+extern NSString * const NOTIFICATION_ARCHIVE_SELECTED;
 
 /**
  Post that a feed type was selected
@@ -39,6 +40,11 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
 + (void) postShareCountUpdated:(SGBlogEntry*) inBlogEntry;
 
 /**
+ Archive was selected, probably from a menu
+ */
++ (void) postArchiveSelected;
+
+/**
  Post that the menu button has been selected
  */
 + (void) postMenuSelectedNotification;
@@ -47,6 +53,12 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
  Observe that the menu button has been selected
  */
 + (id) observeMenuSelectedNotification:(NotificationBlock) inBlock;
+
+
+/**
+ Observe that we should go into Archive mode.
+ */
++ (id) observeArchiveNotification:(NotificationBlock) inBlock;
 
 /**
  Observe that a share count has been updated

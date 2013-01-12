@@ -10,7 +10,6 @@
 
 @interface SGMainViewController : UIViewController
 
-@property (weak, nonatomic) UIView *leftView;
-@property (weak, nonatomic) UIView *rightView;
+
 
 @end

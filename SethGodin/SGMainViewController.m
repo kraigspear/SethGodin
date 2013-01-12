@@ -7,12 +7,19 @@
 //
 
 #import "SGMainViewController.h"
+#import "SGBlogEntriesViewController.h"
 
 @interface SGMainViewController ()
 
 @end
 
 @implementation SGMainViewController
+{
+@private
+    __weak UIViewController *_menuController;
+    __weak UIViewController *_blogEntriesViewController;
+    __weak UIViewController *_blogEntryViewController;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,15 +46,18 @@
 {
     UIViewController *vc = [inBoard instantiateViewControllerWithIdentifier:@"blogEntry"];
     
-    self.rightView = vc.view;
+    _blogEntryViewController = vc;
+    
+    UIView *rightView = vc.view;
+    
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
-    [self.rightView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [rightView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     
     NSLayoutConstraint *topConstraint =
 	[NSLayoutConstraint
-     constraintWithItem:self.rightView
+     constraintWithItem:rightView
      attribute:NSLayoutAttributeTop
      relatedBy:NSLayoutRelationEqual
      toItem:self.view
@@ -57,7 +67,7 @@
     
     NSLayoutConstraint *bottomConstraint =
 	[NSLayoutConstraint
-     constraintWithItem:self.rightView
+     constraintWithItem:rightView
      attribute:NSLayoutAttributeBottom
      relatedBy:NSLayoutRelationEqual
      toItem:self.view
@@ -65,17 +75,19 @@
      multiplier:1.0f
      constant:0.0f];
     
+    NSAssert(_blogEntriesViewController != nil, @"BlogEntries should be setup before BlogEntry");
+    
     NSLayoutConstraint *leadingConstraint =
-    [NSLayoutConstraint constraintWithItem:self.rightView
+    [NSLayoutConstraint constraintWithItem:rightView
                                  attribute:NSLayoutAttributeLeading
                                  relatedBy:NSLayoutRelationEqual
-                                    toItem:self.leftView
+                                    toItem:_blogEntriesViewController.view
                                  attribute:NSLayoutAttributeTrailing
                                 multiplier:1.0f
                                   constant:0.0f];
     
     NSLayoutConstraint *trailingConstraint =
-    [NSLayoutConstraint constraintWithItem:self.rightView
+    [NSLayoutConstraint constraintWithItem:rightView
                                  attribute:NSLayoutAttributeTrailing
                                  relatedBy:NSLayoutRelationEqual
                                     toItem:self.view
@@ -91,17 +103,25 @@
 
 - (void) addBlogEntriesViewUsingStoryBoard:(UIStoryboard*) inBoard
 {
-    UIViewController *vc = [inBoard instantiateViewControllerWithIdentifier:@"blogEntries"];
+    SGBlogEntriesViewController *vc = (SGBlogEntriesViewController*) [inBoard instantiateViewControllerWithIdentifier:@"blogEntries"];
     
-    self.leftView = vc.view;
+    _blogEntriesViewController = vc;
+    
+    vc.menuSelected = ^
+    {
+        [self menuSelected];
+    };
+    
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
     
-    [self.leftView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    UIView *leftView = vc.view;
+    
+    [vc.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     NSLayoutConstraint *topConstraint =
 	[NSLayoutConstraint
-     constraintWithItem:self.leftView
+     constraintWithItem:leftView
      attribute:NSLayoutAttributeTop
      relatedBy:NSLayoutRelationEqual
      toItem:self.view
@@ -111,7 +131,7 @@
     
     NSLayoutConstraint *bottomConstraint =
 	[NSLayoutConstraint
-     constraintWithItem:self.leftView
+     constraintWithItem:leftView
      attribute:NSLayoutAttributeBottom
      relatedBy:NSLayoutRelationEqual
      toItem:self.view
@@ -121,7 +141,7 @@
     
     
     NSLayoutConstraint *widthConstraint =
-    [NSLayoutConstraint constraintWithItem:self.leftView
+    [NSLayoutConstraint constraintWithItem:leftView
                                  attribute:NSLayoutAttributeWidth
                                  relatedBy:NSLayoutRelationEqual
                                     toItem:nil
@@ -130,7 +150,7 @@
                                   constant:320.0f];
     
     NSLayoutConstraint *leadingConstraint =
-    [NSLayoutConstraint constraintWithItem:self.leftView
+    [NSLayoutConstraint constraintWithItem:leftView
                                  attribute:NSLayoutAttributeLeading
                                  relatedBy:NSLayoutRelationEqual
                                     toItem:self.view
@@ -141,10 +161,95 @@
     [self.view addConstraints:@[topConstraint, bottomConstraint, widthConstraint, leadingConstraint]];
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark -
+#pragma mark menu
+- (void) menuSelected
+{
+    if(_menuController)
+    {
+        [self hideMenu];
+    }
+    else
+    {
+        [self showMenu];
+    }
+}
+
+- (void) showMenu
+{
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"menu"];
+    _menuController = vc;
+    
+    [_blogEntryViewController addChildViewController:vc];
+    [_blogEntryViewController.view addSubview:vc.view];
+    
+    [self.view layoutIfNeeded];
+}
+
+- (void) setupMenuViewConstraints
+{
+    UIViewController *vc = _menuController;
+    
+    [vc.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    NSAssert(_blogEntryViewController != nil, @"Can't setup the menu without BlogEntry, it's the parent");
+    
+    UIView *rightView = _blogEntryViewController.view;
+    
+    NSLayoutConstraint *topConstraint =
+	[NSLayoutConstraint
+     constraintWithItem:vc.view
+     attribute:NSLayoutAttributeTop
+     relatedBy:NSLayoutRelationEqual
+     toItem:rightView
+     attribute:NSLayoutAttributeBottom
+     multiplier:1.0f
+     constant:50.0f];
+    
+    NSLayoutConstraint *heightConstraint =
+    [NSLayoutConstraint constraintWithItem:vc.view
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:nil
+                                 attribute:NSLayoutAttributeNotAnAttribute
+                                multiplier:1.0f
+                                  constant:200.0f];
+    
+    NSLayoutConstraint *leadingConstraint =
+    [NSLayoutConstraint constraintWithItem:vc.view
+                                 attribute:NSLayoutAttributeLeading
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:rightView
+                                 attribute:NSLayoutAttributeLeading
+                                multiplier:1.0f
+                                  constant:50.0f];
+    
+    NSLayoutConstraint *trailingConstraint =
+    [NSLayoutConstraint constraintWithItem:vc.view
+                                 attribute:NSLayoutAttributeTrailing
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:rightView
+                                 attribute:NSLayoutAttributeTrailing
+                                multiplier:1.0f
+                                  constant:10.0f];
+    
+    [self.view addConstraints:@[topConstraint, heightConstraint, leadingConstraint, trailingConstraint]];
+}
+
+- (void) hideMenu
+{
+    [_menuController.view removeFromSuperview];
+    [_menuController removeFromParentViewController];
+    _menuController = nil;
+}
+
+
 
 @end

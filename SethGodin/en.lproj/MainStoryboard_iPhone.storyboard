@@ -318,7 +318,7 @@
         <!--Archive Selection View Controller-->
         <scene sceneID="shM-1y-lcv">
             <objects>
-                <viewController id="WiB-db-0vb" customClass="SGArchiveSelectionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="archives" id="WiB-db-0vb" customClass="SGArchiveSelectionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ddi-ra-QsX">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
