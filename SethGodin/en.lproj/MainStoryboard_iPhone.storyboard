@@ -70,7 +70,7 @@
         <!--Book Purchase View Controller-->
         <scene sceneID="k2F-CN-U4x">
             <objects>
-                <viewController id="fMC-ex-EwJ" customClass="SGBookPurchaseViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="books" id="fMC-ex-EwJ" customClass="SGBookPurchaseViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OYd-go-EdC">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

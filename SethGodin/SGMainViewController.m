@@ -397,4 +397,30 @@
     return @[topConstraint, _upperViewLeadingConstriant, _upperViewTrailingConstraint, botomConstraint];
 }
 
+- (void) booksSelected:(id)sender
+{
+    UIViewController *booksViewController = [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"books"];
+    
+    _upperViewController = booksViewController;
+    UIView *booksView = booksViewController.view;
+    [self addChildViewController:booksViewController];
+    [self.view addSubview:booksView];
+    booksView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addConstraints:[self constraintsForUpperViewController:booksView]];
+    
+    [self.view layoutIfNeeded];
+    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseOut animations:^
+     {
+         _upperViewLeadingConstriant.constant = 0;
+         _upperViewTrailingConstraint.constant = 0;
+         [self.view layoutIfNeeded];
+     } completion:^(BOOL finished)
+     {
+         
+     }];
+
+}
+
 @end

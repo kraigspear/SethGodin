@@ -279,9 +279,9 @@
     _favoritesButton.titleLabel.textColor = [UIColor textColorSelected];
 }
 
-- (void) booksButton:(id) sender
+- (void) booksAction:(id) sender
 {
-    
+    [self.delegate booksSelected:self];
 }
 
 - (void) updateButtonTextColorForUnselected

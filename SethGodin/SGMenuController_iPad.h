@@ -11,9 +11,10 @@
 
 @protocol SGMenuController_iPadDelegate <NSObject>
 
-- (void) closeSelected:(id) sender;
+- (void) closeSelected:(id)   sender;
 - (void) archiveSelected:(id) sender;
-- (void) latestSelected:(id) sender;
+- (void) latestSelected:(id)  sender;
+- (void) booksSelected:(id)   sender;
 
 @end
 
