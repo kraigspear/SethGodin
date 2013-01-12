@@ -255,6 +255,7 @@
 
 - (void) latestAction:(id) sender
 {
+    [self.delegate latestSelected:self];
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsCurrent];
     [SGNotifications postFeedSelection:feedSelection];
 }

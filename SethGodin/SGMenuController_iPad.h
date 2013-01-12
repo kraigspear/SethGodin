@@ -13,6 +13,7 @@
 
 - (void) closeSelected:(id) sender;
 - (void) archiveSelected:(id) sender;
+- (void) latestSelected:(id) sender;
 
 @end
 

@@ -178,5 +178,4 @@ const NSUInteger MIN_YEAR = 2002;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
 @end

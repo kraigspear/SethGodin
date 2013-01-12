@@ -12,6 +12,7 @@
 
 
 #define MENU_HEIGHT 225
+#define LEFT_VIEW_WIDTH 320.0f
 
 @interface SGMainViewController ()
 
@@ -24,8 +25,13 @@
     __weak UIViewController          *_blogEntriesViewController;
     __weak SGBlogEntryViewController *_blogEntryViewController;
     
+    __weak UIViewController          *_upperViewController;
+    
     NSLayoutConstraint               *_bogEntryTopConstraintNoMenu;
     NSLayoutConstraint               *_blogEntryTopConstraitWithMenu;
+    
+    NSLayoutConstraint               *_upperViewLeadingConstriant;
+    NSLayoutConstraint               *_upperViewTrailingConstraint;
     
     NSLayoutConstraint               *_menuTopConstraint;
     
@@ -159,7 +165,7 @@
                                     toItem:nil
                                  attribute:NSLayoutAttributeNotAnAttribute
                                 multiplier:1.0f
-                                  constant:320.0f];
+                                  constant:LEFT_VIEW_WIDTH];
     
     NSLayoutConstraint *leadingConstraint =
     [NSLayoutConstraint constraintWithItem:leftView
@@ -279,6 +285,7 @@
 
 - (void) hideMenu
 {
+    [self hideLeftView];
     
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseOut animations:^
      {
@@ -296,6 +303,23 @@
      }];
 }
 
+- (void) hideLeftView
+{
+    if(_upperViewController)
+    {
+        [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseOut animations:^
+         {
+             _upperViewLeadingConstriant.constant = -LEFT_VIEW_WIDTH;
+             _upperViewTrailingConstraint.constant = -LEFT_VIEW_WIDTH;
+             [self.view layoutIfNeeded];
+         } completion:^(BOOL finished)
+         {
+             [_upperViewController.view removeFromSuperview];
+             [_upperViewController removeFromParentViewController];
+             _upperViewController = nil;
+         }];
+    }
+}
 
 #pragma mark -
 #pragma mark SGMenuController_iPadDelegate
@@ -305,32 +329,57 @@
     [self hideMenu];
 }
 
+- (void) latestSelected:(id)sender
+{
+    if(_upperViewController)
+    {
+        [_upperViewController.view removeFromSuperview];
+        [_upperViewController removeFromParentViewController];
+        _upperViewController = nil;
+    }
+}
+
 - (void) archiveSelected:(id) sender
 {
     
-    UIViewController *archiveViewController = [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"archives"];
+    UIViewController *archiveViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"archives"];
     
+    _upperViewController = archiveViewController;
     UIView *archiveView = archiveViewController.view;
     [self addChildViewController:archiveViewController];
     [self.view addSubview:archiveView];
     archiveView.translatesAutoresizingMaskIntoConstraints = NO;
     
+    [self.view addConstraints:[self constraintsForUpperViewController:archiveView]];
     
+    [self.view layoutIfNeeded];
+    
+    
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseOut animations:^
+    {
+        _upperViewLeadingConstriant.constant = 0;
+        _upperViewTrailingConstraint.constant = 0;
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished)
+    {
+        
+    }];
+}
+
+- (NSArray*) constraintsForUpperViewController:(UIView*) inView
+{
     NSLayoutConstraint *topConstraint =
-    [NSLayoutConstraint constraintWithItem:archiveView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    [NSLayoutConstraint constraintWithItem:inView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeTop multiplier:1 constant:0];
     
+    _upperViewLeadingConstriant =
+    [NSLayoutConstraint constraintWithItem:inView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeLeading multiplier:1 constant:-LEFT_VIEW_WIDTH];
     
-    NSLayoutConstraint *leadingConstraint =
-    [NSLayoutConstraint constraintWithItem:archiveView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    _upperViewTrailingConstraint =
+    [NSLayoutConstraint constraintWithItem:inView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:-LEFT_VIEW_WIDTH];
     
+    NSLayoutConstraint *botomConstraint = [NSLayoutConstraint constraintWithItem:inView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     
-    NSLayoutConstraint *trailingConstraint =
-    [NSLayoutConstraint constraintWithItem:archiveView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:0];
-    
-    NSLayoutConstraint *botomConstraint = [NSLayoutConstraint constraintWithItem:archiveView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-    
-    [self.view addConstraints:@[topConstraint, leadingConstraint, trailingConstraint, botomConstraint]];
-    
+    return @[topConstraint, _upperViewLeadingConstriant, _upperViewTrailingConstraint, botomConstraint];
 }
 
 @end
