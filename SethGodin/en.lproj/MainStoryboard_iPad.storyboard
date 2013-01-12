@@ -42,7 +42,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.85098039215686272" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="j8I-7S-6Cu" firstAttribute="centerY" secondItem="iEO-jz-qxo" secondAttribute="centerY" type="default" id="C8w-su-obD"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="F7k-gl-PRt"/>
@@ -60,6 +60,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="closeButton" destination="j8I-7S-6Cu" id="yJt-DH-UvN"/>
                         <outlet property="topView" destination="iEO-jz-qxo" id="mgr-x0-At5"/>
                     </connections>
                 </viewController>
@@ -68,20 +69,6 @@
             <point key="canvasLocation" x="175" y="-205"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SGMainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMainViewController.h"/>
-        </class>
-        <class className="SGMenuController_iPad" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMenuController_iPad.h"/>
-            <relationships>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

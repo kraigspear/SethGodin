@@ -10,6 +10,7 @@
 
 #import "UIColor+General.h"
 #import "SGNotifications.h"
+#import "UIImage+General.h"
 
 @interface SGMenuController_iPad ()
 
@@ -39,6 +40,7 @@
 {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor menuBackgroundColor];
+    [self.closeButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
 
     //--  Latest
     UIButton *latestButton = [self newButtonWithTitle:@"Latest" action:@selector(latestAction:)];
@@ -53,7 +55,7 @@
      toItem:self.topView
      attribute:NSLayoutAttributeBottom
      multiplier:1.0f
-     constant:0.0f];
+     constant:12.0f];
     
     NSLayoutConstraint *leadingConstraint =
 	[NSLayoutConstraint
@@ -106,17 +108,6 @@
      multiplier:1.0f
      constant:20.0f];
     
-    
-//    widthConstraint = [NSLayoutConstraint
-//                       constraintWithItem:archiveButton
-//                       attribute:NSLayoutAttributeWidth
-//                       relatedBy:NSLayoutRelationEqual
-//                       toItem:latestButton
-//                       attribute:NSLayoutAttributeWidth
-//                       multiplier:1.0f
-//                       constant:0.0f];
-    
-    
     heightConstriant =
     [NSLayoutConstraint
      constraintWithItem:archiveButton
@@ -159,14 +150,6 @@
                                                    multiplier:1
                                                      constant:0];
     
-//    widthConstraint = [NSLayoutConstraint constraintWithItem:favoritesButton
-//                                                    attribute:NSLayoutAttributeWidth
-//                                                    relatedBy:NSLayoutRelationEqual
-//                                                       toItem:latestButton
-//                                                    attribute:NSLayoutAttributeWidth
-//                                                   multiplier:1
-//                                                     constant:0];
-
     [self.view addConstraints:@[leadingConstraint, topConstraint, heightConstriant]];
     //-- books button
     
@@ -189,14 +172,6 @@
                                                 multiplier:1
                                                   constant:0];
     
-    
-//    widthConstraint = [NSLayoutConstraint constraintWithItem:booksButton
-//                                                   attribute:NSLayoutAttributeWidth
-//                                                   relatedBy:NSLayoutRelationEqual
-//                                                      toItem:archiveButton
-//                                                   attribute:NSLayoutAttributeWidth
-//                                                  multiplier:1
-//                                                    constant:0];
     
     heightConstriant = [NSLayoutConstraint constraintWithItem:booksButton
                                                     attribute:NSLayoutAttributeHeight

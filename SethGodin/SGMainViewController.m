@@ -209,8 +209,6 @@
     
     UIView *parentView     = _blogEntryViewController.view;
     
-    UIView *blogHeaderView = _blogEntryViewController.topView;
-    
     UIView *menuView   = vc.view;
     
     [menuView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -245,6 +243,9 @@
                                 multiplier:1
                                   constant:0];
     
+    NSLayoutConstraint *heightConstraint =
+    [NSLayoutConstraint constraintWithItem:menuView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:225];
+    
     //Constriant to move down the blog entry view. The menu now becomes the top view.
     _blogEntryTopConstraitWithMenu =
     [NSLayoutConstraint constraintWithItem:_blogEntryViewController.view
@@ -259,7 +260,7 @@
     
     [self.view removeConstraint:_bogEntryTopConstraintNoMenu];
     
-    [self.view addConstraints:@[topConstraint, leadingConstraint, trailingConstraint, _blogEntryTopConstraitWithMenu]];
+    [self.view addConstraints:@[topConstraint, heightConstraint, leadingConstraint, trailingConstraint, _blogEntryTopConstraitWithMenu]];
     
 }
 
