@@ -50,10 +50,10 @@
      constraintWithItem:latestButton
      attribute:NSLayoutAttributeTop
      relatedBy:NSLayoutRelationEqual
-     toItem:self.view
-     attribute:NSLayoutAttributeTop
+     toItem:self.topView
+     attribute:NSLayoutAttributeBottom
      multiplier:1.0f
-     constant:5.0f];
+     constant:0.0f];
     
     NSLayoutConstraint *leadingConstraint =
 	[NSLayoutConstraint
@@ -65,12 +65,12 @@
      multiplier:1
      constant:20];
     
-    NSLayoutConstraint *widthConstraint = [self widthConstriant:latestButton];
+   // NSLayoutConstraint *widthConstraint = [self widthConstriant:latestButton];
     NSLayoutConstraint *heightConstriant = [self heightConstriant:latestButton];
     
     NSLayoutConstraint *trailingConstraint;
     
-    [self.view addConstraints:@[topConstraint, leadingConstraint, widthConstraint, heightConstriant]];
+    [self.view addConstraints:@[topConstraint, leadingConstraint,  heightConstriant]];
     
     //Archive button
     UIButton *archiveButton = [self newButtonWithTitle:@"Archives" action:@selector(archiveAction:)];
@@ -107,14 +107,14 @@
      constant:20.0f];
     
     
-    widthConstraint = [NSLayoutConstraint
-                       constraintWithItem:archiveButton
-                       attribute:NSLayoutAttributeWidth
-                       relatedBy:NSLayoutRelationEqual
-                       toItem:latestButton
-                       attribute:NSLayoutAttributeWidth
-                       multiplier:1.0f
-                       constant:0.0f];
+//    widthConstraint = [NSLayoutConstraint
+//                       constraintWithItem:archiveButton
+//                       attribute:NSLayoutAttributeWidth
+//                       relatedBy:NSLayoutRelationEqual
+//                       toItem:latestButton
+//                       attribute:NSLayoutAttributeWidth
+//                       multiplier:1.0f
+//                       constant:0.0f];
     
     
     heightConstriant =
@@ -127,7 +127,7 @@
      multiplier:1.0f
      constant:0.0f];
     
-    [self.view addConstraints:@[topConstraint, trailingConstraint, widthConstraint, heightConstriant]];
+    [self.view addConstraints:@[topConstraint, trailingConstraint,  heightConstriant]];
     
     //--favoritesButton
     
@@ -159,15 +159,15 @@
                                                    multiplier:1
                                                      constant:0];
     
-    widthConstraint = [NSLayoutConstraint constraintWithItem:favoritesButton
-                                                    attribute:NSLayoutAttributeWidth
-                                                    relatedBy:NSLayoutRelationEqual
-                                                       toItem:latestButton
-                                                    attribute:NSLayoutAttributeWidth
-                                                   multiplier:1
-                                                     constant:0];
+//    widthConstraint = [NSLayoutConstraint constraintWithItem:favoritesButton
+//                                                    attribute:NSLayoutAttributeWidth
+//                                                    relatedBy:NSLayoutRelationEqual
+//                                                       toItem:latestButton
+//                                                    attribute:NSLayoutAttributeWidth
+//                                                   multiplier:1
+//                                                     constant:0];
 
-    [self.view addConstraints:@[leadingConstraint, topConstraint, heightConstriant, widthConstraint]];
+    [self.view addConstraints:@[leadingConstraint, topConstraint, heightConstriant]];
     //-- books button
     
     UIButton *booksButton = [self newButtonWithTitle:@"Books" action:@selector(booksAction:)];
@@ -190,13 +190,13 @@
                                                   constant:0];
     
     
-    widthConstraint = [NSLayoutConstraint constraintWithItem:booksButton
-                                                   attribute:NSLayoutAttributeWidth
-                                                   relatedBy:NSLayoutRelationEqual
-                                                      toItem:archiveButton
-                                                   attribute:NSLayoutAttributeWidth
-                                                  multiplier:1
-                                                    constant:0];
+//    widthConstraint = [NSLayoutConstraint constraintWithItem:booksButton
+//                                                   attribute:NSLayoutAttributeWidth
+//                                                   relatedBy:NSLayoutRelationEqual
+//                                                      toItem:archiveButton
+//                                                   attribute:NSLayoutAttributeWidth
+//                                                  multiplier:1
+//                                                    constant:0];
     
     heightConstriant = [NSLayoutConstraint constraintWithItem:booksButton
                                                     attribute:NSLayoutAttributeHeight
@@ -206,7 +206,7 @@
                                                    multiplier:1
                                                      constant:0];
     
-    [self.view addConstraints:@[leadingConstraint, topConstraint, widthConstraint, heightConstriant]];
+    [self.view addConstraints:@[leadingConstraint, topConstraint,  heightConstriant]];
     
 }
 

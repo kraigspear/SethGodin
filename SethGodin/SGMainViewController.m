@@ -8,6 +8,7 @@
 
 #import "SGMainViewController.h"
 #import "SGBlogEntriesViewController.h"
+#import "SGBlogEntryViewController.h"
 
 @interface SGMainViewController ()
 
@@ -16,9 +17,12 @@
 @implementation SGMainViewController
 {
 @private
-    __weak UIViewController *_menuController;
-    __weak UIViewController *_blogEntriesViewController;
-    __weak UIViewController *_blogEntryViewController;
+    __weak UIViewController          *_menuController;
+    __weak UIViewController          *_blogEntriesViewController;
+    __weak SGBlogEntryViewController *_blogEntryViewController;
+    
+    NSLayoutConstraint               *_bogEntryTopConstraintNoMenu;
+    NSLayoutConstraint               *_blogEntryTopConstraitWithMenu;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,7 +50,7 @@
 {
     UIViewController *vc = [inBoard instantiateViewControllerWithIdentifier:@"blogEntry"];
     
-    _blogEntryViewController = vc;
+    _blogEntryViewController = (SGBlogEntryViewController*) vc;
     
     UIView *rightView = vc.view;
     
@@ -55,7 +59,7 @@
     [rightView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     
-    NSLayoutConstraint *topConstraint =
+    _bogEntryTopConstraintNoMenu = 
 	[NSLayoutConstraint
      constraintWithItem:rightView
      attribute:NSLayoutAttributeTop
@@ -95,7 +99,7 @@
                                 multiplier:1.0f
                                   constant:0.0f];
     
-    [self.view addConstraints:@[topConstraint, bottomConstraint, leadingConstraint, trailingConstraint]];
+    [self.view addConstraints:@[_bogEntryTopConstraintNoMenu, bottomConstraint, leadingConstraint, trailingConstraint]];
     
     
     //SGBlogEntryViewController
@@ -187,67 +191,86 @@
     UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"menu"];
     _menuController = vc;
     
-    [_blogEntryViewController addChildViewController:vc];
-    [_blogEntryViewController.view addSubview:vc.view];
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
     
-    [self.view layoutIfNeeded];
+    [self setupMenuViewConstraints];
+    
+   // [UIView animateWithDuration:1 animations:^
+  //  {
+        [self.view layoutIfNeeded];
+   // }];
+    
 }
 
 - (void) setupMenuViewConstraints
 {
     UIViewController *vc = _menuController;
     
-    [vc.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    UIView *parentView     = _blogEntryViewController.view;
+    
+    UIView *blogHeaderView = _blogEntryViewController.topView;
+    
+    UIView *menuView   = vc.view;
+    
+    [menuView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [parentView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     NSAssert(_blogEntryViewController != nil, @"Can't setup the menu without BlogEntry, it's the parent");
     
-    UIView *rightView = _blogEntryViewController.view;
-    
     NSLayoutConstraint *topConstraint =
-	[NSLayoutConstraint
-     constraintWithItem:vc.view
-     attribute:NSLayoutAttributeTop
-     relatedBy:NSLayoutRelationEqual
-     toItem:rightView
-     attribute:NSLayoutAttributeBottom
-     multiplier:1.0f
-     constant:50.0f];
-    
-    NSLayoutConstraint *heightConstraint =
-    [NSLayoutConstraint constraintWithItem:vc.view
-                                 attribute:NSLayoutAttributeHeight
-                                 relatedBy:NSLayoutRelationEqual
-                                    toItem:nil
-                                 attribute:NSLayoutAttributeNotAnAttribute
-                                multiplier:1.0f
-                                  constant:200.0f];
+    [NSLayoutConstraint constraintWithItem:menuView
+                        attribute:NSLayoutAttributeTop
+                        relatedBy:NSLayoutRelationEqual
+                        toItem:self.view
+                        attribute:NSLayoutAttributeTop
+                        multiplier:1
+                        constant:0];
     
     NSLayoutConstraint *leadingConstraint =
-    [NSLayoutConstraint constraintWithItem:vc.view
+    [NSLayoutConstraint constraintWithItem:menuView
                                  attribute:NSLayoutAttributeLeading
                                  relatedBy:NSLayoutRelationEqual
-                                    toItem:rightView
-                                 attribute:NSLayoutAttributeLeading
-                                multiplier:1.0f
-                                  constant:50.0f];
+                                    toItem:_blogEntriesViewController.view
+                                 attribute:NSLayoutAttributeTrailing
+                                multiplier:1
+                                  constant:0];
     
     NSLayoutConstraint *trailingConstraint =
-    [NSLayoutConstraint constraintWithItem:vc.view
+    [NSLayoutConstraint constraintWithItem:menuView
                                  attribute:NSLayoutAttributeTrailing
                                  relatedBy:NSLayoutRelationEqual
-                                    toItem:rightView
+                                    toItem:self.view
                                  attribute:NSLayoutAttributeTrailing
-                                multiplier:1.0f
-                                  constant:10.0f];
+                                multiplier:1
+                                  constant:0];
     
-    [self.view addConstraints:@[topConstraint, heightConstraint, leadingConstraint, trailingConstraint]];
+    //Constriant to move down the blog entry view. The menu now becomes the top view.
+    _blogEntryTopConstraitWithMenu =
+    [NSLayoutConstraint constraintWithItem:_blogEntryViewController.view
+                                 attribute:NSLayoutAttributeTop
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:menuView
+                                 attribute:NSLayoutAttributeBottom
+                                multiplier:1
+                                  constant:0];
+    
+    
+    
+    [self.view removeConstraint:_bogEntryTopConstraintNoMenu];
+    
+    [self.view addConstraints:@[topConstraint, leadingConstraint, trailingConstraint, _blogEntryTopConstraitWithMenu]];
+    
 }
 
 - (void) hideMenu
 {
+    [self.view removeConstraint:_blogEntryTopConstraitWithMenu];
+    [self.view addConstraint:_bogEntryTopConstraintNoMenu];
     [_menuController.view removeFromSuperview];
     [_menuController removeFromParentViewController];
     _menuController = nil;
+    [self.view layoutIfNeeded];
 }
 
 

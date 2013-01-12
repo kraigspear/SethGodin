@@ -10,5 +10,6 @@
 
 @interface SGMenuController_iPad : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *topView;
 
 @end
