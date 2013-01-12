@@ -40,11 +40,6 @@ extern NSString * const NOTIFICATION_ARCHIVE_SELECTED;
 + (void) postShareCountUpdated:(SGBlogEntry*) inBlogEntry;
 
 /**
- Archive was selected, probably from a menu
- */
-+ (void) postArchiveSelected;
-
-/**
  Post that the menu button has been selected
  */
 + (void) postMenuSelectedNotification;
@@ -54,11 +49,6 @@ extern NSString * const NOTIFICATION_ARCHIVE_SELECTED;
  */
 + (id) observeMenuSelectedNotification:(NotificationBlock) inBlock;
 
-
-/**
- Observe that we should go into Archive mode.
- */
-+ (id) observeArchiveNotification:(NotificationBlock) inBlock;
 
 /**
  Observe that a share count has been updated

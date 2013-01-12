@@ -39,10 +39,6 @@ NSString * const NOTIFICATION_ARCHIVE_SELECTED     = @"archiveSelected";
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_SELECTED object:nil];
 }
 
-+ (void) postArchiveSelected
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ARCHIVE_SELECTED object:nil];
-}
 
 + (void) postBlogEntrySelected:(SGBlogEntry*) inBlogEntry
 {
@@ -86,11 +82,6 @@ NSString * const NOTIFICATION_ARCHIVE_SELECTED     = @"archiveSelected";
 + (id) observeMenuSelectedNotification:(NotificationBlock) inBlock
 {
     return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_MENU_SELECTED object:nil queue:nil usingBlock:inBlock];
-}
-
-+ (id) observeArchiveNotification:(NotificationBlock) inBlock
-{
-    return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_ARCHIVE_SELECTED object:nil queue:nil usingBlock:inBlock];
 }
 
 + (id) observeBlogEntrySelectedNotification:(NotificationBlock) inBlock

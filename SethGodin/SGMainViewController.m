@@ -9,6 +9,7 @@
 #import "SGMainViewController.h"
 #import "SGBlogEntriesViewController.h"
 #import "SGBlogEntryViewController.h"
+#import "SGNotifications.h"
 
 
 #define MENU_HEIGHT 225
@@ -37,6 +38,8 @@
     
     UIStoryboard                     *_iphoneStoryBoard;
     
+    id                               _feedSelectionNotification;
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,6 +60,15 @@
     
     [self addBlogEntriesView];
     [self addBlogEntryView];
+    
+    _feedSelectionNotification = [SGNotifications observeFeedSelectionWithNotification:^(NSNotification *notification)
+    {
+        SGFeedSelection *feedSelection = notification.object;
+        if(feedSelection.feedType == kArchive)
+        {
+            [self hideLeftView];
+        }
+    }];
     
 }
 
@@ -180,11 +192,14 @@
 }
 
 
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark -
 #pragma mark menu
