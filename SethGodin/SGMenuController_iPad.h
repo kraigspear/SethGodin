@@ -9,11 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "BlockTypes.h"
 
+@protocol SGMenuController_iPadDelegate <NSObject>
+
+- (void) closeSelected:(id) sender;
+- (void) archiveSelected:(id) sender;
+
+@end
+
 @interface SGMenuController_iPad : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
-@property (nonatomic, copy) SWBasicBlock closeSelected;
+@property (weak, nonatomic) id<SGMenuController_iPadDelegate> delegate;
 
 @end

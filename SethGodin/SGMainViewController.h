@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SGMenuController_iPad.h"
 
-@interface SGMainViewController : UIViewController
-
-
+@interface SGMainViewController : UIViewController<SGMenuController_iPadDelegate>
 
 @end

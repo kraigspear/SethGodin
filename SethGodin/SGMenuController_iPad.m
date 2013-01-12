@@ -250,10 +250,7 @@
 
 - (IBAction)closeAction:(id)sender
 {
-    if(self.closeSelected)
-    {
-        self.closeSelected();
-    }
+    [self.delegate closeSelected:self];
 }
 
 - (void) latestAction:(id) sender
@@ -264,7 +261,7 @@
 
 - (void) archiveAction:(id) sender
 {
-    [SGNotifications postArchiveSelected];
+    [self.delegate archiveSelected:self];
 }
 
 - (void) favoriatesAction:(id) sender

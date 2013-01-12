@@ -9,7 +9,7 @@
 #import "SGMainViewController.h"
 #import "SGBlogEntriesViewController.h"
 #import "SGBlogEntryViewController.h"
-#import "SGMenuController_iPad.h"
+
 
 #define MENU_HEIGHT 225
 
@@ -28,6 +28,9 @@
     NSLayoutConstraint               *_blogEntryTopConstraitWithMenu;
     
     NSLayoutConstraint               *_menuTopConstraint;
+    
+    UIStoryboard                     *_iphoneStoryBoard;
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -44,16 +47,16 @@
 {
     [super viewDidLoad];
 	
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    _iphoneStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
-    [self addBlogEntriesViewUsingStoryBoard:storyboard];
-    [self addBlogEntryViewUsingStoryBoard:storyboard];
+    [self addBlogEntriesView];
+    [self addBlogEntryView];
     
 }
 
-- (void) addBlogEntryViewUsingStoryBoard:(UIStoryboard*) inBoard
+- (void) addBlogEntryView
 {
-    UIViewController *vc = [inBoard instantiateViewControllerWithIdentifier:@"blogEntry"];
+    UIViewController *vc = [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"blogEntry"];
     
     _blogEntryViewController = (SGBlogEntryViewController*) vc;
     
@@ -110,9 +113,9 @@
     //SGBlogEntryViewController
 }
 
-- (void) addBlogEntriesViewUsingStoryBoard:(UIStoryboard*) inBoard
+- (void) addBlogEntriesView
 {
-    SGBlogEntriesViewController *vc = (SGBlogEntriesViewController*) [inBoard instantiateViewControllerWithIdentifier:@"blogEntries"];
+    SGBlogEntriesViewController *vc = (SGBlogEntriesViewController*) [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"blogEntries"];
     
     _blogEntriesViewController = vc;
     
@@ -196,11 +199,7 @@
     SGMenuController_iPad *vc = (SGMenuController_iPad*) [self.storyboard instantiateViewControllerWithIdentifier:@"menu"];
     
     _menuController = vc;
-    
-    _menuController.closeSelected = ^
-    {
-        [self hideMenu];
-    };
+    _menuController.delegate = self;
     
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
@@ -290,7 +289,6 @@
      {
          [self.view removeConstraint:_blogEntryTopConstraitWithMenu];
          [self.view addConstraint:_bogEntryTopConstraintNoMenu];
-         _menuController.closeSelected = nil;
          [_menuController.view removeFromSuperview];
          [_menuController removeFromParentViewController];
          _menuController = nil;
@@ -299,5 +297,40 @@
 }
 
 
+#pragma mark -
+#pragma mark SGMenuController_iPadDelegate
+
+- (void) closeSelected:(id)sender
+{
+    [self hideMenu];
+}
+
+- (void) archiveSelected:(id) sender
+{
+    
+    UIViewController *archiveViewController = [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"archives"];
+    
+    UIView *archiveView = archiveViewController.view;
+    [self addChildViewController:archiveViewController];
+    [self.view addSubview:archiveView];
+    archiveView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    
+    NSLayoutConstraint *topConstraint =
+    [NSLayoutConstraint constraintWithItem:archiveView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    
+    
+    NSLayoutConstraint *leadingConstraint =
+    [NSLayoutConstraint constraintWithItem:archiveView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    
+    
+    NSLayoutConstraint *trailingConstraint =
+    [NSLayoutConstraint constraintWithItem:archiveView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:0];
+    
+    NSLayoutConstraint *botomConstraint = [NSLayoutConstraint constraintWithItem:archiveView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_blogEntriesViewController.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    [self.view addConstraints:@[topConstraint, leadingConstraint, trailingConstraint, botomConstraint]];
+    
+}
 
 @end
