@@ -46,6 +46,7 @@
         Favorite *favorite = [Favorite MR_createInContext:localContext];
         favorite.content = inEntry.content;
         favorite.date = inEntry.datePublished;
+        favorite.dateAdded = [NSDate date];
         favorite.title = inEntry.title;
         favorite.favoriteID = inEntry.itemID;
         favorite.summary = inEntry.summary;

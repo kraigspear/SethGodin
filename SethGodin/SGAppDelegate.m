@@ -15,11 +15,13 @@
 #import "SGNotifications.h"
 #import "Favorite.h"
 #import "SGBlogEntry.h"
+#import "SWSplashWindow.h"
 
 @implementation SGAppDelegate
 {
 @private
     NSDateFormatter *_dateformatter;
+    SWSplashWindow  *_splashWindow;
 }
 
 - (NSDateFormatter*) dateFormatterLongStyle
@@ -39,7 +41,8 @@
     
     if([NSFileManager isICloudEnabled])
     {
-        
+        _splashWindow = [[SWSplashWindow alloc] init];
+        [_splashWindow showSplash];
         _isICloudSetup = YES;
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
@@ -50,6 +53,8 @@
                  [self willChangeValueForKey:@"isICloudSetup"];
                  _isICloudSetup = NO;
                  [self didChangeValueForKey:@"isICloudSetup"];
+                 
+                 [self hideSplash];
                  
                  int64_t delayInSeconds = 5.0;
                  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -143,6 +148,12 @@
     [MagicalRecord cleanUp];
 }
 
+
+- (void) hideSplash
+{
+    [_splashWindow hideSplash];
+    _splashWindow = nil;
+}
 
 
 @end

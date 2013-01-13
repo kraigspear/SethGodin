@@ -13,7 +13,8 @@
 @interface Favorite : NSManagedObject
 
 @property (nonatomic, retain) NSString * content;
-@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSDate   * date;
+@property (nonatomic, retain) NSDate   * dateAdded;
 @property (nonatomic, retain) NSString * favoriteID;
 @property (nonatomic, retain) NSString * summary;
 @property (nonatomic, retain) NSString * title;

@@ -49,6 +49,7 @@ NSString * const KEY_MOVED_TO_UIDOCUMENT = @"movedToUIDocument";
 
 - (BOOL) isUpgraded
 {
+    return NO;
 #ifdef DEV_BUILD
     return YES;
 #else

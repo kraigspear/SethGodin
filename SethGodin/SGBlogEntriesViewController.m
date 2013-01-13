@@ -151,24 +151,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
             [strongSelf loadLatestFeedData];
         }
     }];
-    
-    if([SGAppDelegate instance].isICloudSetup)
-    {
-        [[SGAppDelegate instance] addObserver:self forKeyPath:@"isICloudSetup" options:NSKeyValueObservingOptionNew context:nil];
-        
-        int64_t delayInSeconds = 2.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-        {
-            if([SGAppDelegate instance].isICloudSetup)
-            {
-                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                hud.labelText = @"1 time iCloud setup";
-            }
-        });
-        
-        
-    }
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
