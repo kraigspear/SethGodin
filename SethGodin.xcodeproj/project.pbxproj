@@ -93,13 +93,13 @@
 		A97E883E1658F83E00777A82 /* SGPurchaseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E883D1658F83D00777A82 /* SGPurchaseItem.m */; };
 		A97E88411659056D00777A82 /* SGPurchaseItemGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88401659056C00777A82 /* SGPurchaseItemGetter.m */; };
 		A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884316590C7200777A82 /* NSDictionary-Expanded.m */; };
-		A97E885216591C0100777A82 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884B16591C0100777A82 /* BlockActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
-		A97E885316591C0100777A82 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884D16591C0100777A82 /* BlockAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
-		A97E885416591C0100777A82 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884F16591C0100777A82 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
-		A97E885516591C0100777A82 /* BlockTextPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E885116591C0100777A82 /* BlockTextPromptAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
 		A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */; };
+		A9B53AD816A2D14A00E8DEF0 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B53AD116A2D14A00E8DEF0 /* BlockActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A9B53AD916A2D14A00E8DEF0 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B53AD316A2D14A00E8DEF0 /* BlockAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A9B53ADA16A2D14A00E8DEF0 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B53AD516A2D14A00E8DEF0 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A9B53ADB16A2D14A00E8DEF0 /* BlockTextPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B53AD716A2D14A00E8DEF0 /* BlockTextPromptAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -308,20 +308,20 @@
 		A97E88401659056C00777A82 /* SGPurchaseItemGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPurchaseItemGetter.m; sourceTree = "<group>"; };
 		A97E884216590C7200777A82 /* NSDictionary-Expanded.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary-Expanded.h"; sourceTree = "<group>"; };
 		A97E884316590C7200777A82 /* NSDictionary-Expanded.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary-Expanded.m"; sourceTree = "<group>"; };
-		A97E884A16591C0100777A82 /* BlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActionSheet.h; sourceTree = "<group>"; };
-		A97E884B16591C0100777A82 /* BlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActionSheet.m; sourceTree = "<group>"; };
-		A97E884C16591C0100777A82 /* BlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAlertView.h; sourceTree = "<group>"; };
-		A97E884D16591C0100777A82 /* BlockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockAlertView.m; sourceTree = "<group>"; };
-		A97E884E16591C0100777A82 /* BlockBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockBackground.h; sourceTree = "<group>"; };
-		A97E884F16591C0100777A82 /* BlockBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockBackground.m; sourceTree = "<group>"; };
-		A97E885016591C0100777A82 /* BlockTextPromptAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTextPromptAlertView.h; sourceTree = "<group>"; };
-		A97E885116591C0100777A82 /* BlockTextPromptAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTextPromptAlertView.m; sourceTree = "<group>"; };
 		A97E885616591CAD00777A82 /* BlockUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockUI.h; sourceTree = "<group>"; };
 		A97E88571659212100777A82 /* SGBookCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBookCellView.h; sourceTree = "<group>"; };
 		A97E88581659212100777A82 /* SGBookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBookCellView.m; sourceTree = "<group>"; };
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
 		A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallspinner@2x.png"; sourceTree = "<group>"; };
+		A9B53AD016A2D14A00E8DEF0 /* BlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActionSheet.h; sourceTree = "<group>"; };
+		A9B53AD116A2D14A00E8DEF0 /* BlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActionSheet.m; sourceTree = "<group>"; };
+		A9B53AD216A2D14A00E8DEF0 /* BlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAlertView.h; sourceTree = "<group>"; };
+		A9B53AD316A2D14A00E8DEF0 /* BlockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockAlertView.m; sourceTree = "<group>"; };
+		A9B53AD416A2D14A00E8DEF0 /* BlockBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockBackground.h; sourceTree = "<group>"; };
+		A9B53AD516A2D14A00E8DEF0 /* BlockBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockBackground.m; sourceTree = "<group>"; };
+		A9B53AD616A2D14A00E8DEF0 /* BlockTextPromptAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTextPromptAlertView.h; sourceTree = "<group>"; };
+		A9B53AD716A2D14A00E8DEF0 /* BlockTextPromptAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTextPromptAlertView.m; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* Seth Godin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -707,17 +707,25 @@
 			isa = PBXGroup;
 			children = (
 				A97E885616591CAD00777A82 /* BlockUI.h */,
-				A97E884A16591C0100777A82 /* BlockActionSheet.h */,
-				A97E884B16591C0100777A82 /* BlockActionSheet.m */,
-				A97E884C16591C0100777A82 /* BlockAlertView.h */,
-				A97E884D16591C0100777A82 /* BlockAlertView.m */,
-				A97E884E16591C0100777A82 /* BlockBackground.h */,
-				A97E884F16591C0100777A82 /* BlockBackground.m */,
-				A97E885016591C0100777A82 /* BlockTextPromptAlertView.h */,
-				A97E885116591C0100777A82 /* BlockTextPromptAlertView.m */,
 			);
 			name = BlockAlerts;
 			path = ToAddToYourProjects;
+			sourceTree = "<group>";
+		};
+		A9B53ACF16A2D14A00E8DEF0 /* BlockAlertsActionSheets */ = {
+			isa = PBXGroup;
+			children = (
+				A9B53AD016A2D14A00E8DEF0 /* BlockActionSheet.h */,
+				A9B53AD116A2D14A00E8DEF0 /* BlockActionSheet.m */,
+				A9B53AD216A2D14A00E8DEF0 /* BlockAlertView.h */,
+				A9B53AD316A2D14A00E8DEF0 /* BlockAlertView.m */,
+				A9B53AD416A2D14A00E8DEF0 /* BlockBackground.h */,
+				A9B53AD516A2D14A00E8DEF0 /* BlockBackground.m */,
+				A9B53AD616A2D14A00E8DEF0 /* BlockTextPromptAlertView.h */,
+				A9B53AD716A2D14A00E8DEF0 /* BlockTextPromptAlertView.m */,
+			);
+			name = BlockAlertsActionSheets;
+			path = SethGodin/3rdparty/BlockAlertsActionSheets;
 			sourceTree = "<group>";
 		};
 		A9D684D8164CFE8D007A9ADA = {
@@ -808,6 +816,7 @@
 		A9D6850D164D005D007A9ADA /* 3RD Party */ = {
 			isa = PBXGroup;
 			children = (
+				A9B53ACF16A2D14A00E8DEF0 /* BlockAlertsActionSheets */,
 				A9754CBB16956EC0009E1D1F /* MagicalRecord */,
 				A933F833167962D2004FE120 /* Critterism */,
 				A93BA409165F89DD003AD9AA /* Flurry */,
@@ -1092,10 +1101,6 @@
 				A97E88311658441E00777A82 /* SGBookPurchaseViewController.m in Sources */,
 				A97E883E1658F83E00777A82 /* SGPurchaseItem.m in Sources */,
 				A97E88411659056D00777A82 /* SGPurchaseItemGetter.m in Sources */,
-				A97E885216591C0100777A82 /* BlockActionSheet.m in Sources */,
-				A97E885316591C0100777A82 /* BlockAlertView.m in Sources */,
-				A97E885416591C0100777A82 /* BlockBackground.m in Sources */,
-				A97E885516591C0100777A82 /* BlockTextPromptAlertView.m in Sources */,
 				A97E88591659212100777A82 /* SGBookCellView.m in Sources */,
 				A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */,
 				A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */,
@@ -1139,6 +1144,10 @@
 				A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */,
 				A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */,
 				A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */,
+				A9B53AD816A2D14A00E8DEF0 /* BlockActionSheet.m in Sources */,
+				A9B53AD916A2D14A00E8DEF0 /* BlockAlertView.m in Sources */,
+				A9B53ADA16A2D14A00E8DEF0 /* BlockBackground.m in Sources */,
+				A9B53ADB16A2D14A00E8DEF0 /* BlockTextPromptAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -57,12 +57,12 @@ static UIFont *buttonFont = nil;
         {
             CGSize size = [title sizeWithFont:titleFont
                             constrainedToSize:CGSizeMake(frame.size.width-kAlertViewBorder*2, 1000)
-                                lineBreakMode:NSLineBreakByWordWrapping];
+                                lineBreakMode:UILineBreakModeWordWrap];
 
             UILabel *labelView = [[UILabel alloc] initWithFrame:CGRectMake(kAlertViewBorder, _height, frame.size.width-kAlertViewBorder*2, size.height)];
             labelView.font = titleFont;
             labelView.numberOfLines = 0;
-            labelView.lineBreakMode = NSLineBreakByWordWrapping;
+            labelView.lineBreakMode = UILineBreakModeWordWrap;
             labelView.textColor = kAlertViewTitleTextColor;
             labelView.backgroundColor = [UIColor clearColor];
             labelView.textAlignment = UITextAlignmentCenter;
@@ -79,12 +79,12 @@ static UIFont *buttonFont = nil;
         {
             CGSize size = [message sizeWithFont:messageFont
                               constrainedToSize:CGSizeMake(frame.size.width-kAlertViewBorder*2, 1000)
-                                  lineBreakMode:NSLineBreakByWordWrapping];
+                                  lineBreakMode:UILineBreakModeWordWrap];
             
             UILabel *labelView = [[UILabel alloc] initWithFrame:CGRectMake(kAlertViewBorder, _height, frame.size.width-kAlertViewBorder*2, size.height)];
             labelView.font = messageFont;
             labelView.numberOfLines = 0;
-            labelView.lineBreakMode = NSLineBreakByWordWrapping;
+            labelView.lineBreakMode = UILineBreakModeWordWrap;
             labelView.textColor = kAlertViewMessageTextColor;
             labelView.backgroundColor = [UIColor clearColor];
             labelView.textAlignment = UITextAlignmentCenter;
