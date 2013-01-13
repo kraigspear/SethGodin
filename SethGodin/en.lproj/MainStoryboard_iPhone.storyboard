@@ -811,7 +811,7 @@
                                         </connections>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="iYW-2i-4Sh" secondAttribute="trailing" type="user" id="5L9-lk-7D2"/>
                                     <constraint firstItem="uD7-b4-vFW" firstAttribute="leading" secondItem="PCi-2L-PIS" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Aod-32-UUs"/>
@@ -832,7 +832,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ate-FO-2NX" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="DkN-M8-Ye6"/>
                             <constraint firstItem="ate-FO-2NX" firstAttribute="top" secondItem="jx5-Rh-jM4" secondAttribute="bottom" type="user" id="H8G-a1-szK"/>
@@ -849,6 +849,7 @@
                         <outlet property="searchButton" destination="PCi-2L-PIS" id="0jD-XI-G02"/>
                         <outlet property="searchTextField" destination="uD7-b4-vFW" id="IwP-Gd-zZh"/>
                         <outlet property="tableView" destination="ate-FO-2NX" id="Y7N-lf-Vhc"/>
+                        <outlet property="tableViewToTopViewConstraint" destination="H8G-a1-szK" id="ZeZ-RT-sby"/>
                         <outlet property="topView" destination="jx5-Rh-jM4" id="Ktf-nC-WO8"/>
                         <segue destination="ZDt-iZ-e0h" kind="push" identifier="viewPostSeque" id="Shn-S5-9I3"/>
                     </connections>
@@ -1050,13 +1051,13 @@
                 <relationship kind="outlet" name="searchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="searchTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tableViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="SGBlogEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
             <relationships>
-                <relationship kind="action" name="backAction:"/>
                 <relationship kind="action" name="favoritesAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
@@ -1073,7 +1074,6 @@
         <class className="SGBookPurchaseViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBookPurchaseViewController.h"/>
             <relationships>
-                <relationship kind="action" name="backAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
@@ -1099,7 +1099,6 @@
         <class className="SGSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="backAction:"/>
                 <relationship kind="action" name="useICloudAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
@@ -1109,9 +1108,6 @@
         <class className="SGUpdradeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpdradeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="alreadyUpgradedAction:"/>
-                <relationship kind="action" name="backAction:"/>
-                <relationship kind="action" name="upgradeAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
@@ -1121,7 +1117,6 @@
         <class className="SGUpgradedViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpgradedViewController.h"/>
             <relationships>
-                <relationship kind="action" name="thankYouAction:"/>
                 <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
             </relationships>
         </class>

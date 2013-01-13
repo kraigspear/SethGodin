@@ -104,8 +104,6 @@
     
     CGFloat height = labelSize.height + 50;
     
-    NSLog(@"height = %f", height);
-    
     self.titleViewHeightConstraint.constant = height;
     
     if(IS_IPAD)

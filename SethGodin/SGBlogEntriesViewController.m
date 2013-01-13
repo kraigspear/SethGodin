@@ -150,9 +150,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
             
             [strongSelf loadLatestFeedData];
         }
-        NSLog(@"status = %d", status);
     }];
-    
     
     if([SGAppDelegate instance].isICloudSetup)
     {
@@ -672,15 +670,28 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     CGSize size = [blogEntry.title sizeWithFont:_titleFont constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByWordWrapping];
     
-    CGFloat height = MAX(size.height, 44);
+    CGFloat height = MAX(size.height, 44) + 60;
     
-    return height + 60;
+    if(IS_IPAD && indexPath.row == 0)
+    {
+        height += 10;
+    }
+    
+    NSLog(@"height for row %d = %f", indexPath.row, height);
+    
+    return height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     SGBlogEntryCell *cell = (SGBlogEntryCell*) [tableView dequeueReusableCellWithIdentifier:BLOG_ENTRY_CELL forIndexPath:indexPath];
+    
+    
+    if(IS_IPAD && indexPath.row == 0)
+    {
+        cell.textToTopViewConstraint.constant = 10;
+    }
     
     cell.blogEntry = _blogItems[indexPath.row];
     

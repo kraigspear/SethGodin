@@ -32,5 +32,6 @@
 
 @property (nonatomic, copy) SWBasicBlock menuSelected;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewToTopViewConstraint;
 
 @end

@@ -346,12 +346,7 @@
 
 - (void) latestSelected:(id)sender
 {
-    if(_upperViewController)
-    {
-        [_upperViewController.view removeFromSuperview];
-        [_upperViewController removeFromParentViewController];
-        _upperViewController = nil;
-    }
+    [self hideLeftView];
 }
 
 - (void) archiveSelected:(id) sender
