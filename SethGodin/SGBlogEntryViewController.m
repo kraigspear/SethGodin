@@ -43,6 +43,7 @@
     }
     
     self.blogTitleLabel.textColor   = [UIColor titlebarTextColor];
+    self.dateLabel.textColor = [UIColor titlebarTextColor];
     self.titleView.backgroundColor = [UIColor blogEntryTitleBackgroundColor];
     
     if(IS_IPHONE)
@@ -106,6 +107,11 @@
     NSLog(@"height = %f", height);
     
     self.titleViewHeightConstraint.constant = height;
+    
+    if(IS_IPAD)
+    {
+        self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:_blogEntry.datePublished];
+    }
     
     [self updateButtonSelected];
 

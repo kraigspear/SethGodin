@@ -50,4 +50,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLableToTopViewConstraint;
 
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
 @end
