@@ -15,7 +15,7 @@
 
 + (NSArray*) allFavorites
 {
-    NSArray *favorites = [Favorite MR_findAll];
+    NSArray *favorites = [Favorite MR_findAllSortedBy:@"dateAdded" ascending:NO];
     
     NSMutableArray *favReturn = [NSMutableArray arrayWithCapacity:favorites.count];
     

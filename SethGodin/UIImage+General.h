@@ -23,4 +23,9 @@
 
 + (UIImage*) titleBarWithTitle:(NSString*) inTitle usingBackgroundColor:(UIColor*) inColor;
 
+
++ (UIImage*) popupBackgroundForSize:(CGSize) inSize color:(UIColor*) inColor identifier:(NSString*) inIdentifer;
+
++ (UIImage*) popupCloseButton;
+
 @end

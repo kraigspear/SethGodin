@@ -42,12 +42,19 @@
     
 }
 
+static SGMainViewController *instance;
+
++ (SGMainViewController*) sharedInstance
+{
+    return instance;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        // Custom initialization
+        instance = self;
     }
     return self;
 }
@@ -56,6 +63,8 @@
 {
     [super viewDidLoad];
 	
+    instance = self;
+    
     _iphoneStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
     [self addBlogEntriesView];

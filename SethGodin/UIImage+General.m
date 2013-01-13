@@ -300,6 +300,84 @@
             }];
 }
 
++ (UIImage*) popupCloseButton
+{
+    return [UIImage imageWithIdentifier:@"popupCloseButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* closeBorderColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
+                UIColor* closeBackground = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
+                
+                //// Abstracted Attributes
+                NSString* xTextContent = @"X";
+                
+                
+                //// Group
+                {
+                    //// whiteOval Drawing
+                    UIBezierPath* whiteOvalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(2, 2, 40, 40)];
+                    [closeBorderColor setFill];
+                    [whiteOvalPath fill];
+                    
+                    
+                    //// blackOval Drawing
+                    UIBezierPath* blackOvalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(4, 4, 36, 36)];
+                    [closeBackground setFill];
+                    [blackOvalPath fill];
+                    
+                    
+                    //// xText Drawing
+                    CGRect xTextRect = CGRectMake(4.5, 3, 36, 29);
+                    [closeBorderColor setFill];
+                    [xTextContent drawInRect: xTextRect withFont: [UIFont fontWithName: @"Helvetica" size: 30] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                }
+
+            }];
+}
+
++ (UIImage*) popupBackgroundForSize:(CGSize) inSize color:(UIColor*) inColor identifier:(NSString*) inIdentifer
+{
+    
+    //UIColor* bgColor = inColor;
+    //CGRect frame = CGRectMake(0, 0, inSize.width, inSize.height);
+    return [UIImage imageWithIdentifier:inIdentifer forSize:inSize andDrawingBlock:^
+            {
+                //// General Declarations
+                CGContextRef context = UIGraphicsGetCurrentContext();
+                
+                //// Color Declarations
+                UIColor* bgColor = inColor;
+                CGFloat bgColorRGBA[4];
+                [bgColor getRed: &bgColorRGBA[0] green: &bgColorRGBA[1] blue: &bgColorRGBA[2] alpha: &bgColorRGBA[3]];
+                
+                UIColor* bdrColor = [UIColor colorWithRed: (bgColorRGBA[0] * 0.6 + 0.4) green: (bgColorRGBA[1] * 0.6 + 0.4) blue: (bgColorRGBA[2] * 0.6 + 0.4) alpha: (bgColorRGBA[3] * 0.6 + 0.4)];
+                
+                //// Shadow Declarations
+                UIColor* bgShadow = [UIColor blackColor];
+                CGSize bgShadowOffset = CGSizeMake(2.1, 2.1);
+                CGFloat bgShadowBlurRadius = 4;
+                
+                //// Frames
+                CGRect frame = CGRectMake(0, 0, inSize.width, inSize.height);
+                
+                
+                //// backRect Drawing
+                UIBezierPath* backRectPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * 0.03125 + 0.5), CGRectGetMinY(frame) + floor(CGRectGetHeight(frame) * 0.04583 + 0.5), floor(CGRectGetWidth(frame) * 0.97031) - floor(CGRectGetWidth(frame) * 0.03125 + 0.5) + 0.5, floor(CGRectGetHeight(frame) * 0.95417 + 0.5) - floor(CGRectGetHeight(frame) * 0.04583 + 0.5)) cornerRadius: 3];
+                CGContextSaveGState(context);
+                CGContextSetShadowWithColor(context, bgShadowOffset, bgShadowBlurRadius, bgShadow.CGColor);
+                [bgColor setFill];
+                [backRectPath fill];
+                CGContextRestoreGState(context);
+                
+                [bdrColor setStroke];
+                backRectPath.lineWidth = 1.5;
+                [backRectPath stroke];
+                
+                
+
+            }];
+}
+
 
 
 @end

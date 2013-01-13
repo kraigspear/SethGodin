@@ -11,4 +11,6 @@
 
 @interface SGMainViewController : UIViewController<SGMenuController_iPadDelegate>
 
++ (SGMainViewController*) sharedInstance;
+
 @end

@@ -20,5 +20,5 @@
     #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     #define TIMEOUT 10
-    #define DEV_BUILD
+    //#define DEV_BUILD
 #endif

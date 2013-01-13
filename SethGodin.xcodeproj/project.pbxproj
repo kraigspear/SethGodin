@@ -96,10 +96,6 @@
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
 		A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */; };
-		A9B53AD816A2D14A00E8DEF0 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B53AD116A2D14A00E8DEF0 /* BlockActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
-		A9B53AD916A2D14A00E8DEF0 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B53AD316A2D14A00E8DEF0 /* BlockAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
-		A9B53ADA16A2D14A00E8DEF0 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B53AD516A2D14A00E8DEF0 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
-		A9B53ADB16A2D14A00E8DEF0 /* BlockTextPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B53AD716A2D14A00E8DEF0 /* BlockTextPromptAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
 		A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */; };
@@ -131,6 +127,12 @@
 		A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D8385516596E9300A79669 /* StoreKit.framework */; };
 		A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D838591659853F00A79669 /* SGLoadingAnimation.m */; };
+		A9F369FC16A2FC1400FF7CB6 /* AskToPurchase.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F369FB16A2FC1400FF7CB6 /* AskToPurchase.xib */; };
+		A9F36A2E16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A2D16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m */; };
+		A9F36A4116A3609600FF7CB6 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3A16A3609600FF7CB6 /* BlockActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A9F36A4216A3609600FF7CB6 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3C16A3609600FF7CB6 /* BlockAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A9F36A4316A3609600FF7CB6 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3E16A3609600FF7CB6 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A9F36A4416A3609600FF7CB6 /* BlockTextPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A4016A3609600FF7CB6 /* BlockTextPromptAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F944311699C70800BBB6BE /* BlogEntryCell.xib */; };
 		A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */; };
 		A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94439169AD7B000BBB6BE /* SGMainViewController.m */; };
@@ -314,14 +316,6 @@
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
 		A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallspinner@2x.png"; sourceTree = "<group>"; };
-		A9B53AD016A2D14A00E8DEF0 /* BlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActionSheet.h; sourceTree = "<group>"; };
-		A9B53AD116A2D14A00E8DEF0 /* BlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActionSheet.m; sourceTree = "<group>"; };
-		A9B53AD216A2D14A00E8DEF0 /* BlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAlertView.h; sourceTree = "<group>"; };
-		A9B53AD316A2D14A00E8DEF0 /* BlockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockAlertView.m; sourceTree = "<group>"; };
-		A9B53AD416A2D14A00E8DEF0 /* BlockBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockBackground.h; sourceTree = "<group>"; };
-		A9B53AD516A2D14A00E8DEF0 /* BlockBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockBackground.m; sourceTree = "<group>"; };
-		A9B53AD616A2D14A00E8DEF0 /* BlockTextPromptAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTextPromptAlertView.h; sourceTree = "<group>"; };
-		A9B53AD716A2D14A00E8DEF0 /* BlockTextPromptAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTextPromptAlertView.m; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* Seth Godin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -378,6 +372,17 @@
 		A9D8385516596E9300A79669 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A9D838581659853E00A79669 /* SGLoadingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoadingAnimation.h; sourceTree = "<group>"; };
 		A9D838591659853F00A79669 /* SGLoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadingAnimation.m; sourceTree = "<group>"; };
+		A9F369FB16A2FC1400FF7CB6 /* AskToPurchase.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AskToPurchase.xib; sourceTree = "<group>"; };
+		A9F36A2C16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAskToPurchaseViewController.h; sourceTree = "<group>"; };
+		A9F36A2D16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAskToPurchaseViewController.m; sourceTree = "<group>"; };
+		A9F36A3916A3609600FF7CB6 /* BlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActionSheet.h; sourceTree = "<group>"; };
+		A9F36A3A16A3609600FF7CB6 /* BlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActionSheet.m; sourceTree = "<group>"; };
+		A9F36A3B16A3609600FF7CB6 /* BlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAlertView.h; sourceTree = "<group>"; };
+		A9F36A3C16A3609600FF7CB6 /* BlockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockAlertView.m; sourceTree = "<group>"; };
+		A9F36A3D16A3609600FF7CB6 /* BlockBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockBackground.h; sourceTree = "<group>"; };
+		A9F36A3E16A3609600FF7CB6 /* BlockBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockBackground.m; sourceTree = "<group>"; };
+		A9F36A3F16A3609600FF7CB6 /* BlockTextPromptAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTextPromptAlertView.h; sourceTree = "<group>"; };
+		A9F36A4016A3609600FF7CB6 /* BlockTextPromptAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTextPromptAlertView.m; sourceTree = "<group>"; };
 		A9F944311699C70800BBB6BE /* BlogEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlogEntryCell.xib; sourceTree = "<group>"; };
 		A9F944331699CA5E00BBB6BE /* SGBlogEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryCell.h; sourceTree = "<group>"; };
 		A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryCell.m; sourceTree = "<group>"; };
@@ -712,22 +717,6 @@
 			path = ToAddToYourProjects;
 			sourceTree = "<group>";
 		};
-		A9B53ACF16A2D14A00E8DEF0 /* BlockAlertsActionSheets */ = {
-			isa = PBXGroup;
-			children = (
-				A9B53AD016A2D14A00E8DEF0 /* BlockActionSheet.h */,
-				A9B53AD116A2D14A00E8DEF0 /* BlockActionSheet.m */,
-				A9B53AD216A2D14A00E8DEF0 /* BlockAlertView.h */,
-				A9B53AD316A2D14A00E8DEF0 /* BlockAlertView.m */,
-				A9B53AD416A2D14A00E8DEF0 /* BlockBackground.h */,
-				A9B53AD516A2D14A00E8DEF0 /* BlockBackground.m */,
-				A9B53AD616A2D14A00E8DEF0 /* BlockTextPromptAlertView.h */,
-				A9B53AD716A2D14A00E8DEF0 /* BlockTextPromptAlertView.m */,
-			);
-			name = BlockAlertsActionSheets;
-			path = SethGodin/3rdparty/BlockAlertsActionSheets;
-			sourceTree = "<group>";
-		};
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
@@ -776,6 +765,7 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
+				A9F369FD16A2FC2600FF7CB6 /* PopupView */,
 				A905B15D166627FB0092F3D0 /* SethGodin.entitlements */,
 				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
 				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
@@ -816,7 +806,7 @@
 		A9D6850D164D005D007A9ADA /* 3RD Party */ = {
 			isa = PBXGroup;
 			children = (
-				A9B53ACF16A2D14A00E8DEF0 /* BlockAlertsActionSheets */,
+				A9F36A3816A3609600FF7CB6 /* BlockAlertsActionSheets */,
 				A9754CBB16956EC0009E1D1F /* MagicalRecord */,
 				A933F833167962D2004FE120 /* Critterism */,
 				A93BA409165F89DD003AD9AA /* Flurry */,
@@ -931,6 +921,32 @@
 				A91009D61650231500779F84 /* UIImage+General.m */,
 			);
 			name = General;
+			sourceTree = "<group>";
+		};
+		A9F369FD16A2FC2600FF7CB6 /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				A9F369FB16A2FC1400FF7CB6 /* AskToPurchase.xib */,
+				A9F36A2C16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.h */,
+				A9F36A2D16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m */,
+			);
+			name = PopupView;
+			sourceTree = "<group>";
+		};
+		A9F36A3816A3609600FF7CB6 /* BlockAlertsActionSheets */ = {
+			isa = PBXGroup;
+			children = (
+				A9F36A3916A3609600FF7CB6 /* BlockActionSheet.h */,
+				A9F36A3A16A3609600FF7CB6 /* BlockActionSheet.m */,
+				A9F36A3B16A3609600FF7CB6 /* BlockAlertView.h */,
+				A9F36A3C16A3609600FF7CB6 /* BlockAlertView.m */,
+				A9F36A3D16A3609600FF7CB6 /* BlockBackground.h */,
+				A9F36A3E16A3609600FF7CB6 /* BlockBackground.m */,
+				A9F36A3F16A3609600FF7CB6 /* BlockTextPromptAlertView.h */,
+				A9F36A4016A3609600FF7CB6 /* BlockTextPromptAlertView.m */,
+			);
+			name = BlockAlertsActionSheets;
+			path = SethGodin/3rdparty/BlockAlertsActionSheets;
 			sourceTree = "<group>";
 		};
 		A9F94436169AD76E00BBB6BE /* iPhone */ = {
@@ -1049,6 +1065,7 @@
 				A9712AA71667BB9B00BAFCD9 /* books-iphone4.png in Resources */,
 				A90773ED167F2B0700056C41 /* userDefaults.plist in Resources */,
 				A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */,
+				A9F369FC16A2FC1400FF7CB6 /* AskToPurchase.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1144,10 +1161,11 @@
 				A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */,
 				A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */,
 				A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */,
-				A9B53AD816A2D14A00E8DEF0 /* BlockActionSheet.m in Sources */,
-				A9B53AD916A2D14A00E8DEF0 /* BlockAlertView.m in Sources */,
-				A9B53ADA16A2D14A00E8DEF0 /* BlockBackground.m in Sources */,
-				A9B53ADB16A2D14A00E8DEF0 /* BlockTextPromptAlertView.m in Sources */,
+				A9F36A2E16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m in Sources */,
+				A9F36A4116A3609600FF7CB6 /* BlockActionSheet.m in Sources */,
+				A9F36A4216A3609600FF7CB6 /* BlockAlertView.m in Sources */,
+				A9F36A4316A3609600FF7CB6 /* BlockBackground.m in Sources */,
+				A9F36A4416A3609600FF7CB6 /* BlockTextPromptAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,8 @@
 #import "SGUSerDefaults.h"
 #import "SGLogger.h"
 #import "Flurry.h"
+#import "SGMainViewController.h"
+#import "SGAskToPurchaseViewController.h"
 
 @interface SGArchiveSelectionViewController ()
 
@@ -25,7 +27,6 @@
     NSUInteger _currentYear;
     NSUInteger _currentMonth;
     NSDateFormatter *_dateFormatter;
-    
 }
 
 const NSUInteger MIN_YEAR = 2002;
@@ -158,7 +159,7 @@ const NSUInteger MIN_YEAR = 2002;
     }
     else
     {
-        [self askToPurchase];
+        [self askToPurchase:sender];
     }
 }
 
@@ -170,12 +171,34 @@ const NSUInteger MIN_YEAR = 2002;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) askToPurchase
+- (void) askToPurchase:(id) sender
 {
     [[SGLogger sharedInstance] logAskToPurchaseFrom:@"Archive"];
-    SGUpdradeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"askToUpgradd"];
-    vc.popbackViewController = self;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if(IS_IPAD)
+    {
+        [self askToPurchaseOniPad:sender];
+    }
+    else
+    {
+        SGUpdradeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"askToUpgradd"];
+        vc.popbackViewController = self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+- (void) askToPurchaseOniPad:(id) sender
+{
+    SGAskToPurchaseViewController *askToPurchaseViewController = [[SGAskToPurchaseViewController alloc] init];
+    
+    askToPurchaseViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+   [[SGMainViewController sharedInstance] presentViewController:askToPurchaseViewController animated:YES completion:^
+    {
+        
+    }];
+    
+    
 }
 
 @end

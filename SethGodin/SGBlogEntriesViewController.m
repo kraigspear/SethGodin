@@ -24,7 +24,6 @@
 #import "UIColor+General.h"
 #import "SGSearchBlogItemsGetter.h"
 #import "SGLoadingAnimation.h"
-#import "BlockAlertView.h"
 #import "UIColor+General.h"
 #import "NSDate+General.h"
 #import "SGUSerDefaults.h"
@@ -658,8 +657,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     {
         height += 10;
     }
-    
-    NSLog(@"height for row %d = %f", indexPath.row, height);
     
     return height;
 }

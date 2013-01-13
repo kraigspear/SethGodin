@@ -10,10 +10,10 @@
 #import "SGPurchaseItemGetter.h"
 #import "SGPurchaseItem.h"
 #import "BlockTypes.h"
-#import "BlockAlertView.h"
 #import "SGBookCellView.h"
 #import "SGLoadingAnimation.h"
 #import "UIImage+General.h"
+#import "BlockAlertView.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -21,10 +21,10 @@
 {
 @private
     SGPurchaseItemGetter   *_purchaseItemGetter;
-    BlockAlertView *_alertView;
     NSArray *_items;
     SKStoreProductViewController *_storeProductViewController;
     SGLoadingAnimation *_loadingAnimation;
+    BlockAlertView *_alertView;
 }
 
 NSString * const ReuseIdentifier = @"bookCell";
