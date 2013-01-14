@@ -27,7 +27,9 @@
 
 - (NSArray*) cachedItems
 {
-    return [SGFavoritesCoreData allFavorites];
+    NSArray *favorites = [SGFavoritesCoreData allFavorites];
+    [self updateShareCountsForEntries:favorites];
+    return favorites;
 }
 
 @end
