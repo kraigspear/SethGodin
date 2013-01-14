@@ -12,9 +12,11 @@
 
 @implementation UIImage (RSSSelection)
 
-+ (UIImage*) bottomTableCell
++ (UIImage*) bottomTableCellForSize:(CGSize) inSize
 {
-    return [UIImage imageWithIdentifier:@"bottomTableCell" forSize:CGSizeMake(320,50) andDrawingBlock:^
+    NSString *identifer = [NSString stringWithFormat:@"bottomTableCellForSize%@", NSStringFromCGSize(inSize)];
+    
+    return [UIImage imageWithIdentifier:identifer forSize:inSize andDrawingBlock:^
             {
                 //// General Declarations
                 CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -38,36 +40,41 @@
                 CGFloat gradientLocations[] = {0, 0.11, 0.21, 0.78, 1};
                 CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)gradientColors, gradientLocations);
                 
-                //// Bezier Drawing
-                UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-                [bezierPath moveToPoint: CGPointMake(16.32, 14.95)];
-                [bezierPath addCurveToPoint: CGPointMake(17.44, 13.36) controlPoint1: CGPointMake(16.62, 14.42) controlPoint2: CGPointMake(16.99, 13.89)];
-                [bezierPath addCurveToPoint: CGPointMake(19.06, 11.95) controlPoint1: CGPointMake(17.89, 12.84) controlPoint2: CGPointMake(18.43, 12.37)];
-                [bezierPath addCurveToPoint: CGPointMake(21.15, 10.89) controlPoint1: CGPointMake(19.7, 11.52) controlPoint2: CGPointMake(20.31, 11.17)];
-                [bezierPath addCurveToPoint: CGPointMake(24.05, 10.39) controlPoint1: CGPointMake(22, 10.61) controlPoint2: CGPointMake(22.96, 10.45)];
-                [bezierPath addLineToPoint: CGPointMake(24.05, 5.73)];
-                [bezierPath addLineToPoint: CGPointMake(32.35, 12.92)];
-                [bezierPath addLineToPoint: CGPointMake(24.05, 20)];
-                [bezierPath addLineToPoint: CGPointMake(24.05, 14.86)];
-                [bezierPath addCurveToPoint: CGPointMake(22.96, 14.89) controlPoint1: CGPointMake(23.78, 14.86) controlPoint2: CGPointMake(23.41, 14.87)];
-                [bezierPath addCurveToPoint: CGPointMake(21.45, 15.05) controlPoint1: CGPointMake(22.51, 14.91) controlPoint2: CGPointMake(22, 14.96)];
-                [bezierPath addCurveToPoint: CGPointMake(19.82, 15.46) controlPoint1: CGPointMake(20.89, 15.14) controlPoint2: CGPointMake(20.43, 15.28)];
-                [bezierPath addCurveToPoint: CGPointMake(18.01, 16.22) controlPoint1: CGPointMake(19.21, 15.64) controlPoint2: CGPointMake(18.6, 15.89)];
-                [bezierPath addCurveToPoint: CGPointMake(16.34, 17.38) controlPoint1: CGPointMake(17.42, 16.54) controlPoint2: CGPointMake(16.86, 16.9)];
-                [bezierPath addCurveToPoint: CGPointMake(15, 19.16) controlPoint1: CGPointMake(15.82, 17.87) controlPoint2: CGPointMake(15.38, 18.46)];
-                [bezierPath addCurveToPoint: CGPointMake(16.32, 14.95) controlPoint1: CGPointMake(15.18, 17.59) controlPoint2: CGPointMake(15.62, 16.21)];
-                [bezierPath closePath];
+                //// Frames
+                CGRect frame = CGRectMake(0, 0, inSize.width, inSize.height);
+                
+                
+                //// shareArrow Drawing
+                UIBezierPath* shareArrowPath = [UIBezierPath bezierPath];
+                [shareArrowPath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 16.32, CGRectGetMaxY(frame) - 35.05)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 17.44, CGRectGetMaxY(frame) - 36.64) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 16.62, CGRectGetMaxY(frame) - 35.58) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 16.99, CGRectGetMaxY(frame) - 36.11)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 19.06, CGRectGetMaxY(frame) - 38.05) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 17.89, CGRectGetMaxY(frame) - 37.16) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 18.43, CGRectGetMaxY(frame) - 37.63)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 21.15, CGRectGetMaxY(frame) - 39.11) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 19.7, CGRectGetMaxY(frame) - 38.48) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 20.31, CGRectGetMaxY(frame) - 38.83)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 24.05, CGRectGetMaxY(frame) - 39.61) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 22, CGRectGetMaxY(frame) - 39.39) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 22.96, CGRectGetMaxY(frame) - 39.55)];
+                [shareArrowPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 24.05, CGRectGetMaxY(frame) - 44.27)];
+                [shareArrowPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 32.35, CGRectGetMaxY(frame) - 37.08)];
+                [shareArrowPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 24.05, CGRectGetMaxY(frame) - 30)];
+                [shareArrowPath addLineToPoint: CGPointMake(CGRectGetMinX(frame) + 24.05, CGRectGetMaxY(frame) - 35.14)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 22.96, CGRectGetMaxY(frame) - 35.11) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 23.78, CGRectGetMaxY(frame) - 35.14) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 23.41, CGRectGetMaxY(frame) - 35.13)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 21.45, CGRectGetMaxY(frame) - 34.95) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 22.51, CGRectGetMaxY(frame) - 35.09) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 22, CGRectGetMaxY(frame) - 35.04)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 19.82, CGRectGetMaxY(frame) - 34.54) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 20.89, CGRectGetMaxY(frame) - 34.86) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 20.43, CGRectGetMaxY(frame) - 34.72)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 18.01, CGRectGetMaxY(frame) - 33.78) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 19.21, CGRectGetMaxY(frame) - 34.36) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 18.6, CGRectGetMaxY(frame) - 34.11)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 16.34, CGRectGetMaxY(frame) - 32.62) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 17.42, CGRectGetMaxY(frame) - 33.46) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 16.86, CGRectGetMaxY(frame) - 33.1)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 15, CGRectGetMaxY(frame) - 30.84) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 15.82, CGRectGetMaxY(frame) - 32.13) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 15.38, CGRectGetMaxY(frame) - 31.54)];
+                [shareArrowPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 16.32, CGRectGetMaxY(frame) - 35.05) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 15.18, CGRectGetMaxY(frame) - 32.41) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 15.62, CGRectGetMaxY(frame) - 33.79)];
+                [shareArrowPath closePath];
                 [color21 setFill];
-                [bezierPath fill];
+                [shareArrowPath fill];
                 
                 
-                //// Rectangle 4 Drawing
-                UIBezierPath* rectangle4Path = [UIBezierPath bezierPathWithRect: CGRectMake(0, 36, 320, 1)];
+                //// bottomLineImage Drawing
+                CGRect bottomLineImageRect = CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * 0.00000 + 0.5), CGRectGetMinY(frame) + 36, floor(CGRectGetWidth(frame) * 1.00000 + 0.5) - floor(CGRectGetWidth(frame) * 0.00000 + 0.5), 1);
+                UIBezierPath* bottomLineImagePath = [UIBezierPath bezierPathWithRect: bottomLineImageRect];
                 CGContextSaveGState(context);
-                [rectangle4Path addClip];
+                [bottomLineImagePath addClip];
                 CGContextDrawLinearGradient(context, gradient,
-                                            CGPointMake(302.73, 56.07),
-                                            CGPointMake(16.46, 62.23),
+                                            CGPointMake(CGRectGetMidX(bottomLineImageRect) + 142.73 * CGRectGetWidth(bottomLineImageRect) / 320, CGRectGetMidY(bottomLineImageRect) + 19.57 * CGRectGetHeight(bottomLineImageRect) / 1),
+                                            CGPointMake(CGRectGetMidX(bottomLineImageRect) + -143.54 * CGRectGetWidth(bottomLineImageRect) / 320, CGRectGetMidY(bottomLineImageRect) + 25.73 * CGRectGetHeight(bottomLineImageRect) / 1),
                                             kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
                 CGContextRestoreGState(context);
                 
@@ -75,12 +82,6 @@
                 //// Cleanup
                 CGGradientRelease(gradient);
                 CGColorSpaceRelease(colorSpace);
-                
-
-                
-
-                
-
             }];
 }
 

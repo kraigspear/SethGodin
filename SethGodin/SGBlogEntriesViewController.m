@@ -24,10 +24,13 @@
 #import "UIColor+General.h"
 #import "SGSearchBlogItemsGetter.h"
 #import "SGLoadingAnimation.h"
-#import "UIColor+General.h"
+
 #import "NSDate+General.h"
 #import "SGUSerDefaults.h"
 #import "SGFavorites.h"
+
+#import "UIColor+General.h"
+#import "UIFont+General.h"
 
 #import "MBProgressHUD.h"
 
@@ -118,7 +121,10 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
     
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
+    //Top View
+    self.topView.backgroundColor = [UIColor blogEntriesTopBarBackgroundColor];
+    self.titleLabel.textColor    = [UIColor blogEntriesTextColor];
+    self.titleLabel.font         = [UIFont blogEntriesTitleFont];
     
     [self.searchButton setImage:[UIImage searchButton] forState:UIControlStateNormal];
     [self.menuButton   setImage:[UIImage menuButton] forState:UIControlStateNormal];
@@ -151,6 +157,9 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         }
     }];
 }
+
+
+
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -355,24 +364,25 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     [self startLoadingAnimation];
     
+    self.titleLabel.hidden = (_feedSelection.feedType == kSearch);
     switch (_feedSelection.feedType)
     {
         case kCurrent:
             _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
             _title = @"SETH GODIN";
-            self.topView.backgroundColor =[UIColor colorWithPatternImage:[UIImage defaultTitleBarImage]];
+            self.titleLabel.text = _title;
             break;
         case kArchive:
             _contentGetter = [[SGArchiveBlogItemsGetter alloc] initWithMonth:_feedSelection.month andYear:_feedSelection.year];
             
             _title = [self monthYearString];
-            self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
+            self.titleLabel.text = _title;
             
             break;
         case kFavorites:
             _contentGetter = [[SGFavoritesBlogItemsGetter alloc] init];
             _title = @"FAVORITES";
-             self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
+            self.titleLabel.text = _title;
             break;
         case kSearch:
             _contentGetter = [[SGSearchBlogItemsGetter alloc] initWithSearchText:_feedSelection.searchText];
@@ -380,7 +390,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         default:
              _title = @"SETH GODIN";
             _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
-            self.topView.backgroundColor =[UIColor colorWithPatternImage:[UIImage defaultTitleBarImage]];
+            self.titleLabel.text = _title;
             break;
     }
     
@@ -551,8 +561,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 {
    [self.searchTextField resignFirstResponder];
    self.searchTextField.hidden = YES;
-    
-   self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:_title]];
+   
+   self.titleLabel.text = _title;
     
    [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
    [self fadeToolbarAnimation];
@@ -581,7 +591,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     self.searchTextField.hidden = NO;
     
     [self.menuButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@""]];
+    self.titleLabel.hidden = YES;
     [self.searchTextField becomeFirstResponder];
     [self fadeToolbarAnimation];
 }

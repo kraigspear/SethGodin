@@ -21,5 +21,6 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textToTopViewConstraint;
 
+- (void) updateBottomImageView;
 
 @end

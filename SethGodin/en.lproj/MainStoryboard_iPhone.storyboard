@@ -774,9 +774,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jx5-Rh-jM4" userLabel="topView">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCi-2L-PIS" userLabel="searchButton">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="56m-oI-RGb"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -790,6 +787,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYW-2i-4Sh" userLabel="menuButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43" id="TO2-Lu-4Ok"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -810,18 +810,29 @@
                                             <outlet property="delegate" destination="2" id="8Zf-75-1Fv"/>
                                         </connections>
                                     </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SETH GODIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPW-Im-NXZ">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="gtz-Jm-Sa9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="26"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="iYW-2i-4Sh" secondAttribute="trailing" type="user" id="5L9-lk-7D2"/>
+                                    <constraint firstItem="uPW-Im-NXZ" firstAttribute="centerY" secondItem="uD7-b4-vFW" secondAttribute="centerY" type="default" id="0PX-Bf-Qb0"/>
+                                    <constraint firstItem="uPW-Im-NXZ" firstAttribute="leading" secondItem="PCi-2L-PIS" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="1Vv-3b-n2Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="iYW-2i-4Sh" secondAttribute="trailing" constant="4" type="user" id="5L9-lk-7D2"/>
+                                    <constraint firstItem="uD7-b4-vFW" firstAttribute="centerX" secondItem="jx5-Rh-jM4" secondAttribute="centerX" type="default" id="7tW-rI-3ud"/>
                                     <constraint firstItem="uD7-b4-vFW" firstAttribute="leading" secondItem="PCi-2L-PIS" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Aod-32-UUs"/>
                                     <constraint firstItem="PCi-2L-PIS" firstAttribute="leading" secondItem="jx5-Rh-jM4" secondAttribute="leading" type="default" id="CHU-V9-PE1"/>
                                     <constraint firstAttribute="centerY" secondItem="uD7-b4-vFW" secondAttribute="centerY" type="user" id="ILh-jY-wyt"/>
+                                    <constraint firstItem="iYW-2i-4Sh" firstAttribute="centerY" secondItem="uD7-b4-vFW" secondAttribute="centerY" type="default" id="M6t-pA-jqS"/>
                                     <constraint firstItem="iYW-2i-4Sh" firstAttribute="top" secondItem="PCi-2L-PIS" secondAttribute="top" type="default" id="Pmk-bU-gFv"/>
-                                    <constraint firstItem="uD7-b4-vFW" firstAttribute="centerY" secondItem="PCi-2L-PIS" secondAttribute="centerY" type="default" id="eQz-Id-g4M"/>
                                     <constraint firstItem="iYW-2i-4Sh" firstAttribute="leading" secondItem="uD7-b4-vFW" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="fJ3-C9-afg"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="khP-ug-w0T"/>
-                                    <constraint firstItem="uD7-b4-vFW" firstAttribute="centerX" secondItem="jx5-Rh-jM4" secondAttribute="centerX" type="default" id="mMv-Mp-NwE"/>
+                                    <constraint firstItem="iYW-2i-4Sh" firstAttribute="leading" secondItem="uPW-Im-NXZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="oey-CZ-y6T"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ate-FO-2NX">
@@ -850,6 +861,7 @@
                         <outlet property="searchTextField" destination="uD7-b4-vFW" id="IwP-Gd-zZh"/>
                         <outlet property="tableView" destination="ate-FO-2NX" id="Y7N-lf-Vhc"/>
                         <outlet property="tableViewToTopViewConstraint" destination="H8G-a1-szK" id="ZeZ-RT-sby"/>
+                        <outlet property="titleLabel" destination="uPW-Im-NXZ" id="QeA-zk-NdA"/>
                         <outlet property="topView" destination="jx5-Rh-jM4" id="Ktf-nC-WO8"/>
                         <segue destination="ZDt-iZ-e0h" kind="push" identifier="viewPostSeque" id="Shn-S5-9I3"/>
                     </connections>
@@ -1043,8 +1055,6 @@
         <class className="SGBlogEntriesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntriesViewController.h"/>
             <relationships>
-                <relationship kind="action" name="menuAction:"/>
-                <relationship kind="action" name="searchAction:"/>
                 <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
@@ -1052,13 +1062,13 @@
                 <relationship kind="outlet" name="searchTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="tableViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="SGBlogEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
             <relationships>
-                <relationship kind="action" name="favoritesAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
@@ -1099,6 +1109,7 @@
         <class className="SGSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
                 <relationship kind="action" name="useICloudAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
@@ -1108,6 +1119,9 @@
         <class className="SGUpdradeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpdradeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="alreadyUpgradedAction:"/>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="upgradeAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>

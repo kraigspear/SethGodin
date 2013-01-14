@@ -20,4 +20,14 @@
 + (UIColor*) titlebarTextColor;
 + (UIColor*) textColorSelected;
 
+/**
+ Color on BlogEntiresView for the top title bar.
+ */
++ (UIColor*) blogEntriesTopBarBackgroundColor;
+
+/**
+ Color of the Text on the Blog Entires View.
+ */
++ (UIColor*) blogEntriesTextColor;
+
 @end

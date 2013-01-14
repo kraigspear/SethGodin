@@ -43,7 +43,18 @@
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.contentView.backgroundColor = [UIColor tableCellBackgroundColor];
-    self.bottomImageView.image = [UIImage bottomTableCell];
+    [self updateBottomImageView];
+}
+
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
+    [self updateBottomImageView];
+}
+
+- (void) updateBottomImageView
+{
+    self.bottomImageView.image = [UIImage bottomTableCellForSize:CGSizeMake(self.frame.size.width, 50)];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

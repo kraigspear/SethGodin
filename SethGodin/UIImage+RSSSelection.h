@@ -14,7 +14,7 @@
  Bottom of a blog entry table cell.
  Share image and table cell divider.
  */
-+ (UIImage*) bottomTableCell;
++ (UIImage*) bottomTableCellForSize:(CGSize) inSize;
 + (UIImage*) searchButton;
 + (UIImage*) menuButton;
 

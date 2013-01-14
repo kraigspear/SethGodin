@@ -133,6 +133,7 @@
 		A9F36A4216A3609600FF7CB6 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3C16A3609600FF7CB6 /* BlockAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9F36A4316A3609600FF7CB6 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3E16A3609600FF7CB6 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9F36A4416A3609600FF7CB6 /* BlockTextPromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A4016A3609600FF7CB6 /* BlockTextPromptAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
+		A9F36A4816A40D9A00FF7CB6 /* UIFont+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A4716A40D9A00FF7CB6 /* UIFont+General.m */; };
 		A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F944311699C70800BBB6BE /* BlogEntryCell.xib */; };
 		A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */; };
 		A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94439169AD7B000BBB6BE /* SGMainViewController.m */; };
@@ -383,6 +384,8 @@
 		A9F36A3E16A3609600FF7CB6 /* BlockBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockBackground.m; sourceTree = "<group>"; };
 		A9F36A3F16A3609600FF7CB6 /* BlockTextPromptAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockTextPromptAlertView.h; sourceTree = "<group>"; };
 		A9F36A4016A3609600FF7CB6 /* BlockTextPromptAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTextPromptAlertView.m; sourceTree = "<group>"; };
+		A9F36A4616A40D9A00FF7CB6 /* UIFont+General.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+General.h"; path = "SethGodin/UIFont+General.h"; sourceTree = "<group>"; };
+		A9F36A4716A40D9A00FF7CB6 /* UIFont+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+General.m"; path = "SethGodin/UIFont+General.m"; sourceTree = "<group>"; };
 		A9F944311699C70800BBB6BE /* BlogEntryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlogEntryCell.xib; sourceTree = "<group>"; };
 		A9F944331699CA5E00BBB6BE /* SGBlogEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryCell.h; sourceTree = "<group>"; };
 		A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryCell.m; sourceTree = "<group>"; };
@@ -919,6 +922,8 @@
 				A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */,
 				A91009D51650231500779F84 /* UIImage+General.h */,
 				A91009D61650231500779F84 /* UIImage+General.m */,
+				A9F36A4616A40D9A00FF7CB6 /* UIFont+General.h */,
+				A9F36A4716A40D9A00FF7CB6 /* UIFont+General.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -1166,6 +1171,7 @@
 				A9F36A4216A3609600FF7CB6 /* BlockAlertView.m in Sources */,
 				A9F36A4316A3609600FF7CB6 /* BlockBackground.m in Sources */,
 				A9F36A4416A3609600FF7CB6 /* BlockTextPromptAlertView.m in Sources */,
+				A9F36A4816A40D9A00FF7CB6 /* UIFont+General.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
