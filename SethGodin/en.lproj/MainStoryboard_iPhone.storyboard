@@ -923,72 +923,87 @@
                                     <constraint firstItem="ZUd-qJ-oZh" firstAttribute="centerY" secondItem="eCp-0o-257" secondAttribute="centerY" type="default" id="zkO-Y2-Jq6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-GR-4p1" userLabel="titleView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FM-fy-IFY">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqR-X2-zbU" userLabel="favoriteButton">
+                                    <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhM-ij-3pw">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="Gab-lh-w1t"/>
+                                            <constraint firstAttribute="height" constant="372" type="user" id="hZf-Ur-wdh"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
                                         <connections>
-                                            <action selector="favoritesAction:" destination="ZDt-iZ-e0h" eventType="touchUpInside" id="ldG-pJ-wdL"/>
+                                            <outlet property="delegate" destination="ZDt-iZ-e0h" id="JTV-Tx-duX"/>
                                         </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Tg0-UB-r8x" userLabel="titleLabel">
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1J-7t-9j4" userLabel="dateLabel">
+                                    </webView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-GR-4p1" userLabel="titleView">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqR-X2-zbU" userLabel="favoriteButton">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="43" id="9HW-wC-4q6"/>
+                                                    <constraint firstAttribute="width" constant="44" id="Gab-lh-w1t"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="favoritesAction:" destination="ZDt-iZ-e0h" eventType="touchUpInside" id="ldG-pJ-wdL"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Tg0-UB-r8x" userLabel="titleLabel">
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1J-7t-9j4" userLabel="dateLabel">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="11L-Ln-IsV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="11L-Ln-IsV"/>
+                                            <constraint firstItem="Tg0-UB-r8x" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="top" type="user" id="3OR-9L-aKx"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tg0-UB-r8x" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="89o-eh-Zab"/>
+                                            <constraint firstItem="X1J-7t-9j4" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DPd-Ve-4kG"/>
+                                            <constraint firstAttribute="height" constant="132" type="user" id="EWR-5W-EAX"/>
+                                            <constraint firstItem="PqR-X2-zbU" firstAttribute="centerY" secondItem="X1J-7t-9j4" secondAttribute="centerY" type="user" id="UDx-lE-ra4"/>
+                                            <constraint firstAttribute="trailing" secondItem="PqR-X2-zbU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bMn-hA-OZY"/>
+                                            <constraint firstItem="Tg0-UB-r8x" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iya-ZY-tBg"/>
+                                            <constraint firstAttribute="bottom" secondItem="Tg0-UB-r8x" secondAttribute="bottom" type="user" id="l8A-5E-ftW"/>
+                                            <constraint firstAttribute="bottom" secondItem="PqR-X2-zbU" secondAttribute="bottom" constant="20" type="user" id="oOZ-d6-7Tn"/>
+                                            <constraint firstItem="PqR-X2-zbU" firstAttribute="leading" secondItem="X1J-7t-9j4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="qPz-2K-tyc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Tg0-UB-r8x" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="top" type="user" id="3OR-9L-aKx"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tg0-UB-r8x" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="89o-eh-Zab"/>
-                                    <constraint firstAttribute="bottom" secondItem="X1J-7t-9j4" secondAttribute="bottom" constant="31" id="CZC-Dm-mP0"/>
-                                    <constraint firstItem="X1J-7t-9j4" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DPd-Ve-4kG"/>
-                                    <constraint firstAttribute="height" constant="132" type="user" id="EWR-5W-EAX"/>
-                                    <constraint firstItem="PqR-X2-zbU" firstAttribute="centerY" secondItem="X1J-7t-9j4" secondAttribute="centerY" type="user" id="UDx-lE-ra4"/>
-                                    <constraint firstAttribute="trailing" secondItem="PqR-X2-zbU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bMn-hA-OZY"/>
-                                    <constraint firstItem="Tg0-UB-r8x" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iya-ZY-tBg"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tg0-UB-r8x" secondAttribute="bottom" type="user" id="l8A-5E-ftW"/>
-                                    <constraint firstAttribute="bottom" secondItem="PqR-X2-zbU" secondAttribute="bottom" constant="20" type="user" id="oOZ-d6-7Tn"/>
-                                    <constraint firstItem="PqR-X2-zbU" firstAttribute="leading" secondItem="X1J-7t-9j4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="qPz-2K-tyc"/>
+                                    <constraint firstItem="BhM-ij-3pw" firstAttribute="leading" secondItem="0FM-fy-IFY" secondAttribute="leading" type="default" id="3xw-ng-u0r"/>
+                                    <constraint firstItem="BhM-ij-3pw" firstAttribute="trailing" secondItem="0FM-fy-IFY" secondAttribute="trailing" type="default" id="59c-ny-UE6"/>
+                                    <constraint firstItem="BhM-ij-3pw" firstAttribute="top" secondItem="0FM-fy-IFY" secondAttribute="top" constant="124" id="EvX-vy-TgL"/>
+                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="centerX" secondItem="0FM-fy-IFY" secondAttribute="centerX" type="default" id="EzL-JU-V3E"/>
+                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="trailing" secondItem="0FM-fy-IFY" secondAttribute="trailing" type="default" id="HCt-Mm-hjy"/>
+                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="top" secondItem="0FM-fy-IFY" secondAttribute="top" type="user" id="LTO-BV-2Di"/>
+                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="leading" secondItem="0FM-fy-IFY" secondAttribute="leading" type="default" id="VHd-O2-Ow2"/>
+                                    <constraint firstAttribute="bottom" secondItem="BhM-ij-3pw" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="p8J-FC-M7I"/>
                                 </constraints>
-                            </view>
-                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhM-ij-3pw">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ZDt-iZ-e0h" id="JTV-Tx-duX"/>
-                                </connections>
-                            </webView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="3VA-GR-4p1" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="ONo-aU-bIZ"/>
+                            <constraint firstItem="0FM-fy-IFY" firstAttribute="top" secondItem="cXb-Vt-HXm" secondAttribute="bottom" type="user" id="50d-8w-UOv"/>
+                            <constraint firstItem="0FM-fy-IFY" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="IMq-51-Cgz"/>
+                            <constraint firstAttribute="bottom" secondItem="0FM-fy-IFY" secondAttribute="bottom" constant="-20" id="MJk-Qo-evx"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="VlQ-Qo-7cN"/>
-                            <constraint firstItem="3VA-GR-4p1" firstAttribute="top" secondItem="cXb-Vt-HXm" secondAttribute="bottom" type="user" id="Wro-Ap-vDo"/>
-                            <constraint firstItem="BhM-ij-3pw" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="cmT-Dd-sOK"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="top" secondItem="sIn-qm-l11" secondAttribute="top" type="user" id="htX-ou-UuV"/>
-                            <constraint firstItem="3VA-GR-4p1" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="jUP-C9-tnX"/>
-                            <constraint firstItem="BhM-ij-3pw" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="mOF-fi-LD8"/>
+                            <constraint firstItem="0FM-fy-IFY" firstAttribute="trailing" secondItem="sIn-qm-l11" secondAttribute="trailing" type="default" id="mVQ-TB-a86"/>
                             <constraint firstItem="cXb-Vt-HXm" firstAttribute="leading" secondItem="sIn-qm-l11" secondAttribute="leading" type="default" id="t4F-OP-EGR"/>
-                            <constraint firstItem="BhM-ij-3pw" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="bottom" type="user" id="tv0-VF-WOi"/>
-                            <constraint firstItem="BhM-ij-3pw" firstAttribute="bottom" secondItem="sIn-qm-l11" secondAttribute="bottom" type="user" id="yvO-Px-sbp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vqd-Ob-zfs"/>
@@ -997,12 +1012,14 @@
                         <outlet property="blogTitleLabel" destination="Tg0-UB-r8x" id="4J5-9D-MOS"/>
                         <outlet property="dateLabel" destination="X1J-7t-9j4" id="rYd-j3-eE2"/>
                         <outlet property="favoritesButton" destination="PqR-X2-zbU" id="dT0-tb-i1c"/>
+                        <outlet property="scrollView" destination="0FM-fy-IFY" id="Dwi-Gp-FWq"/>
                         <outlet property="shareButton" destination="ZUd-qJ-oZh" id="wUZ-th-UOy"/>
                         <outlet property="titleLableToTopViewConstraint" destination="3OR-9L-aKx" id="k3H-56-u7q"/>
                         <outlet property="titleView" destination="3VA-GR-4p1" id="0EI-Wo-CCG"/>
                         <outlet property="titleViewHeightConstraint" destination="EWR-5W-EAX" id="4NF-g4-EGF"/>
                         <outlet property="topView" destination="cXb-Vt-HXm" id="rVs-Ns-bXR"/>
                         <outlet property="webView" destination="BhM-ij-3pw" id="f8P-L1-Z9A"/>
+                        <outlet property="webViewHeightConstraint" destination="hZf-Ur-wdh" id="qBY-ek-nLG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uhk-IZ-6eH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1055,6 +1072,8 @@
         <class className="SGBlogEntriesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntriesViewController.h"/>
             <relationships>
+                <relationship kind="action" name="menuAction:"/>
+                <relationship kind="action" name="searchAction:"/>
                 <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
@@ -1069,16 +1088,21 @@
         <class className="SGBlogEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="favoritesAction:"/>
+                <relationship kind="action" name="shareAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleLableToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="titleView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="titleViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
             </relationships>
         </class>
         <class className="SGBookPurchaseViewController" superclassName="UIViewController">
@@ -1131,6 +1155,7 @@
         <class className="SGUpgradedViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpgradedViewController.h"/>
             <relationships>
+                <relationship kind="action" name="thankYouAction:"/>
                 <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
             </relationships>
         </class>

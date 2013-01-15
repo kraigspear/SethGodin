@@ -70,6 +70,8 @@
         }
     }
     
+    self.webView.scrollView.scrollEnabled = NO;
+    
     [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
     
     [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
@@ -225,6 +227,24 @@
     }
     
     return NO;
+}
+
+- (void) webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+    NSLog(@"content heigth = %f", self.webView.scrollView.contentSize.height);
+    
+    NSString *scrollStr = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
+    
+    NSLog(@"scrollVal = %@", scrollStr);
+    float scrollVal = [scrollStr floatValue];
+    
+    self.scrollView.contentSize = CGSizeMake(webView.frame.size.width, scrollVal + self.titleView.frame.size.height);
+    
+    self.webViewHeightConstraint.constant = scrollVal;
+    
+    [self.view layoutIfNeeded];
+    
 }
 
 #pragma mark -

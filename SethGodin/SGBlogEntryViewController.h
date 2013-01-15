@@ -38,6 +38,7 @@
  */
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 /**
  Button to trigger sharing this blog post
@@ -49,6 +50,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleViewHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLableToTopViewConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewHeightConstraint;
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
