@@ -663,7 +663,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     CGFloat height = MAX(size.height, 44) + 60;
     
-    if(IS_IPAD && indexPath.row == 0)
+    if(indexPath.row == 0)
     {
         height += 10;
     }
@@ -677,7 +677,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     SGBlogEntryCell *cell = (SGBlogEntryCell*) [tableView dequeueReusableCellWithIdentifier:BLOG_ENTRY_CELL forIndexPath:indexPath];
     
     
-    if(IS_IPAD && indexPath.row == 0)
+    if(indexPath.row == 0)
     {
         cell.textToTopViewConstraint.constant = 10;
     }
