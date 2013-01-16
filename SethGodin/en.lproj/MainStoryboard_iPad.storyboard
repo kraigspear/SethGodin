@@ -327,15 +327,6 @@
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQm-RN-inu">
                                 <subviews>
-                                    <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0j-Ca-82O">
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="372" type="user" id="btJ-iJ-8lS"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="delegate" destination="D16-cX-kKf" id="ryi-qA-b2b"/>
-                                        </connections>
-                                    </webView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlw-Zf-OOp" userLabel="titleView">
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDb-7P-3zu" userLabel="favoriteButton">
@@ -383,16 +374,25 @@
                                             <constraint firstAttribute="height" constant="132" type="user" id="zBd-cl-zCw"/>
                                         </constraints>
                                     </view>
+                                    <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0j-Ca-82O">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="372" type="user" id="btJ-iJ-8lS"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="delegate" destination="D16-cX-kKf" id="ryi-qA-b2b"/>
+                                        </connections>
+                                    </webView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="hlw-Zf-OOp" firstAttribute="trailing" secondItem="UQm-RN-inu" secondAttribute="trailing" type="default" id="10q-Ag-mpp"/>
-                                    <constraint firstItem="W0j-Ca-82O" firstAttribute="top" secondItem="UQm-RN-inu" secondAttribute="top" constant="124" id="CKn-in-PI7"/>
-                                    <constraint firstAttribute="bottom" secondItem="W0j-Ca-82O" secondAttribute="bottom" constant="484" id="GhQ-tk-M3A"/>
+                                    <constraint firstItem="W0j-Ca-82O" firstAttribute="top" secondItem="hlw-Zf-OOp" secondAttribute="bottom" type="user" id="1Qo-b4-4MQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="W0j-Ca-82O" secondAttribute="bottom" constant="464" id="7mk-t3-8QD"/>
                                     <constraint firstItem="W0j-Ca-82O" firstAttribute="centerX" secondItem="UQm-RN-inu" secondAttribute="centerX" type="default" id="KqE-1p-Z0x"/>
                                     <constraint firstItem="W0j-Ca-82O" firstAttribute="trailing" secondItem="UQm-RN-inu" secondAttribute="trailing" type="default" id="bHc-Pc-99i"/>
-                                    <constraint firstItem="hlw-Zf-OOp" firstAttribute="top" secondItem="UQm-RN-inu" secondAttribute="top" type="user" id="bPw-gG-kqI"/>
                                     <constraint firstItem="hlw-Zf-OOp" firstAttribute="leading" secondItem="UQm-RN-inu" secondAttribute="leading" type="default" id="gos-Sm-pPY"/>
+                                    <constraint firstItem="hlw-Zf-OOp" firstAttribute="top" secondItem="UQm-RN-inu" secondAttribute="top" constant="-8" id="hPL-Jr-6nH"/>
                                     <constraint firstItem="W0j-Ca-82O" firstAttribute="leading" secondItem="UQm-RN-inu" secondAttribute="leading" type="default" id="nlk-a1-HGk"/>
                                 </constraints>
                             </scrollView>
@@ -431,6 +431,61 @@
             <point key="canvasLocation" x="1301" y="-205"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SGArchiveSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGArchiveSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowMonth" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="leftArrowMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowMonthToBottomConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="leftArrowYearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowYearToTopConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rightArrowMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightArrowYearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="yearLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SGBlogEntryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="favoritesAction:"/>
+                <relationship kind="action" name="shareAction:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLableToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="SGBlogEntryViewController_ipad" superclassName="SGBlogEntryViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController_ipad.h"/>
+        </class>
+        <class className="SGMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMainViewController.h"/>
+        </class>
+        <class className="SGMenuController_iPad" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMenuController_iPad.h"/>
+            <relationships>
+                <relationship kind="action" name="closeAction:"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

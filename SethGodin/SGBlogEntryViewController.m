@@ -70,7 +70,6 @@
     NSString *titleText = self.blogEntry.title;
     self.blogTitleLabel.text = titleText;
     
-    
     CGSize labelSize = [titleText sizeWithFont:fontBlogItemTitle constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat height = labelSize.height + 50;
