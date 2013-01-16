@@ -33,28 +33,9 @@
 {
     [super viewDidLoad];
     
-    if(IS_IPAD)
-    {
-        _blogEntrySelected = [SGNotifications observeBlogEntrySelectedNotification:^(NSNotification *notification)
-        {
-            self.blogEntry = notification.object;
-            [self viewDidLayoutSubviews];
-        }];
-    }
-    
     self.blogTitleLabel.textColor   = [UIColor titlebarTextColor];
     self.dateLabel.textColor = [UIColor titlebarTextColor];
     self.titleView.backgroundColor = [UIColor blogEntryTitleBackgroundColor];
-    
-    if(IS_IPHONE)
-    {
-        self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
-        [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
-    }
-    else
-    {
-        self.topView.backgroundColor = [UIColor blackColor];
-    }
     
     self.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.984 blue:0.937 alpha:1];
     
@@ -77,44 +58,31 @@
     [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
     [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];
     
-
-    
-    if(IS_IPHONE)
-    {
-        [self updateTitleForBlogEntry];
-        self.titleLableToTopViewConstraint.constant = -10;
-    }
-    else
-    {
-        self.titleLableToTopViewConstraint.constant = -50;
-    }
-    
 }
 
 - (void) updateTitleForBlogEntry
 {
     CGSize size = CGSizeMake(290, 1000);
     
-    CGFloat fontSize = IS_IPAD ? 35 : 24;
-    
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
-    self.blogTitleLabel.font = font;
+    UIFont *fontBlogItemTitle = [self fontForBlogItemTitle];
+    self.blogTitleLabel.font = fontBlogItemTitle;
     
     NSString *titleText = self.blogEntry.title;
     self.blogTitleLabel.text = titleText;
-    CGSize labelSize = [titleText sizeWithFont:font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
+    
+    
+    CGSize labelSize = [titleText sizeWithFont:fontBlogItemTitle constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     
     CGFloat height = labelSize.height + 50;
     
     self.titleViewHeightConstraint.constant = height;
     
-    if(IS_IPAD)
-    {
-        self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:_blogEntry.datePublished];
-    }
-    
     [self updateButtonSelected];
+}
 
+- (UIFont*) fontForBlogItemTitle
+{
+    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
 }
 
 - (void) setBlogEntry:(SGBlogEntry *) toEntry
@@ -133,18 +101,8 @@
 
 - (void) viewDidLayoutSubviews
 {
-    if(IS_IPHONE)
-    {
-        self.titleView.backgroundColor = [UIColor tableCellBackgroundColor];
-    }
-    else
-    {
-        self.titleView.backgroundColor = [UIColor blackColor];
-    }
     
-   
-
-   
+    self.titleView.backgroundColor = [self titleViewBackgroundColor];
     
     NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
                                    "<head> <meta charset='utf-8'> \n"
@@ -279,6 +237,11 @@
     
     [operation start];
     
+}
+
+- (UIColor*) titleViewBackgroundColor
+{
+    return [UIColor tableCellBackgroundColor];
 }
 
 @end

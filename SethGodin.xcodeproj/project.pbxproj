@@ -95,6 +95,8 @@
 		A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884316590C7200777A82 /* NSDictionary-Expanded.m */; };
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
+		A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */; };
+		A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22816A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m */; };
 		A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
@@ -316,6 +318,10 @@
 		A97E88581659212100777A82 /* SGBookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBookCellView.m; sourceTree = "<group>"; };
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
+		A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_ipad.h; sourceTree = "<group>"; };
+		A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryViewController_ipad.m; sourceTree = "<group>"; };
+		A9A3F22716A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_iphone.h; sourceTree = "<group>"; };
+		A9A3F22816A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryViewController_iphone.m; sourceTree = "<group>"; };
 		A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallspinner@2x.png"; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* Seth Godin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -465,6 +471,10 @@
 			children = (
 				A91009D21650084F00779F84 /* SGBlogEntryViewController.h */,
 				A91009D31650084F00779F84 /* SGBlogEntryViewController.m */,
+				A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */,
+				A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */,
+				A9A3F22716A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.h */,
+				A9A3F22816A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m */,
 			);
 			name = BlogEntry;
 			sourceTree = "<group>";
@@ -664,6 +674,8 @@
 		A9754D231696E830009E1D1F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A9A3F21D16A6ADA9000B4D62 /* TableCell */,
+				A9A3F21C16A6AD90000B4D62 /* iPhone/iPad */,
 				A9F94437169AD77900BBB6BE /* iPad */,
 				A9F94436169AD76E00BBB6BE /* iPhone */,
 			);
@@ -718,6 +730,25 @@
 			);
 			name = BlockAlerts;
 			path = ToAddToYourProjects;
+			sourceTree = "<group>";
+		};
+		A9A3F21C16A6AD90000B4D62 /* iPhone/iPad */ = {
+			isa = PBXGroup;
+			children = (
+				A91009D11650083200779F84 /* BlogEntry */,
+				A9D6854E164D0D47007A9ADA /* BlogEntries */,
+			);
+			name = iPhone/iPad;
+			sourceTree = "<group>";
+		};
+		A9A3F21D16A6ADA9000B4D62 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				A9F944311699C70800BBB6BE /* BlogEntryCell.xib */,
+				A9F944331699CA5E00BBB6BE /* SGBlogEntryCell.h */,
+				A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */,
+			);
+			name = TableCell;
 			sourceTree = "<group>";
 		};
 		A9D684D8164CFE8D007A9ADA = {
@@ -896,9 +927,6 @@
 				A9D68506164CFE8D007A9ADA /* SGBlogEntriesViewController.m */,
 				A9D68552164D0DE3007A9ADA /* UIImage+RSSSelection.h */,
 				A9D68553164D0DE3007A9ADA /* UIImage+RSSSelection.m */,
-				A9F944311699C70800BBB6BE /* BlogEntryCell.xib */,
-				A9F944331699CA5E00BBB6BE /* SGBlogEntryCell.h */,
-				A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */,
 			);
 			name = BlogEntries;
 			sourceTree = "<group>";
@@ -957,8 +985,6 @@
 		A9F94436169AD76E00BBB6BE /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
-				A9D6854E164D0D47007A9ADA /* BlogEntries */,
-				A91009D11650083200779F84 /* BlogEntry */,
 				A9100A511650F9D800779F84 /* Menu */,
 			);
 			name = iPhone;
@@ -1172,6 +1198,8 @@
 				A9F36A4316A3609600FF7CB6 /* BlockBackground.m in Sources */,
 				A9F36A4416A3609600FF7CB6 /* BlockTextPromptAlertView.m in Sources */,
 				A9F36A4816A40D9A00FF7CB6 /* UIFont+General.m in Sources */,
+				A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */,
+				A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -54,4 +54,27 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
+
+#pragma mark -
+#pragma mark device specific messages
+
+/**
+ Update the title of the blog entry.
+ */
+- (void) updateTitleForBlogEntry;
+
+/**
+ Font to be used for the title of the blog item. 
+ Can be different on different devices.
+ @return Font to be used for the blog item title.
+ */
+- (UIFont*) fontForBlogItemTitle;
+
+
+/**
+ Color to use for the blog header background
+ */
+- (UIColor*) titleViewBackgroundColor;
+
+
 @end

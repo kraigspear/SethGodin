@@ -83,7 +83,7 @@ static SGMainViewController *instance;
 
 - (void) addBlogEntryView
 {
-    UIViewController *vc = [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"blogEntry"];
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"blogEntry"];
     
     _blogEntryViewController = (SGBlogEntryViewController*) vc;
     
