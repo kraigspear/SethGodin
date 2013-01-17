@@ -72,7 +72,11 @@
     
     CGSize labelSize = [titleText sizeWithFont:fontBlogItemTitle constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     
-    CGFloat height = labelSize.height + 50;
+    NSLog(@"labelHeight = %f", labelSize.height);
+    
+    NSUInteger addHeight = labelSize.height > 90 ? 70 : 60;
+    
+    CGFloat height = labelSize.height + addHeight;
     
     self.titleViewHeightConstraint.constant = height;
     
