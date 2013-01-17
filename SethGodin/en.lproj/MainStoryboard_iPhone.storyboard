@@ -958,27 +958,16 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1J-7t-9j4" userLabel="dateLabel">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="11L-Ln-IsV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Tg0-UB-r8x" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="top" type="user" id="3OR-9L-aKx"/>
                                             <constraint firstAttribute="trailing" secondItem="Tg0-UB-r8x" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="89o-eh-Zab"/>
-                                            <constraint firstItem="X1J-7t-9j4" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DPd-Ve-4kG"/>
                                             <constraint firstAttribute="height" constant="132" type="user" id="EWR-5W-EAX"/>
-                                            <constraint firstItem="PqR-X2-zbU" firstAttribute="centerY" secondItem="X1J-7t-9j4" secondAttribute="centerY" type="user" id="UDx-lE-ra4"/>
                                             <constraint firstAttribute="trailing" secondItem="PqR-X2-zbU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bMn-hA-OZY"/>
                                             <constraint firstItem="Tg0-UB-r8x" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="iya-ZY-tBg"/>
                                             <constraint firstAttribute="bottom" secondItem="Tg0-UB-r8x" secondAttribute="bottom" type="user" id="l8A-5E-ftW"/>
-                                            <constraint firstAttribute="bottom" secondItem="PqR-X2-zbU" secondAttribute="bottom" constant="20" type="user" id="oOZ-d6-7Tn"/>
-                                            <constraint firstItem="PqR-X2-zbU" firstAttribute="leading" secondItem="X1J-7t-9j4" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="qPz-2K-tyc"/>
+                                            <constraint firstAttribute="bottom" secondItem="PqR-X2-zbU" secondAttribute="bottom" type="user" id="oOZ-d6-7Tn"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -986,12 +975,12 @@
                                 <constraints>
                                     <constraint firstItem="BhM-ij-3pw" firstAttribute="leading" secondItem="0FM-fy-IFY" secondAttribute="leading" type="default" id="3xw-ng-u0r"/>
                                     <constraint firstItem="BhM-ij-3pw" firstAttribute="trailing" secondItem="0FM-fy-IFY" secondAttribute="trailing" type="default" id="59c-ny-UE6"/>
-                                    <constraint firstItem="BhM-ij-3pw" firstAttribute="top" secondItem="0FM-fy-IFY" secondAttribute="top" constant="124" id="EvX-vy-TgL"/>
-                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="centerX" secondItem="0FM-fy-IFY" secondAttribute="centerX" type="default" id="EzL-JU-V3E"/>
                                     <constraint firstItem="3VA-GR-4p1" firstAttribute="trailing" secondItem="0FM-fy-IFY" secondAttribute="trailing" type="default" id="HCt-Mm-hjy"/>
-                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="top" secondItem="0FM-fy-IFY" secondAttribute="top" type="user" id="LTO-BV-2Di"/>
+                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="top" secondItem="0FM-fy-IFY" secondAttribute="top" constant="-8" id="L1v-QO-oPz"/>
                                     <constraint firstItem="3VA-GR-4p1" firstAttribute="leading" secondItem="0FM-fy-IFY" secondAttribute="leading" type="default" id="VHd-O2-Ow2"/>
-                                    <constraint firstAttribute="bottom" secondItem="BhM-ij-3pw" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="p8J-FC-M7I"/>
+                                    <constraint firstAttribute="bottom" secondItem="BhM-ij-3pw" secondAttribute="bottom" constant="28" id="YLF-3g-fHe"/>
+                                    <constraint firstItem="BhM-ij-3pw" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="bottom" type="user" id="eaD-tN-kK8"/>
+                                    <constraint firstItem="BhM-ij-3pw" firstAttribute="centerX" secondItem="0FM-fy-IFY" secondAttribute="centerX" type="default" id="va1-KR-3Nj"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -1010,7 +999,6 @@
                     <connections>
                         <outlet property="backButton" destination="eCp-0o-257" id="lnY-Hu-qgB"/>
                         <outlet property="blogTitleLabel" destination="Tg0-UB-r8x" id="4J5-9D-MOS"/>
-                        <outlet property="dateLabel" destination="X1J-7t-9j4" id="rYd-j3-eE2"/>
                         <outlet property="favoritesButton" destination="PqR-X2-zbU" id="dT0-tb-i1c"/>
                         <outlet property="scrollView" destination="0FM-fy-IFY" id="Dwi-Gp-FWq"/>
                         <outlet property="shareButton" destination="ZUd-qJ-oZh" id="wUZ-th-UOy"/>
@@ -1072,6 +1060,8 @@
         <class className="SGBlogEntriesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntriesViewController.h"/>
             <relationships>
+                <relationship kind="action" name="menuAction:"/>
+                <relationship kind="action" name="searchAction:"/>
                 <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
@@ -1134,7 +1124,6 @@
         <class className="SGSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="backAction:"/>
                 <relationship kind="action" name="useICloudAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
@@ -1144,9 +1133,6 @@
         <class className="SGUpdradeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpdradeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="alreadyUpgradedAction:"/>
-                <relationship kind="action" name="backAction:"/>
-                <relationship kind="action" name="upgradeAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>

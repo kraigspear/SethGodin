@@ -26,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonViewToTopViewConstraint;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 
 @property (nonatomic, assign) BOOL isNetworkingAvailable;

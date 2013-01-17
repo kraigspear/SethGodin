@@ -35,15 +35,13 @@
     
     [self updateTitleForBlogEntry];
     self.titleLableToTopViewConstraint.constant = -10;
-    
+
 }
 
 - (UIColor*) titleViewBackgroundColor
 {
     return [UIColor tableCellBackgroundColor];
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {
