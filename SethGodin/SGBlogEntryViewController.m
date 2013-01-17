@@ -100,7 +100,7 @@
 
 - (void) viewDidLayoutSubviews
 {
-    
+    self.scrollView.contentOffset = CGPointZero;
     self.titleView.backgroundColor = [self titleViewBackgroundColor];
     
     NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
@@ -189,16 +189,17 @@
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
     
-    NSLog(@"content heigth = %f", self.webView.scrollView.contentSize.height);
+    CGRect frame = webView.frame;
+    frame.size.height = 1;
+    CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
+    frame.size = fittingSize;
     
-    NSString *scrollStr = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
+    NSLog(@"height = %f", frame.size.height);
     
-    NSLog(@"scrollVal = %@", scrollStr);
-    float scrollVal = [scrollStr floatValue];
+    self.scrollView.contentSize = CGSizeMake(webView.frame.size.width, fittingSize.height + self.titleView.frame.size.height);
     
-    self.scrollView.contentSize = CGSizeMake(webView.frame.size.width, scrollVal + self.titleView.frame.size.height);
+    self.webViewHeightConstraint.constant = fittingSize.height;
     
-    self.webViewHeightConstraint.constant = scrollVal;
     
     [self.view layoutIfNeeded];
     
