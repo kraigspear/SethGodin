@@ -9,7 +9,8 @@
 #import "SGSettingsViewController.h"
 #import "UIImage+General.h"
 #import "SGUSerDefaults.h"
-
+#import <Parse/Parse.h>
+#import "MBProgressHud.h"
 
 @interface SGSettingsViewController ()
 
@@ -34,16 +35,8 @@
 	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Settings"]];
     
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
-    
-    self.useICloudSwitch.on = [[SGUserDefaults sharedInstance] useICloud];
-
 }
 
-- (IBAction)useICloudAction:(id)sender
-{
-    BOOL useICloud = self.useICloudSwitch.on;
-    [[SGUserDefaults sharedInstance] setUseICloud:useICloud];
-}
 
 - (IBAction)backAction:(id)sender
 {
@@ -55,5 +48,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)loginAction:(id)sender
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Logging In..";
+    
+    [PFUser logInWithUsernameInBackground:self.loginTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error)
+    {
+        if(error != nil)
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Login Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertView show];
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Congrats, you are logged in" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertView show];
+        }
+    }];
+}
+
+- (IBAction)newAccountAction:(id)sender
+{
+    
+}
+
 
 @end

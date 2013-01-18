@@ -10,6 +10,7 @@
 
 #import "UIImage+General.h"
 #import "UIColor+General.h"
+#import "UIFont+General.h"
 
 @interface SGBlogEntryViewController_iphone ()
 
@@ -29,8 +30,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"SETH GODIN"]];
+
+	self.topView.backgroundColor = [UIColor blogEntriesTopBarBackgroundColor];
+    self.titleLabel.textColor    = [UIColor blogEntriesTextColor];
+    self.titleLabel.font         = [UIFont blogEntriesTitleFont];
+    
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
     [self updateTitleForBlogEntry];

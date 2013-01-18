@@ -549,33 +549,91 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtn-Fo-af4" userLabel="innerView">
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cloud Sync" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="194" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-RV-98a" userLabel="upgradeLabel">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="194" id="PuQ-Ls-XtG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Login:" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="194" translatesAutoresizingMaskIntoConstraints="NO" id="4Bn-hB-NU1" userLabel="upgradeLabel">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-KY-nPE">
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vzt-tk-sWo">
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="194" translatesAutoresizingMaskIntoConstraints="NO" id="A6i-2Z-bRn" userLabel="upgradeLabel">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k95-yZ-K4x">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="87" id="oui-xH-FG3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginAction:" destination="UnC-am-xcM" eventType="touchUpInside" id="eCW-g5-BJE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqg-5r-Fgx">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="New Account">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newAccountAction:" destination="UnC-am-xcM" eventType="touchUpInside" id="93h-F6-duU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7O2-Gn-Kld">
-                                <color key="onTintColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="useICloudAction:" destination="UnC-am-xcM" eventType="valueChanged" id="Ahd-zr-xOG"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Use iCloud" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="194" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-RV-98a" userLabel="upgradeLabel">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="194" id="PuQ-Ls-XtG"/>
-                                    <constraint firstAttribute="height" constant="30" id="bVc-sq-FHI"/>
+                                    <constraint firstItem="A6i-2Z-bRn" firstAttribute="trailing" secondItem="4Bn-hB-NU1" secondAttribute="trailing" type="default" id="2YT-qH-tDm"/>
+                                    <constraint firstAttribute="trailing" secondItem="vzt-tk-sWo" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8qY-8i-EmI"/>
+                                    <constraint firstItem="3f4-KY-nPE" firstAttribute="leading" secondItem="jtn-Fo-af4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="CFC-wo-Fwc"/>
+                                    <constraint firstItem="vzt-tk-sWo" firstAttribute="top" secondItem="A6i-2Z-bRn" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="FC9-PG-r8H"/>
+                                    <constraint firstItem="3f4-KY-nPE" firstAttribute="top" secondItem="4Bn-hB-NU1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="HuH-24-4H2"/>
+                                    <constraint firstItem="A6i-2Z-bRn" firstAttribute="leading" secondItem="jtn-Fo-af4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="MCP-0M-9np"/>
+                                    <constraint firstItem="k95-yZ-K4x" firstAttribute="leading" secondItem="jtn-Fo-af4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="O3D-sE-sOE"/>
+                                    <constraint firstItem="gJl-RV-98a" firstAttribute="top" secondItem="jtn-Fo-af4" secondAttribute="top" constant="32" id="VyR-be-QLN"/>
+                                    <constraint firstItem="A6i-2Z-bRn" firstAttribute="top" secondItem="jtn-Fo-af4" secondAttribute="top" constant="145" id="WWY-Y4-Tfn"/>
+                                    <constraint firstItem="4Bn-hB-NU1" firstAttribute="leading" secondItem="jtn-Fo-af4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Y5L-zL-ooy"/>
+                                    <constraint firstAttribute="trailing" secondItem="3f4-KY-nPE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bRe-Dd-I7p"/>
+                                    <constraint firstAttribute="trailing" secondItem="kqg-5r-Fgx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="blj-nv-iU0"/>
+                                    <constraint firstItem="gJl-RV-98a" firstAttribute="trailing" secondItem="4Bn-hB-NU1" secondAttribute="trailing" type="default" id="cKp-f3-riN"/>
+                                    <constraint firstItem="vzt-tk-sWo" firstAttribute="leading" secondItem="jtn-Fo-af4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ef8-xD-ZaX"/>
+                                    <constraint firstItem="4Bn-hB-NU1" firstAttribute="top" secondItem="gJl-RV-98a" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="hrx-L0-gV4"/>
+                                    <constraint firstItem="gJl-RV-98a" firstAttribute="leading" secondItem="jtn-Fo-af4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="njM-YZ-pAD"/>
+                                    <constraint firstItem="kqg-5r-Fgx" firstAttribute="baseline" secondItem="k95-yZ-K4x" secondAttribute="baseline" type="default" id="pB6-8v-ioS"/>
+                                    <constraint firstItem="k95-yZ-K4x" firstAttribute="top" secondItem="jtn-Fo-af4" secondAttribute="top" constant="230" id="yX4-fw-f0W"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gJl-RV-98a" firstAttribute="top" secondItem="62f-ig-s7n" secondAttribute="top" constant="136" id="9iW-d4-sY5"/>
-                            <constraint firstItem="gJl-RV-98a" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" constant="-8" id="RhV-sD-rt6"/>
                             <constraint firstItem="HgB-Bl-Km7" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" type="default" id="SkM-eH-8RE"/>
                             <constraint firstItem="jtn-Fo-af4" firstAttribute="trailing" secondItem="62f-ig-s7n" secondAttribute="trailing" type="default" id="WKl-wI-ci8"/>
-                            <constraint firstAttribute="trailing" secondItem="7O2-Gn-Kld" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XNb-a1-sp8"/>
                             <constraint firstItem="jtn-Fo-af4" firstAttribute="top" secondItem="62f-ig-s7n" secondAttribute="top" constant="44" id="jaG-84-cXO"/>
-                            <constraint firstItem="7O2-Gn-Kld" firstAttribute="top" secondItem="62f-ig-s7n" secondAttribute="top" constant="137" id="k51-Qm-pjh"/>
                             <constraint firstItem="HgB-Bl-Km7" firstAttribute="top" secondItem="62f-ig-s7n" secondAttribute="top" type="default" id="lOT-id-WtD"/>
                             <constraint firstItem="jtn-Fo-af4" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" type="default" id="qwb-rY-6mx"/>
                             <constraint firstItem="HgB-Bl-Km7" firstAttribute="trailing" secondItem="62f-ig-s7n" secondAttribute="trailing" type="default" id="uDk-ox-rpT"/>
@@ -584,8 +642,9 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="yWH-LV-tpM" id="voe-wp-f6w"/>
+                        <outlet property="loginTextField" destination="3f4-KY-nPE" id="ztf-7H-waS"/>
+                        <outlet property="passwordTextField" destination="vzt-tk-sWo" id="5mG-OS-ecP"/>
                         <outlet property="topView" destination="HgB-Bl-Km7" id="SFf-tQ-qCR"/>
-                        <outlet property="useICloudSwitch" destination="7O2-Gn-Kld" id="QIk-rt-j2h"/>
                         <outlet property="view" destination="62f-ig-s7n" id="k85-xz-YxQ"/>
                     </connections>
                 </viewController>
@@ -912,15 +971,26 @@
                                             <action selector="shareAction:" destination="ZDt-iZ-e0h" eventType="touchUpInside" id="YB9-lj-0lR"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SETH GODIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p99-dh-L0d">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="VYo-Bo-kbW"/>
+                                            <constraint firstAttribute="width" constant="210" id="aZI-Oy-Qkn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="26"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ZUd-qJ-oZh" firstAttribute="top" secondItem="cXb-Vt-HXm" secondAttribute="top" type="default" id="3h0-Jl-Sev"/>
                                     <constraint firstItem="ZUd-qJ-oZh" firstAttribute="bottom" secondItem="cXb-Vt-HXm" secondAttribute="bottom" type="default" id="7pY-pu-pmq"/>
+                                    <constraint firstItem="p99-dh-L0d" firstAttribute="centerY" secondItem="eCp-0o-257" secondAttribute="centerY" type="default" id="Xja-pf-iiC"/>
                                     <constraint firstAttribute="trailing" secondItem="ZUd-qJ-oZh" secondAttribute="trailing" constant="10" id="ZZV-Ua-Sgi"/>
+                                    <constraint firstItem="p99-dh-L0d" firstAttribute="centerX" secondItem="cXb-Vt-HXm" secondAttribute="centerX" type="default" id="dIq-af-cjx"/>
+                                    <constraint firstItem="p99-dh-L0d" firstAttribute="centerY" secondItem="ZUd-qJ-oZh" secondAttribute="centerY" type="default" id="fFf-dk-twi"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="odK-Yw-9IL"/>
                                     <constraint firstItem="eCp-0o-257" firstAttribute="leading" secondItem="cXb-Vt-HXm" secondAttribute="leading" type="default" id="sdx-yh-iSr"/>
-                                    <constraint firstItem="ZUd-qJ-oZh" firstAttribute="centerY" secondItem="eCp-0o-257" secondAttribute="centerY" type="default" id="zkO-Y2-Jq6"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FM-fy-IFY">
@@ -1002,6 +1072,7 @@
                         <outlet property="favoritesButton" destination="PqR-X2-zbU" id="dT0-tb-i1c"/>
                         <outlet property="scrollView" destination="0FM-fy-IFY" id="Dwi-Gp-FWq"/>
                         <outlet property="shareButton" destination="ZUd-qJ-oZh" id="wUZ-th-UOy"/>
+                        <outlet property="titleLabel" destination="p99-dh-L0d" id="3th-IZ-9Kw"/>
                         <outlet property="titleView" destination="3VA-GR-4p1" id="0EI-Wo-CCG"/>
                         <outlet property="titleViewHeightConstraint" destination="EWR-5W-EAX" id="4NF-g4-EGF"/>
                         <outlet property="topView" destination="cXb-Vt-HXm" id="rVs-Ns-bXR"/>
@@ -1059,6 +1130,8 @@
         <class className="SGBlogEntriesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntriesViewController.h"/>
             <relationships>
+                <relationship kind="action" name="menuAction:"/>
+                <relationship kind="action" name="searchAction:"/>
                 <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
@@ -1073,6 +1146,8 @@
         <class className="SGBlogEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="favoritesAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
@@ -1089,10 +1164,14 @@
         </class>
         <class className="SGBlogEntryViewController_iphone" superclassName="SGBlogEntryViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController_iphone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="SGBookPurchaseViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBookPurchaseViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
@@ -1119,8 +1198,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGSettingsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="useICloudSwitch" candidateClass="UISwitch"/>
             </relationships>
         </class>
         <class className="SGUpdradeViewController" superclassName="UIViewController">
@@ -1135,12 +1215,14 @@
         <class className="SGUpgradedViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpgradedViewController.h"/>
             <relationships>
+                <relationship kind="action" name="thankYouAction:"/>
                 <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SGWebViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGWebViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backAction:"/>
                 <relationship kind="outlet" name="activityIndiacator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="nextButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="previousButton" candidateClass="UIBarButtonItem"/>

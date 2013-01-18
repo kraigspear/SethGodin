@@ -10,4 +10,7 @@
 
 @interface SGBlogEntryViewController_iphone : SGBlogEntryViewController
 
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 @end
