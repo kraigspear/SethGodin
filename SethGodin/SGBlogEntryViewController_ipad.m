@@ -41,9 +41,6 @@
                           }];
     
     self.topView.backgroundColor = [UIColor blackColor];
-    
-    self.titleLableToTopViewConstraint.constant = -50;
-    
 }
 
 - (void) updateTitleForBlogEntry

@@ -74,9 +74,7 @@
     
     NSLog(@"labelHeight = %f", labelSize.height);
     
-    NSUInteger addHeight = labelSize.height > 90 ? 70 : 60;
-    
-    CGFloat height = labelSize.height + addHeight;
+    CGFloat height = labelSize.height + 60;
     
     self.titleViewHeightConstraint.constant = height;
     

@@ -34,8 +34,6 @@
     [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
     [self updateTitleForBlogEntry];
-    self.titleLableToTopViewConstraint.constant = -10;
-
 }
 
 - (UIColor*) titleViewBackgroundColor
