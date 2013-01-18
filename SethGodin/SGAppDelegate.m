@@ -16,6 +16,7 @@
 #import "Favorite.h"
 #import "SGBlogEntry.h"
 #import "SWSplashWindow.h"
+#import <Parse/Parse.h>
 
 @implementation SGAppDelegate
 {
@@ -38,6 +39,26 @@
 {
     [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
     [Crittercism enableWithAppID:@"50c92afd63d95269e3000002"];
+    
+    [Parse setApplicationId:@"k2eo7GeSve5neSkhTFcMLPtIViPicZwLf3opy9bu"
+                  clientKey:@"c46oSNaIeVXYVONk0D9wPVxYfBrdZZu0K8Od95wN"];
+    
+    
+    PFUser *currentUser = [PFUser currentUser];
+    
+    if(!currentUser)
+    {
+        [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
+            if (error)
+            {
+                NSLog(@"Anonymous login failed.");
+            }
+            else
+            {
+                NSLog(@"Anonymous user logged in.");
+            }
+        }];
+    }
     
     if([NSFileManager isICloudEnabled])
     {

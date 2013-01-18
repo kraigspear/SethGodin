@@ -18,7 +18,7 @@
 #import "NSString+Util.h"
 #import "AFNetworking.h"
 #import "BlockTypes.h"
-#import "SGFavoritesCoreData.h"
+#import "SGFavoritesParse.h"
 #import "SGNotifications.h"
 
 
@@ -62,14 +62,17 @@
 
 - (void) updateTitleForBlogEntry
 {
-    CGSize size = CGSizeMake(290, 1000);
+    if(self.blogTitleLabel.frame.size.height == 0) return;
+    
+    CGSize size = CGSizeMake(self.blogTitleLabel.frame.size.width, 1000);
+    
     
     UIFont *fontBlogItemTitle = [self fontForBlogItemTitle];
     self.blogTitleLabel.font = fontBlogItemTitle;
     
     NSString *titleText = self.blogEntry.title;
     self.blogTitleLabel.text = titleText;
-    
+ 
     CGSize labelSize = [titleText sizeWithFont:fontBlogItemTitle constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     
     NSLog(@"labelHeight = %f", labelSize.height);
@@ -79,7 +82,9 @@
     self.titleViewHeightConstraint.constant = height;
     
     [self updateButtonSelected];
+    
 }
+
 
 - (UIFont*) fontForBlogItemTitle
 {
@@ -89,19 +94,21 @@
 - (void) setBlogEntry:(SGBlogEntry *) toEntry
 {
     _blogEntry = toEntry;
-    [self updateTitleForBlogEntry];
+    [self.view layoutIfNeeded];
 }
 
 - (void) updateButtonSelected
 {
-   [SGFavoritesCoreData isBlogItemFavorite:self.blogEntry success:^(BOOL isFavorite)
-   {
-        self.favoritesButton.selected = isFavorite;
-   }];
+   [SGFavoritesParse isBlogItemFavorite:self.blogEntry success:^(BOOL isFavorite)
+    {
+       self.favoritesButton.selected = isFavorite;
+    }];
 }
 
 - (void) viewDidLayoutSubviews
 {
+    [self updateTitleForBlogEntry];
+    
     self.scrollView.contentOffset = CGPointZero;
     self.titleView.backgroundColor = [self titleViewBackgroundColor];
     
@@ -126,7 +133,7 @@
 - (IBAction)favoritesAction:(id)sender
 {
     self.favoritesButton.selected = !self.favoritesButton.selected;
-    [SGFavoritesCoreData toggleBlogEntryAsAFavorite:self.blogEntry];
+    [SGFavoritesParse toggleBlogEntryAsAFavorite:self.blogEntry];
 }
 
 - (IBAction)shareAction:(id)sender

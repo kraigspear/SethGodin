@@ -97,6 +97,18 @@
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
 		A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */; };
 		A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22816A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m */; };
+		A9A3F22B16A93BAB000B4D62 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F22A16A93BAB000B4D62 /* Parse.framework */; };
+		A9A3F23116A93BDF000B4D62 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23016A93BDE000B4D62 /* AdSupport.framework */; };
+		A9A3F23316A93BE8000B4D62 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23216A93BE8000B4D62 /* Social.framework */; };
+		A9A3F23516A93BF2000B4D62 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23416A93BF2000B4D62 /* Accounts.framework */; };
+		A9A3F23716A93C02000B4D62 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23616A93C02000B4D62 /* AudioToolbox.framework */; };
+		A9A3F23916A93C13000B4D62 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23816A93C13000B4D62 /* CFNetwork.framework */; };
+		A9A3F23B16A93C31000B4D62 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23A16A93C31000B4D62 /* libsqlite3.dylib */; };
+		A9A3F23D16A93C3B000B4D62 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23C16A93C3B000B4D62 /* libz.1.1.3.dylib */; };
+		A9A3F23F16A93C46000B4D62 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23E16A93C46000B4D62 /* MobileCoreServices.framework */; };
+		A9A3F24116A93C58000B4D62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F24016A93C58000B4D62 /* Security.framework */; };
+		A9A3F24316A93C86000B4D62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F24216A93C86000B4D62 /* CoreLocation.framework */; };
+		A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */; };
 		A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
@@ -322,6 +334,19 @@
 		A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryViewController_ipad.m; sourceTree = "<group>"; };
 		A9A3F22716A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_iphone.h; sourceTree = "<group>"; };
 		A9A3F22816A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryViewController_iphone.m; sourceTree = "<group>"; };
+		A9A3F22A16A93BAB000B4D62 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A9A3F23016A93BDE000B4D62 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		A9A3F23216A93BE8000B4D62 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		A9A3F23416A93BF2000B4D62 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		A9A3F23616A93C02000B4D62 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A9A3F23816A93C13000B4D62 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A9A3F23A16A93C31000B4D62 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		A9A3F23C16A93C3B000B4D62 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		A9A3F23E16A93C46000B4D62 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		A9A3F24016A93C58000B4D62 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A9A3F24216A93C86000B4D62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A9A3F24416A93D10000B4D62 /* SGFavoritesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesParse.h; sourceTree = "<group>"; };
+		A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesParse.m; sourceTree = "<group>"; };
 		A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallspinner@2x.png"; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* Seth Godin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -406,8 +431,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */,
+				A9A3F24316A93C86000B4D62 /* CoreLocation.framework in Frameworks */,
 				A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */,
+				A9A3F24116A93C58000B4D62 /* Security.framework in Frameworks */,
+				A9A3F23F16A93C46000B4D62 /* MobileCoreServices.framework in Frameworks */,
+				A9A3F23D16A93C3B000B4D62 /* libz.1.1.3.dylib in Frameworks */,
+				A9A3F23B16A93C31000B4D62 /* libsqlite3.dylib in Frameworks */,
+				A9A3F23916A93C13000B4D62 /* CFNetwork.framework in Frameworks */,
+				A9A3F23716A93C02000B4D62 /* AudioToolbox.framework in Frameworks */,
+				A9A3F23516A93BF2000B4D62 /* Accounts.framework in Frameworks */,
+				A9A3F23316A93BE8000B4D62 /* Social.framework in Frameworks */,
+				A9A3F23116A93BDF000B4D62 /* AdSupport.framework in Frameworks */,
+				A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */,
 				A9100A4F165044DD00779F84 /* SystemConfiguration.framework in Frameworks */,
 				A9100A4D165037B100779F84 /* QuartzCore.framework in Frameworks */,
 				A933F83816796347004FE120 /* libCrittercism_v3_4_5.a in Frameworks */,
@@ -419,6 +454,7 @@
 				A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */,
 				A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */,
 				A9D684EC164CFE8D007A9ADA /* CoreGraphics.framework in Frameworks */,
+				A9A3F22B16A93BAB000B4D62 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +477,8 @@
 				A9100A5A165247C200779F84 /* SGFavorites.m */,
 				A9754D14169592E6009E1D1F /* SGFavoritesCoreData.h */,
 				A9754D15169592E6009E1D1F /* SGFavoritesCoreData.m */,
+				A9A3F24416A93D10000B4D62 /* SGFavoritesParse.h */,
+				A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */,
 			);
 			name = Favorites;
 			sourceTree = "<group>";
@@ -782,6 +820,17 @@
 		A9D684E6164CFE8D007A9ADA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9A3F24216A93C86000B4D62 /* CoreLocation.framework */,
+				A9A3F24016A93C58000B4D62 /* Security.framework */,
+				A9A3F23E16A93C46000B4D62 /* MobileCoreServices.framework */,
+				A9A3F23C16A93C3B000B4D62 /* libz.1.1.3.dylib */,
+				A9A3F23A16A93C31000B4D62 /* libsqlite3.dylib */,
+				A9A3F23816A93C13000B4D62 /* CFNetwork.framework */,
+				A9A3F23616A93C02000B4D62 /* AudioToolbox.framework */,
+				A9A3F23416A93BF2000B4D62 /* Accounts.framework */,
+				A9A3F23216A93BE8000B4D62 /* Social.framework */,
+				A9A3F23016A93BDE000B4D62 /* AdSupport.framework */,
+				A9A3F22A16A93BAB000B4D62 /* Parse.framework */,
 				A95B573016923C6A00026BD8 /* CoreData.framework */,
 				A9D8385516596E9300A79669 /* StoreKit.framework */,
 				A9100A4E165044DD00779F84 /* SystemConfiguration.framework */,
@@ -799,26 +848,26 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
-				A9F369FD16A2FC2600FF7CB6 /* PopupView */,
-				A905B15D166627FB0092F3D0 /* SethGodin.entitlements */,
-				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
-				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
-				A9754D231696E830009E1D1F /* ViewControllers */,
 				A97E882E165843FA00777A82 /* BookPurchase */,
-				A97E881E1657C71100777A82 /* WebView */,
-				A91009C6164EED9C00779F84 /* Model */,
-				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
-				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
-				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
-				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
-				A97E880916563CD800777A82 /* SGNotifications.h */,
-				A97E880A16563CD800777A82 /* SGNotifications.m */,
-				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
-				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
-				A9D838591659853F00A79669 /* SGLoadingAnimation.m */,
-				A95B57211692270700026BD8 /* SethModel.xcdatamodeld */,
 				A9754D11169571C4009E1D1F /* Favorite.h */,
 				A9754D12169571C4009E1D1F /* Favorite.m */,
+				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
+				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
+				A91009C6164EED9C00779F84 /* Model */,
+				A9F369FD16A2FC2600FF7CB6 /* PopupView */,
+				A905B15D166627FB0092F3D0 /* SethGodin.entitlements */,
+				A95B57211692270700026BD8 /* SethModel.xcdatamodeld */,
+				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
+				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
+				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
+				A9D838591659853F00A79669 /* SGLoadingAnimation.m */,
+				A97E880916563CD800777A82 /* SGNotifications.h */,
+				A97E880A16563CD800777A82 /* SGNotifications.m */,
+				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
+				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
+				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
+				A9754D231696E830009E1D1F /* ViewControllers */,
+				A97E881E1657C71100777A82 /* WebView */,
 			);
 			path = SethGodin;
 			sourceTree = "<group>";
@@ -1200,6 +1249,7 @@
 				A9F36A4816A40D9A00FF7CB6 /* UIFont+General.m in Sources */,
 				A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */,
 				A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */,
+				A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1316,6 +1366,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
@@ -1344,6 +1398,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";

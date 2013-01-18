@@ -331,7 +331,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDb-7P-3zu" userLabel="favoriteButton">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="43" id="B81-Yi-d3I"/>
+                                                    <constraint firstAttribute="height" constant="43" type="user" id="B81-Yi-d3I"/>
                                                     <constraint firstAttribute="width" constant="44" id="VHv-YX-4Cv"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -353,7 +353,7 @@
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syP-Pw-fqL" userLabel="dateLabel">
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="kS8-lv-463"/>
+                                                    <constraint firstAttribute="height" constant="21" type="user" id="kS8-lv-463"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -364,13 +364,13 @@
                                         <constraints>
                                             <constraint firstItem="b4f-HG-A3Q" firstAttribute="leading" secondItem="hlw-Zf-OOp" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5xc-7a-lBT"/>
                                             <constraint firstItem="mDb-7P-3zu" firstAttribute="leading" secondItem="syP-Pw-fqL" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="98X-i1-unw"/>
-                                            <constraint firstItem="b4f-HG-A3Q" firstAttribute="top" secondItem="hlw-Zf-OOp" secondAttribute="top" type="user" id="9DQ-ik-1Ai"/>
-                                            <constraint firstAttribute="bottom" secondItem="b4f-HG-A3Q" secondAttribute="bottom" type="user" id="NIJ-A6-Hy7"/>
+                                            <constraint firstItem="b4f-HG-A3Q" firstAttribute="top" secondItem="hlw-Zf-OOp" secondAttribute="top" constant="20" symbolic="YES" type="user" id="9DQ-ik-1Ai"/>
+                                            <constraint firstAttribute="bottom" secondItem="b4f-HG-A3Q" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="NIJ-A6-Hy7"/>
                                             <constraint firstAttribute="trailing" secondItem="b4f-HG-A3Q" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="VH9-KU-1wY"/>
                                             <constraint firstItem="syP-Pw-fqL" firstAttribute="leading" secondItem="hlw-Zf-OOp" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="asH-xf-lbr"/>
-                                            <constraint firstAttribute="trailing" secondItem="mDb-7P-3zu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="cyp-Fa-oee"/>
-                                            <constraint firstAttribute="bottom" secondItem="mDb-7P-3zu" secondAttribute="bottom" constant="20" type="user" id="iKX-8b-H8B"/>
-                                            <constraint firstItem="mDb-7P-3zu" firstAttribute="centerY" secondItem="syP-Pw-fqL" secondAttribute="centerY" type="user" id="pKe-io-Bf8"/>
+                                            <constraint firstAttribute="trailing" secondItem="mDb-7P-3zu" secondAttribute="trailing" type="user" id="cyp-Fa-oee"/>
+                                            <constraint firstAttribute="bottom" secondItem="mDb-7P-3zu" secondAttribute="bottom" type="user" id="iKX-8b-H8B"/>
+                                            <constraint firstAttribute="bottom" secondItem="syP-Pw-fqL" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="rw4-7A-awu"/>
                                             <constraint firstAttribute="height" constant="132" type="user" id="zBd-cl-zCw"/>
                                         </constraints>
                                     </view>
@@ -418,7 +418,6 @@
                         <outlet property="favoritesButton" destination="mDb-7P-3zu" id="6LB-zw-OOe"/>
                         <outlet property="scrollView" destination="UQm-RN-inu" id="oZR-zg-DYW"/>
                         <outlet property="shareButton" destination="he2-Y6-VOc" id="Icc-YN-Gn6"/>
-                        <outlet property="titleLableToTopViewConstraint" destination="9DQ-ik-1Ai" id="oco-tX-uYd"/>
                         <outlet property="titleView" destination="hlw-Zf-OOp" id="Zhy-cS-pvP"/>
                         <outlet property="titleViewHeightConstraint" destination="zBd-cl-zCw" id="5Ep-O9-TBp"/>
                         <outlet property="topView" destination="r20-Wb-LsT" id="qOJ-nO-PWM"/>
@@ -431,61 +430,6 @@
             <point key="canvasLocation" x="1301" y="-205"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SGArchiveSelectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGArchiveSelectionViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leftArrowMonth" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="leftArrowMonthButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leftArrowMonthToBottomConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="leftArrowYearButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leftArrowYearToTopConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rightArrowMonthButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightArrowYearButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="yearLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SGBlogEntryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backAction:"/>
-                <relationship kind="action" name="favoritesAction:"/>
-                <relationship kind="action" name="shareAction:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="titleLableToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="titleView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="titleViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-                <relationship kind="outlet" name="webViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
-            </relationships>
-        </class>
-        <class className="SGBlogEntryViewController_ipad" superclassName="SGBlogEntryViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController_ipad.h"/>
-        </class>
-        <class className="SGMainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMainViewController.h"/>
-        </class>
-        <class className="SGMenuController_iPad" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMenuController_iPad.h"/>
-            <relationships>
-                <relationship kind="action" name="closeAction:"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

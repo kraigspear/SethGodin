@@ -11,7 +11,7 @@
 #import "SGBlogEntry.h"
 #import "SGNotifications.h"
 #import "SGUSerDefaults.h"
-#import "SGFavoritesCoreData.h"
+#import "SGFavoritesParse.h"
 
 @implementation SGFavoritesBlogItemsGetter
 {
@@ -21,13 +21,22 @@
 
 - (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
 {
-    inSuccess(self.cachedItems);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                   {
+                       NSArray *items = [self cachedItems];
+                       
+                       dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                           inSuccess(items);
+                       });
+                   });
+                   
 }
 
 
 - (NSArray*) cachedItems
 {
-    NSArray *favorites = [SGFavoritesCoreData allFavorites];
+    NSArray *favorites = [SGFavoritesParse allFavorites];
     [self updateShareCountsForEntries:favorites];
     return favorites;
 }
