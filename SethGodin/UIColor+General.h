@@ -16,6 +16,8 @@
 + (UIColor*) tableCellBackgroundColor;
 + (UIColor*) menuBackgroundColor;
 
++ (UIColor*) menuTitleBarTextColor;
+
 + (UIColor*) blogEntryTitleBackgroundColor;
 + (UIColor*) titlebarTextColor;
 + (UIColor*) textColorSelected;

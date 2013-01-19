@@ -30,5 +30,6 @@
 
 @property (nonatomic, assign) BOOL isNetworkAvailable;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

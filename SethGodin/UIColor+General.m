@@ -39,6 +39,11 @@
     return [UIColor colorWithRed:0.976 green:0.820 blue:0.227 alpha:1];
 }
 
++ (UIColor*) menuTitleBarTextColor
+{
+    return [UIColor colorWithRed:0.980 green:0.851 blue:0.110 alpha:1];
+}
+
 + (UIColor*) titlebarTextColor
 {
     return [UIColor whiteColor];

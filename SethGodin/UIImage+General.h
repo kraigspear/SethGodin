@@ -22,7 +22,7 @@
 + (UIImage*) defaultTitleBarImage;
 + (UIImage*) andersonSpearCloudLogo;
 + (UIImage*) titleBarWithTitle:(NSString*) inTitle usingBackgroundColor:(UIColor*) inColor;
-
++ (UIImage*) closeButtonWithColor:(UIColor*) inColor;
 
 + (UIImage*) popupBackgroundForSize:(CGSize) inSize color:(UIColor*) inColor identifier:(NSString*) inIdentifer;
 

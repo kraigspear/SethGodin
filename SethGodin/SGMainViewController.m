@@ -12,7 +12,7 @@
 #import "SGNotifications.h"
 
 
-#define MENU_HEIGHT 225
+#define MENU_HEIGHT 336
 #define LEFT_VIEW_WIDTH 320.0f
 
 @interface SGMainViewController ()

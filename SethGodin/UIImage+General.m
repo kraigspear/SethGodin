@@ -56,6 +56,46 @@
     
 }
 
++ (UIImage*) closeButtonWithColor:(UIColor*) inColor
+{
+    CGFloat r, g, b, a;
+    [inColor getRed:&r green:&g blue:&b alpha:&a];
+    
+    NSString *identifier = [NSString stringWithFormat:@"closeButton%f%f%f%f", r, g, b, a];
+    
+    return [UIImage imageWithIdentifier:identifier forSize:CGSizeMake(44,44) andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* yellow = inColor;
+                
+                //// Bezier 2 Drawing
+                UIBezierPath* bezier2Path = [UIBezierPath bezierPath];
+                [bezier2Path moveToPoint: CGPointMake(34.25, 10.43)];
+                [bezier2Path addCurveToPoint: CGPointMake(28.84, 10.43) controlPoint1: CGPointMake(32.75, 8.82) controlPoint2: CGPointMake(30.33, 8.82)];
+                [bezier2Path addLineToPoint: CGPointMake(22.37, 17.4)];
+                [bezier2Path addLineToPoint: CGPointMake(15.9, 10.43)];
+                [bezier2Path addCurveToPoint: CGPointMake(10.5, 10.43) controlPoint1: CGPointMake(14.41, 8.82) controlPoint2: CGPointMake(11.99, 8.82)];
+                [bezier2Path addCurveToPoint: CGPointMake(10.5, 16.25) controlPoint1: CGPointMake(9.01, 12.04) controlPoint2: CGPointMake(9.01, 14.64)];
+                [bezier2Path addLineToPoint: CGPointMake(16.97, 23.22)];
+                [bezier2Path addLineToPoint: CGPointMake(10.5, 30.18)];
+                [bezier2Path addCurveToPoint: CGPointMake(10.5, 36) controlPoint1: CGPointMake(9.01, 31.79) controlPoint2: CGPointMake(9.01, 34.39)];
+                [bezier2Path addCurveToPoint: CGPointMake(13.2, 37.21) controlPoint1: CGPointMake(11.25, 36.81) controlPoint2: CGPointMake(12.22, 37.21)];
+                [bezier2Path addCurveToPoint: CGPointMake(15.9, 36) controlPoint1: CGPointMake(14.18, 37.21) controlPoint2: CGPointMake(15.16, 36.81)];
+                [bezier2Path addLineToPoint: CGPointMake(22.37, 29.04)];
+                [bezier2Path addLineToPoint: CGPointMake(28.84, 36)];
+                [bezier2Path addCurveToPoint: CGPointMake(31.54, 37.21) controlPoint1: CGPointMake(29.59, 36.81) controlPoint2: CGPointMake(30.56, 37.21)];
+                [bezier2Path addCurveToPoint: CGPointMake(34.25, 36) controlPoint1: CGPointMake(32.52, 37.21) controlPoint2: CGPointMake(33.5, 36.81)];
+                [bezier2Path addCurveToPoint: CGPointMake(34.25, 30.18) controlPoint1: CGPointMake(35.74, 34.39) controlPoint2: CGPointMake(35.74, 31.79)];
+                [bezier2Path addLineToPoint: CGPointMake(27.78, 23.22)];
+                [bezier2Path addLineToPoint: CGPointMake(34.25, 16.25)];
+                [bezier2Path addCurveToPoint: CGPointMake(34.25, 10.43) controlPoint1: CGPointMake(35.74, 14.64) controlPoint2: CGPointMake(35.74, 12.04)];
+                [bezier2Path closePath];
+                [yellow setFill];
+                [bezier2Path fill];
+            }];
+
+}
+
 + (UIImage*) closeButton
 {
     return [UIImage imageWithIdentifier:@"closeButton" forSize:CGSizeMake(44,44) andDrawingBlock:^

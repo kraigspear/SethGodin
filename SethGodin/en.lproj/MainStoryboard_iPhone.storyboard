@@ -176,12 +176,24 @@
                                             <action selector="closeAction:" destination="svJ-Ls-5dq" eventType="touchUpInside" id="Qa1-ZO-Auh"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SETH GODIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Dt-tA-BYh" userLabel="titleLabel">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="DdN-zE-RXq"/>
+                                            <constraint firstAttribute="width" constant="210" id="U8q-39-kp8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="26"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.85098039219999999" blue="0.10980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="PKE-MZ-eHl" secondAttribute="trailing" type="user" id="PlP-fI-pXS"/>
+                                    <constraint firstItem="PKE-MZ-eHl" firstAttribute="top" secondItem="8PK-Ri-3NT" secondAttribute="top" type="default" id="HV4-n0-o17"/>
+                                    <constraint firstItem="PKE-MZ-eHl" firstAttribute="bottom" secondItem="8PK-Ri-3NT" secondAttribute="bottom" type="default" id="PAh-28-1H6"/>
+                                    <constraint firstAttribute="trailing" secondItem="PKE-MZ-eHl" secondAttribute="trailing" constant="4" type="user" id="PlP-fI-pXS"/>
+                                    <constraint firstItem="1Dt-tA-BYh" firstAttribute="top" secondItem="8PK-Ri-3NT" secondAttribute="top" constant="11" type="user" id="SQY-ez-4nk"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="Wdc-Tb-SG8"/>
-                                    <constraint firstItem="PKE-MZ-eHl" firstAttribute="centerY" secondItem="8PK-Ri-3NT" secondAttribute="centerY" type="default" id="l6S-uG-FdV"/>
+                                    <constraint firstItem="1Dt-tA-BYh" firstAttribute="centerX" secondItem="8PK-Ri-3NT" secondAttribute="centerX" type="default" id="nNi-8X-8Kq"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sq8-r1-VOh" userLabel="buttonView">
@@ -307,6 +319,7 @@
                         <outlet property="favoritesButton" destination="8VX-Y0-Fhk" id="81R-gF-rKu"/>
                         <outlet property="settingsButton" destination="1Uw-FS-1k8" id="qZH-Ik-qYE"/>
                         <outlet property="titleBar" destination="8PK-Ri-3NT" id="KgF-VK-PK0"/>
+                        <outlet property="titleLabel" destination="1Dt-tA-BYh" id="qT3-k2-hC1"/>
                         <segue destination="TXy-ey-Qqf" kind="push" identifier="menuToUpgrade" id="4ru-Qb-5eG"/>
                         <segue destination="WiB-db-0vb" kind="push" identifier="archivesSegue" id="q7X-6h-9an"/>
                     </connections>
@@ -515,7 +528,7 @@
         <!--Settings View Controller-->
         <scene sceneID="7fK-gT-2sr">
             <objects>
-                <viewController id="UnC-am-xcM" customClass="SGSettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" id="UnC-am-xcM" customClass="SGSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="62f-ig-s7n">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -540,25 +553,36 @@
                                             <action selector="backAction:" destination="WiB-db-0vb" eventType="touchUpInside" id="nIi-1q-OwG"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SETH GODIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re7-gw-F2K">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="210" id="Vhi-NR-RfX"/>
+                                            <constraint firstAttribute="height" constant="21" id="W31-pC-ZqM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="26"/>
+                                        <color key="textColor" red="0.98039215686274506" green="0.85098039215686272" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.99215686274509807" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="yWH-LV-tpM" firstAttribute="leading" secondItem="HgB-Bl-Km7" secondAttribute="leading" type="default" id="4ev-Sd-fIn"/>
                                     <constraint firstAttribute="height" constant="44" type="user" id="Hlf-Sx-F86"/>
+                                    <constraint firstItem="Re7-gw-F2K" firstAttribute="centerX" secondItem="HgB-Bl-Km7" secondAttribute="centerX" type="default" id="cwf-T6-AmV"/>
+                                    <constraint firstItem="Re7-gw-F2K" firstAttribute="bottom" secondItem="yWH-LV-tpM" secondAttribute="bottom" type="default" id="efb-Rd-5N5"/>
                                     <constraint firstAttribute="centerY" secondItem="yWH-LV-tpM" secondAttribute="centerY" type="user" id="qGy-EG-urp"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtn-Fo-af4" userLabel="innerView">
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cloud Sync" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="194" translatesAutoresizingMaskIntoConstraints="NO" id="gJl-RV-98a" userLabel="upgradeLabel">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="194" id="PuQ-Ls-XtG"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dfj-X0-UrM" userLabel="cloudSyncSwitch">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="77" id="ZPT-BR-XEE"/>
+                                        </constraints>
                                         <color key="onTintColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="cloudSyncAction:" destination="UnC-am-xcM" eventType="valueChanged" id="kKN-ze-v29"/>
@@ -567,20 +591,21 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Dfj-X0-UrM" firstAttribute="leading" secondItem="gJl-RV-98a" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="2Gh-c3-Mox"/>
-                                    <constraint firstItem="Dfj-X0-UrM" firstAttribute="bottom" secondItem="gJl-RV-98a" secondAttribute="bottom" type="default" id="32D-FT-bii"/>
-                                    <constraint firstItem="gJl-RV-98a" firstAttribute="top" secondItem="jtn-Fo-af4" secondAttribute="top" constant="32" id="VyR-be-QLN"/>
-                                    <constraint firstItem="gJl-RV-98a" firstAttribute="leading" secondItem="jtn-Fo-af4" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="njM-YZ-pAD"/>
+                                    <constraint firstItem="gJl-RV-98a" firstAttribute="top" secondItem="jtn-Fo-af4" secondAttribute="top" constant="100" type="user" id="Ipv-f4-f7D"/>
+                                    <constraint firstItem="Dfj-X0-UrM" firstAttribute="centerY" secondItem="gJl-RV-98a" secondAttribute="centerY" type="user" id="Qq7-gN-a9e"/>
+                                    <constraint firstItem="Dfj-X0-UrM" firstAttribute="leading" secondItem="gJl-RV-98a" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="c5N-nf-5rb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dfj-X0-UrM" secondAttribute="trailing" constant="21" type="user" id="f6h-Gg-0Kp"/>
+                                    <constraint firstItem="gJl-RV-98a" firstAttribute="leading" secondItem="jtn-Fo-af4" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="njM-YZ-pAD"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HgB-Bl-Km7" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" type="default" id="SkM-eH-8RE"/>
-                            <constraint firstItem="jtn-Fo-af4" firstAttribute="trailing" secondItem="62f-ig-s7n" secondAttribute="trailing" type="default" id="WKl-wI-ci8"/>
+                            <constraint firstItem="jtn-Fo-af4" firstAttribute="trailing" secondItem="62f-ig-s7n" secondAttribute="trailing" type="user" id="WKl-wI-ci8"/>
                             <constraint firstItem="jtn-Fo-af4" firstAttribute="top" secondItem="62f-ig-s7n" secondAttribute="top" constant="44" id="jaG-84-cXO"/>
                             <constraint firstItem="HgB-Bl-Km7" firstAttribute="top" secondItem="62f-ig-s7n" secondAttribute="top" type="default" id="lOT-id-WtD"/>
-                            <constraint firstItem="jtn-Fo-af4" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" type="default" id="qwb-rY-6mx"/>
+                            <constraint firstItem="jtn-Fo-af4" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" type="user" id="qwb-rY-6mx"/>
                             <constraint firstItem="HgB-Bl-Km7" firstAttribute="trailing" secondItem="62f-ig-s7n" secondAttribute="trailing" type="default" id="uDk-ox-rpT"/>
                             <constraint firstItem="jtn-Fo-af4" firstAttribute="bottom" secondItem="62f-ig-s7n" secondAttribute="bottom" type="default" id="xid-gr-dHE"/>
                         </constraints>
@@ -1090,7 +1115,6 @@
         <class className="SGBlogEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
             <relationships>
-                <relationship kind="action" name="favoritesAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
@@ -1134,6 +1158,7 @@
                 <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="settingsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="SGSettingsViewController" superclassName="UIViewController">

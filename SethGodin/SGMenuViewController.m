@@ -13,6 +13,7 @@
 #import "SGUpdradeViewController.h"
 #import "SGNotifications.h"
 #import "SGUserDefaults.h"
+#import "UIColor+General.h"
 
 @implementation SGMenuViewController
 {
@@ -26,10 +27,10 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.titleBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"MENU"]];
-    
-    [self.closeButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
+
+    UIImage *closeButtonImage = [UIImage closeButtonWithColor:[UIColor menuTitleBarTextColor]];
+    [self.closeButton setImage:closeButtonImage forState:UIControlStateNormal];
+    self.titleLabel.textColor = [UIColor menuTitleBarTextColor];
     
     UIImage *booksImage   = [UIImage menuImageWithText:@"Books" isUpgrade:NO];
     UIImage *allPostImage = [UIImage menuImageWithText:@"Latest" isUpgrade:NO];

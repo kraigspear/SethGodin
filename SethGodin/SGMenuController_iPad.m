@@ -25,6 +25,7 @@
     __weak UIButton *_archiveButton;
     __weak UIButton *_favoritesButton;
     __weak UIButton *_booksButton;
+    __weak UIButton *_settingsButton;
     NSArray *_buttons;
 }
 
@@ -184,7 +185,21 @@
     
     [self.view addConstraints:@[leadingConstraint, topConstraint,  heightConstriant]];
     
-    _buttons = @[_latestButton, _favoritesButton, _booksButton, _archiveButton];
+    //settings
+    UIButton *settingsButton = [self newButtonWithTitle:@"Settings" action:@selector(settingsAction:)];
+    _settingsButton = settingsButton;
+
+    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:settingsButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    
+    heightConstriant = [self heightConstriant:settingsButton];
+    
+    topConstraint = [NSLayoutConstraint constraintWithItem:settingsButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    [self.view addConstraints:@[centerX, topConstraint, heightConstriant]];
+    
+    //--
+    
+    _buttons = @[_latestButton, _favoritesButton, _booksButton, _archiveButton, settingsButton];
     
 }
 
@@ -282,6 +297,17 @@
 - (void) booksAction:(id) sender
 {
     [self.delegate booksSelected:self];
+}
+
+- (void) settingsAction:(id) sender
+{
+    UIStoryboard *iphoneStoryboard =  [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    UIViewController *settingsViewController = [iphoneStoryboard instantiateViewControllerWithIdentifier:@"settings"];
+    
+    settingsViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:settingsViewController animated:YES completion:nil];
+    
 }
 
 - (void) updateButtonTextColorForUnselected
