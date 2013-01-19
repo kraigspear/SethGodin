@@ -10,6 +10,9 @@
 #import "SGBlogEntry.h"
 #import "BlockTypes.h"
 
+
+@class PFUser;
+
 @interface SGFavoritesParse : NSObject
 
 + (void) addBlogEntryToFavorites:(SGBlogEntry*) inEntry;
@@ -17,5 +20,7 @@
 + (NSArray*) allFavorites;
 + (void) toggleBlogEntryAsAFavorite:(SGBlogEntry*) inEntry;
 + (void) isBlogItemFavorite:(SGBlogEntry*) inBlogEntry success:(SWBoolBlock) inSuccess;
+
++ (void) moveUserDataToCurrentUserFor:(PFUser*) oldUser;
 
 @end

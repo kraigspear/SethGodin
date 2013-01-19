@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface SGSettingsViewController : UIViewController
+@interface SGSettingsViewController : UIViewController <PFLogInViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 
-@property (weak, nonatomic) IBOutlet UITextField *loginTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (weak, nonatomic) IBOutlet UISwitch *cloudSwitch;
 
 @end

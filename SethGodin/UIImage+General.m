@@ -131,10 +131,10 @@
                 [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 26] lineBreakMode: NSLineBreakByWordWrapping alignment: UITextAlignmentCenter];
                 
                 
-
                 
                 
-
+                
+                
                 
                 
                 
@@ -170,7 +170,7 @@
                 }
                 
                 [bezier5Path fill];
-
+                
             }];
 }
 
@@ -226,7 +226,7 @@
                 }
                 
                 
-
+                
             }];
 }
 
@@ -331,7 +331,7 @@
                     [closeBorderColor setFill];
                     [xTextContent drawInRect: xTextRect withFont: [UIFont fontWithName: @"Helvetica" size: 30] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
                 }
-
+                
             }];
 }
 
@@ -374,10 +374,79 @@
                 [backRectPath stroke];
                 
                 
-
+                
             }];
 }
 
+
++ (UIImage*) andersonSpearCloudLogo
+{
+    
+    return [UIImage imageWithIdentifier:@"andersonspearcloudlogo" forSize:CGSizeMake(160, 125) andDrawingBlock:^
+            {
+                //// General Declarations
+                CGContextRef context = UIGraphicsGetCurrentContext();
+                
+                //// Color Declarations
+                UIColor* color0 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
+                
+                //// Shadow Declarations
+                UIColor* shadow = [UIColor darkGrayColor];
+                CGSize shadowOffset = CGSizeMake(1.1, 1.1);
+                CGFloat shadowBlurRadius = 4;
+                
+                //// Abstracted Attributes
+                NSString* textContent = @"Anderson+";
+                NSString* spearTextContent = @"Spear";
+                
+                
+                //// Layer 1
+                {
+                    //// Bezier Drawing
+                    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+                    [bezierPath moveToPoint: CGPointMake(137.72, 50.26)];
+                    [bezierPath addCurveToPoint: CGPointMake(96.39, 4.26) controlPoint1: CGPointMake(137.43, 24.81) controlPoint2: CGPointMake(119.06, 4.26)];
+                    [bezierPath addCurveToPoint: CGPointMake(57.71, 34.59) controlPoint1: CGPointMake(78.66, 4.26) controlPoint2: CGPointMake(63.56, 16.9)];
+                    [bezierPath addCurveToPoint: CGPointMake(42.34, 25.76) controlPoint1: CGPointMake(54.23, 29.26) controlPoint2: CGPointMake(48.68, 25.76)];
+                    [bezierPath addCurveToPoint: CGPointMake(23.26, 47.25) controlPoint1: CGPointMake(31.81, 25.76) controlPoint2: CGPointMake(23.26, 35.38)];
+                    [bezierPath addCurveToPoint: CGPointMake(23.53, 50.12) controlPoint1: CGPointMake(23.26, 48.24) controlPoint2: CGPointMake(23.42, 49.17)];
+                    [bezierPath addCurveToPoint: CGPointMake(4.19, 83.08) controlPoint1: CGPointMake(12.16, 55.58) controlPoint2: CGPointMake(4.19, 68.28)];
+                    [bezierPath addCurveToPoint: CGPointMake(35.98, 118.9) controlPoint1: CGPointMake(4.19, 102.86) controlPoint2: CGPointMake(18.44, 118.9)];
+                    [bezierPath addLineToPoint: CGPointMake(74.14, 118.9)];
+                    [bezierPath addLineToPoint: CGPointMake(74.14, 97.41)];
+                    [bezierPath addLineToPoint: CGPointMake(61.42, 97.41)];
+                    [bezierPath addLineToPoint: CGPointMake(80.5, 68.75)];
+                    [bezierPath addLineToPoint: CGPointMake(99.57, 97.41)];
+                    [bezierPath addLineToPoint: CGPointMake(86.86, 97.41)];
+                    [bezierPath addLineToPoint: CGPointMake(86.86, 118.9)];
+                    [bezierPath addLineToPoint: CGPointMake(125.01, 118.9)];
+                    [bezierPath addCurveToPoint: CGPointMake(156.81, 83.08) controlPoint1: CGPointMake(142.57, 118.9) controlPoint2: CGPointMake(156.81, 102.86)];
+                    [bezierPath addCurveToPoint: CGPointMake(137.72, 50.26) controlPoint1: CGPointMake(156.81, 68.38) controlPoint2: CGPointMake(148.95, 55.79)];
+                    [bezierPath closePath];
+                    CGContextSaveGState(context);
+                    CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
+                    [color0 setFill];
+                    [bezierPath fill];
+                    CGContextRestoreGState(context);
+                    
+                }
+                
+                
+                //// Text Drawing
+                CGRect textRect = CGRectMake(30, 33, 106, 30);
+                [[UIColor blackColor] setFill];
+                [textContent drawInRect: textRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: [UIFont buttonFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                
+                
+                //// spearText Drawing
+                CGRect spearTextRect = CGRectMake(28, 48.5, 106, 30);
+                [[UIColor blackColor] setFill];
+                [spearTextContent drawInRect: spearTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Bold" size: [UIFont buttonFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                
+            }];
+    
+    
+}
 
 
 @end

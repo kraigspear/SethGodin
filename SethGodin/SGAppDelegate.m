@@ -16,6 +16,7 @@
 #import "Favorite.h"
 #import "SGBlogEntry.h"
 #import "SWSplashWindow.h"
+#import "SGFavoritesParse.h"
 #import <Parse/Parse.h>
 
 @implementation SGAppDelegate
@@ -60,6 +61,7 @@
         }];
     }
     
+    /*
     if([NSFileManager isICloudEnabled])
     {
         _splashWindow = [[SWSplashWindow alloc] init];
@@ -92,6 +94,7 @@
     {
         [MagicalRecord setupCoreDataStackWithStoreNamed:@"SethGodin.sqllite"];
     }
+     */
     
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
@@ -106,38 +109,22 @@
 {
     if(self.isICloudSetup) return;
     
+    if(![PFUser currentUser]) return;
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                {
-                   NSLog(@"exporing to iCloud");
+                   NSLog(@"exporing to Parse");
                    NSArray *favoritesToExport = [[SGFavorites sharedInstance] favorites];
                    
                    if(favoritesToExport.count > 0)
                    {
-                       NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextForCurrentThread];
-                       
                        for(SGBlogEntry *oldFavorite in favoritesToExport)
                        {
-                           Favorite *favorite = [Favorite MR_createInContext:localContext];
-                           favorite.content = oldFavorite.content;
-                           favorite.date = oldFavorite.datePublished;
-                           favorite.favoriteID = oldFavorite.itemID;
-                           favorite.summary = oldFavorite.summary;
-                           favorite.title = oldFavorite.title;
-                           favorite.url = oldFavorite.urlStr;
-                           NSLog(@"new favorite created");
+                           [SGFavoritesParse addBlogEntryToFavorites:oldFavorite];
                        }
                        
-                       [localContext MR_saveNestedContextsErrorHandler:^(NSError *inError)
-                        {
-                            NSLog(@"Error moving favorites to CoreData %@ %@", inError, inError.userInfo);
-                            [Flurry logError:@"CoreDataMoveError" message:@"Error moving favorites to CoreData" error:inError];
-                        } completion:^
-                        {
-                            [[SGFavorites sharedInstance] resetFavorites];
-                            NSLog(@"iCloud export complete with no errors");
-                            [Flurry logEvent:@"MovedToCoreData"];
-                            [[SGUserDefaults sharedInstance] setMovedToCoreData:YES];
-                        }];
+                       [[SGUserDefaults sharedInstance] setMovedToCoreData:YES];
+                       [Flurry logEvent:@"MovedToParse"];
                    }
                });
 }

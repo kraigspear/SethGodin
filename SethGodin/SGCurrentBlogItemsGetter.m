@@ -28,8 +28,6 @@
     {
         if(cacheItems.count > 0)
         {
-            SGBlogEntry *blogEntry = [cacheItems objectAtIndex:0];
-            NSLog(@"%@", blogEntry.content);
             [self updateShareCountsForEntries:cacheItems];
             dispatch_async(dispatch_get_main_queue(), ^
                            {

@@ -35,8 +35,6 @@ NSString * const PARSE_COL_URL            = @"url";
     [favorite setObject:[PFUser currentUser] forKey:PARSE_COL_CURRENT_USER];
     
     [favorite saveEventually];
-    
-    
 }
 
 + (PFQuery*) queryForBlogEntry:(SGBlogEntry*) inEntry
@@ -142,6 +140,41 @@ NSString * const PARSE_COL_URL            = @"url";
     
     
     return blogEntry;
+}
+
++ (void) moveUserDataToCurrentUserFor:(PFUser*) oldUser
+{
+
+    const NSUInteger batchSize = 100;
+
+    PFUser *currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:PARSE_CLASS_FAVORITE];
+    [query whereKey:PARSE_COL_CURRENT_USER equalTo:oldUser];
+    query.limit = batchSize;
+    NSError *error;
+    NSArray *favorites;
+    
+    do
+    {
+        favorites = [query findObjects:&error];
+        
+        if(!error)
+        {
+            for(PFObject *oldFav in favorites)
+            {
+                [oldFav setObject:currentUser forKey:PARSE_COL_CURRENT_USER];
+                
+                NSError *saveError;
+                if(![oldFav save:&saveError])
+                {
+                    NSLog(@"not able to save favorite %@", saveError.localizedDescription);
+                }
+            }
+        }
+        
+    } while (error == nil && favorites.count == batchSize);
+    
+    
 }
 
 @end

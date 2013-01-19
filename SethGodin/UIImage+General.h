@@ -20,7 +20,7 @@
 + (UIImage*) previousButton;
 + (UIImage*) nextButton;
 + (UIImage*) defaultTitleBarImage;
-
++ (UIImage*) andersonSpearCloudLogo;
 + (UIImage*) titleBarWithTitle:(NSString*) inTitle usingBackgroundColor:(UIColor*) inColor;
 
 

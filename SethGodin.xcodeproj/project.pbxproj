@@ -109,6 +109,8 @@
 		A9A3F24116A93C58000B4D62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F24016A93C58000B4D62 /* Security.framework */; };
 		A9A3F24316A93C86000B4D62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F24216A93C86000B4D62 /* CoreLocation.framework */; };
 		A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */; };
+		A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */; };
+		A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */; };
 		A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */; };
 		A9D684E8164CFE8D007A9ADA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E7164CFE8D007A9ADA /* UIKit.framework */; };
 		A9D684EA164CFE8D007A9ADA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D684E9164CFE8D007A9ADA /* Foundation.framework */; };
@@ -347,6 +349,10 @@
 		A9A3F24216A93C86000B4D62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A9A3F24416A93D10000B4D62 /* SGFavoritesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesParse.h; sourceTree = "<group>"; };
 		A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesParse.m; sourceTree = "<group>"; };
+		A9A3F25A16AAD578000B4D62 /* SGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoginViewController.h; sourceTree = "<group>"; };
+		A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoginViewController.m; sourceTree = "<group>"; };
+		A9A3F25D16AADB8A000B4D62 /* SGSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSignUpViewController.h; sourceTree = "<group>"; };
+		A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSignUpViewController.m; sourceTree = "<group>"; };
 		A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallspinner@2x.png"; sourceTree = "<group>"; };
 		A9D684E3164CFE8D007A9ADA /* Seth Godin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -789,6 +795,17 @@
 			name = TableCell;
 			sourceTree = "<group>";
 		};
+		A9A3F25916AAD552000B4D62 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A9A3F25A16AAD578000B4D62 /* SGLoginViewController.h */,
+				A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */,
+				A9A3F25D16AADB8A000B4D62 /* SGSignUpViewController.h */,
+				A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
@@ -1034,6 +1051,7 @@
 		A9F94436169AD76E00BBB6BE /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				A9A3F25916AAD552000B4D62 /* Login */,
 				A9100A511650F9D800779F84 /* Menu */,
 			);
 			name = iPhone;
@@ -1250,6 +1268,8 @@
 				A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */,
 				A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */,
 				A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */,
+				A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */,
+				A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
