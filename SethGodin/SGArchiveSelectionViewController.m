@@ -261,5 +261,15 @@ const NSUInteger MIN_YEAR = 2002;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (UIColor*) titleViewBackgroundColor
+{
+    return [UIColor menuTitleBarBackgroundColor];
+}
+
+- (UIColor*) titleTextColor
+{
+    return [UIColor menuTitleBarTextColor];
+}
+
 
 @end
