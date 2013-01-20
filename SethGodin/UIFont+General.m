@@ -15,4 +15,9 @@
     return [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:26];
 }
 
++ (UIFont*) menuButtonFont
+{
+    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
+}
+
 @end

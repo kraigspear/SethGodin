@@ -15,4 +15,6 @@
  */
 + (UIFont*) blogEntriesTitleFont;
 
++ (UIFont*) menuButtonFont;
+
 @end

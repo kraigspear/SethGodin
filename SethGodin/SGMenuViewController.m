@@ -14,12 +14,24 @@
 #import "SGNotifications.h"
 #import "SGUserDefaults.h"
 #import "UIColor+General.h"
+#import "UIFont+General.h"
+
 
 @implementation SGMenuViewController
 {
 @private
     id _feedSelectionNotification;
     id _networkAvailableNotification;
+    
+    UIButton *_latestButton;
+    UIButton *_favoritesButton;
+    UIButton *_archivesButton;
+    UIButton *_booksButton;
+    UIButton *_settingsButton;
+    
+    NSArray *_portraitConstraints;
+    NSArray *_landscapeConstraints;
+
 }
 
 NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
@@ -38,15 +50,59 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     UIImage *favoritesImage = [UIImage menuImageWithText:@"Favorites" isUpgrade:NO];
     UIImage *archivesImage  = [UIImage menuImageWithText:@"Archives"      isUpgrade:NO];
     
-    UIImage *settingsButton = [UIImage menuImageWithText:@"Settings"      isUpgrade:NO];
+    UIImage *settingsImage = [UIImage menuImageWithText:@"Settings"      isUpgrade:NO];
     
-    [self.booksBySethButton setImage:booksImage forState:UIControlStateNormal];
-    [self.allPostButton     setImage:allPostImage forState:UIControlStateNormal];
+    
+    _latestButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _latestButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [_latestButton setImage:allPostImage forState:UIControlStateNormal];
+    [_latestButton addTarget:self action:@selector(currentPostAction:) forControlEvents:UIControlEventTouchDragInside];
+    
+    [self.view addSubview:_latestButton];
+    
+    _favoritesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _favoritesButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [_favoritesButton setImage:favoritesImage forState:UIControlStateNormal];
+    [_favoritesButton addTarget:self action:@selector(favoritesAction:) forControlEvents:UIControlEventTouchDragInside];
+    
+    [self.view addSubview:_favoritesButton];
+    
+    _archivesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_archivesButton setImage:archivesImage forState:UIControlStateNormal];
+    _archivesButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [_archivesButton addTarget:self action:@selector(archivesAction:) forControlEvents:UIControlEventTouchDragInside];
+    
+    [self.view addSubview:_archivesButton];
+    
+    //books
+    _booksButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_booksButton setImage:booksImage forState:UIControlStateNormal];
+    _booksButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [_booksButton addTarget:self action:@selector(booksAction:) forControlEvents:UIControlEventTouchDragInside];
+    
+    [self.view addSubview:_booksButton];
+    
+    //settings
+    _settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_settingsButton setImage:settingsImage forState:UIControlStateNormal];
+    _settingsButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [_settingsButton addTarget:self action:@selector(settingsAction:) forControlEvents:UIControlEventTouchDragInside];
+    
+    [self.view addSubview:_settingsButton];
+    
+    //
+    [self setupPortriateConstraints];
+    [self setupLandscapeConstraints];
+    
+    [self.view addConstraints:_portraitConstraints];
+    
+   // [self.booksBySethButton setImage:booksImage forState:UIControlStateNormal];
+   // [self.allPostButton     setImage:allPostImage forState:UIControlStateNormal];
 
-    [self.favoritesButton setImage:favoritesImage forState:UIControlStateNormal];
-    [self.archivesButton         setImage:archivesImage forState:UIControlStateNormal];
+   // [self.favoritesButton setImage:favoritesImage forState:UIControlStateNormal];
+   // [self.archivesButton         setImage:archivesImage forState:UIControlStateNormal];
     
-    [self.settingsButton setImage:settingsButton forState:UIControlStateNormal];
+   // [self.settingsButton setImage:settingsButton forState:UIControlStateNormal];
     
     _feedSelectionNotification = [SGNotifications observeFeedSelectionWithNotification:^(NSNotification * note)
     {
@@ -55,14 +111,120 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     
     _networkAvailableNotification = [SGNotifications observeNetworkAvailableWithNotification:^(NSNotification *note)
     {
-        self.isNetworkAvailable = [note.object boolValue];
-        self.archivesButton.enabled = self.isNetworkAvailable;
-        self.booksBySethButton.enabled = self.isNetworkAvailable;
+        //self.isNetworkAvailable = [note.object boolValue];
+       // self.archivesButton.enabled = self.isNetworkAvailable;
+       // self.booksBySethButton.enabled = self.isNetworkAvailable;
     }];
     
-    self.archivesButton.enabled = self.isNetworkAvailable;
-    self.booksBySethButton.enabled = self.isNetworkAvailable;
+   // self.archivesButton.enabled = self.isNetworkAvailable;
+    //self.booksBySethButton.enabled = self.isNetworkAvailable;
 }
+
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if(UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
+    {
+        [self.view removeConstraints:_landscapeConstraints];
+        [self.view addConstraints:_portraitConstraints];
+    }
+    else
+    {
+        [self.view removeConstraints:_portraitConstraints];
+        [self.view addConstraints:_landscapeConstraints];
+    }
+}
+
+- (void) setupPortriateConstraints
+{
+    NSMutableArray *constraints = [NSMutableArray array];
+    
+    //latest
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_latestButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.titleBar attribute:NSLayoutAttributeBottom multiplier:1 constant:20];
+    
+    NSLayoutConstraint *leadingConstraint = [NSLayoutConstraint constraintWithItem:_latestButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:20 constant:0];
+    
+    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    
+    //favorites
+    topConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    leadingConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    
+    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    
+    //archives
+    
+    topConstraint = [NSLayoutConstraint constraintWithItem:_archivesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_favoritesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    leadingConstraint = [NSLayoutConstraint constraintWithItem:_archivesButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_favoritesButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    
+    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    
+    //books
+    topConstraint = [NSLayoutConstraint constraintWithItem:_booksButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_archivesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    leadingConstraint = [NSLayoutConstraint constraintWithItem:_booksButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_archivesButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    
+    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    
+    //settings
+    topConstraint = [NSLayoutConstraint constraintWithItem:_settingsButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_booksButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    leadingConstraint = [NSLayoutConstraint constraintWithItem:_settingsButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_booksButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    
+    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    //
+    
+    _portraitConstraints = constraints;
+    
+}
+
+- (void) setupLandscapeConstraints
+{
+    NSMutableArray *constraints = [NSMutableArray array];
+    
+    //latest
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_latestButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.titleBar attribute:NSLayoutAttributeBottom multiplier:1 constant:20];
+    
+    NSLayoutConstraint *leadingConstraint = [NSLayoutConstraint constraintWithItem:_latestButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:20 constant:0];
+    
+    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    
+    //favorites
+    topConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeTop multiplier:1 constant:0];
+    
+    NSLayoutConstraint *trailingConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:100];
+    
+    [constraints addObjectsFromArray:@[topConstraint, trailingConstraint]];
+    
+    //archives
+    topConstraint = [NSLayoutConstraint constraintWithItem:_archivesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    leadingConstraint = [NSLayoutConstraint constraintWithItem:_archivesButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeLeading multiplier:0 constant:0];
+    
+    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    
+    //books
+    topConstraint = [NSLayoutConstraint constraintWithItem:_booksButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_favoritesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    trailingConstraint = [NSLayoutConstraint constraintWithItem:_booksButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_favoritesButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    
+    [constraints addObjectsFromArray:@[topConstraint, trailingConstraint]];
+    
+    
+    //settings
+    topConstraint = [NSLayoutConstraint constraintWithItem:_settingsButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_archivesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:-15];
+    
+    NSLayoutConstraint *centerConstraint = [NSLayoutConstraint constraintWithItem:_settingsButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:75];
+    
+    [constraints addObjectsFromArray:@[topConstraint, centerConstraint]];
+    
+    //
+    
+    _landscapeConstraints = constraints;
+    
+}
+
 
 - (void) viewDidLayoutSubviews
 {
@@ -84,19 +246,24 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 }
 
 
-- (IBAction)currentPostAction:(id)sender
+- (void)currentPostAction:(id)sender
 {
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsCurrent];
     [SGNotifications postFeedSelection:feedSelection];
     [self closeMenuWithAnimation:YES];
 }
 
-- (IBAction)archivesAction:(id)sender
+- (void) settingsAction:(id) sender
+{
+    
+}
+
+- (void)archivesAction:(id)sender
 {
     [self selectArchives];
 }
 
-- (IBAction)favoritesAction:(id)sender
+- (void) favoritesAction:(id)sender
 {
     
     if([SGUserDefaults sharedInstance].isUpgraded)
@@ -108,6 +275,12 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
         [self showUpradeView];
     }
     
+}
+
+- (void) booksAction:(id) sender
+{
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"books"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void) selectFavorites
@@ -125,6 +298,16 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 - (void) showUpradeView
 {
     [self performSegueWithIdentifier:SEGUE_MENU_TO_UPGRADE sender:self];
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return (UIInterfaceOrientationMaskPortrait);
 }
 
 #pragma mark -

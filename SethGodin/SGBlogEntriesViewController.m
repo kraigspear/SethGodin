@@ -55,6 +55,9 @@
     
     __weak SGBlogEntry *_blogEntry;
     
+    NSLayoutConstraint *_menuTopConstraint;
+    NSLayoutConstraint *_menuBottomConstraint;
+    
     SGFeedSelection *_feedSelection;
     
     SGMenuViewController *_menuViewController;
@@ -96,6 +99,10 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     self.searchButton.enabled = _isNetworkingAvailable;
 }
 
+- (BOOL) shouldAutorotate
+{
+    return NO;
+}
 
 #pragma mark -
 #pragma mark general
@@ -246,13 +253,20 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     [self addChildViewController:_menuViewController];
     
     UIView *menuView = _menuViewController.view;
+    menuView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    CGRect menuFrame = menuView.frame;
-    menuFrame.origin.y = -menuFrame.size.height;
+    _menuTopConstraint = [NSLayoutConstraint constraintWithItem:menuView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:-self.view.frame.size.height];
     
-    menuView.frame = menuFrame;
+    _menuBottomConstraint = [NSLayoutConstraint constraintWithItem:menuView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:-self.view.frame.size.height];
+    
+    NSLayoutConstraint *leadingConstraint = [NSLayoutConstraint constraintWithItem:menuView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    
+    NSLayoutConstraint *trailingConstraint = [NSLayoutConstraint constraintWithItem:menuView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:0];
+    
     
     [self.view addSubview:menuView];
+    
+    [self.view addConstraints:@[_menuTopConstraint, _menuBottomConstraint, leadingConstraint, trailingConstraint]];
     
     __weak SGBlogEntriesViewController *weakSelf = self;
     
@@ -267,13 +281,15 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         
     };
     
+    [self.view layoutIfNeeded];
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
     {
-        menuView.frame = CGRectMake(0, 0, menuFrame.size.width, menuFrame.size.height);
+        _menuTopConstraint.constant = 0;
+        _menuBottomConstraint.constant = 0;
+        [self.view layoutIfNeeded];
     }
     } completion:^(BOOL finished)
     {
-         
     }];
 
 }
@@ -312,9 +328,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     CGRect menuFrame = _menuViewController.view.frame;
     menuFrame.origin.y = -menuFrame.size.height;
     
+    [self.view layoutIfNeeded];
+    
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
         {
-            _menuViewController.view.frame = menuFrame;
+            _menuTopConstraint.constant = -self.view.frame.size.height;
         }
     } completion:^(BOOL finished)
      {
