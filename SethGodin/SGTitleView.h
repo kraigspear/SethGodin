@@ -11,6 +11,8 @@
 @protocol SGTitleViewDelegate <NSObject>
 
 - (NSString*) titleText;
+- (UIColor*)  titleTextColor;
+- (UIColor*)  titleViewBackgroundColor;
 
 @optional
 - (UIImage*) leftButtonImage;
@@ -19,7 +21,7 @@
 - (void) leftButtonAction:(id)  sender;
 - (void) rightButtonAction:(id) sender;
 
-- (UIColor*) titleTextColor;
+
 
 @end
 

@@ -13,7 +13,7 @@
 
 + (UIColor*) titlebarBackgroundColor
 {
-    return [UIColor colorWithRed:1.000 green:0.812 blue:0.000 alpha:1];
+    return [UIColor colorWithRed:0.980 green:0.851 blue:0.110 alpha:1];
 }
 
 + (UIColor*) tableCellBackgroundColor
@@ -55,6 +55,11 @@
 	unsigned hexNum;
 	if (![scanner scanHexInt:&hexNum]) return nil;
 	return [UIColor colorWithRGBHex:hexNum];
+}
+
++ (UIColor*) menuTitleBarBackgroundColor
+{
+    return [UIColor colorWithRed:1.000 green:0.992 blue:0.976 alpha:1];
 }
 
 + (UIColor*) menuBackgroundColor

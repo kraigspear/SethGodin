@@ -331,5 +331,14 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [self closeMenuWithAnimation:YES];
 }
 
+- (UIColor*) titleViewBackgroundColor
+{
+    return [UIColor menuTitleBarBackgroundColor];
+}
+
+- (UIColor*) titleTextColor
+{
+    return [UIColor menuTitleBarTextColor];
+}
 
 @end

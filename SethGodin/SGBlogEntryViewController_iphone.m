@@ -31,18 +31,12 @@
 {
     [super viewDidLoad];
 
-	self.topView.backgroundColor = [UIColor blogEntriesTopBarBackgroundColor];
     self.titleLabel.textColor    = [UIColor blogEntriesTextColor];
     self.titleLabel.font         = [UIFont blogEntriesTitleFont];
     
     //[self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
     [self updateTitleForBlogEntry];
-}
-
-- (UIColor*) titleViewBackgroundColor
-{
-    return [UIColor tableCellBackgroundColor];
 }
 
 - (void)didReceiveMemoryWarning

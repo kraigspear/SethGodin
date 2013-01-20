@@ -43,14 +43,6 @@
     self.topView.backgroundColor = [UIColor blackColor];
 }
 
-- (void) updateTitleForBlogEntry
-{
-    [super updateTitleForBlogEntry];
-    
-    self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:self.blogEntry.datePublished];
-    
-}
-
 - (UIFont*) fontForBlogItemTitle
 {
     return [UIFont fontWithName:@"HelveticaNeue-Bold" size:35];

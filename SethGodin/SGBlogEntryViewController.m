@@ -35,7 +35,8 @@
     
     self.blogTitleLabel.textColor   = [UIColor titlebarTextColor];
     self.dateLabel.textColor = [UIColor titlebarTextColor];
-    self.titleView.backgroundColor = [UIColor blogEntryTitleBackgroundColor];
+    
+    self.titleView.backgroundColor = [UIColor tableCellBackgroundColor];
     
     self.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.984 blue:0.937 alpha:1];
     
@@ -75,11 +76,11 @@
  
     CGSize labelSize = [titleText sizeWithFont:fontBlogItemTitle constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     
-    NSLog(@"labelHeight = %f", labelSize.height);
-    
     CGFloat height = labelSize.height + 60;
     
     self.titleViewHeightConstraint.constant = height;
+    
+    self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:self.blogEntry.datePublished];
     
     [self updateButtonSelected];
     
@@ -110,7 +111,6 @@
     [self updateTitleForBlogEntry];
     
     self.scrollView.contentOffset = CGPointZero;
-    self.titleView.backgroundColor = [self titleViewBackgroundColor];
     
     NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
                                    "<head> <meta charset='utf-8'> \n"
@@ -134,33 +134,6 @@
 {
     self.favoritesButton.selected = !self.favoritesButton.selected;
     [SGFavoritesParse toggleBlogEntryAsAFavorite:self.blogEntry];
-}
-
-- (IBAction)shareAction:(id)sender
-{ 
-    
-    [self urlStringForPost:^(NSString *urlStr)
-    {
-        NSURL *url = [NSURL URLWithString:urlStr];
-        
-        NSString *shareText = [NSString stringWithFormat:@"%@ - Seth Godin's Blog", self.blogEntry.title];
-        NSArray  *shareItems = @[shareText, url];
-        
-        UIActivityViewController *activityViewController =
-        [[UIActivityViewController alloc]
-         initWithActivityItems:shareItems
-         applicationActivities:nil];
-        
-        
-        [self presentViewController:activityViewController animated:YES completion:nil];
-    }];
-    
-    
-}
-
-- (IBAction)backAction:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -248,9 +221,61 @@
     
 }
 
+- (void) shareBlogEntry
+{
+    [self urlStringForPost:^(NSString *urlStr)
+     {
+         NSURL *url = [NSURL URLWithString:urlStr];
+         
+         NSString *shareText = [NSString stringWithFormat:@"%@ - Seth Godin's Blog", self.blogEntry.title];
+         NSArray  *shareItems = @[shareText, url];
+         
+         UIActivityViewController *activityViewController =
+         [[UIActivityViewController alloc]
+          initWithActivityItems:shareItems
+          applicationActivities:nil];
+         
+         
+         [self presentViewController:activityViewController animated:YES completion:nil];
+     }];
+}
+
+#pragma mark -
+#pragma mark SGTitleViewDelegate
+
+- (NSString*) titleText
+{
+    return @"SETH GODIN";
+}
+
+- (UIImage*) rightButtonImage
+{
+    return [UIImage shareButton];
+}
+
+- (UIImage*) leftButtonImage
+{
+    return [UIImage backButtonWithColor:[UIColor whiteColor]];
+}
+
+- (void) leftButtonAction:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) rightButtonAction:(id)sender
+{
+    [self shareBlogEntry];
+}
+
+- (UIColor*) titleTextColor
+{
+    return [UIColor whiteColor];
+}
+
 - (UIColor*) titleViewBackgroundColor
 {
-    return [UIColor tableCellBackgroundColor];
+    return [UIColor titlebarBackgroundColor];
 }
 
 @end

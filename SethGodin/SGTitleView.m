@@ -30,19 +30,32 @@
 
 - (void) awakeFromNib
 {
+    
+    if([self.delegate respondsToSelector:@selector(titleViewBackgroundColor)])
+    {
+        self.backgroundColor = [self.delegate titleViewBackgroundColor];
+    }
+    else
+    {
+        self.backgroundColor = [UIColor titlebarBackgroundColor];
+    }
+    
     [self addTitleLabel];
     [self addRightButton];
     [self addLeftButton];
 }
+
+
 
 - (void) addTitleLabel
 {
     UILabel *label = [[UILabel alloc] init];
     label.translatesAutoresizingMaskIntoConstraints = NO;
     
-    label.text          = [self.delegate titleText];
-    label.font          = [UIFont titleBarTitleFont];
-    label.textAlignment = NSTextAlignmentCenter;
+    label.backgroundColor = [UIColor clearColor];
+    label.text            = [self.delegate titleText];
+    label.font            = [UIFont titleBarTitleFont];
+    label.textAlignment   = NSTextAlignmentCenter;
     
     if([self.delegate respondsToSelector:@selector(titleTextColor)])
     {
