@@ -245,7 +245,8 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 
 - (void) settingsAction:(id) sender
 {
-    
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"settings"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)archivesAction:(id)sender
