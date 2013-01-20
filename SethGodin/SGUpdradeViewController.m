@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
 	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@""]];
-    [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+   // [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     [self.upgradeButton setImage:[UIImage upgradeButton] forState:UIControlStateNormal];
 }
 

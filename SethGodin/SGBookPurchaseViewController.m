@@ -44,7 +44,7 @@ NSString * const ReuseIdentifier = @"bookCell";
         self.backgroundImageView.image = [UIImage imageNamed:@"books-iphone4.png"];
     }
         
-    [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+    //[self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
     _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:nil];
     self.collectionViewToTrailing.constant = 320;

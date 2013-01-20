@@ -52,7 +52,7 @@
     
 	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Settings"]];
     
-    [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+    //[self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
 }
 
 

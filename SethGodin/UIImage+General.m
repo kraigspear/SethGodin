@@ -12,12 +12,17 @@
 
 @implementation UIImage (General)
 
-+ (UIImage*) backButton
++ (UIImage*) backButtonWithColor:(UIColor*) inColor
 {
-    return [UIImage imageWithIdentifier:@"backButton" forSize:CGSizeMake(44,44) andDrawingBlock:^
+    CGFloat r, g, b, a;
+    [inColor getRed:&r green:&g blue:&b alpha:&a];
+    
+    NSString *identifier = [NSString stringWithFormat:@"backButton%f%f%f%f", r, g, b, a];
+    
+    return [UIImage imageWithIdentifier:identifier forSize:CGSizeMake(44,44) andDrawingBlock:^
             {
                 //// Color Declarations
-                UIColor* yellow = [UIColor titlebarTextColor];
+                UIColor* yellow = inColor;
                 
                 //// Bezier 3 Drawing
                 UIBezierPath* bezier3Path = [UIBezierPath bezierPath];

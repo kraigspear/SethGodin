@@ -35,7 +35,7 @@
     self.titleLabel.textColor    = [UIColor blogEntriesTextColor];
     self.titleLabel.font         = [UIFont blogEntriesTitleFont];
     
-    [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+    //[self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     
     [self updateTitleForBlogEntry];
 }

@@ -16,6 +16,7 @@
 #import "Flurry.h"
 #import "SGMainViewController.h"
 #import "SGAskToPurchaseViewController.h"
+#import "UIColor+General.h"
 
 @interface SGArchiveSelectionViewController ()
 
@@ -51,8 +52,6 @@ const NSUInteger MIN_YEAR = 2002;
     self.month = [[NSDate date] month] - 1;
     
     self.year = _currentYear;
-	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"ARCHIVES"]];
-    [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     [self.leftArrowYearButton setImage:[UIImage leftArrow] forState:UIControlStateNormal];
     [self.rightArrowYearButton setImage:[UIImage rightArrow] forState:UIControlStateNormal];
     
@@ -86,10 +85,6 @@ const NSUInteger MIN_YEAR = 2002;
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)backAction:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (IBAction)yearBackAction:(id)sender
 {
@@ -200,5 +195,24 @@ const NSUInteger MIN_YEAR = 2002;
     
     
 }
+
+#pragma mark -
+#pragma mark SGTitleViewDelegate
+
+- (NSString*) titleText
+{
+    return @"ARCHIVES";
+}
+
+- (UIImage*) leftButtonImage
+{
+    return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+}
+
+- (void) leftButtonAction:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 @end

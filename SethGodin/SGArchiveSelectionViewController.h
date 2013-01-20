@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BlockTypes.h"
+#import "SGTitleView.h"
 
-@interface SGArchiveSelectionViewController : UIViewController
+@interface SGArchiveSelectionViewController : UIViewController<SGTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *leftArrowYearButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightArrowYearButton;
 

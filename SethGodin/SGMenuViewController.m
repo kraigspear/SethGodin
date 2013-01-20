@@ -53,21 +53,21 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     _latestButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _latestButton.translatesAutoresizingMaskIntoConstraints = NO;
     [_latestButton setImage:allPostImage forState:UIControlStateNormal];
-    [_latestButton addTarget:self action:@selector(currentPostAction:) forControlEvents:UIControlEventTouchDragInside];
+    [_latestButton addTarget:self action:@selector(currentPostAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_latestButton];
     
     _favoritesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _favoritesButton.translatesAutoresizingMaskIntoConstraints = NO;
     [_favoritesButton setImage:favoritesImage forState:UIControlStateNormal];
-    [_favoritesButton addTarget:self action:@selector(favoritesAction:) forControlEvents:UIControlEventTouchDragInside];
+    [_favoritesButton addTarget:self action:@selector(favoritesAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_favoritesButton];
     
     _archivesButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_archivesButton setImage:archivesImage forState:UIControlStateNormal];
     _archivesButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [_archivesButton addTarget:self action:@selector(archivesAction:) forControlEvents:UIControlEventTouchDragInside];
+    [_archivesButton addTarget:self action:@selector(archivesAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_archivesButton];
     
@@ -75,7 +75,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     _booksButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_booksButton setImage:booksImage forState:UIControlStateNormal];
     _booksButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [_booksButton addTarget:self action:@selector(booksAction:) forControlEvents:UIControlEventTouchDragInside];
+    [_booksButton addTarget:self action:@selector(booksAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_booksButton];
     
@@ -83,7 +83,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     _settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_settingsButton setImage:settingsImage forState:UIControlStateNormal];
     _settingsButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [_settingsButton addTarget:self action:@selector(settingsAction:) forControlEvents:UIControlEventTouchDragInside];
+    [_settingsButton addTarget:self action:@selector(settingsAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:_settingsButton];
     
