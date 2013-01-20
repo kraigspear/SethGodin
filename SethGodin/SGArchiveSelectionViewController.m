@@ -59,6 +59,13 @@ const NSUInteger MIN_YEAR = 2002;
     [self.leftArrowMonthButton setImage:[UIImage leftArrow] forState:UIControlStateNormal];
     [self.rightArrowMonthButton setImage:[UIImage rightArrow] forState:UIControlStateNormal];
     
+    [self.view removeConstraint:self.goButtonHeightConstraint];
+    
+    self.goButtonHeightConstraint = [NSLayoutConstraint constraintWithItem:self.goButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:.4 constant:0];
+    
+    [self.view addConstraint:self.goButtonHeightConstraint];
+    
+    
 }
 
 - (void) viewDidLayoutSubviews
