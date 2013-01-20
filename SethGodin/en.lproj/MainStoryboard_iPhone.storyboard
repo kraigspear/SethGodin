@@ -249,6 +249,7 @@
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2012" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37i-ah-KUG" userLabel="yearLabel">
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="94" id="7lG-Tn-7jd"/>
                                                     <constraint firstAttribute="height" constant="21" id="b1V-gk-KmU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
@@ -256,9 +257,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANm-pN-wXS" userLabel="leftArrowMonth">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="LpU-fP-ENV"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -272,11 +270,17 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="January" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mY-i2-j0I" userLabel="monthLabel">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="173" id="w14-b9-5TX"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7G-Mx-t3R" userLabel="rightArrowMonthButton">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="tyM-Hl-f74"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <state key="normal">
                                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,28 +296,22 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="37i-ah-KUG" firstAttribute="leading" secondItem="W8r-w6-LCT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3Hd-mB-qNp"/>
-                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="centerY" secondItem="rYb-Ue-QAO" secondAttribute="centerY" type="user" id="8kY-VY-H4m"/>
-                                            <constraint firstItem="ANm-pN-wXS" firstAttribute="leading" secondItem="CNt-KX-0Z4" secondAttribute="leading" type="default" id="8wP-wP-tOu"/>
-                                            <constraint firstItem="ANm-pN-wXS" firstAttribute="top" secondItem="y7G-Mx-t3R" secondAttribute="top" type="user" id="A0b-fP-EE1"/>
-                                            <constraint firstItem="ANm-pN-wXS" firstAttribute="trailing" secondItem="CNt-KX-0Z4" secondAttribute="trailing" type="default" id="AiS-dS-uxO"/>
-                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="top" secondItem="rYb-Ue-QAO" secondAttribute="top" type="user" id="LzI-pR-Vvh"/>
-                                            <constraint firstItem="ANm-pN-wXS" firstAttribute="centerY" secondItem="3mY-i2-j0I" secondAttribute="centerY" type="user" id="P4u-gI-wYx"/>
-                                            <constraint firstItem="3mY-i2-j0I" firstAttribute="leading" secondItem="W8r-w6-LCT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="PDs-xj-Rya"/>
-                                            <constraint firstItem="ANm-pN-wXS" firstAttribute="top" secondItem="y7G-Mx-t3R" secondAttribute="top" type="user" id="PVh-27-o88"/>
-                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="top" secondItem="W8r-w6-LCT" secondAttribute="top" constant="43" type="user" id="XuM-a2-eCe"/>
-                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="top" secondItem="rYb-Ue-QAO" secondAttribute="top" type="user" id="Zba-zd-Mb4"/>
-                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="centerY" secondItem="37i-ah-KUG" secondAttribute="centerY" type="user" id="a5a-aY-OWi"/>
+                                            <constraint firstItem="y7G-Mx-t3R" firstAttribute="centerY" secondItem="3mY-i2-j0I" secondAttribute="centerY" type="user" id="3SZ-tG-pll"/>
+                                            <constraint firstItem="37i-ah-KUG" firstAttribute="centerX" secondItem="3mY-i2-j0I" secondAttribute="centerX" type="default" id="5uG-g7-wjI"/>
+                                            <constraint firstAttribute="bottom" secondItem="ANm-pN-wXS" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="6IY-2O-UZh"/>
+                                            <constraint firstAttribute="bottom" secondItem="y7G-Mx-t3R" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="BcC-fB-osI"/>
+                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="centerY" secondItem="rYb-Ue-QAO" secondAttribute="centerY" type="user" id="IEq-yz-1B7"/>
+                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="leading" secondItem="ANm-pN-wXS" secondAttribute="leading" type="default" id="Vqm-eH-6Bh"/>
+                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="top" secondItem="W8r-w6-LCT" secondAttribute="top" constant="20" symbolic="YES" type="default" id="aC8-kw-4eO"/>
                                             <constraint firstAttribute="trailing" secondItem="rYb-Ue-QAO" secondAttribute="trailing" constant="5" type="user" id="bWW-Os-8L8"/>
+                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="leading" secondItem="W8r-w6-LCT" secondAttribute="leading" constant="11" id="biV-bD-QnA"/>
                                             <constraint firstItem="y7G-Mx-t3R" firstAttribute="trailing" secondItem="rYb-Ue-QAO" secondAttribute="trailing" type="default" id="d0a-F5-gQZ"/>
-                                            <constraint firstItem="ANm-pN-wXS" firstAttribute="centerY" secondItem="y7G-Mx-t3R" secondAttribute="centerY" type="user" id="fWf-nO-hHE"/>
-                                            <constraint firstAttribute="trailing" secondItem="37i-ah-KUG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="k4o-SE-239"/>
-                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="centerY" secondItem="37i-ah-KUG" secondAttribute="centerY" type="user" id="mqQ-Nw-OJC"/>
-                                            <constraint firstItem="ANm-pN-wXS" firstAttribute="centerY" secondItem="3mY-i2-j0I" secondAttribute="centerY" type="user" id="n35-46-7lf"/>
+                                            <constraint firstItem="rYb-Ue-QAO" firstAttribute="top" secondItem="W8r-w6-LCT" secondAttribute="top" constant="20" symbolic="YES" type="default" id="j70-40-zFH"/>
                                             <constraint firstItem="y7G-Mx-t3R" firstAttribute="leading" secondItem="rYb-Ue-QAO" secondAttribute="leading" type="default" id="oS5-rk-H9z"/>
-                                            <constraint firstAttribute="bottom" secondItem="ANm-pN-wXS" secondAttribute="bottom" constant="62" type="user" id="q13-Fi-Ki2"/>
-                                            <constraint firstAttribute="trailing" secondItem="3mY-i2-j0I" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vGB-fa-6P2"/>
-                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="leading" secondItem="W8r-w6-LCT" secondAttribute="leading" constant="5" type="user" id="vRp-wq-Del"/>
+                                            <constraint firstItem="CNt-KX-0Z4" firstAttribute="trailing" secondItem="ANm-pN-wXS" secondAttribute="trailing" type="default" id="v61-Z4-Nrn"/>
+                                            <constraint firstItem="y7G-Mx-t3R" firstAttribute="centerY" secondItem="ANm-pN-wXS" secondAttribute="centerY" type="user" id="vUe-8h-D2Y"/>
+                                            <constraint firstItem="3mY-i2-j0I" firstAttribute="centerX" secondItem="W8r-w6-LCT" secondAttribute="centerX" type="default" id="wMf-I2-Xpf"/>
+                                            <constraint firstItem="37i-ah-KUG" firstAttribute="centerY" secondItem="CNt-KX-0Z4" secondAttribute="centerY" type="default" id="zQn-o8-LJv"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mvq-gR-lt8" userLabel="goButton">
@@ -362,9 +360,7 @@
                         <outlet property="goButtonHeightConstraint" destination="HoC-uc-JLe" id="wUU-NA-wbL"/>
                         <outlet property="leftArrowMonth" destination="3mY-i2-j0I" id="LAY-jW-nRy"/>
                         <outlet property="leftArrowMonthButton" destination="ANm-pN-wXS" id="63Y-r7-T23"/>
-                        <outlet property="leftArrowMonthToBottomConstraint" destination="q13-Fi-Ki2" id="vhq-lS-3lE"/>
                         <outlet property="leftArrowYearButton" destination="CNt-KX-0Z4" id="JkY-8V-2bX"/>
-                        <outlet property="leftArrowYearToTopConstraint" destination="XuM-a2-eCe" id="uKR-Sw-sON"/>
                         <outlet property="monthLabel" destination="3mY-i2-j0I" id="2G3-ge-qBo"/>
                         <outlet property="rightArrowMonthButton" destination="y7G-Mx-t3R" id="nnY-wa-qxC"/>
                         <outlet property="rightArrowYearButton" destination="rYb-Ue-QAO" id="7xO-tC-STU"/>
@@ -942,6 +938,7 @@
                 <relationship kind="outlet" name="goButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="goButtonHeightConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="leftArrowMonth" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="leftArrowMonthBottomConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="leftArrowMonthButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="leftArrowMonthToBottomConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="leftArrowYearButton" candidateClass="UIButton"/>
