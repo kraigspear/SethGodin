@@ -15,6 +15,11 @@
     return [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:26];
 }
 
++ (UIFont*) titleBarTitleFont
+{
+    return [UIFont blogEntriesTitleFont];
+}
+
 + (UIFont*) menuButtonFont
 {
     return [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];

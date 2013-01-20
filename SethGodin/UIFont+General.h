@@ -17,4 +17,9 @@
 
 + (UIFont*) menuButtonFont;
 
+/**
+ Font to be used in the title bar.
+ */
++ (UIFont*) titleBarTitleFont;
+
 @end

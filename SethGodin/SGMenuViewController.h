@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BlockTypes.h"
+#import "SGTitleView.h"
 
 
 
-@interface SGMenuViewController : UIViewController
+@interface SGMenuViewController : UIViewController<SGTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *titleBar;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;

@@ -330,18 +330,19 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     [self.view layoutIfNeeded];
     
-    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
-        {
-            _menuTopConstraint.constant = -self.view.frame.size.height;
-        }
-    } completion:^(BOOL finished)
-     {
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+    {
+        _menuTopConstraint.constant = -self.view.frame.size.height;
+        _menuBottomConstraint.constant = -self.view.frame.size.height;
+        [self.view layoutIfNeeded];
+    }
+    completion:^(BOOL finished)
+    {
          if(finished)
          {
              [self removeMenuController];
          }
-     }];
-
+    }];
 }
 
 - (void) removeMenuController

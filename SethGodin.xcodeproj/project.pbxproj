@@ -30,6 +30,7 @@
 		A9100A701654EF1D00779F84 /* SGArchiveSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */; };
 		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
+		A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A91D230116AC076200D8FD58 /* SGTitleView.m */; };
 		A933F83816796347004FE120 /* libCrittercism_v3_4_5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A933F837167962E6004FE120 /* libCrittercism_v3_4_5.a */; };
 		A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */; };
 		A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A93BA40B165F89ED003AD9AA /* libFlurry.a */; };
@@ -211,6 +212,8 @@
 		A9100A721654FF5E00779F84 /* NSDate+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+General.m"; path = "SethGodin/NSDate+General.m"; sourceTree = "<group>"; };
 		A9100A741656394600779F84 /* SGFeedSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFeedSelection.h; sourceTree = "<group>"; };
 		A9100A751656394600779F84 /* SGFeedSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFeedSelection.m; sourceTree = "<group>"; };
+		A91D230016AC076200D8FD58 /* SGTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTitleView.h; sourceTree = "<group>"; };
+		A91D230116AC076200D8FD58 /* SGTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTitleView.m; sourceTree = "<group>"; };
 		A933F835167962E6004FE120 /* Crittercism.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
 		A933F836167962E6004FE120 /* CrittercismDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		A933F837167962E6004FE120 /* libCrittercism_v3_4_5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v3_4_5.a; sourceTree = "<group>"; };
@@ -885,6 +888,8 @@
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
 				A9754D231696E830009E1D1F /* ViewControllers */,
 				A97E881E1657C71100777A82 /* WebView */,
+				A91D230016AC076200D8FD58 /* SGTitleView.h */,
+				A91D230116AC076200D8FD58 /* SGTitleView.m */,
 			);
 			path = SethGodin;
 			sourceTree = "<group>";
@@ -1270,6 +1275,7 @@
 				A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */,
 				A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */,
 				A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */,
+				A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

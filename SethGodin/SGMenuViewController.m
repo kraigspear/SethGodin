@@ -40,9 +40,6 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 {
     [super viewDidLoad];
 
-    UIImage *closeButtonImage = [UIImage closeButtonWithColor:[UIColor menuTitleBarTextColor]];
-    [self.closeButton setImage:closeButtonImage forState:UIControlStateNormal];
-    self.titleLabel.textColor = [UIColor menuTitleBarTextColor];
     
     UIImage *booksImage   = [UIImage menuImageWithText:@"Books" isUpgrade:NO];
     UIImage *allPostImage = [UIImage menuImageWithText:@"Latest" isUpgrade:NO];
@@ -94,16 +91,6 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [self setupPortriateConstraints];
     [self setupLandscapeConstraints];
     
-    [self.view addConstraints:_portraitConstraints];
-    
-   // [self.booksBySethButton setImage:booksImage forState:UIControlStateNormal];
-   // [self.allPostButton     setImage:allPostImage forState:UIControlStateNormal];
-
-   // [self.favoritesButton setImage:favoritesImage forState:UIControlStateNormal];
-   // [self.archivesButton         setImage:archivesImage forState:UIControlStateNormal];
-    
-   // [self.settingsButton setImage:settingsButton forState:UIControlStateNormal];
-    
     _feedSelectionNotification = [SGNotifications observeFeedSelectionWithNotification:^(NSNotification * note)
     {
         [self closeMenuWithAnimation:NO];
@@ -111,16 +98,19 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     
     _networkAvailableNotification = [SGNotifications observeNetworkAvailableWithNotification:^(NSNotification *note)
     {
-        //self.isNetworkAvailable = [note.object boolValue];
-       // self.archivesButton.enabled = self.isNetworkAvailable;
-       // self.booksBySethButton.enabled = self.isNetworkAvailable;
+        self.isNetworkAvailable = [note.object boolValue];
+        _archivesButton.enabled = self.isNetworkAvailable;
+        _booksButton.enabled = self.isNetworkAvailable;
     }];
     
-   // self.archivesButton.enabled = self.isNetworkAvailable;
-    //self.booksBySethButton.enabled = self.isNetworkAvailable;
+    _archivesButton.enabled = self.isNetworkAvailable;
+    _booksButton.enabled = self.isNetworkAvailable;
+    
+    [self updateConstraintsForOrientation:self.interfaceOrientation];
+    
 }
 
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (void) updateConstraintsForOrientation:(UIInterfaceOrientation) toInterfaceOrientation
 {
     if(UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
     {
@@ -132,6 +122,12 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
         [self.view removeConstraints:_portraitConstraints];
         [self.view addConstraints:_landscapeConstraints];
     }
+
+}
+
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self updateConstraintsForOrientation:toInterfaceOrientation];
 }
 
 - (void) setupPortriateConstraints
@@ -231,11 +227,6 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     self.buttonView.backgroundColor = [UIColor colorWithPatternImage:[UIImage backgroundImageForSize:self.buttonView.frame.size]];
 }
 
-- (IBAction)closeAction:(id)sender
-{
-    [self closeMenuWithAnimation:YES];
-}
-
 - (void) closeMenuWithAnimation:(BOOL) inShouldAnimate
 {
     [[NSNotificationCenter defaultCenter] removeObserver:_feedSelectionNotification];
@@ -244,7 +235,6 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     _networkAvailableNotification = nil;
     self.close(inShouldAnimate);
 }
-
 
 - (void)currentPostAction:(id)sender
 {
@@ -320,6 +310,25 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
         SGUpdradeViewController *vc = segue.destinationViewController;
         vc.popbackViewController = self;
     }
+}
+
+
+#pragma mark -
+#pragma mark SGTitleViewDelegate
+
+- (NSString*) titleText
+{
+    return @"MENU";
+}
+
+- (UIImage*) rightButtonImage
+{
+    return [UIImage closeButtonWithColor:[UIColor menuTitleBarTextColor]];
+}
+
+- (void) rightButtonAction:(id)sender
+{
+    [self closeMenuWithAnimation:YES];
 }
 
 
