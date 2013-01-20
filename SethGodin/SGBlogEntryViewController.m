@@ -67,7 +67,6 @@
     
     CGSize size = CGSizeMake(self.blogTitleLabel.frame.size.width, 1000);
     
-    
     UIFont *fontBlogItemTitle = [self fontForBlogItemTitle];
     self.blogTitleLabel.font = fontBlogItemTitle;
     
@@ -76,9 +75,23 @@
  
     CGSize labelSize = [titleText sizeWithFont:fontBlogItemTitle constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     
-    CGFloat height = labelSize.height + 60;
     
-    self.titleViewHeightConstraint.constant = height;
+    CGFloat addToHeight;
+    
+    if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
+        addToHeight = 60;
+    else
+        addToHeight = 100;
+    
+    CGFloat height = labelSize.height + addToHeight;
+    
+    [self.view layoutIfNeeded];
+    
+    [UIView animateWithDuration:.3 animations:^
+    {
+        self.titleViewHeightConstraint.constant = height;
+        [self.view layoutIfNeeded];
+    }];
     
     self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:self.blogEntry.datePublished];
     
@@ -106,21 +119,32 @@
     }];
 }
 
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self updateTitleForBlogEntry];
+    //[self loadHTMLForBlogEntry];
+}
+
 - (void) viewDidLayoutSubviews
+{
+    [self loadHTMLForBlogEntry];
+}
+
+- (void) loadHTMLForBlogEntry
 {
     [self updateTitleForBlogEntry];
     
     self.scrollView.contentOffset = CGPointZero;
     
     NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
-                                   "<head> <meta charset='utf-8'> \n"
-                                   "<style type=\"text/css\"> \n"
-                                   "body {font-family: \"%@\"; font-size: %@; margin: 20px; background-color: #FFF9E7; }\n"
-                                   "img, object {max-width:100%%; }\n"
-                                   "a {text-decoration: none; color: #FF9900; font-weight: bold;}  \n"
-                                   "</style> \n"
-                                   "</head> \n"
-                                   "<body>%@</body> \n"
+                               "<head> <meta charset='utf-8'> \n"
+                               "<style type=\"text/css\"> \n"
+                               "body {font-family: \"%@\"; font-size: %@; margin: 20px; background-color: #FFF9E7; }\n"
+                               "img, object {max-width:100%%; }\n"
+                               "a {text-decoration: none; color: #FF9900; font-weight: bold;}  \n"
+                               "</style> \n"
+                               "</head> \n"
+                               "<body>%@</body> \n"
                                "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
     
     [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
@@ -181,7 +205,6 @@
     self.scrollView.contentSize = CGSizeMake(webView.frame.size.width, fittingSize.height + self.titleView.frame.size.height);
     
     self.webViewHeightConstraint.constant = fittingSize.height;
-    
     
     [self.view layoutIfNeeded];
     
