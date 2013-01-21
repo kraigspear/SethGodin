@@ -384,7 +384,6 @@
                                         </connections>
                                     </webView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="hlw-Zf-OOp" firstAttribute="trailing" secondItem="UQm-RN-inu" secondAttribute="trailing" type="default" id="10q-Ag-mpp"/>
                                     <constraint firstItem="W0j-Ca-82O" firstAttribute="top" secondItem="hlw-Zf-OOp" secondAttribute="bottom" type="user" id="1Qo-b4-4MQ"/>
