@@ -25,13 +25,12 @@
                                             <action selector="backAction:" destination="6mQ-Fn-JHg" id="E2R-fU-4TD"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="175" style="plain" systemItem="fixedSpace" id="eCV-7T-Xn0"/>
+                                    <barButtonItem width="202" style="plain" systemItem="fixedSpace" id="k8T-oW-7YM"/>
                                     <barButtonItem style="plain" id="QW4-7F-fyz" userLabel="gobackButton">
                                         <connections>
                                             <action selector="goBack" destination="Zav-aO-CpU" id="n2B-9C-inm"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="8Iv-Wg-25m"/>
                                     <barButtonItem style="plain" id="hAm-Fn-wg3" userLabel="goForwardButton">
                                         <connections>
                                             <action selector="goForward" destination="Zav-aO-CpU" id="nhl-IS-0Te"/>

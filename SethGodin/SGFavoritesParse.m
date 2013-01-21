@@ -97,10 +97,11 @@ NSString * const PARSE_COL_URL            = @"url";
 + (NSArray*) allFavorites
 {
     PFQuery *query = [PFQuery queryWithClassName:PARSE_CLASS_FAVORITE];
+    
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     
     [query whereKey:PARSE_COL_CURRENT_USER equalTo:[PFUser currentUser]];
-    [query orderByDescending:PARSE_COL_DATE_PUBLISHED];
+    [query orderByDescending:@"createdAt"];
     
     NSError *error;
     NSArray *objects = [query findObjects:&error];

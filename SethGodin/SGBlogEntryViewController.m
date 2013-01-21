@@ -94,7 +94,7 @@
     
     self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:self.blogEntry.datePublished];
     
-    [self updateButtonSelected];
+    
     
 }
 
@@ -115,7 +115,7 @@
 - (void) setBlogEntry:(SGBlogEntry *) toEntry
 {
     _blogEntry = toEntry;
-    [self.view layoutIfNeeded];
+    [self updateButtonSelected];
 }
 
 - (void) updateButtonSelected
