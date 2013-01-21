@@ -12,6 +12,7 @@
 #import "SGFavoritesParse.h"
 #import "MBProgressHud.h"
 #import "SGLoginViewController.h"
+#import "SGSignUpViewController.h"
 
 @interface SGSettingsViewController ()
 
@@ -34,10 +35,8 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)updateLogInUserLabel
 {
-    [super viewDidLoad];
-    
     BOOL isCloud = NO;
     
     if([PFUser currentUser])
@@ -48,13 +47,52 @@
         }
     }
     
-    self.cloudSwitch.on = isCloud;
+    BOOL isGuest = [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]];
+    
+    if(isGuest)
+    {
+        self.loggedInUserNameLabel.text = @"Guest";
+    }
+    else
+    {
+        self.loggedInUserNameLabel.text = [PFUser currentUser].username;
+    }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self updateLogInUserLabel];
     
 	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Settings"]];
     
-    //[self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+    UIImage *logInImage = [UIImage settingsButtonImageWithText:@"Log In" size:CGSizeMake(280, 44)];
+    [self.loginButton setImage:logInImage forState:UIControlStateNormal];
+    
+    UIImage *createAccountImage = [UIImage settingsButtonImageWithText:@"Create Account" size:CGSizeMake(280, 44)];
+    
+    [self.createAccountButton setImage:createAccountImage forState:UIControlStateNormal];
+    
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self updateButtonImages];
+}
+
+- (void) updateButtonImages
+{
+    if(self.loginButton.frame.size.height == 0) return;
+    
+   
+}
+
+- (void) viewDidLayoutSubviews
+{
+    NSLog(@"loginButtonSize = %f", self.loginButton.frame.size.height);
+}
 
 - (IBAction)backAction:(id)sender
 {
@@ -65,30 +103,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)cloudSyncAction:(id)sender
-{
-    UISwitch *cloudSwitch = (UISwitch*) sender;
-    
-    if(cloudSwitch.on)
-    {
-        _oldUser = [PFUser currentUser];
-        
-        _loginViewController = [[SGLoginViewController alloc] init];
-        
-        _loginViewController.fields = PFLogInFieldsUsernameAndPassword
-        | PFLogInFieldsLogInButton
-        | PFLogInFieldsSignUpButton
-        | PFLogInFieldsPasswordForgotten
-        | PFLogInFieldsDismissButton
-        | PFLogInFieldsFacebook
-        | PFLogInFieldsTwitter;
-        
-        
-        _loginViewController.delegate = self;
-        [self presentViewController:_loginViewController animated:YES completion:nil];
-    }
 }
 
 #pragma mark -
@@ -110,6 +124,8 @@
                                dispatch_async(dispatch_get_main_queue(), ^
                                {
                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                   self.loggedInUserNameLabel.text = user.username;
+                                   [self updateLogInUserLabel];
                                });
                            });
         }
@@ -120,10 +136,50 @@
 {
     [_loginViewController dismissViewControllerAnimated:YES completion:^
      {
-         self.cloudSwitch.on = NO;
+         
      }];
 }
 
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user
+{
+     [signUpController dismissViewControllerAnimated:YES completion:^
+     {
+         [self updateLogInUserLabel];
+     }];
+}
 
+- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController
+{
+    [signUpController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark login sign up actions
+
+- (IBAction)createAccountAction:(id)sender
+{
+    SGSignUpViewController *signUpViewController = [[SGSignUpViewController alloc] init];
+    signUpViewController.delegate = self;
+    [self presentViewController:signUpViewController animated:YES completion:nil];
+}
+
+- (IBAction)logInAction:(id)sender
+{
+    _oldUser = [PFUser currentUser];
+    
+    _loginViewController = [[SGLoginViewController alloc] init];
+    
+    _loginViewController.fields = PFLogInFieldsUsernameAndPassword
+    | PFLogInFieldsLogInButton
+    | PFLogInFieldsSignUpButton
+    | PFLogInFieldsPasswordForgotten
+    | PFLogInFieldsDismissButton
+    | PFLogInFieldsFacebook
+    | PFLogInFieldsTwitter;
+    
+    
+    _loginViewController.delegate = self;
+    [self presentViewController:_loginViewController animated:YES completion:nil];
+}
 
 @end

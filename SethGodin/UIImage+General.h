@@ -25,6 +25,8 @@
 + (UIImage*) titleBarWithTitle:(NSString*) inTitle usingBackgroundColor:(UIColor*) inColor;
 + (UIImage*) closeButtonWithColor:(UIColor*) inColor;
 
++ (UIImage*) settingsButtonImageWithText:(NSString*) inText  size:(CGSize) inSize;
+
 + (UIImage*) popupBackgroundForSize:(CGSize) inSize color:(UIColor*) inColor identifier:(NSString*) inIdentifer;
 
 + (UIImage*) popupCloseButton;

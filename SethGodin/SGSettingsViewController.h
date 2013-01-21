@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface SGSettingsViewController : UIViewController <PFLogInViewControllerDelegate>
+@interface SGSettingsViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *createAccountButton;
 
-@property (weak, nonatomic) IBOutlet UISwitch *cloudSwitch;
+
+@property (weak, nonatomic) IBOutlet UIButton *cloudSyncButton;
+@property (weak, nonatomic) IBOutlet UILabel *loggedInUserNameLabel;
 
 @end

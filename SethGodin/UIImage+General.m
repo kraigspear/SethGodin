@@ -493,5 +493,50 @@
     
 }
 
++ (UIImage*) settingsButtonImageWithText:(NSString*) inText  size:(CGSize) inSize
+{
+    NSString *identifier = [NSString stringWithFormat:@"loginButtonWithSize%@%f%f", inText, inSize.width, inSize.height];
+    
+    return [UIImage imageWithIdentifier:identifier forSize:inSize andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* bgColor = [UIColor colorWithRed: 1 green: 0.606 blue: 0.08 alpha: 1];
+                CGFloat bgColorRGBA[4];
+                [bgColor getRed: &bgColorRGBA[0] green: &bgColorRGBA[1] blue: &bgColorRGBA[2] alpha: &bgColorRGBA[3]];
+                
+                UIColor* bdrColor = [UIColor colorWithRed: (bgColorRGBA[0] * 0.9) green: (bgColorRGBA[1] * 0.9) blue: (bgColorRGBA[2] * 0.9) alpha: (bgColorRGBA[3] * 0.9 + 0.1)];
+                
+                //// Frames
+                CGRect frame = CGRectMake(0, 0, inSize.width, inSize.height);
+                
+                //// Abstracted Attributes
+                NSString* titleTextContent = inText;
+                
+                
+                //// buttonRect Drawing
+                UIBezierPath* buttonRectPath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * 0.00503) + 0.5, CGRectGetMinY(frame) + floor((CGRectGetHeight(frame) - 2.5) * 0.00990) + 0.5, floor(CGRectGetWidth(frame) * 0.99497) - floor(CGRectGetWidth(frame) * 0.00503), CGRectGetHeight(frame) - 3 - floor((CGRectGetHeight(frame) - 2.5) * 0.00990)) cornerRadius: 4];
+                [bgColor setFill];
+                [buttonRectPath fill];
+                [bdrColor setStroke];
+                buttonRectPath.lineWidth = 1;
+                [buttonRectPath stroke];
+                
+                
+                //// titleText Drawing
+                CGRect titleTextRect = CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * 0.00336 + 0.5), CGRectGetMinY(frame) + floor((CGRectGetHeight(frame) - 34) * 0.36842 + 0.5), floor(CGRectGetWidth(frame) * 0.99329 + 0.5) - floor(CGRectGetWidth(frame) * 0.00336 + 0.5), 34);
+                [[UIColor whiteColor] setFill];
+                [titleTextContent drawInRect: titleTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 30] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                
+                
+
+                
+                
+
+                
+                
+
+            }];
+}
+
 
 @end
