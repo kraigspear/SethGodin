@@ -20,7 +20,7 @@
 @implementation SGMenuViewController
 {
 @private
-    id _feedSelectionNotification;
+
     id _networkAvailableNotification;
     
     UIButton *_latestButton;
@@ -90,11 +90,6 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     //
     [self setupPortriateConstraints];
     [self setupLandscapeConstraints];
-    
-    _feedSelectionNotification = [SGNotifications observeFeedSelectionWithNotification:^(NSNotification * note)
-    {
-        [self closeMenuWithAnimation:NO];
-    }];
     
     _networkAvailableNotification = [SGNotifications observeNetworkAvailableWithNotification:^(NSNotification *note)
     {
@@ -229,9 +224,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 
 - (void) closeMenuWithAnimation:(BOOL) inShouldAnimate
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:_feedSelectionNotification];
     [[NSNotificationCenter defaultCenter] removeObserver:_networkAvailableNotification];
-    _feedSelectionNotification = nil;
     _networkAvailableNotification = nil;
     self.close(inShouldAnimate);
 }

@@ -93,5 +93,10 @@
     return [NSString stringWithFormat:@"FeedType: %@ month: %d year %d search:%@", [self feedTypeAsString], self.month, self.year, self.searchText];
 }
 
+- (void) dealloc
+{
+    NSLog(@"FeedSelection dealloc");
+}
+
 
 @end

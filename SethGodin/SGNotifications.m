@@ -10,16 +10,15 @@
 
 @implementation SGNotifications
 
-NSString * const NOTIFICATION_FEED_SELECTION      = @"feedSelection";
-NSString * const NOTIFICATION_NETWORK_AVAILABLE   = @"networkAvailable";
-NSString * const NOTIFICATION_FAVORITES_UPDATED   = @"favoritesUpdated";
-NSString * const NOTIFICATION_FAVORITES_CREATED   = @"favoritesCreated";
-NSString * const NOTIFICATION_BUSY                = @"busy";
-NSString * const NOTIFICATION_ERROR               = @"errorOccured";
-NSString * const NOTIFICATION_SHARE_COUNT_UPDATED = @"shareCountUpdated";
-NSString * const NOTIFICATION_BLOG_ENTRY_SELECTED = @"blogEntrySelected";
-NSString * const NOTIFICATION_MENU_SELECTED       = @"menuSelected";
-NSString * const NOTIFICATION_ARCHIVE_SELECTED     = @"archiveSelected";
+NSString * const NOTIFICATION_FEED_SELECTION       = @"feedSelection";
+NSString * const NOTIFICATION_NETWORK_AVAILABLE    = @"networkAvailable";
+NSString * const NOTIFICATION_FAVORITES_UPDATED    = @"favoritesUpdated";
+NSString * const NOTIFICATION_FAVORITES_CREATED    = @"favoritesCreated";
+NSString * const NOTIFICATION_BUSY                 = @"busy";
+NSString * const NOTIFICATION_ERROR                = @"errorOccured";
+NSString * const NOTIFICATION_SHARE_COUNT_UPDATED  = @"shareCountUpdated";
+NSString * const NOTIFICATION_BLOG_ENTRY_SELECTED  = @"blogEntrySelected";
+NSString * const NOTIFICATION_MENU_SELECTED        = @"menuSelected";
 
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 {

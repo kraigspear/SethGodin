@@ -356,9 +356,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     _menuViewController = nil;
 }
 
-
-
-
 #pragma mark -
 #pragma mark feed loading
 
@@ -482,6 +479,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     }
     
     [self stopLoadingAnimation];
+    
+    if(_menuViewController)
+    {
+        [self closeMenuWithAnimation:YES];
+    }
     
     if(inBlogItems.count == 0)
     {

@@ -19,7 +19,6 @@ extern NSString * const NOTIFICATION_NETWORK_AVAILABLE;
 extern NSString * const NOTIFICATION_FAVORITES_UPDATED;
 extern NSString * const NOTIFICATION_BUSY;
 extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
-extern NSString * const NOTIFICATION_ARCHIVE_SELECTED;
 
 /**
  Post that a feed type was selected
