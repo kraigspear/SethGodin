@@ -15,7 +15,7 @@
 #import "SGNotifications.h"
 #import "Favorite.h"
 #import "SGBlogEntry.h"
-#import "SWSplashWindow.h"
+
 #import "SGFavoritesParse.h"
 #import <Parse/Parse.h>
 
@@ -23,7 +23,6 @@
 {
 @private
     NSDateFormatter *_dateformatter;
-    SWSplashWindow  *_splashWindow;
 }
 
 - (NSDateFormatter*) dateFormatterLongStyle
@@ -44,6 +43,7 @@
     [Parse setApplicationId:@"k2eo7GeSve5neSkhTFcMLPtIViPicZwLf3opy9bu"
                   clientKey:@"c46oSNaIeVXYVONk0D9wPVxYfBrdZZu0K8Od95wN"];
     
+    [PFTwitterUtils initializeWithConsumerKey:@"5co4eA1X33TyykunIbnw" consumerSecret:@"4aon5qjIFNLURIbqU1UPyIbXDH5VrBKCif2kZ2bGlE"];
     
     PFUser *currentUser = [PFUser currentUser];
     
@@ -153,15 +153,10 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [MagicalRecord cleanUp];
+
 }
 
 
-- (void) hideSplash
-{
-    [_splashWindow hideSplash];
-    _splashWindow = nil;
-}
 
 
 @end

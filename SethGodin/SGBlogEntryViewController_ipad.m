@@ -41,6 +41,7 @@
                           }];
     
     self.topView.backgroundColor = [UIColor blackColor];
+    self.titleView.backgroundColor = [UIColor blackColor];
 }
 
 - (UIFont*) fontForBlogItemTitle
@@ -58,5 +59,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (CGFloat) addToHeight
+{
+    return 30;
+}
+
 
 @end

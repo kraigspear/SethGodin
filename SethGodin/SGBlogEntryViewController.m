@@ -75,7 +75,6 @@
  
     CGSize labelSize = [titleText sizeWithFont:fontBlogItemTitle constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
     
-    
     CGFloat addToHeight;
     
     if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
@@ -83,7 +82,7 @@
     else
         addToHeight = 100;
     
-    CGFloat height = labelSize.height + addToHeight;
+    CGFloat height = labelSize.height + [self addToHeight];
     
     [self.view layoutIfNeeded];
     
@@ -99,6 +98,14 @@
     
 }
 
+
+- (CGFloat) addToHeight
+{
+    if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
+        return 60;
+    else
+        return 100;
+}
 
 - (UIFont*) fontForBlogItemTitle
 {

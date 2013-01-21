@@ -42,6 +42,7 @@ NSString * const PARSE_COL_URL            = @"url";
     PFQuery *query = [PFQuery queryWithClassName:PARSE_CLASS_FAVORITE];
     [query whereKey:@"favoriteID" equalTo:inEntry.itemID];
     [query whereKey:PARSE_COL_CURRENT_USER equalTo:[PFUser currentUser]];
+    [query orderByDescending:@"createdAt"];
     return query;
 }
 
@@ -86,23 +87,18 @@ NSString * const PARSE_COL_URL            = @"url";
 {
     PFQuery *query = [SGFavoritesParse queryForBlogEntry:inBlogEntry];
     
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error)
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error)
     {
-        if(error)
-        {
-            [Flurry logError:@"isBlogItemFavoriteError" message:@"Error checking if blog item is favorite" error:error];
-            inSuccess(NO);
-        }
-        else
-        {
-            inSuccess(object != nil);
-        }
+        inSuccess(number > 0);
     }];
+    
 }
 
 + (NSArray*) allFavorites
 {
     PFQuery *query = [PFQuery queryWithClassName:PARSE_CLASS_FAVORITE];
+    query.cachePolicy = kPFCachePolicyNetworkElseCache;
+    
     [query whereKey:PARSE_COL_CURRENT_USER equalTo:[PFUser currentUser]];
     [query orderByDescending:PARSE_COL_DATE_PUBLISHED];
     
