@@ -113,6 +113,7 @@
 {
     [_loginViewController dismissViewControllerAnimated:YES completion:^
     {
+        [self updateLogInUserLabel];
         if([PFAnonymousUtils isLinkedWithUser:_oldUser])
         {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -124,8 +125,6 @@
                                dispatch_async(dispatch_get_main_queue(), ^
                                {
                                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                   self.loggedInUserNameLabel.text = user.username;
-                                   [self updateLogInUserLabel];
                                });
                            });
         }

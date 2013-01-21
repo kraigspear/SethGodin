@@ -234,10 +234,14 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         self.menuSelected();
     }
     
+    //In the search state?
     if(!self.searchTextField.hidden)
     {
         [self hideMessage];
         [self closeSearchView];
+        _feedSelection.feedType = kCurrent;
+        self.searchTextField.text = @"";
+        [self loadLatestFeedData];
     }
     else
     {
