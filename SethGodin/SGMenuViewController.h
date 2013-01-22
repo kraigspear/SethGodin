@@ -15,7 +15,6 @@
 @interface SGMenuViewController : UIViewController<SGTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *titleBar;
-@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
 @property (nonatomic, copy) SWBoolBlock close;
 
@@ -23,6 +22,6 @@
 
 @property (nonatomic, assign) BOOL isNetworkAvailable;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
 
 @end

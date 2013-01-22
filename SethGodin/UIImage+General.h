@@ -31,4 +31,10 @@
 
 + (UIImage*) popupCloseButton;
 
+/**
+ Button with an orange background, yellow border.
+ Example: Upgrade
+ */
++ (UIImage*) orangeButtonWithSize:(CGSize) inSize text:(NSString*) inText;
+
 @end

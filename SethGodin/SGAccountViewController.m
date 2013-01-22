@@ -6,19 +6,21 @@
 //  Copyright (c) 2012 AndersonSpear. All rights reserved.
 //
 
-#import "SGSettingsViewController.h"
+#import "SGAccountViewController.h"
 #import "UIImage+General.h"
 #import "SGUSerDefaults.h"
 #import "SGFavoritesParse.h"
 #import "MBProgressHud.h"
 #import "SGLoginViewController.h"
 #import "SGSignUpViewController.h"
+#import "UIColor+General.h"
+#import "UIImage+General.h"
 
-@interface SGSettingsViewController ()
+@interface SGAccountViewController ()
 
 @end
 
-@implementation SGSettingsViewController
+@implementation SGAccountViewController
 {
 @private
     PFLogInViewController *_loginViewController;
@@ -49,14 +51,18 @@
     
     BOOL isGuest = [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]];
     
+    NSString *userName;
+    
     if(isGuest)
     {
-        self.loggedInUserNameLabel.text = @"Guest";
+        userName = @"Guest";
     }
     else
     {
-        self.loggedInUserNameLabel.text = [PFUser currentUser].username;
+        userName = [PFUser currentUser].username;
     }
+    
+    self.loggedInUserNameLabel.text = [NSString stringWithFormat:@"Login: %@", userName];
 }
 
 - (void)viewDidLoad
@@ -65,16 +71,42 @@
     
     [self updateLogInUserLabel];
     
-	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"Settings"]];
+    UIImage *logInImage = [UIImage orangeButtonWithSize:CGSizeMake(280, 44) text:@"Log In"];
     
-    UIImage *logInImage = [UIImage settingsButtonImageWithText:@"Log In" size:CGSizeMake(280, 44)];
     [self.loginButton setImage:logInImage forState:UIControlStateNormal];
     
-    UIImage *createAccountImage = [UIImage settingsButtonImageWithText:@"Create Account" size:CGSizeMake(280, 44)];
+    UIImage *createAccountImage = [UIImage orangeButtonWithSize:CGSizeMake(280, 44) text:@"Create Account"];
     
     [self.createAccountButton setImage:createAccountImage forState:UIControlStateNormal];
     
+    [self updateViewForOrientation:self.interfaceOrientation];
 }
+
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self updateViewForOrientation:toInterfaceOrientation];
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self.descriptionLabel sizeToFit];
+    [self.view layoutSubviews];
+}
+
+- (void) updateViewForOrientation:(UIInterfaceOrientation) inOrientation
+{
+    if(UIDeviceOrientationIsPortrait(inOrientation))
+    {
+        self.descriptionLabel.numberOfLines = 3;
+        self.currentUserTopConstraint.constant = 121;
+    }
+    else
+    {
+        self.descriptionLabel.numberOfLines = 2;
+        self.currentUserTopConstraint.constant = 90;
+    }
+}
+
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -85,8 +117,6 @@
 - (void) updateButtonImages
 {
     if(self.loginButton.frame.size.height == 0) return;
-    
-   
 }
 
 - (void) viewDidLayoutSubviews
@@ -180,5 +210,34 @@
     _loginViewController.delegate = self;
     [self presentViewController:_loginViewController animated:YES completion:nil];
 }
+
+#pragma mark -
+#pragma mark SGTitleViewDelegate
+
+- (NSString*) titleText
+{
+    return @"ACCOUNT";
+}
+
+- (UIImage*) leftButtonImage
+{
+    return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+}
+
+- (void) leftButtonAction:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIColor*) titleViewBackgroundColor
+{
+    return [UIColor menuTitleBarBackgroundColor];
+}
+
+- (UIColor*) titleTextColor
+{
+    return [UIColor menuTitleBarTextColor];
+}
+
 
 @end

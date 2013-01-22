@@ -27,7 +27,7 @@
     UIButton *_favoritesButton;
     UIButton *_archivesButton;
     UIButton *_booksButton;
-    UIButton *_settingsButton;
+    UIButton *_accountButton;
     
     NSArray *_portraitConstraints;
     NSArray *_landscapeConstraints;
@@ -47,8 +47,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     UIImage *favoritesImage = [UIImage menuImageWithText:@"Favorites" isUpgrade:NO];
     UIImage *archivesImage  = [UIImage menuImageWithText:@"Archives"      isUpgrade:NO];
     
-    UIImage *settingsImage = [UIImage menuImageWithText:@"Settings"      isUpgrade:NO];
-    
+    UIImage *settingsImage = [UIImage menuImageWithText:@"Account/Cloud"      isUpgrade:NO];
     
     _latestButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _latestButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -80,12 +79,12 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [self.view addSubview:_booksButton];
     
     //settings
-    _settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_settingsButton setImage:settingsImage forState:UIControlStateNormal];
-    _settingsButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [_settingsButton addTarget:self action:@selector(settingsAction:) forControlEvents:UIControlEventTouchUpInside];
+    _accountButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_accountButton setImage:settingsImage forState:UIControlStateNormal];
+    _accountButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [_accountButton addTarget:self action:@selector(accountAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:_settingsButton];
+    [self.view addSubview:_accountButton];
     
     //
     [self setupPortriateConstraints];
@@ -159,9 +158,9 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
     
     //settings
-    topConstraint = [NSLayoutConstraint constraintWithItem:_settingsButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_booksButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    topConstraint = [NSLayoutConstraint constraintWithItem:_accountButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_booksButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     
-    leadingConstraint = [NSLayoutConstraint constraintWithItem:_settingsButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_booksButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    leadingConstraint = [NSLayoutConstraint constraintWithItem:_accountButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_booksButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
     
     [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
     //
@@ -203,10 +202,10 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [constraints addObjectsFromArray:@[topConstraint, trailingConstraint]];
     
     
-    //settings
-    topConstraint = [NSLayoutConstraint constraintWithItem:_settingsButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_archivesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:-15];
+    //account
+    topConstraint = [NSLayoutConstraint constraintWithItem:_accountButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_archivesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:-15];
     
-    NSLayoutConstraint *centerConstraint = [NSLayoutConstraint constraintWithItem:_settingsButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:75];
+    NSLayoutConstraint *centerConstraint = [NSLayoutConstraint constraintWithItem:_accountButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:75];
     
     [constraints addObjectsFromArray:@[topConstraint, centerConstraint]];
     
@@ -236,9 +235,9 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [self closeMenuWithAnimation:YES];
 }
 
-- (void) settingsAction:(id) sender
+- (void) accountAction:(id) sender
 {
-    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"settings"];
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"account"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

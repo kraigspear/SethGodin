@@ -538,5 +538,50 @@
             }];
 }
 
++ (UIImage*) orangeButtonWithSize:(CGSize) inSize text:(NSString*) inText
+{
+    NSString *identifier = [NSString stringWithFormat:@"orangeButtonWithSize%@%f%f", inText, inSize.width, inSize.height];
+    
+    return [UIImage imageWithIdentifier:identifier forSize:inSize andDrawingBlock:^
+            {
+                //// Color Declarations
+                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.837 blue: 0 alpha: 1];
+                CGFloat yellowHSBA[4];
+                [yellow getHue: &yellowHSBA[0] saturation: &yellowHSBA[1] brightness: &yellowHSBA[2] alpha: &yellowHSBA[3]];
+                
+                UIColor* color = [UIColor colorWithHue: 0.1 saturation: yellowHSBA[1] brightness: yellowHSBA[2] alpha: yellowHSBA[3]];
+                UIColor* color3 = [color colorWithAlphaComponent: 0.8];
+                
+                //// Frames
+                CGRect frame = CGRectMake(0, 0, inSize.width, inSize.height);
+                
+                
+                //// Abstracted Attributes
+                NSString* buttonTextContent = inText;
+                
+                
+                //// Rounded Rectangle Drawing
+                UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * 0.00503) + 0.5, CGRectGetMinY(frame) + floor(CGRectGetHeight(frame) * 0.02830) + 0.5, floor(CGRectGetWidth(frame) * 0.99497) - floor(CGRectGetWidth(frame) * 0.00503), floor(CGRectGetHeight(frame) * 0.97170) - floor(CGRectGetHeight(frame) * 0.02830)) cornerRadius: 4];
+                [color3 setFill];
+                [roundedRectanglePath fill];
+                [yellow setStroke];
+                roundedRectanglePath.lineWidth = 1;
+                [roundedRectanglePath stroke];
+                
+                
+                //// buttonText Drawing
+                CGRect buttonTextRect = CGRectMake(CGRectGetMinX(frame) + floor((CGRectGetWidth(frame) - 295) * 0.33333 + 0.5), CGRectGetMinY(frame) + floor((CGRectGetHeight(frame) - 34) * 0.42105 + 0.5), 295, 34);
+                [[UIColor whiteColor] setFill];
+                [buttonTextContent drawInRect: buttonTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 30] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                
+                
+
+                
+                
+  
+            }];
+    
+}
+
 
 @end
