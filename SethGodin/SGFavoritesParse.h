@@ -23,4 +23,6 @@
 
 + (void) moveUserDataToCurrentUserFor:(PFUser*) oldUser;
 
++ (void) updateUserLastArchiveSearchForMonth:(NSUInteger) inMonth year:(NSUInteger) year;
+
 @end

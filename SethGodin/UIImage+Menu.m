@@ -34,7 +34,7 @@
 + (UIImage*) menuImageWithText:(NSString*) menuText isUpgrade:(BOOL) inIsUpgrade
 {
     NSString *menuID = [NSString stringWithFormat:@"menuImageWithText%@%d", menuText, inIsUpgrade];
-    return [UIImage imageWithIdentifier:menuID forSize:CGSizeMake(320, 84) andDrawingBlock:^
+    return [UIImage imageWithIdentifier:menuID forSize:CGSizeMake(320, 70) andDrawingBlock:^
             {
                 
                 //// Abstracted Attributes

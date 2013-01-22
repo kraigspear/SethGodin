@@ -17,6 +17,7 @@
 #import "SGMainViewController.h"
 #import "SGAskToPurchaseViewController.h"
 #import "UIColor+General.h"
+#import "SGFavoritesParse.h"
 
 @interface SGArchiveSelectionViewController ()
 
@@ -209,6 +210,8 @@ const NSUInteger MIN_YEAR = 2002;
 {
     //Add one to month. Months are 1 based.
     SGFeedSelection *feedSelection = [SGFeedSelection selectionForMonth:self.month + 1 andYear:self.year];
+    
+    [SGFavoritesParse updateUserLastArchiveSearchForMonth:self.month year:self.year];
     
     [SGNotifications postFeedSelection:feedSelection];
     [self.navigationController popViewControllerAnimated:YES];

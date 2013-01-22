@@ -46,6 +46,14 @@ NSString * const PARSE_COL_URL            = @"url";
     return query;
 }
 
++ (void) updateUserLastArchiveSearchForMonth:(NSUInteger) inMonth year:(NSUInteger) year
+{
+    PFUser *user = [PFUser currentUser];
+    [user setObject:@(inMonth) forKey:@"archiveMonth"];
+    [user setObject:@(year)    forKey:@"archiveYear"];
+    [user saveEventually];
+}
+
 + (void) toggleBlogEntryAsAFavorite:(SGBlogEntry*) inEntry
 {
     PFQuery *query = [SGFavoritesParse queryForBlogEntry:inEntry];
