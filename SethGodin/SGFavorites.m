@@ -10,17 +10,12 @@
 #import <CoreData/CoreData.h>
 #import "SGBlogEntry.h"
 #import "NSFileManager+Util.h"
-#import "Favorite.h"
 #import "SGNotifications.h"
 
 @implementation SGFavorites
 {
 @private
     NSMutableArray *_favorites;
-    NSManagedObjectContext *_managedObjectContext;
-    NSManagedObjectModel         *_managedObjectModel;
-    NSPersistentStoreCoordinator *_persistentStoreCoordinator;
-    
 }
 
 NSString * const KEY_FAVORITES = @"favorites";

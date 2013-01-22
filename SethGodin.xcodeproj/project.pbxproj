@@ -35,7 +35,6 @@
 		A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */; };
 		A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A93BA40B165F89ED003AD9AA /* libFlurry.a */; };
 		A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA40E165F8D65003AD9AA /* SGLogger.m */; };
-		A95B57231692270700026BD8 /* SethModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A95B57211692270700026BD8 /* SethModel.xcdatamodeld */; };
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
@@ -52,13 +51,11 @@
 		A974FC1116676EDD00B29748 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC1016676EDD00B29748 /* Icon.png */; };
 		A974FC1316676F3000B29748 /* smallspinner.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC1216676F3000B29748 /* smallspinner.png */; };
 		A9754CB216930C6C009E1D1F /* libSpearLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9754CB016930AF9009E1D1F /* libSpearLib.a */; };
-		A9754D13169571C4009E1D1F /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = A9754D12169571C4009E1D1F /* Favorite.m */; };
 		A97E880B16563CD800777A82 /* SGNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880A16563CD800777A82 /* SGNotifications.m */; };
 		A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880E1656465D00777A82 /* SGBlogItemsGetter.m */; };
 		A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E8811165646BC00777A82 /* SGArchiveBlogItemsGetter.m */; };
 		A97E88151657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88141657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m */; };
 		A97E88211657C73400777A82 /* SGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88201657C73400777A82 /* SGWebViewController.m */; };
-		A97E88241657CD9300777A82 /* EPZToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88231657CD7100777A82 /* EPZToolBar.m */; };
 		A97E88271657D63200777A82 /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88261657D63200777A82 /* NSArray+Util.m */; };
 		A97E882A1657EF6100777A82 /* UIColor+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88291657EF6100777A82 /* UIColor+General.m */; };
 		A97E882D16581F0C00777A82 /* SGSearchBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E882C16581F0B00777A82 /* SGSearchBlogItemsGetter.m */; };
@@ -196,7 +193,6 @@
 		A93BA40B165F89ED003AD9AA /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		A93BA40D165F8D65003AD9AA /* SGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLogger.h; sourceTree = "<group>"; };
 		A93BA40E165F8D65003AD9AA /* SGLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLogger.m; sourceTree = "<group>"; };
-		A95B57221692270700026BD8 /* SethModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SethModel.xcdatamodel; sourceTree = "<group>"; };
 		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
@@ -212,14 +208,12 @@
 		A9712AA21667B2F900BAFCD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A9712AA41667B78400BAFCD9 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
 		A9712AA61667BB9B00BAFCD9 /* books-iphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-iphone4.png"; sourceTree = "<group>"; };
-		A974FBF51667532C00B29748 /* SGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGAlertView.h; path = SethGodin/SGAlertView.h; sourceTree = "<group>"; };
-		A974FBF61667532C00B29748 /* SGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGAlertView.m; path = SethGodin/SGAlertView.m; sourceTree = "<group>"; };
+		A974FBF51667532C00B29748 /* SGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlertView.h; sourceTree = "<group>"; };
+		A974FBF61667532C00B29748 /* SGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAlertView.m; sourceTree = "<group>"; };
 		A974FC0E16676ED200B29748 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A974FC1016676EDD00B29748 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A974FC1216676F3000B29748 /* smallspinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallspinner.png; sourceTree = "<group>"; };
 		A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SpearLib.xcodeproj; path = ../SpearLib/SpearLib.xcodeproj; sourceTree = "<group>"; };
-		A9754D11169571C4009E1D1F /* Favorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
-		A9754D12169571C4009E1D1F /* Favorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		A97E880916563CD800777A82 /* SGNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNotifications.h; sourceTree = "<group>"; };
 		A97E880A16563CD800777A82 /* SGNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNotifications.m; sourceTree = "<group>"; };
 		A97E880D1656465D00777A82 /* SGBlogItemsGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogItemsGetter.h; sourceTree = "<group>"; };
@@ -230,8 +224,6 @@
 		A97E88141657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesBlogItemsGetter.m; sourceTree = "<group>"; };
 		A97E881F1657C73400777A82 /* SGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGWebViewController.h; path = SethGodin/SGWebViewController.h; sourceTree = "<group>"; };
 		A97E88201657C73400777A82 /* SGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGWebViewController.m; path = SethGodin/SGWebViewController.m; sourceTree = "<group>"; };
-		A97E88221657CD7100777A82 /* EPZToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EPZToolBar.h; sourceTree = "<group>"; };
-		A97E88231657CD7100777A82 /* EPZToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EPZToolBar.m; sourceTree = "<group>"; };
 		A97E88251657D63200777A82 /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Util.h"; path = "SethGodin/NSArray+Util.h"; sourceTree = "<group>"; };
 		A97E88261657D63200777A82 /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Util.m"; path = "SethGodin/NSArray+Util.m"; sourceTree = "<group>"; };
 		A97E88281657EF6100777A82 /* UIColor+General.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+General.h"; path = "SethGodin/UIColor+General.h"; sourceTree = "<group>"; };
@@ -431,6 +423,7 @@
 		A91009D11650083200779F84 /* BlogEntry */ = {
 			isa = PBXGroup;
 			children = (
+				A9A3F21D16A6ADA9000B4D62 /* TableCell */,
 				A91009D21650084F00779F84 /* SGBlogEntryViewController.h */,
 				A91009D31650084F00779F84 /* SGBlogEntryViewController.m */,
 				A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */,
@@ -444,9 +437,6 @@
 		A9100A511650F9D800779F84 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				A90773E5167E5DD100056C41 /* Settings */,
-				A95EA402165CDD8D00A58FB4 /* UpgradeView */,
-				A9100A6D1654EE5100779F84 /* ArchiveSelection */,
 				A9100A521650F9EF00779F84 /* SGMenuViewController.h */,
 				A9100A531650F9EF00779F84 /* SGMenuViewController.m */,
 				A9100A5616510AD500779F84 /* UIImage+Menu.h */,
@@ -504,6 +494,26 @@
 			name = Flurry;
 			sourceTree = "<group>";
 		};
+		A93F261116AE890E000B1B45 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
+				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		A93F261216AE8926000B1B45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A974FBF51667532C00B29748 /* SGAlertView.h */,
+				A974FBF61667532C00B29748 /* SGAlertView.m */,
+				A91D230016AC076200D8FD58 /* SGTitleView.h */,
+				A91D230116AC076200D8FD58 /* SGTitleView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		A95EA402165CDD8D00A58FB4 /* UpgradeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,10 +545,17 @@
 		A9754D231696E830009E1D1F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A9A3F21D16A6ADA9000B4D62 /* TableCell */,
-				A9A3F21C16A6AD90000B4D62 /* iPhone/iPad */,
+				A97E881E1657C71100777A82 /* WebView */,
+				A9F369FD16A2FC2600FF7CB6 /* PopupView */,
 				A9F94437169AD77900BBB6BE /* iPad */,
-				A9F94436169AD76E00BBB6BE /* iPhone */,
+				A95EA402165CDD8D00A58FB4 /* UpgradeView */,
+				A90773E5167E5DD100056C41 /* Settings */,
+				A9D6854E164D0D47007A9ADA /* BlogEntries */,
+				A91009D11650083200779F84 /* BlogEntry */,
+				A9100A511650F9D800779F84 /* Menu */,
+				A97E882E165843FA00777A82 /* BookPurchase */,
+				A9100A6D1654EE5100779F84 /* ArchiveSelection */,
+				A9A3F25916AAD552000B4D62 /* Login */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -563,8 +580,6 @@
 		A97E881E1657C71100777A82 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
-				A97E88221657CD7100777A82 /* EPZToolBar.h */,
-				A97E88231657CD7100777A82 /* EPZToolBar.m */,
 				A97E881F1657C73400777A82 /* SGWebViewController.h */,
 				A97E88201657C73400777A82 /* SGWebViewController.m */,
 			);
@@ -591,15 +606,6 @@
 			);
 			name = BlockAlerts;
 			path = ToAddToYourProjects;
-			sourceTree = "<group>";
-		};
-		A9A3F21C16A6AD90000B4D62 /* iPhone/iPad */ = {
-			isa = PBXGroup;
-			children = (
-				A91009D11650083200779F84 /* BlogEntry */,
-				A9D6854E164D0D47007A9ADA /* BlogEntries */,
-			);
-			name = iPhone/iPad;
 			sourceTree = "<group>";
 		};
 		A9A3F21D16A6ADA9000B4D62 /* TableCell */ = {
@@ -682,15 +688,11 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
-				A97E882E165843FA00777A82 /* BookPurchase */,
-				A9754D11169571C4009E1D1F /* Favorite.h */,
-				A9754D12169571C4009E1D1F /* Favorite.m */,
-				A9D68502164CFE8D007A9ADA /* MainStoryboard_iPad.storyboard */,
-				A9D684FF164CFE8D007A9ADA /* MainStoryboard_iPhone.storyboard */,
+				A93F261116AE890E000B1B45 /* Storyboards */,
+				A9754D231696E830009E1D1F /* ViewControllers */,
 				A91009C6164EED9C00779F84 /* Model */,
-				A9F369FD16A2FC2600FF7CB6 /* PopupView */,
+				A93F261216AE8926000B1B45 /* Views */,
 				A905B15D166627FB0092F3D0 /* SethGodin.entitlements */,
-				A95B57211692270700026BD8 /* SethModel.xcdatamodeld */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
 				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
 				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
@@ -700,10 +702,6 @@
 				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
 				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
-				A9754D231696E830009E1D1F /* ViewControllers */,
-				A97E881E1657C71100777A82 /* WebView */,
-				A91D230016AC076200D8FD58 /* SGTitleView.h */,
-				A91D230116AC076200D8FD58 /* SGTitleView.m */,
 			);
 			path = SethGodin;
 			sourceTree = "<group>";
@@ -826,8 +824,6 @@
 				A97E884316590C7200777A82 /* NSDictionary-Expanded.m */,
 				A98ABCA4165B88EA00919F8F /* NSString+Util.h */,
 				A98ABCA5165B88EA00919F8F /* NSString+Util.m */,
-				A974FBF51667532C00B29748 /* SGAlertView.h */,
-				A974FBF61667532C00B29748 /* SGAlertView.m */,
 				A97E88281657EF6100777A82 /* UIColor+General.h */,
 				A97E88291657EF6100777A82 /* UIColor+General.m */,
 				A9D68550164D0DC6007A9ADA /* UIImage+BBlock.h */,
@@ -864,15 +860,6 @@
 			);
 			name = BlockAlertsActionSheets;
 			path = SethGodin/3rdparty/BlockAlertsActionSheets;
-			sourceTree = "<group>";
-		};
-		A9F94436169AD76E00BBB6BE /* iPhone */ = {
-			isa = PBXGroup;
-			children = (
-				A9A3F25916AAD552000B4D62 /* Login */,
-				A9100A511650F9D800779F84 /* Menu */,
-			);
-			name = iPhone;
 			sourceTree = "<group>";
 		};
 		A9F94437169AD77900BBB6BE /* iPad */ = {
@@ -997,7 +984,6 @@
 				A9D68507164CFE8D007A9ADA /* SGBlogEntriesViewController.m in Sources */,
 				A9D68522164D006A007A9ADA /* AFHTTPClient.m in Sources */,
 				A9D68523164D006A007A9ADA /* AFHTTPRequestOperation.m in Sources */,
-				A97E88241657CD9300777A82 /* EPZToolBar.m in Sources */,
 				A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */,
 				A9D68524164D006A007A9ADA /* AFImageRequestOperation.m in Sources */,
 				A9D68525164D006A007A9ADA /* AFJSONRequestOperation.m in Sources */,
@@ -1045,8 +1031,6 @@
 				A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */,
 				A974FBF71667532C00B29748 /* SGAlertView.m in Sources */,
 				A90773E8167E5DE700056C41 /* SGSettingsViewController.m in Sources */,
-				A95B57231692270700026BD8 /* SethModel.xcdatamodeld in Sources */,
-				A9754D13169571C4009E1D1F /* Favorite.m in Sources */,
 				A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */,
 				A9F9443A169AD7B000BBB6BE /* SGMainViewController.m in Sources */,
 				A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */,
@@ -1257,19 +1241,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A95B57211692270700026BD8 /* SethModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A95B57221692270700026BD8 /* SethModel.xcdatamodel */,
-			);
-			currentVersion = A95B57221692270700026BD8 /* SethModel.xcdatamodel */;
-			path = SethModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A9D684DA164CFE8D007A9ADA /* Project object */;
 }

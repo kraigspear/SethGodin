@@ -13,9 +13,7 @@
 #import "SGUSerDefaults.h"
 #import "SGFavorites.h"
 #import "SGNotifications.h"
-#import "Favorite.h"
 #import "SGBlogEntry.h"
-
 #import "SGFavoritesParse.h"
 #import <Parse/Parse.h>
 
