@@ -18,6 +18,7 @@
 #import "SGAskToPurchaseViewController.h"
 #import "UIColor+General.h"
 #import "SGFavoritesParse.h"
+#import <Parse/Parse.h>
 
 @interface SGArchiveSelectionViewController ()
 
@@ -49,10 +50,23 @@ const NSUInteger MIN_YEAR = 2002;
     
     _dateFormatter = [[NSDateFormatter alloc] init];
     
-    _currentYear  = [[NSDate date] year];
-    self.month = [[NSDate date] month] - 1;
     
-    self.year = _currentYear;
+    //archiveYear
+    NSNumber *monthNumber = [[PFUser currentUser] objectForKey:@"archiveMonth"];
+    NSNumber *yearNumber  = [[PFUser currentUser] objectForKey:@"archiveYear"];
+    
+    if(yearNumber != nil && monthNumber != nil)
+    {
+        _currentYear  = [yearNumber integerValue];
+        self.month = [monthNumber integerValue];
+    }
+    else
+    {
+        _currentYear  = [[NSDate date] year];
+        self.month = [[NSDate date] month] - 1;
+        self.year = _currentYear;
+    }
+
     [self.leftArrowYearButton setImage:[UIImage leftArrow] forState:UIControlStateNormal];
     [self.rightArrowYearButton setImage:[UIImage rightArrow] forState:UIControlStateNormal];
     

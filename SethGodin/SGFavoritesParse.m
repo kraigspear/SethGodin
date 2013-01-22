@@ -19,6 +19,9 @@ NSString * const PARSE_COL_FAVORITE_ID    = @"favoriteID";
 NSString * const PARSE_COL_SUMMARY        = @"summary";
 NSString * const PARSE_COL_URL            = @"url";
 
+NSString * const PARSE_ARCHIVE_YEAR       = @"archiveYear";
+NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
+
 
 @implementation SGFavoritesParse
 
@@ -46,11 +49,18 @@ NSString * const PARSE_COL_URL            = @"url";
     return query;
 }
 
++ (void) archiveLastYear:(NSNumber*) outYear andMonth:(NSNumber*) outMonth
+{
+    PFUser *user = [PFUser currentUser];
+    outYear  = [user objectForKey:PARSE_ARCHIVE_YEAR];
+    outMonth = [user objectForKey:PARSE_ARCHIVE_MONTH];
+}
+
 + (void) updateUserLastArchiveSearchForMonth:(NSUInteger) inMonth year:(NSUInteger) year
 {
     PFUser *user = [PFUser currentUser];
-    [user setObject:@(inMonth) forKey:@"archiveMonth"];
-    [user setObject:@(year)    forKey:@"archiveYear"];
+    [user setObject:@(inMonth) forKey:PARSE_ARCHIVE_MONTH];
+    [user setObject:@(year)    forKey:PARSE_ARCHIVE_YEAR];
     [user saveEventually];
 }
 

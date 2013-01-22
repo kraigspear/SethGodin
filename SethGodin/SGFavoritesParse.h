@@ -25,4 +25,6 @@
 
 + (void) updateUserLastArchiveSearchForMonth:(NSUInteger) inMonth year:(NSUInteger) year;
 
++ (void) archiveLastYear:(NSNumber*) outYear andMonth:(NSNumber*) outMonth;
+
 @end

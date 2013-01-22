@@ -186,7 +186,7 @@
     [self.view addConstraints:@[leadingConstraint, topConstraint,  heightConstriant]];
     
     //settings
-    UIButton *settingsButton = [self newButtonWithTitle:@"Settings" action:@selector(settingsAction:)];
+    UIButton *settingsButton = [self newButtonWithTitle:@"Account/Cloud" action:@selector(settingsAction:)];
     _settingsButton = settingsButton;
 
     NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:settingsButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
@@ -303,7 +303,7 @@
 {
     UIStoryboard *iphoneStoryboard =  [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
-    UIViewController *settingsViewController = [iphoneStoryboard instantiateViewControllerWithIdentifier:@"settings"];
+    UIViewController *settingsViewController = [iphoneStoryboard instantiateViewControllerWithIdentifier:@"account"];
     
     settingsViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:settingsViewController animated:YES completion:nil];

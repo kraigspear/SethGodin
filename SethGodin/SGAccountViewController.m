@@ -15,6 +15,7 @@
 #import "SGSignUpViewController.h"
 #import "UIColor+General.h"
 #import "UIImage+General.h"
+#import "SGAppDelegate.h"
 
 @interface SGAccountViewController ()
 
@@ -25,6 +26,9 @@
 @private
     PFLogInViewController *_loginViewController;
     PFUser                *_oldUser;
+    
+    __weak UIWindow        *_gestureWindow;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -68,6 +72,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if(IS_IPAD)
+    {
+        _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(parentViewTap:)];
+        
+        _tapGestureRecognizer.cancelsTouchesInView = NO;
+        
+        _gestureWindow = [[SGAppDelegate instance] window];
+        
+        [_gestureWindow addGestureRecognizer:_tapGestureRecognizer];
+    }
     
     [self updateLogInUserLabel];
     
@@ -122,11 +137,6 @@
 - (void) viewDidLayoutSubviews
 {
     NSLog(@"loginButtonSize = %f", self.loginButton.frame.size.height);
-}
-
-- (IBAction)backAction:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -212,6 +222,29 @@
 }
 
 #pragma mark -
+#pragma mark TapGesture
+
+- (void) parentViewTap:(UITapGestureRecognizer*) inGesture
+{
+    if (inGesture.state == UIGestureRecognizerStateEnded)
+    {
+        //We are getting all taps, so we need to make sure the tap is not in the model      view.
+        CGPoint location = [inGesture locationInView:nil];
+        if (![self.view pointInside:[self.view convertPoint:location fromView:self.view.window] withEvent:nil])
+        {
+            [self cleanUpTap];
+        }
+    }
+}
+
+- (void) cleanUpTap
+{
+    [_gestureWindow removeGestureRecognizer:_tapGestureRecognizer];
+    _tapGestureRecognizer = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark -
 #pragma mark SGTitleViewDelegate
 
 - (NSString*) titleText
@@ -221,12 +254,28 @@
 
 - (UIImage*) leftButtonImage
 {
-    return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+    if(IS_IPAD)
+    {
+        return [UIImage closeButtonWithColor:[UIColor menuTitleBarTextColor]];
+    }
+    else
+    {
+        return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+    }
+    
 }
 
 - (void) leftButtonAction:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if(IS_IPAD)
+    {
+        [self cleanUpTap];
+        
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (UIColor*) titleViewBackgroundColor
