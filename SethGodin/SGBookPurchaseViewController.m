@@ -15,6 +15,8 @@
 #import "UIImage+General.h"
 #import "BlockAlertView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImage+General.h"
+#import "UIColor+General.h"
 
 
 @implementation SGBookPurchaseViewController
@@ -32,8 +34,6 @@ NSString * const ReuseIdentifier = @"bookCell";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@"BOOKS" usingBackgroundColor:[UIColor whiteColor]]];
     
     if(IS_IPHONE5)
     {
@@ -130,7 +130,11 @@ NSString * const ReuseIdentifier = @"bookCell";
     //size = 298x450 = 152
     //return CGSizeMake(106.666666667, 200);
     // 149 : 225
-    return CGSizeMake(132, 200);
+    
+    const CGFloat h = 130;
+    const CGFloat ratio = 1.51515151515152;
+    
+    return CGSizeMake(h, h*ratio);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -176,6 +180,33 @@ NSString * const ReuseIdentifier = @"bookCell";
     }];
 }
 
+#pragma mark -
+#pragma mark SGTitleViewDelegate
+
+- (NSString*) titleText
+{
+    return @"BOOKS";
+}
+
+- (void) leftButtonAction:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIImage*) leftButtonImage
+{
+    return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+}
+
+- (UIColor*)  titleTextColor
+{
+    return [UIColor menuTitleBarTextColor];
+}
+
+- (UIColor*)  titleViewBackgroundColor
+{
+    return [UIColor menuTitleBarBackgroundColor];
+}
 
 
 @end

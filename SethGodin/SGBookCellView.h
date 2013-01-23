@@ -16,6 +16,6 @@
 
 @property (weak, nonatomic) UICollectionView *parentView;
 
-@property (nonatomic, weak) SGPurchaseItem *purchaseItem;
+@property (nonatomic, strong) SGPurchaseItem *purchaseItem;
 
 @end

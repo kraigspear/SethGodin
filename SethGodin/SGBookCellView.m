@@ -39,6 +39,12 @@ NSString * const KEY_PATH_IMAGE = @"image";
     }
 }
 
+- (void) dealloc
+{
+    [self.purchaseItem removeObserver:self forKeyPath:KEY_PATH_IMAGE];
+    _purchaseItem = nil;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
