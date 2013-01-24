@@ -47,7 +47,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     UIImage *favoritesImage = [UIImage menuImageWithText:@"Favorites" isUpgrade:NO];
     UIImage *archivesImage  = [UIImage menuImageWithText:@"Archives"      isUpgrade:NO];
     
-    UIImage *settingsImage = [UIImage menuImageWithText:@"Account/Cloud"      isUpgrade:NO];
+    UIImage *settingsImage = [UIImage menuImageWithText:@"Account"      isUpgrade:NO];
     
     _latestButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _latestButton.translatesAutoresizingMaskIntoConstraints = NO;

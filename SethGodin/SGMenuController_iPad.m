@@ -186,7 +186,7 @@
     [self.view addConstraints:@[leadingConstraint, topConstraint,  heightConstriant]];
     
     //settings
-    UIButton *settingsButton = [self newButtonWithTitle:@"Account/Cloud" action:@selector(settingsAction:)];
+    UIButton *settingsButton = [self newButtonWithTitle:@"Account" action:@selector(settingsAction:)];
     _settingsButton = settingsButton;
 
     NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:settingsButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];

@@ -6,20 +6,21 @@
 //  Copyright (c) 2013 AndersonSpear. All rights reserved.
 //
 
-#import "SGMainViewController.h"
+#import "SGMainViewController_ipad.h"
 #import "SGBlogEntriesViewController.h"
 #import "SGBlogEntryViewController.h"
 #import "SGNotifications.h"
+#import "SGBookPurchaseViewController.h"
 
 
 #define MENU_HEIGHT 336
 #define LEFT_VIEW_WIDTH 320.0f
 
-@interface SGMainViewController ()
+@interface SGMainViewController_ipad ()
 
 @end
 
-@implementation SGMainViewController
+@implementation SGMainViewController_ipad
 {
 @private
     __weak SGMenuController_iPad     *_menuController;
@@ -42,9 +43,9 @@
     
 }
 
-static SGMainViewController *instance;
+static SGMainViewController_ipad *instance;
 
-+ (SGMainViewController*) sharedInstance
++ (SGMainViewController_ipad*) sharedInstance
 {
     return instance;
 }
@@ -403,7 +404,9 @@ static SGMainViewController *instance;
 
 - (void) booksSelected:(id)sender
 {
-    UIViewController *booksViewController = [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"books"];
+    SGBookPurchaseViewController *booksViewController = [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"books"];
+    
+    booksViewController.verticalMode = YES;
     
     _upperViewController = booksViewController;
     UIView *booksView = booksViewController.view;

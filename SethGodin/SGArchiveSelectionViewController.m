@@ -14,7 +14,7 @@
 #import "SGUSerDefaults.h"
 #import "SGLogger.h"
 #import "Flurry.h"
-#import "SGMainViewController.h"
+#import "SGMainViewController_ipad.h"
 #import "SGAskToPurchaseViewController.h"
 #import "UIColor+General.h"
 #import "SGFavoritesParse.h"
@@ -253,7 +253,7 @@ const NSUInteger MIN_YEAR = 2002;
     
     askToPurchaseViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     
-   [[SGMainViewController sharedInstance] presentViewController:askToPurchaseViewController animated:YES completion:^
+   [[SGMainViewController_ipad sharedInstance] presentViewController:askToPurchaseViewController animated:YES completion:^
     {
         
     }];

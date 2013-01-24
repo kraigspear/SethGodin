@@ -27,6 +27,7 @@
     SKStoreProductViewController *_storeProductViewController;
     SGLoadingAnimation *_loadingAnimation;
     BlockAlertView *_alertView;
+    NSLayoutConstraint *_bookToTopConstraint;
 }
 
 NSString * const ReuseIdentifier = @"bookCell";
@@ -35,16 +36,29 @@ NSString * const ReuseIdentifier = @"bookCell";
 {
     [super viewDidLoad];
     
-    if(IS_IPHONE5)
+    _bookToTopConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    if(!self.verticalMode)
     {
-        self.backgroundImageView.image = [UIImage imageNamed:@"books-568h.png"];
+        if(IS_IPHONE5)
+        {
+            self.backgroundImageView.image = [UIImage imageNamed:@"books-568h.png"];
+        }
+        else
+        {
+            self.backgroundImageView.image = [UIImage imageNamed:@"books-iphone4.png"];
+        }
     }
     else
     {
-        self.backgroundImageView.image = [UIImage imageNamed:@"books-iphone4.png"];
-    }
+        self.backgroundImageView.hidden = YES;
+        [self.view removeConstraint:self.collectionViewHeightConstraint];
         
-    //[self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
+        [self.view addConstraint:_bookToTopConstraint];
+        
+        self.flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        self.collectionView.backgroundColor = [UIColor tableCellBackgroundColor];
+    }
     
     _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:nil];
     self.collectionViewToTrailing.constant = 320;
@@ -82,6 +96,46 @@ NSString * const ReuseIdentifier = @"bookCell";
     
 }
 
+#pragma mark -
+#pragma mark rotation
+
+- (void) updateConstraintsForOrientation:(UIInterfaceOrientation) inOrientation
+{
+    if(IS_IPHONE)
+    {
+        if(UIInterfaceOrientationIsPortrait(inOrientation))
+        {
+            [self.view removeConstraint:_bookToTopConstraint];
+            [self.view addConstraint:self.collectionViewHeightConstraint];
+        }
+        else
+        {
+            [self.view removeConstraint:self.collectionViewHeightConstraint];
+            [self.view addConstraint:_bookToTopConstraint];
+        }
+    }
+}
+
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    if(IS_IPHONE)
+    {
+        [self updateConstraintsForOrientation:toInterfaceOrientation];
+    }
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    if(IS_IPHONE)
+    {
+        [self.collectionView reloadData];
+    }
+}
+
+
 - (void) showError:(NSError*) inError
 {
     _alertView = [BlockAlertView alertWithTitle:@"Error" message:inError.localizedDescription];
@@ -97,12 +151,6 @@ NSString * const ReuseIdentifier = @"bookCell";
         }
     }];
 }
-
-- (IBAction)backAction:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 
 #pragma mark -
 #pragma mark UICollectionView
@@ -131,10 +179,21 @@ NSString * const ReuseIdentifier = @"bookCell";
     //return CGSizeMake(106.666666667, 200);
     // 149 : 225
     
-    const CGFloat h = 130;
-    const CGFloat ratio = 1.51515151515152;
-    
-    return CGSizeMake(h, h*ratio);
+    if(IS_IPHONE)
+    {
+        if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
+        {
+            return CGSizeMake(132, 199);
+        }
+        else
+        {
+            return CGSizeMake(collectionView.frame.size.height / 1.5, collectionView.frame.size.height);
+        }
+    }
+    else
+    {
+        return CGSizeMake(320, 489.80);
+    }
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -144,8 +203,6 @@ NSString * const ReuseIdentifier = @"bookCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [_loadingAnimation startSpinner];
-    
     SGPurchaseItem *itemToPurchase = [_items objectAtIndex:indexPath.row];
     
     _storeProductViewController = [[SKStoreProductViewController alloc] init];
@@ -161,7 +218,6 @@ NSString * const ReuseIdentifier = @"bookCell";
         {
             [self presentViewController:_storeProductViewController animated:YES completion:^
             {
-                [_loadingAnimation stopSpinner];
             }];
         }
     }];

@@ -15,10 +15,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (nonatomic, assign) BOOL verticalMode;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToTrailing;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewToLeading;
 @property (weak, nonatomic) IBOutlet SGTitleView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
 @end
