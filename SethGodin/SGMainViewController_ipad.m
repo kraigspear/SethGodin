@@ -11,6 +11,7 @@
 #import "SGBlogEntryViewController.h"
 #import "SGNotifications.h"
 #import "SGBookPurchaseViewController.h"
+#import "SGArchiveSelectionViewController.h"
 
 
 #define MENU_HEIGHT 336
@@ -380,10 +381,10 @@ static SGMainViewController_ipad *instance;
 - (void) archiveSelected:(id) sender
 {
     
-    UIViewController *archiveViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"archives"];
+    SGArchiveSelectionViewController *archiveViewController = (SGArchiveSelectionViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"archives"];
     
     _upperViewController = archiveViewController;
-    UIView *archiveView = archiveViewController.view;
+    UIView *archiveView  = archiveViewController.view;
     [self addChildViewController:archiveViewController];
     [self.view addSubview:archiveView];
     archiveView.translatesAutoresizingMaskIntoConstraints = NO;

@@ -76,14 +76,11 @@ const NSUInteger MIN_YEAR = 2002;
     
     [self.view removeConstraint:self.goButtonHeightConstraint];
     
-    
     CGFloat heightContant = [self heightConstantForOrientation:self.interfaceOrientation];
     
     self.goButtonHeightConstraint = [NSLayoutConstraint constraintWithItem:self.goButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:.4 constant:heightContant];
     
     [self.view addConstraint:self.goButtonHeightConstraint];
-    
-    
     
 }
 
@@ -117,9 +114,13 @@ const NSUInteger MIN_YEAR = 2002;
 - (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    CGFloat heightContant = [self heightConstantForOrientation:toInterfaceOrientation];
-    self.goButtonHeightConstraint.constant = heightContant;
-    [self.view layoutIfNeeded];
+    
+    if(IS_IPHONE)
+    {
+        CGFloat heightContant = [self heightConstantForOrientation:toInterfaceOrientation];
+        self.goButtonHeightConstraint.constant = heightContant;
+        [self.view layoutIfNeeded];
+    }
 }
 
 
@@ -271,7 +272,14 @@ const NSUInteger MIN_YEAR = 2002;
 
 - (UIImage*) leftButtonImage
 {
-    return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+    if(IS_IPHONE)
+    {
+        return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 - (void) leftButtonAction:(id)sender
@@ -281,12 +289,26 @@ const NSUInteger MIN_YEAR = 2002;
 
 - (UIColor*) titleViewBackgroundColor
 {
-    return [UIColor menuTitleBarBackgroundColor];
+    if(IS_IPHONE)
+    {
+        return [UIColor menuTitleBarBackgroundColor];
+    }
+    else
+    {
+        return [UIColor titlebarBackgroundColor];
+    }
 }
 
 - (UIColor*) titleTextColor
 {
-    return [UIColor menuTitleBarTextColor];
+    if(IS_IPHONE)
+    {
+        return [UIColor menuTitleBarTextColor];
+    }
+    else
+    {
+        return [UIColor titlebarTextColor];
+    }
 }
 
 

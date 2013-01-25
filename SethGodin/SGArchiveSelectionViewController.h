@@ -12,7 +12,7 @@
 
 @interface SGArchiveSelectionViewController : UIViewController<SGTitleViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet SGTitleView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *leftArrowYearButton;
 @property (weak, nonatomic) IBOutlet UIButton *rightArrowYearButton;
 
@@ -32,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftArrowYearToTopConstraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *goButtonHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftArrowMonthBottomConstraint;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftArrowMonthToBottomConstraint;
 @end
