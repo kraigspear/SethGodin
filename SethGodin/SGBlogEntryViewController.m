@@ -142,7 +142,13 @@
 
 - (void) loadHTMLForBlogEntry
 {
-    [self.view layoutIfNeeded];
+
+    //This is needed on the iPhone to make sure that the resizing logic works.
+    //On the iPad it has the oppisite effect. Don't know why....
+    if(IS_IPHONE)
+    {
+        [self.view layoutIfNeeded];
+    }
     
     [self updateTitleForBlogEntry];
     
@@ -206,20 +212,16 @@
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
-    
     CGRect frame = webView.frame;
     frame.size.height = 1;
     CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
     frame.size = fittingSize;
-    
-    NSLog(@"height = %f", frame.size.height);
     
     self.scrollView.contentSize = CGSizeMake(webView.frame.size.width, fittingSize.height + self.titleView.frame.size.height);
     
     self.webViewHeightConstraint.constant = fittingSize.height;
     
     [self.view layoutIfNeeded];
-    
 }
 
 #pragma mark -
