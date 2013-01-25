@@ -19,7 +19,7 @@
 /**
  Responsible for purchasing content
  */
-@interface SGInAppPurchase : NSObject <SKPaymentTransactionObserver, SKProductsRequestDelegate>
+@interface SGInAppPurchase : NSObject 
 
 /**
  Delegate to notifiy caller of events.

@@ -61,6 +61,13 @@
     
 }
 
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //[self updateTitleForBlogEntry];
+}
+
 - (void) updateTitleForBlogEntry
 {
     if(self.blogTitleLabel.frame.size.height == 0) return;
@@ -93,9 +100,6 @@
     }];
     
     self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:self.blogEntry.datePublished];
-    
-    
-    
 }
 
 
@@ -129,7 +133,6 @@
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self updateTitleForBlogEntry];
-    //[self loadHTMLForBlogEntry];
 }
 
 - (void) viewDidLayoutSubviews
@@ -139,6 +142,8 @@
 
 - (void) loadHTMLForBlogEntry
 {
+    [self.view layoutIfNeeded];
+    
     [self updateTitleForBlogEntry];
     
     self.scrollView.contentOffset = CGPointZero;

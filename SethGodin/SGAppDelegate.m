@@ -59,46 +59,10 @@
         }];
     }
     
-    /*
-    if([NSFileManager isICloudEnabled])
-    {
-        _splashWindow = [[SWSplashWindow alloc] init];
-        [_splashWindow showSplash];
-        _isICloudSetup = YES;
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-        {
-            [MagicalRecord setupCoreDataStackWithiCloudContainer:@"BLXEQ8692X.com.andersonspear.sethsgodinsblog" contentNameKey:@"favorites" localStoreNamed:@"seth_local" cloudStorePathComponent:@"coredata" completion:^
-             {
-                 NSLog(@"icloud setup complete!!!!");
-                 [self willChangeValueForKey:@"isICloudSetup"];
-                 _isICloudSetup = NO;
-                 [self didChangeValueForKey:@"isICloudSetup"];
-                 
-                 [self hideSplash];
-                 
-                 int64_t delayInSeconds = 5.0;
-                 dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
-                                {
-                                    [self exportFavoritesToCoreData];
-                                });
-                 
-             }];
-
-        });
-    }
-    else
-    {
-        [MagicalRecord setupCoreDataStackWithStoreNamed:@"SethGodin.sqllite"];
-    }
-     */
-    
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     
     [SGInAppPurchase sharedInstance];
-    
     
     return YES;
 }
