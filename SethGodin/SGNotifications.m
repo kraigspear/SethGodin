@@ -33,11 +33,10 @@ NSString * const NOTIFICATION_MENU_SELECTED        = @"menuSelected";
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
 
-+ (void) postMenuSelectedNotification
++ (void) postMenuSelectedNotification:(BOOL) isSelected
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_SELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_MENU_SELECTED object:@(isSelected)];
 }
-
 
 + (void) postBlogEntrySelected:(SGBlogEntry*) inBlogEntry
 {

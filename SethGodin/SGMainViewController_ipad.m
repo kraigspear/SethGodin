@@ -23,9 +23,9 @@
 @implementation SGMainViewController_ipad
 {
 @private
-    __weak SGMenuController_iPad     *_menuController;
-    __weak UIViewController          *_blogEntriesViewController;
-    __weak SGBlogEntryViewController *_blogEntryViewController;
+    __weak SGMenuController_iPad        *_menuController;
+    __weak SGBlogEntriesViewController  *_blogEntriesViewController;
+    __weak SGBlogEntryViewController    *_blogEntryViewController;
     
     __weak UIViewController          *_upperViewController;
     
@@ -40,6 +40,7 @@
     UIStoryboard                     *_iphoneStoryBoard;
     
     id                               _feedSelectionNotification;
+    id                               _menuSelectedNotification;
     
 }
 
@@ -78,6 +79,18 @@ static SGMainViewController_ipad *instance;
         {
             [self hideLeftView];
         }
+    }];
+    
+    _menuSelectedNotification = [SGNotifications observeMenuSelectedNotification:^(NSNotification *notification)
+    {
+        NSNumber *boolNumber = notification.object;
+        BOOL isSelected = [boolNumber boolValue];
+        
+        if(!isSelected)
+        {
+            [self hideMenu];
+        }
+        
     }];
     
 }
@@ -231,6 +244,7 @@ static SGMainViewController_ipad *instance;
     
     _menuController = vc;
     _menuController.delegate = self;
+    _blogEntriesViewController.menuButton.hidden = YES;
     
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
@@ -244,7 +258,10 @@ static SGMainViewController_ipad *instance;
         _menuTopConstraint.constant = 0;
         [self.view layoutIfNeeded];
     }
-    completion:nil];
+    completion:^(BOOL completed)
+     {
+         
+     }];
 }
 
 - (void) setupMenuViewConstraints
@@ -321,6 +338,7 @@ static SGMainViewController_ipad *instance;
      {
          [self.view removeConstraint:_blogEntryTopConstraitWithMenu];
          [self.view addConstraint:_bogEntryTopConstraintNoMenu];
+         _blogEntriesViewController.menuButton.hidden = NO;
          [_menuController.view removeFromSuperview];
          [_menuController removeFromParentViewController];
          _menuController = nil;

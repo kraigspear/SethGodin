@@ -40,8 +40,9 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
 
 /**
  Post that the menu button has been selected
+ @param isSelected Yes if the menu selected, NO if the menu is not selected
  */
-+ (void) postMenuSelectedNotification;
++ (void) postMenuSelectedNotification:(BOOL) isSelected;
 
 /**
  Observe that the menu button has been selected

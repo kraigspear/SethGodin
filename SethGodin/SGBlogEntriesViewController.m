@@ -228,14 +228,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (IBAction)menuAction:(id)sender
 {
-    
-    if(self.menuSelected)
-    {
-        self.menuSelected();
-    }
-    
     //In the search state?
-    if(!self.searchTextField.hidden)
+    if([self isInSearchState])
     {
         [self hideMessage];
         [self closeSearchView];
@@ -245,6 +239,10 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     }
     else
     {
+        if(self.menuSelected)
+        {
+            self.menuSelected();
+        }
         [self showMenu];
     }
 }
@@ -300,7 +298,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) showMenuiPad
 {
-    [SGNotifications postMenuSelectedNotification];
+    [SGNotifications postMenuSelectedNotification:YES];
 }
 
 - (void) showMenu
@@ -442,6 +440,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     [_contentGetter requestItemssuccess:^(NSArray *inItems)
      {
+         [self stopLoadingAnimation];
          _lastDateLeftView = [NSDate date];
          [self updateBlogItems:inItems];
      } failed:^(NSError *inError)
@@ -564,6 +563,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 #pragma mark -
 #pragma mark searching
 
+- (BOOL) isInSearchState
+{
+    return (self.searchTextField.hidden == NO);
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self searchBlogFor:textField.text];
@@ -613,6 +617,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 {
     if(!self.searchTextField.hidden) return;
     
+    [SGNotifications postMenuSelectedNotification:NO];
+    
     self.searchTextField.hidden = NO;
     
     [self.menuButton setImage:[UIImage closeButton] forState:UIControlStateNormal];
@@ -624,9 +630,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 #pragma mark -
 #pragma mark user messages
-
-
-
 
 - (void) showNoNetwork
 {
