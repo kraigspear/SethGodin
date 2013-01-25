@@ -83,6 +83,8 @@
     
     UIFont *_titleFont;
     
+    __weak UIWindow *_keyWindow;
+    
 }
 
 NSString * const SEGUE_TO_POST = @"viewPostSeque";
@@ -118,7 +120,10 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     _title = @"SETH GODIN";
     
-    _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:self.buttonViewToTopViewConstraint];
+    if(IS_IPHONE)
+    {
+        _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:self.buttonViewToTopViewConstraint];
+    }
     
     _feedSelection = [SGFeedSelection selectionAsCurrent];
     
@@ -518,12 +523,28 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) startLoadingAnimation
 {
-    [_loadingAnimation startLoadingAnimation];
+    if(IS_IPHONE)
+    {
+        [_loadingAnimation startLoadingAnimation];
+    }
+    else
+    {
+        _keyWindow = [[UIApplication sharedApplication] keyWindow];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:_keyWindow animated:YES];
+        hud.labelText = @"Loading...";
+    }
 }
 
 - (void) stopLoadingAnimation
 {
-    [_loadingAnimation stopLoadingAnimation];
+    if(IS_IPHONE)
+    {
+        [_loadingAnimation stopLoadingAnimation];
+    }
+    else
+    {
+        [MBProgressHUD hideHUDForView:_keyWindow animated:YES];
+    }
 }
 
 - (void) fadeToolbarAnimation
