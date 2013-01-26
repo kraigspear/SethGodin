@@ -183,6 +183,7 @@
                                         </connections>
                                     </webView>
                                 </subviews>
+                                <color key="backgroundColor" red="1" green="0.97647058823529409" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="hlw-Zf-OOp" firstAttribute="trailing" secondItem="UQm-RN-inu" secondAttribute="trailing" type="default" id="10q-Ag-mpp"/>
                                     <constraint firstItem="W0j-Ca-82O" firstAttribute="top" secondItem="hlw-Zf-OOp" secondAttribute="bottom" type="user" id="1Qo-b4-4MQ"/>
@@ -195,7 +196,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.99215686270000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.97647058823529409" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="UQm-RN-inu" firstAttribute="trailing" secondItem="G6b-pW-xZy" secondAttribute="trailing" type="default" id="0aF-d9-xSa"/>
                             <constraint firstItem="r20-Wb-LsT" firstAttribute="top" secondItem="G6b-pW-xZy" secondAttribute="top" type="default" id="Lf7-hF-Al2"/>
@@ -416,11 +417,6 @@
         <class className="SGArchiveSelectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGArchiveSelectionViewController.h"/>
             <relationships>
-                <relationship kind="action" name="goAction:"/>
-                <relationship kind="action" name="monthBackAction:"/>
-                <relationship kind="action" name="monthForwaredAction:"/>
-                <relationship kind="action" name="yearBackAction:"/>
-                <relationship kind="action" name="yearForwardButton:"/>
                 <relationship kind="outlet" name="goButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="goButtonHeightConstraint" candidateClass="NSLayoutConstraint"/>
                 <relationship kind="outlet" name="leftArrowMonth" candidateClass="UILabel"/>
@@ -438,7 +434,6 @@
         <class className="SGBlogEntryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
             <relationships>
-                <relationship kind="action" name="favoritesAction:"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>

@@ -160,36 +160,11 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
 + (void) moveUserDataToCurrentUserFor:(PFUser*) oldUser
 {
 
-    const NSUInteger batchSize = 100;
-
-    PFUser *currentUser = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:PARSE_CLASS_FAVORITE];
-    [query whereKey:PARSE_COL_CURRENT_USER equalTo:oldUser];
-    query.limit = batchSize;
-    NSError *error;
-    NSArray *favorites;
-    
-    do
+    NSDictionary *params = @{@"oldUser" : oldUser.objectId};
+    [PFCloud callFunctionInBackground:@"moveUserDataToCurrentUserFor" withParameters:params block:^(id object, NSError *error)
     {
-        favorites = [query findObjects:&error];
-        
-        if(!error)
-        {
-            for(PFObject *oldFav in favorites)
-            {
-                [oldFav setObject:currentUser forKey:PARSE_COL_CURRENT_USER];
-                
-                NSError *saveError;
-                if(![oldFav save:&saveError])
-                {
-                    NSLog(@"not able to save favorite %@", saveError.localizedDescription);
-                }
-            }
-        }
-        
-    } while (error == nil && favorites.count == batchSize);
-    
-    
+        NSLog(@"object returned = %@ error = %@", object, error);
+    }];
 }
 
 @end

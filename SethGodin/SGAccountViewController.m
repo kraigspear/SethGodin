@@ -54,12 +54,18 @@
     }
     
     BOOL isGuest = [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]];
+    BOOL isTwitter = [PFTwitterUtils isLinkedWithUser:[PFUser currentUser]];
+    
     
     NSString *userName;
     
     if(isGuest)
     {
         userName = @"Guest";
+    }
+    else if(isTwitter)
+    {
+        userName = @"Twitter";
     }
     else
     {
@@ -156,17 +162,7 @@
         [self updateLogInUserLabel];
         if([PFAnonymousUtils isLinkedWithUser:_oldUser])
         {
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"Updating favorites...";
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-                           {
-                               [SGFavoritesParse moveUserDataToCurrentUserFor:_oldUser];
-                               
-                               dispatch_async(dispatch_get_main_queue(), ^
-                               {
-                                   [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                               });
-                           });
+            [SGFavoritesParse moveUserDataToCurrentUserFor:_oldUser];
         }
     }];
 }
