@@ -44,7 +44,8 @@ NSString * const PRODUCT_ID = @"com.andersonspear.sethsblog.upgrade";
     
     [PFPurchase addObserverForProduct:PRODUCT_ID block:^(SKPaymentTransaction *transaction)
     {
-        [self purchaseProduct:_productID];
+        [SGUserDefaults sharedInstance].isUpgraded = YES;
+        [self.delegate purchaseCompleteWithID:transaction.transactionIdentifier];
     }];
     
     return self;
@@ -60,14 +61,7 @@ NSString * const PRODUCT_ID = @"com.andersonspear.sethsblog.upgrade";
 {
     [PFPurchase buyProduct:PRODUCT_ID block:^(NSError *error)
     {
-        if(!error)
-        {
-            SGUserDefaults.sharedInstance.isUpgraded = YES;
-            [[SGLogger sharedInstance] logPurchased];
-
-            [self.delegate purchaseCompleteWithID:inProduct];
-        }
-        else
+        if(error)
         {
             [self.delegate didFailWithError:error];
         }

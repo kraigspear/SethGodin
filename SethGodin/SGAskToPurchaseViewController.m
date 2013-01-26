@@ -107,7 +107,6 @@ NSString * const TITLE_SUCCESS = @"Success";
     [_alertView show];
     
     [Flurry logEvent:@"Purchased"];
-    [SGUserDefaults sharedInstance].isUpgraded = YES;
     _inappPurchase = nil;
 }
 

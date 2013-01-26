@@ -83,7 +83,6 @@
 - (void) purchaseCompleteWithID:(NSString*)inId
 {
     [Flurry logEvent:@"Purchased"];
-    [SGUserDefaults sharedInstance].isUpgraded = YES;
     _inappPurchase = nil;
     [self performSegueWithIdentifier:@"upgradeToUpgradedSegue" sender:nil];
 }

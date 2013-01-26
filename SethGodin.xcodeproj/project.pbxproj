@@ -114,6 +114,10 @@
 		A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D68551164D0DC6007A9ADA /* UIImage+BBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
 		A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D8385516596E9300A79669 /* StoreKit.framework */; };
 		A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D838591659853F00A79669 /* SGLoadingAnimation.m */; };
+		A9E3220A16B414E40096AB6A /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3220916B414E40096AB6A /* Default-Portrait@2x~ipad.png */; };
+		A9E3220C16B416A40096AB6A /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3220B16B416A40096AB6A /* Default-Portrait~ipad.png */; };
+		A9E3220E16B418270096AB6A /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3220D16B418270096AB6A /* Default-Landscape@2x~ipad.png */; };
+		A9E3221016B418390096AB6A /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3220F16B418390096AB6A /* Default-Landscape~ipad.png */; };
 		A9F369FC16A2FC1400FF7CB6 /* AskToPurchase.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F369FB16A2FC1400FF7CB6 /* AskToPurchase.xib */; };
 		A9F36A2E16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A2D16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m */; };
 		A9F36A4116A3609600FF7CB6 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3A16A3609600FF7CB6 /* BlockActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc "; }; };
@@ -322,6 +326,10 @@
 		A9D8385516596E9300A79669 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A9D838581659853E00A79669 /* SGLoadingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoadingAnimation.h; sourceTree = "<group>"; };
 		A9D838591659853F00A79669 /* SGLoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadingAnimation.m; sourceTree = "<group>"; };
+		A9E3220916B414E40096AB6A /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		A9E3220B16B416A40096AB6A /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		A9E3220D16B418270096AB6A /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		A9E3220F16B418390096AB6A /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		A9F369FB16A2FC1400FF7CB6 /* AskToPurchase.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AskToPurchase.xib; sourceTree = "<group>"; };
 		A9F36A2C16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAskToPurchaseViewController.h; sourceTree = "<group>"; };
 		A9F36A2D16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAskToPurchaseViewController.m; sourceTree = "<group>"; };
@@ -632,6 +640,10 @@
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
+				A9E3220F16B418390096AB6A /* Default-Landscape~ipad.png */,
+				A9E3220D16B418270096AB6A /* Default-Landscape@2x~ipad.png */,
+				A9E3220B16B416A40096AB6A /* Default-Portrait~ipad.png */,
+				A9E3220916B414E40096AB6A /* Default-Portrait@2x~ipad.png */,
 				A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */,
 				A907DE3A167B367B00CB9022 /* Seth Godin.entitlements */,
 				A9712AA21667B2F900BAFCD9 /* Default@2x.png */,
@@ -969,6 +981,10 @@
 				A90773ED167F2B0700056C41 /* userDefaults.plist in Resources */,
 				A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */,
 				A9F369FC16A2FC1400FF7CB6 /* AskToPurchase.xib in Resources */,
+				A9E3220A16B414E40096AB6A /* Default-Portrait@2x~ipad.png in Resources */,
+				A9E3220C16B416A40096AB6A /* Default-Portrait~ipad.png in Resources */,
+				A9E3220E16B418270096AB6A /* Default-Landscape@2x~ipad.png in Resources */,
+				A9E3221016B418390096AB6A /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

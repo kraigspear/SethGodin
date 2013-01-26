@@ -43,6 +43,8 @@
     
     [PFTwitterUtils initializeWithConsumerKey:@"5co4eA1X33TyykunIbnw" consumerSecret:@"4aon5qjIFNLURIbqU1UPyIbXDH5VrBKCif2kZ2bGlE"];
     
+    [PFFacebookUtils initializeWithApplicationId:@"531338303564283"];
+    
     PFUser *currentUser = [PFUser currentUser];
     
     if(!currentUser)
