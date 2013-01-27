@@ -55,6 +55,7 @@
     
     BOOL isGuest = [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]];
     BOOL isTwitter = [PFTwitterUtils isLinkedWithUser:[PFUser currentUser]];
+    BOOL isFacebook = [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]];
     
     NSString *userName;
     
@@ -65,6 +66,10 @@
     else if(isTwitter)
     {
         userName = @"Twitter";
+    }
+    else if(isFacebook)
+    {
+        userName = @"Facebook";
     }
     else
     {
