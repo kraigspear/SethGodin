@@ -17,6 +17,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+General.h"
 #import "UIColor+General.h"
+#import "MBProgressHud.h"
 
 
 @implementation SGBookPurchaseViewController
@@ -28,6 +29,7 @@
     SGLoadingAnimation *_loadingAnimation;
     BlockAlertView *_alertView;
     NSLayoutConstraint *_bookToTopConstraint;
+    __weak UIWindow *_keyWindow;
 }
 
 NSString * const ReuseIdentifier = @"bookCell";
@@ -60,17 +62,30 @@ NSString * const ReuseIdentifier = @"bookCell";
         self.collectionView.backgroundColor = [UIColor tableCellBackgroundColor];
     }
     
-    _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:nil];
-    self.collectionViewToTrailing.constant = 320;
-    self.collectionViewToLeading.constant = 320;
-    [self.view layoutSubviews];
+    if(IS_IPHONE)
+    {
+        _loadingAnimation = [[SGLoadingAnimation alloc] initWithView:self.view topConstraint:nil];
+        self.collectionViewToTrailing.constant = 320;
+        self.collectionViewToLeading.constant = 320;
+        [self.view layoutSubviews];
+    }
     
     UINib *cellNib = [UINib nibWithNibName:@"BookCellView" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:ReuseIdentifier];
     
     _purchaseItemGetter = [[SGPurchaseItemGetter alloc] init];
     
-    [_loadingAnimation startLoadingAnimation];
+    if(IS_IPHONE)
+    {
+        [_loadingAnimation startLoadingAnimation];
+    }
+    else
+    {
+        _keyWindow = [[UIApplication sharedApplication] keyWindow];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:_keyWindow animated:YES];
+        hud.labelText = @"Loading...";
+    }
+    
     [_purchaseItemGetter latestItems:^(NSArray *latestItems)
     {
         _items = latestItems;
@@ -79,7 +94,14 @@ NSString * const ReuseIdentifier = @"bookCell";
         
         [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
         {
-            [_loadingAnimation stopLoadingAnimation];
+            if(IS_IPHONE)
+            {
+                [_loadingAnimation stopLoadingAnimation];
+            }
+            else
+            {
+                [MBProgressHUD hideHUDForView:_keyWindow animated:YES];
+            }
             self.collectionViewToTrailing.constant = 0;
             self.collectionViewToLeading.constant = 0;
             [self.view layoutSubviews];
@@ -257,7 +279,14 @@ NSString * const ReuseIdentifier = @"bookCell";
 
 - (UIImage*) leftButtonImage
 {
-    return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+    if(IS_IPHONE)
+    {
+        return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+    }
+    else
+    {
+        return nil;
+    }
 }
 
 - (UIColor*)  titleTextColor
