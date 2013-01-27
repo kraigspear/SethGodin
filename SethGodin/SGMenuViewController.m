@@ -141,6 +141,8 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
         [self.view removeConstraints:_portraitConstraints];
         [self.view addConstraints:_landscapeConstraints];
     }
+    
+    [self.view layoutIfNeeded];
 
 }
 
@@ -208,7 +210,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     //favorites
     topConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeTop multiplier:1 constant:0];
     
-    NSLayoutConstraint *trailingConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:100];
+    NSLayoutConstraint *trailingConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:142];
     
     [constraints addObjectsFromArray:@[topConstraint, trailingConstraint]];
     
