@@ -61,6 +61,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)shareAction:(id)sender
+{
+    [self shareBlogEntry];
+}
 
 - (CGFloat) addToHeight
 {

@@ -135,12 +135,18 @@ NSString * const ReuseIdentifier = @"bookCell";
         {
             [self.view removeConstraint:_bookToTopConstraint];
             [self.view addConstraint:self.collectionViewHeightConstraint];
+            self.backgroundImageView.hidden = NO;
         }
         else
         {
             [self.view removeConstraint:self.collectionViewHeightConstraint];
             [self.view addConstraint:_bookToTopConstraint];
+            self.backgroundImageView.hidden = YES;
         }
+    }
+    else
+    {
+        self.backgroundImageView.hidden = YES;
     }
 }
 

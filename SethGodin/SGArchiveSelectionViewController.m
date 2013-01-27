@@ -225,7 +225,7 @@ const NSUInteger MIN_YEAR = 2002;
     }
     else
     {
-        SGUpdradeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"askToUpgradd"];
+        SGUpdradeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"askToUpgrade"];
         vc.popbackViewController = self;
         [self.navigationController pushViewController:vc animated:YES];
     }
