@@ -388,6 +388,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     [self startLoadingAnimation];
     
     self.titleLabel.hidden = (_feedSelection.feedType == kSearch);
+    
     switch (_feedSelection.feedType)
     {
         case kCurrent:

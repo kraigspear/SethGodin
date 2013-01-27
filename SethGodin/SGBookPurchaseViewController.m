@@ -96,6 +96,12 @@ NSString * const ReuseIdentifier = @"bookCell";
     
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateConstraintsForOrientation:self.interfaceOrientation];
+}
+
 #pragma mark -
 #pragma mark rotation
 
