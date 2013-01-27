@@ -25,6 +25,17 @@
 + (UIColor*) textColorSelected;
 
 /**
+ Color that you see when there is a general message.
+ Example. No search resutls.
+ */
++ (UIColor*) messageBackgroundColor;
+
+/**
+ Color used in the message text, should contrast with messageBackgroundColor
+ */
++ (UIColor*) messsageTextColor;
+
+/**
  Color on BlogEntiresView for the top title bar.
  */
 + (UIColor*) blogEntriesTopBarBackgroundColor;

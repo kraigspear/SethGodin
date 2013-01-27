@@ -22,4 +22,9 @@
  */
 + (UIFont*) titleBarTitleFont;
 
+/**
+ Font used in message views. Like no search results...
+ */
++ (UIFont*) messageTextFont;
+
 @end

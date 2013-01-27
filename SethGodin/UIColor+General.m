@@ -77,6 +77,16 @@
     return [UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:1];
 }
 
++ (UIColor*) messageBackgroundColor
+{
+    return [UIColor colorWithRed:0.678 green:0.796 blue:0.365 alpha:1];
+}
+
++ (UIColor*) messsageTextColor
+{
+    return [UIColor whiteColor];
+}
+
 + (UIColor *)colorWithRGBHex:(UInt32)hex
 {
 	int r = (hex >> 16) & 0xFF;

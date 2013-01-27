@@ -25,4 +25,10 @@
     return [UIFont fontWithName:@"HelveticaNeue-Bold" size:25];
 }
 
++ (UIFont*) messageTextFont
+{
+    return [UIFont menuButtonFont];
+}
+
+
 @end

@@ -75,7 +75,7 @@
     
     AFHTTPClient *_httpClient;
     
-    CALayer *_messageLayer;
+    UIView *_messageView;
     
     SGAlertView *_alertView;
     
@@ -417,10 +417,10 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
             break;
     }
     
-    if(_messageLayer)
+    if(_messageView)
     {
-        [_messageLayer removeFromSuperlayer];
-        _messageLayer = nil;
+        [_messageView removeFromSuperview];
+        _messageView = nil;
     }
 
     if(_feedSelection.feedType == kCurrent)
@@ -675,25 +675,53 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) hideMessage
 {
-    if(!_messageLayer) return;
-    [_messageLayer removeFromSuperlayer];
-    _messageLayer = nil;
+    if(!_messageView) return;
+    [_messageView removeFromSuperview];
+    _messageView = nil;
 }
 
 - (void) showWarningMessage:(NSString*) inMessage
 {
-    [_messageLayer removeFromSuperlayer];
+    [_messageView removeFromSuperview];
     
-    CGFloat h = self.view.frame.size.height - self.topView.frame.size.height;
-    CGFloat w = self.view.frame.size.width;
+    _messageView = [[UIView alloc] init];
+    _messageView.backgroundColor = [UIColor messageBackgroundColor];
     
-    UIImage *messageImage = [UIImage warningMessage:inMessage forSize:CGSizeMake(w, h)];
+    _messageView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    _messageLayer = [CALayer layer];
-    _messageLayer.contents = (id) messageImage.CGImage;
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_messageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     
-    _messageLayer.frame = CGRectMake(0, self.topView.frame.size.height, w, h);
-    [self.view.layer addSublayer:_messageLayer];
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:_messageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+    NSLayoutConstraint *leadingConstraint = [NSLayoutConstraint constraintWithItem:_messageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    
+    NSLayoutConstraint *trailingConstraint = [NSLayoutConstraint constraintWithItem:_messageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:0];
+
+    [self.view addSubview:_messageView];
+    [self.view addConstraints:@[topConstraint, bottomConstraint, leadingConstraint, trailingConstraint]];
+    
+    UILabel *messageLabel = [[UILabel alloc] init];
+    messageLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    messageLabel.font = [UIFont messageTextFont];
+    messageLabel.numberOfLines = 0;
+    messageLabel.textColor = [UIColor messsageTextColor];
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    messageLabel.backgroundColor = [UIColor clearColor];
+    messageLabel.text = inMessage;
+    
+    leadingConstraint = [NSLayoutConstraint constraintWithItem:messageLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1 constant:20];
+    
+    trailingConstraint = [NSLayoutConstraint constraintWithItem:messageLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:-20];
+    
+    topConstraint = [NSLayoutConstraint constraintWithItem:messageLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_messageView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    
+    bottomConstraint = [NSLayoutConstraint constraintWithItem:messageLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_messageView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20];
+    
+    [_messageView addSubview:messageLabel];
+    [self.view addConstraints:@[leadingConstraint, trailingConstraint, topConstraint, bottomConstraint]];
+    
+    [self.view layoutIfNeeded];
+    
 }
 
 #pragma mark -
