@@ -358,11 +358,16 @@ static SGMainViewController_ipad *instance;
              [self.view layoutIfNeeded];
          } completion:^(BOOL finished)
          {
-             [_upperViewController.view removeFromSuperview];
-             [_upperViewController removeFromParentViewController];
-             _upperViewController = nil;
+             [self cleanUpUpperViewController];
          }];
     }
+}
+
+- (void) cleanUpUpperViewController
+{
+    [_upperViewController.view removeFromSuperview];
+    [_upperViewController removeFromParentViewController];
+    _upperViewController = nil;
 }
 
 #pragma mark -
@@ -370,6 +375,7 @@ static SGMainViewController_ipad *instance;
 
 - (void) closeSelected:(id)sender
 {
+    [self hideLeftView];
     [self hideMenu];
 }
 
@@ -381,6 +387,16 @@ static SGMainViewController_ipad *instance;
 - (void) archiveSelected:(id) sender
 {
     
+    if(_upperViewController)
+    {
+        if([_upperViewController isKindOfClass:[SGArchiveSelectionViewController class]])
+        {
+            return;
+        }
+    }
+    
+    [self cleanUpUpperViewController];
+
     SGArchiveSelectionViewController *archiveViewController = (SGArchiveSelectionViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"archives"];
     
     _upperViewController = archiveViewController;
@@ -420,8 +436,23 @@ static SGMainViewController_ipad *instance;
     return @[topConstraint, _upperViewLeadingConstriant, _upperViewTrailingConstraint, botomConstraint];
 }
 
+- (void) favoritesSelected:(id)sender
+{
+    [self hideLeftView];
+}
+
 - (void) booksSelected:(id)sender
 {
+    if(_upperViewController)
+    {
+        if([_upperViewController isKindOfClass:[SGBookPurchaseViewController class]])
+        {
+            return;
+        }
+    }
+    
+    [self cleanUpUpperViewController];
+    
     SGBookPurchaseViewController *booksViewController = [_iphoneStoryBoard instantiateViewControllerWithIdentifier:@"books"];
     
     booksViewController.verticalMode = YES;

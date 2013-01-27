@@ -11,6 +11,7 @@
 #import "UIColor+General.h"
 #import "SGNotifications.h"
 #import "UIImage+General.h"
+#import "SGUSerDefaults.h"
 
 @interface SGMenuController_iPad ()
 
@@ -203,6 +204,12 @@
     
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _settingsButton.hidden = ([SGUserDefaults sharedInstance].isUpgraded == NO);
+}
+
 - (UIButton*) newButtonWithTitle:(NSString*) inTitle action:(SEL) inAction
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -211,7 +218,6 @@
     [self setButtonTextAttributes:button];
     button.translatesAutoresizingMaskIntoConstraints = NO;
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    //button.backgroundColor = [UIColor redColor];
     
     [button addTarget:self action:inAction forControlEvents:UIControlEventTouchUpInside];
     
@@ -273,6 +279,7 @@
 
 - (void) latestAction:(id) sender
 {
+    
     [self.delegate latestSelected:self];
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsCurrent];
     [SGNotifications postFeedSelection:feedSelection];
@@ -288,6 +295,7 @@
 
 - (void) favoriatesAction:(id) sender
 {
+    [self.delegate favoritesSelected:self];
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsFavorites];
     [SGNotifications postFeedSelection:feedSelection];
     [self updateButtonTextColorForUnselected];

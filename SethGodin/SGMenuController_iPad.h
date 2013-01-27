@@ -15,6 +15,7 @@
 - (void) archiveSelected:(id) sender;
 - (void) latestSelected:(id)  sender;
 - (void) booksSelected:(id)   sender;
+- (void) favoritesSelected:(id) sender;
 
 @end
 
