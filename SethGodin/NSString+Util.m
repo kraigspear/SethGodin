@@ -34,5 +34,9 @@
     
 }
 
+- (NSString*) removeUnwantedContentCharacters
+{
+    return [self stringByReplacingOccurrencesOfString:@"â" withString:@"'"];
+}
 
 @end

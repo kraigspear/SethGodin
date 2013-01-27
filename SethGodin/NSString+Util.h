@@ -11,5 +11,6 @@
 @interface NSString (Util)
 
 - (UIFont*) fontThatWillFitUsingFont:(UIFont*) inFont insideRect:(CGRect) inRect;
+- (NSString*) removeUnwantedContentCharacters;
 
 @end

@@ -393,7 +393,6 @@ static SGMainViewController_ipad *instance;
     
     [self.view layoutIfNeeded];
     
-    
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseOut animations:^
     {
         _upperViewLeadingConstriant.constant = 0;

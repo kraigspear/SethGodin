@@ -138,6 +138,9 @@
         NSDate   *datePublished = [self dateFromString:dateStr];
         NSString *summary       = [dict objectForKey:@"excerpt"];
         NSString *content       = [dict objectForKey:@"renderedContent"];
+        
+        content = [self removeUnwantedContentCharactersFrom:content];
+        
         NSString *itemID        = [dict objectForKey:@"urlId"];
         NSString *urlStr        = [dict objectForKey:@"permalinkUrl"];
         
@@ -158,6 +161,11 @@
     });
     
     return blogEntires;
+}
+
+- (NSString*) removeUnwantedContentCharactersFrom:(NSString*) inString
+{
+    return [inString stringByReplacingOccurrencesOfString:@"Ã¢ÂÂ" withString:@"'"];
 }
 
 #pragma mark -

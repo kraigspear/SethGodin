@@ -52,6 +52,7 @@
         }
     }
     
+    self.webView.hidden = YES;
     self.webView.scrollView.scrollEnabled = NO;
     
     [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
@@ -59,13 +60,6 @@
     [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
     [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];
     
-}
-
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    //[self updateTitleForBlogEntry];
 }
 
 - (void) updateTitleForBlogEntry
@@ -154,6 +148,9 @@
     
     self.scrollView.contentOffset = CGPointZero;
     
+    if(!self.blogEntry) return;
+    if(!self.blogEntry.content) return;
+    
     NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
                                "<head> <meta charset='utf-8'> \n"
                                "<style type=\"text/css\"> \n"
@@ -212,6 +209,8 @@
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
+    webView.hidden = NO;
+    
     CGRect frame = webView.frame;
     frame.size.height = 1;
     CGSize fittingSize = [webView sizeThatFits:CGSizeZero];

@@ -7,6 +7,7 @@
 //
 
 #import "SGBlogEntry.h"
+#import "NSString+Util.h"
 
 @implementation SGBlogEntry
 
@@ -30,7 +31,7 @@ NSString * const KEY_URL          = @"url";
     _title         = inDisplayName;
     _datePublished = inDate;
     _summary       = inSummary;
-    _content       = inContent;
+    _content       = [inContent removeUnwantedContentCharacters];
     _itemID        = inID;
     _urlStr        = inUrlStr;
     
