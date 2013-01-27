@@ -487,7 +487,10 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     if(_menuViewController)
     {
-        [self closeMenuWithAnimation:YES];
+        if(_feedSelection.feedType != kCurrent)
+        {
+            [self closeMenuWithAnimation:NO];
+        }
     }
     
     if(inBlogItems.count == 0)
