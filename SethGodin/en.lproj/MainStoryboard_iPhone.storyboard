@@ -130,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WpN-mY-DUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="536" y="812"/>
+            <point key="canvasLocation" x="68" y="812"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Fxd-oN-B5f">
@@ -167,8 +167,8 @@
                     <connections>
                         <outlet property="buttonView" destination="Sq8-r1-VOh" id="EP9-a5-5nT"/>
                         <outlet property="titleBar" destination="8PK-Ri-3NT" id="KgF-VK-PK0"/>
-                        <segue destination="TXy-ey-Qqf" kind="push" identifier="menuToUpgrade" id="4ru-Qb-5eG"/>
                         <segue destination="WiB-db-0vb" kind="push" identifier="archivesSegue" id="q7X-6h-9an"/>
+                        <segue destination="MJ0-Kj-0Lj" kind="push" identifier="menuToUpgrade" id="v17-7d-pBF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NN9-Wg-GYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -464,18 +464,19 @@
             <point key="canvasLocation" x="1766" y="1469"/>
         </scene>
         <!--Updrade View Controller-->
-        <scene sceneID="mN5-TD-ubT">
+        <scene sceneID="VLs-2T-bp4">
             <objects>
-                <viewController storyboardIdentifier="askToUpgradd" id="TXy-ey-Qqf" customClass="SGUpdradeViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8lo-WS-Zws">
+                <viewController storyboardIdentifier="askToUpgrade" id="MJ0-Kj-0Lj" customClass="SGUpdradeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ejx-Tr-8zi">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRp-PT-r3o" userLabel="topView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPQ-8G-N65">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTe-B8-por" userLabel="backButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHX-M3-xTU" userLabel="upgradeButton">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="ezM-Rv-2VY"/>
+                                            <constraint firstAttribute="width" constant="298" id="EQN-6f-XnR"/>
+                                            <constraint firstAttribute="height" constant="53" type="user" id="HXW-mG-yAN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal">
@@ -486,40 +487,12 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backAction:" destination="TXy-ey-Qqf" eventType="touchUpInside" id="2zl-su-xC9"/>
-                                            <action selector="backAction:" destination="WiB-db-0vb" eventType="touchUpInside" id="ctX-Wj-RpX"/>
+                                            <action selector="upgradeAction:" destination="MJ0-Kj-0Lj" eventType="touchUpInside" id="4TD-Ks-2YL"/>
                                         </connections>
                                     </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="FTe-B8-por" firstAttribute="leading" secondItem="dRp-PT-r3o" secondAttribute="leading" type="default" id="5Wx-Jr-mZX"/>
-                                    <constraint firstAttribute="height" constant="44" type="user" id="S5O-5V-ZAP"/>
-                                    <constraint firstAttribute="centerY" secondItem="FTe-B8-por" secondAttribute="centerY" type="user" id="ukV-X7-nIw"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zpo-K2-B64">
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-ay-f3i" userLabel="upgradeButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="707-OD-ALq" userLabel="alreadyUpgradedButton">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="53" type="user" id="dmv-Yd-y1Q"/>
-                                            <constraint firstAttribute="width" constant="298" id="sbw-uj-8yN"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="upgradeAction:" destination="TXy-ey-Qqf" eventType="touchUpInside" id="AIi-P8-nw7"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oi8-7P-HZC" userLabel="alreadyUpgradedButton">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="sqY-jz-PSv"/>
+                                            <constraint firstAttribute="height" constant="44" id="hq0-b3-PQt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Already Upgraded?">
@@ -530,13 +503,13 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="alreadyUpgradedAction:" destination="TXy-ey-Qqf" eventType="touchUpInside" id="e4f-Vc-Iq3"/>
+                                            <action selector="alreadyUpgradedAction:" destination="MJ0-Kj-0Lj" eventType="touchUpInside" id="pni-ji-rvU"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upgrade to access Seth Godin's entire blog archive and your favorite posts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="276" translatesAutoresizingMaskIntoConstraints="NO" id="8LJ-nA-WtI" userLabel="upgradeLabel">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upgrade to access Seth Godin's entire blog archive and your favorite posts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="276" translatesAutoresizingMaskIntoConstraints="NO" id="rpI-G6-CpD" userLabel="upgradeLabel">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="276" id="7tW-fW-Xif"/>
-                                            <constraint firstAttribute="height" constant="127" type="user" id="eCW-SQ-du7"/>
+                                            <constraint firstAttribute="height" constant="127" type="user" id="KOh-Ap-QVA"/>
+                                            <constraint firstAttribute="width" constant="276" id="xax-Xm-PzK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -545,40 +518,66 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="8LJ-nA-WtI" firstAttribute="leading" secondItem="Zpo-K2-B64" secondAttribute="leading" constant="25" id="7aw-hW-YFJ"/>
-                                    <constraint firstItem="Oi8-7P-HZC" firstAttribute="leading" secondItem="Zpo-K2-B64" secondAttribute="leading" type="default" id="ADe-QZ-1FZ"/>
-                                    <constraint firstItem="Oi8-7P-HZC" firstAttribute="trailing" secondItem="Zpo-K2-B64" secondAttribute="trailing" type="default" id="C6G-Dq-JPe"/>
-                                    <constraint firstItem="8LJ-nA-WtI" firstAttribute="top" secondItem="Zpo-K2-B64" secondAttribute="top" constant="100" type="user" id="G82-yT-5ou"/>
-                                    <constraint firstItem="Oi8-7P-HZC" firstAttribute="bottom" secondItem="Zpo-K2-B64" secondAttribute="bottom" type="default" id="VW2-rb-cJY"/>
-                                    <constraint firstItem="cbb-ay-f3i" firstAttribute="top" secondItem="8LJ-nA-WtI" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="vV0-id-OHJ"/>
-                                    <constraint firstAttribute="centerX" secondItem="cbb-ay-f3i" secondAttribute="centerX" type="user" id="zwy-eh-kYB"/>
+                                    <constraint firstItem="707-OD-ALq" firstAttribute="trailing" secondItem="JPQ-8G-N65" secondAttribute="trailing" type="default" id="3c1-PO-OrS"/>
+                                    <constraint firstItem="707-OD-ALq" firstAttribute="bottom" secondItem="JPQ-8G-N65" secondAttribute="bottom" type="default" id="DeZ-gk-rFA"/>
+                                    <constraint firstItem="707-OD-ALq" firstAttribute="leading" secondItem="JPQ-8G-N65" secondAttribute="leading" type="default" id="E7J-TC-xFr"/>
+                                    <constraint firstItem="rpI-G6-CpD" firstAttribute="top" secondItem="JPQ-8G-N65" secondAttribute="top" constant="100" type="user" id="SGr-Go-227"/>
+                                    <constraint firstAttribute="centerX" secondItem="GHX-M3-xTU" secondAttribute="centerX" type="user" id="dCJ-aw-SlX"/>
+                                    <constraint firstItem="GHX-M3-xTU" firstAttribute="top" secondItem="rpI-G6-CpD" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="igl-Lp-UpI"/>
+                                    <constraint firstItem="rpI-G6-CpD" firstAttribute="leading" secondItem="JPQ-8G-N65" secondAttribute="leading" constant="25" id="wID-1v-Qy0"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9k-hE-hhy" userLabel="topView" customClass="SGTitleView">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfm-0B-sVj" userLabel="backButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="YHh-cP-RdO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backAction:" destination="WiB-db-0vb" eventType="touchUpInside" id="x6W-DM-MRq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xfm-0B-sVj" firstAttribute="leading" secondItem="t9k-hE-hhy" secondAttribute="leading" type="default" id="9Oo-fe-0o7"/>
+                                    <constraint firstAttribute="centerY" secondItem="xfm-0B-sVj" secondAttribute="centerY" type="user" id="geV-ft-Wwx"/>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="vih-oj-sUD"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="MJ0-Kj-0Lj" id="Kla-y2-Zgw"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Zpo-K2-B64" firstAttribute="trailing" secondItem="8lo-WS-Zws" secondAttribute="trailing" type="default" id="6h7-Cd-P0K"/>
-                            <constraint firstItem="Zpo-K2-B64" firstAttribute="bottom" secondItem="8lo-WS-Zws" secondAttribute="bottom" type="user" id="B0v-lX-fKd"/>
-                            <constraint firstItem="dRp-PT-r3o" firstAttribute="trailing" secondItem="8lo-WS-Zws" secondAttribute="trailing" type="default" id="EEH-Oa-vTr"/>
-                            <constraint firstItem="dRp-PT-r3o" firstAttribute="top" secondItem="8lo-WS-Zws" secondAttribute="top" type="user" id="IH5-xt-cfn"/>
-                            <constraint firstItem="dRp-PT-r3o" firstAttribute="leading" secondItem="8lo-WS-Zws" secondAttribute="leading" type="default" id="IY5-Mm-ntx"/>
-                            <constraint firstItem="Zpo-K2-B64" firstAttribute="leading" secondItem="8lo-WS-Zws" secondAttribute="leading" type="default" id="ciI-8q-GQl"/>
-                            <constraint firstItem="Zpo-K2-B64" firstAttribute="top" secondItem="dRp-PT-r3o" secondAttribute="bottom" type="user" id="ebo-A3-hIP"/>
+                            <constraint firstItem="JPQ-8G-N65" firstAttribute="top" secondItem="Ejx-Tr-8zi" secondAttribute="top" constant="44" id="1Cm-KY-RNw"/>
+                            <constraint firstItem="JPQ-8G-N65" firstAttribute="trailing" secondItem="Ejx-Tr-8zi" secondAttribute="trailing" type="default" id="DKY-lW-XDn"/>
+                            <constraint firstItem="t9k-hE-hhy" firstAttribute="leading" secondItem="Ejx-Tr-8zi" secondAttribute="leading" type="default" id="K4q-ab-ktb"/>
+                            <constraint firstItem="JPQ-8G-N65" firstAttribute="bottom" secondItem="Ejx-Tr-8zi" secondAttribute="bottom" type="default" id="MGV-M8-99M"/>
+                            <constraint firstItem="t9k-hE-hhy" firstAttribute="trailing" secondItem="Ejx-Tr-8zi" secondAttribute="trailing" type="default" id="O5t-ak-fSY"/>
+                            <constraint firstItem="JPQ-8G-N65" firstAttribute="leading" secondItem="Ejx-Tr-8zi" secondAttribute="leading" type="default" id="ZV1-fr-XEb"/>
+                            <constraint firstItem="t9k-hE-hhy" firstAttribute="top" secondItem="Ejx-Tr-8zi" secondAttribute="top" type="default" id="w95-AH-RoO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iq6-ZB-eOy"/>
+                    <navigationItem key="navigationItem" id="ziG-MK-EZa"/>
                     <connections>
-                        <outlet property="backButton" destination="FTe-B8-por" id="9Pf-Oc-Fgf"/>
-                        <outlet property="backgroundView" destination="Zpo-K2-B64" id="B4D-S8-8Jc"/>
-                        <outlet property="topView" destination="dRp-PT-r3o" id="Cvo-YH-5Fi"/>
-                        <outlet property="upgradeButton" destination="cbb-ay-f3i" id="gT3-L8-38V"/>
-                        <outlet property="view" destination="8lo-WS-Zws" id="1Kd-ou-0u7"/>
-                        <segue destination="Iu9-52-ldD" kind="push" identifier="upgradeToUpgradedSegue" id="XQM-MM-lli"/>
+                        <outlet property="backgroundView" destination="JPQ-8G-N65" id="8oD-tO-78A"/>
+                        <outlet property="topView" destination="t9k-hE-hhy" id="ORD-XM-mVZ"/>
+                        <outlet property="upgradeButton" destination="GHX-M3-xTU" id="PYg-OL-clb"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iLZ-qg-XBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ljb-gw-oc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="576" y="1570"/>
+            <point key="canvasLocation" x="570" y="993"/>
         </scene>
         <!--Upgraded View Controller-->
         <scene sceneID="ljM-XD-h0d">
@@ -876,6 +875,137 @@
             <point key="canvasLocation" x="426" y="141"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SGAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGAccountViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createAccountAction:"/>
+                <relationship kind="action" name="logInAction:"/>
+                <relationship kind="outlet" name="cloudSyncButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="createAccountButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="currentUserTopConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="descriptionHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loggedInUserNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SGArchiveSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGArchiveSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="goButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goButtonHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="leftArrowMonth" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="leftArrowMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowMonthToBottomConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="leftArrowYearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowYearToTopConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rightArrowMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightArrowYearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topView" candidateClass="SGTitleView"/>
+                <relationship kind="outlet" name="yearLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SGBlogEntriesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntriesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tableViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SGBlogEntryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLableToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="SGBlogEntryViewController_iphone" superclassName="SGBlogEntryViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController_iphone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SGBookPurchaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBookPurchaseViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="collectionViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="collectionViewToBottom" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="collectionViewToLeading" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="collectionViewToTrailing" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="flowLayout" candidateClass="UICollectionViewFlowLayout"/>
+                <relationship kind="outlet" name="topView" candidateClass="SGTitleView"/>
+            </relationships>
+        </class>
+        <class className="SGMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleBar" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SGTitleView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGTitleView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="SGUpdradeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpdradeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="alreadyUpgradedAction:"/>
+                <relationship kind="action" name="backAction:"/>
+                <relationship kind="action" name="upgradeAction:"/>
+                <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="topView" candidateClass="SGTitleView"/>
+                <relationship kind="outlet" name="upgradeButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SGUpgradedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpgradedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SGWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGWebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndiacator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="previousButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

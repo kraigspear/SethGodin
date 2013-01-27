@@ -69,12 +69,14 @@
     _alertView = nil;
 }
 
+
 - (IBAction)upgradeAction:(id)sender
 {
     _inappPurchase = [SGInAppPurchase sharedInstance];
     _inappPurchase.delegate = self;
     [_inappPurchase purchaseUpgrade];
 }
+
 
 #pragma mark -
 #pragma mark SGInAppPurchaseDelegate
