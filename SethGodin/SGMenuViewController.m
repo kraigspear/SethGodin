@@ -110,6 +110,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 {
     [super viewWillAppear:animated];
     _accountButton.hidden = ([SGUserDefaults sharedInstance].isUpgraded == NO);
+    [self updateConstraintsForOrientation:self.interfaceOrientation];
 }
 
 - (void) viewDidAppear:(BOOL)animated

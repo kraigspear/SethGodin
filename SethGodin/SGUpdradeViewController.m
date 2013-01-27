@@ -39,6 +39,7 @@
 {
     [super viewDidLoad];
     [self.upgradeButton setImage:[UIImage upgradeButton] forState:UIControlStateNormal];
+    [self updateConstraintsForOrientation:self.interfaceOrientation];
 }
 
 - (void) viewDidLayoutSubviews
@@ -57,9 +58,25 @@
     
 }
 
-- (IBAction)backAction:(id)sender
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self updateConstraintsForOrientation:toInterfaceOrientation];
+}
+
+- (void) updateConstraintsForOrientation:(UIDeviceOrientation) inOrientation
+{
+    if(UIDeviceOrientationIsPortrait(inOrientation))
+    {
+        self.upgradeMessageTopConstraint.constant = 100;
+        self.upgradeMessageHeightConstraint.constant = 127;
+    }
+    else
+    {
+        self.upgradeMessageTopConstraint.constant = 20;
+        self.upgradeMessageHeightConstraint.constant = 60;
+    }
+    
+    [self.view layoutIfNeeded];
 }
 
 - (void)didReceiveMemoryWarning

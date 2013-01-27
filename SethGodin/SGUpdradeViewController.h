@@ -19,6 +19,11 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *upgradeButton;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *upgradeMessageTopConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *upgradeMessageHeightConstraint;
+
+
 /**
  Where to popback if the user purchases the upgrade
  */
