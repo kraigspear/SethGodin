@@ -24,5 +24,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *currentUserTopConstraint;
 
 @property (nonatomic, assign) BOOL popToRoot;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionHeightConstraint;
 
 @end

@@ -56,7 +56,6 @@
     BOOL isGuest = [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]];
     BOOL isTwitter = [PFTwitterUtils isLinkedWithUser:[PFUser currentUser]];
     
-    
     NSString *userName;
     
     if(isGuest)
@@ -110,22 +109,43 @@
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [self.descriptionLabel sizeToFit];
-    [self.view layoutSubviews];
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    
+    if(IS_IPHONE)
+    {
+        [UIView animateWithDuration:.2 animations:^
+        {
+            if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
+            {
+                self.descriptionHeightConstraint.constant = 96;
+            }
+            else
+            {
+                self.descriptionHeightConstraint.constant = 64;
+            }
+            
+            [self.view layoutIfNeeded];
+        }];
+    }
 }
 
 - (void) updateViewForOrientation:(UIInterfaceOrientation) inOrientation
 {
-    if(UIDeviceOrientationIsPortrait(inOrientation))
+    
+    if(IS_IPHONE)
     {
-        self.descriptionLabel.numberOfLines = 3;
-        self.currentUserTopConstraint.constant = 121;
+        if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
+        {
+            self.descriptionHeightConstraint.constant = 96;
+        }
+        else
+        {
+            self.descriptionHeightConstraint.constant = 64;
+        }
+        
+        [self.view layoutIfNeeded];
     }
-    else
-    {
-        self.descriptionLabel.numberOfLines = 2;
-        self.currentUserTopConstraint.constant = 90;
-    }
+
 }
 
 
