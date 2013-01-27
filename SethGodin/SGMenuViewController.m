@@ -31,6 +31,8 @@
     
     NSArray *_portraitConstraints;
     NSArray *_landscapeConstraints;
+    
+    BOOL    _showingUpgradeView;
 
 }
 
@@ -101,6 +103,29 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     _booksButton.enabled = self.isNetworkAvailable;
     
     [self updateConstraintsForOrientation:self.interfaceOrientation];
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _accountButton.hidden = ([SGUserDefaults sharedInstance].isUpgraded == NO);
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //If we are back from asking to upgrade and we did upgrade, then go to favorites.
+    if(_showingUpgradeView)
+    {
+        if([[SGUserDefaults sharedInstance] isUpgraded])
+        {
+            [self selectFavorites];
+        }
+    }
+    
+    _showingUpgradeView = NO;
     
 }
 
@@ -280,6 +305,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 
 - (void) showUpradeView
 {
+    _showingUpgradeView = YES;
     [self performSegueWithIdentifier:SEGUE_MENU_TO_UPGRADE sender:self];
 }
 

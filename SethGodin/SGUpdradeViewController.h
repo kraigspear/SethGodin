@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BlockTypes.h"
 #import "SGInAppPurchase.h"
+#import "SGTitleView.h"
 
 @interface SGUpdradeViewController : UIViewController <SGInAppPurchaseDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *topView;
-
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet SGTitleView *topView;
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 

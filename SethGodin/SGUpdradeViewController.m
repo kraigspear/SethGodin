@@ -12,6 +12,8 @@
 #import "SGUSerDefaults.h"
 #import "SGUpgradedViewController.h"
 #import "Flurry.h"
+#import "UIColor+General.h"
+#import "UIImage+General.h"
 
 @interface SGUpdradeViewController ()
 
@@ -36,8 +38,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.topView.backgroundColor = [UIColor colorWithPatternImage:[UIImage titleBarWithTitle:@""]];
-   // [self.backButton setImage:[UIImage backButton] forState:UIControlStateNormal];
     [self.upgradeButton setImage:[UIImage upgradeButton] forState:UIControlStateNormal];
 }
 
@@ -112,5 +112,34 @@
     _inappPurchase.delegate = self;
     [_inappPurchase restorePurchases];
 }
+
+#pragma mark -
+#pragma mark SGTitleViewDelegate
+
+- (NSString*) titleText
+{
+    return @"UPGRADE";
+}
+
+- (UIImage*) leftButtonImage
+{
+    return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
+}
+
+- (void) leftButtonAction:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIColor*) titleTextColor
+{
+    return [UIColor menuTitleBarTextColor];
+}
+
+- (UIColor*)  titleViewBackgroundColor
+{
+    return [UIColor menuTitleBarBackgroundColor];
+}
+
 
 @end

@@ -23,4 +23,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *loggedInUserNameLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *currentUserTopConstraint;
 
+@property (nonatomic, assign) BOOL popToRoot;
+
 @end

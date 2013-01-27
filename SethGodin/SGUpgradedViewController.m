@@ -8,6 +8,8 @@
 
 #import "SGUpgradedViewController.h"
 #import "UIImage+Upgrade.h"
+#import "SGAccountViewController.h"
+#import <Parse/Parse.h>
 
 @interface SGUpgradedViewController ()
 
@@ -41,7 +43,18 @@
 
 - (IBAction)thankYouAction:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]])
+    {
+        SGAccountViewController *accountVC = (SGAccountViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"account"];
+        
+        accountVC.popToRoot = YES;
+        
+        [self.navigationController pushViewController:accountVC animated:YES];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end
