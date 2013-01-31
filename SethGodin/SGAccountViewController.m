@@ -16,6 +16,7 @@
 #import "UIColor+General.h"
 #import "UIImage+General.h"
 #import "SGAppDelegate.h"
+#import "UIImage+Account.h"
 
 @interface SGAccountViewController ()
 
@@ -41,42 +42,20 @@
     return self;
 }
 
-- (void)updateLogInUserLabel
+ 
+- (BOOL)shouldAutorotate
 {
-    BOOL isCloud = NO;
+    return NO;
+}
+
+
+- (NSString*) userName
+{
+    if(![PFUser currentUser]) return @"";
     
-    if([PFUser currentUser])
-    {
-        if(![PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]])
-        {
-            isCloud = YES;
-        }
-    }
+    if([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) return @"Guest";
     
-    BOOL isGuest = [PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]];
-    BOOL isTwitter = [PFTwitterUtils isLinkedWithUser:[PFUser currentUser]];
-    BOOL isFacebook = [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]];
-    
-    NSString *userName;
-    
-    if(isGuest)
-    {
-        userName = @"Guest";
-    }
-    else if(isTwitter)
-    {
-        userName = @"Twitter";
-    }
-    else if(isFacebook)
-    {
-        userName = @"Facebook";
-    }
-    else
-    {
-        userName = [PFUser currentUser].username;
-    }
-    
-    self.loggedInUserNameLabel.text = [NSString stringWithFormat:@"Login: %@", userName];
+    return [PFUser currentUser].username;
 }
 
 - (void)viewDidLoad
@@ -93,66 +72,16 @@
         
         [_gestureWindow addGestureRecognizer:_tapGestureRecognizer];
     }
+   
+    self.view.backgroundColor =  [UIColor colorWithPatternImage:[UIImage backgroundImageForUserSignedIn:[self userName]]];
     
-    [self updateLogInUserLabel];
-    
-    UIImage *logInImage = [UIImage orangeButtonWithSize:CGSizeMake(280, 44) text:@"Log In"];
-    
-    [self.loginButton setImage:logInImage forState:UIControlStateNormal];
-    
-    UIImage *createAccountImage = [UIImage orangeButtonWithSize:CGSizeMake(280, 44) text:@"Create Account"];
-    
+    UIImage *createAccountImage = [UIImage buttonImageWithTitle:@"CREATE ACCOUNT"];
     [self.createAccountButton setImage:createAccountImage forState:UIControlStateNormal];
     
-    [self updateViewForOrientation:self.interfaceOrientation];
-}
-
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    [self updateViewForOrientation:toInterfaceOrientation];
-}
-
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    UIImage *signInButton = [UIImage buttonImageWithTitle:@"SIGN IN"];
+    [self.signInButton setImage:signInButton forState:UIControlStateNormal];
     
-    if(IS_IPHONE)
-    {
-        [UIView animateWithDuration:.2 animations:^
-        {
-            if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
-            {
-                self.descriptionHeightConstraint.constant = 96;
-            }
-            else
-            {
-                self.descriptionHeightConstraint.constant = 64;
-            }
-            
-            [self.view layoutIfNeeded];
-        }];
-    }
 }
-
-- (void) updateViewForOrientation:(UIInterfaceOrientation) inOrientation
-{
-    
-    if(IS_IPHONE)
-    {
-        if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
-        {
-            self.descriptionHeightConstraint.constant = 96;
-        }
-        else
-        {
-            self.descriptionHeightConstraint.constant = 64;
-        }
-        
-        [self.view layoutIfNeeded];
-    }
-
-}
-
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -162,12 +91,12 @@
 
 - (void) updateButtonImages
 {
-    if(self.loginButton.frame.size.height == 0) return;
+    if(self.signInButton.frame.size.height == 0) return;
 }
 
 - (void) viewDidLayoutSubviews
 {
-    NSLog(@"loginButtonSize = %f", self.loginButton.frame.size.height);
+    NSLog(@"loginButtonSize = %f", self.signInButton.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning
@@ -184,11 +113,20 @@
 {
     [_loginViewController dismissViewControllerAnimated:YES completion:^
     {
-        [self updateLogInUserLabel];
         if([PFAnonymousUtils isLinkedWithUser:_oldUser])
         {
             [SGFavoritesParse moveUserDataToCurrentUserFor:_oldUser];
         }
+        
+        if(_popToRoot)
+        {
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }
+        else
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
     }];
 }
 
@@ -204,7 +142,7 @@
 {
      [signUpController dismissViewControllerAnimated:YES completion:^
      {
-         [self updateLogInUserLabel];
+
      }];
 }
 
@@ -215,6 +153,29 @@
 
 #pragma mark -
 #pragma mark login sign up actions
+
+- (IBAction)skipForNowAction:(id)sender
+{
+    if(IS_IPAD)
+    {
+        [self cleanUpTap];
+    }
+    else
+    {
+        
+        if(self.popToRoot)
+        {
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }
+        else
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    }
+
+}
+
 
 - (IBAction)createAccountAction:(id)sender
 {
@@ -234,9 +195,7 @@
     | PFLogInFieldsSignUpButton
     | PFLogInFieldsPasswordForgotten
     | PFLogInFieldsDismissButton
-    | PFLogInFieldsFacebook
-    | PFLogInFieldsTwitter;
-    
+    ;
     
     _loginViewController.delegate = self;
     [self presentViewController:_loginViewController animated:YES completion:nil];
@@ -264,58 +223,5 @@
     _tapGestureRecognizer = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-#pragma mark -
-#pragma mark SGTitleViewDelegate
-
-- (NSString*) titleText
-{
-    return @"ACCOUNT";
-}
-
-- (UIImage*) leftButtonImage
-{
-    if(IS_IPAD)
-    {
-        return [UIImage closeButtonWithColor:[UIColor menuTitleBarTextColor]];
-    }
-    else
-    {
-        return [UIImage backButtonWithColor:[UIColor menuTitleBarTextColor]];
-    }
-    
-}
-
-- (void) leftButtonAction:(id)sender
-{
-    if(IS_IPAD)
-    {
-        [self cleanUpTap];
-    }
-    else
-    {
-        
-        if(self.popToRoot)
-        {
-            [self.navigationController popToRootViewControllerAnimated:NO];
-        }
-        else
-        {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        
-    }
-}
-
-- (UIColor*) titleViewBackgroundColor
-{
-    return [UIColor menuTitleBarBackgroundColor];
-}
-
-- (UIColor*) titleTextColor
-{
-    return [UIColor menuTitleBarTextColor];
-}
-
 
 @end

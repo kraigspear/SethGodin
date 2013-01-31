@@ -35,6 +35,8 @@
 		A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */; };
 		A93BA40C165F8B6F003AD9AA /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A93BA40B165F89ED003AD9AA /* libFlurry.a */; };
 		A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA40E165F8D65003AD9AA /* SGLogger.m */; };
+		A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE44F16BA62FF0005B38F /* UIImage+Account.m */; };
+		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
@@ -201,6 +203,10 @@
 		A93BA40B165F89ED003AD9AA /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		A93BA40D165F8D65003AD9AA /* SGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLogger.h; sourceTree = "<group>"; };
 		A93BA40E165F8D65003AD9AA /* SGLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLogger.m; sourceTree = "<group>"; };
+		A93BE44E16BA62FF0005B38F /* UIImage+Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Account.h"; sourceTree = "<group>"; };
+		A93BE44F16BA62FF0005B38F /* UIImage+Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Account.m"; sourceTree = "<group>"; };
+		A93BE48016BA752A0005B38F /* SGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNavigationController.h; sourceTree = "<group>"; };
+		A93BE48116BA752B0005B38F /* SGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNavigationController.m; sourceTree = "<group>"; };
 		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
@@ -400,6 +406,8 @@
 			children = (
 				A90773E6167E5DE700056C41 /* SGAccountViewController.h */,
 				A90773E7167E5DE700056C41 /* SGAccountViewController.m */,
+				A93BE44E16BA62FF0005B38F /* UIImage+Account.h */,
+				A93BE44F16BA62FF0005B38F /* UIImage+Account.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -726,6 +734,8 @@
 				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
 				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
+				A93BE48016BA752A0005B38F /* SGNavigationController.h */,
+				A93BE48116BA752B0005B38F /* SGNavigationController.m */,
 			);
 			path = SethGodin;
 			sourceTree = "<group>";
@@ -1078,6 +1088,8 @@
 				A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */,
 				A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */,
 				A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */,
+				A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */,
+				A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

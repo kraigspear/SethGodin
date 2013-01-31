@@ -101,11 +101,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     self.searchButton.enabled = _isNetworkingAvailable;
 }
 
-- (BOOL) shouldAutorotate
-{
-    return NO;
-}
-
 #pragma mark -
 #pragma mark general
 

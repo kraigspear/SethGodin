@@ -8,22 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import "SGTitleView.h"
 
-@interface SGAccountViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, SGTitleViewDelegate>
+@interface SGAccountViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *topView;
-
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *createAccountButton;
 
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-
-@property (weak, nonatomic) IBOutlet UIButton *cloudSyncButton;
-@property (weak, nonatomic) IBOutlet UILabel *loggedInUserNameLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *currentUserTopConstraint;
-
 @property (nonatomic, assign) BOOL popToRoot;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionHeightConstraint;
+
 
 @end
