@@ -365,7 +365,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZi-Xb-Wfe" userLabel="signUpButton">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="VJI-iJ-zIv"/>
-                                    <constraint firstAttribute="width" constant="300" id="vTL-Xi-RBg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -414,13 +413,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dZi-Xb-Wfe" secondAttribute="trailing" constant="12" type="user" id="BKb-Ud-qdO"/>
                             <constraint firstItem="ICs-gA-nlZ" firstAttribute="leading" secondItem="dZi-Xb-Wfe" secondAttribute="leading" type="default" id="CKh-Kg-LyU"/>
                             <constraint firstAttribute="bottom" secondItem="dZi-Xb-Wfe" secondAttribute="bottom" constant="126" id="GSN-aO-ytg"/>
                             <constraint firstItem="VKE-Ch-Vs4" firstAttribute="bottom" secondItem="62f-ig-s7n" secondAttribute="bottom" type="default" id="MDz-Dd-UKS"/>
                             <constraint firstItem="ICs-gA-nlZ" firstAttribute="trailing" secondItem="dZi-Xb-Wfe" secondAttribute="trailing" type="default" id="Vt8-G7-5sj"/>
                             <constraint firstItem="VKE-Ch-Vs4" firstAttribute="trailing" secondItem="62f-ig-s7n" secondAttribute="trailing" type="default" id="XUQ-XG-CmX"/>
                             <constraint firstItem="VKE-Ch-Vs4" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" type="default" id="f0P-OQ-Es3"/>
-                            <constraint firstItem="dZi-Xb-Wfe" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" constant="8" id="kd8-a4-Wcq"/>
+                            <constraint firstItem="dZi-Xb-Wfe" firstAttribute="leading" secondItem="62f-ig-s7n" secondAttribute="leading" constant="8" type="user" id="kd8-a4-Wcq"/>
                             <constraint firstAttribute="bottom" secondItem="ICs-gA-nlZ" secondAttribute="bottom" constant="61" id="xnF-vg-5vs"/>
                         </constraints>
                     </view>

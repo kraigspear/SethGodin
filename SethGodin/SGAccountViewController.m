@@ -71,16 +71,10 @@
         _gestureWindow = [[SGAppDelegate instance] window];
         
         [_gestureWindow addGestureRecognizer:_tapGestureRecognizer];
+        
     }
-   
+    
     self.view.backgroundColor =  [UIColor colorWithPatternImage:[UIImage backgroundImageForUserSignedIn:[self userName]]];
-    
-    UIImage *createAccountImage = [UIImage buttonImageWithTitle:@"CREATE ACCOUNT"];
-    [self.createAccountButton setImage:createAccountImage forState:UIControlStateNormal];
-    
-    UIImage *signInButton = [UIImage buttonImageWithTitle:@"SIGN IN"];
-    [self.signInButton setImage:signInButton forState:UIControlStateNormal];
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -96,7 +90,11 @@
 
 - (void) viewDidLayoutSubviews
 {
-    NSLog(@"loginButtonSize = %f", self.signInButton.frame.size.height);
+    if(self.signInButton.frame.size.height == 0) return;
+    UIImage *signInImage  = [UIImage buttonImageWithTitle:@"SIGN IN" atSize:self.signInButton.frame.size];
+    UIImage *accountImage = [UIImage buttonImageWithTitle:@"CREATE ACCOUNT" atSize:self.signInButton.frame.size];
+    [self.signInButton setImage:signInImage forState:UIControlStateNormal];
+    [self.createAccountButton  setImage:accountImage forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
