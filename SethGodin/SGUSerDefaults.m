@@ -11,8 +11,8 @@
 @implementation SGUserDefaults
 
 NSString * const KEY_UPGRADED = @"upgraded";
-NSString * const KEY_USE_ICLOUD = @"useICloud";
-NSString * const KEY_MOVED_TO_UIDOCUMENT = @"movedToUIDocument";
+NSString * const KEY_ASKED_CLOUD = @"askedToUseCloud";
+NSString * const KEY_MOVED_TO_CLOUD = @"movedToCloud";
 
 + (SGUserDefaults*) sharedInstance
 {
@@ -63,30 +63,28 @@ NSString * const KEY_MOVED_TO_UIDOCUMENT = @"movedToUIDocument";
     [defaults synchronize];
 }
 
-- (void) setUseICloud:(BOOL) toValue
+- (BOOL) wasAskedToUseCloud
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:toValue forKey:KEY_USE_ICLOUD];
-    [defaults synchronize];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:KEY_ASKED_CLOUD];
 }
 
-- (BOOL) useICloud
+- (void) setWasAskedToUseCloud:(BOOL) toValue
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults boolForKey:KEY_USE_ICLOUD];
+    [[NSUserDefaults standardUserDefaults] setBool:toValue forKey:KEY_ASKED_CLOUD];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (BOOL) movedToCoreData
+- (BOOL) wasMovedToCloud
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    return [defaults boolForKey:KEY_MOVED_TO_UIDOCUMENT];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:KEY_MOVED_TO_CLOUD];
 }
 
-- (void) setMovedToCoreData:(BOOL) toValue
+- (void) setWasMovedToCloud:(BOOL) toValue
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:toValue forKey:KEY_MOVED_TO_UIDOCUMENT];
-    [defaults synchronize];
+    [[NSUserDefaults standardUserDefaults] setBool:toValue forKey:KEY_MOVED_TO_CLOUD];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+
 
 @end

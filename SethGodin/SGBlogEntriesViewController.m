@@ -38,6 +38,7 @@
 #import "SGAlertView.h"
 #import "Flurry.h"
 
+#import <Parse/Parse.h>
 #import "AFHTTPClient.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -163,6 +164,17 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
             [strongSelf loadLatestFeedData];
         }
     }];
+    
+    if(![[SGUserDefaults sharedInstance] wasAskedToUseCloud])
+    {
+        
+        if([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]])
+        {
+            [self askToUseCloud];
+        }
+        
+        [[SGUserDefaults sharedInstance] setWasAskedToUseCloud:YES];
+    }
 }
 
 
@@ -650,6 +662,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 #pragma mark -
 #pragma mark user messages
+
+- (void) askToUseCloud
+{
+    [self performSegueWithIdentifier:@"askToUseCloud" sender:self];
+}
 
 - (void) showNoNetwork
 {

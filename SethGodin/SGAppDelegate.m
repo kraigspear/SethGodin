@@ -69,7 +69,7 @@
     return YES;
 }
 
-- (void) exportFavoritesToCoreData
+- (void) exportFavoritesToParse
 {
     if(self.isICloudSetup) return;
     
@@ -87,7 +87,7 @@
                            [SGFavoritesParse addBlogEntryToFavorites:oldFavorite];
                        }
                        
-                       [[SGUserDefaults sharedInstance] setMovedToCoreData:YES];
+                       [[SGUserDefaults sharedInstance] setWasMovedToCloud:YES];
                        [Flurry logEvent:@"MovedToParse"];
                    }
                });
@@ -107,7 +107,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [self exportFavoritesToCoreData];
+    [self exportFavoritesToParse];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
