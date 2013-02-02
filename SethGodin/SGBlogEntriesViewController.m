@@ -596,14 +596,13 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if(textField.text.length <= 3) return NO;
+    if(textField.text.length <= 2) return NO;
     [self searchBlogFor:textField.text];
     return [textField resignFirstResponder];
 }
 
 - (void) searchBlogFor:(NSString*) inText
 {
-
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsSearch:inText];
     [SGNotifications postFeedSelection:feedSelection];
     [self.searchTextField resignFirstResponder];

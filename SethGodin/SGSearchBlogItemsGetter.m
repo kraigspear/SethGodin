@@ -29,9 +29,10 @@
 - (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
 {
     //This really isn't a valid search. Prevent from searching all of the blog content for nothing.
-    if(_searchText.length <= 3)
+    if(_searchText.length <= 2)
     {
         inSuccess(@[]);
+        return;
     }
     
     NSString *searchTextEscaped = [_searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
