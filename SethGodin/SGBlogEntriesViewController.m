@@ -240,14 +240,9 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (IBAction)menuAction:(id)sender
 {
-    //In the search state?
     if([self isInSearchState])
     {
-        [self hideMessage];
         [self closeSearchView];
-        _feedSelection.feedType = kCurrent;
-        self.searchTextField.text = @"";
-        [self loadLatestFeedData];
     }
     else
     {
@@ -258,6 +253,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         [self showMenu];
     }
 }
+
 
 - (void) showMenuiPhone
 {
@@ -393,8 +389,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 {
     
     [self startLoadingAnimation];
-    
-    self.titleLabel.hidden = (_feedSelection.feedType == kSearch);
     
     switch (_feedSelection.feedType)
     {
@@ -602,17 +596,14 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if(textField.text.length <= 3) return NO;
     [self searchBlogFor:textField.text];
     return [textField resignFirstResponder];
 }
 
 - (void) searchBlogFor:(NSString*) inText
 {
-    if(!_itemsHold)
-    {
-        _itemsHold = _blogItems;
-    }
-    
+
     SGFeedSelection *feedSelection = [SGFeedSelection selectionAsSearch:inText];
     [SGNotifications postFeedSelection:feedSelection];
     [self.searchTextField resignFirstResponder];
@@ -620,8 +611,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) closeSearchView
 {
+   [self hideMessage];
+    
    [self.searchTextField resignFirstResponder];
    self.searchTextField.hidden = YES;
+   self.titleLabel.hidden = NO;
    
    self.titleLabel.text = _title;
     
@@ -631,6 +625,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     if(_itemsHold)
     {
         _blogItems = _itemsHold;
+        [self.tableView reloadData];
     }
     else
     {
@@ -641,13 +636,18 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     }
     
     _itemsHold = nil;
-    
 
 }
 
 - (IBAction)searchAction:(id)sender
 {
     if(!self.searchTextField.hidden) return;
+    
+    self.titleLabel.hidden = YES;
+    if(!_itemsHold)
+    {
+        _itemsHold = _blogItems;
+    }
     
     [SGNotifications postMenuSelectedNotification:NO];
     

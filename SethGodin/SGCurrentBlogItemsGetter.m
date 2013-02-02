@@ -12,12 +12,13 @@
 #import "NSDate+General.h"
 
 
+
 //http://profile.typepad.com/sethgodin/activity.json
 
 @implementation SGCurrentBlogItemsGetter
 {
 @private
-    
+    NSDate *_lastLoadedDate;
 }
 
 - (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
@@ -36,6 +37,7 @@
         }
     }
     
+    
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:TIMEOUT];
@@ -51,6 +53,7 @@
                               self.cachedItems = items;
                                  dispatch_async(dispatch_get_main_queue(), ^
                                                 {
+                                                    _lastLoadedDate = [NSDate date];
                                                     inSuccess(items);
                                                 });
                         });
@@ -97,6 +100,7 @@
 
 #pragma mark -
 #pragma mark caching
+
 
 - (NSString*) cacheKey
 {
