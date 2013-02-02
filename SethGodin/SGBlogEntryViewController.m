@@ -28,6 +28,9 @@
 @private
     id _blogEntrySelected;
     __weak UIViewController *_menuController;
+    
+    __weak SGBlogEntry *_lastLoadedBlogEntry;
+    UIInterfaceOrientation _lastLoadedDeviceOrientation;
 }
 
 - (void) viewDidLoad
@@ -53,7 +56,7 @@
         }
     }
     
-    self.webView.hidden = YES;
+    //self.webView.hidden = YES;
     self.webView.scrollView.scrollEnabled = NO;
     
     [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
@@ -135,9 +138,27 @@
     [self loadHTMLForBlogEntry];
 }
 
+- (BOOL) hasAlreadyLoadedBlogAndOrientation
+{
+    BOOL hasLoaded = NO;
+    if(_lastLoadedBlogEntry)
+    {
+        if([_lastLoadedBlogEntry isEqual:self.blogEntry])
+        {
+            if(_lastLoadedDeviceOrientation == self.interfaceOrientation)
+            {
+                hasLoaded = YES;
+            }
+        }
+    }
+    return hasLoaded;
+}
+
 - (void) loadHTMLForBlogEntry
 {
 
+    //if([self hasAlreadyLoadedBlogAndOrientation]) return;
+    
     //This is needed on the iPhone to make sure that the resizing logic works.
     //On the iPad it has the oppisite effect. Don't know why....
     if(IS_IPHONE)
@@ -166,6 +187,9 @@
     [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
     
     [self.view layoutIfNeeded];
+    
+    _lastLoadedBlogEntry = self.blogEntry;
+    _lastLoadedDeviceOrientation = self.interfaceOrientation;
 }
 
 #pragma mark -
@@ -206,14 +230,18 @@
     return NO;
 }
 
+
+
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
-    webView.hidden = NO;
-    
     CGRect frame = webView.frame;
     frame.size.height = 1;
+    self.webView.frame = frame;
     CGSize fittingSize = [webView sizeThatFits:CGSizeZero];
     frame.size = fittingSize;
+    
+    self.webView.frame = frame;
+    NSLog(@"webView height = %f", fittingSize.height);
     
     self.scrollView.contentSize = CGSizeMake(webView.frame.size.width, fittingSize.height + self.titleView.frame.size.height);
     

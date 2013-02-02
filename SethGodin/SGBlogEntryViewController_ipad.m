@@ -34,8 +34,6 @@
 {
     [super viewDidLoad];
 	
-    self.webView.hidden = YES;
-    
     _blogEntrySelected = [SGNotifications observeBlogEntrySelectedNotification:^(NSNotification *notification)
                           {
                               self.blogEntry = notification.object;

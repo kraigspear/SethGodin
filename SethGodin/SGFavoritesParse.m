@@ -10,8 +10,8 @@
 #import "SGFavorites.h"
 #import <Parse/Parse.h>
 
-NSString * const PARSE_CLASS_FAVORITE   = @"Favorite";
-NSString * const PARSE_COL_CURRENT_USER = @"currentUser";
+NSString * const PARSE_CLASS_FAVORITE     = @"Favorite";
+NSString * const PARSE_COL_CURRENT_USER   = @"currentUser";
 NSString * const PARSE_COL_DATE_PUBLISHED = @"datePublished";
 NSString * const PARSE_COL_CONTENT        = @"content";
 NSString * const PARSE_COL_TITLE          = @"title";
