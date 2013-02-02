@@ -49,10 +49,11 @@ NSString * const KEY_MOVED_TO_CLOUD = @"movedToCloud";
 
 - (BOOL) isUpgraded
 {
+    return YES;
 #if TARGET_IPHONE_SIMULATOR
     return YES;
 #else
-    return [[NSUserDefaults standardUserDefaults] boolForKey:KEY_UPGRADED];
+   // return [[NSUserDefaults standardUserDefaults] boolForKey:KEY_UPGRADED];
 #endif
 }
 

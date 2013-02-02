@@ -28,9 +28,6 @@
 @private
     id _blogEntrySelected;
     __weak UIViewController *_menuController;
-    
-    __weak SGBlogEntry *_lastLoadedBlogEntry;
-    UIInterfaceOrientation _lastLoadedDeviceOrientation;
 }
 
 - (void) viewDidLoad
@@ -138,27 +135,9 @@
     [self loadHTMLForBlogEntry];
 }
 
-- (BOOL) hasAlreadyLoadedBlogAndOrientation
-{
-    BOOL hasLoaded = NO;
-    if(_lastLoadedBlogEntry)
-    {
-        if([_lastLoadedBlogEntry isEqual:self.blogEntry])
-        {
-            if(_lastLoadedDeviceOrientation == self.interfaceOrientation)
-            {
-                hasLoaded = YES;
-            }
-        }
-    }
-    return hasLoaded;
-}
-
 - (void) loadHTMLForBlogEntry
 {
 
-    //if([self hasAlreadyLoadedBlogAndOrientation]) return;
-    
     //This is needed on the iPhone to make sure that the resizing logic works.
     //On the iPad it has the oppisite effect. Don't know why....
     if(IS_IPHONE)
@@ -173,23 +152,21 @@
     if(!self.blogEntry) return;
     if(!self.blogEntry.content) return;
     
-    NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
-                               "<head> <meta charset='utf-8'> \n"
-                               "<style type=\"text/css\"> \n"
-                               "body {font-family: \"%@\"; font-size: %@; margin: 20px; background-color: #FFF9E7; }\n"
-                               "img, object {max-width:100%%; }\n"
-                               "a {text-decoration: none; color: #FF9900; font-weight: bold;}  \n"
-                               "</style> \n"
-                               "</head> \n"
-                               "<body>%@</body> \n"
-                               "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
+        NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
+                                   "<head> <meta charset='utf-8'> \n"
+                                   "<style type=\"text/css\"> \n"
+                                   "body {font-family: \"%@\"; font-size: %@; margin: 20px; background-color: #FFF9E7; }\n"
+                                   "img, object {max-width:100%%; }\n"
+                                   "a {text-decoration: none; color: #FF9900; font-weight: bold;}  \n"
+                                   "</style> \n"
+                                   "</head> \n"
+                                   "<body>%@</body> \n"
+                                   "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
+        
+        [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
     
-    [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
     
     [self.view layoutIfNeeded];
-    
-    _lastLoadedBlogEntry = self.blogEntry;
-    _lastLoadedDeviceOrientation = self.interfaceOrientation;
 }
 
 #pragma mark -
@@ -241,8 +218,6 @@
     frame.size = fittingSize;
     
     self.webView.frame = frame;
-    NSLog(@"webView height = %f", fittingSize.height);
-    
     self.scrollView.contentSize = CGSizeMake(webView.frame.size.width, fittingSize.height + self.titleView.frame.size.height);
     
     self.webViewHeightConstraint.constant = fittingSize.height;

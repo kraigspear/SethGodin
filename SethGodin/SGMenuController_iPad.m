@@ -309,13 +309,9 @@
 
 - (void) settingsAction:(id) sender
 {
-    UIStoryboard *iphoneStoryboard =  [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    
-    UIViewController *settingsViewController = [iphoneStoryboard instantiateViewControllerWithIdentifier:@"account"];
-    
+    UIViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"account"];
     settingsViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:settingsViewController animated:YES completion:nil];
-    
 }
 
 - (void) updateButtonTextColorForUnselected
