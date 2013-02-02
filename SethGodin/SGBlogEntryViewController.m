@@ -20,6 +20,7 @@
 #import "BlockTypes.h"
 #import "SGFavoritesParse.h"
 #import "SGNotifications.h"
+#import "SVWebViewController.h"
 
 
 @implementation SGBlogEntryViewController
@@ -197,11 +198,9 @@
     
     if(appDelegate.isNetworkAvailable)
     {
-        SGWebViewController *vc = (SGWebViewController*) [self.storyboard instantiateViewControllerWithIdentifier:@"webView"];
-        
-        [vc navigateToURL:request.URL];
-        
-        [self presentViewController:vc animated:YES completion:nil];
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithURL:request.URL];
+        webViewController.barsTintColor = [UIColor blackColor];
+        [self presentViewController:webViewController animated:YES completion:nil];
     }
     
     return NO;

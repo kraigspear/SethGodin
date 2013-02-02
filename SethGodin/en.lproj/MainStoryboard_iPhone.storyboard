@@ -25,13 +25,14 @@
                                             <action selector="backAction:" destination="6mQ-Fn-JHg" id="E2R-fU-4TD"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="202" style="plain" systemItem="fixedSpace" id="k8T-oW-7YM"/>
-                                    <barButtonItem style="plain" id="QW4-7F-fyz" userLabel="gobackButton">
+                                    <barButtonItem width="154" style="plain" systemItem="fixedSpace" id="ds4-Zs-SHF"/>
+                                    <barButtonItem style="plain" systemItem="rewind" id="QW4-7F-fyz" userLabel="gobackButton">
                                         <connections>
                                             <action selector="goBack" destination="Zav-aO-CpU" id="n2B-9C-inm"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" id="hAm-Fn-wg3" userLabel="goForwardButton">
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Pmr-wH-rU8"/>
+                                    <barButtonItem style="plain" systemItem="play" id="hAm-Fn-wg3" userLabel="goForwardButton">
                                         <connections>
                                             <action selector="goForward" destination="Zav-aO-CpU" id="nhl-IS-0Te"/>
                                         </connections>
@@ -851,6 +852,136 @@
             <point key="canvasLocation" x="426" y="141"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SGAccountViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGAccountViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createAccountAction:"/>
+                <relationship kind="action" name="logInAction:"/>
+                <relationship kind="action" name="skipForNowAction:"/>
+                <relationship kind="outlet" name="createAccountButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="signInButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SGArchiveSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGArchiveSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="goButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goButtonHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="leftArrowMonth" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="leftArrowMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowMonthToBottomConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="leftArrowYearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftArrowYearToTopConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rightArrowMonthButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="rightArrowYearButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="topView" candidateClass="SGTitleView"/>
+                <relationship kind="outlet" name="yearLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SGBlogEntriesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntriesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="menuAction:"/>
+                <relationship kind="action" name="searchAction:"/>
+                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="buttonViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="searchTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tableViewToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SGBlogEntryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="blogTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favoritesButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLableToTopViewConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="SGBlogEntryViewController_iphone" superclassName="SGBlogEntryViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBlogEntryViewController_iphone.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SGBookPurchaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGBookPurchaseViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="collectionViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="collectionViewToBottom" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="collectionViewToLeading" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="collectionViewToTrailing" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="flowLayout" candidateClass="UICollectionViewFlowLayout"/>
+                <relationship kind="outlet" name="topView" candidateClass="SGTitleView"/>
+            </relationships>
+        </class>
+        <class className="SGMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGMenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="titleBar" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SGNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGNavigationController.h"/>
+        </class>
+        <class className="SGTitleView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGTitleView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delegate"/>
+            </relationships>
+        </class>
+        <class className="SGUpdradeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpdradeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="topView" candidateClass="SGTitleView"/>
+                <relationship kind="outlet" name="upgradeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="upgradeMessageHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="upgradeMessageTopConstraint" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="SGUpgradedViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGUpgradedViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="thankYouButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SGWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SGWebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndiacator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="previousButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
