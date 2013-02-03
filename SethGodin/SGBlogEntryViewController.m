@@ -28,6 +28,7 @@
 @private
     id _blogEntrySelected;
     __weak UIViewController *_menuController;
+    CGPoint _scrollPointBeforeShowingWebView;
 }
 
 - (void) viewDidLoad
@@ -61,6 +62,16 @@
     [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
     [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];
     
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if(!CGPointEqualToPoint(CGPointZero, _scrollPointBeforeShowingWebView))
+    {
+        self.scrollView.contentOffset = _scrollPointBeforeShowingWebView;
+    }
 }
 
 - (void) updateTitleForBlogEntry
@@ -199,9 +210,15 @@
     
     if(appDelegate.isNetworkAvailable)
     {
+        NSLog(@"scrollview contentoffset = %@", NSStringFromCGPoint(self.scrollView.contentOffset));
         SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithURL:request.URL];
         webViewController.barsTintColor = [UIColor blackColor];
-        [self presentViewController:webViewController animated:YES completion:nil];
+        _scrollPointBeforeShowingWebView = self.scrollView.contentOffset;
+        [self presentViewController:webViewController animated:YES completion:^
+         {
+             NSLog(@"webview presented scrollview contentoffset = %@", NSStringFromCGPoint(self.scrollView.contentOffset));
+             self.scrollView.contentOffset = CGPointMake(0, 0);
+         }];
     }
     
     return NO;
