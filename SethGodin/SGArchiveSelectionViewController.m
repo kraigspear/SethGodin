@@ -212,6 +212,8 @@ const NSUInteger MIN_YEAR = 2002;
     [SGFavoritesParse updateUserLastArchiveSearchForMonth:self.month year:self.year];
     
     [SGNotifications postFeedSelection:feedSelection];
+    
+    NSLog(@"navController = %@", self.navigationController);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -292,6 +294,11 @@ const NSUInteger MIN_YEAR = 2002;
     {
         return [UIColor titlebarTextColor];
     }
+}
+
+- (void) dealloc
+{
+    NSLog(@"SGArchiveSelectionViewController dealloc");
 }
 
 

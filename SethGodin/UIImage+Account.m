@@ -231,7 +231,7 @@
                 NSString* text3Content = @"Create a free account to to keep your favorite posts from Seth Godin's Blog in sync with all your iOS devices.";
                 NSString* text4Content = @"SETH GODIN";
                 NSString* text7Content = @"SIGNED IN:";
-                NSString* signedInTextContent = @"andyanderson";
+                NSString* signedInTextContent = signedIn;
                 
                 
                 //// Rectangle Drawing

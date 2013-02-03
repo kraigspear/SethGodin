@@ -43,6 +43,19 @@ NSString * const KEY_FAVORITES = @"favorites";
     return instance;
 }
 
++ (BOOL) favoritesFileExist
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[SGFavorites filePathName]];
+}
+
++ (void) deleteFavoritesFile
+{
+    NSError *error;
+    if(![[NSFileManager defaultManager] removeItemAtPath:[SGFavorites filePathName] error:&error])
+    {
+        [Flurry logError:@"deleteFavoritesFileError" message:@"Not able to delete old favorites file" error:error];
+    }
+}
 
 - (id) init
 {

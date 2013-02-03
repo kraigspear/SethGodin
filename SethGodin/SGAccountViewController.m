@@ -17,6 +17,7 @@
 #import "UIImage+General.h"
 #import "SGAppDelegate.h"
 #import "UIImage+Account.h"
+#import "SGFavorites.h"
 
 @interface SGAccountViewController ()
 
@@ -125,6 +126,8 @@
         }
     }
     
+    [self exportToParse];
+    
     if(IS_IPHONE)
     {
         if(_popToRoot)
@@ -160,6 +163,10 @@
              if (error)
              {
                  [Flurry logError:@"AnonymousLoginError" message:@"Not able to create a new Guest Account" error:error];
+             }
+             else
+             {
+                 [self exportToParse];
              }
          }];
     }
@@ -257,6 +264,14 @@
     _loginViewController = nil;
     _oldUser = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) exportToParse
+{
+    if([SGFavorites favoritesFileExist])
+    {
+        [SGFavoritesParse exportFavoritesToParse];
+    }
 }
 
 - (void) dealloc

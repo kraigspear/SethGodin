@@ -183,4 +183,27 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     }];
 }
 
++ (void) exportFavoritesToParse
+{
+    if(![PFUser currentUser]) return;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                   {
+                       NSLog(@"exporing to Parse");
+                       NSArray *favoritesToExport = [[SGFavorites sharedInstance] favorites];
+                       
+                       if(favoritesToExport.count > 0)
+                       {
+                           for(SGBlogEntry *oldFavorite in favoritesToExport)
+                           {
+                               [SGFavoritesParse addBlogEntryToFavorites:oldFavorite];
+                           }
+                           [Flurry logEvent:@"MovedToParse"];
+                           
+                           [SGFavorites deleteFavoritesFile];
+                       }
+                   });
+}
+
+
 @end

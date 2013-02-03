@@ -27,4 +27,6 @@
 
 + (void) archiveLastYear:(NSNumber*) outYear andMonth:(NSNumber*) outMonth;
 
++ (void) exportFavoritesToParse;
+
 @end

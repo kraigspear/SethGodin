@@ -51,29 +51,6 @@
     return YES;
 }
 
-- (void) exportFavoritesToParse
-{
-    if(self.isICloudSetup) return;
-    
-    if(![PFUser currentUser]) return;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-               {
-                   NSLog(@"exporing to Parse");
-                   NSArray *favoritesToExport = [[SGFavorites sharedInstance] favorites];
-                   
-                   if(favoritesToExport.count > 0)
-                   {
-                       for(SGBlogEntry *oldFavorite in favoritesToExport)
-                       {
-                           [SGFavoritesParse addBlogEntryToFavorites:oldFavorite];
-                       }
-                       
-                       [[SGUserDefaults sharedInstance] setWasMovedToCloud:YES];
-                       [Flurry logEvent:@"MovedToParse"];
-                   }
-               });
-}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -89,7 +66,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [self exportFavoritesToParse];
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

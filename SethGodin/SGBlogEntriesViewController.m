@@ -243,6 +243,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (IBAction)menuAction:(id)sender
 {
+    [self hideMessage];
+    
     if([self isInSearchState])
     {
         [self closeSearchView];

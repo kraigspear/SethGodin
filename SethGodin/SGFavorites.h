@@ -43,4 +43,8 @@
  */
 - (void) resetFavorites;
 
+
++ (BOOL) favoritesFileExist;
++ (void) deleteFavoritesFile;
+
 @end
