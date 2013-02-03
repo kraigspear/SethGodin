@@ -10,9 +10,11 @@
 #import "SGFeedSelection.h"
 #import "SGBlogEntry.h"
 
+
 typedef void (^NotificationBlock) (NSNotification* notification);
 
 @interface SGNotifications : NSObject
+
 
 extern NSString * const NOTIFICATION_FEED_SELECTION;
 extern NSString * const NOTIFICATION_NETWORK_AVAILABLE;
@@ -87,6 +89,11 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
 + (id) observeBusyWithNotification:(NotificationBlock) inBlock;
 
 /**
+ Observe that a BlogEntry is no longer a favorite.
+ */
++ (id) observeFavoriteDeleted:(NotificationBlock) inBlock;
+
+/**
  Post that the network availablity has changed.
  @param isAvailable Yes is available
  */
@@ -106,6 +113,11 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
  Favorites document has been created
  */
 + (void) postFavoritesCreated;
+
+/**
+ Send a notification that a blog entry is no longer a favorite
+ */
++ (void) postFavoriteDeleted:(SGBlogEntry*) blogEntry;
 
 + (void) postErrorOccured:(NSError*) inError;
 

@@ -9,6 +9,7 @@
 #import "SGFavoritesParse.h"
 #import "SGFavorites.h"
 #import <Parse/Parse.h>
+#import "SGNotifications.h"
 
 NSString * const PARSE_CLASS_FAVORITE     = @"Favorite";
 NSString * const PARSE_COL_CURRENT_USER   = @"currentUser";
@@ -70,17 +71,20 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error)
      {
-         NSLog(@"parse error %@", error.localizedDescription);
-         
          if(object)
          {
-             [object deleteEventually];
+             [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+             {
+                 if(succeeded)
+                 {
+                     [SGNotifications postFavoriteDeleted:inEntry];
+                 }
+             }];
          }
          else
          {
              [SGFavoritesParse addBlogEntryToFavorites:inEntry];
          }
-         
      }];
 }
 

@@ -51,7 +51,7 @@
 @implementation SGBlogEntriesViewController
 {
 @private
-    NSArray *_blogItems;
+    NSMutableArray *_blogItems;
     SGBlogItemsGetter *_contentGetter;
     
     __weak SGBlogEntry *_blogEntry;
@@ -148,6 +148,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     {
         _feedSelection = (SGFeedSelection*) note.object;
         [self loadLatestFeedData];
+    }];
+    
+    [SGNotifications observeFavoriteDeleted:^(NSNotification *notification)
+    {
+        [self removeFavoriteFromTableView:notification.object];
     }];
     
     _httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://profile.typepad.com"]];
@@ -461,7 +466,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     self.buttonView.backgroundColor = [UIColor itemsBackgroundColor];
     
-    _blogItems = inBlogItems;
+    _blogItems = [inBlogItems mutableCopy];
     
     [self.tableView reloadData];
     
@@ -616,7 +621,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     if(_itemsHold)
     {
-        _blogItems = _itemsHold;
+        _blogItems = [_itemsHold mutableCopy];
         [self.tableView reloadData];
     }
     else
@@ -737,7 +742,32 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 }
 
 #pragma mark -
-#pragma mark UITableViewDatasource
+#pragma mark UITableView
+
+- (void) removeFavoriteFromTableView:(SGBlogEntry*) blogEntry
+{
+    NSUInteger itemIndex = [_blogItems indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop)
+    {
+        if([obj isEqual:blogEntry])
+        {
+            *stop = YES;
+            return YES;
+        }
+        else
+        {
+            return NO;
+        }
+    }];
+    
+    if(itemIndex == NSNotFound) return;
+    
+    [_blogItems removeObjectAtIndex:itemIndex];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:itemIndex inSection:0];
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self.tableView endUpdates];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

@@ -19,6 +19,7 @@ NSString * const NOTIFICATION_ERROR                = @"errorOccured";
 NSString * const NOTIFICATION_SHARE_COUNT_UPDATED  = @"shareCountUpdated";
 NSString * const NOTIFICATION_BLOG_ENTRY_SELECTED  = @"blogEntrySelected";
 NSString * const NOTIFICATION_MENU_SELECTED        = @"menuSelected";
+NSString * const NOTIFICATION_FAVORITE_DELETED        = @"favoriteDeleted";
 
 + (void) postFeedSelection:(SGFeedSelection*) inSelection;
 {
@@ -74,6 +75,17 @@ NSString * const NOTIFICATION_MENU_SELECTED        = @"menuSelected";
 + (void) postErrorOccured:(NSError*) inError
 {
     NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_ERROR object:inError];
+    [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
+}
+
++ (id) observeFavoriteDeleted:(NotificationBlock) inBlock
+{
+    return [[NSNotificationCenter defaultCenter] addObserverForName:NOTIFICATION_FAVORITE_DELETED object:nil queue:nil usingBlock:inBlock];
+}
+
++ (void) postFavoriteDeleted:(SGBlogEntry*) blogEntry
+{
+    NSNotification *notificaiton = [NSNotification notificationWithName:NOTIFICATION_FAVORITE_DELETED object:blogEntry];
     [[NSNotificationCenter defaultCenter] postNotification:notificaiton];
 }
 
