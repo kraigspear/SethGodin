@@ -12,6 +12,7 @@
 #import "SGNotifications.h"
 #import "SGBookPurchaseViewController.h"
 #import "SGArchiveSelectionViewController.h"
+#import <Parse/Parse.h>
 
 
 #define MENU_HEIGHT 336
@@ -95,6 +96,19 @@ static SGMainViewController_ipad *instance;
     }];
     
 }
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if(![PFUser currentUser])
+    {
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"account"];
+        vc.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+}
+
 
 - (void) addBlogEntryView
 {

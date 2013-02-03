@@ -103,6 +103,12 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
 
 + (void) isBlogItemFavorite:(SGBlogEntry*) inBlogEntry success:(SWBoolBlock) inSuccess
 {
+    if(![PFUser currentUser])
+    {
+        inSuccess(NO);
+        return;
+    }
+    
     PFQuery *query = [SGFavoritesParse queryForBlogEntry:inBlogEntry];
     
     [query countObjectsInBackgroundWithBlock:^(int number, NSError *error)

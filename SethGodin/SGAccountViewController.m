@@ -111,11 +111,22 @@
 {
     [_loginViewController dismissViewControllerAnimated:YES completion:^
     {
+        [self didLogInUser];
+    }];
+}
+
+- (void) didLogInUser
+{
+    if(_oldUser)
+    {
         if([PFAnonymousUtils isLinkedWithUser:_oldUser])
         {
             [SGFavoritesParse moveUserDataToCurrentUserFor:_oldUser];
         }
-        
+    }
+    
+    if(IS_IPHONE)
+    {
         if(_popToRoot)
         {
             [self.navigationController popToRootViewControllerAnimated:NO];
@@ -124,23 +135,41 @@
         {
             [self.navigationController popViewControllerAnimated:YES];
         }
-        
-    }];
+    }
+    else
+    {
+        [self dismissAccountViewController];
+    }
+
 }
 
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController
 {
     [_loginViewController dismissViewControllerAnimated:YES completion:^
      {
-         
+         [self createGuestUser];
      }];
+}
+
+- (void) createGuestUser
+{
+    if(![PFUser currentUser])
+    {
+        [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error)
+         {
+             if (error)
+             {
+                 [Flurry logError:@"AnonymousLoginError" message:@"Not able to create a new Guest Account" error:error];
+             }
+         }];
+    }
 }
 
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user
 {
      [signUpController dismissViewControllerAnimated:YES completion:^
      {
-
+         [self didLogInUser];
      }];
 }
 
@@ -154,9 +183,11 @@
 
 - (IBAction)skipForNowAction:(id)sender
 {
+    [self createGuestUser];
+    
     if(IS_IPAD)
     {
-        [self cleanUpTap];
+        [self dismissAccountViewController];
     }
     else
     {
@@ -174,9 +205,9 @@
 
 }
 
-
 - (IBAction)createAccountAction:(id)sender
 {
+    _oldUser = [PFUser currentUser];
     SGSignUpViewController *signUpViewController = [[SGSignUpViewController alloc] init];
     signUpViewController.delegate = self;
     [self presentViewController:signUpViewController animated:YES completion:nil];
@@ -190,7 +221,6 @@
     
     _loginViewController.fields = PFLogInFieldsUsernameAndPassword
     | PFLogInFieldsLogInButton
-    | PFLogInFieldsSignUpButton
     | PFLogInFieldsPasswordForgotten
     | PFLogInFieldsDismissButton
     ;
@@ -210,16 +240,23 @@
         CGPoint location = [inGesture locationInView:nil];
         if (![self.view pointInside:[self.view convertPoint:location fromView:self.view.window] withEvent:nil])
         {
-            [self cleanUpTap];
+            [self dismissAccountViewController];
         }
     }
 }
 
-- (void) cleanUpTap
+- (void) dismissAccountViewController
 {
     [_gestureWindow removeGestureRecognizer:_tapGestureRecognizer];
     _tapGestureRecognizer = nil;
+    _loginViewController = nil;
+    _oldUser = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) dealloc
+{
+    NSLog(@"SGAccountViewController dealloc");
 }
 
 @end

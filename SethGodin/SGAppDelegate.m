@@ -41,30 +41,12 @@
     [Parse setApplicationId:@"k2eo7GeSve5neSkhTFcMLPtIViPicZwLf3opy9bu"
                   clientKey:@"c46oSNaIeVXYVONk0D9wPVxYfBrdZZu0K8Od95wN"];
     
-    [PFTwitterUtils initializeWithConsumerKey:@"5co4eA1X33TyykunIbnw" consumerSecret:@"4aon5qjIFNLURIbqU1UPyIbXDH5VrBKCif2kZ2bGlE"];
-    
-    [PFFacebookUtils initializeWithApplicationId:@"531338303564283"];
-    
-    PFUser *currentUser = [PFUser currentUser];
-    
-    if(!currentUser)
-    {
-        [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
-            if (error)
-            {
-                NSLog(@"Anonymous login failed.");
-            }
-            else
-            {
-                NSLog(@"Anonymous user logged in.");
-            }
-        }];
-    }
     
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     
-    [SGInAppPurchase sharedInstance];
+    //Not doing the in app purchase
+    //[SGInAppPurchase sharedInstance];
     
     return YES;
 }

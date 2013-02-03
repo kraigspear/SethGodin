@@ -164,20 +164,13 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
             [strongSelf loadLatestFeedData];
         }
     }];
-    
-    if(![[SGUserDefaults sharedInstance] wasAskedToUseCloud])
+
+    if(IS_IPHONE)
     {
-        
-        if([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]])
-        {
-            [self askToUseCloud];
-        }
-        
-        [[SGUserDefaults sharedInstance] setWasAskedToUseCloud:YES];
+        [self askToUseCloud];
     }
+    
 }
-
-
 
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -664,7 +657,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) askToUseCloud
 {
-    [self performSegueWithIdentifier:@"askToUseCloud" sender:self];
+    if(![PFUser currentUser])
+    {
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"account"];
+        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 - (void) showNoNetwork

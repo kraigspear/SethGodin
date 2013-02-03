@@ -44,7 +44,7 @@
                 //// buttonText Drawing
                 CGRect buttonTextRect = CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * 0.01333 + 0.5), CGRectGetMinY(frame) + 9, floor(CGRectGetWidth(frame) * 0.99333 + 0.5) - floor(CGRectGetWidth(frame) * 0.01333 + 0.5), 44);
                 [[UIColor whiteColor] setFill];
-                [buttonTextContent drawInRect: buttonTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 30] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [buttonTextContent drawInRect: buttonTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 30] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
 
@@ -153,32 +153,35 @@
                 //// Text 5 Drawing
                 CGRect text5Rect = CGRectMake(-1, 148, 320, 43);
                 [[UIColor whiteColor] setFill];
-                [text5Content drawInRect: text5Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 20] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text5Content drawInRect: text5Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 20] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 
                 //// Text 3 Drawing
                 CGRect text3Rect = CGRectMake(21, 189, 278, 93);
                 [color26 setFill];
-                [text3Content drawInRect: text3Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont systemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text3Content drawInRect: text3Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont systemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Text 4 Drawing
                 CGRect text4Rect = CGRectMake(0, 97, 320, 62);
                 [[UIColor whiteColor] setFill];
-                [text4Content drawInRect: text4Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 45] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text4Content drawInRect: text4Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 45] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Text 7 Drawing
+                if(signedIn.length > 0)
+                {
                 CGRect text7Rect = CGRectMake(0, 294, 320, 31);
                 [color26 setFill];
-                [text7Content drawInRect: text7Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont smallSystemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text7Content drawInRect: text7Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont smallSystemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+                }
                 
                 
                 //// userNameText Drawing
                 CGRect userNameTextRect = CGRectMake(0, 310, 320, 29);
                 [color26 setFill];
-                [userNameTextContent drawInRect: userNameTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont smallSystemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [userNameTextContent drawInRect: userNameTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont smallSystemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Cleanup
@@ -275,31 +278,32 @@
                 //// Text 5 Drawing
                 CGRect text5Rect = CGRectMake(-1, 85, 320, 43);
                 [[UIColor whiteColor] setFill];
-                [text5Content drawInRect: text5Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 20] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text5Content drawInRect: text5Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 20] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Text 3 Drawing
                 CGRect text3Rect = CGRectMake(21, 126, 278, 93);
                 [color26 setFill];
-                [text3Content drawInRect: text3Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont systemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text3Content drawInRect: text3Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont systemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Text 4 Drawing
                 CGRect text4Rect = CGRectMake(0, 34, 320, 62);
                 [[UIColor whiteColor] setFill];
-                [text4Content drawInRect: text4Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 45] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text4Content drawInRect: text4Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 45] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Text 7 Drawing
+                if(signedIn.length > 0){
                 CGRect text7Rect = CGRectMake(0, 206, 320, 31);
                 [color26 setFill];
-                [text7Content drawInRect: text7Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont smallSystemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                    [text7Content drawInRect: text7Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont smallSystemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];}
                 
                 
                 //// signedInText Drawing
                 CGRect signedInTextRect = CGRectMake(0, 222, 320, 29);
                 [color26 setFill];
-                [signedInTextContent drawInRect: signedInTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont smallSystemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [signedInTextContent drawInRect: signedInTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont smallSystemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Cleanup
@@ -399,31 +403,34 @@
                 //// Text 5 Drawing
                 CGRect text5Rect = CGRectMake(-1, 160, 543, 43);
                 [[UIColor whiteColor] setFill];
-                [text5Content drawInRect: text5Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 20] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text5Content drawInRect: text5Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: 20] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Text 3 Drawing
                 CGRect text3Rect = CGRectMake(131, 203, 278, 93);
                 [color26 setFill];
-                [text3Content drawInRect: text3Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont systemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text3Content drawInRect: text3Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont systemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Text 4 Drawing
                 CGRect text4Rect = CGRectMake(-1, 109, 543, 62);
                 [[UIColor whiteColor] setFill];
-                [text4Content drawInRect: text4Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 45] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text4Content drawInRect: text4Rect withFont: [UIFont fontWithName: @"HelveticaNeue-CondensedBlack" size: 45] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Text 7 Drawing
+                if(signedIn.length > 0)
+                {
                 CGRect text7Rect = CGRectMake(-1, 370, 543, 31);
                 [color26 setFill];
-                [text7Content drawInRect: text7Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont smallSystemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [text7Content drawInRect: text7Rect withFont: [UIFont fontWithName: @"HelveticaNeue-Medium" size: [UIFont smallSystemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
+                }
                 
                 
                 //// signedInText Drawing
                 CGRect signedInTextRect = CGRectMake(-1, 386, 543, 29);
                 [color26 setFill];
-                [signedInTextContent drawInRect: signedInTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont smallSystemFontSize]] lineBreakMode: UILineBreakModeWordWrap alignment: UITextAlignmentCenter];
+                [signedInTextContent drawInRect: signedInTextRect withFont: [UIFont fontWithName: @"HelveticaNeue-Light" size: [UIFont smallSystemFontSize]] lineBreakMode: NSLineBreakByWordWrapping alignment: NSTextAlignmentCenter];
                 
                 
                 //// Cleanup
