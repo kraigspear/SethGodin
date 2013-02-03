@@ -670,7 +670,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     if(![PFUser currentUser])
     {
         UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"account"];
-        [self presentViewController:vc animated:YES completion:nil];
+        [self.navigationController pushViewController:vc animated:NO];
     }
 }
 

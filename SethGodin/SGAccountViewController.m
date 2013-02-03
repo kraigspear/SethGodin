@@ -191,16 +191,21 @@
     }
     else
     {
-        
-        if(self.popToRoot)
+        if(!self.navigationController)
         {
-            [self.navigationController popToRootViewControllerAnimated:NO];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         else
         {
-            [self.navigationController popViewControllerAnimated:YES];
+            if(self.popToRoot)
+            {
+                [self.navigationController popToRootViewControllerAnimated:NO];
+            }
+            else
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }
-        
     }
 
 }

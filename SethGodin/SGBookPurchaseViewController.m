@@ -232,11 +232,14 @@ NSString * const ReuseIdentifier = @"bookCell";
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 2;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    _keyWindow = [[UIApplication sharedApplication] keyWindow];
+    [MBProgressHUD showHUDAddedTo:_keyWindow animated:YES];
+    
     SGPurchaseItem *itemToPurchase = [_items objectAtIndex:indexPath.row];
     
     _storeProductViewController = [[SKStoreProductViewController alloc] init];
@@ -252,6 +255,7 @@ NSString * const ReuseIdentifier = @"bookCell";
         {
             [self presentViewController:_storeProductViewController animated:YES completion:^
             {
+                [MBProgressHUD hideHUDForView:_keyWindow animated:YES];
             }];
         }
     }];

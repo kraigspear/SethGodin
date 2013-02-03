@@ -176,9 +176,10 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
 + (void) moveUserDataToCurrentUserFor:(PFUser*) oldUser
 {
     NSDictionary *params = @{@"oldUser" : oldUser.objectId};
+    
     [PFCloud callFunctionInBackground:@"moveUserDataToCurrentUserFor" withParameters:params block:^(id object, NSError *error)
     {
-        NSLog(@"object returned = %@ error = %@", object, error);
+        
     }];
 }
 
