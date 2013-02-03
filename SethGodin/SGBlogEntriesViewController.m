@@ -155,6 +155,11 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         [self removeFavoriteFromTableView:notification.object];
     }];
     
+    [SGNotifications observeFavoriteAdded:^(NSNotification *notification)
+    {
+        [self addFavoriteToTableView:notification.object];
+    }];
+    
     _httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://profile.typepad.com"]];
     
     __weak SGBlogEntriesViewController *weakSelf = self;
@@ -744,8 +749,19 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 #pragma mark -
 #pragma mark UITableView
 
+- (void) addFavoriteToTableView:(SGBlogEntry*) blogEntry
+{
+    if(_feedSelection.feedType != kFavorites) return;
+    [_blogItems insertObject:blogEntry atIndex:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
+}
+
 - (void) removeFavoriteFromTableView:(SGBlogEntry*) blogEntry
 {
+    if(_feedSelection.feedType != kFavorites) return;
     NSUInteger itemIndex = [_blogItems indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop)
     {
         if([obj isEqual:blogEntry])

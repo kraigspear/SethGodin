@@ -119,6 +119,16 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
  */
 + (void) postFavoriteDeleted:(SGBlogEntry*) blogEntry;
 
+/**
+ Post that a favorite has been added
+ */
++ (void) postFavoriteAdded:(SGBlogEntry*) blogEntry;
+
+/**
+ Observe that a favorite has been added.
+ */
++ (id) observeFavoriteAdded:(NotificationBlock) inBlock;
+
 + (void) postErrorOccured:(NSError*) inError;
 
 @end

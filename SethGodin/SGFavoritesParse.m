@@ -38,7 +38,13 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     [favorite setObject:inEntry.urlStr forKey:PARSE_COL_URL];
     [favorite setObject:[PFUser currentUser] forKey:PARSE_COL_CURRENT_USER];
     
-    [favorite saveEventually];
+    [favorite saveEventually:^(BOOL succeeded, NSError *error)
+    {
+        if(succeeded)
+        {
+            [SGNotifications postFavoriteAdded:inEntry];
+        }
+    }];
 }
 
 + (PFQuery*) queryForBlogEntry:(SGBlogEntry*) inEntry
