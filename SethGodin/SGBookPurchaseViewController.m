@@ -122,6 +122,7 @@ NSString * const ReuseIdentifier = @"bookCell";
 {
     [super viewWillAppear:animated];
     [self updateConstraintsForOrientation:self.interfaceOrientation];
+    [self.collectionView reloadData];
 }
 
 #pragma mark -
