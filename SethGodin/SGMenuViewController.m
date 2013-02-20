@@ -265,7 +265,17 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 
 - (void) accountAction:(id) sender
 {
-    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"account"];
+    UIViewController *vc;
+    
+    if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
+    {
+       vc = [self.storyboard instantiateViewControllerWithIdentifier:@"account"];
+    }
+    else
+    {
+       vc = [self.storyboard instantiateViewControllerWithIdentifier:@"accountLandscape"];
+    }
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 

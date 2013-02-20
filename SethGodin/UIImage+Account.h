@@ -11,7 +11,10 @@
 @interface UIImage (Account)
 
 + (UIImage*) backgroundImageiPadForUserSignedIn:(NSString*) signedIn;
-+ (UIImage*) backgroundImageForUserSignedIn:(NSString*) signedIn;
+
++ (UIImage*) backgroundImageForUserSignedIn:(NSString*) signedIn atOrientation:(UIInterfaceOrientation) orientation;
+
 + (UIImage*) buttonImageWithTitle:(NSString*) title atSize:(CGSize) inSize;
++ (UIImage*) buttonImageWithTitleLandscape:(NSString *)title atSize:(CGSize)inSize;
 
 @end

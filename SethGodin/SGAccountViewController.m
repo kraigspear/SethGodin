@@ -75,7 +75,7 @@
         
     }
     
-    self.view.backgroundColor =  [UIColor colorWithPatternImage:[UIImage backgroundImageForUserSignedIn:[self userName]]];
+    self.view.backgroundColor =  [UIColor colorWithPatternImage:[UIImage backgroundImageForUserSignedIn:[self userName] atOrientation:self.interfaceOrientation]];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -92,8 +92,23 @@
 - (void) viewDidLayoutSubviews
 {
     if(self.signInButton.frame.size.height == 0) return;
-    UIImage *signInImage  = [UIImage buttonImageWithTitle:@"SIGN IN" atSize:self.signInButton.frame.size];
-    UIImage *accountImage = [UIImage buttonImageWithTitle:@"CREATE ACCOUNT" atSize:self.signInButton.frame.size];
+    
+    UIImage *signInImage;
+    UIImage *accountImage;
+    
+    if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
+    {
+        signInImage = [UIImage buttonImageWithTitle:@"SIGN IN" atSize:self.signInButton.frame.size];
+        
+        accountImage = [UIImage buttonImageWithTitle:@"CREATE ACCOUNT" atSize:self.signInButton.frame.size];
+    }
+    else
+    {
+        signInImage = [UIImage buttonImageWithTitleLandscape:@"SIGN IN" atSize:self.signInButton.frame.size];
+        
+        accountImage = [UIImage buttonImageWithTitleLandscape:@"CREATE ACCOUNT" atSize:self.signInButton.frame.size];
+    }
+    
     [self.signInButton setImage:signInImage forState:UIControlStateNormal];
     [self.createAccountButton  setImage:accountImage forState:UIControlStateNormal];
 }
