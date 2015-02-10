@@ -296,10 +296,5 @@ const NSUInteger MIN_YEAR = 2002;
     }
 }
 
-- (void) dealloc
-{
-    NSLog(@"SGArchiveSelectionViewController dealloc");
-}
-
 
 @end

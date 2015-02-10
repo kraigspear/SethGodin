@@ -856,6 +856,11 @@
 				CLASSPREFIX = SG;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = AndersonSpear;
+				TargetAttributes = {
+					A9D684E2164CFE8D007A9ADA = {
+						DevelopmentTeam = FUNW4GUS24;
+					};
+				};
 			};
 			buildConfigurationList = A9D684DD164CFE8D007A9ADA /* Build configuration list for PBXProject "SethGodin" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1098,7 +1103,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kraig Spear (D3VVF7U55C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1135,7 +1140,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kraig Spear (D3VVF7U55C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1163,7 +1168,7 @@
 			baseConfigurationReference = A6FF5C6DF5E520B73CBB47A3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Seth Godin.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1197,7 +1202,7 @@
 			baseConfigurationReference = 0D9EB5E830FF06F8B09B6904 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Seth Godin.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
 				COMPRESS_PNG_FILES = NO;
 				FRAMEWORK_SEARCH_PATHS = (
