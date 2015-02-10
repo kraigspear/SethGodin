@@ -8,9 +8,9 @@
 
 #import "SGBlogItemsGetter.h"
 #import "SGBlogEntry.h"
-#import "AFJSONRequestOperation.h"
 #import "NSFileManager+Util.h"
 #import "SGNotifications.h"
+#import "AFHTTPSessionManager.h"
 
 @implementation SGBlogItemsGetter
 {
@@ -77,23 +77,27 @@
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-                                         {
-                                             NSDictionary *dict = (NSDictionary*) JSON;
-                                             
-                                             
-                                             NSString *facebookShared = [[dict objectForKey:@"shares"] stringValue];
-                                             
-                                             inEntry.shareCount += [facebookShared integerValue];
-                                             [SGNotifications postShareCountUpdated:inEntry];
-                                         } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
-                                         {
-                                             
-                                         }];
     
-    [operation start];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
+    [manager GET:[url absoluteString]
+      parameters:nil
+         success:^(NSURLSessionDataTask *task, id responseObject) {
+             
+             NSDictionary *dict = (NSDictionary*) responseObject;
+             NSString *facebookShared = [[dict objectForKey:@"shares"] stringValue];
+             inEntry.shareCount += [facebookShared integerValue];
+            
+             dispatch_async(dispatch_get_main_queue(), ^
+                            {
+                                [SGNotifications postShareCountUpdated:inEntry];
+                            });
+             
+         }
+         failure:^(NSURLSessionDataTask *task, NSError *error)
+         {
+         }];
 }
 
 - (void) updateTwitterCountForEntry:(SGBlogEntry*) inEntry
@@ -103,23 +107,25 @@
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-                                         {
-                                             NSDictionary *dict = (NSDictionary*) JSON;
-                                             
-                                             
-                                             NSString *sharedStr = [[dict objectForKey:@"count"] stringValue];
-                                             
-                                             inEntry.shareCount += [sharedStr integerValue];
-                                             [SGNotifications postShareCountUpdated:inEntry];
-                                         } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
-                                         {
-                                             
-                                         }];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    [operation start];
-    
+    [manager GET:[url absoluteString]
+      parameters:nil
+         success:^(NSURLSessionDataTask *task, id responseObject) {
+             
+             NSDictionary *dict = (NSDictionary*) responseObject;
+             NSString *sharedStr = [[dict objectForKey:@"count"] stringValue];
+             inEntry.shareCount += [sharedStr integerValue];
+             dispatch_async(dispatch_get_main_queue(), ^
+                            {
+                                [SGNotifications postShareCountUpdated:inEntry];
+                            });
+             
+         }
+         failure:^(NSURLSessionDataTask *task, NSError *error) {
+             
+         }];
 }
 
 #pragma mark -

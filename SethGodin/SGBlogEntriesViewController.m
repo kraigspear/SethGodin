@@ -9,6 +9,8 @@
 #import "SGBlogEntriesViewController.h"
 #import "UIImage+RSSSelection.h"
 
+#import "AFNetworkReachabilityManager.h"
+
 #import "SGBlogEntry.h"
 #import "SGBlogEntryViewController.h"
 #import "SGAppDelegate.h"
@@ -39,7 +41,6 @@
 #import "Flurry.h"
 
 #import <Parse/Parse.h>
-#import "AFHTTPClient.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define BLOG_ENTRY_CELL @"blogEntryCell"
@@ -73,8 +74,6 @@
     NSUInteger _pageNumberHold;
     NSArray    *_itemsHold;
     NSString   *_title;
-    
-    AFHTTPClient *_httpClient;
     
     UIView *_messageView;
     
@@ -160,20 +159,19 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
         [self addFavoriteToTableView:notification.object];
     }];
     
-    _httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://profile.typepad.com"]];
+     __weak SGBlogEntriesViewController *weakSelf = self;
     
-    __weak SGBlogEntriesViewController *weakSelf = self;
-    
-    [_httpClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
-    {
-        SGBlogEntriesViewController *strongSelf = weakSelf;
-        if(strongSelf)
-        {
-            strongSelf.isNetworkingAvailable = (status == AFNetworkReachabilityStatusReachableViaWWAN) || (status == AFNetworkReachabilityStatusReachableViaWiFi);
-            
-            [strongSelf loadLatestFeedData];
-        }
-    }];
+     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+          SGBlogEntriesViewController *strongSelf = weakSelf;
+         
+         if(strongSelf)
+         {
+             strongSelf.isNetworkingAvailable = (status == AFNetworkReachabilityStatusReachableViaWWAN) || (status == AFNetworkReachabilityStatusReachableViaWiFi);
+             
+             [strongSelf loadLatestFeedData];
+         }
+         
+     }];
 
     if(IS_IPHONE)
     {

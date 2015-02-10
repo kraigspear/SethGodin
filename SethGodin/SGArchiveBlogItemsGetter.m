@@ -7,8 +7,8 @@
 //
 
 #import "SGArchiveBlogItemsGetter.h"
-#import "AFJSONRequestOperation.h"
 #import "SGBlogEntry.h"
+#import "AFHTTPSessionManager.h"
 
 @implementation SGArchiveBlogItemsGetter
 {
@@ -32,32 +32,31 @@
 
 - (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
 {
-    NSString *monthYear = [NSString stringWithFormat:@"%d-%02d", _year, _month];
+    NSString *monthYear = [NSString stringWithFormat:@"%lu-%02lu", (unsigned long)_year, (unsigned long)_month];
     
     NSString *urlStr = [NSString stringWithFormat:@"http://api.typepad.com/blogs/6a00d83451b31569e200d8341c521b53ef/post-assets/@published/@by-month/%@.json?max-results=31", monthYear];
     
     NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:0 timeoutInterval:TIMEOUT];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-                                         {
-                                             
-                                             dispatch_async(dispatch_get_global_queue(0, 0), ^
-                                                            {
-                                                                NSArray *items = [self itemsFromDictionary:JSON];
-                                                                dispatch_async(dispatch_get_main_queue(), ^
-                                                                               {
-                                                                                   inSuccess(items);
-                                                                               });
-                                                            });
-                                             
-                                         } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
-                                         {
-                                             inError(error);
-                                         }];
-    [operation start];
-}
-
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager GET:[url absoluteString]
+      parameters:nil
+         success:^(NSURLSessionDataTask *task, id responseObject) {
+             NSArray *items = [self itemsFromDictionary:responseObject];
+             
+             self.cachedItems = items;
+             dispatch_async(dispatch_get_main_queue(), ^
+                            {
+                                inSuccess(items);
+                            });
+             
+         }
+         failure:^(NSURLSessionDataTask *task, NSError *error) {
+             inError(error);
+         }];
+    
+    }
 
 @end

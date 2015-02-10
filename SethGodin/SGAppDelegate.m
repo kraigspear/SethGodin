@@ -9,7 +9,6 @@
 #import "SGAppDelegate.h"
 #import "Flurry.h"
 #import "SGInAppPurchase.h"
-#import "Crittercism.h"
 #import "SGUSerDefaults.h"
 #import "SGFavorites.h"
 #import "SGNotifications.h"
@@ -36,7 +35,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
-    [Crittercism enableWithAppID:@"50c92afd63d95269e3000002"];
     
     [Parse setApplicationId:@"k2eo7GeSve5neSkhTFcMLPtIViPicZwLf3opy9bu"
                   clientKey:@"c46oSNaIeVXYVONk0D9wPVxYfBrdZZu0K8Od95wN"];

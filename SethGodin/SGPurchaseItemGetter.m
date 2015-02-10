@@ -60,30 +60,27 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-                                         {
-                                             NSDictionary *dict = JSON;
-                                             
-                                             dispatch_async(_imageLoadingQue, ^
-                                             {
-                                                 NSArray *items = [self itemsForDictionary:dict];
-                                                 
-                                                 [NSKeyedArchiver archiveRootObject:items toFile:cacheFile];
-                                                 
-                                                 dispatch_async(dispatch_get_main_queue(), ^
-                                                 {
-                                                     inSuccess(items);
-                                                 });
-                                                 
-                                             });
-                                         }
-                                         failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
-                                         {
-                                             inFailed(error);
-                                         }];
-    [operation start];
     
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    [manager GET:[url absoluteString]
+      parameters:nil
+         success:^(NSURLSessionDataTask *task, id responseObject) {
+             
+             NSArray *items = [self itemsForDictionary:responseObject];
+             
+             [NSKeyedArchiver archiveRootObject:items toFile:cacheFile];
+             
+             dispatch_async(dispatch_get_main_queue(), ^
+                            {
+                                inSuccess(items);
+                            });
+             
+         }
+         failure:^(NSURLSessionDataTask *task, NSError *error) {
+             inFailed(error);
+         }];
 }
 
 - (NSString*) cacheFile

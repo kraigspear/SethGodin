@@ -37,32 +37,27 @@
         }
     }
     
-    
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:TIMEOUT];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager GET:[url absoluteString]
+      parameters:nil
+         success:^(NSURLSessionDataTask *task, id responseObject) {
+             NSArray *items = [self itemsFromDictionary:responseObject];
+             
+             self.cachedItems = items;
+             dispatch_async(dispatch_get_main_queue(), ^
+                            {
+                                _lastLoadedDate = [NSDate date];
+                                inSuccess(items);
+                            });
+             
+         }
+         failure:^(NSURLSessionDataTask *task, NSError *error) {
+             inError(error);
+         }];
     
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-     {
-         dispatch_async(dispatch_get_global_queue(0, 0), ^
-                        {
-                             NSArray *items = [self itemsFromDictionary:JSON];
-                            
-                              self.cachedItems = items;
-                                 dispatch_async(dispatch_get_main_queue(), ^
-                                                {
-                                                    _lastLoadedDate = [NSDate date];
-                                                    inSuccess(items);
-                                                });
-                        });
-         
-     } failure:^(NSURLRequest *request, NSURLResponse *response, NSError  *error, id JSON)
-     {
-         inError(error);
-     }];
-    [operation start];
 }
 
 - (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary
