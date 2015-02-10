@@ -32,6 +32,7 @@
     return (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
 }
 
+//Helvetica Neue Condensed Black 26.0
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
@@ -39,12 +40,10 @@
     [Parse setApplicationId:@"k2eo7GeSve5neSkhTFcMLPtIViPicZwLf3opy9bu"
                   clientKey:@"c46oSNaIeVXYVONk0D9wPVxYfBrdZZu0K8Od95wN"];
     
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
-    
-    //Not doing the in app purchase
-    //[SGInAppPurchase sharedInstance];
     
     return YES;
 }

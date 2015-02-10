@@ -161,6 +161,13 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
      __weak SGBlogEntriesViewController *weakSelf = self;
     
+     [[AFNetworkReachabilityManager sharedManager ] startMonitoring];
+    
+     if ([AFNetworkReachabilityManager sharedManager].reachable)
+     {
+         [self loadLatestFeedData];
+     }
+    
      [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
           SGBlogEntriesViewController *strongSelf = weakSelf;
          
