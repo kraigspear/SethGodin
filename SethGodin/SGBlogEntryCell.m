@@ -81,7 +81,7 @@
 
 - (void) updateShareCountLabel
 {
-    self.shareCountLabel.text = [NSString stringWithFormat:@"%d", _blogEntry.shareCount];
+    self.shareCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_blogEntry.shareCount];
 }
 
 - (void) dealloc

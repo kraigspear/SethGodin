@@ -15,6 +15,8 @@
     #import <CoreData/CoreData.h>
     #import "Flurry.h"
     #import "NSFileManager+Util.h"
+    #import "CoreData+MagicalRecord.h"
+    #define MR_SHORTHAND
     #define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
     #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)

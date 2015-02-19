@@ -21,12 +21,14 @@
 #import "SGFavoritesParse.h"
 #import "SGNotifications.h"
 #import "SVWebViewController.h"
+#import "Seth_Godin-Swift.h"
 
 
 @implementation SGBlogEntryViewController
 {
 @private
     id _blogEntrySelected;
+    CoreDataBookmarks *_bookMarks;
     __weak UIViewController *_menuController;
     CGPoint _scrollPointBeforeShowingWebView;
 }
@@ -41,6 +43,8 @@
     self.titleView.backgroundColor = [UIColor tableCellBackgroundColor];
     
     self.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.984 blue:0.937 alpha:1];
+    
+    _bookMarks = [[CoreDataBookmarks alloc] init];
     
     for (UIView* subView in self.webView.subviews)
     {
@@ -62,6 +66,7 @@
     [self.favoritesButton setImage:[UIImage favoritesButton:NO] forState:UIControlStateNormal];
     [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];
     
+    [self updateButtonSelected];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -130,9 +135,16 @@
 
 - (void) updateButtonSelected
 {
-   [SGFavoritesParse isBlogItemFavorite:self.blogEntry success:^(BOOL isFavorite)
+    __weak SGBlogEntryViewController *weakSelf = self;
+    
+    [_bookMarks bookmarkExistForBlogEntry:self.blogEntry success:^(BOOL exist)
     {
-       self.favoritesButton.selected = isFavorite;
+        SGBlogEntryViewController *strongSelf = weakSelf;
+        
+        if(strongSelf)
+        {
+            strongSelf.favoritesButton.selected = exist;
+        }
     }];
 }
 
@@ -180,12 +192,47 @@
     [self.view layoutIfNeeded];
 }
 
+
+
 #pragma mark -
 #pragma mark action handlers
 - (IBAction)favoritesAction:(id)sender
 {
     self.favoritesButton.selected = !self.favoritesButton.selected;
-    [SGFavoritesParse toggleBlogEntryAsAFavorite:self.blogEntry];
+    
+    __weak SGBlogEntryViewController *weakSelf = self;
+    
+    [_bookMarks toggleBookmark:self.blogEntry complete:^(NSError *error)
+    {
+        SGBlogEntryViewController *strongSelf = weakSelf;
+        
+        if(strongSelf != nil)
+        {
+            if (error != nil)
+            {
+                [strongSelf showError:error];
+            }
+        }
+        
+    }];
+    //[SGFavoritesParse toggleBlogEntryAsAFavorite:self.blogEntry];
+}
+
+- (void) showError:(NSError*) inError
+{
+    UIAlertController *alert = [[UIAlertController alloc] init];
+    alert.title = @"Error";
+    
+    alert.message = inError.code == 9 ? @"To save bookmarks you need a to have a valid iCloud account" : inError.localizedDescription;
+    
+    UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+    {
+        [alert dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark -

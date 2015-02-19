@@ -14,6 +14,7 @@
 #import "SGNotifications.h"
 #import "SGBlogEntry.h"
 #import "SGFavoritesParse.h"
+
 #import <Parse/Parse.h>
 
 @implementation SGAppDelegate
@@ -45,6 +46,8 @@
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"SethGodin.sqllite"];
+    
     return YES;
 }
 
@@ -73,7 +76,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-
+    [MagicalRecord cleanUp];
 }
 
 
