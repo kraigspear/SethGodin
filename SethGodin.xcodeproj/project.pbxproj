@@ -33,7 +33,6 @@
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
 		A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A91D230116AC076200D8FD58 /* SGTitleView.m */; };
 		A91FAC451A949D1F0057F07C /* SethGodin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */; };
-		A91FAC521A94A2AE0057F07C /* Bookmark.m in Sources */ = {isa = PBXBuildFile; fileRef = A91FAC511A94A2420057F07C /* Bookmark.m */; };
 		A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */; };
 		A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA40E165F8D65003AD9AA /* SGLogger.m */; };
 		A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE44F16BA62FF0005B38F /* UIImage+Account.m */; };
@@ -113,7 +112,6 @@
 		A9D8385616596E9300A79669 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D8385516596E9300A79669 /* StoreKit.framework */; };
 		A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D838591659853F00A79669 /* SGLoadingAnimation.m */; };
 		A9DE39F41A8B57A400ABCBBE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9DE39F31A8B57A400ABCBBE /* CloudKit.framework */; };
-		A9DE39F81A8B59BE00ABCBBE /* CloudKitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DE39F71A8B59BE00ABCBBE /* CloudKitData.swift */; };
 		A9E3221516B4B7750096AB6A /* sethsmall.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3221116B4B7750096AB6A /* sethsmall.png */; };
 		A9E3221616B4B7750096AB6A /* sethsmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3221216B4B7750096AB6A /* sethsmall@2x.png */; };
 		A9E3221716B4B7750096AB6A /* sethbig.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3221316B4B7750096AB6A /* sethbig.png */; };
@@ -131,7 +129,6 @@
 		A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */; };
 		A9F9443A169AD7B000BBB6BE /* SGMainViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94439169AD7B000BBB6BE /* SGMainViewController_ipad.m */; };
 		A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */; };
-		E6382BA566DABBD444CBD933 /* CoreDataBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6382CDE8B766C63F06233A4 /* CoreDataBookmarks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,8 +191,6 @@
 		A91D230016AC076200D8FD58 /* SGTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTitleView.h; sourceTree = "<group>"; };
 		A91D230116AC076200D8FD58 /* SGTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTitleView.m; sourceTree = "<group>"; };
 		A91FAC441A949D1F0057F07C /* SethGodin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SethGodin.xcdatamodel; sourceTree = "<group>"; };
-		A91FAC501A94A2420057F07C /* Bookmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Bookmark.h; path = SethGodin/Bookmark.h; sourceTree = "<group>"; };
-		A91FAC511A94A2420057F07C /* Bookmark.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Bookmark.m; path = SethGodin/Bookmark.m; sourceTree = "<group>"; };
 		A93BA3FB165F800F003AD9AA /* SGInAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGInAppPurchase.h; sourceTree = "<group>"; };
 		A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGInAppPurchase.m; sourceTree = "<group>"; };
 		A93BA40D165F8D65003AD9AA /* SGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLogger.h; sourceTree = "<group>"; };
@@ -319,7 +314,6 @@
 		A9D838591659853F00A79669 /* SGLoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadingAnimation.m; sourceTree = "<group>"; };
 		A9DE39F31A8B57A400ABCBBE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Seth Godin-Bridging-Header.h"; sourceTree = "<group>"; };
-		A9DE39F71A8B59BE00ABCBBE /* CloudKitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitData.swift; path = SethGodin/CloudKitData.swift; sourceTree = "<group>"; };
 		A9E3220916B414E40096AB6A /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		A9E3220B16B416A40096AB6A /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		A9E3220D16B418270096AB6A /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
@@ -351,7 +345,6 @@
 		A9F94444169EB84300BBB6BE /* SGMenuController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMenuController_iPad.h; sourceTree = "<group>"; };
 		A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMenuController_iPad.m; sourceTree = "<group>"; };
 		E1478ACAADC96543F8A5F96E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6382CDE8B766C63F06233A4 /* CoreDataBookmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataBookmarks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -813,11 +806,7 @@
 		A9DE39F51A8B597D00ABCBBE /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A91FAC501A94A2420057F07C /* Bookmark.h */,
-				A91FAC511A94A2420057F07C /* Bookmark.m */,
-				A9DE39F71A8B59BE00ABCBBE /* CloudKitData.swift */,
 				A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */,
-				E6382CDE8B766C63F06233A4 /* CoreDataBookmarks.swift */,
 				A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */,
 			);
 			name = Data;
@@ -1026,7 +1015,6 @@
 				A9D684F8164CFE8D007A9ADA /* SGAppDelegate.m in Sources */,
 				A9D68507164CFE8D007A9ADA /* SGBlogEntriesViewController.m in Sources */,
 				A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */,
-				A91FAC521A94A2AE0057F07C /* Bookmark.m in Sources */,
 				A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */,
 				A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */,
 				A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */,
@@ -1071,7 +1059,6 @@
 				A9F36A4316A3609600FF7CB6 /* BlockBackground.m in Sources */,
 				A9F36A4416A3609600FF7CB6 /* BlockTextPromptAlertView.m in Sources */,
 				A9F36A4816A40D9A00FF7CB6 /* UIFont+General.m in Sources */,
-				A9DE39F81A8B59BE00ABCBBE /* CloudKitData.swift in Sources */,
 				A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */,
 				A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */,
 				A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */,
@@ -1082,7 +1069,6 @@
 				A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */,
 				A9A4A07E16BD759D00BE26CE /* SVModalWebViewController.m in Sources */,
 				A9A4A08016BD759D00BE26CE /* SVWebViewController.m in Sources */,
-				E6382BA566DABBD444CBD933 /* CoreDataBookmarks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

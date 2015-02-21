@@ -161,7 +161,7 @@ const NSUInteger MIN_YEAR = 2002;
 - (void) setYear:(NSUInteger)year
 {
     _year = year;
-    self.yearLabel.text = [NSString stringWithFormat:@"%d", self.year];
+    self.yearLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.year];
 }
 
 - (void) setMonth:(NSUInteger)month

@@ -46,8 +46,6 @@
     _dateformatter           = [[NSDateFormatter alloc] init];
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     
-    [MagicalRecord setupCoreDataStackWithStoreNamed:@"SethGodin.sqllite"];
-    
     return YES;
 }
 
@@ -72,11 +70,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    [MagicalRecord cleanUp];
 }
 
 

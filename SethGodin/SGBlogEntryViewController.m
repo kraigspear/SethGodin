@@ -22,13 +22,14 @@
 #import "SGNotifications.h"
 #import "SVWebViewController.h"
 #import "Seth_Godin-Swift.h"
+#import "SGFavoritesParse.h"
 
 
 @implementation SGBlogEntryViewController
 {
 @private
     id _blogEntrySelected;
-    CoreDataBookmarks *_bookMarks;
+    SGFavoritesParse *_favorites;
     __weak UIViewController *_menuController;
     CGPoint _scrollPointBeforeShowingWebView;
 }
@@ -44,7 +45,7 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.984 blue:0.937 alpha:1];
     
-    _bookMarks = [[CoreDataBookmarks alloc] init];
+    _favorites = [[SGFavoritesParse alloc] init];
     
     for (UIView* subView in self.webView.subviews)
     {
@@ -137,7 +138,7 @@
 {
     __weak SGBlogEntryViewController *weakSelf = self;
     
-    [_bookMarks bookmarkExistForBlogEntry:self.blogEntry success:^(BOOL exist)
+    [SGFavoritesParse isBlogItemFavorite:self.blogEntry success:^(BOOL exist)
     {
         SGBlogEntryViewController *strongSelf = weakSelf;
         
@@ -199,23 +200,7 @@
 - (IBAction)favoritesAction:(id)sender
 {
     self.favoritesButton.selected = !self.favoritesButton.selected;
-    
-    __weak SGBlogEntryViewController *weakSelf = self;
-    
-    [_bookMarks toggleBookmark:self.blogEntry complete:^(NSError *error)
-    {
-        SGBlogEntryViewController *strongSelf = weakSelf;
-        
-        if(strongSelf != nil)
-        {
-            if (error != nil)
-            {
-                [strongSelf showError:error];
-            }
-        }
-        
-    }];
-    //[SGFavoritesParse toggleBlogEntryAsAFavorite:self.blogEntry];
+    [SGFavoritesParse toggleBlogEntryAsAFavorite:self.blogEntry];
 }
 
 - (void) showError:(NSError*) inError
