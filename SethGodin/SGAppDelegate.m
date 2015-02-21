@@ -7,13 +7,13 @@
 //
 
 #import "SGAppDelegate.h"
-#import "Flurry.h"
 #import "SGInAppPurchase.h"
 #import "SGUSerDefaults.h"
 #import "SGFavorites.h"
 #import "SGNotifications.h"
 #import "SGBlogEntry.h"
 #import "SGFavoritesParse.h"
+//#import <Raygun4iOS/Raygun.h>
 
 #import <Parse/Parse.h>
 
@@ -36,7 +36,13 @@
 //Helvetica Neue Condensed Black 26.0
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Flurry startSession:@"5Y7GYTZD4NPMH2N35DPT"];
+    
+    //[Raygun sharedReporterWithApiKey:@"sggD8Qki94kV1fiQjC4fjg=="];
+    
+    if (IS_IPAD)
+    {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    }
     
     [Parse setApplicationId:@"k2eo7GeSve5neSkhTFcMLPtIViPicZwLf3opy9bu"
                   clientKey:@"c46oSNaIeVXYVONk0D9wPVxYfBrdZZu0K8Od95wN"];

@@ -38,7 +38,6 @@
 
 #import "SGBlogEntryCell.h"
 #import "SGAlertView.h"
-#import "Flurry.h"
 
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
@@ -464,7 +463,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
      {
          NSString *errorMessage = [NSString stringWithFormat:@"Error for feedselection %@", _feedSelection];
          NSLog(@"Error getting data %@", errorMessage);
-         [Flurry logError:@"Content Getter Error" message:errorMessage error:inError];
          
          if(_feedSelection.feedType != kCurrent)
          {

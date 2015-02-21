@@ -102,7 +102,6 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     {
         if(error)
         {
-            [Flurry logError:@"FindObjectError" message:@"Couldn't find favorite to delete" error:error];
         }
         else
         {
@@ -142,7 +141,6 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     
     if(error)
     {
-        [Flurry logError:@"allFavoritesError" message:@"Couldn't get favorites" error:error];
         return @[];
     }
     else
@@ -198,7 +196,6 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
                            {
                                [SGFavoritesParse addBlogEntryToFavorites:oldFavorite];
                            }
-                           [Flurry logEvent:@"MovedToParse"];
                            
                            [SGFavorites deleteFavoritesFile];
                        }

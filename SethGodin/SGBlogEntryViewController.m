@@ -21,7 +21,6 @@
 #import "SGFavoritesParse.h"
 #import "SGNotifications.h"
 #import "SVWebViewController.h"
-#import "Seth_Godin-Swift.h"
 #import "SGFavoritesParse.h"
 
 
@@ -137,6 +136,11 @@
 - (void) updateButtonSelected
 {
     __weak SGBlogEntryViewController *weakSelf = self;
+    
+    if(!self.blogEntry)
+    {
+        return;
+    }
     
     [SGFavoritesParse isBlogItemFavorite:self.blogEntry success:^(BOOL exist)
     {
@@ -299,7 +303,6 @@
          inBlock(responseStr);
      } failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         [Flurry logError:@"TinyURLError" message:@"Error getting url from TinyURL" error:error];
          NSLog(@"Error getting tiny url %@", error);
          inBlock(self.blogEntry.urlStr);
      }];

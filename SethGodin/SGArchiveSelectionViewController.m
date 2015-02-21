@@ -13,7 +13,6 @@
 #import "SGNotifications.h"
 #import "SGUSerDefaults.h"
 #import "SGLogger.h"
-#import "Flurry.h"
 #import "SGMainViewController_ipad.h"
 #import "SGAskToPurchaseViewController.h"
 #import "UIColor+General.h"

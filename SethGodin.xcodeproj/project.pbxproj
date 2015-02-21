@@ -1219,8 +1219,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36e1d2b6-8210-425e-a5ae-9194430ae215";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "36e1d2b6-8210-425e-a5ae-9194430ae215";
+				PROVISIONING_PROFILE = "0c37ded9-0a86-4764-9121-3cd9b021b750";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0c37ded9-0a86-4764-9121-3cd9b021b750";
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1257,8 +1257,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "36e1d2b6-8210-425e-a5ae-9194430ae215";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cbddb4e0-c122-46f4-b477-df01519fbe40";
+				PROVISIONING_PROFILE = "0c37ded9-0a86-4764-9121-3cd9b021b750";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0c37ded9-0a86-4764-9121-3cd9b021b750";
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

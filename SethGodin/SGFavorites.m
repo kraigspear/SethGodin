@@ -53,7 +53,6 @@ NSString * const KEY_FAVORITES = @"favorites";
     NSError *error;
     if(![[NSFileManager defaultManager] removeItemAtPath:[SGFavorites filePathName] error:&error])
     {
-        [Flurry logError:@"deleteFavoritesFileError" message:@"Not able to delete old favorites file" error:error];
     }
 }
 

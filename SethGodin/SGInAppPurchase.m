@@ -8,7 +8,6 @@
 
 #import "SGInAppPurchase.h"
 #import "SGUSerDefaults.h"
-#import "Flurry.h"
 #import "SGLogger.h"
 #import <sys/utsname.h>
 #import <Parse/Parse.h>

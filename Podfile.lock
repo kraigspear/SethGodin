@@ -23,9 +23,6 @@ PODS:
   - Bolts (1.1.3)
   - Facebook-iOS-SDK (3.23.0):
     - Bolts (~> 1.0)
-  - FlurrySDK (5.4.0):
-    - FlurrySDK/FlurrySDK (= 5.4.0)
-  - FlurrySDK/FlurrySDK (5.4.0)
   - KissXML (5.0)
   - Parse (1.6.3):
     - Bolts (~> 1.1)
@@ -38,18 +35,16 @@ PODS:
   - Reveal-iOS-SDK (1.5.1)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.5)
-  - FlurrySDK (~> 5.4)
-  - KissXML (~> 5.0)
-  - Parse (~> 1.6)
+  - AFNetworking
+  - KissXML
+  - Parse
   - ParseUI
-  - Reveal-iOS-SDK (~> 1.5)
+  - Reveal-iOS-SDK
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
-  FlurrySDK: bed9e5598353f867508d164795a451e3ada92cb6
   KissXML: e537c38b18ede903ee6de45953a9bd86c131ebe9
   Parse: f725f76ef200c5127420690fc6882e57c3813923
   ParseFacebookUtils: bb14e63862f920cc3f3864b0e373d6771b765255

@@ -105,8 +105,6 @@ NSString * const TITLE_SUCCESS = @"Success";
     _alertView = [[UIAlertView alloc] initWithTitle:TITLE_SUCCESS message:@"Awesome! You're officially upgraded." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     
     [_alertView show];
-    
-    [Flurry logEvent:@"Purchased"];
     _inappPurchase = nil;
 }
 
@@ -117,8 +115,6 @@ NSString * const TITLE_SUCCESS = @"Success";
     _alertView.delegate = self;
     
     [_alertView show];
-    
-    [Flurry logError:@"Purchase" message:@"Purchase failed" error:inError];
     
     _inappPurchase = nil;
 }

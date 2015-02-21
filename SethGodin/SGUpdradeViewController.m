@@ -11,7 +11,6 @@
 #import "UIImage+Upgrade.h"
 #import "SGUSerDefaults.h"
 #import "SGUpgradedViewController.h"
-#import "Flurry.h"
 #import "UIColor+General.h"
 #import "UIImage+General.h"
 
@@ -101,7 +100,6 @@
 
 - (void) purchaseCompleteWithID:(NSString*)inId
 {
-    [Flurry logEvent:@"Purchased"];
     _inappPurchase = nil;
     [self performSegueWithIdentifier:@"upgradeToUpgradedSegue" sender:nil];
 }
@@ -113,8 +111,6 @@
     _alertView.delegate = self;
     
     [_alertView show];
-    
-    [Flurry logError:@"Purchase" message:@"Purchase failed" error:inError];
     
     _inappPurchase = nil;
     

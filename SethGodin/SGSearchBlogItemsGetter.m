@@ -8,7 +8,6 @@
 
 #import "SGSearchBlogItemsGetter.h"
 #import "SGBlogEntry.h"
-#import "Flurry.h"
 #import "AFHTTPSessionManager.h"
 
 @implementation SGSearchBlogItemsGetter

@@ -177,7 +177,6 @@
          {
              if (error)
              {
-                 [Flurry logError:@"AnonymousLoginError" message:@"Not able to create a new Guest Account" error:error];
              }
              else
              {
