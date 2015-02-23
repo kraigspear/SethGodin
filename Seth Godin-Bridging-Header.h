@@ -5,5 +5,4 @@
 
 #import "SGBlogEntry.h"
 #import "SGNotifications.h"
-#import "CoreData+MagicalRecord.h"
-#import "Bookmark.h"
+#import "SGPurchaseItemGetter.h"

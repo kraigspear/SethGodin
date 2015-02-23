@@ -10,12 +10,13 @@
 #import "AFNetworking.h"
 #import "NSDictionary-Expanded.h"
 #import "SGPurchaseItem.h"
+#import <Bolts.h>
+#import <Parse/Parse.h>
 
 @implementation SGPurchaseItemGetter
 {
 @private
     NSDateFormatter *_dateFormatter;
-    dispatch_queue_t _imageLoadingQue;
 }
 
 
@@ -29,65 +30,147 @@
         _dateFormatter = [[NSDateFormatter alloc] init];
         _dateFormatter.locale = enUS;
         [_dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        _imageLoadingQue = dispatch_queue_create("com.seth.imageloader", NULL);
     }
     
     return self;
 }
 
-- (void) latestItems:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inFailed
+- (BFTask*) latestBooksFromParse
 {
-    NSString *cacheFile = [self cacheFile];
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if([fileManager fileExistsAtPath:cacheFile])
+    PFQuery *query = [PFQuery queryWithClassName:@"Book"];
+    return [[query findObjectsInBackground] continueWithSuccessBlock:^id(BFTask *task)
     {
-        NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:cacheFile];
-        inSuccess(items);
-    }
-    
-    NSLocale *locale = [NSLocale currentLocale];
-    
-    NSString *langCode = [locale objectForKey:NSLocaleLanguageCode];
-    NSString *countryCode = [locale objectForKey:NSLocaleCountryCode];
+        NSArray *books = task.result;
+        NSMutableArray *bookIds = [[NSMutableArray alloc] init];
+        
+        for (PFObject *book in books)
+        {
+            NSString *trackIdStr = book[@"trackId"];
+            NSUInteger trackInt = (NSUInteger) trackIdStr.integerValue;
+            NSNumber *trackNum = [NSNumber numberWithUnsignedLong:trackInt];
+            [bookIds addObject:trackNum];
+        }
+        
+        return bookIds;
+    }];
+}
 
-    NSString *country = [NSString stringWithFormat:@"%@_%@", langCode, countryCode];
-    
-    NSString *iTunesURLBase = [NSString stringWithFormat:@"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth+Godin&country=US&media=ebook&lang=%@", country];
-    
-    NSURL *url = [NSURL URLWithString:iTunesURLBase];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
+- (BFTask*) latestFromiTunes
+{
+     return [[self latestBooksFromParse] continueWithSuccessBlock:^id(BFTask *task)
+     {
+          NSArray *trackIds = task.result;
+          return [self jsonFromiTunesFilteringIds:trackIds];
+     }];
+}
+
+- (BFTask*) jsonFromiTunesFilteringIds:(NSArray*) idsToFilter
+{
+    NSString *urlStr = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth%2BGodin&country=US&media=ebook&lang=en";
+    NSURL *url = [NSURL URLWithString:urlStr];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
     
     [manager GET:[url absoluteString]
       parameters:nil
-         success:^(NSURLSessionDataTask *task, id responseObject) {
-             
+         success:^(NSURLSessionDataTask *task, id responseObject)
+         {
+             //All items coming back from iTunes
              NSArray *items = [self itemsForDictionary:responseObject];
              
-             [NSKeyedArchiver archiveRootObject:items toFile:cacheFile];
+             //iTunes items with the trackId passed in in idsToFilter
+             NSIndexSet *filteredIndexSet = [items indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop)
+             {
+                 SGPurchaseItem *purchaseItem = obj;
+                 
+                 NSNumber *trackIdNum = [NSNumber numberWithUnsignedLong:purchaseItem.trackID];
+                 
+                 NSUInteger trackIndex = [idsToFilter indexOfObject:trackIdNum];
+                 
+                 return trackIndex != NSNotFound;
+             }];
              
-             dispatch_async(dispatch_get_main_queue(), ^
-                            {
-                                inSuccess(items);
-                            });
+             NSArray *filteredItems = [items objectsAtIndexes:filteredIndexSet];
              
+             [source setResult:filteredItems];
          }
          failure:^(NSURLSessionDataTask *task, NSError *error) {
-             inFailed(error);
+             [source setError:error];
          }];
+    
+    return source.task;
 }
+
+- (void) latestItems:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inFailed
+{
+
+    [[self latestFromiTunes] continueWithBlock:^id(BFTask *task)
+    {
+
+        if(task.error)
+        {
+            inFailed(task.error);
+        }
+        else
+        {
+            inSuccess(task.result);
+        }
+
+        return nil;
+
+    }];
+
+
+//    NSString *cacheFile = [self cacheFile];
+//
+//    NSFileManager *fileManager = [NSFileManager defaultManager];
+//
+//    if([fileManager fileExistsAtPath:cacheFile])
+//    {
+//        NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:cacheFile];
+//        inSuccess(items);
+//    }
+//
+//    NSLocale *locale = [NSLocale currentLocale];
+//
+//    NSString *langCode = [locale objectForKey:NSLocaleLanguageCode];
+//    NSString *countryCode = [locale objectForKey:NSLocaleCountryCode];
+//
+//    NSString *country = [NSString stringWithFormat:@"%@_%@", langCode, countryCode];
+//
+//    NSString *iTunesURLBase = [NSString stringWithFormat:@"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth+Godin&country=US&media=ebook&lang=%@", country];
+//
+//    NSURL *url = [NSURL URLWithString:iTunesURLBase];
+//
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//
+//    [manager GET:[url absoluteString]
+//      parameters:nil
+//         success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//             NSArray *items = [self itemsForDictionary:responseObject];
+//
+//             [NSKeyedArchiver archiveRootObject:items toFile:cacheFile];
+//
+//             dispatch_async(dispatch_get_main_queue(), ^
+//                            {
+//                                inSuccess(items);
+//                            });
+//
+//         }
+//         failure:^(NSURLSessionDataTask *task, NSError *error) {
+//             inFailed(error);
+//         }];
+};
 
 - (NSString*) cacheFile
 {
     NSArray *documentDirectories =
 	NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    return [[documentDirectories objectAtIndex:0] stringByAppendingPathComponent:@"storeitems.dat"];
+    return [documentDirectories[0] stringByAppendingPathComponent:@"storeitems.dat"];
 }
 
 - (NSArray*) itemsForDictionary:(NSDictionary*) inDict
@@ -95,27 +178,24 @@
     const NSInteger sethArtistID = 2072165;
     
     NSInteger count    =  [inDict intForKey:@"resultCount"];
-    NSArray   *results =  [inDict objectForKey:@"results"];
+    NSArray   *results = inDict[@"results"];
     
-    NSMutableArray *items = [NSMutableArray arrayWithCapacity:count];
+    NSMutableArray *items = [NSMutableArray arrayWithCapacity:(NSUInteger) count];
     
     for(NSDictionary *result in results)
     {
         NSInteger artistID = [result intForKey:@"artistId"];
         if(artistID != sethArtistID) continue;
         
-        NSString *title      = [result objectForKey:@"trackName"];
-        NSString *dateStr    = [[result objectForKey:@"releaseDate"] substringToIndex:10];
+        NSString *title      = result[@"trackName"];
+        NSString *dateStr    = [result[@"releaseDate"] substringToIndex:10];
         NSDate   *releasedOn = [_dateFormatter dateFromString:dateStr];
         NSInteger trackID    = [result intForKey:@"trackId"];
-        NSString *imageURL   = [result objectForKey:@"artworkUrl100"];
+        NSString *imageURL   = result[@"artworkUrl100"];
         
         imageURL = [imageURL stringByReplacingOccurrencesOfString:@".100x100-75.jpg" withString:@".450x450-75.jpg"];
         
-       // NSLog(@"imageURL = %@", imageURL);
-        //size = 298x450 = 152
-        
-        SGPurchaseItem *purchaseItem = [[SGPurchaseItem alloc] initWithTitle:title artest:artistID releasedOn:releasedOn trackId:trackID imageURL:imageURL];
+        SGPurchaseItem *purchaseItem = [[SGPurchaseItem alloc] initWithTitle:title artest:(NSUInteger) artistID releasedOn:releasedOn trackId:trackID imageURL:imageURL];
         
         [items addObject:purchaseItem];
         [self fetchImageforPurchaseItem:purchaseItem];
