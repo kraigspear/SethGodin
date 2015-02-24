@@ -45,7 +45,6 @@ import StoreKit
             {
                 if result
                 {
-                    
                     unwrapSelf.parentViewController.presentViewController(unwrapSelf.productViewController, animated:true, completion:
                     {
                         unwrapSelf.hideHud()

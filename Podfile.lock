@@ -34,6 +34,7 @@ PODS:
     - Parse (~> 1.6)
     - ParseFacebookUtils (~> 1.6)
   - Reveal-iOS-SDK (1.5.1)
+  - SVWebViewController (1.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - Parse
   - ParseUI
   - Reveal-iOS-SDK
+  - SVWebViewController
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
@@ -53,5 +55,6 @@ SPEC CHECKSUMS:
   ParseFacebookUtils: bb14e63862f920cc3f3864b0e373d6771b765255
   ParseUI: 00c4c39aab3944d88758b55416581650caa37f89
   Reveal-iOS-SDK: dcfeb671c7da222c85f18f866da2ce88de075524
+  SVWebViewController: fbf917baa92744c54cfb89a52a4c056e409973a4
 
 COCOAPODS: 0.36.0.beta.2

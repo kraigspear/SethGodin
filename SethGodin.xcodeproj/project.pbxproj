@@ -85,10 +85,6 @@
 		A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */; };
 		A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */; };
 		A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */; };
-		A9A4A07D16BD759D00BE26CE /* SVWebViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9A4A07316BD759D00BE26CE /* SVWebViewController.strings */; };
-		A9A4A07E16BD759D00BE26CE /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A4A07816BD759D00BE26CE /* SVModalWebViewController.m */; };
-		A9A4A07F16BD759D00BE26CE /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A9A4A07916BD759D00BE26CE /* SVWebViewController.bundle */; };
-		A9A4A08016BD759D00BE26CE /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A4A07B16BD759D00BE26CE /* SVWebViewController.m */; };
 		A9A4A08216BD75CA00BE26CE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A4A08116BD75CA00BE26CE /* MessageUI.framework */; };
 		A9A4A08516BD795200BE26CE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A90FF88B1667AF5C0087193F /* Default.png */; };
 		A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */; };
@@ -273,15 +269,6 @@
 		A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoginViewController.m; sourceTree = "<group>"; };
 		A9A3F25D16AADB8A000B4D62 /* SGSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSignUpViewController.h; sourceTree = "<group>"; };
 		A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSignUpViewController.m; sourceTree = "<group>"; };
-		A9A4A07416BD759D00BE26CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
-		A9A4A07516BD759D00BE26CE /* es-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-ES"; path = "es-ES.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
-		A9A4A07616BD759D00BE26CE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/SVWebViewController.strings; sourceTree = "<group>"; };
-		A9A4A07716BD759D00BE26CE /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
-		A9A4A07816BD759D00BE26CE /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
-		A9A4A07916BD759D00BE26CE /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
-		A9A4A07A16BD759D00BE26CE /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
-		A9A4A07B16BD759D00BE26CE /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
-		A9A4A07C16BD759D00BE26CE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/SVWebViewController.strings"; sourceTree = "<group>"; };
 		A9A4A08116BD75CA00BE26CE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A9A4A08316BD794A00BE26CE /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~iphone.png"; path = "../../../Dropbox/ZondervanApps/SG/Default/Default~iphone.png"; sourceTree = "<group>"; };
 		A9A84D76165D7C2B0071BEDD /* smallspinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallspinner@2x.png"; sourceTree = "<group>"; };
@@ -655,32 +642,19 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
-		A9A4A07216BD759D00BE26CE /* SVWebViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A9A4A07316BD759D00BE26CE /* SVWebViewController.strings */,
-				A9A4A07716BD759D00BE26CE /* SVModalWebViewController.h */,
-				A9A4A07816BD759D00BE26CE /* SVModalWebViewController.m */,
-				A9A4A07916BD759D00BE26CE /* SVWebViewController.bundle */,
-				A9A4A07A16BD759D00BE26CE /* SVWebViewController.h */,
-				A9A4A07B16BD759D00BE26CE /* SVWebViewController.m */,
-			);
-			path = SVWebViewController;
-			sourceTree = "<group>";
-		};
 		A9D684D8164CFE8D007A9ADA = {
 			isa = PBXGroup;
 			children = (
 				A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */,
-				A91FAC391A9342920057F07C /* AppImages */,
 				A907DE3A167B367B00CB9022 /* Seth Godin.entitlements */,
-				A974FBFC16676DEB00B29748 /* Icons */,
 				A9D684ED164CFE8D007A9ADA /* SethGodin */,
 				A9D6854F164D0DBD007A9ADA /* General */,
 				A9100A6016531E5800779F84 /* Resources */,
 				A9D6850D164D005D007A9ADA /* 3RD Party */,
 				A9D684E6164CFE8D007A9ADA /* Frameworks */,
 				A9D684E4164CFE8D007A9ADA /* Products */,
+				A91FAC391A9342920057F07C /* AppImages */,
+				A974FBFC16676DEB00B29748 /* Icons */,
 				50C51202CBB8AB710741063E /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -766,7 +740,6 @@
 		A9D6850D164D005D007A9ADA /* 3RD Party */ = {
 			isa = PBXGroup;
 			children = (
-				A9A4A07216BD759D00BE26CE /* SVWebViewController */,
 				A9F36A3816A3609600FF7CB6 /* BlockAlertsActionSheets */,
 				A97E884916591C0100777A82 /* BlockAlerts */,
 			);
@@ -962,8 +935,6 @@
 				A9E3221616B4B7750096AB6A /* sethsmall@2x.png in Resources */,
 				A9E3221716B4B7750096AB6A /* sethbig.png in Resources */,
 				A9E3221816B4B7750096AB6A /* sethbig@2x.png in Resources */,
-				A9A4A07D16BD759D00BE26CE /* SVWebViewController.strings in Resources */,
-				A9A4A07F16BD759D00BE26CE /* SVWebViewController.bundle in Resources */,
 				A9A4A08516BD795200BE26CE /* Default.png in Resources */,
 				A9ABAC2716BD7ACB00282647 /* Default-Portrait@2x~ipad.png in Resources */,
 				A9ABAC2916BD7AF700282647 /* Default-Portrait~ipad.png in Resources */,
@@ -1071,8 +1042,6 @@
 				A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */,
 				A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */,
 				A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */,
-				A9A4A07E16BD759D00BE26CE /* SVModalWebViewController.m in Sources */,
-				A9A4A08016BD759D00BE26CE /* SVWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,17 +1056,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A9A4A07316BD759D00BE26CE /* SVWebViewController.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A9A4A07416BD759D00BE26CE /* en */,
-				A9A4A07516BD759D00BE26CE /* es-ES */,
-				A9A4A07616BD759D00BE26CE /* es */,
-				A9A4A07C16BD759D00BE26CE /* zh-Hant */,
-			);
-			name = SVWebViewController.strings;
-			sourceTree = "<group>";
-		};
 		A9D684F0164CFE8D007A9ADA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

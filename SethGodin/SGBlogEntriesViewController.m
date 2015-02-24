@@ -111,6 +111,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     UINib *cellNib = [UINib nibWithNibName:@"BlogEntryCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:BLOG_ENTRY_CELL];
+    self.tableView.estimatedRowHeight = 88.0f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     _title = @"SETH GODIN";
     
@@ -795,21 +797,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     return _blogItems.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SGBlogEntry *blogEntry = _blogItems[indexPath.row];
-    
-    CGSize size = [blogEntry.title sizeWithFont:_titleFont constrainedToSize:CGSizeMake(280, 1000) lineBreakMode:NSLineBreakByWordWrapping];
-    
-    CGFloat height = MAX(size.height, 44) + 60;
-    
-    if(indexPath.row == 0)
-    {
-        height += 10;
-    }
-    
-    return height;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -8,6 +8,7 @@ pod 'KissXML'
 pod 'Reveal-iOS-SDK'
 pod 'ParseUI'
 pod 'MBProgressHUD'
+pod 'SVWebViewController'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 
 
