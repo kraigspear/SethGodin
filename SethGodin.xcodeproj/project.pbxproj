@@ -68,6 +68,7 @@
 		A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884316590C7200777A82 /* NSDictionary-Expanded.m */; };
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
+		A9960B721A9B2AA200EAF035 /* BookPurchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */; };
 		A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */; };
 		A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22816A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m */; };
 		A9A3F22B16A93BAB000B4D62 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F22A16A93BAB000B4D62 /* Parse.framework */; };
@@ -250,6 +251,7 @@
 		A97E88581659212100777A82 /* SGBookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBookCellView.m; sourceTree = "<group>"; };
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
+		A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPurchaser.swift; sourceTree = "<group>"; };
 		A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_ipad.h; sourceTree = "<group>"; };
 		A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryViewController_ipad.m; sourceTree = "<group>"; };
 		A9A3F22716A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_iphone.h; sourceTree = "<group>"; };
@@ -313,7 +315,7 @@
 		A9D838581659853E00A79669 /* SGLoadingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoadingAnimation.h; sourceTree = "<group>"; };
 		A9D838591659853F00A79669 /* SGLoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoadingAnimation.m; sourceTree = "<group>"; };
 		A9DE39F31A8B57A400ABCBBE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Seth Godin-Bridging-Header.h"; sourceTree = "<group>"; };
+		A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Seth Godin-Bridging-Header.h"; path = "../Seth Godin-Bridging-Header.h"; sourceTree = "<group>"; };
 		A9E3220916B414E40096AB6A /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		A9E3220B16B416A40096AB6A /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		A9E3220D16B418270096AB6A /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */,
 				A93BA40D165F8D65003AD9AA /* SGLogger.h */,
 				A93BA40E165F8D65003AD9AA /* SGLogger.m */,
+				A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 				A91009C6164EED9C00779F84 /* Model */,
 				A93F261216AE8926000B1B45 /* Views */,
 				A905B15D166627FB0092F3D0 /* SethGodin.entitlements */,
+				A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
 				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
 				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
@@ -806,7 +810,6 @@
 		A9DE39F51A8B597D00ABCBBE /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */,
 				A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */,
 			);
 			name = Data;
@@ -1027,6 +1030,7 @@
 				A9100A701654EF1D00779F84 /* SGArchiveSelectionViewController.m in Sources */,
 				A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */,
 				A9100A761656394600779F84 /* SGFeedSelection.m in Sources */,
+				A9960B721A9B2AA200EAF035 /* BookPurchaser.swift in Sources */,
 				A97E880B16563CD800777A82 /* SGNotifications.m in Sources */,
 				A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */,
 				A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */,
@@ -1199,6 +1203,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1237,6 +1243,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

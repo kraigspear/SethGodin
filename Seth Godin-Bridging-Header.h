@@ -6,3 +6,6 @@
 #import "SGBlogEntry.h"
 #import "SGNotifications.h"
 #import "SGPurchaseItemGetter.h"
+#import "SGPurchaseItem.h"
+#import "Bolts.h"
+#import "MBProgressHUD.h"

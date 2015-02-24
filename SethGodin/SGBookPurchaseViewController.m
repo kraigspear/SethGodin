@@ -18,6 +18,7 @@
 #import "UIImage+General.h"
 #import "UIColor+General.h"
 #import "MBProgressHud.h"
+#import "Seth_Godin-Swift.h"
 
 
 @implementation SGBookPurchaseViewController
@@ -29,6 +30,7 @@
     SGLoadingAnimation *_loadingAnimation;
     BlockAlertView *_alertView;
     NSLayoutConstraint *_bookToTopConstraint;
+    BookPurchaser *_bookPurchaser;
     __weak UIWindow *_keyWindow;
 }
 
@@ -238,29 +240,42 @@ NSString * const ReuseIdentifier = @"bookCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    _keyWindow = [[UIApplication sharedApplication] keyWindow];
-    [MBProgressHUD showHUDAddedTo:_keyWindow animated:YES];
+    
     
     SGPurchaseItem *itemToPurchase = [_items objectAtIndex:indexPath.row];
     
-    _storeProductViewController = [[SKStoreProductViewController alloc] init];
-    _storeProductViewController.delegate = self;
+    __weak SGBookPurchaseViewController *weakSelf = self;
     
-    NSNumber *productNumber = [NSNumber numberWithInteger:itemToPurchase.trackID];
-    
-    NSDictionary *vcParam = @{SKStoreProductParameterITunesItemIdentifier : productNumber};
-    
-    [_storeProductViewController loadProductWithParameters:vcParam completionBlock:^(BOOL result, NSError *error)
+    _bookPurchaser = [[BookPurchaser alloc] initWithPurchaseItem:itemToPurchase parentViewController:self completed:^(NSError *error)
     {
-        if(result && error == nil)
+        SGBookPurchaseViewController *strongSelf = weakSelf;
+        
+        if (error)
         {
-            [self presentViewController:_storeProductViewController animated:YES completion:^
+            if (strongSelf)
             {
-                [MBProgressHUD hideHUDForView:_keyWindow animated:YES];
-            }];
+                
+                UIAlertController *alert = [[UIAlertController alloc] init];
+                alert.title = @"Error";
+                alert.message = error.localizedDescription;
+                
+                UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                                {
+                                                    [alert dismissViewControllerAnimated:YES completion:nil];
+                                                }];
+                
+                [alert addAction:cancelAction];
+                
+                [strongSelf presentViewController:alert animated:YES completion:^
+                 {
+                 }];
+            }
         }
+        
+        strongSelf->_bookPurchaser = nil;
     }];
     
+    [_bookPurchaser purchase];
 }
 
 

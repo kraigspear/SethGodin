@@ -46,6 +46,11 @@
  */
 @property (nonatomic, strong) UIImage *image;
 
+/**
+ Purchase this item
+ */
+- (void) purchase;
+
 
 /**
  Initilize the purchase item with readonly data members

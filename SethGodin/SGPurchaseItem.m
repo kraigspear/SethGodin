@@ -10,6 +10,7 @@
 
 @implementation SGPurchaseItem
 
+
 NSString * const KEY_TITLE             = @"title";
 NSString * const KEY_ARTIST            = @"artist";
 NSString * const KEY_RELEASED_ON       = @"releasedOn";

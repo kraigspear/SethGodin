@@ -123,47 +123,6 @@
     }];
 
 
-//    NSString *cacheFile = [self cacheFile];
-//
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//
-//    if([fileManager fileExistsAtPath:cacheFile])
-//    {
-//        NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:cacheFile];
-//        inSuccess(items);
-//    }
-//
-//    NSLocale *locale = [NSLocale currentLocale];
-//
-//    NSString *langCode = [locale objectForKey:NSLocaleLanguageCode];
-//    NSString *countryCode = [locale objectForKey:NSLocaleCountryCode];
-//
-//    NSString *country = [NSString stringWithFormat:@"%@_%@", langCode, countryCode];
-//
-//    NSString *iTunesURLBase = [NSString stringWithFormat:@"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth+Godin&country=US&media=ebook&lang=%@", country];
-//
-//    NSURL *url = [NSURL URLWithString:iTunesURLBase];
-//
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//
-//    [manager GET:[url absoluteString]
-//      parameters:nil
-//         success:^(NSURLSessionDataTask *task, id responseObject) {
-//
-//             NSArray *items = [self itemsForDictionary:responseObject];
-//
-//             [NSKeyedArchiver archiveRootObject:items toFile:cacheFile];
-//
-//             dispatch_async(dispatch_get_main_queue(), ^
-//                            {
-//                                inSuccess(items);
-//                            });
-//
-//         }
-//         failure:^(NSURLSessionDataTask *task, NSError *error) {
-//             inFailed(error);
-//         }];
 };
 
 - (NSString*) cacheFile
