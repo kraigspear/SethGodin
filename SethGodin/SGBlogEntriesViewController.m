@@ -17,30 +17,25 @@
 #import "UIImage+General.h"
 #import "SGMenuViewController.h"
 #import "SGNotifications.h"
-#import "SGFeedSelection.h"
 #import "SGFavoritesBlogItemsGetter.h"
-#import "SGBlogItemsGetter.h"
 #import "SGCurrentBlogItemsGetter.h"
 #import "SGArchiveBlogItemsGetter.h"
-#import "NSArray+Util.h"
 #import "UIColor+General.h"
 #import "SGSearchBlogItemsGetter.h"
 #import "SGLoadingAnimation.h"
 
 #import "NSDate+General.h"
-#import "SGUSerDefaults.h"
-#import "SGFavorites.h"
 
-#import "UIColor+General.h"
 #import "UIFont+General.h"
 
 #import "MBProgressHUD.h"
 
 #import "SGBlogEntryCell.h"
-#import "SGAlertView.h"
 
 #import <Parse/Parse.h>
-#import <QuartzCore/QuartzCore.h>
+
+#import "Seth_Godin-Swift.h"
+
 
 #define BLOG_ENTRY_CELL @"blogEntryCell"
 
@@ -51,10 +46,10 @@
 @implementation SGBlogEntriesViewController
 {
 @private
-    NSMutableArray *_blogItems;
+    NSMutableArray *_feedItems;
     SGBlogItemsGetter *_contentGetter;
     
-    __weak SGBlogEntry *_blogEntry;
+    FeedItem *_feedItem;
     
     NSLayoutConstraint *_menuTopConstraint;
     NSLayoutConstraint *_menuBottomConstraint;
@@ -62,26 +57,18 @@
     SGFeedSelection *_feedSelection;
     
     SGMenuViewController *_menuViewController;
-    
-    CALayer          *_spinnerLayer;
-    CALayer          *_loadingBackgroundLayer;
-    
-    NSInteger   buttonTopContant;
-    
+
     SGLoadingAnimation *_loadingAnimation;
     
-    NSUInteger _pageNumberHold;
+    FeedLoader *_feedLoader;
+
     NSArray    *_itemsHold;
-    NSString   *_title;
+    NSString   *_feedTitle;
     
     UIView *_messageView;
-    
-    SGAlertView *_alertView;
-    
+
     NSDate *_lastDateLeftView;
-    
-    UIFont *_titleFont;
-    
+
     __weak UIWindow *_keyWindow;
     
 }
@@ -107,14 +94,14 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 {
     [super viewDidLoad];
     
-    _titleFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
+    [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
     
     UINib *cellNib = [UINib nibWithNibName:@"BlogEntryCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:BLOG_ENTRY_CELL];
     self.tableView.estimatedRowHeight = 88.0f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    _title = @"SETH GODIN";
+    _feedTitle = @"SETH GODIN";
     
     if(IS_IPHONE)
     {
@@ -139,10 +126,8 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     if(&UIApplicationWillEnterForegroundNotification != nil)
     {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForegrond) name:UIApplicationWillEnterForegroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnteredBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     [SGNotifications observeFeedSelectionWithNotification:^(NSNotification *note)
     {
@@ -188,20 +173,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
 }
 
-
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if(object == [SGAppDelegate instance])
-    {
-        if([keyPath isEqualToString:@"isICloudSetup"])
-        {
-            [[SGAppDelegate instance] removeObserver:self forKeyPath:@"isICloudSetup"];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        }
-    }
-}
-
-
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -240,7 +211,24 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     {
         _lastDateLeftView = [NSDate date];
         SGBlogEntryViewController *postVC = segue.destinationViewController;
-        postVC.blogEntry = _blogEntry;
+        postVC.blogEntry = self.currentBlogEntry;
+    }
+}
+
+- (SGBlogEntry*) currentBlogEntry
+{
+    if(!_feedItem)
+    {
+        return nil;
+    }
+    
+    if ([_feedItem.dataObject isKindOfClass:[SGBlogEntry class]])
+    {
+        return _feedItem.dataObject;
+    }
+    else
+    {
+        return nil;
     }
 }
 
@@ -303,7 +291,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     };
     
     [self.view layoutIfNeeded];
-    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
     {
         _menuTopConstraint.constant = 0;
         _menuBottomConstraint.constant = 0;
@@ -346,12 +334,9 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) animateCloseMenu
 {
-    CGRect menuFrame = _menuViewController.view.frame;
-    menuFrame.origin.y = -menuFrame.size.height;
-    
     [self.view layoutIfNeeded];
     
-    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+    [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^
     {
         _menuTopConstraint.constant = -self.view.frame.size.height;
         _menuBottomConstraint.constant = -self.view.frame.size.height;
@@ -376,7 +361,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 #pragma mark -
 #pragma mark feed loading
 
-- (void) appEnteredForegrond
+- (void)appEnteredForeground
 {
     [self stopLoadingAnimation];
     
@@ -391,11 +376,6 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     }
 }
 
-- (void) appEnteredBackground
-{
-    NSLog(@"appEnteredBackground");
-}
-
 - (void) loadLatestFeedData
 {
     
@@ -405,28 +385,28 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     {
         case kCurrent:
             _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
-            _title = @"SETH GODIN";
-            self.titleLabel.text = _title;
+            _feedTitle = @"SETH GODIN";
+            self.titleLabel.text = _feedTitle;
             break;
         case kArchive:
             _contentGetter = [[SGArchiveBlogItemsGetter alloc] initWithMonth:_feedSelection.month andYear:_feedSelection.year];
             
-            _title = [self monthYearString];
-            self.titleLabel.text = _title;
+            _feedTitle = [self monthYearString];
+            self.titleLabel.text = _feedTitle;
             
             break;
         case kFavorites:
             _contentGetter = [[SGFavoritesBlogItemsGetter alloc] init];
-            _title = @"FAVORITES";
-            self.titleLabel.text = _title;
+            _feedTitle = @"FAVORITES";
+            self.titleLabel.text = _feedTitle;
             break;
         case kSearch:
             _contentGetter = [[SGSearchBlogItemsGetter alloc] initWithSearchText:_feedSelection.searchText];
             break;
         default:
-             _title = @"SETH GODIN";
+             _feedTitle = @"SETH GODIN";
             _contentGetter = [[SGCurrentBlogItemsGetter alloc] init];
-            self.titleLabel.text = _title;
+            self.titleLabel.text = _feedTitle;
             break;
     }
     
@@ -455,36 +435,51 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
             return;
         }
     }
+
     
-    [_contentGetter requestItemssuccess:^(NSArray *inItems)
-     {
-         [self stopLoadingAnimation];
-         _lastDateLeftView = [NSDate date];
-         [self updateBlogItems:inItems];
-     } failed:^(NSError *inError)
-     {
-         NSString *errorMessage = [NSString stringWithFormat:@"Error for feedselection %@", _feedSelection];
-         NSLog(@"Error getting data %@", errorMessage);
-         
-         if(_feedSelection.feedType != kCurrent)
-         {
-             [self updateBlogItems:[NSArray array]];
-         }
-     }];
-}
+    _feedLoader = [[FeedLoader alloc] initWithBlogItemGeter:_contentGetter];
+    
+    __weak SGBlogEntriesViewController *weakSelf = self;
+    
+    [[_feedLoader loadFeed] continueWithBlock:^id(BFTask *task)
+    {
+        SGBlogEntriesViewController *strongSelf = weakSelf;
+        
+        if(strongSelf)
+        {
+            [strongSelf stopLoadingAnimation];
+            strongSelf->_lastDateLeftView = [NSDate date];
+            
+            if (task.error)
+            {
+                NSString *errorMessage = [NSString stringWithFormat:@"Error for feedselection %@", strongSelf->_feedSelection];
+                NSLog(@"Error getting data %@", errorMessage);
+            }
+            else if (task.result)
+            {
+                NSArray *resultArray = task.result;
+                [strongSelf updateBlogItems:resultArray];
+            }
+            
+            strongSelf->_feedLoader = nil;
+        }
+        
+        return nil;
+    }];
+};
 
 - (void) updateBlogItems:(NSArray*) inBlogItems
 {
     
     self.buttonView.backgroundColor = [UIColor itemsBackgroundColor];
     
-    _blogItems = [inBlogItems mutableCopy];
+    _feedItems = [inBlogItems mutableCopy];
     
     [self.tableView reloadData];
     
     if(IS_IPAD)
     {
-        if(_blogItems.count >= 1)
+        if(_feedItems.count >= 1)
         {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
             
@@ -527,9 +522,9 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 {
     SGAppDelegate *appDelegate = (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
     
-    NSString *monthStr = [appDelegate.dateFormatterLongStyle.shortMonthSymbols objectAtIndex:_feedSelection.month - 1];
+    NSString *monthStr = appDelegate.dateFormatterLongStyle.shortMonthSymbols[_feedSelection.month - 1];
     
-    return [NSString stringWithFormat:@"%@ %d", [monthStr uppercaseString], _feedSelection.year];
+    return [NSString stringWithFormat:@"%@ %lu", [monthStr uppercaseString], (unsigned long)_feedSelection.year];
 }
 
 
@@ -579,9 +574,9 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
     if(self.buttonView.frame.origin.y > 0) return; //Already in the down position.
     
-    if(_blogItems.count > 0)
+    if(_feedItems.count > 0)
     {
-        [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+        [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^
          {
              self.buttonViewToTopViewConstraint.constant += 500;
              [self.view layoutSubviews];
@@ -601,7 +596,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (BOOL) isInSearchState
 {
-    return (self.searchTextField.hidden == NO);
+    return !self.searchTextField.hidden;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -626,14 +621,14 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
    self.searchTextField.hidden = YES;
    self.titleLabel.hidden = NO;
    
-   self.titleLabel.text = _title;
+   self.titleLabel.text = _feedTitle;
     
    [self.menuButton setImage:[UIImage menuButton] forState:UIControlStateNormal];
    [self fadeToolbarAnimation];
     
     if(_itemsHold)
     {
-        _blogItems = [_itemsHold mutableCopy];
+        _feedItems = [_itemsHold mutableCopy];
         [self.tableView reloadData];
     }
     else
@@ -655,7 +650,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     self.titleLabel.hidden = YES;
     if(!_itemsHold)
     {
-        _itemsHold = _blogItems;
+        _itemsHold = _feedItems;
     }
     
     [SGNotifications postMenuSelectedNotification:NO];
@@ -759,7 +754,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 - (void) addFavoriteToTableView:(SGBlogEntry*) blogEntry
 {
     if(_feedSelection.feedType != kFavorites) return;
-    [_blogItems insertObject:blogEntry atIndex:0];
+    [_feedItems insertObject:blogEntry atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView beginUpdates];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
@@ -769,7 +764,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 - (void) removeFavoriteFromTableView:(SGBlogEntry*) blogEntry
 {
     if(_feedSelection.feedType != kFavorites) return;
-    NSUInteger itemIndex = [_blogItems indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop)
+    NSUInteger itemIndex = [_feedItems indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop)
     {
         if([obj isEqual:blogEntry])
         {
@@ -784,7 +779,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     if(itemIndex == NSNotFound) return;
     
-    [_blogItems removeObjectAtIndex:itemIndex];
+    [_feedItems removeObjectAtIndex:itemIndex];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:itemIndex inSection:0];
     [self.tableView beginUpdates];
@@ -794,7 +789,7 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _blogItems.count;
+    return _feedItems.count;
 }
 
 
@@ -803,14 +798,14 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
     
     SGBlogEntryCell *cell = (SGBlogEntryCell*) [tableView dequeueReusableCellWithIdentifier:BLOG_ENTRY_CELL forIndexPath:indexPath];
     
-    
     if(indexPath.row == 0)
     {
         cell.textToTopViewConstraint.constant = 10;
     }
     
-    cell.blogEntry = _blogItems[indexPath.row];
+    FeedItem *feedItem = _feedItems[indexPath.row];
     
+    cell.feedItem = feedItem;
     [cell layoutIfNeeded];
     
     return cell;
@@ -818,19 +813,23 @@ NSString * const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self updateDetailForItemAtRow:indexPath.row];
+    [self updateDetailForItemAtRow:(NSUInteger) indexPath.row];
 }
 
 - (void) updateDetailForItemAtRow:(NSUInteger) inRow
 {
-    _blogEntry = _blogItems[inRow];
+    _feedItem = _feedItems[inRow];
     
     if(IS_IPHONE)
     {
         [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
     }
     
-    [SGNotifications postBlogEntrySelected:_blogEntry];
+    if (self.currentBlogEntry)
+    {
+        [SGNotifications postBlogEntrySelected:self.currentBlogEntry];
+    }
+    
 }
 
 @end

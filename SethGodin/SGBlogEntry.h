@@ -34,7 +34,7 @@
 @property (nonatomic, readonly) NSString *content;
 
 /**
- The item ID. The unique identifer for this entry.
+ The item ID. The unique identifier for this entry.
  */
 @property (nonatomic, readonly) NSString *itemID;
 
@@ -51,7 +51,7 @@
 
 
 /**
- Required initilizer for this class. Most of the data is readonly, and is set here.
+ Required initializer for this class. Most of the data is readonly, and is set here.
  @param inTitle setter for title
  @param inDate  setter for date
  @param inSummary setter for the summary

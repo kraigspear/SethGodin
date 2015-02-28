@@ -9,34 +9,17 @@
 #import "SGCurrentBlogItemsGetter.h"
 #import "SGBlogEntry.h"
 #import "AFNetworking.h"
-#import "NSDate+General.h"
-
 
 
 //http://profile.typepad.com/sethgodin/activity.json
 
 @implementation SGCurrentBlogItemsGetter
-{
-@private
-    NSDate *_lastLoadedDate;
-}
 
-- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
+
+- (BFTask*)requestItems
 {
-    NSArray *cacheItems = self.cachedItems;
-    
-    if(cacheItems)
-    {
-        if(cacheItems.count > 0)
-        {
-            [self updateShareCountsForEntries:cacheItems];
-            dispatch_async(dispatch_get_main_queue(), ^
-                           {
-                               inSuccess(cacheItems);
-                           });
-        }
-    }
-    
+    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+
     NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -49,34 +32,36 @@
              self.cachedItems = items;
              dispatch_async(dispatch_get_main_queue(), ^
                             {
-                                _lastLoadedDate = [NSDate date];
-                                inSuccess(items);
+                                [source setResult:items];
                             });
              
          }
-         failure:^(NSURLSessionDataTask *task, NSError *error) {
-             inError(error);
+         failure:^(NSURLSessionDataTask *task, NSError *error)
+         {
+             [source setError:error];
          }];
+
+    return source.task;
     
 }
 
 - (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary
 {
-    NSArray *items = [inDictionary objectForKey:@"items"];
+    NSArray *items = inDictionary[@"items"];
     
-    NSMutableArray *blogEntires = [NSMutableArray arrayWithCapacity:items.count];
+    NSMutableArray *blogEntries = [NSMutableArray arrayWithCapacity:items.count];
     
     for(NSDictionary *itemDict in items)
     {
-        NSString *dateStr = [[itemDict objectForKey:@"published"] substringToIndex:10];
+        NSString *dateStr = [itemDict[@"published"] substringToIndex:10];
         NSDate *datePublished = [self dateFromString:dateStr];
         
-        NSDictionary *objDict = [itemDict objectForKey:@"object"];
-        NSString *summary = [objDict objectForKey:@"summary"];
-        NSString *content = [objDict objectForKey:@"content"];
-        NSString *displayName = [objDict objectForKey:@"displayName"];
-        NSString *itemID      = [objDict objectForKey:@"id"];
-        NSString *urlStr      = [objDict objectForKey:@"url"];
+        NSDictionary *objDict = itemDict[@"object"];
+        NSString *summary = objDict[@"summary"];
+        NSString *content = objDict[@"content"];
+        NSString *displayName = objDict[@"displayName"];
+        NSString *itemID      = objDict[@"id"];
+        NSString *urlStr      = objDict[@"url"];
 
         SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithTitle:displayName
                                                               publishedOn:datePublished
@@ -87,10 +72,10 @@
         
         
         [self updateShareCountForBlogEntry:blogEntry];
-        [blogEntires addObject:blogEntry];
+        [blogEntries addObject:blogEntry];
     }
     
-    return blogEntires;
+    return blogEntries;
 }
 
 #pragma mark -

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Seth_Godin-Swift.h"
+
 @class SGBlogEntry;
 
 @interface SGBlogEntryCell : UITableViewCell
@@ -15,7 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bottomImageView;
 @property (weak, nonatomic) IBOutlet UILabel *blogTitleLabel;
 
-@property (weak, nonatomic) SGBlogEntry *blogEntry;
+@property (strong, nonatomic) FeedItem *feedItem;
+
 @property (weak, nonatomic) IBOutlet UILabel *shareCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postDateLabel;
 

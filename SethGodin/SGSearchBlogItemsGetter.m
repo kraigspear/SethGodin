@@ -7,7 +7,6 @@
 //
 
 #import "SGSearchBlogItemsGetter.h"
-#import "SGBlogEntry.h"
 #import "AFHTTPSessionManager.h"
 
 @implementation SGSearchBlogItemsGetter
@@ -25,13 +24,14 @@
     return self;
 }
 
-- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
+- (BFTask *)requestItems
 {
+    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+
     //This really isn't a valid search. Prevent from searching all of the blog content for nothing.
     if(_searchText.length <= 2)
     {
-        inSuccess(@[]);
-        return;
+        [source setResult:@[]];
     }
     
     NSString *searchTextEscaped = [_searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -48,23 +48,24 @@
     
     [manager GET:[url absoluteString]
       parameters:nil
-         success:^(NSURLSessionDataTask *task, id responseObject) {
+         success:^(NSURLSessionDataTask *task, id responseObject)
+         {
              NSArray *items = [self itemsFromDictionary:responseObject];
              
              
              self.cachedItems = items;
              dispatch_async(dispatch_get_main_queue(), ^
                             {
-                                inSuccess(items);
+                                [source setResult:items];
                             });
              
          }
-         failure:^(NSURLSessionDataTask *task, NSError *error) {
-             inError(error);
+         failure:^(NSURLSessionDataTask *task, NSError *error)
+         {
+             [source setError:error];
          }];
     
-    
-   
+     return source.task;
 }
 
 

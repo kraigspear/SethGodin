@@ -13,10 +13,12 @@
 #import "SGAppDelegate.h"
 #import "SGNotifications.h"
 
+
 @implementation SGBlogEntryCell
 {
 @private
     id _shareCountUpdatedObserver;
+    FeedItem *_feedItem;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -35,7 +37,8 @@
     _shareCountUpdatedObserver = [SGNotifications observeShareCountUpdated:^(NSNotification *notification)
     {
         SGBlogEntry *blogEntry = notification.object;
-        if(blogEntry == self.blogEntry)
+        
+        if(blogEntry == _feedItem.dataObject)
         {
             [self updateShareCountLabel];
         }
@@ -64,24 +67,46 @@
     self.blogTitleLabel.textColor = textColor;
 }
 
-- (void) setBlogEntry:(SGBlogEntry *) toEntry
+- (void) setFeedItem:(FeedItem *)feedItem
 {
-    _blogEntry = toEntry;
+    _feedItem = feedItem;
     [self populateCell];
 }
 
 - (void) populateCell
 {
-    self.blogTitleLabel.text = _blogEntry.title;
+    self.blogTitleLabel.text = _feedItem.title;
     
-    self.postDateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:_blogEntry.datePublished];
+    NSDate *datePublished = _feedItem.datePublished;
+    
+    if(datePublished)
+    {
+        self.postDateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:datePublished];
+    }
+    else
+    {
+        self.postDateLabel.text = @"";
+    }
     
     [self updateShareCountLabel];
 }
 
 - (void) updateShareCountLabel
 {
-    self.shareCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_blogEntry.shareCount];
+    
+    NSNumber *shareCountNumber = _feedItem.shareCount;
+    
+    if(shareCountNumber)
+    {
+        NSInteger shareCount = [shareCountNumber integerValue];
+        self.shareCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)shareCount];
+    }
+    else
+    {
+        self.shareCountLabel.text = @"";
+    }
+    
+    
 }
 
 - (void) dealloc

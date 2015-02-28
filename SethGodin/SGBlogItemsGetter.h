@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BlockTypes.h"
+#import "Bolts.h"
 
 @class SGBlogEntry;
-
-
 
 /**
  Responsible for getting blog items.
@@ -22,14 +21,12 @@
 
 
 /**
- Feteches an array of blog items
- @param inSuccess block to receive the items
- @param inError if there was an error getting items
+ Fetches an array of blog items
  */
-- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError;
+- (BFTask*)requestItems;
 
 /**
- Provides a date from a string that was supplited by typepad
+ Provides a date from a string that was supplied by typepad
  @return Date formatted from string
  @param inDateStr The string to convert to a date.
  */
@@ -53,7 +50,7 @@
 - (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary;
 
 /**
- key used to distinguinsh cache items. 
+ key used to distinguish cache items.
  If empty then items are not cached.
  @return key used to distinguish keys.
  */
@@ -61,7 +58,7 @@
 
 /**
  Get cached items
- @return cahced items
+ @return cached items
  */
 - (NSArray*) cachedItems;
 

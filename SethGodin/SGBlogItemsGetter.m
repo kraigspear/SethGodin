@@ -8,7 +8,6 @@
 
 #import "SGBlogItemsGetter.h"
 #import "SGBlogEntry.h"
-#import "NSFileManager+Util.h"
 #import "SGNotifications.h"
 #import "AFHTTPSessionManager.h"
 
@@ -36,14 +35,19 @@
     
 }
 
-//Abstract. Should be extened by inherited classes.
-- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
+//Abstract. Should be extended by inherited classes.
+- (BFTask*)requestItems
 {
+    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+
     NSArray *cacheItems = self.cachedItems;
-    if(cacheItems.count >= 1)
+
+    if (cacheItems.count >= 1)
     {
-        inSuccess(cacheItems);
+        [source setResult:cacheItems];
     }
+
+    return source.task;
 }
 
 - (NSDate*) dateFromString:(NSString*) inDateStr
@@ -75,9 +79,8 @@
     NSString *urlStr = [NSString stringWithFormat:@"http://graph.facebook.com/?id=%@", inEntry.urlStr];
     
     NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    
+    [NSURLRequest requestWithURL:url];
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
@@ -86,7 +89,7 @@
          success:^(NSURLSessionDataTask *task, id responseObject) {
              
              NSDictionary *dict = (NSDictionary*) responseObject;
-             NSString *facebookShared = [[dict objectForKey:@"shares"] stringValue];
+             NSString *facebookShared = [dict[@"shares"] stringValue];
              inEntry.shareCount += [facebookShared integerValue];
             
              dispatch_async(dispatch_get_main_queue(), ^
@@ -105,8 +108,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"http://cdn.api.twitter.com/1/urls/count.json?url=%@", inEntry.urlStr];
     
     NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
@@ -115,8 +117,8 @@
          success:^(NSURLSessionDataTask *task, id responseObject) {
              
              NSDictionary *dict = (NSDictionary*) responseObject;
-             NSString *sharedStr = [[dict objectForKey:@"count"] stringValue];
-             inEntry.shareCount += [sharedStr integerValue];
+             NSString *sharedStr = [dict[@"count"] stringValue];
+             inEntry.shareCount += sharedStr.integerValue;
              dispatch_async(dispatch_get_main_queue(), ^
                             {
                                 [SGNotifications postShareCountUpdated:inEntry];
@@ -133,22 +135,22 @@
 
 - (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary
 {
-    NSArray *items = [inDictionary objectForKey:@"entries"];
+    NSArray *items = inDictionary[@"entries"];
     
-    NSMutableArray *blogEntires = [NSMutableArray arrayWithCapacity:items.count];
+    NSMutableArray *blogEntries = [NSMutableArray arrayWithCapacity:items.count];
     
     for(NSDictionary *dict in items)
     {
-        NSString *displayName   = [dict objectForKey:@"title"];
-        NSString *dateStr       = [dict objectForKey:@"published"];
+        NSString *displayName   = dict[@"title"];
+        NSString *dateStr       = dict[@"published"];
         NSDate   *datePublished = [self dateFromString:dateStr];
-        NSString *summary       = [dict objectForKey:@"excerpt"];
-        NSString *content       = [dict objectForKey:@"renderedContent"];
+        NSString *summary       = dict[@"excerpt"];
+        NSString *content       = dict[@"renderedContent"];
         
         content = [self removeUnwantedContentCharactersFrom:content];
         
-        NSString *itemID        = [dict objectForKey:@"urlId"];
-        NSString *urlStr        = [dict objectForKey:@"permalinkUrl"];
+        NSString *itemID        = dict[@"urlId"];
+        NSString *urlStr        = dict[@"permalinkUrl"];
         
         SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithTitle:displayName
                                                         publishedOn:datePublished
@@ -158,15 +160,15 @@
                                   
                                                             fromURL:urlStr];
         [self updateShareCountForBlogEntry:blogEntry];
-        [blogEntires addObject:blogEntry];
+        [blogEntries addObject:blogEntry];
     }
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^
     {
-        self.cachedItems = blogEntires;
+        self.cachedItems = blogEntries;
     });
     
-    return blogEntires;
+    return blogEntries;
 }
 
 - (NSString*) removeUnwantedContentCharactersFrom:(NSString*) inString

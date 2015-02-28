@@ -69,6 +69,14 @@ NSString * const KEY_IMAGE             = @"image";
     
 }
 
+- (NSString*) purchaseUrlStr
+{
+    //https://itunes.apple.com/us/book/linchpin/id357913936?mt=11&uo=4&at=10lKRh
+    
+    
+    
+}
+
 #pragma mark -
 #pragma mark equals / hash
 

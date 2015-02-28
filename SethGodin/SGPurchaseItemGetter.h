@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BlockTypes.h"
+#import <Bolts.h>
 
 /**
  Get's items that can be purchased
@@ -19,5 +20,6 @@
  Gets the latest purchasable items.
  */
 - (void) latestItems:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inFailed;
+- (BFTask*) latestFromiTunes;
 
 @end

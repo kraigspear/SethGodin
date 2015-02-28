@@ -7,7 +7,6 @@
 //
 
 #import "SGArchiveBlogItemsGetter.h"
-#import "SGBlogEntry.h"
 #import "AFHTTPSessionManager.h"
 
 @implementation SGArchiveBlogItemsGetter
@@ -30,8 +29,10 @@
     return self;
 }
 
-- (void) requestItemssuccess:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inError
+- (BFTask *)requestItems
 {
+    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
+
     NSString *monthYear = [NSString stringWithFormat:@"%lu-%02lu", (unsigned long)_year, (unsigned long)_month];
     
     NSString *urlStr = [NSString stringWithFormat:@"http://api.typepad.com/blogs/6a00d83451b31569e200d8341c521b53ef/post-assets/@published/@by-month/%@.json?max-results=31", monthYear];
@@ -49,13 +50,16 @@
              self.cachedItems = items;
              dispatch_async(dispatch_get_main_queue(), ^
                             {
-                                inSuccess(items);
+                                [source setResult:items];
                             });
              
          }
-         failure:^(NSURLSessionDataTask *task, NSError *error) {
-             inError(error);
+         failure:^(NSURLSessionDataTask *task, NSError *error)
+         {
+             [source setResult:error];
          }];
+
+      return source.task;
     
     }
 

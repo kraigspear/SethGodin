@@ -37,6 +37,7 @@
 		A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA40E165F8D65003AD9AA /* SGLogger.m */; };
 		A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE44F16BA62FF0005B38F /* UIImage+Account.m */; };
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
+		A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */; };
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
@@ -69,6 +70,7 @@
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
 		A9960B721A9B2AA200EAF035 /* BookPurchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */; };
+		A9960B761A9DCAC700EAF035 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B751A9DCAC700EAF035 /* FeedItem.swift */; };
 		A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */; };
 		A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22816A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m */; };
 		A9A3F22B16A93BAB000B4D62 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F22A16A93BAB000B4D62 /* Parse.framework */; };
@@ -196,6 +198,7 @@
 		A93BE44F16BA62FF0005B38F /* UIImage+Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Account.m"; sourceTree = "<group>"; };
 		A93BE48016BA752A0005B38F /* SGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNavigationController.h; sourceTree = "<group>"; };
 		A93BE48116BA752B0005B38F /* SGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNavigationController.m; sourceTree = "<group>"; };
+		A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
 		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
@@ -248,6 +251,7 @@
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
 		A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPurchaser.swift; sourceTree = "<group>"; };
+		A9960B751A9DCAC700EAF035 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_ipad.h; sourceTree = "<group>"; };
 		A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryViewController_ipad.m; sourceTree = "<group>"; };
 		A9A3F22716A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_iphone.h; sourceTree = "<group>"; };
@@ -421,6 +425,7 @@
 				A93BA40D165F8D65003AD9AA /* SGLogger.h */,
 				A93BA40E165F8D65003AD9AA /* SGLogger.m */,
 				A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */,
+				A9960B751A9DCAC700EAF035 /* FeedItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -525,6 +530,15 @@
 				A91D230116AC076200D8FD58 /* SGTitleView.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		A942A9AE1A9F260000C69271 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */,
+			);
+			name = Util;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A95EA402165CDD8D00A58FB4 /* UpgradeView */ = {
@@ -701,6 +715,7 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
+				A942A9AE1A9F260000C69271 /* Util */,
 				A9DE39F51A8B597D00ABCBBE /* Data */,
 				A93F261116AE890E000B1B45 /* Storyboards */,
 				A9754D231696E830009E1D1F /* ViewControllers */,
@@ -991,6 +1006,7 @@
 				A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */,
 				A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */,
 				A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */,
+				A9960B761A9DCAC700EAF035 /* FeedItem.swift in Sources */,
 				A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */,
 				A91009CC164EF31B00779F84 /* SGCurrentBlogItemsGetter.m in Sources */,
 				A91009D41650084F00779F84 /* SGBlogEntryViewController.m in Sources */,
@@ -1039,6 +1055,7 @@
 				A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */,
 				A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */,
 				A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */,
+				A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */,
 				A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */,
 				A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */,
 				A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */,

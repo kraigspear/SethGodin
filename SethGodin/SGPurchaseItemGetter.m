@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import "NSDictionary-Expanded.h"
 #import "SGPurchaseItem.h"
-#import <Bolts.h>
+
 #import <Parse/Parse.h>
 
 @implementation SGPurchaseItemGetter
@@ -18,7 +18,6 @@
 @private
     NSDateFormatter *_dateFormatter;
 }
-
 
 - (id) init
 {
