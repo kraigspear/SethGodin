@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <StoreKit/StoreKit.h>
 #import "Seth_Godin-Swift.h"
 
 @class SGBlogEntry;
@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bottomImageView;
 @property (weak, nonatomic) IBOutlet UILabel *blogTitleLabel;
 
-@property (strong, nonatomic) FeedItem *feedItem;
+@property (strong, nonatomic) SGBlogEntry *blogEntry;
 
 @property (weak, nonatomic) IBOutlet UILabel *shareCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postDateLabel;

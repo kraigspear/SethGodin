@@ -146,7 +146,7 @@ public enum FeedType: Int
     
     private func stillHavePurchaseItemsToInsert(#purchaseItems:[SGPurchaseItem], index:Int) -> Bool
     {
-        return purchaseItems.count - 1 <= index
+        return purchaseItems.count - 1 >= index
     }
     
     private func shouldInsertPurchaseItem(#atBlogEntryCount: Int) -> Bool

@@ -38,6 +38,9 @@
 		A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE44F16BA62FF0005B38F /* UIImage+Account.m */; };
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
 		A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */; };
+		A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */; };
+		A942A9B51AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */; };
+		A942A9B71AA33DF000C69271 /* SGPurchaseItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */; };
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
@@ -199,6 +202,9 @@
 		A93BE48016BA752A0005B38F /* SGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNavigationController.h; sourceTree = "<group>"; };
 		A93BE48116BA752B0005B38F /* SGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNavigationController.m; sourceTree = "<group>"; };
 		A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
+		A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseItemCell.xib; sourceTree = "<group>"; };
+		A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mzi.pzlogzog.100x100-75.jpg"; sourceTree = "<group>"; };
+		A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPurchaseItemCell.swift; sourceTree = "<group>"; };
 		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
@@ -433,7 +439,8 @@
 		A91009D11650083200779F84 /* BlogEntry */ = {
 			isa = PBXGroup;
 			children = (
-				A9A3F21D16A6ADA9000B4D62 /* TableCell */,
+				A942A9B11AA334D200C69271 /* PurchaseItemCell */,
+				A9A3F21D16A6ADA9000B4D62 /* BlogEntryCell */,
 				A91009D21650084F00779F84 /* SGBlogEntryViewController.h */,
 				A91009D31650084F00779F84 /* SGBlogEntryViewController.m */,
 				A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */,
@@ -458,6 +465,7 @@
 		A9100A6016531E5800779F84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */,
 				A9E3221116B4B7750096AB6A /* sethsmall.png */,
 				A9E3221216B4B7750096AB6A /* sethsmall@2x.png */,
 				A9E3221316B4B7750096AB6A /* sethbig.png */,
@@ -539,6 +547,15 @@
 			);
 			name = Util;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		A942A9B11AA334D200C69271 /* PurchaseItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */,
+				A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */,
+			);
+			name = PurchaseItemCell;
 			sourceTree = "<group>";
 		};
 		A95EA402165CDD8D00A58FB4 /* UpgradeView */ = {
@@ -635,14 +652,14 @@
 			path = ToAddToYourProjects;
 			sourceTree = "<group>";
 		};
-		A9A3F21D16A6ADA9000B4D62 /* TableCell */ = {
+		A9A3F21D16A6ADA9000B4D62 /* BlogEntryCell */ = {
 			isa = PBXGroup;
 			children = (
 				A9F944311699C70800BBB6BE /* BlogEntryCell.xib */,
 				A9F944331699CA5E00BBB6BE /* SGBlogEntryCell.h */,
 				A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */,
 			);
-			name = TableCell;
+			name = BlogEntryCell;
 			sourceTree = "<group>";
 		};
 		A9A3F25916AAD552000B4D62 /* Login */ = {
@@ -715,12 +732,11 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
-				A942A9AE1A9F260000C69271 /* Util */,
+				A93F261216AE8926000B1B45 /* Views */,
 				A9DE39F51A8B597D00ABCBBE /* Data */,
 				A93F261116AE890E000B1B45 /* Storyboards */,
 				A9754D231696E830009E1D1F /* ViewControllers */,
 				A91009C6164EED9C00779F84 /* Model */,
-				A93F261216AE8926000B1B45 /* Views */,
 				A905B15D166627FB0092F3D0 /* SethGodin.entitlements */,
 				A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */,
 				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
@@ -734,6 +750,7 @@
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
 				A93BE48016BA752A0005B38F /* SGNavigationController.h */,
 				A93BE48116BA752B0005B38F /* SGNavigationController.m */,
+				A942A9AE1A9F260000C69271 /* Util */,
 			);
 			path = SethGodin;
 			sourceTree = "<group>";
@@ -933,6 +950,7 @@
 				A9100A6C1653A1B400779F84 /* load_text@2x.png in Resources */,
 				A97E883B1658464F00777A82 /* BookCellView.xib in Resources */,
 				A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */,
+				A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */,
 				A95EA3FD165C8DC800A58FB4 /* books.png in Resources */,
 				A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */,
 				A974FC0F16676ED200B29748 /* Icon@2x.png in Resources */,
@@ -951,6 +969,7 @@
 				A9E3221716B4B7750096AB6A /* sethbig.png in Resources */,
 				A9E3221816B4B7750096AB6A /* sethbig@2x.png in Resources */,
 				A9A4A08516BD795200BE26CE /* Default.png in Resources */,
+				A942A9B51AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg in Resources */,
 				A9ABAC2716BD7ACB00282647 /* Default-Portrait@2x~ipad.png in Resources */,
 				A9ABAC2916BD7AF700282647 /* Default-Portrait~ipad.png in Resources */,
 				A9ABAC2B16BD7B1500282647 /* Default-Landscape@2x~ipad.png in Resources */,
@@ -1051,6 +1070,7 @@
 				A9F36A4416A3609600FF7CB6 /* BlockTextPromptAlertView.m in Sources */,
 				A9F36A4816A40D9A00FF7CB6 /* UIFont+General.m in Sources */,
 				A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */,
+				A942A9B71AA33DF000C69271 /* SGPurchaseItemCell.swift in Sources */,
 				A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */,
 				A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */,
 				A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */,
