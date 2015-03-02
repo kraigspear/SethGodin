@@ -41,9 +41,9 @@ NSString * const KEY_IMAGE             = @"image";
     self = [self init];
     
     _title        = [aDecoder decodeObjectForKey:KEY_TITLE];
-    _artistId     = [aDecoder decodeIntegerForKey:KEY_ARTIST];
+    _artistId     = (NSUInteger) [aDecoder decodeIntegerForKey:KEY_ARTIST];
     _releasedDate = [aDecoder decodeObjectForKey:KEY_RELEASED_ON];
-    _trackID      = [aDecoder decodeIntegerForKey:KEY_TRACK_ID];
+    _trackID      = (NSUInteger) [aDecoder decodeIntegerForKey:KEY_TRACK_ID];
     _imageURL     = [aDecoder decodeObjectForKey:KEY_TRACK_IMAGE_URL];
     
     if([aDecoder containsValueForKey:KEY_IMAGE])
@@ -69,12 +69,36 @@ NSString * const KEY_IMAGE             = @"image";
     
 }
 
-- (NSString*) purchaseUrlStr
+#pragma mark -
+#pragma mark image loading
+
+- (BFTask*) loadImage
 {
-    //https://itunes.apple.com/us/book/linchpin/id357913936?mt=11&uo=4&at=10lKRh
-    
-    
-    
+    BFTaskCompletionSource *completionSource = [BFTaskCompletionSource taskCompletionSource];
+
+    if (self.image)
+    {
+        [completionSource setResult:self.image];
+        return completionSource.task;
+    }
+
+    NSURL *url = [[NSURL alloc] initWithString:self.imageURL];
+
+    NSError *error;
+    NSData *imageData = [NSData dataWithContentsOfURL:url options:NSDataReadingMappedAlways error:&error];
+
+    if(error)
+    {
+        [completionSource setError:error];
+    }
+    else
+    {
+        UIImage *image = [UIImage imageWithData:imageData];
+        self.image = image;
+        [completionSource setResult:image];
+    }
+
+    return completionSource.task;
 }
 
 #pragma mark -

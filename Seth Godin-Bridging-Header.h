@@ -10,3 +10,4 @@
 #import "Bolts.h"
 #import "MBProgressHUD.h"
 #import "SGBlogItemsGetter.h"
+#import "UIImage+RSSSelection.h"

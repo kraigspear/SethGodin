@@ -15,6 +15,8 @@
  Share image and table cell divider.
  */
 + (UIImage*) bottomTableCellForSize:(CGSize) inSize;
++ (UIImage*) bottomTableCellForBooksForSize:(CGSize)inSize;
+
 + (UIImage*) searchButton;
 + (UIImage*) menuButton;
 

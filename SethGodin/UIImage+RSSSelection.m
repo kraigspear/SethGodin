@@ -9,8 +9,49 @@
 #import "UIImage+RSSSelection.h"
 #import "NSString+Util.h"
 #import "UIImage+BBlock.h"
+#import "UIColor+General.h"
 
 @implementation UIImage (RSSSelection)
+
++ (UIImage*) bottomTableCellForBooksForSize:(CGSize)inSize
+{
+     NSString *identifer = [NSString stringWithFormat:@"bottomTableCellForBooksForSize%@", NSStringFromCGSize(inSize)];
+    
+     return [UIImage imageWithIdentifier:identifer forSize:inSize andDrawingBlock:^
+            {
+                //// General Declarations
+                CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+                CGContextRef context = UIGraphicsGetCurrentContext();
+                
+                //// Color Declarations
+                UIColor* yellow = [UIColor colorWithRed: 1 green: 0.811 blue: 0 alpha: 1];
+                CGFloat yellowHSBA[4];
+                [yellow getHue: &yellowHSBA[0] saturation: &yellowHSBA[1] brightness: &yellowHSBA[2] alpha: &yellowHSBA[3]];
+                
+                UIColor* color = [UIColor colorWithHue: 0.1 saturation: yellowHSBA[1] brightness: yellowHSBA[2] alpha: yellowHSBA[3]];
+                
+                //// Gradient Declarations
+                CGFloat gradientLocations[] = {0, 0.11, 0.21, 0.78, 1};
+                CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)@[(id)color.CGColor, (id)[color blendedColorWithFraction: 0.5 ofColor: yellow].CGColor, (id)yellow.CGColor, (id)yellow.CGColor, (id)color.CGColor], gradientLocations);
+                
+                CGRect frame = CGRectMake(0, 0, inSize.width, inSize.height);
+                
+                //// bottomLineImage Drawing
+                CGRect bottomLineImageRect = CGRectMake(CGRectGetMinX(frame) + floor(CGRectGetWidth(frame) * 0.00000 + 0.5), CGRectGetMinY(frame) + 34, floor(CGRectGetWidth(frame) * 1.00000 + 0.5) - floor(CGRectGetWidth(frame) * 0.00000 + 0.5), 5);
+                UIBezierPath* bottomLineImagePath = [UIBezierPath bezierPathWithRect: bottomLineImageRect];
+                CGContextSaveGState(context);
+                [bottomLineImagePath addClip];
+                CGContextDrawLinearGradient(context, gradient,
+                                            CGPointMake(CGRectGetMidX(bottomLineImageRect) + 142.73 * CGRectGetWidth(bottomLineImageRect) / 320, CGRectGetMidY(bottomLineImageRect) + 97.87 * CGRectGetHeight(bottomLineImageRect) / 5),
+                                            CGPointMake(CGRectGetMidX(bottomLineImageRect) + -143.54 * CGRectGetWidth(bottomLineImageRect) / 320, CGRectGetMidY(bottomLineImageRect) + 128.63 * CGRectGetHeight(bottomLineImageRect) / 5),
+                                            kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+                CGContextRestoreGState(context);
+                
+                //// Cleanup
+                CGGradientRelease(gradient);
+                CGColorSpaceRelease(colorSpace);
+            }];
+}
 
 + (UIImage*) bottomTableCellForSize:(CGSize) inSize
 {

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Bolts.h"
 
 /**
  An item that can be purchased on iTunes.
@@ -16,7 +16,7 @@
 
 /**
  The artist ID from iTunes.
- That can be Author, Band. Basicly the content creator.
+ That can be Author, Band. Basically the content creator.
  */
 @property (nonatomic, readonly) NSUInteger artistId;
 
@@ -51,6 +51,7 @@
  */
 - (void) purchase;
 
+- (BFTask*) loadImage;
 
 /**
  Initilize the purchase item with readonly data members

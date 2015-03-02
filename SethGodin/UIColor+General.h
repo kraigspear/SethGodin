@@ -16,6 +16,7 @@
 + (UIColor*) tableCellBackgroundColor;
 + (UIColor*) menuBackgroundColor;
 
+- (UIColor*)blendedColorWithFraction: (CGFloat)fraction ofColor: (UIColor*)color2;
 
 + (UIColor*) menuTitleBarBackgroundColor;
 + (UIColor*) menuTitleBarTextColor;

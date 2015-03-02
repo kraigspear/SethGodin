@@ -14,36 +14,62 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="All Marketers Are Liars" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Ess-yb-bIA" userLabel="titleLabel">
-                        <rect key="frame" x="101" y="8" width="199" height="44"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="All marketers are liars" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="199" translatesAutoresizingMaskIntoConstraints="NO" id="Ess-yb-bIA" userLabel="titleLabel">
+                        <rect key="frame" x="101" y="-2" width="199" height="58"/>
                         <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="250" constant="28" id="8TU-SB-hcL"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="P5F-td-lhs"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="P5F-td-lhs"/>
+                            </mask>
+                        </variation>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mzi.pzlogzog.100x100-75.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jfA-6K-U9S" userLabel="bookImage">
-                        <rect key="frame" x="8" y="8" width="85" height="135"/>
+                        <rect key="frame" x="8" y="-2" width="85" height="135"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="135" id="Ll1-f6-oV9"/>
                             <constraint firstAttribute="width" constant="85" id="zeh-Zk-uXU"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="phX-if-nFX">
+                        <rect key="frame" x="0.0" y="136" width="320" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="8e3-hw-Eep"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="phX-if-nFX" secondAttribute="trailing" id="4pQ-eJ-Ltx"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Ess-yb-bIA" secondAttribute="trailing" constant="12" id="7fM-3n-myq"/>
+                    <constraint firstItem="jfA-6K-U9S" firstAttribute="bottom" secondItem="ghC-sC-oAE" secondAttribute="bottomMargin" priority="750" id="L5s-pt-dYH"/>
                     <constraint firstAttribute="bottomMargin" secondItem="jfA-6K-U9S" secondAttribute="bottom" id="Tek-Bh-jQf"/>
+                    <constraint firstItem="phX-if-nFX" firstAttribute="leading" secondItem="ghC-sC-oAE" secondAttribute="leading" id="XdD-an-PV4"/>
                     <constraint firstItem="Ess-yb-bIA" firstAttribute="leading" secondItem="jfA-6K-U9S" secondAttribute="trailing" constant="8" id="Y4M-RK-Ava"/>
                     <constraint firstItem="jfA-6K-U9S" firstAttribute="leading" secondItem="ghC-sC-oAE" secondAttribute="leadingMargin" id="Y5C-Lz-4nd"/>
-                    <constraint firstItem="Ess-yb-bIA" firstAttribute="top" secondItem="ghC-sC-oAE" secondAttribute="topMargin" id="emc-Ho-7Rb"/>
-                    <constraint firstItem="jfA-6K-U9S" firstAttribute="top" secondItem="ghC-sC-oAE" secondAttribute="topMargin" id="u0d-82-yWP"/>
+                    <constraint firstItem="Ess-yb-bIA" firstAttribute="top" secondItem="ghC-sC-oAE" secondAttribute="topMargin" constant="-10" id="emc-Ho-7Rb"/>
+                    <constraint firstItem="Ess-yb-bIA" firstAttribute="bottom" secondItem="ghC-sC-oAE" secondAttribute="bottomMargin" id="fVf-Xq-YWp"/>
+                    <constraint firstAttribute="bottom" secondItem="phX-if-nFX" secondAttribute="bottom" id="pXY-pP-Oex"/>
+                    <constraint firstItem="jfA-6K-U9S" firstAttribute="top" secondItem="ghC-sC-oAE" secondAttribute="topMargin" constant="-10" id="u0d-82-yWP"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Tek-Bh-jQf"/>
+                        <exclude reference="fVf-Xq-YWp"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.97647058823529409" green="0.52549019607843139" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="bottomImageView" destination="phX-if-nFX" id="odg-5i-wlB"/>
                 <outlet property="thumbnailImageView" destination="jfA-6K-U9S" id="qrU-SV-yIB"/>
                 <outlet property="titleLabel" destination="Ess-yb-bIA" id="JTV-aQ-Veq"/>
             </connections>
-            <point key="canvasLocation" x="788" y="314"/>
+            <point key="canvasLocation" x="788" y="307"/>
         </tableViewCell>
     </objects>
     <resources>

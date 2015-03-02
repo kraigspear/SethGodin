@@ -98,4 +98,25 @@
 							blue:b / 255.0f
 						   alpha:1.0f];
 }
+
+//From PaintCode
+- (UIColor*)blendedColorWithFraction: (CGFloat)fraction ofColor: (UIColor*)color2
+{
+    UIColor* color1 = self;
+    
+    CGFloat r1 = 0, g1 = 0, b1 = 0, a1 = 0;
+    CGFloat r2 = 0, g2 = 0, b2 = 0, a2 = 0;
+    
+    
+    [color1 getRed: &r1 green: &g1 blue: &b1 alpha: &a1];
+    [color2 getRed: &r2 green: &g2 blue: &b2 alpha: &a2];
+    
+    CGFloat r = r1 * (1 - fraction) + r2 * fraction;
+    CGFloat g = g1 * (1 - fraction) + g2 * fraction;
+    CGFloat b = b1 * (1 - fraction) + b2 * fraction;
+    CGFloat a = a1 * (1 - fraction) + a2 * fraction;
+    
+    return [UIColor colorWithRed: r green: g blue: b alpha: a];
+}
+
 @end
