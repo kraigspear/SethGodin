@@ -73,7 +73,7 @@
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
 		A9960B721A9B2AA200EAF035 /* BookPurchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */; };
-		A9960B761A9DCAC700EAF035 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B751A9DCAC700EAF035 /* FeedItem.swift */; };
+		A9960B761A9DCAC700EAF035 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B751A9DCAC700EAF035 /* FeedLoader.swift */; };
 		A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */; };
 		A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22816A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m */; };
 		A9A3F22B16A93BAB000B4D62 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F22A16A93BAB000B4D62 /* Parse.framework */; };
@@ -257,7 +257,7 @@
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
 		A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPurchaser.swift; sourceTree = "<group>"; };
-		A9960B751A9DCAC700EAF035 /* FeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		A9960B751A9DCAC700EAF035 /* FeedLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_ipad.h; sourceTree = "<group>"; };
 		A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBlogEntryViewController_ipad.m; sourceTree = "<group>"; };
 		A9A3F22716A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_iphone.h; sourceTree = "<group>"; };
@@ -431,7 +431,7 @@
 				A93BA40D165F8D65003AD9AA /* SGLogger.h */,
 				A93BA40E165F8D65003AD9AA /* SGLogger.m */,
 				A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */,
-				A9960B751A9DCAC700EAF035 /* FeedItem.swift */,
+				A9960B751A9DCAC700EAF035 /* FeedLoader.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1025,7 +1025,7 @@
 				A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */,
 				A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */,
 				A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */,
-				A9960B761A9DCAC700EAF035 /* FeedItem.swift in Sources */,
+				A9960B761A9DCAC700EAF035 /* FeedLoader.swift in Sources */,
 				A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */,
 				A91009CC164EF31B00779F84 /* SGCurrentBlogItemsGetter.m in Sources */,
 				A91009D41650084F00779F84 /* SGBlogEntryViewController.m in Sources */,

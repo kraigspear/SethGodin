@@ -114,9 +114,7 @@ public enum FeedType: Int
         let source = BFTaskCompletionSource()
         
         var feedItems:[FeedItem] = []
-        var sortedPurchaseItems = purchaseItems
-        
-        sortedPurchaseItems.shuffle()
+        var shuffledPurchaseItems = purchaseItems.shuffled()
         
         var purchaseItemIndex = 0
         
@@ -128,9 +126,9 @@ public enum FeedType: Int
             
             if shouldInsertPurchaseItem(atBlogEntryCount: i)
             {
-                if stillHavePurchaseItemsToInsert(purchaseItems: sortedPurchaseItems, index: purchaseItemIndex)
+                if stillHavePurchaseItemsToInsert(purchaseItems: shuffledPurchaseItems, index: purchaseItemIndex)
                 {
-                    let purchaseItem = purchaseItems[purchaseItemIndex]
+                    let purchaseItem = shuffledPurchaseItems[purchaseItemIndex]
                     
                     feedItems.append(FeedItem.fromPurchaseItem(purchaseItem))
                     
