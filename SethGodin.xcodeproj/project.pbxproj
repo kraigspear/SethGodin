@@ -41,13 +41,11 @@
 		A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */; };
 		A942A9B51AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */; };
 		A942A9B71AA33DF000C69271 /* SGPurchaseItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */; };
+		A942A9BA1AA8550400C69271 /* SethGodinStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */; };
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
 		A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */; };
-		A95EA405165CDDC700A58FB4 /* SGUpdradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */; };
-		A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */; };
-		A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */; };
 		A9712AA01667B2EE00BAFCD9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */; };
 		A9712AA31667B2F900BAFCD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA21667B2F900BAFCD9 /* Default@2x.png */; };
 		A9712AA51667B78400BAFCD9 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA41667B78400BAFCD9 /* books@2x.png */; };
@@ -120,8 +118,6 @@
 		A9E3221816B4B7750096AB6A /* sethbig@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3221416B4B7750096AB6A /* sethbig@2x.png */; };
 		A9E82B4016C11C4E0043D8A5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E82B3F16C11C4E0043D8A5 /* Icon-72@2x.png */; };
 		A9E82B4216C11C600043D8A5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E82B4116C11C600043D8A5 /* Icon-72.png */; };
-		A9F369FC16A2FC1400FF7CB6 /* AskToPurchase.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F369FB16A2FC1400FF7CB6 /* AskToPurchase.xib */; };
-		A9F36A2E16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A2D16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m */; };
 		A9F36A4116A3609600FF7CB6 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3A16A3609600FF7CB6 /* BlockActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A9F36A4216A3609600FF7CB6 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3C16A3609600FF7CB6 /* BlockAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A9F36A4316A3609600FF7CB6 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3E16A3609600FF7CB6 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -205,17 +201,13 @@
 		A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseItemCell.xib; sourceTree = "<group>"; };
 		A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mzi.pzlogzog.100x100-75.jpg"; sourceTree = "<group>"; };
 		A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPurchaseItemCell.swift; sourceTree = "<group>"; };
+		A942A9B81AA8550400C69271 /* SethGodinStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SethGodinStyleKit.h; path = SethGodin/SethGodinStyleKit.h; sourceTree = "<group>"; };
+		A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SethGodinStyleKit.m; path = SethGodin/SethGodinStyleKit.m; sourceTree = "<group>"; };
 		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
 		A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUSerDefaults.h; sourceTree = "<group>"; };
 		A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUSerDefaults.m; sourceTree = "<group>"; };
-		A95EA403165CDDC700A58FB4 /* SGUpdradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUpdradeViewController.h; sourceTree = "<group>"; };
-		A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUpdradeViewController.m; sourceTree = "<group>"; };
-		A95EA406165CE19500A58FB4 /* UIImage+Upgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Upgrade.h"; sourceTree = "<group>"; };
-		A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Upgrade.m"; sourceTree = "<group>"; };
-		A95EA409165CE75400A58FB4 /* SGUpgradedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUpgradedViewController.h; sourceTree = "<group>"; };
-		A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUpgradedViewController.m; sourceTree = "<group>"; };
 		A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A9712AA21667B2F900BAFCD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A9712AA41667B78400BAFCD9 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
@@ -323,9 +315,6 @@
 		A9E3221416B4B7750096AB6A /* sethbig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sethbig@2x.png"; sourceTree = "<group>"; };
 		A9E82B3F16C11C4E0043D8A5 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		A9E82B4116C11C600043D8A5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		A9F369FB16A2FC1400FF7CB6 /* AskToPurchase.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AskToPurchase.xib; sourceTree = "<group>"; };
-		A9F36A2C16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAskToPurchaseViewController.h; sourceTree = "<group>"; };
-		A9F36A2D16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAskToPurchaseViewController.m; sourceTree = "<group>"; };
 		A9F36A3916A3609600FF7CB6 /* BlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActionSheet.h; sourceTree = "<group>"; };
 		A9F36A3A16A3609600FF7CB6 /* BlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActionSheet.m; sourceTree = "<group>"; };
 		A9F36A3B16A3609600FF7CB6 /* BlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAlertView.h; sourceTree = "<group>"; };
@@ -396,6 +385,10 @@
 			children = (
 				A90773E6167E5DE700056C41 /* SGAccountViewController.h */,
 				A90773E7167E5DE700056C41 /* SGAccountViewController.m */,
+				A9A3F25A16AAD578000B4D62 /* SGLoginViewController.h */,
+				A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */,
+				A9A3F25D16AADB8A000B4D62 /* SGSignUpViewController.h */,
+				A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */,
 				A93BE44E16BA62FF0005B38F /* UIImage+Account.h */,
 				A93BE44F16BA62FF0005B38F /* UIImage+Account.m */,
 			);
@@ -465,6 +458,8 @@
 		A9100A6016531E5800779F84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A942A9B81AA8550400C69271 /* SethGodinStyleKit.h */,
+				A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */,
 				A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */,
 				A9E3221116B4B7750096AB6A /* sethsmall.png */,
 				A9E3221216B4B7750096AB6A /* sethsmall@2x.png */,
@@ -558,17 +553,13 @@
 			name = PurchaseItemCell;
 			sourceTree = "<group>";
 		};
-		A95EA402165CDD8D00A58FB4 /* UpgradeView */ = {
+		A942A9C41AA85E1000C69271 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				A95EA403165CDDC700A58FB4 /* SGUpdradeViewController.h */,
-				A95EA404165CDDC700A58FB4 /* SGUpdradeViewController.m */,
-				A95EA406165CE19500A58FB4 /* UIImage+Upgrade.h */,
-				A95EA407165CE19500A58FB4 /* UIImage+Upgrade.m */,
-				A95EA409165CE75400A58FB4 /* SGUpgradedViewController.h */,
-				A95EA40A165CE75400A58FB4 /* SGUpgradedViewController.m */,
+				A93BE48016BA752A0005B38F /* SGNavigationController.h */,
+				A93BE48116BA752B0005B38F /* SGNavigationController.m */,
 			);
-			name = UpgradeView;
+			name = Navigation;
 			sourceTree = "<group>";
 		};
 		A974FBFC16676DEB00B29748 /* Icons */ = {
@@ -589,17 +580,16 @@
 		A9754D231696E830009E1D1F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A942A9C41AA85E1000C69271 /* Navigation */,
+				A90773E5167E5DD100056C41 /* Account */,
 				A9D6854E164D0D47007A9ADA /* BlogEntries */,
 				A91009D11650083200779F84 /* BlogEntry */,
-				A90773E5167E5DD100056C41 /* Account */,
 				A97E881E1657C71100777A82 /* WebView */,
 				A9F369FD16A2FC2600FF7CB6 /* PopupView */,
 				A9F94437169AD77900BBB6BE /* iPad */,
-				A95EA402165CDD8D00A58FB4 /* UpgradeView */,
 				A9100A511650F9D800779F84 /* Menu */,
 				A97E882E165843FA00777A82 /* BookPurchase */,
 				A9100A6D1654EE5100779F84 /* ArchiveSelection */,
-				A9A3F25916AAD552000B4D62 /* Login */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -660,17 +650,6 @@
 				A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */,
 			);
 			name = BlogEntryCell;
-			sourceTree = "<group>";
-		};
-		A9A3F25916AAD552000B4D62 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				A9A3F25A16AAD578000B4D62 /* SGLoginViewController.h */,
-				A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */,
-				A9A3F25D16AADB8A000B4D62 /* SGSignUpViewController.h */,
-				A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */,
-			);
-			name = Login;
 			sourceTree = "<group>";
 		};
 		A9D684D8164CFE8D007A9ADA = {
@@ -748,8 +727,6 @@
 				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
 				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
-				A93BE48016BA752A0005B38F /* SGNavigationController.h */,
-				A93BE48116BA752B0005B38F /* SGNavigationController.m */,
 				A942A9AE1A9F260000C69271 /* Util */,
 			);
 			path = SethGodin;
@@ -824,9 +801,6 @@
 		A9F369FD16A2FC2600FF7CB6 /* PopupView */ = {
 			isa = PBXGroup;
 			children = (
-				A9F369FB16A2FC1400FF7CB6 /* AskToPurchase.xib */,
-				A9F36A2C16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.h */,
-				A9F36A2D16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m */,
 			);
 			name = PopupView;
 			sourceTree = "<group>";
@@ -963,7 +937,6 @@
 				A9712AA71667BB9B00BAFCD9 /* books-iphone4.png in Resources */,
 				A90773ED167F2B0700056C41 /* userDefaults.plist in Resources */,
 				A9F944321699C70900BBB6BE /* BlogEntryCell.xib in Resources */,
-				A9F369FC16A2FC1400FF7CB6 /* AskToPurchase.xib in Resources */,
 				A9E3221516B4B7750096AB6A /* sethsmall.png in Resources */,
 				A9E3221616B4B7750096AB6A /* sethsmall@2x.png in Resources */,
 				A9E3221716B4B7750096AB6A /* sethbig.png in Resources */,
@@ -1052,17 +1025,14 @@
 				A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */,
 				A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */,
 				A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */,
-				A95EA405165CDDC700A58FB4 /* SGUpdradeViewController.m in Sources */,
-				A95EA408165CE19500A58FB4 /* UIImage+Upgrade.m in Sources */,
-				A95EA40B165CE75400A58FB4 /* SGUpgradedViewController.m in Sources */,
 				A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */,
 				A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */,
+				A942A9BA1AA8550400C69271 /* SethGodinStyleKit.m in Sources */,
 				A974FBF71667532C00B29748 /* SGAlertView.m in Sources */,
 				A90773E8167E5DE700056C41 /* SGAccountViewController.m in Sources */,
 				A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */,
 				A9F9443A169AD7B000BBB6BE /* SGMainViewController_ipad.m in Sources */,
 				A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */,
-				A9F36A2E16A32BAD00FF7CB6 /* SGAskToPurchaseViewController.m in Sources */,
 				A9F36A4116A3609600FF7CB6 /* BlockActionSheet.m in Sources */,
 				A9F36A4216A3609600FF7CB6 /* BlockAlertView.m in Sources */,
 				A91FAC451A949D1F0057F07C /* SethGodin.xcdatamodeld in Sources */,

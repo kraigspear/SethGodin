@@ -21,7 +21,7 @@
 + (UIImage*) previousButton;
 + (UIImage*) nextButton;
 + (UIImage*) defaultTitleBarImage;
-+ (UIImage*) andersonSpearCloudLogo;
++ (UIImage*) andersonSpearCloudLogo:(CGSize) size;
 + (UIImage*) titleBarWithTitle:(NSString*) inTitle usingBackgroundColor:(UIColor*) inColor;
 + (UIImage*) closeButtonWithColor:(UIColor*) inColor;
 

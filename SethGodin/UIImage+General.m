@@ -424,10 +424,10 @@
 }
 
 
-+ (UIImage*) andersonSpearCloudLogo
++ (UIImage*) andersonSpearCloudLogo:(CGSize) size
 {
     
-    return [UIImage imageWithIdentifier:@"andersonspearcloudlogo" forSize:CGSizeMake(160, 125) andDrawingBlock:^
+    return [UIImage imageWithIdentifier:@"andersonspearcloudlogo" forSize:size andDrawingBlock:^
             {
                 //// General Declarations
                 CGContextRef context = UIGraphicsGetCurrentContext();

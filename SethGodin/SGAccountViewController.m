@@ -7,17 +7,15 @@
 //
 
 #import "SGAccountViewController.h"
-#import "UIImage+General.h"
-#import "SGUSerDefaults.h"
 #import "SGFavoritesParse.h"
-#import "MBProgressHud.h"
 #import "SGLoginViewController.h"
 #import "SGSignUpViewController.h"
-#import "UIColor+General.h"
-#import "UIImage+General.h"
 #import "SGAppDelegate.h"
 #import "UIImage+Account.h"
 #import "SGFavorites.h"
+#import "UIScreen+Util.h"
+#import "Seth_Godin-Swift.h"
+#import "SethGodinStyleKit.h"
 
 @interface SGAccountViewController ()
 
@@ -93,22 +91,10 @@
 {
     if(self.signInButton.frame.size.height == 0) return;
     
-    UIImage *signInImage;
-    UIImage *accountImage;
+    UIImage *signInImage = [SethGodinStyleKit imageOfStandardButtonWithFrame:CGRectMake(0, 0, self.signInButton.frame.size.width, self.signInButton.frame.size.height) text:@"SIGN IN"];
     
-    if(UIInterfaceOrientationIsPortrait(self.interfaceOrientation))
-    {
-        signInImage = [UIImage buttonImageWithTitle:@"SIGN IN" atSize:self.signInButton.frame.size];
-        
-        accountImage = [UIImage buttonImageWithTitle:@"CREATE ACCOUNT" atSize:self.signInButton.frame.size];
-    }
-    else
-    {
-        signInImage = [UIImage buttonImageWithTitleLandscape:@"SIGN IN" atSize:self.signInButton.frame.size];
-        
-        accountImage = [UIImage buttonImageWithTitleLandscape:@"CREATE ACCOUNT" atSize:self.signInButton.frame.size];
-    }
-    
+    UIImage *accountImage = [SethGodinStyleKit imageOfStandardButtonWithFrame:CGRectMake(0, 0, self.signInButton.frame.size.width, self.signInButton.frame.size.height) text:@"CREATE ACCOUNT"];
+
     [self.signInButton setImage:signInImage forState:UIControlStateNormal];
     [self.createAccountButton  setImage:accountImage forState:UIControlStateNormal];
 }
@@ -288,9 +274,5 @@
     }
 }
 
-- (void) dealloc
-{
-    NSLog(@"SGAccountViewController dealloc");
-}
 
 @end

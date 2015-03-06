@@ -61,6 +61,7 @@ import UIKit
     
     private func populateImage(#fromPurchaseItem:SGPurchaseItem)
     {
+
         fromPurchaseItem.loadImage().continueWithSuccessBlock({[weak self] (task) -> AnyObject! in
             
             if let unwrapSelf = self

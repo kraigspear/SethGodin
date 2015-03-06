@@ -8,6 +8,9 @@
 
 #import "SGSignUpViewController.h"
 #import "UIImage+General.h"
+#import "UIColor+General.h"
+#import "UIImage+Account.h"
+#import "SethGodinStyleKit.h"
 
 @interface SGSignUpViewController ()
 
@@ -29,7 +32,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.signUpView.logo = [[UIImageView alloc] initWithImage:[UIImage andersonSpearCloudLogo]];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"SETH GODIN'S BLOG";
+    titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:30];
+    titleLabel.textColor = [UIColor whiteColor];
+    
+    self.signUpView.logo = titleLabel;
+    
+    self.signUpView.backgroundColor = [UIColor colorWithRed:1.000 green:0.600 blue:0.000 alpha:1];
+    
+    UIImage *buttonImage = [SethGodinStyleKit imageOfGreenBackground];
+    
+    [self.signUpView.signUpButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    
+    //222,48
+    
+    //self.view.backgroundColor = [UIColor blogEntryTitleBackgroundColor];
 }
 
 - (void)didReceiveMemoryWarning

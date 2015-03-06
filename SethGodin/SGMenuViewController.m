@@ -10,7 +10,6 @@
 #import "UIImage+General.h"
 #import "UIImage+Menu.h"
 #import "SGArchiveSelectionViewController.h"
-#import "SGUpdradeViewController.h"
 #import "SGNotifications.h"
 #import "SGUserDefaults.h"
 #import "UIColor+General.h"
@@ -31,9 +30,6 @@
     
     NSArray *_portraitConstraints;
     NSArray *_landscapeConstraints;
-    
-    BOOL    _showingUpgradeView;
-
 }
 
 NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
@@ -113,22 +109,6 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [self updateConstraintsForOrientation:self.interfaceOrientation];
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    //If we are back from asking to upgrade and we did upgrade, then go to favorites.
-    if(_showingUpgradeView)
-    {
-        if([[SGUserDefaults sharedInstance] isUpgraded])
-        {
-            [self selectFavorites];
-        }
-    }
-    
-    _showingUpgradeView = NO;
-    
-}
 
 - (void) updateConstraintsForOrientation:(UIInterfaceOrientation) toInterfaceOrientation
 {
@@ -286,16 +266,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 
 - (void) favoritesAction:(id)sender
 {
-    
-    if([SGUserDefaults sharedInstance].isUpgraded)
-    {
-        [self selectFavorites];
-    }
-    else
-    {
-        [self showUpradeView];
-    }
-    
+    [self selectFavorites];
 }
 
 - (void) booksAction:(id) sender
@@ -316,11 +287,6 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [self performSegueWithIdentifier:@"archivesSegue" sender:self];
 }
 
-- (void) showUpradeView
-{
-    _showingUpgradeView = YES;
-    [self performSegueWithIdentifier:SEGUE_MENU_TO_UPGRADE sender:self];
-}
 
 - (BOOL)shouldAutorotate
 {
@@ -330,18 +296,6 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 - (NSUInteger)supportedInterfaceOrientations
 {
     return (UIInterfaceOrientationMaskPortrait);
-}
-
-#pragma mark -
-#pragma mark segue
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([segue.identifier isEqualToString:SEGUE_MENU_TO_UPGRADE])
-    {
-        SGUpdradeViewController *vc = segue.destinationViewController;
-        vc.popbackViewController = self;
-    }
 }
 
 

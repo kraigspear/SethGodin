@@ -29,7 +29,6 @@
 {
     [super viewDidLoad];
     self.signUpController = [[SGSignUpViewController alloc] init];
-    self.logInView.logo = [[UIImageView alloc] initWithImage:[UIImage andersonSpearCloudLogo]];
 }
 
 - (void)didReceiveMemoryWarning

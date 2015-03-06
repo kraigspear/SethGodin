@@ -7,7 +7,6 @@
 //
 
 #import "SGArchiveSelectionViewController.h"
-#import "SGUpdradeViewController.h"
 #import "UIImage+General.h"
 #import "NSDate+General.h"
 #import "SGNotifications.h"
@@ -193,14 +192,7 @@ const NSUInteger MIN_YEAR = 2002;
 
 - (IBAction)goAction:(id)sender
 {
-    if([SGUserDefaults sharedInstance].isUpgraded)
-    {
-        [self selectFeed];
-    }
-    else
-    {
-        [self askToPurchase:sender];
-    }
+    [self selectFeed];
 }
 
 - (void) selectFeed
@@ -216,35 +208,6 @@ const NSUInteger MIN_YEAR = 2002;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) askToPurchase:(id) sender
-{
-    [[SGLogger sharedInstance] logAskToPurchaseFrom:@"Archive"];
-    
-    if(IS_IPAD)
-    {
-        [self askToPurchaseOniPad:sender];
-    }
-    else
-    {
-        SGUpdradeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"askToUpgrade"];
-        vc.popbackViewController = self;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-}
-
-- (void) askToPurchaseOniPad:(id) sender
-{
-    SGAskToPurchaseViewController *askToPurchaseViewController = [[SGAskToPurchaseViewController alloc] init];
-    
-    askToPurchaseViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-    
-   [[SGMainViewController_ipad sharedInstance] presentViewController:askToPurchaseViewController animated:YES completion:^
-    {
-        
-    }];
-    
-    
-}
 
 #pragma mark -
 #pragma mark SGTitleViewDelegate
