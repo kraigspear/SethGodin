@@ -46,7 +46,7 @@
         {
             NSString *trackIdStr = book[@"trackId"];
             NSUInteger trackInt = (NSUInteger) trackIdStr.integerValue;
-            NSNumber *trackNum = [NSNumber numberWithUnsignedLong:trackInt];
+            NSNumber *trackNum = @(trackInt);
             [bookIds addObject:trackNum];
         }
         
@@ -84,7 +84,7 @@
              {
                  SGPurchaseItem *purchaseItem = obj;
                  
-                 NSNumber *trackIdNum = [NSNumber numberWithUnsignedLong:purchaseItem.trackID];
+                 NSNumber *trackIdNum = @(purchaseItem.trackID);
                  
                  NSUInteger trackIndex = [idsToFilter indexOfObject:trackIdNum];
                  
@@ -124,13 +124,6 @@
 
 };
 
-- (NSString*) cacheFile
-{
-    NSArray *documentDirectories =
-	NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    return [documentDirectories[0] stringByAppendingPathComponent:@"storeitems.dat"];
-}
-
 - (NSArray*) itemsForDictionary:(NSDictionary*) inDict
 {
     const NSInteger sethArtistID = 2072165;
@@ -153,10 +146,10 @@
         
         imageURL = [imageURL stringByReplacingOccurrencesOfString:@".100x100-75.jpg" withString:@".450x450-75.jpg"];
         
-        SGPurchaseItem *purchaseItem = [[SGPurchaseItem alloc] initWithTitle:title artest:(NSUInteger) artistID releasedOn:releasedOn trackId:trackID imageURL:imageURL];
+        SGPurchaseItem *purchaseItem = [[SGPurchaseItem alloc] initWithTitle:title artest:(NSUInteger) artistID releasedOn:releasedOn trackId:(NSUInteger) trackID imageURL:imageURL];
         
         [items addObject:purchaseItem];
-        [self fetchImageforPurchaseItem:purchaseItem];
+        [self fetchImageForPurchaseItem:purchaseItem];
     }
     
     [items sortUsingComparator:^NSComparisonResult(id obj1, id obj2)
@@ -177,7 +170,7 @@
     return items;
 }
 
-- (void) fetchImageforPurchaseItem:(SGPurchaseItem*) inItem
+- (void)fetchImageForPurchaseItem:(SGPurchaseItem*) inItem
 {
     NSURL *url = [NSURL URLWithString:inItem.imageURL];
     

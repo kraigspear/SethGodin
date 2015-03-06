@@ -72,19 +72,14 @@
     {
         case kArchive:
             return @"Archive";
-            break;
         case kFavorites:
             return @"favorites";
-            break;
         case kCurrent:
             return @"Current";
-            break;
         case kSearch:
             return @"Search";
-            break;
         default:
             return @"Unknown type";
-            break;
     }
 }
 

@@ -21,7 +21,6 @@
 		A9100A4F165044DD00779F84 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9100A4E165044DD00779F84 /* SystemConfiguration.framework */; };
 		A9100A541650F9EF00779F84 /* SGMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A531650F9EF00779F84 /* SGMenuViewController.m */; };
 		A9100A5816510AD500779F84 /* UIImage+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A5716510AD500779F84 /* UIImage+Menu.m */; };
-		A9100A5B165247C200779F84 /* SGFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A5A165247C200779F84 /* SGFavorites.m */; };
 		A9100A6216531E6300779F84 /* load_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9100A6116531E6300779F84 /* load_bg@2x.png */; };
 		A9100A6516531FEE00779F84 /* load_spinner.png in Resources */ = {isa = PBXBuildFile; fileRef = A9100A6316531FEE00779F84 /* load_spinner.png */; };
 		A9100A6616531FEE00779F84 /* load_spinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9100A6416531FEE00779F84 /* load_spinner@2x.png */; };
@@ -33,8 +32,6 @@
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
 		A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A91D230116AC076200D8FD58 /* SGTitleView.m */; };
 		A91FAC451A949D1F0057F07C /* SethGodin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */; };
-		A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */; };
-		A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BA40E165F8D65003AD9AA /* SGLogger.m */; };
 		A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE44F16BA62FF0005B38F /* UIImage+Account.m */; };
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
 		A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */; };
@@ -85,7 +82,6 @@
 		A9A3F23F16A93C46000B4D62 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F23E16A93C46000B4D62 /* MobileCoreServices.framework */; };
 		A9A3F24116A93C58000B4D62 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F24016A93C58000B4D62 /* Security.framework */; };
 		A9A3F24316A93C86000B4D62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A3F24216A93C86000B4D62 /* CoreLocation.framework */; };
-		A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */; };
 		A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */; };
 		A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */; };
 		A9A4A08216BD75CA00BE26CE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9A4A08116BD75CA00BE26CE /* MessageUI.framework */; };
@@ -127,6 +123,7 @@
 		A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */; };
 		A9F9443A169AD7B000BBB6BE /* SGMainViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94439169AD7B000BBB6BE /* SGMainViewController_ipad.m */; };
 		A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */; };
+		E63823D0DC57F546354762A5 /* SGFavoritesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = E6382BE32AC7FDE2706901EC /* SGFavoritesParse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,8 +169,6 @@
 		A9100A531650F9EF00779F84 /* SGMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMenuViewController.m; sourceTree = "<group>"; };
 		A9100A5616510AD500779F84 /* UIImage+Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Menu.h"; sourceTree = "<group>"; };
 		A9100A5716510AD500779F84 /* UIImage+Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Menu.m"; sourceTree = "<group>"; };
-		A9100A59165247C200779F84 /* SGFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavorites.h; sourceTree = "<group>"; };
-		A9100A5A165247C200779F84 /* SGFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavorites.m; sourceTree = "<group>"; };
 		A9100A6116531E6300779F84 /* load_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "load_bg@2x.png"; sourceTree = "<group>"; };
 		A9100A6316531FEE00779F84 /* load_spinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = load_spinner.png; sourceTree = "<group>"; };
 		A9100A6416531FEE00779F84 /* load_spinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "load_spinner@2x.png"; sourceTree = "<group>"; };
@@ -189,10 +184,6 @@
 		A91D230016AC076200D8FD58 /* SGTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTitleView.h; sourceTree = "<group>"; };
 		A91D230116AC076200D8FD58 /* SGTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTitleView.m; sourceTree = "<group>"; };
 		A91FAC441A949D1F0057F07C /* SethGodin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SethGodin.xcdatamodel; sourceTree = "<group>"; };
-		A93BA3FB165F800F003AD9AA /* SGInAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGInAppPurchase.h; sourceTree = "<group>"; };
-		A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGInAppPurchase.m; sourceTree = "<group>"; };
-		A93BA40D165F8D65003AD9AA /* SGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLogger.h; sourceTree = "<group>"; };
-		A93BA40E165F8D65003AD9AA /* SGLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLogger.m; sourceTree = "<group>"; };
 		A93BE44E16BA62FF0005B38F /* UIImage+Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Account.h"; sourceTree = "<group>"; };
 		A93BE44F16BA62FF0005B38F /* UIImage+Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Account.m"; sourceTree = "<group>"; };
 		A93BE48016BA752A0005B38F /* SGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNavigationController.h; sourceTree = "<group>"; };
@@ -265,8 +256,6 @@
 		A9A3F23E16A93C46000B4D62 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A9A3F24016A93C58000B4D62 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A9A3F24216A93C86000B4D62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		A9A3F24416A93D10000B4D62 /* SGFavoritesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesParse.h; sourceTree = "<group>"; };
-		A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesParse.m; sourceTree = "<group>"; };
 		A9A3F25A16AAD578000B4D62 /* SGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoginViewController.h; sourceTree = "<group>"; };
 		A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoginViewController.m; sourceTree = "<group>"; };
 		A9A3F25D16AADB8A000B4D62 /* SGSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSignUpViewController.h; sourceTree = "<group>"; };
@@ -333,6 +322,8 @@
 		A9F94444169EB84300BBB6BE /* SGMenuController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMenuController_iPad.h; sourceTree = "<group>"; };
 		A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMenuController_iPad.m; sourceTree = "<group>"; };
 		E1478ACAADC96543F8A5F96E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E638258A88D9F254A299F29C /* SGFavoritesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesParse.h; sourceTree = "<group>"; };
+		E6382BE32AC7FDE2706901EC /* SGFavoritesParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesParse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,21 +386,9 @@
 			name = Account;
 			sourceTree = "<group>";
 		};
-		A907DE39167B34E600CB9022 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				A9100A59165247C200779F84 /* SGFavorites.h */,
-				A9100A5A165247C200779F84 /* SGFavorites.m */,
-				A9A3F24416A93D10000B4D62 /* SGFavoritesParse.h */,
-				A9A3F24516A93D10000B4D62 /* SGFavoritesParse.m */,
-			);
-			name = Favorites;
-			sourceTree = "<group>";
-		};
 		A91009C6164EED9C00779F84 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A907DE39167B34E600CB9022 /* Favorites */,
 				A97E880C1656461D00777A82 /* ContentGetters */,
 				A9100A741656394600779F84 /* SGFeedSelection.h */,
 				A9100A751656394600779F84 /* SGFeedSelection.m */,
@@ -419,12 +398,10 @@
 				A97E883D1658F83D00777A82 /* SGPurchaseItem.m */,
 				A97E883F1659056C00777A82 /* SGPurchaseItemGetter.h */,
 				A97E88401659056C00777A82 /* SGPurchaseItemGetter.m */,
-				A93BA3FB165F800F003AD9AA /* SGInAppPurchase.h */,
-				A93BA3FC165F800F003AD9AA /* SGInAppPurchase.m */,
-				A93BA40D165F8D65003AD9AA /* SGLogger.h */,
-				A93BA40E165F8D65003AD9AA /* SGLogger.m */,
 				A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */,
 				A9960B751A9DCAC700EAF035 /* FeedLoader.swift */,
+				E638258A88D9F254A299F29C /* SGFavoritesParse.h */,
+				E6382BE32AC7FDE2706901EC /* SGFavoritesParse.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1005,7 +982,6 @@
 				A91009D71650231500779F84 /* UIImage+General.m in Sources */,
 				A9100A541650F9EF00779F84 /* SGMenuViewController.m in Sources */,
 				A9100A5816510AD500779F84 /* UIImage+Menu.m in Sources */,
-				A9100A5B165247C200779F84 /* SGFavorites.m in Sources */,
 				A9100A701654EF1D00779F84 /* SGArchiveSelectionViewController.m in Sources */,
 				A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */,
 				A9100A761656394600779F84 /* SGFeedSelection.m in Sources */,
@@ -1025,8 +1001,6 @@
 				A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */,
 				A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */,
 				A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */,
-				A93BA3FD165F800F003AD9AA /* SGInAppPurchase.m in Sources */,
-				A93BA40F165F8D65003AD9AA /* SGLogger.m in Sources */,
 				A942A9BA1AA8550400C69271 /* SethGodinStyleKit.m in Sources */,
 				A974FBF71667532C00B29748 /* SGAlertView.m in Sources */,
 				A90773E8167E5DE700056C41 /* SGAccountViewController.m in Sources */,
@@ -1042,13 +1016,13 @@
 				A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */,
 				A942A9B71AA33DF000C69271 /* SGPurchaseItemCell.swift in Sources */,
 				A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */,
-				A9A3F24616A93D10000B4D62 /* SGFavoritesParse.m in Sources */,
 				A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */,
 				A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */,
 				A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */,
 				A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */,
 				A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */,
 				A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */,
+				E63823D0DC57F546354762A5 /* SGFavoritesParse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

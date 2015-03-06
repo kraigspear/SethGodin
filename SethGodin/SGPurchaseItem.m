@@ -72,7 +72,7 @@ NSString * const KEY_IMAGE             = @"image";
 #pragma mark -
 #pragma mark image loading
 
-- (BFTask*) loadImage
+- (BFTask*) loadImage      //Used by Swift, so false positive about this method not begin used.
 {
     BFTaskCompletionSource *completionSource = [BFTaskCompletionSource taskCompletionSource];
 

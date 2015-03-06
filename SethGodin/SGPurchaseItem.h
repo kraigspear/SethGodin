@@ -46,15 +46,15 @@
  */
 @property (nonatomic, strong) UIImage *image;
 
-/**
- Purchase this item
- */
-- (void) purchase;
 
+//This is used in a swift method, so you may get a false postive about it not get used by AppCode.
+/**
+* Load the image assoicated with the Purchase Item
+*/
 - (BFTask*) loadImage;
 
 /**
- Initilize the purchase item with readonly data members
+ Initialize the purchase item with readonly data members
  @param inTitle  The title of the book
  @param inArtist The artist
  @param inDate The date the item was released

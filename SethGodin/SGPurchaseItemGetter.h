@@ -11,7 +11,7 @@
 #import <Bolts.h>
 
 /**
- Get's items that can be purchased
+ Gets items that can be purchased
  */
 @interface SGPurchaseItemGetter : NSObject
 
