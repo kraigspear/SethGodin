@@ -7,10 +7,8 @@
 //
 
 #import "SGSignUpViewController.h"
-#import "UIImage+General.h"
-#import "UIColor+General.h"
-#import "UIImage+Account.h"
 #import "SethGodinStyleKit.h"
+#import "UIColor+General.h"
 
 @interface SGSignUpViewController ()
 
@@ -40,7 +38,7 @@
     
     self.signUpView.logo = titleLabel;
     
-    self.signUpView.backgroundColor = [UIColor colorWithRed:1.000 green:0.600 blue:0.000 alpha:1];
+    self.signUpView.backgroundColor = [UIColor accountBackgroundColor];
     
     UIImage *buttonImage = [SethGodinStyleKit imageOfGreenBackground];
     

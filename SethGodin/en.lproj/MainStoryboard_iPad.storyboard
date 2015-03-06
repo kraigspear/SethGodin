@@ -344,7 +344,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="monthForwaredAction:" destination="GQf-Xa-Rt8" eventType="touchUpInside" id="1DA-yK-noN"/>
+                                                    <action selector="monthForwardAction:" destination="GQf-Xa-Rt8" eventType="touchUpInside" id="1DA-yK-noN"/>
                                                 </connections>
                                             </button>
                                         </subviews>

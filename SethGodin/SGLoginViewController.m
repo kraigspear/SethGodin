@@ -7,8 +7,9 @@
 //
 
 #import "SGLoginViewController.h"
-#import "UIImage+General.h"
 #import "SGSignUpViewController.h"
+#import "SethGodinStyleKit.h"
+#import "UIColor+General.h"
 
 @interface SGLoginViewController ()
 
@@ -28,6 +29,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = @"SETH GODIN'S BLOG";
+    titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:30];
+    titleLabel.textColor = [UIColor whiteColor];
+    self.logInView.logo = titleLabel;
+    self.logInView.backgroundColor = [UIColor accountBackgroundColor];
+    UIImage *buttonImage = [SethGodinStyleKit imageOfGreenBackground];
+    [self.logInView.logInButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+
     self.signUpController = [[SGSignUpViewController alloc] init];
 }
 

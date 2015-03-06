@@ -7,21 +7,14 @@
 //
 
 #import "SGBlogEntryViewController.h"
-#import "UIImage+RSSSelection.h"
 #import "UIColor+General.h"
 #import "UIImage+General.h"
-#import "UIImage+BBlock.h"
 #import "SGBlogEntry.h"
 #import "SGAppDelegate.h"
-#import "SGFavorites.h"
-#import "SGWebViewController.h"
-#import "NSString+Util.h"
 #import "AFNetworking.h"
 #import "BlockTypes.h"
 #import "SGFavoritesParse.h"
-#import "SGNotifications.h"
 #import "SVWebViewController.h"
-#import "SGFavoritesParse.h"
 
 
 @implementation SGBlogEntryViewController

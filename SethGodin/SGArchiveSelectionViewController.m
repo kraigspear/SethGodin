@@ -10,10 +10,6 @@
 #import "UIImage+General.h"
 #import "NSDate+General.h"
 #import "SGNotifications.h"
-#import "SGUSerDefaults.h"
-#import "SGLogger.h"
-#import "SGMainViewController_ipad.h"
-#import "SGAskToPurchaseViewController.h"
 #import "UIColor+General.h"
 #import "SGFavoritesParse.h"
 
@@ -25,7 +21,6 @@
 {
 @private
     NSUInteger _currentYear;
-    NSUInteger _currentMonth;
     NSDateFormatter *_dateFormatter;
 }
 
@@ -41,6 +36,8 @@ const NSUInteger MIN_YEAR = 2002;
     return self;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -66,7 +63,9 @@ const NSUInteger MIN_YEAR = 2002;
     [self.view addConstraint:self.goButtonHeightConstraint];
     
 }
+#pragma clang diagnostic pop
 
+//TODO This needs to be refactored to use size classes.
 - (CGFloat) heightConstantForOrientation:(UIInterfaceOrientation) inOrientation
 {
     if(UIInterfaceOrientationIsPortrait(inOrientation))
@@ -91,7 +90,6 @@ const NSUInteger MIN_YEAR = 2002;
     {
         return 0;
     }
-    return 0;
 }
 
 - (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -165,7 +163,7 @@ const NSUInteger MIN_YEAR = 2002;
 - (void) setMonth:(NSUInteger)month
 {
     _month = month;
-    self.monthLabel.text = [[_dateFormatter monthSymbols] objectAtIndex:self.month];
+    self.monthLabel.text = [_dateFormatter monthSymbols][self.month];
 }
 
 - (IBAction)monthBackAction:(id)sender
@@ -175,10 +173,10 @@ const NSUInteger MIN_YEAR = 2002;
     {
         previousMonth = 11;
     }
-    self.month = previousMonth;
+    self.month = (NSUInteger) previousMonth;
 }
 
-- (IBAction)monthForwaredAction:(id)sender
+- (IBAction)monthForwardAction:(id)sender
 {
     NSUInteger nextMonth = self.month + 1;
     

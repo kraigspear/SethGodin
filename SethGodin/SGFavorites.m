@@ -7,10 +7,7 @@
 //
 
 #import "SGFavorites.h"
-#import <CoreData/CoreData.h>
 #import "SGBlogEntry.h"
-#import "NSFileManager+Util.h"
-#import "SGNotifications.h"
 
 @implementation SGFavorites
 {
@@ -68,12 +65,6 @@ NSString * const KEY_FAVORITES = @"favorites";
     return self;
 }
 
-- (void) resetFavorites
-{
-    [_favorites removeAllObjects];
-    [self saveFavorites];
-}
-
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
     self = [[SGFavorites alloc] init];
@@ -103,23 +94,6 @@ NSString * const KEY_FAVORITES = @"favorites";
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     return [documentsDirectory stringByAppendingPathComponent:@"favorites.dat"];
-}
-
-- (void) addBlogEntry:(SGBlogEntry *)inEntry
-{
-    [_favorites addObject:inEntry];
-    [self saveFavorites];
-}
-
-- (void) removeBlogEntry:(SGBlogEntry*) inEntry
-{
-    [_favorites removeObject:inEntry];
-    [self saveFavorites];
-}
-
-- (BOOL) containsBlogEntry:(SGBlogEntry*) inEntry
-{
-    return [_favorites containsObject:inEntry];
 }
 
 @end

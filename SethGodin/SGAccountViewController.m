@@ -12,9 +12,6 @@
 #import "SGSignUpViewController.h"
 #import "SGAppDelegate.h"
 #import "UIImage+Account.h"
-#import "SGFavorites.h"
-#import "UIScreen+Util.h"
-#import "Seth_Godin-Swift.h"
 #import "SethGodinStyleKit.h"
 
 @interface SGAccountViewController ()
@@ -127,8 +124,6 @@
         }
     }
     
-    [self exportToParse];
-    
     if(IS_IPHONE)
     {
         if(_popToRoot)
@@ -163,10 +158,7 @@
          {
              if (error)
              {
-             }
-             else
-             {
-                 [self exportToParse];
+                 //TODO Show Error
              }
          }];
     }
@@ -264,14 +256,6 @@
     _loginViewController = nil;
     _oldUser = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) exportToParse
-{
-    if([SGFavorites favoritesFileExist])
-    {
-        [SGFavoritesParse exportFavoritesToParse];
-    }
 }
 
 

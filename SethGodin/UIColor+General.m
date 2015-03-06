@@ -21,12 +21,9 @@
     return [UIColor colorWithRed:1.000 green:0.600 blue:0.000 alpha:1];
 }
 
-+ (UIColor*) blogEntryTitleBackgroundColor
++ (UIColor *) accountBackgroundColor
 {
-    if(IS_IPAD)
-        return [UIColor blackColor];
-    else
-        return [UIColor tableCellBackgroundColor];
+    return [UIColor colorWithRed:1.000 green:0.600 blue:0.000 alpha:1];
 }
 
 + (UIColor*) itemsBackgroundColor

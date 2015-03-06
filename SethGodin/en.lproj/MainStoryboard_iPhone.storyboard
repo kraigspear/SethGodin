@@ -239,7 +239,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="monthForwaredAction:" destination="WiB-db-0vb" eventType="touchUpInside" id="nIy-Mx-sNK"/>
+                                                    <action selector="monthForwardAction:" destination="WiB-db-0vb" eventType="touchUpInside" id="nIy-Mx-sNK"/>
                                                 </connections>
                                             </button>
                                         </subviews>

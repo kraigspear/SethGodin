@@ -7,7 +7,6 @@
 //
 
 #import "SGFavoritesParse.h"
-#import "SGFavorites.h"
 #import <Parse/Parse.h>
 #import "SGNotifications.h"
 
@@ -56,13 +55,6 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     return query;
 }
 
-+ (void) archiveLastYear:(NSNumber*) outYear andMonth:(NSNumber*) outMonth
-{
-    PFUser *user = [PFUser currentUser];
-    outYear  = [user objectForKey:PARSE_ARCHIVE_YEAR];
-    outMonth = [user objectForKey:PARSE_ARCHIVE_MONTH];
-}
-
 + (void) updateUserLastArchiveSearchForMonth:(NSUInteger) inMonth year:(NSUInteger) year
 {
     PFUser *user = [PFUser currentUser];
@@ -79,7 +71,7 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
      {
          if(object)
          {
-             [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+             [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *deleteError)
              {
                  if(succeeded)
                  {
@@ -92,22 +84,6 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
              [SGFavoritesParse addBlogEntryToFavorites:inEntry];
          }
      }];
-}
-
-+ (void) removeBlogEntryFromFavorites:(SGBlogEntry*) inEntry
-{
-    PFQuery *query = [SGFavoritesParse queryForBlogEntry:inEntry];
-    
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error)
-    {
-        if(error)
-        {
-        }
-        else
-        {
-            [object deleteEventually];
-        }
-    }];
 }
 
 + (void) isBlogItemFavorite:(SGBlogEntry*) inBlogEntry success:(SWBoolBlock) inSuccess
@@ -179,27 +155,6 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     {
         
     }];
-}
-
-+ (void) exportFavoritesToParse
-{
-    if(![PFUser currentUser]) return;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-                   {
-                       NSLog(@"exporing to Parse");
-                       NSArray *favoritesToExport = [[SGFavorites sharedInstance] favorites];
-                       
-                       if(favoritesToExport.count > 0)
-                       {
-                           for(SGBlogEntry *oldFavorite in favoritesToExport)
-                           {
-                               [SGFavoritesParse addBlogEntryToFavorites:oldFavorite];
-                           }
-                           
-                           [SGFavorites deleteFavoritesFile];
-                       }
-                   });
 }
 
 

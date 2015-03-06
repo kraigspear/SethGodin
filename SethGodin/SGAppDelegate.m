@@ -7,13 +7,6 @@
 //
 
 #import "SGAppDelegate.h"
-#import "SGInAppPurchase.h"
-#import "SGUSerDefaults.h"
-#import "SGFavorites.h"
-#import "SGNotifications.h"
-#import "SGBlogEntry.h"
-#import "SGFavoritesParse.h"
-//#import <Raygun4iOS/Raygun.h>
 
 #import <Parse/Parse.h>
 

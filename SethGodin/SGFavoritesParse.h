@@ -16,7 +16,7 @@
 @interface SGFavoritesParse : NSObject
 
 + (void) addBlogEntryToFavorites:(SGBlogEntry*) inEntry;
-+ (void) removeBlogEntryFromFavorites:(SGBlogEntry*) inEntry;
+
 + (NSArray*) allFavorites;
 + (void) toggleBlogEntryAsAFavorite:(SGBlogEntry*) inEntry;
 + (void) isBlogItemFavorite:(SGBlogEntry*) inBlogEntry success:(SWBoolBlock) inSuccess;
@@ -24,9 +24,5 @@
 + (void) moveUserDataToCurrentUserFor:(PFUser*) oldUser;
 
 + (void) updateUserLastArchiveSearchForMonth:(NSUInteger) inMonth year:(NSUInteger) year;
-
-+ (void) archiveLastYear:(NSNumber*) outYear andMonth:(NSNumber*) outMonth;
-
-+ (void) exportFavoritesToParse;
 
 @end

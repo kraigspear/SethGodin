@@ -10,6 +10,8 @@
 
 @interface UIColor (General)
 
++ (UIColor *)accountBackgroundColor;
+
 + (UIColor*) itemsBackgroundColor;
 + (UIColor*) colorWithHexString:(NSString *)stringToConvert;
 + (UIColor*) titlebarBackgroundColor;
@@ -21,7 +23,6 @@
 + (UIColor*) menuTitleBarBackgroundColor;
 + (UIColor*) menuTitleBarTextColor;
 
-+ (UIColor*) blogEntryTitleBackgroundColor;
 + (UIColor*) titlebarTextColor;
 + (UIColor*) textColorSelected;
 
