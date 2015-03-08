@@ -32,7 +32,6 @@
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
 		A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A91D230116AC076200D8FD58 /* SGTitleView.m */; };
 		A91FAC451A949D1F0057F07C /* SethGodin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */; };
-		A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE44F16BA62FF0005B38F /* UIImage+Account.m */; };
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
 		A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */; };
 		A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */; };
@@ -42,7 +41,7 @@
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
-		A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */; };
+		A95EA401165CDBC100A58FB4 /* SGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */; };
 		A9712AA01667B2EE00BAFCD9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */; };
 		A9712AA31667B2F900BAFCD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA21667B2F900BAFCD9 /* Default@2x.png */; };
 		A9712AA51667B78400BAFCD9 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA41667B78400BAFCD9 /* books@2x.png */; };
@@ -184,8 +183,6 @@
 		A91D230016AC076200D8FD58 /* SGTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTitleView.h; sourceTree = "<group>"; };
 		A91D230116AC076200D8FD58 /* SGTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTitleView.m; sourceTree = "<group>"; };
 		A91FAC441A949D1F0057F07C /* SethGodin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SethGodin.xcdatamodel; sourceTree = "<group>"; };
-		A93BE44E16BA62FF0005B38F /* UIImage+Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Account.h"; sourceTree = "<group>"; };
-		A93BE44F16BA62FF0005B38F /* UIImage+Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Account.m"; sourceTree = "<group>"; };
 		A93BE48016BA752A0005B38F /* SGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNavigationController.h; sourceTree = "<group>"; };
 		A93BE48116BA752B0005B38F /* SGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNavigationController.m; sourceTree = "<group>"; };
 		A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
@@ -197,8 +194,8 @@
 		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
-		A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUSerDefaults.h; sourceTree = "<group>"; };
-		A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUSerDefaults.m; sourceTree = "<group>"; };
+		A95EA3FF165CDBC100A58FB4 /* SGUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUserDefaults.h; sourceTree = "<group>"; };
+		A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUserDefaults.m; sourceTree = "<group>"; };
 		A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A9712AA21667B2F900BAFCD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A9712AA41667B78400BAFCD9 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
@@ -380,8 +377,6 @@
 				A9A3F25B16AAD578000B4D62 /* SGLoginViewController.m */,
 				A9A3F25D16AADB8A000B4D62 /* SGSignUpViewController.h */,
 				A9A3F25E16AADB8A000B4D62 /* SGSignUpViewController.m */,
-				A93BE44E16BA62FF0005B38F /* UIImage+Account.h */,
-				A93BE44F16BA62FF0005B38F /* UIImage+Account.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -467,6 +462,28 @@
 				A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */,
 			);
 			name = ArchiveSelection;
+			sourceTree = "<group>";
+		};
+		A9186D151AACC3E300B4B838 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
+				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
+				A95EA3FF165CDBC100A58FB4 /* SGUserDefaults.h */,
+				A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */,
+				A97E880916563CD800777A82 /* SGNotifications.h */,
+				A97E880A16563CD800777A82 /* SGNotifications.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		A9186D161AACC43600B4B838 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
+				A9D838591659853F00A79669 /* SGLoadingAnimation.m */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		A91FAC391A9342920057F07C /* AppImages */ = {
@@ -688,21 +705,15 @@
 		A9D684ED164CFE8D007A9ADA /* SethGodin */ = {
 			isa = PBXGroup;
 			children = (
+				A9186D151AACC3E300B4B838 /* Application */,
+				A9754D231696E830009E1D1F /* ViewControllers */,
 				A93F261216AE8926000B1B45 /* Views */,
+				A9186D161AACC43600B4B838 /* Animations */,
 				A9DE39F51A8B597D00ABCBBE /* Data */,
 				A93F261116AE890E000B1B45 /* Storyboards */,
-				A9754D231696E830009E1D1F /* ViewControllers */,
 				A91009C6164EED9C00779F84 /* Model */,
 				A905B15D166627FB0092F3D0 /* SethGodin.entitlements */,
 				A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */,
-				A9D684F6164CFE8D007A9ADA /* SGAppDelegate.h */,
-				A9D684F7164CFE8D007A9ADA /* SGAppDelegate.m */,
-				A9D838581659853E00A79669 /* SGLoadingAnimation.h */,
-				A9D838591659853F00A79669 /* SGLoadingAnimation.m */,
-				A97E880916563CD800777A82 /* SGNotifications.h */,
-				A97E880A16563CD800777A82 /* SGNotifications.m */,
-				A95EA3FF165CDBC100A58FB4 /* SGUSerDefaults.h */,
-				A95EA400165CDBC100A58FB4 /* SGUSerDefaults.m */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
 				A942A9AE1A9F260000C69271 /* Util */,
 			);
@@ -1000,7 +1011,7 @@
 				A97E88591659212100777A82 /* SGBookCellView.m in Sources */,
 				A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */,
 				A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */,
-				A95EA401165CDBC100A58FB4 /* SGUSerDefaults.m in Sources */,
+				A95EA401165CDBC100A58FB4 /* SGUserDefaults.m in Sources */,
 				A942A9BA1AA8550400C69271 /* SethGodinStyleKit.m in Sources */,
 				A974FBF71667532C00B29748 /* SGAlertView.m in Sources */,
 				A90773E8167E5DE700056C41 /* SGAccountViewController.m in Sources */,
@@ -1020,7 +1031,6 @@
 				A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */,
 				A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */,
 				A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */,
-				A93BE45016BA62FF0005B38F /* UIImage+Account.m in Sources */,
 				A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */,
 				E63823D0DC57F546354762A5 /* SGFavoritesParse.m in Sources */,
 			);

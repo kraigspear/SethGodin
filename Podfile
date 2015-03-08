@@ -9,6 +9,7 @@ pod 'Reveal-iOS-SDK'
 pod 'ParseUI'
 pod 'MBProgressHUD'
 pod 'SVWebViewController'
+pod 'Masonry'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 
 

@@ -9,6 +9,7 @@
 #import "SGTitleView.h"
 #import "UIFont+General.h"
 #import "UIColor+General.h"
+#import "Masonry.h"
 
 @implementation SGTitleView
 {
@@ -65,16 +66,17 @@
     {
         label.textColor = [UIColor menuTitleBarTextColor];
     }
-    
+
+    [self addSubview:label];
+
     NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    
     NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:label attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:5];
     
     [self addConstraints:@[centerX, centerY]];
     
     _titleLabel = label;
     
-    [self addSubview:label];
+
 }
 
 - (void) addRightButton
@@ -90,7 +92,6 @@
     [self addSubview:rightButton];
     
     NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:rightButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_titleLabel attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    
     NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:rightButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1 constant:-5];
     
     [self addConstraints:@[centerY, trailing]];

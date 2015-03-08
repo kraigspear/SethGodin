@@ -11,8 +11,8 @@
 #import "SGLoginViewController.h"
 #import "SGSignUpViewController.h"
 #import "SGAppDelegate.h"
-#import "UIImage+Account.h"
 #import "SethGodinStyleKit.h"
+#import "UIColor+General.h"
 
 @interface SGAccountViewController ()
 
@@ -45,15 +45,6 @@
 }
 
 
-- (NSString*) userName
-{
-    if(![PFUser currentUser]) return @"";
-    
-    if([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) return @"Guest";
-    
-    return [PFUser currentUser].username;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -70,7 +61,7 @@
         
     }
     
-    self.view.backgroundColor =  [UIColor colorWithPatternImage:[UIImage backgroundImageForUserSignedIn:[self userName] atOrientation:self.interfaceOrientation]];
+    self.view.backgroundColor =  [UIColor accountBackgroundColor];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -94,12 +85,6 @@
 
     [self.signInButton setImage:signInImage forState:UIControlStateNormal];
     [self.createAccountButton  setImage:accountImage forState:UIControlStateNormal];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark -

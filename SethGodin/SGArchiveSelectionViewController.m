@@ -55,54 +55,9 @@ const NSUInteger MIN_YEAR = 2002;
     [self.rightArrowMonthButton setImage:[UIImage rightArrow] forState:UIControlStateNormal];
     
     [self.view removeConstraint:self.goButtonHeightConstraint];
-    
-    CGFloat heightContant = [self heightConstantForOrientation:self.interfaceOrientation];
-    
-    self.goButtonHeightConstraint = [NSLayoutConstraint constraintWithItem:self.goButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:.4 constant:heightContant];
-    
-    [self.view addConstraint:self.goButtonHeightConstraint];
-    
+
 }
 #pragma clang diagnostic pop
-
-//TODO This needs to be refactored to use size classes.
-- (CGFloat) heightConstantForOrientation:(UIInterfaceOrientation) inOrientation
-{
-    if(UIInterfaceOrientationIsPortrait(inOrientation))
-    {
-        if(IS_IPHONE)
-        {
-           if(IS_IPHONE5)
-           {
-               return 100;
-           }
-           else
-           {
-               return 50;
-           }
-        }
-        else
-        {
-            return 0;
-        }
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    
-    if(IS_IPHONE)
-    {
-        CGFloat heightContant = [self heightConstantForOrientation:toInterfaceOrientation];
-        self.goButtonHeightConstraint.constant = heightContant;
-        [self.view layoutIfNeeded];
-    }
-}
 
 
 - (void) viewDidLayoutSubviews
