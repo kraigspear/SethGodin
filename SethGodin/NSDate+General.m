@@ -21,7 +21,8 @@ static NSCalendar *_calendar;
 - (NSUInteger) year
 {
     NSCalendar *calendar = [NSDate currentCalendar];
-    unsigned unitFlags = NSYearCalendarUnit;
+    unsigned unitFlags = NSCalendarUnitYear;
+    
     NSDateComponents *comps = [calendar components:unitFlags fromDate:self];
     return comps.year;
 }
@@ -29,7 +30,7 @@ static NSCalendar *_calendar;
 - (NSUInteger) month
 {
     NSCalendar *calendar = [NSDate currentCalendar];
-    unsigned unitFlags = NSMonthCalendarUnit;
+    unsigned unitFlags = NSCalendarUnitMonth;
     NSDateComponents *comps = [calendar components:unitFlags fromDate:self];
     return comps.month;
 }
@@ -43,8 +44,8 @@ static NSCalendar *_calendar;
 {
     NSCalendar *calendar = [NSDate currentCalendar];
     
-	NSDateComponents* components1 = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self];
-	NSDateComponents* components2 = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:anotherDate];
+	NSDateComponents* components1 = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self];
+	NSDateComponents* components2 = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:anotherDate];
     
     if(components1.month != components2.month) return NO;
     if(components1.day   != components2.day)     return NO;
@@ -57,7 +58,7 @@ static NSCalendar *_calendar;
 {
 	NSCalendar *sysCalendar = [NSDate currentCalendar];
 	
-	unsigned int unitFlags = NSMinuteCalendarUnit | NSSecondCalendarUnit;
+	unsigned int unitFlags = NSCalendarUnitMinute | NSCalendarUnitSecond;
 	
 	NSLog(@"self = %@ otherDate = %@ calendar = %@", self, otherDate, sysCalendar);
 	

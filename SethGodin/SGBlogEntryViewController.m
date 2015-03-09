@@ -74,45 +74,9 @@
 
 - (void) updateTitleForBlogEntry
 {
-    if(self.blogTitleLabel.frame.size.height == 0) return;
-    
-    CGSize size = CGSizeMake(self.blogTitleLabel.frame.size.width, 1000);
-    
-    UIFont *fontBlogItemTitle = [self fontForBlogItemTitle];
-    self.blogTitleLabel.font = fontBlogItemTitle;
-    
     NSString *titleText = self.blogEntry.title;
     self.blogTitleLabel.text = titleText;
- 
-    CGSize labelSize = [titleText sizeWithFont:fontBlogItemTitle constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
-    
-    CGFloat addToHeight;
-    
-    if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
-        addToHeight = 60;
-    else
-        addToHeight = 100;
-    
-    CGFloat height = labelSize.height + [self addToHeight];
-    
-    [self.view layoutIfNeeded];
-    
-    [UIView animateWithDuration:.3 animations:^
-    {
-        self.titleViewHeightConstraint.constant = height;
-        [self.view layoutIfNeeded];
-    }];
-    
     self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:self.blogEntry.datePublished];
-}
-
-
-- (CGFloat) addToHeight
-{
-    if(UIDeviceOrientationIsPortrait(self.interfaceOrientation))
-        return 60;
-    else
-        return 100;
 }
 
 - (UIFont*) fontForBlogItemTitle
