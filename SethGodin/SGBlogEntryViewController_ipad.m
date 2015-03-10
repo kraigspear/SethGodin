@@ -16,10 +16,7 @@
 @end
 
 @implementation SGBlogEntryViewController_ipad
-{
-@private
-    id _blogEntrySelected;
-}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +31,7 @@
 {
     [super viewDidLoad];
 	
-    _blogEntrySelected = [SGNotifications observeBlogEntrySelectedNotification:^(NSNotification *notification)
+    [SGNotifications observeBlogEntrySelectedNotification:^(NSNotification *notification)
                           {
                               self.blogEntry = notification.object;
                               [self viewDidLayoutSubviews];
@@ -42,11 +39,6 @@
     
     self.topView.backgroundColor = [UIColor blackColor];
     self.titleView.backgroundColor = [UIColor blackColor];
-}
-
-- (UIFont*) fontForBlogItemTitle
-{
-    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:35];
 }
 
 - (UIColor*) titleViewBackgroundColor

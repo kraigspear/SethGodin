@@ -20,9 +20,6 @@
 @implementation SGBlogEntryViewController
 {
 @private
-    id _blogEntrySelected;
-    SGFavoritesParse *_favorites;
-    __weak UIViewController *_menuController;
     CGPoint _scrollPointBeforeShowingWebView;
 }
 
@@ -37,7 +34,7 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.984 blue:0.937 alpha:1];
     
-    _favorites = [[SGFavoritesParse alloc] init];
+    [[SGFavoritesParse alloc] init];
     
     for (UIView* subView in self.webView.subviews)
     {
@@ -51,7 +48,6 @@
         }
     }
     
-    //self.webView.hidden = YES;
     self.webView.scrollView.scrollEnabled = NO;
     
     [self.shareButton setImage:[UIImage shareButton] forState:UIControlStateNormal];
@@ -60,6 +56,8 @@
     [self.favoritesButton setImage:[UIImage favoritesButton:YES] forState:UIControlStateSelected];
     
     [self updateButtonSelected];
+
+
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -77,11 +75,6 @@
     NSString *titleText = self.blogEntry.title;
     self.blogTitleLabel.text = titleText;
     self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:self.blogEntry.datePublished];
-}
-
-- (UIFont*) fontForBlogItemTitle
-{
-    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
 }
 
 - (void) setBlogEntry:(SGBlogEntry *) toEntry
@@ -138,15 +131,15 @@
     if(!self.blogEntry.content) return;
     
         NSString *htmlWithStyle = [NSString stringWithFormat:@" <html> \n"
-                                   "<head> <meta charset='utf-8'> \n"
-                                   "<style type=\"text/css\"> \n"
-                                   "body {font-family: \"%@\"; font-size: %@; margin: 20px; background-color: #FFF9E7; }\n"
-                                   "img, object {max-width:100%%; }\n"
-                                   "a {text-decoration: none; color: #FF9900; font-weight: bold;}  \n"
-                                   "</style> \n"
-                                   "</head> \n"
-                                   "<body>%@</body> \n"
-                                   "</html>", @"HelveticaNeue", [NSNumber numberWithInt:18], self.blogEntry.content];
+                                                                     "<head> <meta charset='utf-8'> \n"
+                                                                     "<style type=\"text/css\"> \n"
+                                                                     "body {font-family: \"%@\"; font-size: %@; margin: 20px; background-color: #FFF9E7; }\n"
+                                                                     "img, object {max-width:100%%; }\n"
+                                                                     "a {text-decoration: none; color: #FF9900; font-weight: bold;}  \n"
+                                                                     "</style> \n"
+                                                                     "</head> \n"
+                                                                     "<body>%@</body> \n"
+                                                                     "</html>", @"HelveticaNeue", @18, self.blogEntry.content];
         
         [self.webView loadHTMLString:htmlWithStyle baseURL:nil];
     
@@ -162,23 +155,6 @@
 {
     self.favoritesButton.selected = !self.favoritesButton.selected;
     [SGFavoritesParse toggleBlogEntryAsAFavorite:self.blogEntry];
-}
-
-- (void) showError:(NSError*) inError
-{
-    UIAlertController *alert = [[UIAlertController alloc] init];
-    alert.title = @"Error";
-    
-    alert.message = inError.code == 9 ? @"To save bookmarks you need a to have a valid iCloud account" : inError.localizedDescription;
-    
-    UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-    {
-        [alert dismissViewControllerAnimated:YES completion:nil];
-    }];
-    
-    [alert addAction:cancelAction];
-    
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark -

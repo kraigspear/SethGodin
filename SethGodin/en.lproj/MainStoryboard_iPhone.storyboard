@@ -850,7 +850,7 @@
                                 <rect key="frame" x="0.0" y="66" width="320" height="414"/>
                                 <subviews>
                                     <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhM-ij-3pw">
-                                        <rect key="frame" x="0.0" y="124" width="320" height="372"/>
+                                        <rect key="frame" x="0.0" y="132" width="320" height="372"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="372" id="hZf-Ur-wdh"/>
@@ -860,10 +860,25 @@
                                         </connections>
                                     </webView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3VA-GR-4p1" userLabel="titleView">
-                                        <rect key="frame" x="0.0" y="-8" width="320" height="132"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
                                         <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="750" text="Blog Entry" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Tg0-UB-r8x" userLabel="titleLabel">
+                                                <rect key="frame" x="20" y="0.0" width="280" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="97" id="Byu-tC-aQ1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nov 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxJ-gG-OUT" userLabel="dateLabel">
+                                                <rect key="frame" x="20" y="100" width="72" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqR-X2-zbU" userLabel="favoriteButton">
-                                                <rect key="frame" x="266" y="92" width="44" height="44"/>
+                                                <rect key="frame" x="266" y="88" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="ZI8-Oy-V32"/>
                                                     <constraint firstAttribute="width" constant="44" id="tzN-p1-3H2"/>
@@ -880,30 +895,17 @@
                                                     <action selector="favoritesAction:" destination="ZDt-iZ-e0h" eventType="touchUpInside" id="ldG-pJ-wdL"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Tg0-UB-r8x" userLabel="titleLabel">
-                                                <rect key="frame" x="20" y="0.0" width="280" height="132"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nov 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxJ-gG-OUT" userLabel="dateLabel">
-                                                <rect key="frame" x="20" y="105" width="72" height="21"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.52549019610000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="pxJ-gG-OUT" firstAttribute="centerY" secondItem="PqR-X2-zbU" secondAttribute="centerY" constant="1.5" id="1d3-qM-WOe"/>
                                             <constraint firstItem="Tg0-UB-r8x" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" id="4yP-oW-3Y0"/>
                                             <constraint firstAttribute="trailing" secondItem="Tg0-UB-r8x" secondAttribute="trailing" constant="20" id="5HY-Gg-RKk"/>
                                             <constraint firstItem="Tg0-UB-r8x" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="top" id="ANi-SV-Hzc"/>
                                             <constraint firstAttribute="trailing" secondItem="PqR-X2-zbU" secondAttribute="trailing" constant="10" id="IGd-E9-3IC"/>
-                                            <constraint firstItem="pxJ-gG-OUT" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" id="QRk-aW-hUz"/>
+                                            <constraint firstItem="pxJ-gG-OUT" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" id="Utx-Yg-cng"/>
+                                            <constraint firstAttribute="bottom" secondItem="PqR-X2-zbU" secondAttribute="bottom" id="h3R-X6-t9a"/>
                                             <constraint firstAttribute="height" constant="132" id="l0E-Sg-6S6"/>
-                                            <constraint firstAttribute="bottom" secondItem="PqR-X2-zbU" secondAttribute="bottom" constant="-4" id="rLY-Di-B7b"/>
-                                            <constraint firstItem="Tg0-UB-r8x" firstAttribute="height" secondItem="3VA-GR-4p1" secondAttribute="height" id="unZ-6m-X3n"/>
+                                            <constraint firstItem="PqR-X2-zbU" firstAttribute="centerY" secondItem="pxJ-gG-OUT" secondAttribute="centerY" id="r9I-K1-UHH"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -913,7 +915,7 @@
                                     <constraint firstItem="BhM-ij-3pw" firstAttribute="leading" secondItem="0FM-fy-IFY" secondAttribute="leading" id="3xw-ng-u0r"/>
                                     <constraint firstItem="BhM-ij-3pw" firstAttribute="trailing" secondItem="0FM-fy-IFY" secondAttribute="trailing" id="59c-ny-UE6"/>
                                     <constraint firstAttribute="bottom" secondItem="BhM-ij-3pw" secondAttribute="bottom" constant="28" id="YLF-3g-fHe"/>
-                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="top" secondItem="0FM-fy-IFY" secondAttribute="top" constant="-8" id="hCs-ww-Acb"/>
+                                    <constraint firstItem="3VA-GR-4p1" firstAttribute="top" secondItem="0FM-fy-IFY" secondAttribute="top" id="hCs-ww-Acb"/>
                                     <constraint firstItem="BhM-ij-3pw" firstAttribute="top" secondItem="3VA-GR-4p1" secondAttribute="bottom" id="qM9-HO-jeO"/>
                                     <constraint firstItem="BhM-ij-3pw" firstAttribute="centerX" secondItem="0FM-fy-IFY" secondAttribute="centerX" id="va1-KR-3Nj"/>
                                 </constraints>
@@ -937,6 +939,7 @@
                         <outlet property="favoritesButton" destination="PqR-X2-zbU" id="dT0-tb-i1c"/>
                         <outlet property="scrollView" destination="0FM-fy-IFY" id="Dwi-Gp-FWq"/>
                         <outlet property="titleView" destination="3VA-GR-4p1" id="0EI-Wo-CCG"/>
+                        <outlet property="titleViewHeightConstraint" destination="l0E-Sg-6S6" id="iaf-Le-ctE"/>
                         <outlet property="topView" destination="cXb-Vt-HXm" id="rVs-Ns-bXR"/>
                         <outlet property="webView" destination="BhM-ij-3pw" id="f8P-L1-Z9A"/>
                         <outlet property="webViewHeightConstraint" destination="hZf-Ur-wdh" id="qBY-ek-nLG"/>

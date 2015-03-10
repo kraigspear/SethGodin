@@ -75,8 +75,6 @@
     [self addConstraints:@[centerX, centerY]];
     
     _titleLabel = label;
-    
-
 }
 
 - (void) addRightButton

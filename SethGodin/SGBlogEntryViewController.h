@@ -66,13 +66,6 @@
  */
 - (void) updateTitleForBlogEntry;
 
-/**
- Font to be used for the title of the blog item. 
- Can be different on different devices.
- @return Font to be used for the blog item title.
- */
-- (UIFont*) fontForBlogItemTitle;
-
 
 /**
  Color to use for the blog header background
