@@ -75,6 +75,11 @@
     NSString *titleText = self.blogEntry.title;
     self.blogTitleLabel.text = titleText;
     self.dateLabel.text = [[[SGAppDelegate instance] dateFormatterLongStyle] stringFromDate:self.blogEntry.datePublished];
+    //Make sure that we have the correct height of the label by forcing a layout. We can then set the height of the parent
+    //directly by combining the titleHeight + the dateLabel height
+    [self.titleView layoutIfNeeded];
+    self.titleViewHeightConstraint.constant = self.blogTitleLabel.frame.size.height + self.dateLabel.frame.size.height + 20;
+    [self.titleView layoutIfNeeded];
 }
 
 - (void) setBlogEntry:(SGBlogEntry *) toEntry

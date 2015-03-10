@@ -9,5 +9,6 @@
 #import "SGBlogEntryViewController.h"
 
 @interface SGBlogEntryViewController_ipad : SGBlogEntryViewController
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleViewHeightConstraint;
 
 @end

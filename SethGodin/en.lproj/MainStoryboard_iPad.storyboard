@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" promptedForUpgradeToXcode5="NO" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller ipad-->
@@ -148,17 +147,17 @@
                                                     <action selector="favoritesAction:" destination="D16-cX-kKf" eventType="touchUpInside" id="VXu-0y-0KJ"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="b4f-HG-A3Q" userLabel="titleLabel">
-                                                <rect key="frame" x="20" y="8" width="280" height="90"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Blog Entry" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="b4f-HG-A3Q" userLabel="titleLabel">
+                                                <rect key="frame" x="20" y="0.0" width="280" height="42"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="90" id="ihQ-mx-WnW"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syP-Pw-fqL" userLabel="dateLabel">
-                                                <rect key="frame" x="20" y="106" width="248" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="kS8-lv-463"/>
-                                                </constraints>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="March 9th" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syP-Pw-fqL" userLabel="dateLabel">
+                                                <rect key="frame" x="20" y="106" width="75" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -166,15 +165,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="syP-Pw-fqL" firstAttribute="top" secondItem="b4f-HG-A3Q" secondAttribute="bottom" constant="8" symbolic="YES" id="0ub-Gg-ni1"/>
-                                            <constraint firstItem="b4f-HG-A3Q" firstAttribute="leading" secondItem="hlw-Zf-OOp" secondAttribute="leading" constant="20" symbolic="YES" id="5xc-7a-lBT"/>
-                                            <constraint firstItem="syP-Pw-fqL" firstAttribute="leading" secondItem="b4f-HG-A3Q" secondAttribute="leading" id="63a-FO-HEN"/>
-                                            <constraint firstItem="mDb-7P-3zu" firstAttribute="leading" secondItem="syP-Pw-fqL" secondAttribute="trailing" constant="8" symbolic="YES" id="98X-i1-unw"/>
-                                            <constraint firstItem="b4f-HG-A3Q" firstAttribute="top" secondItem="hlw-Zf-OOp" secondAttribute="topMargin" id="GIJ-r4-Z5m"/>
-                                            <constraint firstAttribute="trailing" secondItem="b4f-HG-A3Q" secondAttribute="trailing" constant="20" symbolic="YES" id="VH9-KU-1wY"/>
+                                            <constraint firstItem="b4f-HG-A3Q" firstAttribute="top" secondItem="hlw-Zf-OOp" secondAttribute="top" id="ART-Sk-CYc"/>
+                                            <constraint firstAttribute="bottom" secondItem="syP-Pw-fqL" secondAttribute="bottom" constant="5" id="B1J-qw-gsG"/>
                                             <constraint firstAttribute="trailing" secondItem="mDb-7P-3zu" secondAttribute="trailing" id="cyp-Fa-oee"/>
+                                            <constraint firstAttribute="trailing" secondItem="b4f-HG-A3Q" secondAttribute="trailing" constant="20" id="gHw-wa-Rhf"/>
                                             <constraint firstAttribute="bottom" secondItem="mDb-7P-3zu" secondAttribute="bottom" id="iKX-8b-H8B"/>
-                                            <constraint firstAttribute="bottom" secondItem="syP-Pw-fqL" secondAttribute="bottom" constant="5" id="rw4-7A-awu"/>
+                                            <constraint firstItem="b4f-HG-A3Q" firstAttribute="leading" secondItem="hlw-Zf-OOp" secondAttribute="leading" constant="20" id="nZN-j6-ngk"/>
+                                            <constraint firstItem="syP-Pw-fqL" firstAttribute="leading" secondItem="hlw-Zf-OOp" secondAttribute="leading" constant="20" id="oUM-xb-WWX"/>
                                             <constraint firstAttribute="height" constant="132" id="zBd-cl-zCw"/>
                                         </constraints>
                                     </view>
@@ -224,7 +221,7 @@
                         <outlet property="scrollView" destination="UQm-RN-inu" id="oZR-zg-DYW"/>
                         <outlet property="shareButton" destination="he2-Y6-VOc" id="Icc-YN-Gn6"/>
                         <outlet property="titleView" destination="hlw-Zf-OOp" id="Zhy-cS-pvP"/>
-                        <outlet property="titleViewHeightConstraint" destination="zBd-cl-zCw" id="5Ep-O9-TBp"/>
+                        <outlet property="titleViewHeightConstraint" destination="zBd-cl-zCw" id="96A-j9-vyj"/>
                         <outlet property="topView" destination="r20-Wb-LsT" id="qOJ-nO-PWM"/>
                         <outlet property="webView" destination="W0j-Ca-82O" id="hqf-Tc-JdT"/>
                         <outlet property="webViewHeightConstraint" destination="btJ-iJ-8lS" id="6d6-lz-FDt"/>

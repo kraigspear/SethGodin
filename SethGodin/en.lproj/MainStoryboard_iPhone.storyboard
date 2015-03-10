@@ -904,7 +904,7 @@
                                             <constraint firstAttribute="trailing" secondItem="PqR-X2-zbU" secondAttribute="trailing" constant="10" id="IGd-E9-3IC"/>
                                             <constraint firstItem="pxJ-gG-OUT" firstAttribute="leading" secondItem="3VA-GR-4p1" secondAttribute="leading" constant="20" id="Utx-Yg-cng"/>
                                             <constraint firstAttribute="bottom" secondItem="PqR-X2-zbU" secondAttribute="bottom" id="h3R-X6-t9a"/>
-                                            <constraint firstAttribute="height" constant="132" id="l0E-Sg-6S6"/>
+                                            <constraint firstAttribute="height" priority="750" constant="132" id="l0E-Sg-6S6"/>
                                             <constraint firstItem="PqR-X2-zbU" firstAttribute="centerY" secondItem="pxJ-gG-OUT" secondAttribute="centerY" id="r9I-K1-UHH"/>
                                         </constraints>
                                     </view>
