@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SGMenuController_iPad.h"
 
-@interface SGMainViewController_ipad : UIViewController<SGMenuController_iPadDelegate>
+@interface SGMainViewController_ipad : GAITrackedViewController<SGMenuController_iPadDelegate>
 
 + (SGMainViewController_ipad*) sharedInstance;
 

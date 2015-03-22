@@ -11,3 +11,5 @@
 #import "MBProgressHUD.h"
 #import "SGBlogItemsGetter.h"
 #import "UIImage+RSSSelection.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"

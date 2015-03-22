@@ -123,6 +123,7 @@
 		A9F9443A169AD7B000BBB6BE /* SGMainViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94439169AD7B000BBB6BE /* SGMainViewController_ipad.m */; };
 		A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */; };
 		E63823D0DC57F546354762A5 /* SGFavoritesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = E6382BE32AC7FDE2706901EC /* SGFavoritesParse.m */; };
+		E63827EBFA8ACFF8A35AA5D0 /* GAEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638226EA1790052E58BF045 /* GAEvents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,6 +320,7 @@
 		A9F94444169EB84300BBB6BE /* SGMenuController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMenuController_iPad.h; sourceTree = "<group>"; };
 		A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMenuController_iPad.m; sourceTree = "<group>"; };
 		E1478ACAADC96543F8A5F96E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E638226EA1790052E58BF045 /* GAEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAEvents.swift; sourceTree = "<group>"; };
 		E638258A88D9F254A299F29C /* SGFavoritesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesParse.h; sourceTree = "<group>"; };
 		E6382BE32AC7FDE2706901EC /* SGFavoritesParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFavoritesParse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -533,6 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */,
+				E638226EA1790052E58BF045 /* GAEvents.swift */,
 			);
 			name = Util;
 			path = ..;
@@ -574,16 +577,16 @@
 		A9754D231696E830009E1D1F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A942A9C41AA85E1000C69271 /* Navigation */,
 				A90773E5167E5DD100056C41 /* Account */,
+				A9100A6D1654EE5100779F84 /* ArchiveSelection */,
 				A9D6854E164D0D47007A9ADA /* BlogEntries */,
 				A91009D11650083200779F84 /* BlogEntry */,
-				A97E881E1657C71100777A82 /* WebView */,
-				A9F369FD16A2FC2600FF7CB6 /* PopupView */,
+				A97E882E165843FA00777A82 /* BookPurchase */,
 				A9F94437169AD77900BBB6BE /* iPad */,
 				A9100A511650F9D800779F84 /* Menu */,
-				A97E882E165843FA00777A82 /* BookPurchase */,
-				A9100A6D1654EE5100779F84 /* ArchiveSelection */,
+				A942A9C41AA85E1000C69271 /* Navigation */,
+				A9F369FD16A2FC2600FF7CB6 /* PopupView */,
+				A97E881E1657C71100777A82 /* WebView */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */,
 				A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */,
 				E63823D0DC57F546354762A5 /* SGFavoritesParse.m in Sources */,
+				E63827EBFA8ACFF8A35AA5D0 /* GAEvents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,7 +66,9 @@ static SGMainViewController_ipad *instance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+
+    self.screenName = @"main";
+
     instance = self;
     
     _iphoneStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];

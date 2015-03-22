@@ -10,6 +10,8 @@ pod 'ParseUI'
 pod 'MBProgressHUD'
 pod 'SVWebViewController'
 pod 'Masonry'
+pod 'GoogleAnalytics-iOS-SDK'
+pod 'libextobjc'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 
 

@@ -9,6 +9,7 @@
 #import "SGAppDelegate.h"
 
 #import <Parse/Parse.h>
+#import "GAI.h"
 
 @implementation SGAppDelegate
 {
@@ -31,7 +32,12 @@
 {
     
     //[Raygun sharedReporterWithApiKey:@"sggD8Qki94kV1fiQjC4fjg=="];
-    
+
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 20;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-61037557-1"];
+
     if (IS_IPAD)
     {
         [[UIApplication sharedApplication] setStatusBarHidden:YES];

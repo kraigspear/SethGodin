@@ -9,13 +9,10 @@
 #import "SGBookPurchaseViewController.h"
 #import "SGPurchaseItemGetter.h"
 #import "SGPurchaseItem.h"
-#import "BlockTypes.h"
 #import "SGBookCellView.h"
 #import "SGLoadingAnimation.h"
 #import "UIImage+General.h"
 #import "BlockAlertView.h"
-#import <QuartzCore/QuartzCore.h>
-#import "UIImage+General.h"
 #import "UIColor+General.h"
 #import "MBProgressHud.h"
 #import "Seth_Godin-Swift.h"
@@ -39,7 +36,10 @@ NSString * const ReuseIdentifier = @"bookCell";
 - (void) viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    @weakify(self);
+    self.screenName = @"BookPurchase";
+
     _bookToTopConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     
     if(!self.verticalMode)
@@ -90,12 +90,14 @@ NSString * const ReuseIdentifier = @"bookCell";
     
     [_purchaseItemGetter latestItems:^(NSArray *latestItems)
     {
+        @strongify(self);
         _items = latestItems;
         [self.collectionView reloadData];
         [self.view layoutSubviews];
         
         [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
         {
+            @strongify(self);
             if(IS_IPHONE)
             {
                 [_loadingAnimation stopLoadingAnimation];
@@ -115,6 +117,7 @@ NSString * const ReuseIdentifier = @"bookCell";
         
     } failed:^(NSError *error)
     {
+        @strongify(self);
         [self showError:error];
     }];
     
@@ -176,16 +179,13 @@ NSString * const ReuseIdentifier = @"bookCell";
 - (void) showError:(NSError*) inError
 {
     _alertView = [BlockAlertView alertWithTitle:@"Error" message:inError.localizedDescription];
-    
-    __weak SGBookPurchaseViewController *weakSelf = self;
-    
+
+    @weakify(self);
+
     [_alertView setCancelButtonWithTitle:@"Ok" block:^
     {
-        SGBookPurchaseViewController *strongSelf = weakSelf;
-        if(strongSelf)
-        {
-            strongSelf->_alertView = nil;
-        }
+       @strongify(self);
+        self->_alertView = nil;
     }];
 }
 
@@ -241,38 +241,31 @@ NSString * const ReuseIdentifier = @"bookCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    SGPurchaseItem *itemToPurchase = [_items objectAtIndex:indexPath.row];
-    
-    __weak SGBookPurchaseViewController *weakSelf = self;
+    @weakify(self);
+
+    SGPurchaseItem *itemToPurchase = _items[indexPath.row];
     
     _bookPurchaser = [[BookPurchaser alloc] initWithPurchaseItem:itemToPurchase parentViewController:self completed:^(NSError *error)
     {
-        SGBookPurchaseViewController *strongSelf = weakSelf;
-        
+        @strongify(self);
+
         if (error)
         {
-            if (strongSelf)
-            {
-                
-                UIAlertController *alert = [[UIAlertController alloc] init];
-                alert.title = @"Error";
-                alert.message = error.localizedDescription;
-                
-                UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
-                                                {
-                                                    [alert dismissViewControllerAnimated:YES completion:nil];
-                                                }];
-                
-                [alert addAction:cancelAction];
-                
-                [strongSelf presentViewController:alert animated:YES completion:^
-                 {
-                 }];
-            }
+            UIAlertController *alert = [[UIAlertController alloc] init];
+            alert.title = @"Error";
+            alert.message = error.localizedDescription;
+
+            UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                            {
+                                                [alert dismissViewControllerAnimated:YES completion:nil];
+                                            }];
+
+            [alert addAction:cancelAction];
+
+            [self presentViewController:alert animated:YES completion:nil];
         }
         
-        strongSelf->_bookPurchaser = nil;
+        self->_bookPurchaser = nil;
     }];
     
     [_bookPurchaser purchase];

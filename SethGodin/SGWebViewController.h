@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SGWebViewController : UIViewController <UIWebViewDelegate>
+@interface SGWebViewController : GAITrackedViewController <UIWebViewDelegate>
 
 /**
  Navigate the browser to a URL

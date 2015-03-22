@@ -12,7 +12,7 @@
 
 
 
-@interface SGMenuViewController : UIViewController<SGTitleViewDelegate>
+@interface SGMenuViewController : GAITrackedViewController<SGTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *titleBar;
 

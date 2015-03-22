@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SGTitleView.h"
 
+
 @class SGBlogEntry;
 
 /**
  ViewController for the blog post view
  */
-@interface SGBlogEntryViewController : UIViewController <UIWebViewDelegate, SGTitleViewDelegate>
+@interface SGBlogEntryViewController : GAITrackedViewController <UIWebViewDelegate, SGTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;

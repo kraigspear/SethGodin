@@ -17,7 +17,7 @@
     Example: Current, Favorite, Archives
  2. Allows selection of a BlogItem, which is then viewed in a SGBlogEntryViewController 
  */
-@interface SGBlogEntriesViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SGBlogEntriesViewController : GAITrackedViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;

@@ -38,7 +38,8 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 {
     [super viewDidLoad];
 
-    
+    self.screenName = @"menu";
+
     UIImage *booksImage   = [UIImage menuImageWithText:@"Books" isUpgrade:NO];
     UIImage *allPostImage = [UIImage menuImageWithText:@"Latest" isUpgrade:NO];
     

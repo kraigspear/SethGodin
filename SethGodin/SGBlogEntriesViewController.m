@@ -27,15 +27,14 @@
 #import "NSDate+General.h"
 
 #import "UIFont+General.h"
+#import "NSDate+General.h"
 
 #import "MBProgressHUD.h"
 
 #import "SGBlogEntryCell.h"
 
+
 #import <Parse/Parse.h>
-
-#import "Seth_Godin-Swift.h"
-
 
 #define BLOG_ENTRY_CELL @"blogEntryCell"
 #define PURCHASE_ITEM_CELL @"purchaseItemCell"
@@ -95,6 +94,8 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.screenName = @"BlogEntries";
 
     [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
 
@@ -514,7 +515,7 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 
             [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
 
-            [self updateDetailForItemAtRow:0];
+            [self showViewForRow:0];
         }
     }
 
@@ -859,16 +860,20 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self updateDetailForItemAtRow:(NSUInteger) indexPath.row];
+    [self showViewForRow:(NSUInteger) indexPath.row];
 }
 
-- (void)updateDetailForItemAtRow:(NSUInteger)inRow
+/**
+* Show a view for the selection for either blog content or a book purchase.
+*/
+- (void)showViewForRow:(NSUInteger)inRow
 {
     _feedItem = _feedItems[inRow];
 
     SGBlogEntry *blogEntry = self.currentBlogEntry;
     SGPurchaseItem *purchaseItem = self.currentPurchaseItem;
-
+    
+   
     if (IS_IPHONE && blogEntry)
     {
         [self performSegueWithIdentifier:SEGUE_TO_POST sender:nil];
@@ -876,6 +881,15 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 
     if (blogEntry)
     {
+        if([blogEntry.datePublished isSameDayAs:[NSDate date]])
+        {
+            [GAEvents logViewBlogToday];
+        }
+        else
+        {
+            [GAEvents logViewBlogNotToday];
+        }
+
         [SGNotifications postBlogEntrySelected:self.currentBlogEntry];
     }
     else if (purchaseItem)
@@ -885,23 +899,73 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 
 }
 
+- (void) showError:(NSError*) inError
+{
+    UIAlertController *alert = [[UIAlertController alloc] init];
+    alert.title = @"Error";
+    alert.message = inError.localizedDescription;
+    
+    
+    UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                    }];
+    
+    [alert addAction:cancelAction];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void) showMessageTitle:(NSString*) title message:(NSString*) message
+{
+    UIAlertController *alert = [[UIAlertController alloc] init];
+    alert.title = title;
+    alert.message = message;
+    
+    UIAlertAction *cancelAction =  [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                    {
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                    }];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+
+}
+
+#pragma mark -
+#pragma mark Purchase book
+
 - (void)showPurchaseBook
 {
+    @weakify(self);
+
     SGPurchaseItem *purchaseItem = self.currentPurchaseItem;
     if (!purchaseItem)
     {
         return;
     }
 
-    SGBlogEntriesViewController *weakSelf = self;
-
-    _bookPurchaser = [[BookPurchaser alloc] initWithPurchaseItem:purchaseItem parentViewController:self completed:^(NSError *error) {
-        SGBlogEntriesViewController *strongSelf = weakSelf;
-
-        if (strongSelf)
+    [GAEvents logPurchaseTap:purchaseItem.title];
+    
+    _bookPurchaser = [[BookPurchaser alloc] initWithPurchaseItem:purchaseItem parentViewController:self completed:^(NSError *error)
+    {
+        @strongify(self);
+        
+        
+        if(error)
         {
-            strongSelf->_bookPurchaser = nil;
+            [GAEvents logPurchaseError:error];
+            [self showError:error];
         }
+        else
+        {
+            
+            [GAEvents logPurchased:purchaseItem.title];
+            [self showMessageTitle:@"Purchased" message:@"Your purchase is now in your iBooks collection"];
+        }
+        
+        self->_bookPurchaser = nil;
+        
     }];
 
     [_bookPurchaser purchase];

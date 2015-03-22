@@ -10,7 +10,7 @@
 #import <StoreKit/StoreKit.h>
 #import "SGTitleView.h"
 
-@interface SGBookPurchaseViewController : UIViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, SKStoreProductViewControllerDelegate, SGTitleViewDelegate>
+@interface SGBookPurchaseViewController : GAITrackedViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, SKStoreProductViewControllerDelegate, SGTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;

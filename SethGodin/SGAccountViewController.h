@@ -10,7 +10,8 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 
-@interface SGAccountViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+
+@interface SGAccountViewController : GAITrackedViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *createAccountButton;
