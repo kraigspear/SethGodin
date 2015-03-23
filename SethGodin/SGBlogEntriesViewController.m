@@ -957,13 +957,7 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
             [GAEvents logPurchaseError:error];
             [self showError:error];
         }
-        else
-        {
-            
-            [GAEvents logPurchased:purchaseItem.title];
-            [self showMessageTitle:@"Purchased" message:@"Your purchase is now in your iBooks collection"];
-        }
-        
+
         self->_bookPurchaser = nil;
         
     }];

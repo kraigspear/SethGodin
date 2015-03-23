@@ -23,7 +23,6 @@
 @private
     SGPurchaseItemGetter   *_purchaseItemGetter;
     NSArray *_items;
-    SKStoreProductViewController *_storeProductViewController;
     SGLoadingAnimation *_loadingAnimation;
     BlockAlertView *_alertView;
     NSLayoutConstraint *_bookToTopConstraint;
@@ -264,7 +263,7 @@ NSString * const ReuseIdentifier = @"bookCell";
 
             [self presentViewController:alert animated:YES completion:nil];
         }
-        
+
         self->_bookPurchaser = nil;
     }];
     
@@ -279,7 +278,6 @@ NSString * const ReuseIdentifier = @"bookCell";
 {
     [viewController dismissViewControllerAnimated:YES completion:^
     {
-        _storeProductViewController = nil;
     }];
 }
 

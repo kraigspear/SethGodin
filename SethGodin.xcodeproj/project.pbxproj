@@ -35,7 +35,6 @@
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
 		A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */; };
 		A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */; };
-		A942A9B51AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */; };
 		A942A9B71AA33DF000C69271 /* SGPurchaseItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */; };
 		A942A9BA1AA8550400C69271 /* SethGodinStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */; };
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
@@ -188,7 +187,6 @@
 		A93BE48116BA752B0005B38F /* SGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNavigationController.m; sourceTree = "<group>"; };
 		A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
 		A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseItemCell.xib; sourceTree = "<group>"; };
-		A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mzi.pzlogzog.100x100-75.jpg"; sourceTree = "<group>"; };
 		A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPurchaseItemCell.swift; sourceTree = "<group>"; };
 		A942A9B81AA8550400C69271 /* SethGodinStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SethGodinStyleKit.h; path = SethGodin/SethGodinStyleKit.h; sourceTree = "<group>"; };
 		A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SethGodinStyleKit.m; path = SethGodin/SethGodinStyleKit.m; sourceTree = "<group>"; };
@@ -434,7 +432,6 @@
 			children = (
 				A942A9B81AA8550400C69271 /* SethGodinStyleKit.h */,
 				A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */,
-				A942A9B41AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg */,
 				A9E3221116B4B7750096AB6A /* sethsmall.png */,
 				A9E3221216B4B7750096AB6A /* sethsmall@2x.png */,
 				A9E3221316B4B7750096AB6A /* sethbig.png */,
@@ -559,13 +556,6 @@
 			name = Navigation;
 			sourceTree = "<group>";
 		};
-		A974FBFC16676DEB00B29748 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Icons;
-			sourceTree = "<group>";
-		};
 		A9754CA916930AF9009E1D1F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,7 +651,6 @@
 				A9D684E6164CFE8D007A9ADA /* Frameworks */,
 				A9D684E4164CFE8D007A9ADA /* Products */,
 				A91FAC391A9342920057F07C /* AppImages */,
-				A974FBFC16676DEB00B29748 /* Icons */,
 				50C51202CBB8AB710741063E /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -933,7 +922,6 @@
 				A9E3221716B4B7750096AB6A /* sethbig.png in Resources */,
 				A9E3221816B4B7750096AB6A /* sethbig@2x.png in Resources */,
 				A9A4A08516BD795200BE26CE /* Default.png in Resources */,
-				A942A9B51AA3373A00C69271 /* mzi.pzlogzog.100x100-75.jpg in Resources */,
 				A9ABAC2716BD7ACB00282647 /* Default-Portrait@2x~ipad.png in Resources */,
 				A9ABAC2916BD7AF700282647 /* Default-Portrait~ipad.png in Resources */,
 				A9ABAC2B16BD7B1500282647 /* Default-Landscape@2x~ipad.png in Resources */,
