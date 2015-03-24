@@ -130,7 +130,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlw-Zf-OOp" userLabel="titleView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDb-7P-3zu" userLabel="favoriteButton">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDb-7P-3zu" userLabel="favoriteButton">
                                                 <rect key="frame" x="276" y="89" width="44" height="43"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="43" id="B81-Yi-d3I"/>

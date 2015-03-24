@@ -12,6 +12,7 @@ pod 'SVWebViewController'
 pod 'Masonry'
 pod 'GoogleAnalytics-iOS-SDK'
 pod 'libextobjc'
+pod 'Raygun4iOS'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']
 
 

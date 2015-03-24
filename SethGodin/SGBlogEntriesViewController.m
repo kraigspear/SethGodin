@@ -43,6 +43,8 @@
 
 @end
 
+static SGBlogEntriesViewController *instance = nil;
+
 @implementation SGBlogEntriesViewController
 {
 @private
@@ -71,7 +73,15 @@
 
     __weak UIWindow *_keyWindow;
     BookPurchaser *_bookPurchaser;
+    
+    //When the
+    NSDate *_blogLastLoaded;
 
+}
+
++ (instancetype) sharedInstance
+{
+    return instance;
 }
 
 NSString *const SEGUE_TO_POST = @"viewPostSeque";
@@ -93,9 +103,15 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void)viewDidLoad
 {
+    NSAssert(instance == nil, @"Already have an instance of self?");
+    
+    instance = self;
+    
     [super viewDidLoad];
 
     self.screenName = @"BlogEntries";
+    
+    _blogLastLoaded = [NSDate dateWithTimeIntervalSince1970:1];
 
     [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
 
@@ -409,6 +425,22 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 
 - (void)loadLatestFeedData
 {
+    [self loadLatestFeedData:nil];
+}
+
+- (void)loadLatestFeedData:(SWBoolErrorBlock) onComplete
+{
+    
+    //If the current feed has been loaded in the last 30 minutes, then let's not reload
+    //The hope is that background refresh will keep this up to date and most of the time
+    //we won't have to load when the app comes to the foreground.
+    if(_feedSelection.feedType == kCurrent)
+    {
+        if([_blogLastLoaded numberOfMinutesSince] <= 30)
+        {
+            return;
+        }
+    }
 
     [self startLoadingAnimation];
 
@@ -467,36 +499,68 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
         }
     }
 
-
     _feedLoader = [[FeedLoader alloc] initWithBlogItemGeter:_contentGetter];
 
-    __weak SGBlogEntriesViewController *weakSelf = self;
+    @weakify(self);
 
+    FeedItem *firstFeedItem = [self firstFeedItem];
+    
     [[_feedLoader loadFeed] continueWithBlock:^id(BFTask *task) {
-        SGBlogEntriesViewController *strongSelf = weakSelf;
-
-        if (strongSelf)
+        
+        @strongify(self);
+        
+        [self stopLoadingAnimation];
+        self->_lastDateLeftView = [NSDate date];
+        
+        if (task.error)
         {
-            [strongSelf stopLoadingAnimation];
-            strongSelf->_lastDateLeftView = [NSDate date];
-
-            if (task.error)
+            NSString *errorMessage = [NSString stringWithFormat:@"Error for feedselection %@", self->_feedSelection];
+            NSLog(@"Error getting data %@", errorMessage);
+            if(onComplete)
             {
-                NSString *errorMessage = [NSString stringWithFormat:@"Error for feedselection %@", strongSelf->_feedSelection];
-                NSLog(@"Error getting data %@", errorMessage);
+                onComplete(NO,task.error);
             }
-            else if (task.result)
-            {
-                NSArray *resultArray = task.result;
-                [strongSelf updateBlogItems:resultArray];
-            }
-
-            strongSelf->_feedLoader = nil;
         }
-
+        else if (task.result)
+        {
+            NSArray *resultArray = task.result;
+            [self updateBlogItems:resultArray];
+            if(_feedSelection.feedType == kCurrent)
+            {
+                self->_blogLastLoaded = [NSDate date];
+            }
+            
+            if(onComplete)
+            {
+                BOOL hasNewData = NO;
+                
+                if(firstFeedItem)
+                {
+                    FeedItem *newFirstItem = [self firstFeedItem];
+                    if(newFirstItem)
+                    {
+                        hasNewData = ![firstFeedItem.title isEqualToString:newFirstItem.title];
+                    }
+                }
+                
+                onComplete(hasNewData, nil);
+            }
+        }
+        
+        self->_feedLoader = nil;
+        
         return nil;
     }];
 };
+
+- (FeedItem*) firstFeedItem
+{
+    if(!_feedItems)
+        return nil;
+    if(_feedItems.count < 1)
+        return nil;
+    return _feedItems[0];
+}
 
 - (void)updateBlogItems:(NSArray *)inBlogItems
 {
@@ -506,6 +570,7 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
     _feedItems = [inBlogItems mutableCopy];
 
     [self.tableView reloadData];
+
 
     if (IS_IPAD)
     {

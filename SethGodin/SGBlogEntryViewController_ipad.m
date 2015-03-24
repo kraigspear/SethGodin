@@ -56,10 +56,5 @@
     [self shareBlogEntry];
 }
 
-- (CGFloat) addToHeight
-{
-    return 50;
-}
-
 
 @end

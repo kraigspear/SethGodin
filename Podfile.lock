@@ -72,6 +72,7 @@ PODS:
   - ParseUI (1.1.1):
     - Parse (~> 1.6)
     - ParseFacebookUtils (~> 1.6)
+  - Raygun4iOS (1.6.0)
   - Reveal-iOS-SDK (1.5.1)
   - SVWebViewController (1.0)
 
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - Parse
   - ParseUI
+  - Raygun4iOS
   - Reveal-iOS-SDK
   - SVWebViewController
 
@@ -99,6 +101,7 @@ SPEC CHECKSUMS:
   Parse: a21db4037d70a68a4ec64ecc0f327ed475cc14f8
   ParseFacebookUtils: 4d58d0f133fa1af52f3a8d5caaa55cd435118ac4
   ParseUI: f7e9e0e5271f75a19c74ead8fdd95d36160e268e
+  Raygun4iOS: d155e983907bb1cbf7d1a822ef5081acf85653d0
   Reveal-iOS-SDK: dcfeb671c7da222c85f18f866da2ce88de075524
   SVWebViewController: fbf917baa92744c54cfb89a52a4c056e409973a4
 

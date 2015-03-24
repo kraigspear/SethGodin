@@ -93,8 +93,8 @@
 
 - (void) updateButtonSelected
 {
-    __weak SGBlogEntryViewController *weakSelf = self;
-    
+    @weakify(self);
+
     if(!self.blogEntry)
     {
         return;
@@ -102,12 +102,9 @@
     
     [SGFavoritesParse isBlogItemFavorite:self.blogEntry success:^(BOOL exist)
     {
-        SGBlogEntryViewController *strongSelf = weakSelf;
-        
-        if(strongSelf)
-        {
-            strongSelf.favoritesButton.selected = exist;
-        }
+        @strongify(self);
+        self.favoritesButton.hidden = NO;
+        self.favoritesButton.selected = exist;
     }];
 }
 

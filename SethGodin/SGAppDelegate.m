@@ -10,6 +10,8 @@
 
 #import <Parse/Parse.h>
 #import "GAI.h"
+#import "Raygun.h"
+#import "SGBlogEntriesViewController.h"
 
 @implementation SGAppDelegate
 {
@@ -31,7 +33,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    //[Raygun sharedReporterWithApiKey:@"sggD8Qki94kV1fiQjC4fjg=="];
+    [Raygun sharedReporterWithApiKey:@"sggD8Qki94kV1fiQjC4fjg=="];
 
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 20;
@@ -52,6 +54,40 @@
     _dateformatter.dateStyle =  NSDateFormatterLongStyle;
     
     return YES;
+}
+
+- (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    
+    SGBlogEntriesViewController *vc = [SGBlogEntriesViewController sharedInstance];
+    
+    if(vc)
+    {
+       [vc loadLatestFeedData:^(BOOL newData, NSError* error)
+        {
+            if(error)
+            {
+                completionHandler(UIBackgroundFetchResultFailed);
+            }
+            else
+            {
+                if(newData)
+                {
+                    completionHandler(UIBackgroundFetchResultNewData);
+                }
+                else
+                {
+                    completionHandler(UIBackgroundFetchResultNoData);
+                }
+                
+            }
+        }];
+    }
+    else
+    {
+        completionHandler(UIBackgroundFetchResultFailed);
+    }
+    
 }
 
 							
