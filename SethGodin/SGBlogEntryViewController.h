@@ -57,8 +57,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 
-- (void) shareBlogEntry;
-
 #pragma mark -
 #pragma mark device specific messages
 
@@ -67,6 +65,8 @@
  */
 - (void) updateTitleForBlogEntry;
 
+
+- (void)shareBlogEntry:(UIView *)presentOver;
 
 /**
  Color to use for the blog header background

@@ -53,7 +53,7 @@
 }
 - (IBAction)shareAction:(id)sender
 {
-    [self shareBlogEntry];
+    [super shareBlogEntry:self.topView];
 }
 
 

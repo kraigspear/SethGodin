@@ -249,10 +249,18 @@
     
 }
 
-- (void) shareBlogEntry
+- (void)shareBlogEntry
 {
+    [self shareBlogEntry:nil];
+}
+
+- (void) shareBlogEntry:(UIView *) presentOver
+{
+    @weakify(self);
     [self urlStringForPost:^(NSString *urlStr)
      {
+         @strongify(self);
+
          NSURL *url = [NSURL URLWithString:urlStr];
          
          NSString *shareText = [NSString stringWithFormat:@"%@ - Seth Godin's Blog", self.blogEntry.title];
@@ -262,8 +270,18 @@
          [[UIActivityViewController alloc]
           initWithActivityItems:shareItems
           applicationActivities:nil];
-         
-         
+
+         if(presentOver)
+         {
+             activityViewController.popoverPresentationController.sourceView = presentOver;
+
+             CGRect rect = presentOver.frame;
+             rect.origin = CGPointMake(rect.origin.x, rect.size.height * 2);
+
+             activityViewController.popoverPresentationController.sourceRect = rect;
+
+         }
+
          [self presentViewController:activityViewController animated:YES completion:nil];
      }];
 }
