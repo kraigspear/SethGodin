@@ -33,7 +33,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.screenName = @"AccountScreen";
     }
     return self;
 }

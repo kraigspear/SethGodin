@@ -10,39 +10,41 @@
 #import "SGBlogEntry.h"
 #import "AFNetworking.h"
 
-
-//http://profile.typepad.com/sethgodin/activity.json
-
 @implementation SGCurrentBlogItemsGetter
 
-
-- (BFTask*)requestItems
+- (void)main
 {
-    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
-
-    NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
+    @weakify(self);
     
+    self.executing = YES;
+    
+    NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
     [manager GET:[url absoluteString]
       parameters:nil
          success:^(NSURLSessionDataTask *task, id responseObject) {
+             
              NSArray *items = [self itemsFromDictionary:responseObject];
              
              self.cachedItems = items;
              dispatch_async(dispatch_get_main_queue(), ^
                             {
-                                [source setResult:items];
+                                @strongify(self);
+                                self.blogEntries = items;
+                                [self done];
                             });
              
          }
          failure:^(NSURLSessionDataTask *task, NSError *error)
-         {
-             [source setError:error];
-         }];
-
-    return source.task;
-    
+     {
+         dispatch_async(dispatch_get_main_queue(), ^
+                        {
+                            self.error = error;
+                            [self done];
+                        });
+     }];
 }
 
 - (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary
@@ -62,13 +64,13 @@
         NSString *displayName = objDict[@"displayName"];
         NSString *itemID      = objDict[@"id"];
         NSString *urlStr      = objDict[@"url"];
-
+        
         SGBlogEntry *blogEntry = [[SGBlogEntry alloc] initWithTitle:displayName
-                                                              publishedOn:datePublished
-                                                              summary:summary
-                                                              content:content
-                                                              itemID:itemID
-                                                              fromURL:urlStr];
+                                                        publishedOn:datePublished
+                                                            summary:summary
+                                                            content:content
+                                                             itemID:itemID
+                                                            fromURL:urlStr];
         
         
         [self updateShareCountForBlogEntry:blogEntry];

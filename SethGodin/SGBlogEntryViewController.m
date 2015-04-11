@@ -28,8 +28,6 @@
 {
     [super viewDidLoad];
 
-    self.screenName = @"BlogEntry";
-
     self.blogTitleLabel.textColor   = [UIColor titlebarTextColor];
     self.dateLabel.textColor = [UIColor titlebarTextColor];
     

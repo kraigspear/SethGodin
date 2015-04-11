@@ -9,7 +9,6 @@
 #import "SGAppDelegate.h"
 
 #import <Parse/Parse.h>
-#import "GAI.h"
 #import "Raygun.h"
 #import "SGBlogEntriesViewController.h"
 
@@ -32,28 +31,25 @@
 //Helvetica Neue Condensed Black 26.0
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    [Raygun sharedReporterWithApiKey:@"sggD8Qki94kV1fiQjC4fjg=="];
 
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    [GAI sharedInstance].dispatchInterval = 20;
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-61037557-1"];
+  [Raygun sharedReporterWithApiKey:@"sggD8Qki94kV1fiQjC4fjg=="];
 
-    if (IS_IPAD)
-    {
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    }
-    
-    [Parse setApplicationId:@"k2eo7GeSve5neSkhTFcMLPtIViPicZwLf3opy9bu"
-                  clientKey:@"c46oSNaIeVXYVONk0D9wPVxYfBrdZZu0K8Od95wN"];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    _dateformatter           = [[NSDateFormatter alloc] init];
-    _dateformatter.dateStyle =  NSDateFormatterLongStyle;
-    
-    return YES;
+  if (IS_IPAD)
+  {
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  }
+
+  [Parse setApplicationId:@"k2eo7GeSve5neSkhTFcMLPtIViPicZwLf3opy9bu"
+                clientKey:@"c46oSNaIeVXYVONk0D9wPVxYfBrdZZu0K8Od95wN"];
+
+  [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
+  _dateformatter           = [[NSDateFormatter alloc] init];
+  _dateformatter.dateStyle =  NSDateFormatterLongStyle;
+
+  return YES;
 }
 
 - (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler

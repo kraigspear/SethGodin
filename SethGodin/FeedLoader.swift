@@ -20,21 +20,21 @@ public enum FeedType: Int
     public let title: String
     public let feedType:FeedType
     public let dataObject: AnyObject
-    
+
     private init(title: String, feedType:FeedType, dataObject:AnyObject)
     {
         self.title = title
         self.feedType = feedType
         self.dataObject = dataObject
     }
-    
+
     public var datePublished:NSDate?
     {
         get
         {
             if self.feedType == .BlogEntry
             {
-                let blogEntry = self.dataObject as SGBlogEntry
+                let blogEntry = self.dataObject as! SGBlogEntry
                 return blogEntry.datePublished
             }
             else
@@ -43,14 +43,14 @@ public enum FeedType: Int
             }
         }
     }
-    
+
     public var shareCount:NSNumber?
     {
         get
         {
             if self.feedType == .BlogEntry
             {
-                let blogEntry = self.dataObject as SGBlogEntry
+                let blogEntry = self.dataObject as! SGBlogEntry
                 return blogEntry.shareCount
             }
             else
@@ -59,13 +59,14 @@ public enum FeedType: Int
             }
         }
     }
-    
+
+    ///Convert a BlogEntry to a FeedItem
     public class func fromBlogEntry(blogEntry: SGBlogEntry) -> FeedItem
     {
-       
         return FeedItem(title: blogEntry.title, feedType: FeedType.BlogEntry, dataObject: blogEntry)
     }
-    
+
+    ///Convert a PurchaseItem into a FeedItem
     public class func fromPurchaseItem(purchaseItem:SGPurchaseItem) -> FeedItem
     {
         return FeedItem(title: purchaseItem.title, feedType: FeedType.PurchaseItem,  dataObject: purchaseItem)
@@ -83,33 +84,48 @@ public enum FeedType: Int
         self.blogItemGetter = blogItemGeter
     }
 
-    public func loadFeed() -> BFTask
+    lazy var fetchQue:NSOperationQueue =
     {
-        return self.loadContent()
+        var que = NSOperationQueue()
+        que.name = "fetch"
+        que.maxConcurrentOperationCount = 2
+        return que
+    }()
+
+    public func loadFeed(completed:(feedItems:[FeedItem]?, error:NSError?) -> Void)
+    {
+        let purchaseItemGetter = SGPurchaseItemGetter()
+
+        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+        dispatch_async(backgroundQueue,
+            {
+                self.fetchQue.addOperations([purchaseItemGetter, self.blogItemGetter], waitUntilFinished: true)
+                
+                let purchaseItems = purchaseItemGetter.purchaseItems as! [SGPurchaseItem]
+                let blogEntries = self.blogItemGetter.blogEntries as! [SGBlogEntry]
+                
+                let feedItems = self.feedItemsFrom(purchaseItems:purchaseItems, blogEntries:blogEntries)
+                
+                dispatch_async(dispatch_get_main_queue(),
+                {
+                    if purchaseItemGetter.error != nil
+                    {
+                        completed(feedItems: nil, error: purchaseItemGetter.error)
+                    }
+                    else if self.blogItemGetter.error != nil
+                    {
+                        completed(feedItems: nil, error: self.blogItemGetter.error)
+                    }
+                    else
+                    {
+                        completed(feedItems: feedItems, error: nil)
+                    }
+                })
+            })
     }
 
-    private func loadContent() -> BFTask
-    {
-        return self.blogItemGetter.requestItems().continueWithSuccessBlock {(task) -> AnyObject! in
-            
-            let blogEntries = task.result as [SGBlogEntry]
-            return self.insertBooks(intoEntries: blogEntries)
-        }
-    }
-    
-    
-    ///Once a feed has been loaded, books to purchase are added
-    private func insertBooks(#intoEntries:[SGBlogEntry]) -> BFTask
-    {
-        return latestFromITunes().continueWithSuccessBlock {  (task) -> AnyObject! in
-            
-            let purchaseItems = task.result as [SGPurchaseItem]
-            
-            return self.feedItemsFrom(purchaseItems: purchaseItems, blogEntries: intoEntries)
-        }
-    }
-    
-    private func feedItemsFrom(#purchaseItems:[SGPurchaseItem],  blogEntries:[SGBlogEntry]) -> BFTask
+    private func feedItemsFrom(#purchaseItems:[SGPurchaseItem],  blogEntries:[SGBlogEntry]) -> [FeedItem]
     {
         let source = BFTaskCompletionSource()
         
@@ -137,10 +153,8 @@ public enum FeedType: Int
             }
         }
         
-        source.setResult(feedItems)
-        
-        return source.task
-    }
+        return feedItems
+      }
     
     private func stillHavePurchaseItemsToInsert(#purchaseItems:[SGPurchaseItem], index:Int) -> Bool
     {
@@ -153,10 +167,5 @@ public enum FeedType: Int
         let m = atBlogEntryCount % insertEvery
         return m == 0
     }
-    
-    private func latestFromITunes() -> BFTask
-    {
-        let purchaseItemGetter = SGPurchaseItemGetter()
-        return purchaseItemGetter.latestFromiTunes()
-    }
+
 }

@@ -74,21 +74,6 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
 + (id) observeNetworkAvailableWithNotification:(NotificationBlock) inBlock;
 
 /**
- Favorites have been updated
- */
-+ (id) observeFavoritesUpdatedNotification:(NotificationBlock) inBlock;
-
-/**
- Observe that a favorites file was created
- */
-+ (id) observeFavoritesCreatedNotification:(NotificationBlock) inBlock;
-
-/**
- Observe that we are busy.
- */
-+ (id) observeBusyWithNotification:(NotificationBlock) inBlock;
-
-/**
  Observe that a BlogEntry is no longer a favorite.
  */
 + (id) observeFavoriteDeleted:(NotificationBlock) inBlock;
@@ -98,21 +83,6 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
  @param isAvailable Yes is available
  */
 + (void) postNetworkAvailable:(BOOL) isAvailable;
-
-/**
- Post that we are busy or not.
- */
-+ (void) postBusy:(BOOL) isBusy;
-
-/**
- Favorites have been updated
- */
-+ (void) postFavoritesUpdated;
-
-/**
- Favorites document has been created
- */
-+ (void) postFavoritesCreated;
 
 /**
  Send a notification that a blog entry is no longer a favorite
@@ -128,7 +98,5 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
  Observe that a favorite has been added.
  */
 + (id) observeFavoriteAdded:(NotificationBlock) inBlock;
-
-+ (void) postErrorOccured:(NSError*) inError;
 
 @end

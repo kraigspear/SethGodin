@@ -27,6 +27,7 @@
     BlockAlertView *_alertView;
     NSLayoutConstraint *_bookToTopConstraint;
     BookPurchaser *_bookPurchaser;
+    NSOperationQueue *_operationQue;
     __weak UIWindow *_keyWindow;
 }
 
@@ -37,8 +38,10 @@ NSString * const ReuseIdentifier = @"bookCell";
     [super viewDidLoad];
 
     @weakify(self);
-    self.screenName = @"BookPurchase";
 
+    _operationQue = [[NSOperationQueue alloc] init];
+    _operationQue.name = @"bookPurchaseQue";
+    
     _bookToTopConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
     
     if(!self.verticalMode)
@@ -87,39 +90,44 @@ NSString * const ReuseIdentifier = @"bookCell";
         hud.labelText = @"Loading...";
     }
     
-    [_purchaseItemGetter latestItems:^(NSArray *latestItems)
+    _purchaseItemGetter.completionBlock = ^
     {
-        @strongify(self);
-        _items = latestItems;
-        [self.collectionView reloadData];
-        [self.view layoutSubviews];
-        
-        [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
-        {
-            @strongify(self);
-            if(IS_IPHONE)
-            {
-                [_loadingAnimation stopLoadingAnimation];
-            }
-            else
-            {
-                [MBProgressHUD hideHUDForView:_keyWindow animated:YES];
-            }
-            self.collectionViewToTrailing.constant = 0;
-            self.collectionViewToLeading.constant = 0;
-            [self.view layoutSubviews];
-        } completion:^(BOOL completed)
-        {
-            
-        }];
-         
-        
-    } failed:^(NSError *error)
-    {
-        @strongify(self);
-        [self showError:error];
-    }];
+        dispatch_async(dispatch_get_main_queue(), ^
+                       {
+                            @strongify(self);
+                           
+                           if(self->_purchaseItemGetter.error)
+                           {
+                               [self showError:self->_purchaseItemGetter.error];
+                           }
+                           
+                            self->_items = _purchaseItemGetter.purchaseItems;
+                            [self.collectionView reloadData];
+                            [self.view layoutSubviews];
+                           
+                           [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationCurveEaseInOut animations:^
+                            {
+                                @strongify(self);
+                                if(IS_IPHONE)
+                                {
+                                    [self->_loadingAnimation stopLoadingAnimation];
+                                }
+                                else
+                                {
+                                    [MBProgressHUD hideHUDForView:self->_keyWindow animated:YES];
+                                }
+                                self.collectionViewToTrailing.constant = 0;
+                                self.collectionViewToLeading.constant = 0;
+                                [self.view layoutSubviews];
+                            } completion:^(BOOL completed)
+                            {
+                                
+                            }];
+
+                       });
+    };
     
+    [_operationQue addOperation:_purchaseItemGetter];
 }
 
 - (void) viewWillAppear:(BOOL)animated

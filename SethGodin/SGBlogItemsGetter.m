@@ -35,21 +35,6 @@
     
 }
 
-//Abstract. Should be extended by inherited classes.
-- (BFTask*)requestItems
-{
-    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
-
-    NSArray *cacheItems = self.cachedItems;
-
-    if (cacheItems.count >= 1)
-    {
-        [source setResult:cacheItems];
-    }
-
-    return source.task;
-}
-
 - (NSDate*) dateFromString:(NSString*) inDateStr
 {
     NSString *dateStr      = [inDateStr substringToIndex:10];

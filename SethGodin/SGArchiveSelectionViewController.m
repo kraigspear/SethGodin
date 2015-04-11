@@ -31,7 +31,6 @@ const NSUInteger MIN_YEAR = 2002;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.screenName = @"Archives";
     }
     return self;
 }

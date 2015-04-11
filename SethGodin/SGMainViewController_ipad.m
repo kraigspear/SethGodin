@@ -67,8 +67,6 @@ static SGMainViewController_ipad *instance;
 {
     [super viewDidLoad];
 
-    self.screenName = @"main";
-
     instance = self;
     
     _iphoneStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
@@ -268,7 +266,6 @@ static SGMainViewController_ipad *instance;
     
     [self setupMenuViewConstraints];
     [self.view layoutIfNeeded];
-    
     
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationCurveEaseOut animations:^
     {

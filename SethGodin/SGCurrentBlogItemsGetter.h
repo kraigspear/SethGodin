@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SGBlogItemsGetter.h"
+#import "STBaseOperation.h"
 
 
 @interface SGCurrentBlogItemsGetter : SGBlogItemsGetter

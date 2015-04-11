@@ -33,11 +33,13 @@
 		A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A91D230116AC076200D8FD58 /* SGTitleView.m */; };
 		A91FAC451A949D1F0057F07C /* SethGodin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */; };
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
+		A93DD01A1AD92EDE008FC6A7 /* STBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A93DD0191AD92EDE008FC6A7 /* STBaseOperation.m */; };
 		A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */; };
 		A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */; };
 		A942A9B71AA33DF000C69271 /* SGPurchaseItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */; };
 		A942A9BA1AA8550400C69271 /* SethGodinStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */; };
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
+		A95CBB4D1AC884CE00114227 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A95CBB4C1AC884CE00114227 /* Images.xcassets */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
 		A95EA401165CDBC100A58FB4 /* SGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */; };
@@ -185,12 +187,15 @@
 		A91FAC441A949D1F0057F07C /* SethGodin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SethGodin.xcdatamodel; sourceTree = "<group>"; };
 		A93BE48016BA752A0005B38F /* SGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNavigationController.h; sourceTree = "<group>"; };
 		A93BE48116BA752B0005B38F /* SGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNavigationController.m; sourceTree = "<group>"; };
+		A93DD0181AD92EDE008FC6A7 /* STBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STBaseOperation.h; path = SethGodin/STBaseOperation.h; sourceTree = "<group>"; };
+		A93DD0191AD92EDE008FC6A7 /* STBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STBaseOperation.m; path = SethGodin/STBaseOperation.m; sourceTree = "<group>"; };
 		A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
 		A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseItemCell.xib; sourceTree = "<group>"; };
 		A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPurchaseItemCell.swift; sourceTree = "<group>"; };
 		A942A9B81AA8550400C69271 /* SethGodinStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SethGodinStyleKit.h; path = SethGodin/SethGodinStyleKit.h; sourceTree = "<group>"; };
 		A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SethGodinStyleKit.m; path = SethGodin/SethGodinStyleKit.m; sourceTree = "<group>"; };
 		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A95CBB4C1AC884CE00114227 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Seth Godin/Images.xcassets"; sourceTree = "<group>"; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
 		A95EA3FF165CDBC100A58FB4 /* SGUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUserDefaults.h; sourceTree = "<group>"; };
@@ -430,6 +435,7 @@
 		A9100A6016531E5800779F84 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A95CBB4C1AC884CE00114227 /* Images.xcassets */,
 				A942A9B81AA8550400C69271 /* SethGodinStyleKit.h */,
 				A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */,
 				A9E3221116B4B7750096AB6A /* sethsmall.png */,
@@ -531,6 +537,8 @@
 		A942A9AE1A9F260000C69271 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A93DD0181AD92EDE008FC6A7 /* STBaseOperation.h */,
+				A93DD0191AD92EDE008FC6A7 /* STBaseOperation.m */,
 				A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */,
 				E638226EA1790052E58BF045 /* GAEvents.swift */,
 			);
@@ -911,6 +919,7 @@
 				A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */,
 				A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */,
 				A95EA3FD165C8DC800A58FB4 /* books.png in Resources */,
+				A95CBB4D1AC884CE00114227 /* Images.xcassets in Resources */,
 				A9A84D77165D7C2B0071BEDD /* smallspinner@2x.png in Resources */,
 				A974FC0F16676ED200B29748 /* Icon@2x.png in Resources */,
 				A974FC1116676EDD00B29748 /* Icon.png in Resources */,
@@ -1005,6 +1014,7 @@
 				A97E883E1658F83E00777A82 /* SGPurchaseItem.m in Sources */,
 				A97E88411659056D00777A82 /* SGPurchaseItemGetter.m in Sources */,
 				A97E88591659212100777A82 /* SGBookCellView.m in Sources */,
+				A93DD01A1AD92EDE008FC6A7 /* STBaseOperation.m in Sources */,
 				A9D8385A1659853F00A79669 /* SGLoadingAnimation.m in Sources */,
 				A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */,
 				A95EA401165CDBC100A58FB4 /* SGUserDefaults.m in Sources */,
@@ -1144,6 +1154,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A6FF5C6DF5E520B73CBB47A3 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Seth Godin.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1158,7 +1170,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1171,7 +1183,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c37ded9-0a86-4764-9121-3cd9b021b750";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0c37ded9-0a86-4764-9121-3cd9b021b750";
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1184,6 +1196,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0D9EB5E830FF06F8B09B6904 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Seth Godin.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1198,7 +1212,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1211,8 +1225,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c37ded9-0a86-4764-9121-3cd9b021b750";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0c37ded9-0a86-4764-9121-3cd9b021b750";
+				PROVISIONING_PROFILE = "59ed474d-cd9d-4ad7-b788-f086bed09e94";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "59ed474d-cd9d-4ad7-b788-f086bed09e94";
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

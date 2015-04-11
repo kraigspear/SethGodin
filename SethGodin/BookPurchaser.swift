@@ -39,7 +39,7 @@ import StoreKit
         
         let params = [SKStoreProductParameterITunesItemIdentifier : purchaseItem.trackID, SKStoreProductParameterAffiliateToken : "10lKRh"]
         
-        self.productViewController.loadProductWithParameters(params, completionBlock: {[weak self] (result, error) -> Void in
+        self.productViewController.loadProductWithParameters(params as [NSObject : AnyObject], completionBlock: {[weak self] (result, error) -> Void in
             
             if let unwrapSelf = self
             {

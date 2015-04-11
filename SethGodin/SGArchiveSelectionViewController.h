@@ -10,7 +10,7 @@
 #import "BlockTypes.h"
 #import "SGTitleView.h"
 
-@interface SGArchiveSelectionViewController : GAITrackedViewController<SGTitleViewDelegate>
+@interface SGArchiveSelectionViewController : UIViewController<SGTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet SGTitleView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *leftArrowYearButton;

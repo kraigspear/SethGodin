@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '8.3'
 
 
 pod 'Parse'
@@ -10,7 +10,6 @@ pod 'ParseUI'
 pod 'MBProgressHUD'
 pod 'SVWebViewController'
 pod 'Masonry'
-pod 'GoogleAnalytics-iOS-SDK'
 pod 'libextobjc'
 pod 'Raygun4iOS'
 pod 'Reveal-iOS-SDK', :configurations => ['Debug']

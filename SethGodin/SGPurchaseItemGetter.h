@@ -8,18 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "BlockTypes.h"
-#import <Bolts.h>
+#import "STBaseOperation.h"
+
 
 /**
  Gets items that can be purchased
  */
-@interface SGPurchaseItemGetter : NSObject
+@interface SGPurchaseItemGetter : STBaseOperation
 
-
-/**
- Gets the latest purchasable items.
- */
-- (void) latestItems:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inFailed;
-- (BFTask*) latestFromiTunes;
+@property (nonatomic, retain) NSArray *purchaseItems;
 
 @end

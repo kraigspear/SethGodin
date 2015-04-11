@@ -10,7 +10,6 @@
 #import "AFNetworking.h"
 #import "NSDictionary-Expanded.h"
 #import "SGPurchaseItem.h"
-
 #import <Parse/Parse.h>
 
 @implementation SGPurchaseItemGetter
@@ -34,95 +33,88 @@
     return self;
 }
 
-- (BFTask*) latestBooksFromParse
+- (void)main
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Book"];
-    return [[query findObjectsInBackground] continueWithSuccessBlock:^id(BFTask *task)
-    {
-        NSArray *books = task.result;
-        NSMutableArray *bookIds = [[NSMutableArray alloc] init];
-        
-        for (PFObject *book in books)
-        {
-            NSString *trackIdStr = book[@"trackId"];
-            NSUInteger trackInt = (NSUInteger) trackIdStr.integerValue;
-            NSNumber *trackNum = @(trackInt);
-            [bookIds addObject:trackNum];
-        }
-        
-        return bookIds;
-    }];
-}
+  @weakify(self);
 
-- (BFTask*) latestFromiTunes
-{
-     return [[self latestBooksFromParse] continueWithSuccessBlock:^id(BFTask *task)
-     {
-          NSArray *trackIds = task.result;
-          return [self jsonFromiTunesFilteringIds:trackIds];
-     }];
-}
+  self.executing = YES;
+  PFQuery *query = [PFQuery queryWithClassName:@"Book"];
+  NSArray *results = [query findObjects];
 
-- (BFTask*) jsonFromiTunesFilteringIds:(NSArray*) idsToFilter
-{
-    NSString *urlStr = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth%2BGodin&country=US&media=ebook&lang=en";
-    NSURL *url = [NSURL URLWithString:urlStr];
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
-    
-    [manager GET:[url absoluteString]
-      parameters:nil
-         success:^(NSURLSessionDataTask *task, id responseObject)
-         {
-             //All items coming back from iTunes
-             NSArray *items = [self itemsForDictionary:responseObject];
-             
-             //iTunes items with the trackId passed in in idsToFilter
-             NSIndexSet *filteredIndexSet = [items indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop)
-             {
-                 SGPurchaseItem *purchaseItem = obj;
-                 
-                 NSNumber *trackIdNum = @(purchaseItem.trackID);
-                 
-                 NSUInteger trackIndex = [idsToFilter indexOfObject:trackIdNum];
-                 
-                 return trackIndex != NSNotFound;
-             }];
-             
-             NSArray *filteredItems = [items objectsAtIndexes:filteredIndexSet];
-             
-             [source setResult:filteredItems];
-         }
-         failure:^(NSURLSessionDataTask *task, NSError *error) {
-             [source setError:error];
-         }];
-    
-    return source.task;
-}
+  NSMutableArray *bookIds = [[NSMutableArray alloc] init];
 
-- (void) latestItems:(SWArrayBlock) inSuccess failed:(SWErrorBlock) inFailed
-{
+  for (PFObject *book in results)
+  {
+    NSString *trackIdStr = book[@"trackId"];
+    NSUInteger trackInt = (NSUInteger) trackIdStr.integerValue;
+    NSNumber *trackNum = @(trackInt);
+    [bookIds addObject:trackNum];
+  }
 
-    [[self latestFromiTunes] continueWithBlock:^id(BFTask *task)
-    {
-
-        if(task.error)
-        {
-            inFailed(task.error);
-        }
-        else
-        {
-            inSuccess(task.result);
-        }
-
-        return nil;
-
-    }];
+  [self jsonFromiTunesFilteringIds:bookIds
+                           success:^(NSArray *purchaseItems)
+                           {
+                             @strongify(self);
+                             self.purchaseItems = purchaseItems;
+                             self.executing = NO;
+                             self.finished = YES;
+                           }
+                           failure:^(NSError *error)
+                           {
+                             @strongify(self);
+                             self.error = error;
+                             self.executing = NO;
+                             self.finished = YES;
+                           }];
 
 
 };
+
+
+
+- (void) jsonFromiTunesFilteringIds:(NSArray*) idsToFilter success:(SWArrayBlock) success failure:(SWErrorBlock) failure
+{
+  NSString *urlStr = @"http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Seth%2BGodin&country=US&media=ebook&lang=en";
+  NSURL *url = [NSURL URLWithString:urlStr];
+
+  AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+
+  [manager GET:[url absoluteString]
+    parameters:nil
+       success:^(NSURLSessionDataTask *task, id responseObject)
+       {
+         //All items coming back from iTunes
+         NSArray *items = [self itemsForDictionary:responseObject];
+
+         //iTunes items with the trackId passed in in idsToFilter
+         NSIndexSet *filteredIndexSet = [items indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop)
+         {
+           SGPurchaseItem *purchaseItem = obj;
+
+           NSNumber *trackIdNum = @(purchaseItem.trackID);
+
+           NSUInteger trackIndex = [idsToFilter indexOfObject:trackIdNum];
+
+           return trackIndex != NSNotFound;
+         }];
+
+         NSArray *filteredItems = [items objectsAtIndexes:filteredIndexSet];
+
+         if(success)
+         {
+           success(filteredItems);
+         }
+
+       }
+       failure:^(NSURLSessionDataTask *task, NSError *error)
+       {
+         if(failure)
+         {
+           failure(error);
+         }
+       }];
+}
+
 
 - (NSArray*) itemsForDictionary:(NSDictionary*) inDict
 {

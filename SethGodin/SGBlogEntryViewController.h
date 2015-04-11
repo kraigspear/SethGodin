@@ -15,7 +15,7 @@
 /**
  ViewController for the blog post view
  */
-@interface SGBlogEntryViewController : GAITrackedViewController <UIWebViewDelegate, SGTitleViewDelegate>
+@interface SGBlogEntryViewController : UIViewController <UIWebViewDelegate, SGTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;

@@ -15,21 +15,12 @@
     
 }
 
-- (BFTask*)requestItems
+- (void)main
 {
-    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
-                   {
-                       NSArray *items = [self cachedItems];
-                       
-                       dispatch_async(dispatch_get_main_queue(), ^
-                       {
-                           [source setResult:items];
-                       });
-                   });
-
-    return source.task;
+  self.executing = YES;
+  self.blogEntries = [SGFavoritesParse allFavorites];
+  self.finished = YES;
+  self.executing = NO;
 }
 
 

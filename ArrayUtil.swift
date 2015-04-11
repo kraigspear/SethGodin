@@ -10,10 +10,12 @@ import Foundation
 
 
 /// Shuffle the elements of `list`.
-func shuffle<C: MutableCollectionType where C.Index == Int>(inout list: C) {
-    let count = countElements(list)
-    for i in 0..<(count - 1) {
-        let j = Int(arc4random_uniform(UInt32(count - i))) + i
+func shuffle<C: MutableCollectionType where C.Index == Int>(inout list: C)
+{
+    let listCount = count(list)
+    for i in 0..<(listCount - 1)
+    {
+        let j = Int(arc4random_uniform(UInt32(listCount - i))) + i
         swap(&list[i], &list[j])
     }
 }

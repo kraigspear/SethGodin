@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BlockTypes.h"
 #import "Bolts.h"
+#import "STBaseOperation.h"
 
 @class SGBlogEntry;
 
@@ -17,13 +18,9 @@
  Parent for other classes that have the more specific logic of retrieving blog items.
  Example: Latest blog items, archive & favorites
  */
-@interface SGBlogItemsGetter : NSObject
+@interface SGBlogItemsGetter : STBaseOperation
 
-
-/**
- Fetches an array of blog items
- */
-- (BFTask*)requestItems;
+@property (nonatomic, strong) NSArray *blogEntries;
 
 /**
  Provides a date from a string that was supplied by typepad
