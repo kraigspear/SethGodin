@@ -101,7 +101,16 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     _accountButton.hidden = ([SGUserDefaults sharedInstance].isUpgraded == NO);
+    if(self.view.frame.size.width > self.view.frame.size.height)
+    {
+        [self setupLandscapeConstraints];
+    }
+    else
+    {
+        [self setupPortriateConstraints];
+    }
 
 }
 
@@ -173,7 +182,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [_favoritesButton mas_remakeConstraints:^(MASConstraintMaker *make)
      {
          make.top.equalTo(_latestButton.mas_top);
-         make.trailing.equalTo(_latestButton.mas_trailing);
+         make.leading.equalTo(_latestButton.mas_trailing);
      }];
     
     //archives
@@ -187,14 +196,14 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     [_booksButton mas_remakeConstraints:^(MASConstraintMaker *make)
      {
          make.top.equalTo(_archivesButton.mas_top);
-         make.trailing.equalTo(_archivesButton.mas_trailing);
+         make.leading.equalTo(_archivesButton.mas_trailing);
      }];
     
     //Settings
     [_accountButton mas_remakeConstraints:^(MASConstraintMaker *make)
      {
          make.top.equalTo(_booksButton.mas_bottom);
-         make.centerX.equalTo(self.view.mas_centerX);
+         make.centerX.equalTo(self.view.mas_centerX).offset(70);
      }];
     
     [UIView animateWithDuration:.2 animations:^{

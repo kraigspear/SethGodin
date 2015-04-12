@@ -61,6 +61,6 @@ import UIKit
     
     private func populateImage(#fromPurchaseItem:SGPurchaseItem)
     {
-        self.imageView?.image = fromPurchaseItem.image
+        self.thumbnailImageView?.image = fromPurchaseItem.image
     }
 }
