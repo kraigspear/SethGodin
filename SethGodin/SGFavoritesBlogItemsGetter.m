@@ -17,10 +17,10 @@
 
 - (void)main
 {
-  self.executing = YES;
-  self.blogEntries = [SGFavoritesParse allFavorites];
-  self.finished = YES;
-  self.executing = NO;
+    self.executing = YES;
+    self.blogEntries = [SGFavoritesParse allFavorites];
+    [self updateShareCountsForEntries:self.blogEntries];
+    [self done];
 }
 
 
