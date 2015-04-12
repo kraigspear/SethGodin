@@ -12,13 +12,8 @@
 /**
  An item that can be purchased on iTunes.
  */
-@interface SGPurchaseItem : NSObject <NSCoding>
+@interface SGPurchaseItem : NSObject 
 
-/**
- The artist ID from iTunes.
- That can be Author, Band. Basically the content creator.
- */
-@property (nonatomic, readonly) NSUInteger artistId;
 
 /**
  The date this title was released
@@ -35,33 +30,20 @@
  */
 @property (nonatomic, readonly) NSUInteger trackID;
 
-
-/**
- The URL of the image from Apple.
- */
-@property (nonatomic, readonly) NSString *imageURL;
-
 /**
  The image of the book.
  */
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong, readwrite) UIImage *image;
 
-
-//This is used in a swift method, so you may get a false postive about it not get used by AppCode.
-/**
-* Load the image assoicated with the Purchase Item
-*/
-- (BFTask*) loadImage;
 
 /**
  Initialize the purchase item with readonly data members
  @param inTitle  The title of the book
- @param inArtist The artist
  @param inDate The date the item was released
  @param trackId The iTunes ID
  */
-- (id) initWithTitle:(NSString*) inTitle artest:(NSUInteger) inArtist releasedOn:(NSDate*) inDate
-             trackId:(NSUInteger) inTrackId
-             imageURL:(NSString*) inImageURL;
+- (instancetype) initWithTitle:(NSString*) inTitle releasedOn:(NSDate*) inDate
+                       trackId:(NSUInteger) inTrackId;
+
 
 @end

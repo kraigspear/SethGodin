@@ -34,6 +34,7 @@
 		A91FAC451A949D1F0057F07C /* SethGodin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */; };
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
 		A93DD01A1AD92EDE008FC6A7 /* STBaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A93DD0191AD92EDE008FC6A7 /* STBaseOperation.m */; };
+		A93DD01D1ADACA60008FC6A7 /* SGImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93DD01C1ADACA60008FC6A7 /* SGImageDownloader.swift */; };
 		A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */; };
 		A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */; };
 		A942A9B71AA33DF000C69271 /* SGPurchaseItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */; };
@@ -189,6 +190,7 @@
 		A93BE48116BA752B0005B38F /* SGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNavigationController.m; sourceTree = "<group>"; };
 		A93DD0181AD92EDE008FC6A7 /* STBaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STBaseOperation.h; path = SethGodin/STBaseOperation.h; sourceTree = "<group>"; };
 		A93DD0191AD92EDE008FC6A7 /* STBaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STBaseOperation.m; path = SethGodin/STBaseOperation.m; sourceTree = "<group>"; };
+		A93DD01C1ADACA60008FC6A7 /* SGImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGImageDownloader.swift; sourceTree = "<group>"; };
 		A942A9AF1A9F261A00C69271 /* ArrayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
 		A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseItemCell.xib; sourceTree = "<group>"; };
 		A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPurchaseItemCell.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				A9960B751A9DCAC700EAF035 /* FeedLoader.swift */,
 				E638258A88D9F254A299F29C /* SGFavoritesParse.h */,
 				E6382BE32AC7FDE2706901EC /* SGFavoritesParse.m */,
+				A93DD01C1ADACA60008FC6A7 /* SGImageDownloader.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1023,6 +1026,7 @@
 				A90773E8167E5DE700056C41 /* SGAccountViewController.m in Sources */,
 				A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */,
 				A9F9443A169AD7B000BBB6BE /* SGMainViewController_ipad.m in Sources */,
+				A93DD01D1ADACA60008FC6A7 /* SGImageDownloader.swift in Sources */,
 				A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */,
 				A9F36A4116A3609600FF7CB6 /* BlockActionSheet.m in Sources */,
 				A9F36A4216A3609600FF7CB6 /* BlockAlertView.m in Sources */,

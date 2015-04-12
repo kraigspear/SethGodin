@@ -14,6 +14,7 @@
 #import "SGUserDefaults.h"
 #import "UIColor+General.h"
 #import "UIFont+General.h"
+#import "Masonry.h"
 
 
 @implementation SGMenuViewController
@@ -28,8 +29,6 @@
     UIButton *_booksButton;
     UIButton *_accountButton;
     
-    NSArray *_portraitConstraints;
-    NSArray *_landscapeConstraints;
 }
 
 NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
@@ -85,7 +84,7 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     
     //
     [self setupPortriateConstraints];
-    [self setupLandscapeConstraints];
+   // [self setupLandscapeConstraints];
     
     _networkAvailableNotification = [SGNotifications observeNetworkAvailableWithNotification:^(NSNotification *note)
     {
@@ -97,129 +96,110 @@ NSString * const SEGUE_MENU_TO_UPGRADE = @"menuToUpgrade";
     _archivesButton.enabled = self.isNetworkAvailable;
     _booksButton.enabled = self.isNetworkAvailable;
     
-    [self updateConstraintsForOrientation:self.interfaceOrientation];
-    
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     _accountButton.hidden = ([SGUserDefaults sharedInstance].isUpgraded == NO);
-    [self updateConstraintsForOrientation:self.interfaceOrientation];
+
 }
 
-
-- (void) updateConstraintsForOrientation:(UIInterfaceOrientation) toInterfaceOrientation
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-    if(UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
+    if(size.width > size.height)
     {
-        [self.view removeConstraints:_landscapeConstraints];
-        [self.view addConstraints:_portraitConstraints];
+        [self setupLandscapeConstraints];
     }
     else
     {
-        [self.view removeConstraints:_portraitConstraints];
-        [self.view addConstraints:_landscapeConstraints];
+        [self setupPortriateConstraints];
     }
-    
-    [self.view layoutIfNeeded];
-
-}
-
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    [self updateConstraintsForOrientation:toInterfaceOrientation];
 }
 
 - (void) setupPortriateConstraints
 {
-    NSMutableArray *constraints = [NSMutableArray array];
-    
-    //latest
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_latestButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.titleBar attribute:NSLayoutAttributeBottom multiplier:1 constant:20];
-    
-    NSLayoutConstraint *leadingConstraint = [NSLayoutConstraint constraintWithItem:_latestButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:20 constant:0];
-    
-    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
-    
+    //Latest
+    [_latestButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(self.topLayoutGuide).offset(60);
+         make.leading.equalTo(self.view.mas_leading).offset(20);
+     }];
+
     //favorites
-    topConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-    
-    leadingConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
-    
-    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    [_favoritesButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(_latestButton.mas_bottom);
+         make.leading.equalTo(_latestButton.mas_leading);
+     }];
     
     //archives
+    [_archivesButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(_favoritesButton.mas_bottom);
+         make.leading.equalTo(_favoritesButton.mas_leading);
+     }];
     
-    topConstraint = [NSLayoutConstraint constraintWithItem:_archivesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_favoritesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    //Books
+    [_booksButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(_archivesButton.mas_bottom);
+         make.leading.equalTo(_archivesButton.mas_leading);
+     }];
     
-    leadingConstraint = [NSLayoutConstraint constraintWithItem:_archivesButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_favoritesButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
+    //Settings
+    [_accountButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(_booksButton.mas_bottom);
+         make.leading.equalTo(_booksButton.mas_leading);
+     }];
     
-    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
-    
-    //books
-    topConstraint = [NSLayoutConstraint constraintWithItem:_booksButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_archivesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-    
-    leadingConstraint = [NSLayoutConstraint constraintWithItem:_booksButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_archivesButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
-    
-    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
-    
-    //settings
-    topConstraint = [NSLayoutConstraint constraintWithItem:_accountButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_booksButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-    
-    leadingConstraint = [NSLayoutConstraint constraintWithItem:_accountButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_booksButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
-    
-    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
-    //
-    
-    _portraitConstraints = constraints;
-    
+    [UIView animateWithDuration:.2 animations:^{
+         [self.view setNeedsLayout];
+    }];
+   
 }
 
 - (void) setupLandscapeConstraints
 {
-    NSMutableArray *constraints = [NSMutableArray array];
-    
-    //latest
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:_latestButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.titleBar attribute:NSLayoutAttributeBottom multiplier:1 constant:20];
-    
-    NSLayoutConstraint *leadingConstraint = [NSLayoutConstraint constraintWithItem:_latestButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:20 constant:0];
-    
-    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    //Latest
+    [_latestButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(self.topLayoutGuide).offset(60);
+         make.leading.equalTo(self.view.mas_leading).offset(20);
+     }];
     
     //favorites
-    topConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeTop multiplier:1 constant:0];
-    
-    NSLayoutConstraint *trailingConstraint = [NSLayoutConstraint constraintWithItem:_favoritesButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:142];
-    
-    [constraints addObjectsFromArray:@[topConstraint, trailingConstraint]];
+    [_favoritesButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(_latestButton.mas_top);
+         make.trailing.equalTo(_latestButton.mas_trailing);
+     }];
     
     //archives
-    topConstraint = [NSLayoutConstraint constraintWithItem:_archivesButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    [_archivesButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(_latestButton.mas_bottom);
+         make.leading.equalTo(_latestButton.mas_leading);
+     }];
     
-    leadingConstraint = [NSLayoutConstraint constraintWithItem:_archivesButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_latestButton attribute:NSLayoutAttributeLeading multiplier:0 constant:0];
+    //Books
+    [_booksButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(_archivesButton.mas_top);
+         make.trailing.equalTo(_archivesButton.mas_trailing);
+     }];
     
-    [constraints addObjectsFromArray:@[topConstraint, leadingConstraint]];
+    //Settings
+    [_accountButton mas_remakeConstraints:^(MASConstraintMaker *make)
+     {
+         make.top.equalTo(_booksButton.mas_bottom);
+         make.centerX.equalTo(self.view.mas_centerX);
+     }];
     
-    //books
-    topConstraint = [NSLayoutConstraint constraintWithItem:_booksButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_favoritesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-    
-    trailingConstraint = [NSLayoutConstraint constraintWithItem:_booksButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_favoritesButton attribute:NSLayoutAttributeLeading multiplier:1 constant:0];
-    
-    [constraints addObjectsFromArray:@[topConstraint, trailingConstraint]];
-    
-    
-    //account
-    topConstraint = [NSLayoutConstraint constraintWithItem:_accountButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_archivesButton attribute:NSLayoutAttributeBottom multiplier:1 constant:-15];
-    
-    NSLayoutConstraint *centerConstraint = [NSLayoutConstraint constraintWithItem:_accountButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:75];
-    
-    [constraints addObjectsFromArray:@[topConstraint, centerConstraint]];
-    
-    //
-    
-    _landscapeConstraints = constraints;
-    
+    [UIView animateWithDuration:.2 animations:^{
+        [self.view setNeedsLayout];
+    }];
 }
 
 

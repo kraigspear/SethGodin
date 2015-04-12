@@ -100,13 +100,26 @@ public enum FeedType: Int
         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
         dispatch_async(backgroundQueue,
             {
+                //1. Fetch both the purchase items and blog items at the same time.
+                
                 self.fetchQue.addOperations([purchaseItemGetter, self.blogItemGetter], waitUntilFinished: true)
                 
-                let purchaseItems = purchaseItemGetter.purchaseItems as! [SGPurchaseItem]
-                let blogEntries = self.blogItemGetter.blogEntries as! [SGBlogEntry]
+                if let purchaseItems = purchaseItemGetter.purchaseItems as? [SGPurchaseItem]
+                {
+                   if let blogEntries = self.blogItemGetter.blogEntries as? [SGBlogEntry]
+                   {
+                       let feedItems = self.feedItemsFrom(purchaseItems:purchaseItems, blogEntries:blogEntries)
+                       dispatch_async(dispatch_get_main_queue(),
+                        {
+                            completed(feedItems: feedItems, error: nil)
+                            return
+                        })
+                   }
+                }
                 
-                let feedItems = self.feedItemsFrom(purchaseItems:purchaseItems, blogEntries:blogEntries)
-                
+                //2.
+                //If we are able to combine both the purchase items and blog items then we will not be here.
+                //At this point there is an error that we need to handle.
                 dispatch_async(dispatch_get_main_queue(),
                 {
                     if purchaseItemGetter.error != nil
@@ -117,10 +130,6 @@ public enum FeedType: Int
                     {
                         completed(feedItems: nil, error: self.blogItemGetter.error)
                     }
-                    else
-                    {
-                        completed(feedItems: feedItems, error: nil)
-                    }
                 })
             })
     }
@@ -130,7 +139,13 @@ public enum FeedType: Int
         let source = BFTaskCompletionSource()
         
         var feedItems:[FeedItem] = []
-        var shuffledPurchaseItems = purchaseItems.shuffled()
+        
+        var shuffledPurchaseItems: [SGPurchaseItem] = [];
+        
+        if(purchaseItems.count > 1)
+        {
+            shuffledPurchaseItems = purchaseItems.shuffled()
+        }
         
         var purchaseItemIndex = 0
         
