@@ -24,18 +24,12 @@
     return self;
 }
 
-- (BFTask *)requestItems
+- (void) main
 {
-    BFTaskCompletionSource *source = [BFTaskCompletionSource taskCompletionSource];
-
-    //This really isn't a valid search. Prevent from searching all of the blog content for nothing.
-    if(_searchText.length <= 2)
-    {
-        [source setResult:@[]];
-    }
+    @weakify(self);
     
+    self.executing = YES;
     NSString *searchTextEscaped = [_searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
     NSString *urlStr = [NSString stringWithFormat:@"http://api.typepad.com/assets.json?q=title:%@&filter.author=6p00d83451b31569e2", searchTextEscaped];
     
     NSLog(@"search URL = %@", urlStr);
@@ -49,23 +43,30 @@
     [manager GET:[url absoluteString]
       parameters:nil
          success:^(NSURLSessionDataTask *task, id responseObject)
-         {
-             NSArray *items = [self itemsFromDictionary:responseObject];
-             
-             
-             self.cachedItems = items;
-             dispatch_async(dispatch_get_main_queue(), ^
-                            {
-                                [source setResult:items];
-                            });
-             
-         }
+     {
+         NSArray *items = [self itemsFromDictionary:responseObject];
+         
+         self.cachedItems = items;
+         dispatch_async(dispatch_get_main_queue(), ^
+                        {
+                            @strongify(self);
+                            self.blogEntries = items;
+                            [self done];
+                        });
+         
+     }
          failure:^(NSURLSessionDataTask *task, NSError *error)
-         {
-             [source setError:error];
-         }];
+     {
+         dispatch_async(dispatch_get_main_queue(), ^
+                        {
+                            @strongify(self);
+                            self.error = error;
+                            [self done];
+                        });
+         
+     }];
+
     
-     return source.task;
 }
 
 
