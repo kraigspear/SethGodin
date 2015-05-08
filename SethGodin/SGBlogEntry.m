@@ -7,7 +7,7 @@
 //
 
 #import "SGBlogEntry.h"
-#import "NSString+Util.h"
+//#import "NSString+Util.h"
 
 @implementation SGBlogEntry
 
@@ -20,22 +20,25 @@ NSString * const KEY_URL          = @"url";
 
 
 - (id) initWithTitle:(NSString*) inDisplayName
-               publishedOn:(NSDate*) inDate
-                   summary:(NSString*) inSummary
-                   content:(NSString*) inContent
-                    itemID:(NSString *)inID
-                    fromURL:(NSString*) inUrlStr
+         publishedOn:(NSDate*) inDate
+             summary:(NSString*) inSummary
+             content:(NSString*) inContent
+              itemID:(NSString *)inID
+             fromURL:(NSString*) inUrlStr
 {
-    self = [super init];
-    
+  self = [super init];
+  
+  if(self)
+  {
     _title         = inDisplayName;
     _datePublished = inDate;
     _summary       = inSummary;
-    _content       = [inContent removeUnwantedContentCharacters];
+    _content       = [self removeUnwantedContentCharacters:inContent];
     _itemID        = inID;
     _urlStr        = inUrlStr;
-    
-    return self;
+  }
+  
+  return self;
 }
 
 #pragma mark -
@@ -43,49 +46,54 @@ NSString * const KEY_URL          = @"url";
 
 - (id) initWithCoder:(NSCoder *)aDecoder
 {
-    self = [self init];
-    
-    _title  = [aDecoder decodeObjectForKey:KEY_DISPLAY_NAME];
-    _datePublished = [aDecoder decodeObjectForKey:KEY_DATE];
-    _summary       = [aDecoder decodeObjectForKey:KEY_SUMMARY];
-    _content       = [aDecoder decodeObjectForKey:KEY_CONTENT];
-    _itemID        = [aDecoder decodeObjectForKey:KEY_ID];
-    _urlStr        = [aDecoder decodeObjectForKey:KEY_URL];
-    
-    return self;
+  self = [self init];
+  
+  _title  = [aDecoder decodeObjectForKey:KEY_DISPLAY_NAME];
+  _datePublished = [aDecoder decodeObjectForKey:KEY_DATE];
+  _summary       = [aDecoder decodeObjectForKey:KEY_SUMMARY];
+  _content       = [aDecoder decodeObjectForKey:KEY_CONTENT];
+  _itemID        = [aDecoder decodeObjectForKey:KEY_ID];
+  _urlStr        = [aDecoder decodeObjectForKey:KEY_URL];
+  
+  return self;
 }
 
 - (void) encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.title forKey:KEY_DISPLAY_NAME];
-    [aCoder encodeObject:self.datePublished forKey:KEY_DATE];
-    [aCoder encodeObject:self.summary forKey:KEY_SUMMARY];
-    [aCoder encodeObject:self.content forKey:KEY_CONTENT];
-    [aCoder encodeObject:self.itemID forKey:KEY_ID];
-    [aCoder encodeObject:self.urlStr forKey:KEY_URL];
+  [aCoder encodeObject:self.title forKey:KEY_DISPLAY_NAME];
+  [aCoder encodeObject:self.datePublished forKey:KEY_DATE];
+  [aCoder encodeObject:self.summary forKey:KEY_SUMMARY];
+  [aCoder encodeObject:self.content forKey:KEY_CONTENT];
+  [aCoder encodeObject:self.itemID forKey:KEY_ID];
+  [aCoder encodeObject:self.urlStr forKey:KEY_URL];
 }
 
 
 - (NSString*) description
 {
-    return self.title;
+  return self.title;
 }
 
 - (BOOL) isEqual:(id) other
 {
-	if (other == self)
-        return YES;
-    if (!other || ![other isKindOfClass:[self class]])
-        return NO;
-    return [self isEqualToWidget:other];
+  if (other == self)
+    return YES;
+  if (!other || ![other isKindOfClass:[self class]])
+    return NO;
+  return [self isEqualToWidget:other];
 }
 
 - (BOOL)isEqualToWidget:(SGBlogEntry *) wp
 {
-    if (self == wp)
-        return YES;
-	
-    return [self.itemID isEqualToString:wp.itemID];
+  if (self == wp)
+    return YES;
+  
+  return [self.itemID isEqualToString:wp.itemID];
+}
+
+- (NSString*) removeUnwantedContentCharacters:(NSString*) fromString
+{
+  return [fromString  stringByReplacingOccurrencesOfString:@"â" withString:@"'"];
 }
 
 @end

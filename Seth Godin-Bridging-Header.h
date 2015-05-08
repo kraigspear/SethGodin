@@ -12,4 +12,5 @@
 #import "SGBlogItemsGetter.h"
 #import "UIImage+RSSSelection.h"
 #import "BlockTypes.h"
+#import "SGCurrentBlogItemsGetter.h"
 #import <Parse/Parse.h>

@@ -76,7 +76,7 @@ static SGBlogEntriesViewController *instance = nil;
   BookPurchaser *_bookPurchaser;
 
   //When the
-  NSDate *_blogLastLoaded;
+  NSDate *_blogLatestLastLoaded;
 
 }
 
@@ -110,7 +110,7 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 
   [super viewDidLoad];
 
-  _blogLastLoaded = [NSDate dateWithTimeIntervalSince1970:1];
+  _blogLatestLastLoaded = [NSDate dateWithTimeIntervalSince1970:1];
 
   [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
 
@@ -152,7 +152,7 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
     //Moving away from current we DO want the feed to repopulate when moving back.
     if(newFeedSelection.feedType != kCurrent)
     {
-      _blogLastLoaded = [NSDate dateWithTimeIntervalSince1970:1];
+      _blogLatestLastLoaded = [NSDate dateWithTimeIntervalSince1970:1];
     }
     _feedSelection = newFeedSelection;
     [self loadLatestFeedData];
@@ -440,7 +440,7 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
   //we won't have to load when the app comes to the foreground.
   if(_feedSelection.feedType == kCurrent)
   {
-    if([_blogLastLoaded numberOfMinutesSince] <= 30)
+    if([_blogLatestLastLoaded numberOfMinutesSince] <= 30)
     {
       return;
     }
@@ -527,7 +527,13 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
       else if(feedItems)
       {
           [self updateBlogItems:feedItems];
-          self->_blogLastLoaded = [NSDate date];
+        
+          //We only avoid reloading data if it's the current data.
+          if(_feedSelection.feedType == kCurrent)
+          {
+            self->_blogLatestLastLoaded = [NSDate date];
+          }
+        
           if(onComplete)
           {
               BOOL hasNewData = NO;

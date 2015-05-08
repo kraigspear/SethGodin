@@ -30,6 +30,7 @@
 		A9100A701654EF1D00779F84 /* SGArchiveSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A6F1654EF1D00779F84 /* SGArchiveSelectionViewController.m */; };
 		A9100A731654FF5E00779F84 /* NSDate+General.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A721654FF5E00779F84 /* NSDate+General.m */; };
 		A9100A761656394600779F84 /* SGFeedSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = A9100A751656394600779F84 /* SGFeedSelection.m */; };
+		A913E9051AFAED8200A05638 /* BlogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913E9041AFAED8200A05638 /* BlogStore.swift */; };
 		A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A91D230116AC076200D8FD58 /* SGTitleView.m */; };
 		A91FAC451A949D1F0057F07C /* SethGodin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */; };
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
@@ -44,6 +45,14 @@
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
 		A95EA3FD165C8DC800A58FB4 /* books.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3FB165C8DC800A58FB4 /* books.png */; };
 		A95EA401165CDBC100A58FB4 /* SGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */; };
+		A96B75B91ADAFBEE007BEB6F /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B75B81ADAFBEE007BEB6F /* InterfaceController.swift */; };
+		A96B75BB1ADAFBEE007BEB6F /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */; };
+		A96B75BD1ADAFBEE007BEB6F /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B75BC1ADAFBEE007BEB6F /* GlanceController.swift */; };
+		A96B75BF1ADAFBEE007BEB6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */; };
+		A96B75C31ADAFBEE007BEB6F /* Seth Godin WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */; };
+		A96B75CB1ADAFBEE007BEB6F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96B75C91ADAFBEE007BEB6F /* Interface.storyboard */; };
+		A96B75CD1ADAFBEE007BEB6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96B75CC1ADAFBEE007BEB6F /* Images.xcassets */; };
+		A96B75D01ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A96B75B31ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A9712AA01667B2EE00BAFCD9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */; };
 		A9712AA31667B2F900BAFCD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA21667B2F900BAFCD9 /* Default@2x.png */; };
 		A9712AA51667B78400BAFCD9 /* books@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA41667B78400BAFCD9 /* books@2x.png */; };
@@ -53,6 +62,8 @@
 		A974FC1116676EDD00B29748 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC1016676EDD00B29748 /* Icon.png */; };
 		A974FC1316676F3000B29748 /* smallspinner.png in Resources */ = {isa = PBXBuildFile; fileRef = A974FC1216676F3000B29748 /* smallspinner.png */; };
 		A9754CB216930C6C009E1D1F /* libSpearLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9754CB016930AF9009E1D1F /* libSpearLib.a */; };
+		A97A16B91AFAF16400A9D062 /* BlogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913E9041AFAED8200A05638 /* BlogStore.swift */; };
+		A97A16BA1AFB5F7600A9D062 /* SGBlogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A91009C8164EEDC200779F84 /* SGBlogEntry.m */; };
 		A97E880B16563CD800777A82 /* SGNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880A16563CD800777A82 /* SGNotifications.m */; };
 		A97E880F1656465D00777A82 /* SGBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E880E1656465D00777A82 /* SGBlogItemsGetter.m */; };
 		A97E8812165646BC00777A82 /* SGArchiveBlogItemsGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E8811165646BC00777A82 /* SGArchiveBlogItemsGetter.m */; };
@@ -129,6 +140,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A96B75C41ADAFBEE007BEB6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9D684DA164CFE8D007A9ADA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A96B75C11ADAFBEE007BEB6F;
+			remoteInfo = "Seth Godin WatchKit App";
+		};
+		A96B75CE1ADAFBEE007BEB6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9D684DA164CFE8D007A9ADA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A96B75B21ADAFBEE007BEB6F;
+			remoteInfo = "Seth Godin WatchKit Extension";
+		};
 		A9754CAF16930AF9009E1D1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A9754CA816930AF9009E1D1F /* SpearLib.xcodeproj */;
@@ -145,10 +170,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A96B75D71ADAFBEE007BEB6F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A96B75D01ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0D9EB5E830FF06F8B09B6904 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A6FF5C6DF5E520B73CBB47A3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		A905B15D166627FB0092F3D0 /* SethGodin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SethGodin.entitlements; sourceTree = "<group>"; };
 		A90773E6167E5DE700056C41 /* SGAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccountViewController.h; sourceTree = "<group>"; };
 		A90773E7167E5DE700056C41 /* SGAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccountViewController.m; sourceTree = "<group>"; };
 		A90773EC167F2B0700056C41 /* userDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userDefaults.plist; sourceTree = "<group>"; };
@@ -183,6 +221,8 @@
 		A9100A721654FF5E00779F84 /* NSDate+General.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+General.m"; path = "SethGodin/NSDate+General.m"; sourceTree = "<group>"; };
 		A9100A741656394600779F84 /* SGFeedSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFeedSelection.h; sourceTree = "<group>"; };
 		A9100A751656394600779F84 /* SGFeedSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFeedSelection.m; sourceTree = "<group>"; };
+		A913E9021AF98F3D00A05638 /* Seth Godin WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Seth Godin WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		A913E9041AFAED8200A05638 /* BlogStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogStore.swift; sourceTree = "<group>"; };
 		A91D230016AC076200D8FD58 /* SGTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTitleView.h; sourceTree = "<group>"; };
 		A91D230116AC076200D8FD58 /* SGTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTitleView.m; sourceTree = "<group>"; };
 		A91FAC441A949D1F0057F07C /* SethGodin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SethGodin.xcdatamodel; sourceTree = "<group>"; };
@@ -202,6 +242,17 @@
 		A95EA3FB165C8DC800A58FB4 /* books.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = books.png; sourceTree = "<group>"; };
 		A95EA3FF165CDBC100A58FB4 /* SGUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUserDefaults.h; sourceTree = "<group>"; };
 		A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUserDefaults.m; sourceTree = "<group>"; };
+		A96B75B31ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Seth Godin WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A96B75B61ADAFBEE007BEB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A96B75B71ADAFBEE007BEB6F /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		A96B75B81ADAFBEE007BEB6F /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		A96B75BC1ADAFBEE007BEB6F /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A96B75C81ADAFBEE007BEB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A96B75CA1ADAFBEE007BEB6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		A96B75CC1ADAFBEE007BEB6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A9712AA21667B2F900BAFCD9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A9712AA41667B78400BAFCD9 /* books@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books@2x.png"; sourceTree = "<group>"; };
@@ -331,6 +382,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A96B75B01ADAFBEE007BEB6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A9D684E0164CFE8D007A9ADA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -567,6 +625,46 @@
 			name = Navigation;
 			sourceTree = "<group>";
 		};
+		A96B75B41ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A913E9021AF98F3D00A05638 /* Seth Godin WatchKit Extension.entitlements */,
+				A96B75B81ADAFBEE007BEB6F /* InterfaceController.swift */,
+				A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */,
+				A96B75BC1ADAFBEE007BEB6F /* GlanceController.swift */,
+				A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */,
+				A96B75B51ADAFBEE007BEB6F /* Supporting Files */,
+			);
+			path = "Seth Godin WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		A96B75B51ADAFBEE007BEB6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A96B75B61ADAFBEE007BEB6F /* Info.plist */,
+				A96B75B71ADAFBEE007BEB6F /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A96B75C61ADAFBEE007BEB6F /* Seth Godin WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				A96B75C91ADAFBEE007BEB6F /* Interface.storyboard */,
+				A96B75CC1ADAFBEE007BEB6F /* Images.xcassets */,
+				A96B75C71ADAFBEE007BEB6F /* Supporting Files */,
+			);
+			path = "Seth Godin WatchKit App";
+			sourceTree = "<group>";
+		};
+		A96B75C71ADAFBEE007BEB6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A96B75C81ADAFBEE007BEB6F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A9754CA916930AF9009E1D1F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +703,7 @@
 				A97E88141657AA2F00777A82 /* SGFavoritesBlogItemsGetter.m */,
 				A97E882B16581F0B00777A82 /* SGSearchBlogItemsGetter.h */,
 				A97E882C16581F0B00777A82 /* SGSearchBlogItemsGetter.m */,
+				A913E9041AFAED8200A05638 /* BlogStore.swift */,
 			);
 			name = ContentGetters;
 			sourceTree = "<group>";
@@ -659,6 +758,8 @@
 				A9D6854F164D0DBD007A9ADA /* General */,
 				A9100A6016531E5800779F84 /* Resources */,
 				A9D6850D164D005D007A9ADA /* 3RD Party */,
+				A96B75B41ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */,
+				A96B75C61ADAFBEE007BEB6F /* Seth Godin WatchKit App */,
 				A9D684E6164CFE8D007A9ADA /* Frameworks */,
 				A9D684E4164CFE8D007A9ADA /* Products */,
 				A91FAC391A9342920057F07C /* AppImages */,
@@ -670,6 +771,8 @@
 			isa = PBXGroup;
 			children = (
 				A9D684E3164CFE8D007A9ADA /* Seth Godin.app */,
+				A96B75B31ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex */,
+				A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -715,7 +818,6 @@
 				A9DE39F51A8B597D00ABCBBE /* Data */,
 				A93F261116AE890E000B1B45 /* Storyboards */,
 				A91009C6164EED9C00779F84 /* Model */,
-				A905B15D166627FB0092F3D0 /* SethGodin.entitlements */,
 				A9DE39F61A8B59BE00ABCBBE /* Seth Godin-Bridging-Header.h */,
 				A9D684EE164CFE8D007A9ADA /* Supporting Files */,
 				A942A9AE1A9F260000C69271 /* Util */,
@@ -826,6 +928,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A96B75B21ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A96B75D41ADAFBEE007BEB6F /* Build configuration list for PBXNativeTarget "Seth Godin WatchKit Extension" */;
+			buildPhases = (
+				A96B75AF1ADAFBEE007BEB6F /* Sources */,
+				A96B75B01ADAFBEE007BEB6F /* Frameworks */,
+				A96B75B11ADAFBEE007BEB6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A96B75C51ADAFBEE007BEB6F /* PBXTargetDependency */,
+			);
+			name = "Seth Godin WatchKit Extension";
+			productName = "Seth Godin WatchKit Extension";
+			productReference = A96B75B31ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		A96B75C11ADAFBEE007BEB6F /* Seth Godin WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A96B75D11ADAFBEE007BEB6F /* Build configuration list for PBXNativeTarget "Seth Godin WatchKit App" */;
+			buildPhases = (
+				A96B75C01ADAFBEE007BEB6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Seth Godin WatchKit App";
+			productName = "Seth Godin WatchKit App";
+			productReference = A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp";
+		};
 		A9D684E2164CFE8D007A9ADA /* Seth Godin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "Seth Godin" */;
@@ -835,11 +970,13 @@
 				A9D684E0164CFE8D007A9ADA /* Frameworks */,
 				A9D684E1164CFE8D007A9ADA /* Resources */,
 				CA15085CBB2D9090A751C563 /* Copy Pods Resources */,
+				A96B75D71ADAFBEE007BEB6F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				A9754CB816930EF1009E1D1F /* PBXTargetDependency */,
+				A96B75CF1ADAFBEE007BEB6F /* PBXTargetDependency */,
 			);
 			name = "Seth Godin";
 			productName = SethGodin;
@@ -856,9 +993,25 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = AndersonSpear;
 				TargetAttributes = {
+					A96B75B21ADAFBEE007BEB6F = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = FUNW4GUS24;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					A96B75C11ADAFBEE007BEB6F = {
+						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = FUNW4GUS24;
+					};
 					A9D684E2164CFE8D007A9ADA = {
 						DevelopmentTeam = FUNW4GUS24;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -875,6 +1028,7 @@
 				"es-ES",
 				es,
 				"zh-Hant",
+				Base,
 			);
 			mainGroup = A9D684D8164CFE8D007A9ADA;
 			productRefGroup = A9D684E4164CFE8D007A9ADA /* Products */;
@@ -888,6 +1042,8 @@
 			projectRoot = "";
 			targets = (
 				A9D684E2164CFE8D007A9ADA /* Seth Godin */,
+				A96B75B21ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */,
+				A96B75C11ADAFBEE007BEB6F /* Seth Godin WatchKit App */,
 			);
 		};
 /* End PBXProject section */
@@ -903,6 +1059,24 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A96B75B11ADAFBEE007BEB6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A96B75BF1ADAFBEE007BEB6F /* Images.xcassets in Resources */,
+				A96B75C31ADAFBEE007BEB6F /* Seth Godin WatchKit App.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A96B75C01ADAFBEE007BEB6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A96B75CB1ADAFBEE007BEB6F /* Interface.storyboard in Resources */,
+				A96B75CD1ADAFBEE007BEB6F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A9D684E1164CFE8D007A9ADA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -984,6 +1158,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A96B75AF1ADAFBEE007BEB6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A96B75BB1ADAFBEE007BEB6F /* NotificationController.swift in Sources */,
+				A96B75B91ADAFBEE007BEB6F /* InterfaceController.swift in Sources */,
+				A97A16BA1AFB5F7600A9D062 /* SGBlogEntry.m in Sources */,
+				A96B75BD1ADAFBEE007BEB6F /* GlanceController.swift in Sources */,
+				A97A16B91AFAF16400A9D062 /* BlogStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A9D684DF164CFE8D007A9ADA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -994,6 +1180,7 @@
 				A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */,
 				A9D68555164D100C007A9ADA /* UIImage+BBlock.m in Sources */,
 				A9D68554164D0DE3007A9ADA /* UIImage+RSSSelection.m in Sources */,
+				A913E9051AFAED8200A05638 /* BlogStore.swift in Sources */,
 				A9960B761A9DCAC700EAF035 /* FeedLoader.swift in Sources */,
 				A91009C9164EEDC200779F84 /* SGBlogEntry.m in Sources */,
 				A91009CC164EF31B00779F84 /* SGCurrentBlogItemsGetter.m in Sources */,
@@ -1050,6 +1237,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A96B75C51ADAFBEE007BEB6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A96B75C11ADAFBEE007BEB6F /* Seth Godin WatchKit App */;
+			targetProxy = A96B75C41ADAFBEE007BEB6F /* PBXContainerItemProxy */;
+		};
+		A96B75CF1ADAFBEE007BEB6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A96B75B21ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */;
+			targetProxy = A96B75CE1ADAFBEE007BEB6F /* PBXContainerItemProxy */;
+		};
 		A9754CB816930EF1009E1D1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SpearLib;
@@ -1058,6 +1255,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A96B75C91ADAFBEE007BEB6F /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A96B75CA1ADAFBEE007BEB6F /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		A9D684F0164CFE8D007A9ADA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1085,6 +1290,151 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A96B75D21ADAFBEE007BEB6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IBSC_MODULE = Seth_Godin_WatchKit_Extension;
+				INFOPLIST_FILE = "Seth Godin WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		A96B75D31ADAFBEE007BEB6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				IBSC_MODULE = Seth_Godin_WatchKit_Extension;
+				INFOPLIST_FILE = "Seth Godin WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Release;
+		};
+		A96B75D51ADAFBEE007BEB6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Seth Godin WatchKit Extension/Seth Godin WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Seth Godin WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A96B75D61ADAFBEE007BEB6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Seth Godin WatchKit Extension/Seth Godin WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Seth Godin WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		A9D68508164CFE8D007A9ADA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1112,7 +1462,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"../SpearLib/SpearLib/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "cbddb4e0-c122-46f4-b477-df01519fbe40";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cbddb4e0-c122-46f4-b477-df01519fbe40";
@@ -1142,7 +1492,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"../SpearLib/SpearLib/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "cbddb4e0-c122-46f4-b477-df01519fbe40";
@@ -1174,7 +1524,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1188,7 +1538,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0c37ded9-0a86-4764-9121-3cd9b021b750";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1216,7 +1566,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1229,7 +1579,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "59ed474d-cd9d-4ad7-b788-f086bed09e94";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "59ed474d-cd9d-4ad7-b788-f086bed09e94";
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1240,6 +1590,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A96B75D11ADAFBEE007BEB6F /* Build configuration list for PBXNativeTarget "Seth Godin WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A96B75D21ADAFBEE007BEB6F /* Debug */,
+				A96B75D31ADAFBEE007BEB6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A96B75D41ADAFBEE007BEB6F /* Build configuration list for PBXNativeTarget "Seth Godin WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A96B75D51ADAFBEE007BEB6F /* Debug */,
+				A96B75D61ADAFBEE007BEB6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A9D684DD164CFE8D007A9ADA /* Build configuration list for PBXProject "SethGodin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

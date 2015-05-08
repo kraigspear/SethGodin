@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "BlockTypes.h"
-#import "Bolts.h"
 #import "STBaseOperation.h"
+
+extern NSString * const sharedContainerId;
 
 @class SGBlogEntry;
 
