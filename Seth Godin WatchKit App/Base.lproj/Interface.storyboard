@@ -10,11 +10,28 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Seth_Godin_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label width="134" alignment="left" text="Hi There" textAlignment="center" id="yEl-Fo-qDz"/>
+                        <table alignment="left" id="DM1-4T-0Hi">
+                            <items>
+                                <tableRow identifier="BlogRowType" id="Aoc-Xo-lEt" customClass="BlogEntryRowController" customModule="Seth_Godin_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="64.5" alignment="left" layout="vertical" id="DAP-5Y-SKe">
+                                        <items>
+                                            <label alignment="left" text="Label" numberOfLines="0" id="RM9-c0-wOM">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                            <separator alignment="left" id="GX7-sw-oQa"/>
+                                            <label alignment="right" text="Label" id="G51-gr-ku0"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="dateLabel" destination="G51-gr-ku0" id="u2V-oy-oUo"/>
+                                        <outlet property="textLabel" destination="RM9-c0-wOM" id="LM0-6Z-EFZ"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
-                    <color key="backgroundColor" red="0.70196078429999997" green="0.31764705879999999" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
-                        <outlet property="theLabel" destination="yEl-Fo-qDz" id="jaH-Fn-if3"/>
+                        <outlet property="table" destination="DM1-4T-0Hi" id="p7b-Ay-RMa"/>
                     </connections>
                 </controller>
             </objects>

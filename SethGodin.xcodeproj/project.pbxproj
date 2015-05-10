@@ -40,6 +40,7 @@
 		A942A9B31AA3358D00C69271 /* PurchaseItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A942A9B21AA3358D00C69271 /* PurchaseItemCell.xib */; };
 		A942A9B71AA33DF000C69271 /* SGPurchaseItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */; };
 		A942A9BA1AA8550400C69271 /* SethGodinStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */; };
+		A94729F61AFD941C005E71DC /* BlogEntryRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94729F51AFD941C005E71DC /* BlogEntryRowController.swift */; };
 		A95B573116923C6A00026BD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95B573016923C6A00026BD8 /* CoreData.framework */; };
 		A95CBB4D1AC884CE00114227 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A95CBB4C1AC884CE00114227 /* Images.xcassets */; };
 		A95EA3F9165C8D9900A58FB4 /* books-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */; };
@@ -236,6 +237,7 @@
 		A942A9B61AA33DF000C69271 /* SGPurchaseItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPurchaseItemCell.swift; sourceTree = "<group>"; };
 		A942A9B81AA8550400C69271 /* SethGodinStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SethGodinStyleKit.h; path = SethGodin/SethGodinStyleKit.h; sourceTree = "<group>"; };
 		A942A9B91AA8550400C69271 /* SethGodinStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SethGodinStyleKit.m; path = SethGodin/SethGodinStyleKit.m; sourceTree = "<group>"; };
+		A94729F51AFD941C005E71DC /* BlogEntryRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogEntryRowController.swift; sourceTree = "<group>"; };
 		A95B573016923C6A00026BD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A95CBB4C1AC884CE00114227 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Seth Godin/Images.xcassets"; sourceTree = "<group>"; };
 		A95EA3F8165C8D9900A58FB4 /* books-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "books-568h@2x.png"; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				A96B75BC1ADAFBEE007BEB6F /* GlanceController.swift */,
 				A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */,
 				A96B75B51ADAFBEE007BEB6F /* Supporting Files */,
+				A94729F51AFD941C005E71DC /* BlogEntryRowController.swift */,
 			);
 			path = "Seth Godin WatchKit Extension";
 			sourceTree = "<group>";
@@ -1165,6 +1168,7 @@
 				A96B75BB1ADAFBEE007BEB6F /* NotificationController.swift in Sources */,
 				A96B75B91ADAFBEE007BEB6F /* InterfaceController.swift in Sources */,
 				A97A16BA1AFB5F7600A9D062 /* SGBlogEntry.m in Sources */,
+				A94729F61AFD941C005E71DC /* BlogEntryRowController.swift in Sources */,
 				A96B75BD1ADAFBEE007BEB6F /* GlanceController.swift in Sources */,
 				A97A16B91AFAF16400A9D062 /* BlogStore.swift in Sources */,
 			);

@@ -11,24 +11,42 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
-
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
-        
-        // Configure interface objects here.
-    }
-
-    @IBOutlet weak var theLabel: WKInterfaceLabel!
+  
+  override func awakeWithContext(context: AnyObject?) {
+    super.awakeWithContext(context)
+    populateTable()
+  }
+  
+  func populateTable()
+  {
     
-    override func willActivate()
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+    
+    let blogStore = BlogStore()
+    
+    blogStore.load()
+    
+    self.table.setNumberOfRows(blogStore.blogEntries.count, withRowType: "BlogRowType")
+    
+    for (index, blogEntry) in enumerate(blogStore.blogEntries)
     {
-        super.willActivate()
-        self.theLabel.setText("Hi Kriag")
+      let controller = table.rowControllerAtIndex(index) as! BlogEntryRowController
+      controller.textLabel.setText(blogEntry.title)
+      controller.dateLabel.setText(dateFormatter.stringFromDate(blogEntry.date))
     }
-
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-
+  }
+  
+  @IBOutlet weak var table: WKInterfaceTable!
+  
+  override func willActivate()
+  {
+    super.willActivate()
+  }
+  
+  override func didDeactivate() {
+    // This method is called when watch view controller is no longer visible
+    super.didDeactivate()
+  }
+  
 }
