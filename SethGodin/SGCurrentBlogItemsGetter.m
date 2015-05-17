@@ -27,7 +27,6 @@
      
      NSArray *items = [self itemsFromDictionary:responseObject];
      
-    // self.cachedItems = items;
      self.blogEntries = items;
      [self done];
    }

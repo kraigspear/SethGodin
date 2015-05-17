@@ -82,6 +82,7 @@
 		A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884316590C7200777A82 /* NSDictionary-Expanded.m */; };
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
+		A98FE0CD1B093E7700DC40C9 /* Seth_Godin_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98FE0CC1B093E7700DC40C9 /* Seth_Godin_Tests.swift */; };
 		A9960B721A9B2AA200EAF035 /* BookPurchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */; };
 		A9960B761A9DCAC700EAF035 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B751A9DCAC700EAF035 /* FeedLoader.swift */; };
 		A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */; };
@@ -138,6 +139,7 @@
 		A9F944351699CA5E00BBB6BE /* SGBlogEntryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F944341699CA5E00BBB6BE /* SGBlogEntryCell.m */; };
 		A9F9443A169AD7B000BBB6BE /* SGMainViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94439169AD7B000BBB6BE /* SGMainViewController_ipad.m */; };
 		A9F94446169EB84300BBB6BE /* SGMenuController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */; };
+		A9FE2B9E1B08E9F90087642C /* WatchKitFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FE2B9D1B08E9F90087642C /* WatchKitFetcher.swift */; };
 		E63823D0DC57F546354762A5 /* SGFavoritesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = E6382BE32AC7FDE2706901EC /* SGFavoritesParse.m */; };
 		E63827EBFA8ACFF8A35AA5D0 /* GAEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638226EA1790052E58BF045 /* GAEvents.swift */; };
 /* End PBXBuildFile section */
@@ -170,6 +172,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A969FCB41693092900413CC5;
 			remoteInfo = SpearLib;
+		};
+		A98FE0CE1B093E7700DC40C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A9D684DA164CFE8D007A9ADA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9D684E2164CFE8D007A9ADA;
+			remoteInfo = "Seth Godin";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -299,6 +308,9 @@
 		A97E88581659212100777A82 /* SGBookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBookCellView.m; sourceTree = "<group>"; };
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
+		A98FE0C81B093E7700DC40C9 /* Seth Godin Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Seth Godin Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A98FE0CB1B093E7700DC40C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A98FE0CC1B093E7700DC40C9 /* Seth_Godin_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seth_Godin_Tests.swift; sourceTree = "<group>"; };
 		A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPurchaser.swift; sourceTree = "<group>"; };
 		A9960B751A9DCAC700EAF035 /* FeedLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_ipad.h; sourceTree = "<group>"; };
@@ -381,6 +393,7 @@
 		A9F94439169AD7B000BBB6BE /* SGMainViewController_ipad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMainViewController_ipad.m; sourceTree = "<group>"; };
 		A9F94444169EB84300BBB6BE /* SGMenuController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMenuController_iPad.h; sourceTree = "<group>"; };
 		A9F94445169EB84300BBB6BE /* SGMenuController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMenuController_iPad.m; sourceTree = "<group>"; };
+		A9FE2B9D1B08E9F90087642C /* WatchKitFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchKitFetcher.swift; sourceTree = "<group>"; };
 		E1478ACAADC96543F8A5F96E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E638226EA1790052E58BF045 /* GAEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GAEvents.swift; sourceTree = "<group>"; };
 		E638258A88D9F254A299F29C /* SGFavoritesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFavoritesParse.h; sourceTree = "<group>"; };
@@ -389,6 +402,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		A96B75B01ADAFBEE007BEB6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A98FE0C51B093E7600DC40C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -545,6 +565,7 @@
 				A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */,
 				A97E880916563CD800777A82 /* SGNotifications.h */,
 				A97E880A16563CD800777A82 /* SGNotifications.m */,
+				A9FE2B9D1B08E9F90087642C /* WatchKitFetcher.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -747,6 +768,23 @@
 			path = ToAddToYourProjects;
 			sourceTree = "<group>";
 		};
+		A98FE0C91B093E7700DC40C9 /* Seth Godin Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A98FE0CC1B093E7700DC40C9 /* Seth_Godin_Tests.swift */,
+				A98FE0CA1B093E7700DC40C9 /* Supporting Files */,
+			);
+			path = "Seth Godin Tests";
+			sourceTree = "<group>";
+		};
+		A98FE0CA1B093E7700DC40C9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A98FE0CB1B093E7700DC40C9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A9A3F21D16A6ADA9000B4D62 /* BlogEntryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,6 +807,7 @@
 				A9D6850D164D005D007A9ADA /* 3RD Party */,
 				A96B75B41ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */,
 				A96B75C61ADAFBEE007BEB6F /* Seth Godin WatchKit App */,
+				A98FE0C91B093E7700DC40C9 /* Seth Godin Tests */,
 				A9D684E6164CFE8D007A9ADA /* Frameworks */,
 				A9D684E4164CFE8D007A9ADA /* Products */,
 				A91FAC391A9342920057F07C /* AppImages */,
@@ -782,6 +821,7 @@
 				A9D684E3164CFE8D007A9ADA /* Seth Godin.app */,
 				A96B75B31ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex */,
 				A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */,
+				A98FE0C81B093E7700DC40C9 /* Seth Godin Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -970,6 +1010,24 @@
 			productReference = A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */;
 			productType = "com.apple.product-type.application.watchapp";
 		};
+		A98FE0C71B093E7600DC40C9 /* Seth Godin Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A98FE0D01B093E7700DC40C9 /* Build configuration list for PBXNativeTarget "Seth Godin Tests" */;
+			buildPhases = (
+				A98FE0C41B093E7600DC40C9 /* Sources */,
+				A98FE0C51B093E7600DC40C9 /* Frameworks */,
+				A98FE0C61B093E7600DC40C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A98FE0CF1B093E7700DC40C9 /* PBXTargetDependency */,
+			);
+			name = "Seth Godin Tests";
+			productName = "Seth Godin Tests";
+			productReference = A98FE0C81B093E7700DC40C9 /* Seth Godin Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A9D684E2164CFE8D007A9ADA /* Seth Godin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "Seth Godin" */;
@@ -1015,6 +1073,10 @@
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = FUNW4GUS24;
 					};
+					A98FE0C71B093E7600DC40C9 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = A9D684E2164CFE8D007A9ADA;
+					};
 					A9D684E2164CFE8D007A9ADA = {
 						DevelopmentTeam = FUNW4GUS24;
 						SystemCapabilities = {
@@ -1053,6 +1115,7 @@
 				A9D684E2164CFE8D007A9ADA /* Seth Godin */,
 				A96B75B21ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */,
 				A96B75C11ADAFBEE007BEB6F /* Seth Godin WatchKit App */,
+				A98FE0C71B093E7600DC40C9 /* Seth Godin Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -1083,6 +1146,13 @@
 			files = (
 				A96B75CB1ADAFBEE007BEB6F /* Interface.storyboard in Resources */,
 				A96B75CD1ADAFBEE007BEB6F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A98FE0C61B093E7600DC40C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1182,6 +1252,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A98FE0C41B093E7600DC40C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A98FE0CD1B093E7700DC40C9 /* Seth_Godin_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A9D684DF164CFE8D007A9ADA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1238,6 +1316,7 @@
 				A9A3F22916A6B0D8000B4D62 /* SGBlogEntryViewController_iphone.m in Sources */,
 				A9A3F25C16AAD578000B4D62 /* SGLoginViewController.m in Sources */,
 				A9A3F25F16AADB8A000B4D62 /* SGSignUpViewController.m in Sources */,
+				A9FE2B9E1B08E9F90087642C /* WatchKitFetcher.swift in Sources */,
 				A942A9B01A9F261A00C69271 /* ArrayUtil.swift in Sources */,
 				A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */,
 				A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */,
@@ -1263,6 +1342,11 @@
 			isa = PBXTargetDependency;
 			name = SpearLib;
 			targetProxy = A9754CB716930EF1009E1D1F /* PBXContainerItemProxy */;
+		};
+		A98FE0CF1B093E7700DC40C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9D684E2164CFE8D007A9ADA /* Seth Godin */;
+			targetProxy = A98FE0CE1B093E7700DC40C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1451,6 +1535,81 @@
 			};
 			name = Release;
 		};
+		A98FE0D11B093E7700DC40C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Seth Godin Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seth Godin.app/Seth Godin";
+			};
+			name = Debug;
+		};
+		A98FE0D21B093E7700DC40C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Seth Godin Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seth Godin.app/Seth Godin";
+			};
+			name = Release;
+		};
 		A9D68508164CFE8D007A9ADA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1623,6 +1782,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A98FE0D01B093E7700DC40C9 /* Build configuration list for PBXNativeTarget "Seth Godin Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A98FE0D11B093E7700DC40C9 /* Debug */,
+				A98FE0D21B093E7700DC40C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		A9D684DD164CFE8D007A9ADA /* Build configuration list for PBXProject "SethGodin" */ = {
 			isa = XCConfigurationList;

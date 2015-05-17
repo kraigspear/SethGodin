@@ -16,7 +16,7 @@ class BlogSelectionController: WKInterfaceController {
   
   override func awakeWithContext(context: AnyObject?) {
     super.awakeWithContext(context)
-    fetchLatest()
+  //  fetchLatest()
   }
   
   @IBAction func refreshAction()
@@ -46,10 +46,6 @@ class BlogSelectionController: WKInterfaceController {
           if let errorFromDict = replyDictionary["error"] as? NSError
           {
             println("Error from getting data from iPhone App \(errorFromDict)")
-          }
-          else if let bullShit = replyDictionary["bullshit"] as? String
-          {
-             println(bullShit)
           }
           else if let results = replyDictionary["results"] as? [ [String:AnyObject]  ]
           {
