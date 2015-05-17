@@ -35,18 +35,47 @@ class GlanceController: WKInterfaceController {
   
   func fetchLatest()
   {
-    let blogStore = BlogStore()
     
-    if let latest = blogStore.latestEntry()
-    {
-      populateLatest(latest)
+    let numberToFetch: NSNumber = 1
+    
+    let userInfo = ["fetch" : "latest",
+                    "numberToFetch" : numberToFetch]
+    
+    GlanceController.openParentApplication(userInfo) { [weak self]
+      (replyDictionary, error) -> Void in
+      
+      if let unwrapError = error
+      {
+        println(unwrapError)
+      }
+      else
+      {
+        if let strongSelf = self
+        {
+          if let results = replyDictionary["results"] as? [ [String:String]  ]
+          {
+            strongSelf.populateLatest(results[0])
+          }
+          else
+          {
+            println("didn't get the correct results from the App")
+          }
+        }
+      }
     }
-    
   }
   
-  func populateLatest(blogEntry:BlogEntry)
+  func populateLatest(blogEntry:[String:String])
   {
-    self.blogTitleLabel.setText(blogEntry.title)
+    if let title: String = blogEntry["title"]
+    {
+      println("title = \(title)")
+      self.blogTitleLabel.setText(title)
+    }
+    else
+    {
+      println("didn't find the title from the App results")
+    }
     self.dateTimeOfBlogEntryLabel.setText("Today")
   }
   

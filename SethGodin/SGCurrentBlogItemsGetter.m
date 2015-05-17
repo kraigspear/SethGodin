@@ -14,36 +14,28 @@
 
 - (void)main
 {
-  @weakify(self);
-  
   self.executing = YES;
   
   NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
   AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-  manager.requestSerializer = [AFJSONRequestSerializer serializer];
+  manager.responseSerializer = [AFJSONResponseSerializer serializer];
   
   [manager GET:[url absoluteString]
     parameters:nil
-       success:^(NSURLSessionDataTask *task, id responseObject) {
-         
-         NSArray *items = [self itemsFromDictionary:responseObject];
-         
-         self.cachedItems = items;
-         dispatch_async(dispatch_get_main_queue(), ^
-                        {
-                          @strongify(self);
-                          self.blogEntries = items;
-                          [self done];
-                        });
-         
-       }
-       failure:^(NSURLSessionDataTask *task, NSError *error)
+       success:^(NSURLSessionDataTask *task, id responseObject)
    {
-     dispatch_async(dispatch_get_main_queue(), ^
-                    {
-                      self.error = error;
-                      [self done];
-                    });
+     
+     NSArray *items = [self itemsFromDictionary:responseObject];
+     
+    // self.cachedItems = items;
+     self.blogEntries = items;
+     [self done];
+   }
+   
+   failure:^(NSURLSessionDataTask *task, NSError *error)
+   {
+     self.error = error;
+     [self done];
    }];
 }
 
@@ -76,9 +68,6 @@
     [self updateShareCountForBlogEntry:blogEntry];
     [blogEntries addObject:blogEntry];
   }
-  
-  
-  
   
   return blogEntries;
 }

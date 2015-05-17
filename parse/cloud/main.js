@@ -3,13 +3,21 @@
 
 Parse.Cloud.job("checkForNew", function(request, response)
 {
-    Parse.Cloud.httpRequest({
+    var blogTitle = "";
+    var summary = "";
+    var published = "";
+    var needToPush = false;
+
+    Parse.Cloud.httpRequest(
+    {
       url: 'http://profile.typepad.com/sethgodin/activity.json'
     }).then(function(httpResponse) 
     {
        var json = JSON.parse(httpResponse.text);
-       var published = json["items"][0]["published"]
+       published = json["items"][0]["published"];
 
+       blogTitle = json["items"][0]["object"]["displayName"];
+       summary = json["items"][0]["object"]["summary"];
 
        var LatestEntry = Parse.Object.extend("LatestEntry");
        var query = new Parse.Query(LatestEntry);
@@ -18,25 +26,46 @@ Parse.Cloud.job("checkForNew", function(request, response)
 
     }).then(function(latestEntry)
     {
-    	latestEntry.set("lastPublished", published);
-    	return latestEntry.save(null);
+      if(latestEntry.get("lastPublished") == published)
+      {
+        console.log("dates don't equal, need to push");
+        return null;
+      }
+      else
+      {
+        latestEntry.set("lastPublished", published);
+        return latestEntry.save(null);
+      }
+    	
     }).then(function(savedLatest)
     {
-    	sendOutPushes();
+      if(savedLatest != null)
+      {
+        console.log("doing push");
+        return Parse.Push.send({
+          where: new Parse.Query(Parse.Installation),
+          data: 
+          {
+            "alert": summary,
+            "badge": "Increment",
+            "content-available": "1"
+          }
+        });
+      }
+      else
+      {
+        return null;
+      }
+    }).then(function(pushed)
+    {
+       response.success("pushed");
     },
     function(error)
     {
-
+      response.error(error);
     });
 });
 
-
-
-
-function sendOutPushes()
-{
-
-}
  
 Parse.Cloud.beforeSave("Favorite", function(request, response) 
 {

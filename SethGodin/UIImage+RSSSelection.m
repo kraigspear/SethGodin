@@ -242,7 +242,7 @@
         
         //// Abstracted Attributes
         NSString* titleTextContent = inTitle;
-        NSString* shareTextContent = [NSString stringWithFormat:@"%d", inShare];
+        NSString* shareTextContent = [NSString stringWithFormat:@"%lu", (unsigned long)inShare];
         NSString* dateTextContent = [inFormatter stringFromDate:inDate];
         
         

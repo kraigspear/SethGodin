@@ -9,6 +9,7 @@
 #import "SGBlogEntry.h"
 //#import "NSString+Util.h"
 
+
 @implementation SGBlogEntry
 
 NSString * const KEY_DISPLAY_NAME = @"displayName";
@@ -95,5 +96,7 @@ NSString * const KEY_URL          = @"url";
 {
   return [fromString  stringByReplacingOccurrencesOfString:@"â" withString:@"'"];
 }
+
+
 
 @end

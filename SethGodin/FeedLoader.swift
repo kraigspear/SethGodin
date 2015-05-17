@@ -79,9 +79,9 @@ public enum FeedType: Int
     ///Provides the feed items
     let blogItemGetter: SGBlogItemsGetter
 
-    public init(blogItemGeter:SGBlogItemsGetter)
+    public init(blogItemGetter:SGBlogItemsGetter)
     {
-        self.blogItemGetter = blogItemGeter
+        self.blogItemGetter = blogItemGetter
     }
 
     lazy var fetchQue:NSOperationQueue =

@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class BlogEntry : NSObject
+@objc public class BlogEntry : NSObject
 {
   let itemId: String
   let title:String
@@ -50,6 +50,7 @@ public class BlogStore
   
   func load()
   {
+    
     if let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.spearware.sethgodin")
     {
       let fileUrl = url.URLByAppendingPathComponent("blogEntries.json")

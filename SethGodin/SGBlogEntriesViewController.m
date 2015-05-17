@@ -503,7 +503,7 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
     }
   }
 
-  _feedLoader = [[FeedLoader alloc] initWithBlogItemGeter:_contentGetter];
+  _feedLoader = [[FeedLoader alloc] initWithBlogItemGetter:_contentGetter];
 
   @weakify(self);
 
