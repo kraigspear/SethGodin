@@ -13,5 +13,13 @@
 
 @interface SGCurrentBlogItemsGetter : SGBlogItemsGetter
 
+/**
+ *  Init passing in a flag to indicate that a full refresh should be done regardless of the age of the cache.
+ *
+ *  @param force Force a refresh
+ *
+ *  @return Instance of SGCurrentBlogItemsGetter
+ */
+- (instancetype) initWithForceRefresh:(BOOL) force;
 
 @end

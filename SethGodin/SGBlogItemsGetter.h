@@ -61,6 +61,14 @@ extern NSString * const sharedContainerId;
 - (NSArray*) cachedItems;
 
 /**
+ *  Hold old is the cache in hours.
+ *  If the cache does not exist, than NSMaxInteger is returned
+ *
+ *  @return Hold old the cache file is, in hours.
+ */
+- (NSInteger) ageOfCacheFileInHours;
+
+/**
  Saves the items to the cache.
  @param inItems Items to save to the cache
  */

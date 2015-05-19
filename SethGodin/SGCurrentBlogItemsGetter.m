@@ -10,12 +10,62 @@
 #import "SGBlogEntry.h"
 #import "AFNetworking.h"
 
+
 @implementation SGCurrentBlogItemsGetter
+{
+@private
+  BOOL _force;
+}
+
+- (instancetype) init
+{
+  self = [super init];
+  
+  if (self)
+  {
+    _force = NO;
+  }
+  
+  return self;
+}
+
+- (instancetype) initWithForceRefresh:(BOOL) force
+{
+  self = [self init];
+  
+  if (self)
+  {
+    _force = force;
+  }
+  
+  return self;
+}
 
 - (void)main
 {
   self.executing = YES;
   
+  //1.Determine if we need to load from the cache or network.
+  //2.Load from the approbate place.
+  if([AFNetworkReachabilityManager sharedManager].reachable)
+  {
+    if ( ([self ageOfCacheFileInHours] >= 24) || _force)
+    {
+      [self loadFromInternet];
+    }
+    else
+    {
+      [self loadFromCache];
+    }
+  }
+  else
+  {
+    [self loadFromCache];
+  }
+}
+
+- (void) loadFromInternet
+{
   NSURL *url = [NSURL URLWithString:@"http://profile.typepad.com/sethgodin/activity.json"];
   AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
   manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -26,7 +76,7 @@
    {
      
      NSArray *items = [self itemsFromDictionary:responseObject];
-     
+     self.cachedItems = items;
      self.blogEntries = items;
      [self done];
    }
@@ -36,6 +86,15 @@
      self.error = error;
      [self done];
    }];
+}
+
+- (void) loadFromCache
+{
+  self.blogEntries = self.cachedItems;
+  
+  [self updateShareCountsForEntries:self.blogEntries];
+  
+  [self done];
 }
 
 - (NSArray*) itemsFromDictionary:(NSDictionary*) inDictionary

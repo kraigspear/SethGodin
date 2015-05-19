@@ -21,6 +21,7 @@
   FeedLoader *_feedLoader;
   NSOperationQueue *_que;
   WatchKitFetcher *_watchKitFetcher;
+  SGCurrentBlogItemsGetter *_currentBlogItemsGetter;
 }
 
 - (NSDateFormatter*) dateFormatterLongStyle
@@ -82,6 +83,42 @@
   [currentInstallation setDeviceTokenFromData:deviceToken];
   [currentInstallation saveInBackground];
 }
+
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+  
+  __weak typeof(self) weakSelf = self;
+
+  //Here's where we left off. Updating based on a push notification.
+  _currentBlogItemsGetter = [[SGCurrentBlogItemsGetter alloc] initWithForceRefresh:YES];
+  
+  _currentBlogItemsGetter.completionBlock = ^
+  {
+    
+    typeof(self) strongSelf = weakSelf;
+    
+    if(strongSelf)
+    {
+      SGCurrentBlogItemsGetter *blogItemsGetter = strongSelf->_currentBlogItemsGetter;
+      
+      if(blogItemsGetter.error)
+      {
+         completionHandler(UIBackgroundFetchResultFailed);
+      }
+      else
+      {
+        completionHandler(UIBackgroundFetchResultNewData);
+      }
+      
+      strongSelf->_currentBlogItemsGetter = nil;
+    }
+    
+  };
+  
+  [_que addOperation:_currentBlogItemsGetter];
+  
+}
+
 
 - (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {

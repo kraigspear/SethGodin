@@ -63,12 +63,27 @@ static NSCalendar *_calendar;
   NSDateComponents *breakdownInfo = [sysCalendar components:unitFlags fromDate:self  toDate:otherDate options:0];
   
   return [breakdownInfo minute];
-  
 }
 
 - (NSInteger) numberOfMinutesSince
 {
   return [self numberOfMinutesSince:[NSDate date]];
+}
+
+- (NSInteger) numberOfHoursSince:(NSDate*) otherDate
+{
+  NSCalendar *sysCalendar = [NSDate currentCalendar];
+  
+  unsigned int unitFlags = NSCalendarUnitHour;
+  
+  NSDateComponents *breakdownInfo = [sysCalendar components:unitFlags fromDate:self  toDate:otherDate options:0];
+  
+  return [breakdownInfo hour];
+}
+
+- (NSInteger) numberOfHoursSince
+{
+  return [self numberOfHoursSince:[NSDate date]];
 }
 
 @end

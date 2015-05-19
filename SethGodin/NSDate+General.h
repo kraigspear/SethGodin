@@ -45,6 +45,22 @@
 - (NSInteger) numberOfMinutesSince;
 
 /**
+ *  Number of minutes since another date
+ *
+ *  @param otherDate Other date to subtract from
+ *
+ *  @return The number of hours since the other date
+ */
+- (NSInteger) numberOfHoursSince:(NSDate*) otherDate;
+
+/**
+ *  The number of hours since the current date
+ *
+ *  @return Number of hours since the date
+ */
+- (NSInteger) numberOfHoursSince;
+
+/**
  Number of minutes since a date.
  */
 - (NSInteger) numberOfMinutesSince:(NSDate*) otherDate;

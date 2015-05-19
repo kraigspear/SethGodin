@@ -9,6 +9,8 @@
 #import "SGBlogItemsGetter.h"
 #import "SGBlogEntry.h"
 #import "SGNotifications.h"
+#import "NSDate+General.h"
+#import "NSFileManager+Util.h"
 #import "AFHTTPSessionManager.h"
 
 
@@ -18,6 +20,7 @@ NSString * const sharedContainerId = @"group.com.spearware.sethgodin";
 {
 @private
   NSDateFormatter *_dateFormatter;
+  NSString *_cacheFile;
 }
 
 #pragma mark -
@@ -183,11 +186,60 @@ NSString * const sharedContainerId = @"group.com.spearware.sethgodin";
   
   NSString *cacheFile = [self cacheFile];
   
-  NSFileManager *fileManager = [NSFileManager defaultManager];
-  
-  if(![fileManager fileExistsAtPath:[self cacheFile]]) [NSArray array];
+  if(![self cacheFileExist]) [NSArray array];
   
   return [NSKeyedUnarchiver unarchiveObjectWithFile:cacheFile];
+}
+
+- (BOOL) cacheFileExist
+{
+  if(![self cacheAvailable])
+  {
+    return NO;
+  }
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  return ([fileManager fileExistsAtPath:[self cacheFile]]);
+}
+
+- (NSInteger) ageOfCacheFileInHours
+{
+  if(![self cacheAvailable])
+  {
+    return NSIntegerMax;
+  }
+  
+  NSFileManager *fileManager = [NSFileManager defaultManager];
+  
+  NSString *cacheFile = [self cacheFile];
+  
+  NSLog(@"cacheFile = %@", cacheFile);
+  
+  if ([fileManager fileExistsAtPath:cacheFile])
+  {
+    NSDictionary* attrs = [fileManager attributesOfItemAtPath:[self cacheFile] error:nil];
+    
+    if(attrs)
+    {
+      NSDate *date = (NSDate*)[attrs objectForKey: NSFileCreationDate];
+      if (date)
+      {
+        return [date numberOfHoursSince];
+      }
+      else
+      {
+        return NSIntegerMax;
+      }
+    }
+    else
+    {
+      return NSIntegerMax;
+    }
+
+  }
+  else
+  {
+    return NSIntegerMax;
+  }
 }
 
 - (void) setCachedItems:(NSArray*) inItems
@@ -197,48 +249,7 @@ NSString * const sharedContainerId = @"group.com.spearware.sethgodin";
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
                  {
                    [NSKeyedArchiver archiveRootObject:inItems toFile:[self cacheFile]];
-                   [self saveToJson:inItems];
                  });
-  
-}
-
-- (void) saveToJson:(NSArray*) blogItems
-{
-  
-  NSURL *url = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.spearware.sethgodin"];
-  
-  NSAssert(url != nil, @"Not able to get URL for group, group.com.spearware.sethgodin");
-  
-  NSURL *docUrl = [url URLByAppendingPathComponent:@"blogEntries.json"];
-  
-  NSArray *itemsAsDictionary = [self blogItemsToDictionary:blogItems];
-  
-  if(![NSJSONSerialization isValidJSONObject:itemsAsDictionary])
-  {
-    NSLog(@"can't convert to JSON");
-    return;
-  }
-  
-  NSError *error;
-  
-  NSData *jsonData = [NSJSONSerialization dataWithJSONObject:itemsAsDictionary options:NSJSONWritingPrettyPrinted error:&error];
-  
-  if (error)
-  {
-    NSLog(@"error writing JSON %@", error.localizedDescription);
-    return;
-  }
-  
-  NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-  
-  if ([jsonStr writeToURL:docUrl atomically:YES encoding:NSUTF8StringEncoding error:&error])
-  {
-     NSLog(@"cache JSON file written");
-  }
-  else
-  {
-    NSLog(@"%@", error);
-  }
   
 }
 
@@ -286,13 +297,11 @@ NSString * const sharedContainerId = @"group.com.spearware.sethgodin";
  */
 - (NSString*) cacheFile
 {
-  NSURL *sharedContainerUrl = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.spearware.sethgodin"];
-  
-  NSAssert(sharedContainerUrl != nil, @"Wasn't able to get the sharedContainer URL");
-  
-  NSURL *fullPathUrl = [sharedContainerUrl URLByAppendingPathComponent:[self cacheKey]];
-  
-  return [fullPathUrl absoluteString];
+  if (!_cacheFile)
+  {
+    _cacheFile = [NSFileManager cachePathWithFile:[self cacheKey]];
+  }
+  return _cacheFile;
 }
 
 @end
