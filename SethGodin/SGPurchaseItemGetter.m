@@ -11,6 +11,8 @@
 #import "NSDictionary-Expanded.h"
 #import "SGPurchaseItem.h"
 #import "Seth_Godin-Swift.h"
+#import "NSDate+General.h"
+#import "SGUserDefaults.h"
 #import <Parse/Parse.h>
 
 @implementation SGPurchaseItemGetter
@@ -42,6 +44,20 @@
 {
     self.executing = YES;
     PFQuery *query = [PFQuery queryWithClassName:@"Book"];
+  
+    NSDate *lastFetch = [[SGUserDefaults sharedInstance] lastPurchaseItemsFetch];
+
+    //Load from a cache if the data has been refreshed in the last 24 hours.
+    if([lastFetch numberOfHoursSince] >= 24)
+    {
+      query.cachePolicy = kPFCachePolicyNetworkElseCache;
+      [[SGUserDefaults sharedInstance] setLastPurchaseItemsFetch:[NSDate date]];
+    }
+    else
+    {
+      query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    }
+  
     NSArray *results = [query findObjects];
     
     NSMutableArray *purchaseItems = [[NSMutableArray alloc] init];

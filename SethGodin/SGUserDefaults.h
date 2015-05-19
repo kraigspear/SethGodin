@@ -29,4 +29,7 @@
 - (BOOL) wasMovedToCloud;
 - (void) setWasMovedToCloud:(BOOL) toValue;
 
+- (NSDate*) lastPurchaseItemsFetch;
+- (void) setLastPurchaseItemsFetch:(NSDate*) date;
+
 @end

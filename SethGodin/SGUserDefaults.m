@@ -13,6 +13,7 @@
 NSString * const KEY_UPGRADED = @"upgraded";
 NSString * const KEY_ASKED_CLOUD = @"askedToUseCloud";
 NSString * const KEY_MOVED_TO_CLOUD = @"movedToCloud";
+NSString * const KEY_LAST_PURCHASE_ITEM_FETCH = @"lastPurchaseItemsFetch";
 
 + (SGUserDefaults*) sharedInstance
 {
@@ -84,6 +85,23 @@ NSString * const KEY_MOVED_TO_CLOUD = @"movedToCloud";
 {
     [[NSUserDefaults standardUserDefaults] setBool:toValue forKey:KEY_MOVED_TO_CLOUD];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSDate*) lastPurchaseItemsFetch
+{
+  NSDate *lastFetch = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_LAST_PURCHASE_ITEM_FETCH];
+  
+  if(!lastFetch)
+  {
+    lastFetch = [NSDate distantPast];
+  }
+  
+  return lastFetch;
+}
+
+- (void) setLastPurchaseItemsFetch:(NSDate*) date
+{
+  [[NSUserDefaults standardUserDefaults] setObject:date forKey:KEY_LAST_PURCHASE_ITEM_FETCH];
 }
 
 
