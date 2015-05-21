@@ -13,16 +13,18 @@
                         <table alignment="left" id="DM1-4T-0Hi">
                             <items>
                                 <tableRow identifier="BlogRowType" id="Aoc-Xo-lEt" customClass="BlogEntryRowController" customModule="Seth_Godin_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="44.5" alignment="left" layout="vertical" id="DAP-5Y-SKe">
+                                    <group key="rootItem" width="1" height="79.5" alignment="left" layout="vertical" id="DAP-5Y-SKe">
                                         <items>
-                                            <label alignment="left" text="Label" numberOfLines="2" id="RM9-c0-wOM">
+                                            <label alignment="center" text="Label" textAlignment="center" numberOfLines="3" id="RM9-c0-wOM">
                                                 <color key="textColor" red="0.98039215690000003" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                             </label>
-                                            <label alignment="right" text="Label" id="G51-gr-ku0">
+                                            <label alignment="right" verticalAlignment="bottom" text="Label" id="G51-gr-ku0">
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                             </label>
                                         </items>
+                                        <edgeInsets key="margins" left="5" right="5" top="0.0" bottom="2"/>
                                     </group>
                                     <connections>
                                         <outlet property="dateLabel" destination="G51-gr-ku0" id="u2V-oy-oUo"/>
@@ -33,15 +35,6 @@
                             </items>
                         </table>
                     </items>
-                    <menu key="menu" id="gnu-fV-arc">
-                        <items>
-                            <menuItem title="Refresh" icon="info" id="SkZ-S8-rNa">
-                                <connections>
-                                    <action selector="refreshAction" destination="AgC-eL-Hgc" id="DgG-Y1-lOC"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
                     <connections>
                         <outlet property="table" destination="DM1-4T-0Hi" id="p7b-Ay-RMa"/>
                     </connections>

@@ -79,6 +79,20 @@ extern NSString * const NOTIFICATION_SHARE_COUNT_UPDATED;
 + (id) observeFavoriteDeleted:(NotificationBlock) inBlock;
 
 /**
+ *  Post that there is new content available views should refresh
+ */
++ (void) postNewContent;
+
+/**
+ *  Observe that there is new content to display
+ *
+ *  @param inBlock Block to receive notification
+ *
+ *  @return Handle to notification
+ */
++ (id) observeNewContent:(NotificationBlock) inBlock;
+
+/**
  Post that the network availablity has changed.
  @param isAvailable Yes is available
  */

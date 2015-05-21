@@ -16,14 +16,9 @@ class BlogSelectionController: WKInterfaceController {
   
   override func awakeWithContext(context: AnyObject?) {
     super.awakeWithContext(context)
-  //  fetchLatest()
-  }
-  
-  @IBAction func refreshAction()
-  {
     fetchLatest()
   }
-  
+    
   func fetchLatest()
   {
     
@@ -106,7 +101,6 @@ class BlogSelectionController: WKInterfaceController {
   override func willActivate()
   {
     super.willActivate()
-    //fetchLatest()
   }
   
   override func didDeactivate()

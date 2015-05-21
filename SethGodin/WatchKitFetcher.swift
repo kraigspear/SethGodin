@@ -23,8 +23,10 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   
   /// Command to fetch blog entries
   public let commandFetch = "fetch"
+  public let commandSave = "save"
   /// Value used with commandFetch to indicate what needs to be fetched, the latest entries.
   public let commandParamFetchLatest  = "latest"
+  public let commandParamSaveFavorite = "saveFavorite"
   
   /// <#Description#>
   public let numberToFetch = "numberToFetch"
@@ -97,6 +99,10 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
         }
       }
     }
+    else if let saveId = self.userInfo[commandSave] as? String
+    {
+      saveFavorite(saveId)
+    }
   }
   
   /**
@@ -130,6 +136,11 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
     }
     
     self.operationQue.addOperation(blogGetter)
+    
+  }
+  
+  private func saveFavorite(blogId: String)
+  {
     
   }
   

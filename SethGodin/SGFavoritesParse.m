@@ -46,6 +46,11 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     }];
 }
 
++ (void) addBlogEntrytoFavoritesWithId:(NSString*) blogId
+{
+  
+}
+
 + (PFQuery*) queryForBlogEntry:(SGBlogEntry*) inEntry
 {
     PFQuery *query = [PFQuery queryWithClassName:PARSE_CLASS_FAVORITE];

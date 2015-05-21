@@ -107,10 +107,13 @@
       }
       else
       {
-        completionHandler(UIBackgroundFetchResultNewData);
+         completionHandler(UIBackgroundFetchResultNewData);
       }
       
       strongSelf->_currentBlogItemsGetter = nil;
+      
+      //You are here, we want the UI to be up to date after new content has been loaded in the background.
+      [SGNotifications postNewContent];
     }
     
   };

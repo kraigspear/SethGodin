@@ -1797,6 +1797,7 @@
 				A98FE0D21B093E7700DC40C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A9D684DD164CFE8D007A9ADA /* Build configuration list for PBXProject "SethGodin" */ = {
 			isa = XCConfigurationList;
