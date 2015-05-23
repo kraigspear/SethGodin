@@ -390,6 +390,8 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
 {
   [self.view layoutIfNeeded];
   
+  __weak typeof(self) weakSelf = self;
+  
   [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
     _menuTopConstraint.constant = -self.view.frame.size.height;
     _menuBottomConstraint.constant = -self.view.frame.size.height;
@@ -398,7 +400,12 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
                    completion:^(BOOL finished) {
                      if (finished)
                      {
-                       [self removeMenuController];
+                       typeof(self) strongSelf = weakSelf;
+                       
+                       if(strongSelf)
+                       {
+                         [strongSelf removeMenuController];
+                       }
                      }
                    }];
 }
