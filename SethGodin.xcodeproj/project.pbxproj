@@ -50,7 +50,6 @@
 		A95EA401165CDBC100A58FB4 /* SGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */; };
 		A96B75B91ADAFBEE007BEB6F /* BlogSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B75B81ADAFBEE007BEB6F /* BlogSelectionController.swift */; };
 		A96B75BB1ADAFBEE007BEB6F /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */; };
-		A96B75BD1ADAFBEE007BEB6F /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B75BC1ADAFBEE007BEB6F /* GlanceController.swift */; };
 		A96B75BF1ADAFBEE007BEB6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */; };
 		A96B75C31ADAFBEE007BEB6F /* Seth Godin WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */; };
 		A96B75CB1ADAFBEE007BEB6F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96B75C91ADAFBEE007BEB6F /* Interface.storyboard */; };
@@ -130,6 +129,7 @@
 		A9E3221816B4B7750096AB6A /* sethbig@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E3221416B4B7750096AB6A /* sethbig@2x.png */; };
 		A9E82B4016C11C4E0043D8A5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E82B3F16C11C4E0043D8A5 /* Icon-72@2x.png */; };
 		A9E82B4216C11C600043D8A5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E82B4116C11C600043D8A5 /* Icon-72.png */; };
+		A9E8A57E1B10A15E007EA87D /* WatchKitResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E8A57D1B10A15E007EA87D /* WatchKitResponder.swift */; };
 		A9F36A4116A3609600FF7CB6 /* BlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3A16A3609600FF7CB6 /* BlockActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A9F36A4216A3609600FF7CB6 /* BlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3C16A3609600FF7CB6 /* BlockAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A9F36A4316A3609600FF7CB6 /* BlockBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F36A3E16A3609600FF7CB6 /* BlockBackground.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -262,7 +262,6 @@
 		A96B75B71ADAFBEE007BEB6F /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		A96B75B81ADAFBEE007BEB6F /* BlogSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogSelectionController.swift; sourceTree = "<group>"; };
 		A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		A96B75BC1ADAFBEE007BEB6F /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96B75C81ADAFBEE007BEB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -376,6 +375,7 @@
 		A9E3221416B4B7750096AB6A /* sethbig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sethbig@2x.png"; sourceTree = "<group>"; };
 		A9E82B3F16C11C4E0043D8A5 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		A9E82B4116C11C600043D8A5 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		A9E8A57D1B10A15E007EA87D /* WatchKitResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchKitResponder.swift; sourceTree = "<group>"; };
 		A9F36A3916A3609600FF7CB6 /* BlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockActionSheet.h; sourceTree = "<group>"; };
 		A9F36A3A16A3609600FF7CB6 /* BlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockActionSheet.m; sourceTree = "<group>"; };
 		A9F36A3B16A3609600FF7CB6 /* BlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAlertView.h; sourceTree = "<group>"; };
@@ -658,11 +658,11 @@
 				A913E9021AF98F3D00A05638 /* Seth Godin WatchKit Extension.entitlements */,
 				A96B75B81ADAFBEE007BEB6F /* BlogSelectionController.swift */,
 				A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */,
-				A96B75BC1ADAFBEE007BEB6F /* GlanceController.swift */,
 				A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */,
 				A96B75B51ADAFBEE007BEB6F /* Supporting Files */,
 				A94729F51AFD941C005E71DC /* BlogEntryRowController.swift */,
 				A9377EF91B01FC6C006ADD03 /* BlogReadController.swift */,
+				A9E8A57D1B10A15E007EA87D /* WatchKitResponder.swift */,
 			);
 			path = "Seth Godin WatchKit Extension";
 			sourceTree = "<group>";
@@ -1245,10 +1245,10 @@
 				A96B75BB1ADAFBEE007BEB6F /* NotificationController.swift in Sources */,
 				A96B75B91ADAFBEE007BEB6F /* BlogSelectionController.swift in Sources */,
 				A97A16BA1AFB5F7600A9D062 /* SGBlogEntry.m in Sources */,
+				A9E8A57E1B10A15E007EA87D /* WatchKitResponder.swift in Sources */,
 				A94729F61AFD941C005E71DC /* BlogEntryRowController.swift in Sources */,
 				A9377EFA1B01FC6C006ADD03 /* BlogReadController.swift in Sources */,
 				A9377EFF1B02D4E1006ADD03 /* DateUtil.swift in Sources */,
-				A96B75BD1ADAFBEE007BEB6F /* GlanceController.swift in Sources */,
 				A97A16B91AFAF16400A9D062 /* BlogStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

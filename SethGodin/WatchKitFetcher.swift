@@ -139,6 +139,10 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
     
   }
   
+  /**
+  Save a favorite
+  :param: The ID of the blog item to save as a favorite
+  */
   private func saveFavorite(blogId: String)
   {
     

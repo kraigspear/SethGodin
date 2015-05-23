@@ -77,30 +77,6 @@
             </objects>
             <point key="canvasLocation" x="441" y="344"/>
         </scene>
-        <!--Glance Interface Controller-->
-        <scene sceneID="BOz-TT-tkC">
-            <objects>
-                <glanceController spacing="0.0" topTemplateType="body1Large" id="0uZ-2p-rRc" customClass="GlanceController" customModule="Seth_Godin_WatchKit_App" customModuleProvider="target">
-                    <items>
-                        <label alignment="left" text="Posted On" id="udB-eK-MhZ"/>
-                        <label alignment="left" text="May 4, 2015" minimumScaleFactor="0.30000000000000016" id="qFC-3X-HGh"/>
-                        <group alignment="left" backgroundImage="sethLogo" contentMode="scaleAspectFit" layout="vertical" spacing="10" id="uCw-4Q-Ouw">
-                            <items>
-                                <separator alignment="left" id="DLT-p6-IAt"/>
-                                <label width="136" alignment="left" text="Are you certain that you're trapped?" textAlignment="center" numberOfLines="0" id="I8N-M3-mzA" userLabel="blogTitle"/>
-                            </items>
-                            <edgeInsets key="margins" left="10" right="0.0" top="0.0" bottom="0.0"/>
-                        </group>
-                    </items>
-                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
-                    <connections>
-                        <outlet property="blogTitleLabel" destination="I8N-M3-mzA" id="lRB-U8-bFu"/>
-                        <outlet property="dateTimeOfBlogEntryLabel" destination="qFC-3X-HGh" id="Wjh-IY-p90"/>
-                    </connections>
-                </glanceController>
-            </objects>
-            <point key="canvasLocation" x="235" y="672"/>
-        </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
             <objects>

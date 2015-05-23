@@ -9,104 +9,102 @@
 import WatchKit
 import Foundation
 
-
+/**
+The ViewController that shows a list of blog entries to be selected to read
+*/
 class BlogSelectionController: WKInterfaceController {
   
-  var blogEntries:[BlogEntry]! = []
+  /**
+  The blog entires currently being displayed
+  */
+  private var blogEntries:[BlogEntry]! = []
+  
+  /*
+  The table that shows the blog entry content.
+  */
+  @IBOutlet weak var table: WKInterfaceTable!
   
   override func awakeWithContext(context: AnyObject?) {
     super.awakeWithContext(context)
     fetchLatest()
   }
-    
-  func fetchLatest()
+  
+  /**
+  Fetch the latest blog content so that we can display them
+  */
+  private func fetchLatest()
   {
     
-    let numberToFetch: NSNumber = 7
+    let numberToFetch: Int = 7
     
-    let userInfo = ["fetch" : "latest",
-      "numberToFetch" : numberToFetch]
+    //The responder knows how to handle the responses coming back from the parent iPhone App
+    //We are a simpled minded ViewController that has no business knowing how to do that.
+    let responder = WatchKitResponder()
     
-    GlanceController.openParentApplication(userInfo) { [weak self]
-      (replyDictionary, error) -> Void in
+    responder.onBlogEntries = {[weak self] (blogEntries:[BlogEntry]?, error:NSError?) in
       
-      if let unwrapError = error
+      if let unwrapSelf = self
       {
-        println("Error from getting data from iPhone App \(unwrapError)")
-      }
-      else
-      {
-        if let strongSelf = self
+        if let unwrapEntries = blogEntries
         {
-          if let errorFromDict = replyDictionary["error"] as? NSError
-          {
-            println("Error from getting data from iPhone App \(errorFromDict)")
-          }
-          else if let results = replyDictionary["results"] as? [ [String:AnyObject]  ]
-          {
-            if results.count == 0
-            {
-              println("noting came back")
-            }
-            println("results came back #\(results.count)")
-            strongSelf.populateTable(results)
-          }
-          else
-          {
-            println("didn't get the correct results from the App")
-          }
+          unwrapSelf.populateTable(unwrapEntries)
+        }
+        
+        if let unwrapError = error
+        {
+          
         }
       }
+      
     }
+    
+    //1. Get the user info request needed to make the call, providing how many that we want returned.
+    let userInfo = responder.userInfoForFetch(numberToFetch)
+   
+    //2. Ask the parent App for the latest entries, giving a refrence to responder to handle the response
+    BlogSelectionController.openParentApplication(userInfo, reply: responder.processLatestBlogEntries)
   }
   
-  private func populateTable(blogEntries:[ [String:AnyObject] ])
+  /**
+  Populate the table with blog entries
+  1. Assign blogEntries memeber to blogEntries
+     Why? Will need to select the blog entry from the index later when the user chooses one to read
+  2. Create a date formatter with the format that we are displaying
+  3. Populate the table with title and date
+  */
+  private func populateTable(blogEntries:[BlogEntry])
   {
-    
-    self.blogEntries.removeAll(keepCapacity: true)
-    
-    let dateFormatter = NSDateFormatter()
-    dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-    
+    self.blogEntries = blogEntries
     self.table.setNumberOfRows(blogEntries.count, withRowType: "BlogRowType")
     
     for (index, element) in enumerate(blogEntries)
     {
       let controller = table.rowControllerAtIndex(index) as! BlogEntryRowController
-      let title = element["title"] as! String
-      let date = element["datePublished"] as! NSDate
-      let dateStr = date.friendyDateString()
-      let itemId = element["itemId"] as! String
-      let summary = element["summary"] as! String
-      let content = element["content"] as! String
-      let urlStr = element["urlStr"] as! String
-      
-      controller.textLabel.setText(title)
-      controller.dateLabel.setText(dateStr)
-      
-      let blogEntry = BlogEntry(itemId: itemId, title: title, summary: summary, content: content, urlStr: urlStr, date: date)
-      
-      self.blogEntries.append(blogEntry)
+      controller.textLabel.setText(element.title)
+      controller.dateLabel.setText(shortTimeFormatter.stringFromDate(element.date))
     }
     
   }
   
+  /**
+  A short time formatter for the time of the blog post.
+  */
+  private lazy var shortTimeFormatter:NSDateFormatter =
+  {
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+    return dateFormatter
+  }()
+  
+  /**
+  Give the new ViewController blogEntry item that they selected
+  */
   override func contextForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> AnyObject?
   {
     return self.blogEntries[rowIndex]
   }
   
-  @IBOutlet weak var table: WKInterfaceTable!
+  // MARK: Menu
   
-  override func willActivate()
-  {
-    super.willActivate()
-  }
   
-  override func didDeactivate()
-  {
-    // This method is called when watch view controller is no longer visible
-    super.didDeactivate()
-  }
-  
-}
+ }
