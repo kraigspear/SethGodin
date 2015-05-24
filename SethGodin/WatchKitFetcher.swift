@@ -23,7 +23,7 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   
   /// Command to fetch blog entries
   public let commandFetch = "fetch"
-  public let commandSave = "save"
+  public let commandSave = "favorite"
   /// Value used with commandFetch to indicate what needs to be fetched, the latest entries.
   public let commandParamFetchLatest  = "latest"
   public let commandParamSaveFavorite = "saveFavorite"
@@ -145,7 +145,8 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   */
   private func saveFavorite(blogId: String)
   {
-    
+    SGFavoritesParse.addBlogEntrytoFavoritesWithId(blogId)
+    self.reply(["response":"completed"])
   }
   
   /**

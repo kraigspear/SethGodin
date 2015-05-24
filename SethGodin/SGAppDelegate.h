@@ -23,5 +23,6 @@
  */
 - (NSDateFormatter*) dateFormatterLongStyle;
 + (SGAppDelegate*) instance;
+- (NSOperationQueue*) que;
 
 @end

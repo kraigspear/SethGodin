@@ -35,8 +35,6 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:1.000 green:0.984 blue:0.937 alpha:1];
     
-    [[SGFavoritesParse alloc] init];
-    
     for (UIView* subView in self.webView.subviews)
     {
         if ([subView isKindOfClass:[UIScrollView class]]) {

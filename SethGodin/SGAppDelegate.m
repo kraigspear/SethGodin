@@ -29,6 +29,11 @@
   return _dateformatter;
 }
 
+- (NSOperationQueue*) que
+{
+  return _que;
+}
+
 + (SGAppDelegate*) instance
 {
   return (SGAppDelegate*) [[UIApplication sharedApplication] delegate];
@@ -59,6 +64,8 @@
   
   _dateformatter           = [[NSDateFormatter alloc] init];
   _dateformatter.dateStyle =  NSDateFormatterLongStyle;
+  
+  [self resetAppBadge];
   
   return YES;
 }
@@ -172,13 +179,22 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-  
+  [self resetAppBadge];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
+
+- (void) resetAppBadge
+{
+  //Instead of being fancy and trying to decrement the number based on reading the the blog, we just set to 0
+  //First, less complicated and it's not best for the user to nag them. We just want a gentle nudge that they
+  //need to come back to the App.
+  [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+}
+
 
 #pragma mark -
 #pragma mark WatchKit

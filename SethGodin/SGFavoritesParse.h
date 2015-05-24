@@ -16,6 +16,7 @@
 @interface SGFavoritesParse : NSObject
 
 + (void) addBlogEntryToFavorites:(SGBlogEntry*) inEntry;
++ (void) addBlogEntrytoFavoritesWithId:(NSString*) blogId;
 
 + (NSArray*) allFavorites;
 + (void) toggleBlogEntryAsAFavorite:(SGBlogEntry*) inEntry;

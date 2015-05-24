@@ -60,6 +60,12 @@ class WatchKitResponder
       "numberToFetch" :fetchNum]
   }
   
+  //Request that a certain blog entry be saved as a favorite
+  func userInfoForSaveFavorite(blogId:String) -> [NSObject:AnyObject]
+  {
+    return ["favorite" : blogId]
+  }
+  
   private func convertDictionaryToBlogEntries(resultDictionary:[ [String:AnyObject] ]) -> [BlogEntry]
   {
     var blogEntries: [BlogEntry] = []

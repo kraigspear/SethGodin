@@ -9,6 +9,9 @@
 #import "SGFavoritesParse.h"
 #import <Parse/Parse.h>
 #import "SGNotifications.h"
+#import "SGCurrentBlogItemsGetter.h"
+#import "SGAppDelegate.h"
+
 
 NSString * const PARSE_CLASS_FAVORITE     = @"Favorite";
 NSString * const PARSE_COL_CURRENT_USER   = @"currentUser";
@@ -46,9 +49,47 @@ NSString * const PARSE_ARCHIVE_MONTH      = @"archiveMonth";
     }];
 }
 
+/**
+ Save a blog current blog entry to favorites using the blogID
+ 1. Get the latest entries
+ 2. Find a blog entry with a matching ID
+ 3. If it was found save it as a favorite
+ */
 + (void) addBlogEntrytoFavoritesWithId:(NSString*) blogId
 {
+  SGCurrentBlogItemsGetter *currentGetter = [[SGCurrentBlogItemsGetter alloc] init];
+  __weak SGCurrentBlogItemsGetter *weakCurrentGetter = currentGetter;
   
+  currentGetter.completionBlock = ^
+  {
+    SGCurrentBlogItemsGetter *strongGetter = weakCurrentGetter;
+    
+    if(strongGetter)
+    {
+      NSUInteger indexOfBlogEntry = [strongGetter.blogEntries indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop)
+      {
+        SGBlogEntry *blogEntry = obj;
+        if([blogEntry.itemID isEqualToString:blogId])
+        {
+          *stop = YES;
+          return YES;
+        }
+        else
+        {
+          return NO;
+        }
+      }];
+      
+      if(indexOfBlogEntry != NSNotFound)
+      {
+        SGBlogEntry *blogEntry = strongGetter.blogEntries[indexOfBlogEntry];
+        [SGFavoritesParse addBlogEntryToFavorites:blogEntry];
+      }
+    }
+    
+  };
+  
+  [[[SGAppDelegate instance] que] addOperation:currentGetter];
 }
 
 + (PFQuery*) queryForBlogEntry:(SGBlogEntry*) inEntry

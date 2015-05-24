@@ -15,9 +15,9 @@ class BlogReadController : WKInterfaceController
   //let onFavoriteSelector : Selector = "onFavorite:"
   
   @IBOutlet weak var blogTitleLabel: WKInterfaceLabel!
-  
-  
   @IBOutlet weak var contentLabel: WKInterfaceLabel!
+  
+  var blogEntry:BlogEntry?
   
   override func awakeWithContext(context: AnyObject?)
   {
@@ -25,24 +25,20 @@ class BlogReadController : WKInterfaceController
     
     if let blogEntry = context as? BlogEntry
     {
+      self.blogEntry = blogEntry
       populateBlogEntry(blogEntry)
     }
     
-//    if let image = UIImage(named: "Heart")
-//    {
-//      self.addMenuItemWithImage(image, title: "Favorite", action: onFavoriteSelector)
-//    }
-    
   }
-  
-//  func onFavorite(sender: AnyObject)
-//  {
-//    println("Favorite selected")
-//  }
   
   @IBAction func onAddFavorite()
   {
-    
+    if let unwrapBlogEntry = blogEntry
+    {
+      let responder = WatchKitResponder()
+      let userInfo = responder.userInfoForSaveFavorite(unwrapBlogEntry.itemId)
+      BlogReadController.openParentApplication(userInfo, reply: responder.processLatestBlogEntries)
+    }
   }
   
   func populateBlogEntry(blogEntry:BlogEntry)

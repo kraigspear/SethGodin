@@ -13,4 +13,5 @@
 #import "UIImage+RSSSelection.h"
 #import "BlockTypes.h"
 #import "SGCurrentBlogItemsGetter.h"
+#import "SGFavoritesParse.h"
 #import <Parse/Parse.h>
