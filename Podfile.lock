@@ -20,7 +20,12 @@ PODS:
   - AFNetworking/UIKit (2.5.2):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Bolts (1.1.4)
+  - Bolts (1.1.5):
+    - Bolts/AppLinks (= 1.1.5)
+    - Bolts/Tasks (= 1.1.5)
+  - Bolts/AppLinks (1.1.5):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.1.5)
   - KissXML (5.0)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
@@ -61,35 +66,32 @@ PODS:
   - MBProgressHUD (0.9.1)
   - Parse (1.7.1):
     - Bolts (~> 1.1)
-  - ParseUI (1.1.3):
+  - ParseUI (1.1.4):
     - Parse (~> 1.7)
-  - Raygun4iOS (1.6.0)
-  - Reveal-iOS-SDK (1.5.1)
+  - Raygun4iOS (2.0.0)
   - SVWebViewController (1.0)
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (= 2.5.2)
   - KissXML
   - libextobjc
   - Masonry
   - MBProgressHUD
-  - Parse
-  - ParseUI
+  - Parse (= 1.7.1)
+  - ParseUI (= 1.1.4)
   - Raygun4iOS
-  - Reveal-iOS-SDK
   - SVWebViewController
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
-  Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  Bolts: aac24961496d504aa56fc267cde95162a71bac39
   KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Parse: fa8ec29de6d82035635986c11946299fb1b38316
-  ParseUI: 1a68e9cebc3bd458eed9605ce7b33d7cc082f473
-  Raygun4iOS: 8ee12665793e7e0420e57bbe8deb52eaf742ef47
-  Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
+  ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  Raygun4iOS: 1a9c4df9106638ae7ba8c13d1cd2089b1ec2472d
   SVWebViewController: c36dda7326e81fcae0abf5d02bf7bbf7e41be901
 
 COCOAPODS: 0.36.3

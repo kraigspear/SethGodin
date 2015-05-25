@@ -14,8 +14,9 @@
  Main window
  */
 @property (strong, nonatomic) UIWindow *window;
-
 @property (nonatomic, assign) BOOL isNetworkAvailable;
+
+
 
 /**
  A long dateformatter that can be used throughout the App.
@@ -24,5 +25,7 @@
 - (NSDateFormatter*) dateFormatterLongStyle;
 + (SGAppDelegate*) instance;
 - (NSOperationQueue*) que;
+
+
 
 @end

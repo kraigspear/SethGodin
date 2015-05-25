@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 
 //Operation to download an image

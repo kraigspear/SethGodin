@@ -4,8 +4,9 @@
 Parse.Cloud.job("checkForNew", function(request, response)
 {
     var blogTitle = "";
-    var summary = "";
+    var displayName = "";
     var published = "";
+    var blogId = "";
     var needToPush = false;
 
     Parse.Cloud.httpRequest(
@@ -17,8 +18,9 @@ Parse.Cloud.job("checkForNew", function(request, response)
        published = json["items"][0]["published"];
 
        blogTitle = json["items"][0]["object"]["displayName"];
-       summary = json["items"][0]["object"]["summary"];
-
+       displayName = json["items"][0]["object"]["displayName"];
+ 	   blogId = json["items"][0]["object"]["id"];
+ 		
        var LatestEntry = Parse.Object.extend("LatestEntry");
        var query = new Parse.Query(LatestEntry);
 
@@ -46,7 +48,7 @@ Parse.Cloud.job("checkForNew", function(request, response)
           where: new Parse.Query(Parse.Installation),
           data: 
           {
-            "alert": summary,
+            "alert": displayName,
             "badge": "Increment",
             "content-available": "1"
           }

@@ -33,6 +33,8 @@
 		A913E9051AFAED8200A05638 /* BlogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A913E9041AFAED8200A05638 /* BlogStore.swift */; };
 		A91D230216AC076200D8FD58 /* SGTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = A91D230116AC076200D8FD58 /* SGTitleView.m */; };
 		A91FAC451A949D1F0057F07C /* SethGodin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A91FAC431A949D1F0057F07C /* SethGodin.xcdatamodeld */; };
+		A93128A41B13782A00F33E6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96B75CC1ADAFBEE007BEB6F /* Images.xcassets */; };
+		A93128A51B13783400F33E6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96B75CC1ADAFBEE007BEB6F /* Images.xcassets */; };
 		A9377EFA1B01FC6C006ADD03 /* BlogReadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9377EF91B01FC6C006ADD03 /* BlogReadController.swift */; };
 		A9377EFF1B02D4E1006ADD03 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9377EFE1B02D4E1006ADD03 /* DateUtil.swift */; };
 		A93BE48216BA752B0005B38F /* SGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93BE48116BA752B0005B38F /* SGNavigationController.m */; };
@@ -50,10 +52,8 @@
 		A95EA401165CDBC100A58FB4 /* SGUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = A95EA400165CDBC100A58FB4 /* SGUserDefaults.m */; };
 		A96B75B91ADAFBEE007BEB6F /* BlogSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B75B81ADAFBEE007BEB6F /* BlogSelectionController.swift */; };
 		A96B75BB1ADAFBEE007BEB6F /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */; };
-		A96B75BF1ADAFBEE007BEB6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */; };
 		A96B75C31ADAFBEE007BEB6F /* Seth Godin WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */; };
 		A96B75CB1ADAFBEE007BEB6F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96B75C91ADAFBEE007BEB6F /* Interface.storyboard */; };
-		A96B75CD1ADAFBEE007BEB6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96B75CC1ADAFBEE007BEB6F /* Images.xcassets */; };
 		A96B75D01ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A96B75B31ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A9712AA01667B2EE00BAFCD9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712A9F1667B2EE00BAFCD9 /* Default-568h@2x.png */; };
 		A9712AA31667B2F900BAFCD9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9712AA21667B2F900BAFCD9 /* Default@2x.png */; };
@@ -262,7 +262,6 @@
 		A96B75B71ADAFBEE007BEB6F /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		A96B75B81ADAFBEE007BEB6F /* BlogSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogSelectionController.swift; sourceTree = "<group>"; };
 		A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96B75C81ADAFBEE007BEB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A96B75CA1ADAFBEE007BEB6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -658,7 +657,6 @@
 				A913E9021AF98F3D00A05638 /* Seth Godin WatchKit Extension.entitlements */,
 				A96B75B81ADAFBEE007BEB6F /* BlogSelectionController.swift */,
 				A96B75BA1ADAFBEE007BEB6F /* NotificationController.swift */,
-				A96B75BE1ADAFBEE007BEB6F /* Images.xcassets */,
 				A96B75B51ADAFBEE007BEB6F /* Supporting Files */,
 				A94729F51AFD941C005E71DC /* BlogEntryRowController.swift */,
 				A9377EF91B01FC6C006ADD03 /* BlogReadController.swift */,
@@ -1136,7 +1134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A96B75BF1ADAFBEE007BEB6F /* Images.xcassets in Resources */,
+				A93128A51B13783400F33E6F /* Images.xcassets in Resources */,
 				A96B75C31ADAFBEE007BEB6F /* Seth Godin WatchKit App.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1145,8 +1143,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A93128A41B13782A00F33E6F /* Images.xcassets in Resources */,
 				A96B75CB1ADAFBEE007BEB6F /* Interface.storyboard in Resources */,
-				A96B75CD1ADAFBEE007BEB6F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1439,8 +1437,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kraig Spear";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kraig Spear";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1456,7 +1454,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5883b80c-873a-429e-a4f0-688438733b42";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1467,6 +1465,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -1505,6 +1504,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -1514,8 +1514,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = "Seth Godin WatchKit Extension/Seth Godin WatchKit Extension.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kraig Spear";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kraig Spear";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1531,7 +1531,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "95023f0c-120c-4937-9c1c-7b52da3b92b1";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1626,8 +1626,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kraig Spear (D3VVF7U55C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1646,8 +1646,8 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "cbddb4e0-c122-46f4-b477-df01519fbe40";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cbddb4e0-c122-46f4-b477-df01519fbe40";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1658,13 +1658,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kraig Spear (D3VVF7U55C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andy Anderson (WNDAYWVQ25)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kraig Spear";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kraig Spear";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1675,10 +1676,10 @@
 					"../SpearLib/SpearLib/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "cbddb4e0-c122-46f4-b477-df01519fbe40";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cbddb4e0-c122-46f4-b477-df01519fbe40";
+				PROVISIONING_PROFILE = "5883b80c-873a-429e-a4f0-688438733b42";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5883b80c-873a-429e-a4f0-688438733b42";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1706,7 +1707,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1736,8 +1737,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Seth Godin.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kraig Spear";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kraig Spear";
 				COMPRESS_PNG_FILES = NO;
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1748,7 +1749,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1761,8 +1762,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "59ed474d-cd9d-4ad7-b788-f086bed09e94";
+				PROVISIONING_PROFILE = "76af469c-326f-4218-b10e-40811696a874";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "76af469c-326f-4218-b10e-40811696a874";
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

@@ -78,6 +78,8 @@ static SGBlogEntriesViewController *instance = nil;
   id _favoriteDeletedNotification;
   id _addFavoritesAddedNotification;
   id _newContentNotification;
+  
+  BookPurchaser *_bookPurchaser;
 }
 
 + (instancetype) sharedInstance
@@ -1019,21 +1021,24 @@ NSString *const SEGUE_TO_POST = @"viewPostSeque";
   
   [Analytics logPurchaseTap:purchaseItem.title];
   
-  BookPurchaser *bookPurchaser = [[BookPurchaser alloc] initWithPurchaseItem:purchaseItem parentViewController:self completed:^(NSError *error)
+  _bookPurchaser = [[BookPurchaser alloc] initWithPurchaseItem:purchaseItem parentViewController:self completed:^(NSError *error)
                                   {
                                     typeof(self) strongSelf = weakSelf;
                                     
                                     if(strongSelf)
                                     {
+                                     
                                       if(error)
                                       {
                                         [Analytics logPurchaseError:error];
                                         [strongSelf showError:error];
                                       }
+                                      
+                                      strongSelf->_bookPurchaser = nil;
                                     }
                                   }];
   
-  [bookPurchaser purchase];
+  [_bookPurchaser purchase];
 }
 
 - (void) dispose

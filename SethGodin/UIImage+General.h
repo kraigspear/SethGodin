@@ -12,7 +12,6 @@
 
 + (UIImage*) backButtonWithColor:(UIColor*) inColor;
 
-+ (UIImage*) titleBarWithTitle:(NSString*) inTitle;
 + (UIImage*) closeButton;
 + (UIImage*) favoritesButton:(BOOL) isSelcted;
 + (UIImage*) shareButton;

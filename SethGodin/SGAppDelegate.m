@@ -70,6 +70,7 @@
   return YES;
 }
 
+
 /**
  *  Setup the App to receive push notifications.
  *
@@ -93,6 +94,7 @@
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
+  
   
   __weak typeof(self) weakSelf = self;
 
@@ -128,7 +130,6 @@
   [_que addOperation:_currentBlogItemsGetter];
   
 }
-
 
 - (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
