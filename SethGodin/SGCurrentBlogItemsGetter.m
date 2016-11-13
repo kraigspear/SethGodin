@@ -44,24 +44,19 @@
 - (void)main
 {
   self.executing = YES;
-  
+
   //1.Determine if we need to load from the cache or network.
   //2.Load from the approbate place.
-  if([AFNetworkReachabilityManager sharedManager].reachable)
+
+  if ( ([self ageOfCacheFileInHours] >= 24) || _force)
   {
-    if ( ([self ageOfCacheFileInHours] >= 24) || _force)
-    {
-      [self loadFromInternet];
-    }
-    else
-    {
-      [self loadFromCache];
-    }
+    [self loadFromInternet];
   }
   else
   {
     [self loadFromCache];
   }
+
 }
 
 - (void) loadFromInternet

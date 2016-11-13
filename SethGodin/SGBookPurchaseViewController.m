@@ -15,7 +15,7 @@
 #import "BlockAlertView.h"
 #import "UIColor+General.h"
 #import "MBProgressHud.h"
-#import "Seth_Godin-Swift.h"
+#import "GO_GODIN-Swift.h"
 
 
 @implementation SGBookPurchaseViewController

@@ -337,7 +337,7 @@
 		A9ABAC2816BD7AF700282647 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		A9ABAC2A16BD7B1500282647 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		A9ABAC2C16BD7B2B00282647 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		A9D684E3164CFE8D007A9ADA /* Seth Godin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Seth Godin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9D684E3164CFE8D007A9ADA /* GO GODIN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GO GODIN.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D684E7164CFE8D007A9ADA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D684E9164CFE8D007A9ADA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A9D684EB164CFE8D007A9ADA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -816,7 +816,7 @@
 		A9D684E4164CFE8D007A9ADA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A9D684E3164CFE8D007A9ADA /* Seth Godin.app */,
+				A9D684E3164CFE8D007A9ADA /* GO GODIN.app */,
 				A96B75B31ADAFBEE007BEB6F /* Seth Godin WatchKit Extension.appex */,
 				A96B75C21ADAFBEE007BEB6F /* Seth Godin WatchKit App.app */,
 				A98FE0C81B093E7700DC40C9 /* Seth Godin Tests.xctest */,
@@ -1026,9 +1026,9 @@
 			productReference = A98FE0C81B093E7700DC40C9 /* Seth Godin Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A9D684E2164CFE8D007A9ADA /* Seth Godin */ = {
+		A9D684E2164CFE8D007A9ADA /* GO GODIN */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "Seth Godin" */;
+			buildConfigurationList = A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "GO GODIN" */;
 			buildPhases = (
 				07101461DCE2FC196936D3CE /* Check Pods Manifest.lock */,
 				A9D684DF164CFE8D007A9ADA /* Sources */,
@@ -1043,9 +1043,9 @@
 				A9754CB816930EF1009E1D1F /* PBXTargetDependency */,
 				A96B75CF1ADAFBEE007BEB6F /* PBXTargetDependency */,
 			);
-			name = "Seth Godin";
+			name = "GO GODIN";
 			productName = SethGodin;
-			productReference = A9D684E3164CFE8D007A9ADA /* Seth Godin.app */;
+			productReference = A9D684E3164CFE8D007A9ADA /* GO GODIN.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1055,6 +1055,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SG;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = AndersonSpear;
 				TargetAttributes = {
@@ -1111,7 +1112,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				A9D684E2164CFE8D007A9ADA /* Seth Godin */,
+				A9D684E2164CFE8D007A9ADA /* GO GODIN */,
 				A96B75B21ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */,
 				A96B75C11ADAFBEE007BEB6F /* Seth Godin WatchKit App */,
 				A98FE0C71B093E7600DC40C9 /* Seth Godin Tests */,
@@ -1344,7 +1345,7 @@
 		};
 		A98FE0CF1B093E7700DC40C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A9D684E2164CFE8D007A9ADA /* Seth Godin */;
+			target = A9D684E2164CFE8D007A9ADA /* GO GODIN */;
 			targetProxy = A98FE0CE1B093E7700DC40C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1644,7 +1645,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"../SpearLib/SpearLib/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1675,7 +1676,7 @@
 					"$(SDKROOT)/usr/include/libxml2",
 					"../SpearLib/SpearLib/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "5883b80c-873a-429e-a4f0-688438733b42";
@@ -1809,7 +1810,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "Seth Godin" */ = {
+		A9D6850A164CFE8D007A9ADA /* Build configuration list for PBXNativeTarget "GO GODIN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A9D6850B164CFE8D007A9ADA /* Debug */,

@@ -11,6 +11,8 @@ pod 'SVWebViewController'
 pod 'Masonry'
 pod 'libextobjc'
 pod 'Raygun4iOS'
+pod 'iRate', '~> 1.11'
+
 
 
 

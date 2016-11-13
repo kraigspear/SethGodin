@@ -12,7 +12,8 @@
 #import "Raygun.h"
 #import "SGBlogEntriesViewController.h"
 #import "SGCurrentBlogItemsGetter.h"
-#import "Seth_Godin-Swift.h"
+#import "iRate.h"
+#import "GO_GODIN-Swift.h"
 
 @implementation SGAppDelegate
 {
@@ -47,6 +48,12 @@
   
   _que = [[NSOperationQueue alloc] init];
   _que.name = @"fetch";
+  
+  [iRate sharedInstance].daysUntilPrompt = 10;
+  [iRate sharedInstance].usesUntilPrompt = 10;
+  [iRate sharedInstance].appStoreID = 969806160;
+  [iRate sharedInstance].applicationName = @"GO GODIN";
+  [iRate sharedInstance].previewMode = NO;
   
   if (IS_IPAD)
   {

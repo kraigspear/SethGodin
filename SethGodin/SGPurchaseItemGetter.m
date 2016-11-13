@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import "NSDictionary-Expanded.h"
 #import "SGPurchaseItem.h"
-#import "Seth_Godin-Swift.h"
+#import "GO_GODIN-Swift.h"
 #import "NSDate+General.h"
 #import "SGUserDefaults.h"
 #import <Parse/Parse.h>

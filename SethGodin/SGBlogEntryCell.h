@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
-#import "Seth_Godin-Swift.h"
+#import "GO_GODIN-Swift.h"
 
 @class SGBlogEntry;
 

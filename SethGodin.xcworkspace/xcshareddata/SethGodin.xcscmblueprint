@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "40FE6F678E36F286C22FF5B3A490FD8754B0B4BF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7F31040380184070DAA0B6B5E459D910653C8C7B" : 0,
+    "40FE6F678E36F286C22FF5B3A490FD8754B0B4BF" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "839E6C91-7B5B-4377-9D24-B6B45CA49914",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7F31040380184070DAA0B6B5E459D910653C8C7B" : "SpearLib",
+    "40FE6F678E36F286C22FF5B3A490FD8754B0B4BF" : "sethgodin"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SethGodin",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SethGodin.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "spearware.beanstalkapp.com:\/sethgodin.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "40FE6F678E36F286C22FF5B3A490FD8754B0B4BF"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "spearware.beanstalkapp.com:\/spearlib.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7F31040380184070DAA0B6B5E459D910653C8C7B"
+    }
+  ]
+}
