@@ -9,16 +9,16 @@
 import Foundation
 
 
-@objc public class BlogEntry : NSObject
+@objc open class BlogEntry : NSObject
 {
   let itemId: String
   let title:String
   let summary: String
   let content: String
   let urlStr: String
-  let date: NSDate
+  let date: Date
   
-  init(itemId: String, title:String, summary:String, content:String, urlStr: String, date:NSDate)
+  init(itemId: String, title:String, summary:String, content:String, urlStr: String, date:Date)
   {
     self.itemId = itemId
     self.title = title
@@ -30,11 +30,11 @@ import Foundation
   
 }
 
-public class BlogStore
+open class BlogStore
 {
   var blogEntries:[BlogEntry] = []
   
-  public func latestEntry() -> BlogEntry?
+  open func latestEntry() -> BlogEntry?
   {
     load()
     
@@ -51,24 +51,22 @@ public class BlogStore
   func load()
   {
     
-    if let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.spearware.sethgodin")
+    if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.spearware.sethgodin")
     {
-      let fileUrl = url.URLByAppendingPathComponent("blogEntries.json")
+      let fileUrl = url.appendingPathComponent("blogEntries.json")
       
-      if let jsonData = NSData(contentsOfURL: fileUrl)
+      if let jsonData = try? Data(contentsOf: fileUrl)
       {
-        let errorPointer = NSErrorPointer()
-        
-        if let blogEntriesDict = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.allZeros, error: errorPointer) as? [ [String:String]  ]
+        if let blogEntriesDict = try! JSONSerialization.jsonObject(with: jsonData, options: []) as? [ [String:String]  ]
         {
           
-          self.blogEntries.removeAll(keepCapacity: true)
+          self.blogEntries.removeAll(keepingCapacity: true)
           let dateFormatter = self.dateFormatter
           
           for blogEntryDict in blogEntriesDict
           {
             let title = blogEntryDict["title"]!
-            let blogDate = dateFormatter.dateFromString(blogEntryDict["date"]!)!
+            let blogDate = dateFormatter.date(from: blogEntryDict["date"]!)!
             let summary = blogEntryDict["summary"]!
             let content = blogEntryDict["content"]!
             let itemId = blogEntryDict["itemId"]!
@@ -83,13 +81,13 @@ public class BlogStore
     }
   }
   
-  lazy var dateFormatter: NSDateFormatter =
+  lazy var dateFormatter: DateFormatter =
   {
-    let local = NSLocale(localeIdentifier: "en_US")
-    let formatter = NSDateFormatter()
+    let local = Locale(identifier: "en_US")
+    let formatter = DateFormatter()
     formatter.locale = local
-    formatter.dateStyle = NSDateFormatterStyle.LongStyle
-    formatter.timeStyle = NSDateFormatterStyle.LongStyle
+    formatter.dateStyle = DateFormatter.Style.long
+    formatter.timeStyle = DateFormatter.Style.long
     return formatter
   }()
 }

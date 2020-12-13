@@ -8,59 +8,47 @@
 
 import UIKit
 
-@objc public class SGPurchaseItemCell : UITableViewCell
+@objc open class SGPurchaseItemCell : UITableViewCell
 {
-    private var _purchaseItem:SGPurchaseItem?
+    fileprivate var _purchaseItem:SGPurchaseItem?
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var thumbnailImageView: UIImageView!
+    @IBOutlet private weak var bottomImageView: UIImageView!
     
-    @IBOutlet weak var bottomImageView: UIImageView!
-    
-    public override func awakeFromNib()
-    {
+    open override func awakeFromNib() {
         self.contentView.backgroundColor = UIColor(red: 1.0, green: 0.6, blue: 0.0, alpha: 1)
     }
     
-    public override func layoutSubviews()
-    {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         self.updateBottomImageView()
     }
     
-    private func updateBottomImageView()
-    {
-        self.bottomImageView.image = UIImage.bottomTableCellForBooksForSize(CGSize(width: self.frame.size.width, height: 50))
+    fileprivate func updateBottomImageView() {
+        bottomImageView.image = UIImage.bottomTableCellForBooks(for: CGSize(width: self.frame.size.width, height: 50))
     }
     
-    public var purchaseItem:SGPurchaseItem?
-    {
-        set
-        {
+    open var purchaseItem:SGPurchaseItem? {
+        set {
             _purchaseItem = newValue
             populateCell()
         }
-        get
-        {
+        get{
             return _purchaseItem
         }
     }
     
-    private func populateCell()
-    {
-        if let unwrapPurchaseItem = self.purchaseItem
-        {
-            self.titleLabel.text = unwrapPurchaseItem.title
-            self.populateImage(fromPurchaseItem: unwrapPurchaseItem)
-        }
-        else
-        {
-            self.titleLabel.text = ""
-        }
+    fileprivate func populateCell() {
+		guard let purchaseItem = self.purchaseItem else {
+			titleLabel.text = ""
+			return
+		}
+		titleLabel.text = purchaseItem.title
+		populateImage(from: purchaseItem)
     }
     
-    private func populateImage(#fromPurchaseItem:SGPurchaseItem)
-    {
-        self.thumbnailImageView?.image = fromPurchaseItem.image
+    fileprivate func populateImage(from: SGPurchaseItem) {
+        self.thumbnailImageView?.image = from.image
     }
 }

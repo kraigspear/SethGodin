@@ -10,11 +10,11 @@ import UIKit
 
 
 //Operation to download an image
-@objc public class SGImageDownloader : STBaseOperation
+@objc open class SGImageDownloader : STBaseOperation
 {
     
-    private let parseFile: PFFile
-    private let purchaseItem: SGPurchaseItem
+    fileprivate let parseFile: PFFile
+    fileprivate let purchaseItem: SGPurchaseItem
     
     public init(purchaseItem:SGPurchaseItem, parseFile: PFFile)
     {
@@ -22,7 +22,7 @@ import UIKit
         self.parseFile = parseFile
     }
     
-    override public func main()
+    override open func main()
     {
         super.setExecuting(true)
         

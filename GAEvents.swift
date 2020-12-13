@@ -5,33 +5,33 @@
 
 import Foundation
 
-@objc public class Analytics
+open class Analytics
 {
-    public class func logPurchaseTap(bookName: String)
+    open class func logPurchaseTap(_ bookName: String)
     {
         let dimensions = ["book" : bookName]
         PFAnalytics.trackEvent("purchaseTap", dimensions:dimensions)
     }
     
-    public class func logPurchased(bookName: String)
+    open class func logPurchased(_ bookName: String)
     {
         let dimensions = ["book" : bookName]
         PFAnalytics.trackEvent("purchased", dimensions:dimensions)
     }
     
-    public class func logPurchaseError(error:NSError)
+    open class func logPurchaseError(_ error:NSError)
     {
         let dimensions = ["description" : error.localizedDescription]
         PFAnalytics.trackEvent("purchaseError", dimensions:dimensions)
     }
     
-    public class func logViewBlogToday()
+    open class func logViewBlogToday()
     {
         let dimensions = ["type" : "today"]
         PFAnalytics.trackEvent("viewedBlog", dimensions:dimensions)
     }
     
-    public class func logViewBlogNotToday()
+    open class func logViewBlogNotToday()
     {
         let dimensions = ["type" : "notToday"]
         PFAnalytics.trackEvent("viewedBlog", dimensions:dimensions)

@@ -8,41 +8,41 @@
 
 import Foundation
 
-typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
+typealias ReplyBlock =  (([AnyHashable: Any]?) -> Void)!
 /**
 *  The logic of passing data between The Apple Watch and iPhone App
 */
-@objc public class WatchKitFetcher : NSObject
+@objc open class WatchKitFetcher : NSObject
 {
   // MARK:  members
   /// The command and info needed to execute a watch operation.
-  private let userInfo:NSDictionary
+  fileprivate let userInfo:NSDictionary
   
   /// The reply to call after the optation is complete
-  private let reply: ReplyBlock
+  fileprivate let reply: ReplyBlock
   
   /// Command to fetch blog entries
-  public let commandFetch = "fetch"
-  public let commandSave = "favorite"
+  open let commandFetch = "fetch"
+  open let commandSave = "favorite"
   /// Value used with commandFetch to indicate what needs to be fetched, the latest entries.
-  public let commandParamFetchLatest  = "latest"
-  public let commandParamSaveFavorite = "saveFavorite"
+  open let commandParamFetchLatest  = "latest"
+  open let commandParamSaveFavorite = "saveFavorite"
   
   /// <#Description#>
-  public let numberToFetch = "numberToFetch"
-  public let errorKey = "Error"
-  public let resultsKey = "results"
+  open let numberToFetch = "numberToFetch"
+  open let errorKey = "Error"
+  open let resultsKey = "results"
   
-  private let backgroundTaskName = "fetchLatest"
+  fileprivate let backgroundTaskName = "fetchLatest"
   
-  private let blogGetter = SGCurrentBlogItemsGetter()
+  fileprivate let blogGetter = SGCurrentBlogItemsGetter()
   
-  private var backgroundTask: UIBackgroundTaskIdentifier?
+  fileprivate var backgroundTask: UIBackgroundTaskIdentifier?
   
   /// The operation que to run any operations on.
-  lazy var operationQue: NSOperationQueue =
+  lazy var operationQue: OperationQueue =
   {
-    var que = NSOperationQueue()
+    var que = OperationQueue()
     que.name = "fetchQue"
     que.maxConcurrentOperationCount = 1
     return que
@@ -56,9 +56,9 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   }
   
   // MARK: Background Task
-  private func setupBackgroundTask()
+  fileprivate func setupBackgroundTask()
   {
-    self.backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithName(backgroundTaskName, expirationHandler: {[weak self]  () -> Void in
+    self.backgroundTask = UIApplication.shared.beginBackgroundTask(withName: backgroundTaskName, expirationHandler: {[weak self]  () -> Void in
       
       if let strongSelf = self
       {
@@ -71,13 +71,13 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   /**
   End the background task. Should be called no matter what
   */
-  private func endBackgroundTask()
+  fileprivate func endBackgroundTask()
   {
-    dispatch_async(dispatch_get_main_queue())
+    DispatchQueue.main.async
     {
       if let unwrapTask = self.backgroundTask
       {
-         UIApplication.sharedApplication().endBackgroundTask(unwrapTask)
+         UIApplication.shared.endBackgroundTask(unwrapTask)
       }
     }
   }
@@ -86,7 +86,7 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   /**
   Process the request from the watch
   */
-  public func processRequest()
+  open func processRequest()
   {
     if let fetchCommand = self.userInfo[commandFetch] as? String
     {
@@ -94,7 +94,7 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
       {
         if let numberToFetch = self.userInfo[numberToFetch] as? NSNumber
         {
-          let numberToFetchInt = numberToFetch.integerValue
+          let numberToFetchInt = numberToFetch.intValue
           fetchLatest(numberToFetchInt)
         }
       }
@@ -110,7 +110,7 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   
   :param: blogCount The number of blog entires to return
   */
-  private func fetchLatest(blogCount: Int)
+  fileprivate func fetchLatest(_ blogCount: Int)
   {
     setupBackgroundTask()
     
@@ -120,7 +120,7 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
       {
         if let error = strongSelf.blogGetter.error
         {
-          strongSelf.responseError(error)
+          strongSelf.responseError(error as NSError)
         }
         else
         {
@@ -143,9 +143,9 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   Save a favorite
   :param: The ID of the blog item to save as a favorite
   */
-  private func saveFavorite(blogId: String)
+  fileprivate func saveFavorite(_ blogId: String)
   {
-    SGFavoritesParse.addBlogEntrytoFavoritesWithId(blogId)
+    SGFavoritesParse.addBlogEntrytoFavorites(withId: blogId)
     self.reply(["response":"completed"])
   }
   
@@ -157,7 +157,7 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   
   :returns: <#return value description#>
   */
-  private func extractFeedItemSubset(blogEntries:[SGBlogEntry], numberToExtract: Int) -> [SGBlogEntry]
+  fileprivate func extractFeedItemSubset(_ blogEntries:[SGBlogEntry], numberToExtract: Int) -> [SGBlogEntry]
   {
     if numberToExtract >= blogEntries.count
     {
@@ -176,10 +176,10 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   Send back an error response
   :param: error The error to send back
   */
-  private func responseError(error: NSError)
+  fileprivate func responseError(_ error: NSError)
   {
     let errorDict = [errorKey :  self.blogGetter.error]
-    dispatch_async(dispatch_get_main_queue())
+    DispatchQueue.main.async
     {
       self.reply(errorDict)
     }
@@ -190,11 +190,11 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   
   :param: blogEntries The requested blog entries.
   */
-  private func reponseBlogEntries(blogEntries: [SGBlogEntry])
+  fileprivate func reponseBlogEntries(_ blogEntries: [SGBlogEntry])
   {
     let blogEntryArray = self.blogEntriesToArray(blogEntries)
     let responseDict = [resultsKey : blogEntryArray]
-    dispatch_async(dispatch_get_main_queue())
+    DispatchQueue.main.async
     {
         self.reply(responseDict)
     }
@@ -207,7 +207,7 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   
   :returns: The converted blog entry items
   */
-  private func blogEntriesToArray(blogEntries:[SGBlogEntry]) ->  [ [String:AnyObject] ]
+  fileprivate func blogEntriesToArray(_ blogEntries:[SGBlogEntry]) ->  [ [String:AnyObject] ]
   {
     var returnDictionary:[ [String:AnyObject] ] = []
     
@@ -227,14 +227,14 @@ typealias ReplyBlock =  (([NSObject : AnyObject]!) -> Void)!
   
   :returns: The converted blog entry
   */
-  private func blogEntryToDictionary(blogEntry:SGBlogEntry) -> [String:AnyObject]
+  fileprivate func blogEntryToDictionary(_ blogEntry:SGBlogEntry) -> [String:AnyObject]
   {
-    return ["title" : blogEntry.title,
-      "summary" : blogEntry.summary,
-      "datePublished" : blogEntry.datePublished,
-      "itemId" : blogEntry.itemID,
-      "content" : blogEntry.content,
-      "urlStr" : blogEntry.urlStr]
+    return ["title" : blogEntry.title as AnyObject,
+      "summary" : blogEntry.summary as AnyObject,
+      "datePublished" : blogEntry.datePublished as AnyObject,
+      "itemId" : blogEntry.itemID as AnyObject,
+      "content" : blogEntry.content as AnyObject,
+      "urlStr" : blogEntry.urlStr as AnyObject]
   }
   
   

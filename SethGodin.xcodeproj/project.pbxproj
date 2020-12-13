@@ -81,7 +81,6 @@
 		A97E884416590C7C00777A82 /* NSDictionary-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E884316590C7200777A82 /* NSDictionary-Expanded.m */; };
 		A97E88591659212100777A82 /* SGBookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A97E88581659212100777A82 /* SGBookCellView.m */; };
 		A98ABCA6165B88EA00919F8F /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A98ABCA5165B88EA00919F8F /* NSString+Util.m */; };
-		A98FE0CD1B093E7700DC40C9 /* Seth_Godin_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98FE0CC1B093E7700DC40C9 /* Seth_Godin_Tests.swift */; };
 		A9960B721A9B2AA200EAF035 /* BookPurchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */; };
 		A9960B761A9DCAC700EAF035 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9960B751A9DCAC700EAF035 /* FeedLoader.swift */; };
 		A9A3F22616A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A3F22516A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.m */; };
@@ -307,8 +306,6 @@
 		A98ABCA4165B88EA00919F8F /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Util.h"; path = "SethGodin/NSString+Util.h"; sourceTree = "<group>"; };
 		A98ABCA5165B88EA00919F8F /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Util.m"; path = "SethGodin/NSString+Util.m"; sourceTree = "<group>"; };
 		A98FE0C81B093E7700DC40C9 /* Seth Godin Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Seth Godin Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A98FE0CB1B093E7700DC40C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A98FE0CC1B093E7700DC40C9 /* Seth_Godin_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seth_Godin_Tests.swift; sourceTree = "<group>"; };
 		A9960B711A9B2AA200EAF035 /* BookPurchaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookPurchaser.swift; sourceTree = "<group>"; };
 		A9960B751A9DCAC700EAF035 /* FeedLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		A9A3F22416A6B0BF000B4D62 /* SGBlogEntryViewController_ipad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGBlogEntryViewController_ipad.h; sourceTree = "<group>"; };
@@ -766,23 +763,6 @@
 			path = ToAddToYourProjects;
 			sourceTree = "<group>";
 		};
-		A98FE0C91B093E7700DC40C9 /* Seth Godin Tests */ = {
-			isa = PBXGroup;
-			children = (
-				A98FE0CC1B093E7700DC40C9 /* Seth_Godin_Tests.swift */,
-				A98FE0CA1B093E7700DC40C9 /* Supporting Files */,
-			);
-			path = "Seth Godin Tests";
-			sourceTree = "<group>";
-		};
-		A98FE0CA1B093E7700DC40C9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A98FE0CB1B093E7700DC40C9 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		A9A3F21D16A6ADA9000B4D62 /* BlogEntryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,7 +785,6 @@
 				A9D6850D164D005D007A9ADA /* 3RD Party */,
 				A96B75B41ADAFBEE007BEB6F /* Seth Godin WatchKit Extension */,
 				A96B75C61ADAFBEE007BEB6F /* Seth Godin WatchKit App */,
-				A98FE0C91B093E7700DC40C9 /* Seth Godin Tests */,
 				A9D684E6164CFE8D007A9ADA /* Frameworks */,
 				A9D684E4164CFE8D007A9ADA /* Products */,
 				A91FAC391A9342920057F07C /* AppImages */,
@@ -1062,6 +1041,7 @@
 					A96B75B21ADAFBEE007BEB6F = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = FUNW4GUS24;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1075,10 +1055,12 @@
 					A98FE0C71B093E7600DC40C9 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = FUNW4GUS24;
+						LastSwiftMigration = 0810;
 						TestTargetID = A9D684E2164CFE8D007A9ADA;
 					};
 					A9D684E2164CFE8D007A9ADA = {
 						DevelopmentTeam = FUNW4GUS24;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1256,7 +1238,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A98FE0CD1B093E7700DC40C9 /* Seth_Godin_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1498,6 +1479,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1534,12 +1516,14 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "95023f0c-120c-4937-9c1c-7b52da3b92b1";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		A98FE0D11B093E7700DC40C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1575,13 +1559,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seth Godin.app/Seth Godin";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GO GODIN.app/GO GODIN";
 			};
 			name = Debug;
 		};
 		A98FE0D21B093E7700DC40C9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -1614,7 +1600,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Seth Godin.app/Seth Godin";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GO GODIN.app/GO GODIN";
 			};
 			name = Release;
 		};
@@ -1700,6 +1687,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FUNW4GUS24;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1708,7 +1696,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1721,10 +1709,12 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f995d95b-5da7-4e28-b1a0-6594cf88d394";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE_SPECIFIER = SethGodinDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1750,7 +1740,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SethGodin/SethGodin-Prefix.pch";
 				INFOPLIST_FILE = "SethGodin/SethGodin-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1766,6 +1756,7 @@
 				PROVISIONING_PROFILE = "76af469c-326f-4218-b10e-40811696a874";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "76af469c-326f-4218-b10e-40811696a874";
 				SWIFT_OBJC_BRIDGING_HEADER = "Seth Godin-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

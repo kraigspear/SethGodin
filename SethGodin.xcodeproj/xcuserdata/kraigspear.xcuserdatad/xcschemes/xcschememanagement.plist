@@ -7,17 +7,17 @@
 		<key>Glance - Seth Godin WatchKit App.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Notification - Seth Godin WatchKit App.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Seth Godin WatchKit App.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>1</integer>
 		</dict>
 		<key>SethGodin.xcscheme</key>
 		<dict>

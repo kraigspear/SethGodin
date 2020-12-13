@@ -10,29 +10,29 @@ import Foundation
 
 public enum FeedType: Int
 {
-    case BlogEntry = 0
-    case PurchaseItem = 1
+    case blogEntry = 0
+    case purchaseItem = 1
 }
 
 /// An item that is in our activity feed. It can either be a SGBlogEntry or a SGPurchaseItem
-@objc public class FeedItem
+@objc class FeedItem: NSObject
 {
-    public let title: String
-    public let feedType:FeedType
-    public let dataObject: AnyObject
+    open let title: String
+    open let feedType:FeedType
+    open let dataObject: AnyObject
 
-    private init(title: String, feedType:FeedType, dataObject:AnyObject)
+    fileprivate init(title: String, feedType:FeedType, dataObject:AnyObject)
     {
         self.title = title
         self.feedType = feedType
         self.dataObject = dataObject
     }
 
-    public var datePublished:NSDate?
+    open var datePublished:Date?
     {
         get
         {
-            if self.feedType == .BlogEntry
+            if self.feedType == .blogEntry
             {
                 let blogEntry = self.dataObject as! SGBlogEntry
                 return blogEntry.datePublished
@@ -44,14 +44,14 @@ public enum FeedType: Int
         }
     }
 
-    public var shareCount:NSNumber?
+    open var shareCount:NSNumber?
     {
         get
         {
-            if self.feedType == .BlogEntry
+            if self.feedType == .blogEntry
             {
                 let blogEntry = self.dataObject as! SGBlogEntry
-                return blogEntry.shareCount
+                return blogEntry.shareCount as NSNumber?
             }
             else
             {
@@ -61,20 +61,20 @@ public enum FeedType: Int
     }
 
     ///Convert a BlogEntry to a FeedItem
-    public class func fromBlogEntry(blogEntry: SGBlogEntry) -> FeedItem
+    open class func fromBlogEntry(_ blogEntry: SGBlogEntry) -> FeedItem
     {
-        return FeedItem(title: blogEntry.title, feedType: FeedType.BlogEntry, dataObject: blogEntry)
+        return FeedItem(title: blogEntry.title, feedType: FeedType.blogEntry, dataObject: blogEntry)
     }
 
     ///Convert a PurchaseItem into a FeedItem
-    public class func fromPurchaseItem(purchaseItem:SGPurchaseItem) -> FeedItem
+    open class func fromPurchaseItem(_ purchaseItem:SGPurchaseItem) -> FeedItem
     {
-        return FeedItem(title: purchaseItem.title, feedType: FeedType.PurchaseItem,  dataObject: purchaseItem)
+        return FeedItem(title: purchaseItem.title, feedType: FeedType.purchaseItem,  dataObject: purchaseItem)
     }
 }
 
 ///Load a feed, add additioanl items into the feed such as purchase items
-@objc public class FeedLoader : NSObject
+@objc open class FeedLoader : NSObject
 {
     ///Provides the feed items
     let blogItemGetter: SGBlogItemsGetter
@@ -84,22 +84,21 @@ public enum FeedType: Int
         self.blogItemGetter = blogItemGetter
     }
 
-    lazy var fetchQue:NSOperationQueue =
+    lazy var fetchQue:OperationQueue =
     {
-        var que = NSOperationQueue()
+        var que = OperationQueue()
         que.name = "fetch"
         que.maxConcurrentOperationCount = 2
         return que
     }()
 
-    public func loadFeed(completed:(feedItems:[FeedItem]?, error:NSError?) -> Void)
+    func loadFeed(_ completed:@escaping (_ feedItems:[FeedItem]?, _ error:NSError?) -> Void)
     {
         let purchaseItemGetter = SGPurchaseItemGetter()
 
-        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-        dispatch_async(backgroundQueue,
-            {
+        let qualityOfServiceClass = DispatchQoS.QoSClass.background
+        let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
+        backgroundQueue.async(execute: {
                 //1. Fetch both the purchase items and blog items at the same time.
                 
                 self.fetchQue.addOperations([purchaseItemGetter, self.blogItemGetter], waitUntilFinished: true)
@@ -108,10 +107,9 @@ public enum FeedType: Int
                 {
                    if let blogEntries = self.blogItemGetter.blogEntries as? [SGBlogEntry]
                    {
-                       let feedItems = self.feedItemsFrom(purchaseItems:purchaseItems, blogEntries:blogEntries)
-                       dispatch_async(dispatch_get_main_queue(),
-                        {
-                            completed(feedItems: feedItems, error: nil)
+                       let feedItems = self.feedItemsFrom(purchaseItems:purchaseItems, blogEntries)
+                       DispatchQueue.main.async(execute: {
+                            completed(feedItems, nil)
                             return
                         })
                    }
@@ -120,33 +118,28 @@ public enum FeedType: Int
                 //2.
                 //If we are able to combine both the purchase items and blog items then we will not be here.
                 //At this point there is an error that we need to handle.
-                dispatch_async(dispatch_get_main_queue(),
-                {
+                DispatchQueue.main.async(execute: {
                     if purchaseItemGetter.error != nil
                     {
-                        completed(feedItems: nil, error: purchaseItemGetter.error)
+                        completed(nil, purchaseItemGetter.error as NSError?)
                     }
                     else if self.blogItemGetter.error != nil
                     {
-                        completed(feedItems: nil, error: self.blogItemGetter.error)
+                        completed(nil, self.blogItemGetter.error as NSError?)
                     }
                 })
             })
     }
 
-    private func feedItemsFrom(#purchaseItems:[SGPurchaseItem],  blogEntries:[SGBlogEntry]) -> [FeedItem]
+    fileprivate func feedItemsFrom(purchaseItems:[SGPurchaseItem],  _ blogEntries:[SGBlogEntry]) -> [FeedItem]
     {
-        let source = BFTaskCompletionSource()
+        _ = BFTaskCompletionSource()
         
         var feedItems:[FeedItem] = []
         
-        var shuffledPurchaseItems: [SGPurchaseItem] = [];
-        
-        if(purchaseItems.count > 1)
-        {
-            shuffledPurchaseItems = purchaseItems.shuffled()
-        }
-        
+        var shuffledPurchaseItems: [SGPurchaseItem] = purchaseItems
+        shuffledPurchaseItems.shuffle()
+		
         var purchaseItemIndex = 0
         
         for i in 0..<blogEntries.count
@@ -155,15 +148,15 @@ public enum FeedType: Int
             
             feedItems.append(FeedItem.fromBlogEntry(blogEntry))
             
-            if shouldInsertPurchaseItem(atBlogEntryCount: i)
+			if shouldInsertPurchaseItem(at: i)
             {
-                if stillHavePurchaseItemsToInsert(purchaseItems: shuffledPurchaseItems, index: purchaseItemIndex)
+                if stillHavePurchaseItemsToInsert(purchaseItems: shuffledPurchaseItems, at: purchaseItemIndex)
                 {
                     let purchaseItem = shuffledPurchaseItems[purchaseItemIndex]
                     
                     feedItems.append(FeedItem.fromPurchaseItem(purchaseItem))
                     
-                    purchaseItemIndex++
+                    purchaseItemIndex += 1
                 }
             }
         }
@@ -171,15 +164,15 @@ public enum FeedType: Int
         return feedItems
       }
     
-    private func stillHavePurchaseItemsToInsert(#purchaseItems:[SGPurchaseItem], index:Int) -> Bool
+    fileprivate func stillHavePurchaseItemsToInsert(purchaseItems:[SGPurchaseItem], at: Int) -> Bool
     {
-        return purchaseItems.count - 1 >= index
+        return purchaseItems.count - 1 >= at
     }
     
-    private func shouldInsertPurchaseItem(#atBlogEntryCount: Int) -> Bool
+    fileprivate func shouldInsertPurchaseItem(at: Int) -> Bool
     {
         let insertEvery = 3
-        let m = atBlogEntryCount % insertEvery
+        let m = at % insertEvery
         return m == 0
     }
 

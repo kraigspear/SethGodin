@@ -10,16 +10,16 @@ import UIKit
 import StoreKit
 
 
-@objc public class BookPurchaser : NSObject, SKStoreProductViewControllerDelegate
+@objc open class BookPurchaser : NSObject, SKStoreProductViewControllerDelegate
 {
     let purchaseItem: SGPurchaseItem
     let parentViewController: UIViewController
     let productViewController: SKStoreProductViewController
     let completed: CompletedBlock
     
-    public typealias CompletedBlock = ( (error:NSError?) -> Void )
+    public typealias CompletedBlock = ( (_ error:NSError?) -> Void )
     
-    public init(purchaseItem: SGPurchaseItem, parentViewController: UIViewController, completed:CompletedBlock)
+    public init(purchaseItem: SGPurchaseItem, parentViewController: UIViewController, completed:@escaping CompletedBlock)
     {
         self.completed = completed
         self.purchaseItem = purchaseItem
@@ -32,20 +32,20 @@ import StoreKit
         
     }
     
-    public func purchase()
+    open func purchase()
     {
         
-        MBProgressHUD.showHUDAddedTo(self.parentViewController.view, animated: true)
+        MBProgressHUD.showAdded(to: self.parentViewController.view, animated: true)
         
-        let params = [SKStoreProductParameterITunesItemIdentifier : purchaseItem.trackID, SKStoreProductParameterAffiliateToken : "10lKRh"]
+        let params = [SKStoreProductParameterITunesItemIdentifier : purchaseItem.trackID, SKStoreProductParameterAffiliateToken : "10lKRh"] as [String : Any]
         
-        self.productViewController.loadProductWithParameters(params as [NSObject : AnyObject], completionBlock: {[weak self] (result, error) -> Void in
+        self.productViewController.loadProduct(withParameters: params as [AnyHashable: Any] as! [String : Any], completionBlock: {[weak self] (result, error) -> Void in
             
             if let unwrapSelf = self
             {
                 if result
                 {
-                    unwrapSelf.parentViewController.presentViewController(unwrapSelf.productViewController, animated:true, completion:
+                    unwrapSelf.parentViewController.present(unwrapSelf.productViewController, animated:true, completion:
                     {
                         unwrapSelf.hideHud()
                     })
@@ -53,7 +53,7 @@ import StoreKit
                 else if let unwrapError = error
                 {
                     unwrapSelf.hideHud()
-                    unwrapSelf.completed(error:unwrapError)
+                    unwrapSelf.completed(unwrapError as NSError?)
                 }
                 else
                 {
@@ -65,17 +65,17 @@ import StoreKit
         
     }
     
-    private func hideHud()
+    fileprivate func hideHud()
     {
-         MBProgressHUD.hideHUDForView(self.parentViewController.view, animated: true)
+         MBProgressHUD.hide(for: self.parentViewController.view, animated: true)
     }
     
-    public func productViewControllerDidFinish(viewController: SKStoreProductViewController!)
+    open func productViewControllerDidFinish(_ viewController: SKStoreProductViewController!)
     {
-        viewController.dismissViewControllerAnimated(true) {[weak self] () -> Void in
+        viewController.dismiss(animated: true) {[weak self] () -> Void in
             if let unwrapSelf = self
             {
-                unwrapSelf.completed(error: nil)
+                unwrapSelf.completed(nil)
             }
         }
     }

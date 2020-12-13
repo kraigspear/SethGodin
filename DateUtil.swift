@@ -8,17 +8,17 @@
 
 import Foundation
 
-let calendar = NSCalendar.currentCalendar()
-var dateFormatter: NSDateFormatter?
+let calendar = Calendar.current
+var dateFormatter: DateFormatter?
 
-extension NSDate
+extension Date
 {
     func friendyDateString() -> String
     {
       
       if dateFormatter == nil
       {
-        dateFormatter = NSDateFormatter()
+        dateFormatter = DateFormatter()
         dateFormatter!.dateFormat = "cccc"
       }
       
@@ -29,15 +29,13 @@ extension NSDate
       case 1:
         return "Yesterday"
       default:
-        return dateFormatter!.stringFromDate(self)
+        return dateFormatter!.string(from: self)
       }
     }
   
-  func numberOfDaysSinceOtherDay(date: NSDate = NSDate()) -> Int
-  {
-    
-    let flags: NSCalendarUnit = NSCalendarUnit.CalendarUnitDay
-    let components = calendar.components(flags, fromDate: self, toDate: date, options:nil)
-    return components.day
+  func numberOfDaysSinceOtherDay(_ date: Date = Date()) -> Int {
+	let flags: Set<Calendar.Component> = ([Calendar.Component.day])
+	let components = calendar.dateComponents(flags, from: self, to: date)
+    return components.day!
   }
 }
